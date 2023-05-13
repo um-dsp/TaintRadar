@@ -1,0 +1,268 @@
+[
+    {
+        "elements": [
+            {
+                "name": "<operator>.indexAccess",
+                "signature": "",
+                "code": "$_POST[\"book_name\"]",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "methodFullName": "<operator>.indexAccess",
+                "_label": "CALL",
+                "argumentIndex": 2,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 5,
+                "id": 19
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "unsan",
+                "code": "$unsan",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 1,
+                "lineNumber": 5,
+                "id": 3
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "unsan",
+                "code": "$unsan",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 2,
+                "lineNumber": 13,
+                "id": 12
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "san",
+                "code": "$san",
+                "typeFullName": "<empty>",
+                "order": 4,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 4,
+                "lineNumber": 13,
+                "id": 13
+            },
+            {
+                "name": "encaps",
+                "signature": "",
+                "code": "encaps",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "methodFullName": "encaps",
+                "_label": "CALL",
+                "argumentIndex": 1,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 13,
+                "id": 27
+            },
+            {
+                "name": "mysqli_query",
+                "signature": "",
+                "code": "mysqli_query(encaps)",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "methodFullName": "mysqli_query:<unresolvedSignature>(1)",
+                "_label": "CALL",
+                "argumentIndex": 2,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 13,
+                "id": 26
+            }
+        ]
+    },
+    {
+        "elements": [
+            {
+                "name": "intval",
+                "signature": "",
+                "code": "intval($_POST[\"edition\"])",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "methodFullName": "__builtin.intval",
+                "_label": "CALL",
+                "argumentIndex": 2,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 10,
+                "id": 22
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "san",
+                "code": "$san",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 1,
+                "lineNumber": 10,
+                "id": 7
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "san",
+                "code": "$san",
+                "typeFullName": "<empty>",
+                "order": 4,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 4,
+                "lineNumber": 13,
+                "id": 13
+            },
+            {
+                "name": "encaps",
+                "signature": "",
+                "code": "encaps",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "methodFullName": "encaps",
+                "_label": "CALL",
+                "argumentIndex": 1,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 13,
+                "id": 27
+            }
+        ]
+    },
+    {
+        "elements": [
+            {
+                "name": "intval",
+                "signature": "",
+                "code": "intval($_POST[\"edition\"])",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "methodFullName": "__builtin.intval",
+                "_label": "CALL",
+                "argumentIndex": 2,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 10,
+                "id": 22
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "san",
+                "code": "$san",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 1,
+                "lineNumber": 10,
+                "id": 7
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "san",
+                "code": "$san",
+                "typeFullName": "<empty>",
+                "order": 4,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 4,
+                "lineNumber": 13,
+                "id": 13
+            },
+            {
+                "name": "encaps",
+                "signature": "",
+                "code": "encaps",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "methodFullName": "encaps",
+                "_label": "CALL",
+                "argumentIndex": 1,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 13,
+                "id": 27
+            },
+            {
+                "name": "mysqli_query",
+                "signature": "",
+                "code": "mysqli_query(encaps)",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "methodFullName": "mysqli_query:<unresolvedSignature>(1)",
+                "_label": "CALL",
+                "argumentIndex": 2,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 13,
+                "id": 26
+            }
+        ]
+    },
+    {
+        "elements": [
+            {
+                "name": "<operator>.indexAccess",
+                "signature": "",
+                "code": "$_POST[\"book_name\"]",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "methodFullName": "<operator>.indexAccess",
+                "_label": "CALL",
+                "argumentIndex": 2,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 5,
+                "id": 19
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "unsan",
+                "code": "$unsan",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 1,
+                "lineNumber": 5,
+                "id": 3
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "unsan",
+                "code": "$unsan",
+                "typeFullName": "<empty>",
+                "order": 2,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 2,
+                "lineNumber": 13,
+                "id": 12
+            },
+            {
+                "dynamicTypeHintFullName": [],
+                "name": "san",
+                "code": "$san",
+                "typeFullName": "<empty>",
+                "order": 4,
+                "_label": "IDENTIFIER",
+                "argumentIndex": 4,
+                "lineNumber": 13,
+                "id": 13
+            },
+            {
+                "name": "encaps",
+                "signature": "",
+                "code": "encaps",
+                "typeFullName": "<empty>",
+                "order": 1,
+                "methodFullName": "encaps",
+                "_label": "CALL",
+                "argumentIndex": 1,
+                "dynamicTypeHintFullName": [],
+                "dispatchType": "STATIC_DISPATCH",
+                "lineNumber": 13,
+                "id": 27
+            }
+        ]
+    }
+]

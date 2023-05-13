@@ -1,0 +1,72 @@
+Installation:
+brew install coreutils
+git clone https://github.com/joernio/joern.git
+cd joern
+sbt stage
+
+./joern -J-Xmx{N}G" ({N} amount of memory in GB)
+
+importCode(inputPath, projectName)
+help.cpg
+cpg.
+close
+exit
+
+cpg.method.name.toList
+cpg.metaData
+
+Traversals are lazily evaluated - you can compose them and at some later point execute them
+Traversals are executed - as opposed to just to being held in memory - using execution directives such as toList
+_. syntactic sugar for lambda function
+
+cpg.method.filter(_.isExternal == false).name.toList
+cpg.method.isExternal(false).name.toList
+cpg.method.map(node => (node.isExternal, node.name)).toList
+cpg.call.name("printf").astChildren.isLiteral.code.l
+cpg.method.name("foo").plotDotAst
+
+Walk the tree upwards:
+inAst -> list of previous nodes including start node
+inAstMinusLeaf -> excluding start node
+e.g: cpg.call.name("source").inAstMinusLeaf.isCall.name(".*assignment.*").argument(1).l
+     -> from previous nodes, select assignment calls, and output the 1st argument (target)
+
+controlStructure: code, whenTrue, whenFalse
+e.g: cpg.method("foo").controlStructure.condition.code.l
+
+workspace -> all saved projects
+workspace.getPath -> path where workspace is saved
+project -> output the active project
+workspace.setActiveProject("projectName") -> switches projects
+cpg.metaData.l -> metadata of current loaded cpg
+
+CTRL-r : searches command history
+Pipe Operator |>
+e.g: cpg.method.toJson |> "/tmp/foo.json"
+browse(...) -> return pager
+
+Dynamically import additional scripts:
+import $file.{fileName}
+
+To execute set of command and operations non-interactively,
+write code in Scala file (.sc) and run:
+./joern --script {fileName}.sc 
+include function parameters with: --params cpgFile=/src.path.zip,outFile=output.log
+
+joern-scan {fileName}
+-> list of vulnerability issues (or other queries) of the form:
+Result: $QUERY_SCORE : $QUERY_TITLE: $FILEPATH:$LINE_NUMBER:$FUNCTION_NAME
+set of queries available at: https://github.com/joernio/joern/tree/master/querydb
+Useful options
+--updatedb -> fetch latest version
+--tags all -> choose all queries
+--names {nameOfQueries} -> choose queries by name
+--overwrite -> forces joern to regenerate cpg (useful after modifying file)
+
+joern-parse /src/directory
+joern-export --repr={all, pdg, ...} --format={neo4jcsv, graphml, graphson, ...}
+Interactively:
+cpg.method("funcName").dot{Ast,Cfg,Cpg14,...}.l -> output representation in dot format
+cpg.method("funcName").plotDot{Ast,Cfg,Cpg14,..} -> output graph image
+run.dump{ast,cfg,cpg14,...} -> dump representation into the directory out
+
