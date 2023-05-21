@@ -1,3 +1,0 @@
-Executing filter commands...
-SQL-Sanitized Identifiers: List()
-SQL-Unsanitized Identifiers: List(y, x, id, _GET)

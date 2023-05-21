@@ -1,0 +1,4 @@
+9,CALL,-1,,"include ""getInput.php""",,STATIC_DISPATCH,,2,include,include,1,,ANY
+11,CALL,-1,,echo $unsan,,STATIC_DISPATCH,,3,echo,echo,2,,ANY
+21,CALL,-1,,"$unsan = $_GET[""username""]",,STATIC_DISPATCH,,2,<operator>.assignment,<operator>.assignment,1,,ANY
+22,CALL,2,,"$_GET[""username""]",,STATIC_DISPATCH,,2,<operator>.indexAccess,<operator>.indexAccess,2,,ANY

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-JOERNDIR="/home/kali/Desktop/navex_project/joern-repo"
-TESTDIR="/home/kali/Desktop/navex_project/test-code"
+JOERNDIR="/home/umd-user/Desktop/navex_project/joern-repo"
+TESTDIR="/home/umd-user/Desktop/navex_project/navex_utils/test-code/testCases.php"
 
 cd $JOERNDIR
-sbt joerncli/stage
-echo "" | ./querydb-install.sh
-./joern-scan $TESTDIR/sqli.php --tags all --overwrite     
+# sbt joerncli/stage
+# echo "" | ./querydb-install.sh
+./joern-scan $TESTDIR --tags all --overwrite

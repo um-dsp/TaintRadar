@@ -1,0 +1,4 @@
+6,TYPE_DECL,,display.php:<global>,<empty>,<empty>,,display.php,display.php:<global>,,false,,<global>,1
+18,TYPE_DECL,,getInput.php:<global>,<empty>,<empty>,,getInput.php,getInput.php:<global>,,false,,<global>,1
+32,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,ANY,,true,,ANY,-1
+33,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,string,,true,,string,-1

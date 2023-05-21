@@ -10,7 +10,7 @@
       "callgraph",
       "dataflowOss"
     ],
-    "root":"/home/kali/Desktop/navex_project/test-code/test.php",
+    "root":"/home/umd-user/Desktop/navex_project/navex_utils/test-code/testCases.php",
     "id":1
   },
   {
@@ -26,247 +26,1349 @@
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"literal",
-    "code":"$literal",
-    "typeFullName":"<empty>",
+    "name":"san0",
+    "code":"$san0",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":2,
+    "lineNumber":3,
     "id":3
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"literal",
-    "typeFullName":"<empty>",
+    "name":"san0",
+    "typeFullName":"ANY",
     "order":-1,
     "_label":"LOCAL",
-    "code":"$literal",
+    "code":"$san0",
+    "lineNumber":3,
     "id":4
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"unsan",
-    "code":"$unsan",
-    "typeFullName":"<empty>",
+    "name":"san1",
+    "code":"$san1",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":3,
+    "lineNumber":4,
     "id":5
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"unsan",
-    "typeFullName":"<empty>",
+    "name":"san1",
+    "typeFullName":"ANY",
     "order":-1,
     "_label":"LOCAL",
-    "code":"$unsan",
+    "code":"$san1",
+    "lineNumber":4,
     "id":6
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"_GET",
-    "code":"$_GET",
-    "typeFullName":"<empty>",
+    "name":"san2",
+    "code":"$san2",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":3,
+    "lineNumber":5,
     "id":7
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"_GET",
-    "typeFullName":"<empty>",
+    "name":"san2",
+    "typeFullName":"ANY",
     "order":-1,
     "_label":"LOCAL",
-    "code":"$_GET",
+    "code":"$san2",
+    "lineNumber":5,
     "id":8
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"intCast",
-    "code":"$intCast",
-    "typeFullName":"<empty>",
+    "name":"unsan0",
+    "code":"$unsan0",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":4,
+    "lineNumber":8,
     "id":9
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"intCast",
-    "typeFullName":"<empty>",
+    "name":"unsan0",
+    "typeFullName":"ANY",
     "order":-1,
     "_label":"LOCAL",
-    "code":"$intCast",
+    "code":"$unsan0",
+    "lineNumber":8,
     "id":10
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"unsan",
-    "code":"$unsan",
-    "typeFullName":"<empty>",
+    "name":"_GET",
+    "code":"$_GET",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":4,
+    "lineNumber":8,
     "id":11
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"san",
-    "code":"$san",
-    "typeFullName":"<empty>",
-    "order":1,
-    "_label":"IDENTIFIER",
-    "argumentIndex":1,
-    "lineNumber":5,
+    "name":"_GET",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$_GET",
+    "lineNumber":8,
     "id":12
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"san",
-    "typeFullName":"<empty>",
-    "order":-1,
-    "_label":"LOCAL",
-    "code":"$san",
+    "name":"san3",
+    "code":"$san3",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":9,
     "id":13
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"unsan",
-    "code":"$unsan",
-    "typeFullName":"<empty>",
-    "order":1,
-    "_label":"IDENTIFIER",
-    "argumentIndex":1,
-    "lineNumber":5,
+    "name":"san3",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san3",
+    "lineNumber":9,
     "id":14
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"add",
-    "code":"$add",
-    "typeFullName":"<empty>",
+    "name":"unsan0",
+    "code":"$unsan0",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":6,
+    "lineNumber":9,
     "id":15
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"add",
-    "typeFullName":"<empty>",
-    "order":-1,
-    "_label":"LOCAL",
-    "code":"$add",
+    "name":"san4",
+    "code":"$san4",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":10,
     "id":16
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"literal",
-    "code":"$literal",
-    "typeFullName":"<empty>",
-    "order":1,
-    "_label":"IDENTIFIER",
-    "argumentIndex":1,
-    "lineNumber":6,
+    "name":"san4",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san4",
+    "lineNumber":10,
     "id":17
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"san",
-    "code":"$san",
-    "typeFullName":"<empty>",
-    "order":2,
+    "name":"san3",
+    "code":"$san3",
+    "typeFullName":"ANY",
+    "order":1,
     "_label":"IDENTIFIER",
-    "argumentIndex":2,
-    "lineNumber":6,
+    "argumentIndex":1,
+    "lineNumber":10,
     "id":18
   },
   {
     "dynamicTypeHintFullName":[
       
     ],
-    "name":"add",
-    "code":"$add",
-    "typeFullName":"<empty>",
+    "name":"san4",
+    "code":"$san4",
+    "typeFullName":"ANY",
     "order":1,
     "_label":"IDENTIFIER",
     "argumentIndex":1,
-    "lineNumber":7,
+    "lineNumber":11,
     "id":19
   },
   {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san4",
+    "code":"$san4",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":11,
+    "id":20
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san3",
+    "code":"$san3",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":11,
+    "id":21
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "code":"$unsan1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":12,
+    "id":22
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan1",
+    "lineNumber":12,
+    "id":23
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan0",
+    "code":"$unsan0",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":12,
+    "id":24
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san4",
+    "code":"$san4",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":12,
+    "id":25
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san5",
+    "code":"$san5",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":15,
+    "id":26
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san5",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san5",
+    "lineNumber":15,
+    "id":27
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan0",
+    "code":"$unsan0",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":15,
+    "id":28
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san6",
+    "code":"$san6",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":16,
+    "id":29
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san6",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san6",
+    "lineNumber":16,
+    "id":30
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san3",
+    "code":"$san3",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":16,
+    "id":31
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "code":"$unsan2",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":17,
+    "id":32
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan2",
+    "lineNumber":17,
+    "id":33
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan0",
+    "code":"$unsan0",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":17,
+    "id":34
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"typeSan",
+    "code":"$typeSan",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":18,
+    "id":35
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"typeSan",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$typeSan",
+    "lineNumber":18,
+    "id":36
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "code":"$unsan1",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":18,
+    "id":37
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "code":"$unsan2",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":19,
+    "id":38
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "code":"$unsan1",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":19,
+    "id":39
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"typeSan",
+    "code":"$typeSan",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":20,
+    "id":40
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "code":"$unsan2",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":21,
+    "id":41
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san7",
+    "code":"$san7",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":22,
+    "id":42
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san7",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san7",
+    "lineNumber":22,
+    "id":43
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"typeSan",
+    "code":"$typeSan",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":22,
+    "id":44
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan3",
+    "code":"$unsan3",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":26,
+    "id":45
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan3",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"LOCAL",
+    "code":"$unsan3",
+    "lineNumber":26,
+    "id":46
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":26,
+    "id":47
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "lineNumber":25,
+    "id":48
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san8",
+    "code":"$san8",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":27,
+    "id":49
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san8",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"LOCAL",
+    "code":"$san8",
+    "lineNumber":27,
+    "id":50
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan3",
+    "code":"$unsan3",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":27,
+    "id":51
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san8",
+    "code":"$san8",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":28,
+    "id":52
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san9",
+    "code":"$san9",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":30,
+    "id":53
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san9",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san9",
+    "lineNumber":30,
+    "id":54
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "code":"$unsan1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":30,
+    "id":55
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan5",
+    "code":"$unsan5",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":33,
+    "id":56
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan5",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"LOCAL",
+    "code":"$unsan5",
+    "lineNumber":33,
+    "id":57
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"_GET",
+    "code":"$_GET",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":33,
+    "id":58
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":33,
+    "id":59
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"LOCAL",
+    "code":"$p2",
+    "lineNumber":33,
+    "id":60
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan5",
+    "code":"$unsan5",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":34,
+    "id":61
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan6",
+    "code":"$unsan6",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":36,
+    "id":62
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan6",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan6",
+    "lineNumber":36,
+    "id":63
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san6",
+    "code":"$san6",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":36,
+    "id":64
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"_GET",
+    "code":"$_GET",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":39,
+    "id":65
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan7",
+    "code":"$unsan7",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":41,
+    "id":66
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan7",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan7",
+    "lineNumber":41,
+    "id":67
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"tmp",
+    "code":"$tmp",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":44,
+    "id":68
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"tmp",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"LOCAL",
+    "code":"$tmp",
+    "lineNumber":44,
+    "id":69
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":44,
+    "id":70
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "lineNumber":43,
+    "id":71
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":44,
+    "id":72
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":2,
+    "lineNumber":43,
+    "id":73
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"tmp",
+    "code":"$tmp",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":45,
+    "id":74
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san10",
+    "code":"$san10",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":47,
+    "id":75
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san10",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san10",
+    "lineNumber":47,
+    "id":76
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san1",
+    "code":"$san1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":47,
+    "id":77
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san2",
+    "code":"$san2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":47,
+    "id":78
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan8",
+    "code":"$unsan8",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":48,
+    "id":79
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan8",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan8",
+    "lineNumber":48,
+    "id":80
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san1",
+    "code":"$san1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":48,
+    "id":81
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "code":"$unsan2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":48,
+    "id":82
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":51,
+    "id":83
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "lineNumber":50,
+    "id":84
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":51,
+    "id":85
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":2,
+    "lineNumber":50,
+    "id":86
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san11",
+    "code":"$san11",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":53,
+    "id":87
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san11",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$san11",
+    "lineNumber":53,
+    "id":88
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san3",
+    "code":"$san3",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":53,
+    "id":89
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "code":"$unsan2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":53,
+    "id":90
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan9",
+    "code":"$unsan9",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":54,
+    "id":91
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan9",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan9",
+    "lineNumber":54,
+    "id":92
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "code":"$unsan1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":54,
+    "id":93
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan2",
+    "code":"$unsan2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":54,
+    "id":94
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan10",
+    "code":"$unsan10",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":55,
+    "id":95
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan10",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan10",
+    "lineNumber":55,
+    "id":96
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan1",
+    "code":"$unsan1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":55,
+    "id":97
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"san2",
+    "code":"$san2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":55,
+    "id":98
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":59,
+    "id":99
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_REFERENCE",
+    "isVariadic":false,
+    "code":"&$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "lineNumber":58,
+    "id":100
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan11",
+    "code":"$unsan11",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":61,
+    "id":101
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan11",
+    "typeFullName":"ANY",
+    "order":-1,
+    "_label":"LOCAL",
+    "code":"$unsan11",
+    "lineNumber":61,
+    "id":102
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan10",
+    "code":"$unsan10",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"IDENTIFIER",
+    "argumentIndex":2,
+    "lineNumber":61,
+    "id":103
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"unsan11",
+    "code":"$unsan11",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"IDENTIFIER",
+    "argumentIndex":1,
+    "lineNumber":62,
+    "id":104
+  },
+  {
     "name":"<global>",
-    "fullName":"/home/kali/Desktop/navex_project/test-code/test.php:<global>",
+    "fullName":":<global>",
     "code":"<empty>",
     "_label":"NAMESPACE_BLOCK",
-    "id":20,
+    "id":105,
     "order":1,
-    "filename":"/home/kali/Desktop/navex_project/test-code/test.php"
+    "filename":""
   },
   {
     "inheritsFromTypeFullName":[
       
     ],
     "name":"<global>",
-    "astParentFullName":"/home/kali/Desktop/navex_project/test-code/test.php:<global>",
-    "fullName":"<global>",
+    "astParentFullName":":<global>",
+    "fullName":":<global>",
     "astParentType":"<empty>",
     "_label":"TYPE_DECL",
     "code":"<empty>",
     "isExternal":false,
-    "id":21,
+    "id":106,
     "order":1,
-    "filename":"/home/kali/Desktop/navex_project/test-code/test.php"
+    "filename":""
   },
   {
     "name":"<global>",
-    "astParentFullName":"<global>",
-    "fullName":"<global>",
+    "astParentFullName":":<global>",
+    "fullName":":<global>",
     "signature":"",
     "astParentType":"<empty>",
     "_label":"METHOD",
     "code":"<empty>",
     "isExternal":false,
-    "id":22,
+    "id":107,
     "order":1,
-    "filename":"<empty>"
+    "filename":""
   },
   {
     "dynamicTypeHintFullName":[
@@ -277,13 +1379,13 @@
     "order":1,
     "_label":"BLOCK",
     "argumentIndex":-1,
-    "id":23
+    "id":108
   },
   {
     "name":"<operator>.assignment",
     "signature":"",
-    "code":"$literal = 0",
-    "typeFullName":"<empty>",
+    "code":"$san0 = 0",
+    "typeFullName":"ANY",
     "order":1,
     "methodFullName":"<operator>.assignment",
     "_label":"CALL",
@@ -292,8 +1394,8 @@
       
     ],
     "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":2,
-    "id":24
+    "lineNumber":3,
+    "id":109
   },
   {
     "dynamicTypeHintFullName":[
@@ -304,14 +1406,14 @@
     "order":2,
     "_label":"LITERAL",
     "argumentIndex":2,
-    "lineNumber":2,
-    "id":25
+    "lineNumber":3,
+    "id":110
   },
   {
     "name":"<operator>.assignment",
     "signature":"",
-    "code":"$unsan = $_GET[\"input\"]",
-    "typeFullName":"<empty>",
+    "code":"$san1 = 2.3",
+    "typeFullName":"ANY",
     "order":2,
     "methodFullName":"<operator>.assignment",
     "_label":"CALL",
@@ -320,14 +1422,70 @@
       
     ],
     "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":3,
-    "id":26
+    "lineNumber":4,
+    "id":111
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"2.3",
+    "typeFullName":"float",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":4,
+    "id":112
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san2 = \"Hello World\"",
+    "typeFullName":"ANY",
+    "order":3,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":5,
+    "id":113
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"\"Hello World\"",
+    "typeFullName":"string",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":5,
+    "id":114
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan0 = $_GET[\"input\"]",
+    "typeFullName":"ANY",
+    "order":4,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":8,
+    "id":115
   },
   {
     "name":"<operator>.indexAccess",
     "signature":"",
     "code":"$_GET[\"input\"]",
-    "typeFullName":"<empty>",
+    "typeFullName":"ANY",
     "order":2,
     "methodFullName":"<operator>.indexAccess",
     "_label":"CALL",
@@ -336,8 +1494,8 @@
       
     ],
     "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":3,
-    "id":27
+    "lineNumber":8,
+    "id":116
   },
   {
     "dynamicTypeHintFullName":[
@@ -348,78 +1506,14 @@
     "order":2,
     "_label":"LITERAL",
     "argumentIndex":2,
-    "lineNumber":3,
-    "id":28
+    "lineNumber":8,
+    "id":117
   },
   {
     "name":"<operator>.assignment",
     "signature":"",
-    "code":"$intCast = int($unsan)",
-    "typeFullName":"<empty>",
-    "order":3,
-    "methodFullName":"<operator>.assignment",
-    "_label":"CALL",
-    "argumentIndex":-1,
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":4,
-    "id":29
-  },
-  {
-    "name":"int",
-    "signature":"",
-    "code":"int($unsan)",
-    "typeFullName":"<empty>",
-    "order":2,
-    "methodFullName":"int:<unresolvedSignature>(1)",
-    "_label":"CALL",
-    "argumentIndex":2,
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":4,
-    "id":30
-  },
-  {
-    "name":"<operator>.assignment",
-    "signature":"",
-    "code":"$san = filter_input($unsan)",
-    "typeFullName":"<empty>",
-    "order":4,
-    "methodFullName":"<operator>.assignment",
-    "_label":"CALL",
-    "argumentIndex":-1,
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":5,
-    "id":31
-  },
-  {
-    "name":"filter_input",
-    "signature":"",
-    "code":"filter_input($unsan)",
-    "typeFullName":"<empty>",
-    "order":2,
-    "methodFullName":"__builtin.filter_input",
-    "_label":"CALL",
-    "argumentIndex":2,
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":5,
-    "id":32
-  },
-  {
-    "name":"<operator>.assignment",
-    "signature":"",
-    "code":"$add = $literal + $san",
-    "typeFullName":"<empty>",
+    "code":"$san3 = filter_input($unsan0)",
+    "typeFullName":"ANY",
     "order":5,
     "methodFullName":"<operator>.assignment",
     "_label":"CALL",
@@ -428,14 +1522,46 @@
       
     ],
     "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":6,
-    "id":33
+    "lineNumber":9,
+    "id":118
+  },
+  {
+    "name":"filter_input",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"filter_input($unsan0)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"filter_input",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":9,
+    "id":119
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san4 = $san3 + \" .\"",
+    "typeFullName":"ANY",
+    "order":6,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":10,
+    "id":120
   },
   {
     "name":"<operator>.plus",
     "signature":"",
-    "code":"$literal + $san",
-    "typeFullName":"<empty>",
+    "code":"$san3 + \" .\"",
+    "typeFullName":"ANY",
     "order":2,
     "methodFullName":"<operator>.plus",
     "_label":"CALL",
@@ -444,24 +1570,1171 @@
       
     ],
     "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":6,
-    "id":34
+    "lineNumber":10,
+    "id":121
   },
   {
-    "name":"eval",
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"\" .\"",
+    "typeFullName":"string",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":10,
+    "id":122
+  },
+  {
+    "name":"<operator>.assignment",
     "signature":"",
-    "code":"eval($add)",
-    "typeFullName":"bool",
-    "order":6,
-    "methodFullName":"__builtin.eval",
+    "code":"$san4 = $san4 + $san3",
+    "typeFullName":"ANY",
+    "order":7,
+    "methodFullName":"<operator>.assignment",
     "_label":"CALL",
     "argumentIndex":-1,
     "dynamicTypeHintFullName":[
       
     ],
     "dispatchType":"STATIC_DISPATCH",
-    "lineNumber":7,
-    "id":35
+    "lineNumber":11,
+    "id":123
+  },
+  {
+    "name":"<operator>.plus",
+    "signature":"",
+    "code":"$san4 + $san3",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"<operator>.plus",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":11,
+    "id":124
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan1 = $unsan0 + $san4",
+    "typeFullName":"ANY",
+    "order":8,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":12,
+    "id":125
+  },
+  {
+    "name":"<operator>.plus",
+    "signature":"",
+    "code":"$unsan0 + $san4",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"<operator>.plus",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":12,
+    "id":126
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san5 = (int) $unsan0",
+    "typeFullName":"ANY",
+    "order":9,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":15,
+    "id":127
+  },
+  {
+    "name":"<operator>.cast",
+    "signature":"",
+    "code":"(int) $unsan0",
+    "typeFullName":"int",
+    "order":2,
+    "methodFullName":"<operator>.cast",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":15,
+    "id":128
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"int",
+    "typeFullName":"int",
+    "order":1,
+    "_label":"TYPE_REF",
+    "argumentIndex":1,
+    "lineNumber":15,
+    "id":129
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san6 = (string) $san3",
+    "typeFullName":"ANY",
+    "order":10,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":16,
+    "id":130
+  },
+  {
+    "name":"<operator>.cast",
+    "signature":"",
+    "code":"(string) $san3",
+    "typeFullName":"string",
+    "order":2,
+    "methodFullName":"<operator>.cast",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":16,
+    "id":131
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"string",
+    "typeFullName":"string",
+    "order":1,
+    "_label":"TYPE_REF",
+    "argumentIndex":1,
+    "lineNumber":16,
+    "id":132
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan2 = (string) $unsan0",
+    "typeFullName":"ANY",
+    "order":11,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":17,
+    "id":133
+  },
+  {
+    "name":"<operator>.cast",
+    "signature":"",
+    "code":"(string) $unsan0",
+    "typeFullName":"string",
+    "order":2,
+    "methodFullName":"<operator>.cast",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":17,
+    "id":134
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"string",
+    "typeFullName":"string",
+    "order":1,
+    "_label":"TYPE_REF",
+    "argumentIndex":1,
+    "lineNumber":17,
+    "id":135
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$typeSan = $unsan1",
+    "typeFullName":"ANY",
+    "order":12,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":18,
+    "id":136
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan2 = $unsan1",
+    "typeFullName":"ANY",
+    "order":13,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":19,
+    "id":137
+  },
+  {
+    "name":"settype",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"settype($typeSan,\"double\")",
+    "typeFullName":"ANY",
+    "order":14,
+    "methodFullName":"settype",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":20,
+    "id":138
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"\"double\"",
+    "typeFullName":"string",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":20,
+    "id":139
+  },
+  {
+    "name":"settype",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"settype($unsan2,\"string\")",
+    "typeFullName":"ANY",
+    "order":15,
+    "methodFullName":"settype",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":21,
+    "id":140
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"\"string\"",
+    "typeFullName":"string",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":21,
+    "id":141
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san7 = $typeSan + 1.1",
+    "typeFullName":"ANY",
+    "order":16,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":22,
+    "id":142
+  },
+  {
+    "name":"<operator>.plus",
+    "signature":"",
+    "code":"$typeSan + 1.1",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"<operator>.plus",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":22,
+    "id":143
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"1.1",
+    "typeFullName":"float",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":22,
+    "id":144
+  },
+  {
+    "name":"customSan",
+    "astParentFullName":"<empty>",
+    "fullName":"customSan",
+    "signature":"<unresolvedSignature>(1)",
+    "astParentType":"<empty>",
+    "_label":"METHOD",
+    "code":"function customSan($p1)",
+    "isExternal":false,
+    "lineNumber":25,
+    "id":145,
+    "order":17,
+    "filename":""
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"<empty>",
+    "order":2,
+    "_label":"BLOCK",
+    "argumentIndex":-1,
+    "id":146
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan3 = $p1",
+    "typeFullName":"ANY",
+    "order":3,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":26,
+    "id":147
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san8 = filter_input($unsan3)",
+    "typeFullName":"ANY",
+    "order":4,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":27,
+    "id":148
+  },
+  {
+    "name":"filter_input",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"filter_input($unsan3)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"filter_input",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":27,
+    "id":149
+  },
+  {
+    "code":"return $san8",
+    "order":5,
+    "_label":"RETURN",
+    "argumentIndex":-1,
+    "lineNumber":28,
+    "id":150
+  },
+  {
+    "modifierType":"PUBLIC",
+    "code":"<empty>",
+    "order":3,
+    "_label":"MODIFIER",
+    "id":151
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":4,
+    "_label":"METHOD_RETURN",
+    "lineNumber":25,
+    "id":152
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san9 = customSan($unsan1)",
+    "typeFullName":"ANY",
+    "order":18,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":30,
+    "id":153
+  },
+  {
+    "name":"customSan",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"customSan($unsan1)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"customSan",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":30,
+    "id":154
+  },
+  {
+    "name":"customUnsan",
+    "astParentFullName":"<empty>",
+    "fullName":"customUnsan",
+    "signature":"<unresolvedSignature>(1)",
+    "astParentType":"<empty>",
+    "_label":"METHOD",
+    "code":"function customUnsan($p1)",
+    "isExternal":false,
+    "lineNumber":32,
+    "id":155,
+    "order":19,
+    "filename":""
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "lineNumber":32,
+    "id":156
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"<empty>",
+    "order":2,
+    "_label":"BLOCK",
+    "argumentIndex":-1,
+    "id":157
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan5 = $_GET[\"input\"] . $p2",
+    "typeFullName":"ANY",
+    "order":3,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":33,
+    "id":158
+  },
+  {
+    "name":"<operator>.concat",
+    "signature":"",
+    "code":"$_GET[\"input\"] . $p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"<operator>.concat",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":33,
+    "id":159
+  },
+  {
+    "name":"<operator>.indexAccess",
+    "signature":"",
+    "code":"$_GET[\"input\"]",
+    "typeFullName":"ANY",
+    "order":1,
+    "methodFullName":"<operator>.indexAccess",
+    "_label":"CALL",
+    "argumentIndex":1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":33,
+    "id":160
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"\"input\"",
+    "typeFullName":"string",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":33,
+    "id":161
+  },
+  {
+    "code":"return $unsan5",
+    "order":4,
+    "_label":"RETURN",
+    "argumentIndex":-1,
+    "lineNumber":34,
+    "id":162
+  },
+  {
+    "modifierType":"PUBLIC",
+    "code":"<empty>",
+    "order":3,
+    "_label":"MODIFIER",
+    "id":163
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":4,
+    "_label":"METHOD_RETURN",
+    "lineNumber":32,
+    "id":164
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan6 = customUnsan($san6)",
+    "typeFullName":"ANY",
+    "order":20,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":36,
+    "id":165
+  },
+  {
+    "name":"customUnsan",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"customUnsan($san6)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"customUnsan",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":36,
+    "id":166
+  },
+  {
+    "name":"getInput",
+    "astParentFullName":"<empty>",
+    "fullName":"getInput",
+    "signature":"<unresolvedSignature>(0)",
+    "astParentType":"<empty>",
+    "_label":"METHOD",
+    "code":"function getInput()",
+    "isExternal":false,
+    "lineNumber":38,
+    "id":167,
+    "order":21,
+    "filename":""
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"<empty>",
+    "order":1,
+    "_label":"BLOCK",
+    "argumentIndex":-1,
+    "id":168
+  },
+  {
+    "code":"return $_GET[\"input\"]",
+    "order":1,
+    "_label":"RETURN",
+    "argumentIndex":-1,
+    "lineNumber":39,
+    "id":169
+  },
+  {
+    "name":"<operator>.indexAccess",
+    "signature":"",
+    "code":"$_GET[\"input\"]",
+    "typeFullName":"ANY",
+    "order":1,
+    "methodFullName":"<operator>.indexAccess",
+    "_label":"CALL",
+    "argumentIndex":1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":39,
+    "id":170
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"\"input\"",
+    "typeFullName":"string",
+    "order":2,
+    "_label":"LITERAL",
+    "argumentIndex":2,
+    "lineNumber":39,
+    "id":171
+  },
+  {
+    "modifierType":"PUBLIC",
+    "code":"<empty>",
+    "order":2,
+    "_label":"MODIFIER",
+    "id":172
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":3,
+    "_label":"METHOD_RETURN",
+    "lineNumber":38,
+    "id":173
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan7 = getInput()",
+    "typeFullName":"ANY",
+    "order":22,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":41,
+    "id":174
+  },
+  {
+    "name":"getInput",
+    "signature":"<unresolvedSignature>(0)",
+    "code":"getInput()",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"getInput",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":41,
+    "id":175
+  },
+  {
+    "name":"addTwo",
+    "astParentFullName":"<empty>",
+    "fullName":"addTwo",
+    "signature":"<unresolvedSignature>(2)",
+    "astParentType":"<empty>",
+    "_label":"METHOD",
+    "code":"function addTwo($p1,$p2)",
+    "isExternal":false,
+    "lineNumber":43,
+    "id":176,
+    "order":23,
+    "filename":""
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"<empty>",
+    "order":3,
+    "_label":"BLOCK",
+    "argumentIndex":-1,
+    "id":177
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$tmp = $p1 . $p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":44,
+    "id":178
+  },
+  {
+    "name":"<operator>.concat",
+    "signature":"",
+    "code":"$p1 . $p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"<operator>.concat",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":44,
+    "id":179
+  },
+  {
+    "code":"return $tmp",
+    "order":3,
+    "_label":"RETURN",
+    "argumentIndex":-1,
+    "lineNumber":45,
+    "id":180
+  },
+  {
+    "modifierType":"PUBLIC",
+    "code":"<empty>",
+    "order":4,
+    "_label":"MODIFIER",
+    "id":181
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":5,
+    "_label":"METHOD_RETURN",
+    "lineNumber":43,
+    "id":182
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san10 = addTwo($san1,$san2)",
+    "typeFullName":"ANY",
+    "order":24,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":47,
+    "id":183
+  },
+  {
+    "name":"addTwo",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"addTwo($san1,$san2)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"addTwo",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":47,
+    "id":184
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan8 = addTwo($san1,$unsan2)",
+    "typeFullName":"ANY",
+    "order":25,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":48,
+    "id":185
+  },
+  {
+    "name":"addTwo",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"addTwo($san1,$unsan2)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"addTwo",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":48,
+    "id":186
+  },
+  {
+    "name":"customSan2nd",
+    "astParentFullName":"<empty>",
+    "fullName":"customSan2nd",
+    "signature":"<unresolvedSignature>(2)",
+    "astParentType":"<empty>",
+    "_label":"METHOD",
+    "code":"function customSan2nd($p1,$p2)",
+    "isExternal":false,
+    "lineNumber":50,
+    "id":187,
+    "order":26,
+    "filename":""
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"<empty>",
+    "order":3,
+    "_label":"BLOCK",
+    "argumentIndex":-1,
+    "id":188
+  },
+  {
+    "code":"return $p1 . filter_input($p2)",
+    "order":1,
+    "_label":"RETURN",
+    "argumentIndex":-1,
+    "lineNumber":51,
+    "id":189
+  },
+  {
+    "name":"<operator>.concat",
+    "signature":"",
+    "code":"$p1 . filter_input($p2)",
+    "typeFullName":"ANY",
+    "order":1,
+    "methodFullName":"<operator>.concat",
+    "_label":"CALL",
+    "argumentIndex":1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":51,
+    "id":190
+  },
+  {
+    "name":"filter_input",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"filter_input($p2)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"filter_input",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":51,
+    "id":191
+  },
+  {
+    "modifierType":"PUBLIC",
+    "code":"<empty>",
+    "order":4,
+    "_label":"MODIFIER",
+    "id":192
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":5,
+    "_label":"METHOD_RETURN",
+    "lineNumber":50,
+    "id":193
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$san11 = customSan2nd($san3,$unsan2)",
+    "typeFullName":"ANY",
+    "order":27,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":53,
+    "id":194
+  },
+  {
+    "name":"customSan2nd",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"customSan2nd($san3,$unsan2)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"customSan2nd",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":53,
+    "id":195
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan9 = customSan2nd($unsan1,$unsan2)",
+    "typeFullName":"ANY",
+    "order":28,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":54,
+    "id":196
+  },
+  {
+    "name":"customSan2nd",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"customSan2nd($unsan1,$unsan2)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"customSan2nd",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":54,
+    "id":197
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan10 = customSan2nd($unsan1,$san2)",
+    "typeFullName":"ANY",
+    "order":29,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":55,
+    "id":198
+  },
+  {
+    "name":"customSan2nd",
+    "signature":"<unresolvedSignature>(2)",
+    "code":"customSan2nd($unsan1,$san2)",
+    "typeFullName":"ANY",
+    "order":2,
+    "methodFullName":"customSan2nd",
+    "_label":"CALL",
+    "argumentIndex":2,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":55,
+    "id":199
+  },
+  {
+    "name":"customSanRef",
+    "astParentFullName":"<empty>",
+    "fullName":"customSanRef",
+    "signature":"<unresolvedSignature>(1)",
+    "astParentType":"<empty>",
+    "_label":"METHOD",
+    "code":"function customSanRef(&$p1)",
+    "isExternal":false,
+    "lineNumber":58,
+    "id":200,
+    "order":30,
+    "filename":""
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"<empty>",
+    "order":2,
+    "_label":"BLOCK",
+    "argumentIndex":-1,
+    "id":201
+  },
+  {
+    "name":"filter_input",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"filter_input($p1)",
+    "typeFullName":"ANY",
+    "order":1,
+    "methodFullName":"filter_input",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":59,
+    "id":202
+  },
+  {
+    "modifierType":"PUBLIC",
+    "code":"<empty>",
+    "order":3,
+    "_label":"MODIFIER",
+    "id":203
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":4,
+    "_label":"METHOD_RETURN",
+    "lineNumber":58,
+    "id":204
+  },
+  {
+    "name":"<operator>.assignment",
+    "signature":"",
+    "code":"$unsan11 = $unsan10",
+    "typeFullName":"ANY",
+    "order":31,
+    "methodFullName":"<operator>.assignment",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":61,
+    "id":205
+  },
+  {
+    "name":"customSanRef",
+    "signature":"<unresolvedSignature>(1)",
+    "code":"customSanRef($unsan11)",
+    "typeFullName":"ANY",
+    "order":32,
+    "methodFullName":"customSanRef",
+    "_label":"CALL",
+    "argumentIndex":-1,
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "dispatchType":"STATIC_DISPATCH",
+    "lineNumber":62,
+    "id":206
   },
   {
     "dynamicTypeHintFullName":[
@@ -472,13 +2745,34 @@
     "typeFullName":"<empty>",
     "order":2,
     "_label":"METHOD_RETURN",
-    "id":36
+    "id":207
   },
   {
     "name":"ANY",
     "fullName":"ANY",
     "typeDeclFullName":"ANY",
-    "id":37,
+    "id":208,
+    "_label":"TYPE"
+  },
+  {
+    "name":"float",
+    "fullName":"float",
+    "typeDeclFullName":"float",
+    "id":209,
+    "_label":"TYPE"
+  },
+  {
+    "name":"int",
+    "fullName":"int",
+    "typeDeclFullName":"int",
+    "id":210,
+    "_label":"TYPE"
+  },
+  {
+    "name":"string",
+    "fullName":"string",
+    "typeDeclFullName":"string",
+    "id":211,
     "_label":"TYPE"
   },
   {
@@ -486,21 +2780,14 @@
     "code":"<empty>",
     "order":0,
     "_label":"FILE",
-    "id":39
-  },
-  {
-    "name":"/home/kali/Desktop/navex_project/test-code/test.php",
-    "code":"<empty>",
-    "order":0,
-    "_label":"FILE",
-    "id":40
+    "id":213
   },
   {
     "name":"<global>",
     "code":"<empty>",
     "order":-1,
     "_label":"NAMESPACE",
-    "id":41
+    "id":214
   },
   {
     "inheritsFromTypeFullName":[
@@ -513,7 +2800,52 @@
     "_label":"TYPE_DECL",
     "code":"<empty>",
     "isExternal":true,
-    "id":42,
+    "id":215,
+    "order":-1,
+    "filename":"<unknown>"
+  },
+  {
+    "inheritsFromTypeFullName":[
+      
+    ],
+    "name":"float",
+    "astParentFullName":"<global>",
+    "fullName":"float",
+    "astParentType":"NAMESPACE_BLOCK",
+    "_label":"TYPE_DECL",
+    "code":"<empty>",
+    "isExternal":true,
+    "id":216,
+    "order":-1,
+    "filename":"<unknown>"
+  },
+  {
+    "inheritsFromTypeFullName":[
+      
+    ],
+    "name":"int",
+    "astParentFullName":"<global>",
+    "fullName":"int",
+    "astParentType":"NAMESPACE_BLOCK",
+    "_label":"TYPE_DECL",
+    "code":"<empty>",
+    "isExternal":true,
+    "id":217,
+    "order":-1,
+    "filename":"<unknown>"
+  },
+  {
+    "inheritsFromTypeFullName":[
+      
+    ],
+    "name":"string",
+    "astParentFullName":"<global>",
+    "fullName":"string",
+    "astParentType":"NAMESPACE_BLOCK",
+    "_label":"TYPE_DECL",
+    "code":"<empty>",
+    "isExternal":true,
+    "id":218,
     "order":-1,
     "filename":"<unknown>"
   },
@@ -526,7 +2858,7 @@
     "_label":"METHOD",
     "code":"<empty>",
     "isExternal":true,
-    "id":43,
+    "id":219,
     "order":0,
     "filename":"<empty>"
   },
@@ -542,7 +2874,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_IN",
     "index":1,
-    "id":44
+    "id":220
   },
   {
     "dynamicTypeHintFullName":[
@@ -556,7 +2888,7 @@
     "order":2,
     "_label":"METHOD_PARAMETER_IN",
     "index":2,
-    "id":45
+    "id":221
   },
   {
     "dynamicTypeHintFullName":[
@@ -567,7 +2899,7 @@
     "order":1,
     "_label":"BLOCK",
     "argumentIndex":1,
-    "id":46
+    "id":222
   },
   {
     "dynamicTypeHintFullName":[
@@ -578,7 +2910,7 @@
     "typeFullName":"ANY",
     "order":2,
     "_label":"METHOD_RETURN",
-    "id":47
+    "id":223
   },
   {
     "name":"<operator>.indexAccess",
@@ -589,7 +2921,7 @@
     "_label":"METHOD",
     "code":"<empty>",
     "isExternal":true,
-    "id":48,
+    "id":224,
     "order":0,
     "filename":"<empty>"
   },
@@ -605,7 +2937,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_IN",
     "index":1,
-    "id":49
+    "id":225
   },
   {
     "dynamicTypeHintFullName":[
@@ -619,7 +2951,7 @@
     "order":2,
     "_label":"METHOD_PARAMETER_IN",
     "index":2,
-    "id":50
+    "id":226
   },
   {
     "dynamicTypeHintFullName":[
@@ -630,7 +2962,7 @@
     "order":1,
     "_label":"BLOCK",
     "argumentIndex":1,
-    "id":51
+    "id":227
   },
   {
     "dynamicTypeHintFullName":[
@@ -641,18 +2973,18 @@
     "typeFullName":"ANY",
     "order":2,
     "_label":"METHOD_RETURN",
-    "id":52
+    "id":228
   },
   {
-    "name":"int",
+    "name":"filter_input",
     "astParentFullName":"<global>",
-    "fullName":"int:<unresolvedSignature>(1)",
-    "signature":"",
+    "fullName":"filter_input",
+    "signature":"<unresolvedSignature>(1)",
     "astParentType":"NAMESPACE_BLOCK",
     "_label":"METHOD",
     "code":"<empty>",
     "isExternal":true,
-    "id":53,
+    "id":229,
     "order":0,
     "filename":"<empty>"
   },
@@ -668,7 +3000,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_IN",
     "index":1,
-    "id":54
+    "id":230
   },
   {
     "dynamicTypeHintFullName":[
@@ -679,7 +3011,7 @@
     "order":1,
     "_label":"BLOCK",
     "argumentIndex":1,
-    "id":55
+    "id":231
   },
   {
     "dynamicTypeHintFullName":[
@@ -690,56 +3022,7 @@
     "typeFullName":"ANY",
     "order":2,
     "_label":"METHOD_RETURN",
-    "id":56
-  },
-  {
-    "name":"filter_input",
-    "astParentFullName":"__builtin",
-    "fullName":"__builtin.filter_input",
-    "signature":"",
-    "astParentType":"TYPE_DECL",
-    "_label":"METHOD",
-    "code":"<empty>",
-    "isExternal":true,
-    "id":57,
-    "order":0,
-    "filename":"<empty>"
-  },
-  {
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "name":"p1",
-    "evaluationStrategy":"BY_VALUE",
-    "isVariadic":false,
-    "code":"p1",
-    "typeFullName":"ANY",
-    "order":1,
-    "_label":"METHOD_PARAMETER_IN",
-    "index":1,
-    "id":58
-  },
-  {
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "code":"<empty>",
-    "typeFullName":"ANY",
-    "order":1,
-    "_label":"BLOCK",
-    "argumentIndex":1,
-    "id":59
-  },
-  {
-    "dynamicTypeHintFullName":[
-      
-    ],
-    "evaluationStrategy":"BY_VALUE",
-    "code":"RET",
-    "typeFullName":"ANY",
-    "order":2,
-    "_label":"METHOD_RETURN",
-    "id":60
+    "id":232
   },
   {
     "name":"<operator>.plus",
@@ -750,7 +3033,7 @@
     "_label":"METHOD",
     "code":"<empty>",
     "isExternal":true,
-    "id":61,
+    "id":233,
     "order":0,
     "filename":"<empty>"
   },
@@ -766,7 +3049,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_IN",
     "index":1,
-    "id":62
+    "id":234
   },
   {
     "dynamicTypeHintFullName":[
@@ -780,7 +3063,7 @@
     "order":2,
     "_label":"METHOD_PARAMETER_IN",
     "index":2,
-    "id":63
+    "id":235
   },
   {
     "dynamicTypeHintFullName":[
@@ -791,7 +3074,7 @@
     "order":1,
     "_label":"BLOCK",
     "argumentIndex":1,
-    "id":64
+    "id":236
   },
   {
     "dynamicTypeHintFullName":[
@@ -802,18 +3085,18 @@
     "typeFullName":"ANY",
     "order":2,
     "_label":"METHOD_RETURN",
-    "id":65
+    "id":237
   },
   {
-    "name":"eval",
-    "astParentFullName":"__builtin",
-    "fullName":"__builtin.eval",
+    "name":"<operator>.cast",
+    "astParentFullName":"<global>",
+    "fullName":"<operator>.cast",
     "signature":"",
-    "astParentType":"TYPE_DECL",
+    "astParentType":"NAMESPACE_BLOCK",
     "_label":"METHOD",
     "code":"<empty>",
     "isExternal":true,
-    "id":66,
+    "id":238,
     "order":0,
     "filename":"<empty>"
   },
@@ -829,7 +3112,21 @@
     "order":1,
     "_label":"METHOD_PARAMETER_IN",
     "index":1,
-    "id":67
+    "id":239
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":2,
+    "id":240
   },
   {
     "dynamicTypeHintFullName":[
@@ -840,7 +3137,7 @@
     "order":1,
     "_label":"BLOCK",
     "argumentIndex":1,
-    "id":68
+    "id":241
   },
   {
     "dynamicTypeHintFullName":[
@@ -851,7 +3148,217 @@
     "typeFullName":"ANY",
     "order":2,
     "_label":"METHOD_RETURN",
-    "id":69
+    "id":242
+  },
+  {
+    "name":"settype",
+    "astParentFullName":"<global>",
+    "fullName":"settype",
+    "signature":"<unresolvedSignature>(2)",
+    "astParentType":"NAMESPACE_BLOCK",
+    "_label":"METHOD",
+    "code":"<empty>",
+    "isExternal":true,
+    "id":243,
+    "order":0,
+    "filename":"<empty>"
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "id":244
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":2,
+    "id":245
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"BLOCK",
+    "argumentIndex":1,
+    "id":246
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_RETURN",
+    "id":247
+  },
+  {
+    "name":"<operator>.concat",
+    "astParentFullName":"<global>",
+    "fullName":"<operator>.concat",
+    "signature":"",
+    "astParentType":"NAMESPACE_BLOCK",
+    "_label":"METHOD",
+    "code":"<empty>",
+    "isExternal":true,
+    "id":248,
+    "order":0,
+    "filename":"<empty>"
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":1,
+    "id":249
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_IN",
+    "index":2,
+    "id":250
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "code":"<empty>",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"BLOCK",
+    "argumentIndex":1,
+    "id":251
+  },
+  {
+    "dynamicTypeHintFullName":[
+      
+    ],
+    "evaluationStrategy":"BY_VALUE",
+    "code":"RET",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_RETURN",
+    "id":252
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "lineNumber":25,
+    "id":253
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "lineNumber":43,
+    "id":254
+  },
+  {
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":2,
+    "lineNumber":43,
+    "id":255
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "lineNumber":50,
+    "id":256
+  },
+  {
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":2,
+    "lineNumber":50,
+    "id":257
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_REFERENCE",
+    "isVariadic":false,
+    "code":"&$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "lineNumber":58,
+    "id":258
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"$p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "lineNumber":32,
+    "id":259
   },
   {
     "name":"p1",
@@ -862,7 +3369,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_OUT",
     "index":1,
-    "id":70
+    "id":260
   },
   {
     "name":"p2",
@@ -873,7 +3380,7 @@
     "order":2,
     "_label":"METHOD_PARAMETER_OUT",
     "index":2,
-    "id":71
+    "id":261
   },
   {
     "name":"p1",
@@ -884,7 +3391,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_OUT",
     "index":1,
-    "id":72
+    "id":262
   },
   {
     "name":"p2",
@@ -895,7 +3402,7 @@
     "order":2,
     "_label":"METHOD_PARAMETER_OUT",
     "index":2,
-    "id":73
+    "id":263
   },
   {
     "name":"p1",
@@ -906,7 +3413,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_OUT",
     "index":1,
-    "id":74
+    "id":264
   },
   {
     "name":"p1",
@@ -917,18 +3424,7 @@
     "order":1,
     "_label":"METHOD_PARAMETER_OUT",
     "index":1,
-    "id":75
-  },
-  {
-    "name":"p1",
-    "evaluationStrategy":"BY_VALUE",
-    "isVariadic":false,
-    "code":"p1",
-    "typeFullName":"ANY",
-    "order":1,
-    "_label":"METHOD_PARAMETER_OUT",
-    "index":1,
-    "id":76
+    "id":265
   },
   {
     "name":"p2",
@@ -939,7 +3435,7 @@
     "order":2,
     "_label":"METHOD_PARAMETER_OUT",
     "index":2,
-    "id":77
+    "id":266
   },
   {
     "name":"p1",
@@ -950,6 +3446,61 @@
     "order":1,
     "_label":"METHOD_PARAMETER_OUT",
     "index":1,
-    "id":78
+    "id":267
+  },
+  {
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":2,
+    "id":268
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "id":269
+  },
+  {
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":2,
+    "id":270
+  },
+  {
+    "name":"p1",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p1",
+    "typeFullName":"ANY",
+    "order":1,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":1,
+    "id":271
+  },
+  {
+    "name":"p2",
+    "evaluationStrategy":"BY_VALUE",
+    "isVariadic":false,
+    "code":"p2",
+    "typeFullName":"ANY",
+    "order":2,
+    "_label":"METHOD_PARAMETER_OUT",
+    "index":2,
+    "id":272
   }
 ]
