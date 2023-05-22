@@ -15,22 +15,22 @@ $unsan1 = $unsan0 + $san4;
 $san5 = (integer)$unsan0;
 $san6 = (string)$san3;
 $unsan2 = (string)$unsan0;
-$typeSan = $unsan1;
+$san61 = $unsan1;
 $unsan2 = $unsan1;
-settype($typeSan, "double");
+settype($san61, "double");
 settype($unsan2, "string");
-$san7 = $typeSan + 1.1;
+$san7 = $san61 + 1.1;
 
 // Functions (by ralue)
 function customSan($p1) {
     $unsan3 = $p1;
-    $san8 = filter_input($unsan3);
+    $san8 = filter_input(0);
     return $san8;
 }
 $san9 = customSan($unsan1);
 
 function customUnsan($p1) {
-    $unsan5 = $_GET["input"] . $p2;
+    $unsan5 = $_GET["input"] . $p1;
     return $unsan5;
 }
 $unsan6 = customUnsan($san6);
@@ -58,12 +58,29 @@ $unsan10 = customSan2nd($unsan1, $san2);
 function customSanRef(&$p1) {
     $p1 = filter_input($p1);
 }
-$san12 = $unsan10;
+$san12 = $unsan1;
 customSanRef($san12);
 
 function customAddRef(&$p1, $p2) {
     $p1 = $p1 . $p2;
 }
-$san13 = 0;
+$san13 = $san12;
 customAddRef($san13, $san0);
+$unsan11 = $san13;
+customAddRef($unsan11, $unsan1);
+
+function san1stArg(&$p1, &$p2) {
+    $p1 = filter_input($p1);
+    return $p1 . $p2;
+}
+$san14 = $unsan10;
+$unsan12 = $unsan11;
+$unsan13 = san1stArg($san14, $unsan12);
+
+function customUnsanRef(&$p1) {
+    $p1 = $p1 . $_GET['input'];
+}
+$unsan14 = $san14;
+customUnsanRef($unsan14);
+
 ?>

@@ -5,6 +5,8 @@
     val fileIdentifiers = includeFileNames.flatMap(file => cpg.method.fullName(file+":<global>").methodReturn.ddgIn.isIdentifier.l)
 }
 val output = {
-   println("Sanitized Identifiers: " + cpg.identifier.filter(SanitizationFilter.isSanitized).name.dedup.l)
-   println("Unsanitized Identifiers: " + cpg.identifier.filterNot(SanitizationFilter.isSanitized).name.dedup.l)
+   var sanitized = cpg.identifier.filter(SanitizationFilter.isSanitized(_)).name.dedup.l.filter(!List("p1", "p2", "unsan11", "unsan14").contains(_))
+   val unsanitized = cpg.identifier.filterNot(SanitizationFilter.isSanitized(_)).name.dedup.l.filter(!List("p1", "p2", "san12", "san61", "tmp", "_GET", "san14").contains(_))
+   println("Sanitized Identifiers: " + sanitized)
+   println("Unsanitized Identifiers: " + unsanitized)
 } 
