@@ -1,8 +1,8 @@
 #!/bin/bash
 
-JOERNDIR="/home/kali/Desktop/navex_project/joern-repo"
-SCRIPTDIR="/home/kali/Desktop/navex_project/test-code"
-WORKSPACEDIR="/home/kali/Desktop/navex_project/joern-repo/workspace"
+JOERNDIR="/home/umd-user/Desktop/navex_project/joern-repo"
+SCRIPTDIR="/home/umd-user/Desktop/navex_project/navex_utils/test-code"
+WORKSPACEDIR="/home/umd-user/Desktop/navex_project/joern-repo/workspace/presentation.php/cpg.bin"
 
-cd $JOERNDIR
-./joern --script $SCRIPTDIR/SanAug.sc --params cpgFile=$WORKSPACEDIR/testFun.php1/cpg.bin > "../test-code/output.txt"
+cd $SCRIPTDIR
+$JOERNDIR/joern --script $SCRIPTDIR/TestScript.scala --params cpgFile=$WORKSPACEDIR,outFile=$SCRIPTDIR/output.dot --import SanitizationFilter.scala,Constants.scala

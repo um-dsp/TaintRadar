@@ -15,11 +15,11 @@ $unsan1 = $unsan0 + $san4;
 $san5 = (integer)$unsan0;
 $san6 = (string)$san3;
 $unsan2 = (string)$unsan0;
-$san61 = $unsan1;
+$san6 = $unsan1;
 $unsan2 = $unsan1;
-settype($san61, "double");
+settype($san6, "double");
 settype($unsan2, "string");
-$san7 = $san61 + 1.1;
+$san7 = $san6 + 1.1;
 
 // Functions (by ralue)
 function customSan($p1) {
@@ -83,4 +83,9 @@ function customUnsanRef(&$p1) {
 $unsan14 = $san14;
 customUnsanRef($unsan14);
 
+// File inclusion
+include 'input.php';
+$san17 = $san15;
+$unsan16 = $unsan15;
+$unsan17 = $tmp0;
 ?>

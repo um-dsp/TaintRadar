@@ -1,12 +1,20 @@
-@main def exec(cpgFile: String) = { //, outFile: String) = {
+import Constants._
+import SanitizationFilter._
+
+@main def exec(cpgFile: String, outFile: String) = {
+    implicit val attack_san_functions: List[String] = Constants.san_functions_sql
     importCpg(cpgFile)
-    val identifier = cpg.identifier.id(3).l.head
-    val includeFileNames = cpg.method.fullName(identifier.file.name.l.head+":<global>").call("include|require").argument.code.map(_.replaceAll("\"","")).l
-    val fileIdentifiers = includeFileNames.flatMap(file => cpg.method.fullName(file+":<global>").methodReturn.ddgIn.isIdentifier.l)
+    SanitizationFilter.setCpg(cpg)
+    cpg.method("<global>").ast.filter(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "TRUE").store
+    cpg.method("<global>").ast.filterNot(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "FALSE").store
+    run.commit
+    cpg.method("<global>").ast.map(node => List(node.id, node.tag.name("SAN").value.head)).l |> outFile
+    val dotAst: String = cpg.method("<global>").dotAst.head
+    dotAst |> outFile
 }
-val output = {
-   var sanitized = cpg.identifier.filter(SanitizationFilter.isSanitized(_)).name.dedup.l.filter(!List("p1", "p2", "unsan11", "unsan14").contains(_))
-   val unsanitized = cpg.identifier.filterNot(SanitizationFilter.isSanitized(_)).name.dedup.l.filter(!List("p1", "p2", "san12", "san61", "tmp", "_GET", "san14").contains(_))
-   println("Sanitized Identifiers: " + sanitized)
-   println("Unsanitized Identifiers: " + unsanitized)
-} 
+
+
+// sink.reachableByFlows(source).map(node => {
+//     List(List(node.elements.head.file.name.l.head + ":" + node.elements.head.lineNumber.getOrElse(""), node.elements.head.code),
+//     List(node.elements.last.file.name.l.head + ":" + node.elements.last.lineNumber.getOrElse(""), node.elements.last.code))
+//  }).toJsonPretty |> "../test-apps/output" 
