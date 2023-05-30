@@ -1,16 +1,21 @@
 import Constants._
 import SanitizationFilter._
 
-@main def exec(cpgFile: String, outFile: String) = {
+@main def exec(cpgFile: String, fileMain: String) = { //, outFile: String) = {
     implicit val attack_san_functions: List[String] = Constants.san_functions_sql
     importCpg(cpgFile)
     SanitizationFilter.setCpg(cpg)
-    cpg.method("<global>").ast.filter(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "TRUE").store
-    cpg.method("<global>").ast.filterNot(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "FALSE").store
+    println(cpg.method.fullName.l)
+    // val fileMain = "identifier_basic_san.php:<global>"
+    // val fileMain = "identifier_basic_unsan.php:<global>"
+    // val fileMain = "method.php:<global>"
+    cpg.method.filter(_.fullName==fileMain).ast.filterNot(_.isInstanceOf[Modifier]).filter(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "TRUE").store
+    cpg.method.filter(_.fullName==fileMain).ast.filterNot(_.isInstanceOf[Modifier]).filterNot(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "FALSE").store
+    
     run.commit
-    cpg.method("<global>").ast.map(node => List(node.id, node.tag.name("SAN").value.head)).l |> outFile
-    val dotAst: String = cpg.method("<global>").dotAst.head
-    dotAst |> outFile
+    cpg.method.filter(_.fullName==fileMain).ast.filterNot(_.isInstanceOf[Modifier]).map(node => List(node.id, node.tag.name("SAN").value.head)).l |> "output_graph/tags.txt"
+    val dotAst: String = cpg.method.filter(_.fullName==fileMain).dotAst.head
+    dotAst |> "output_graph/output.dot"
 }
 
 

@@ -51,7 +51,7 @@ object SanitizationFilter {
                      identifier.astParent.isCallTo("settype").argument(2).l
                   }
                   // CfgNode assigning a variable will have ddgIn pointing to the value of the assignment
-                  else if (!identifier.astParent.assignment.argument(1).isIdentifier.name(identifier.name).isEmpty) {
+                  else if (identifier == identifier.astParent.assignment.argument(1).headOption.getOrElse(None)) {
                      identifier.astParent.assignment.argument(2).l
                   }
                   // identifier passed by reference to function
@@ -65,9 +65,9 @@ object SanitizationFilter {
                      identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.methodReturn.ddgIn.isIdentifier.name(identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l(identifier.order-1).name).l
                   }
                   // assigned but never used variables don't have ddgIn edge
-                  else if (identifier.ddgIn.isEmpty && !identifier.astParent.assignment.argument(1).isIdentifier.name(identifier.name).isEmpty) {
-                     identifier.astParent.assignment.argument(2).l
-                  }
+                  // else if (identifier.ddgIn.isEmpty && !identifier.astParent.assignment.argument(1).isIdentifier.name(identifier.name).isEmpty) {
+                  //    identifier.astParent.assignment.argument(2).l
+                  // }
                   // add identifiers from included files            
                   else if (identifier.ddgIn.isEmpty && !_cpg.isEmpty) {
                      val includeFileNames = _cpg.get.method.fullName(identifier.file.namespaceBlock.fullName.head).call("include|require").argument.code.map(_.replaceAll("\"","")).l
@@ -80,7 +80,7 @@ object SanitizationFilter {
                      // identifier.repeat(_.ddgIn.isIdentifier.name(identifier.name))(_.until(_.astParent.isCallTo("settype|<operator>.assignment").argument(1).isIdentifier.name(identifier.name)))
                   }
                }
-               println(node)
+               // println(node)
                !definingNode.isEmpty && isSanitized(definingNode, isArgumentSanitized)(san_functions_specific)
             }
             case metadata: MetaData => true
@@ -92,7 +92,7 @@ object SanitizationFilter {
             case local: Local => true
             case identifier: Identifier => true
             case method: Method => false
-            // case method: Method => isMethodSanitized(method, method.parameter.l.asInstanceOf[List[Expression]], List.fill(method.parameter.size)(false))(san_functions_specific)
+            // case method: Method => isMethodSanitized(method, method.parameter.l, List.fill(method.parameter.size)(false))(san_functions_specific)
             case methodParam: MethodParameterIn => {
                if (sanitizedParameters.isEmpty) false
                else sanitizedParameters(methodParam.index-1)

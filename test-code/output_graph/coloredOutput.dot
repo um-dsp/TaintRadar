@@ -1,0 +1,83 @@
+digraph "&lt;global&gt;" {  
+"23" [label = <(METHOD,&lt;global&gt;)>, fillcolor="#ea9999ff", style=filled]
+"24" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
+"25" [label = <(METHOD,customSanRef)<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"4" [label = <(PARAM,&amp;$p1)<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"26" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
+"27" [label = <(&lt;operator&gt;.assignment,$p1 = filter_input($p1))<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"3" [label = <(IDENTIFIER,$p1,$p1 = filter_input($p1))<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"28" [label = <(filter_input,filter_input($p1))<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"5" [label = <(IDENTIFIER,$p1,filter_input($p1))<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
+"29" [label = <(MODIFIER,PUBLIC)>, fillcolor="#ea9999ff", style=filled]
+"30" [label = <(METHOD_RETURN,ANY)<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"31" [label = <(METHOD,customUnsanRef)<SUB>6</SUB>>, fillcolor="#ea9999ff", style=filled]
+"7" [label = <(PARAM,&amp;$p1)<SUB>6</SUB>>, fillcolor="#ea9999ff", style=filled]
+"32" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
+"10" [label = <(LOCAL,$_GET: ANY)<SUB>7</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"33" [label = <(&lt;operator&gt;.assignment,$p1 = $p1 . $_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#ea9999ff", style=filled]
+"6" [label = <(IDENTIFIER,$p1,$p1 = $p1 . $_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#ea9999ff", style=filled]
+"34" [label = <(&lt;operator&gt;.concat,$p1 . $_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#ea9999ff", style=filled]
+"8" [label = <(IDENTIFIER,$p1,$p1 . $_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#ea9999ff", style=filled]
+"35" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#ea9999ff", style=filled]
+"9" [label = <(IDENTIFIER,$_GET,$p1 . $_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#ea9999ff", style=filled]
+"36" [label = <(LITERAL,&quot;input&quot;,$p1 . $_GET[&quot;input&quot;])<SUB>7</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"37" [label = <(MODIFIER,PUBLIC)>, fillcolor="#ea9999ff", style=filled]
+"38" [label = <(METHOD_RETURN,ANY)<SUB>6</SUB>>, fillcolor="#ea9999ff", style=filled]
+"39" [label = <(&lt;operator&gt;.assignment,$x = $_GET[&quot;input&quot;])<SUB>10</SUB>>, fillcolor="#ea9999ff", style=filled]
+"11" [label = <(IDENTIFIER,$x,$x = $_GET[&quot;input&quot;])<SUB>10</SUB>>, fillcolor="#ea9999ff", style=filled]
+"40" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;input&quot;])<SUB>10</SUB>>, fillcolor="#ea9999ff", style=filled]
+"13" [label = <(IDENTIFIER,$_GET,$x = $_GET[&quot;input&quot;])<SUB>10</SUB>>, fillcolor="#ea9999ff", style=filled]
+"41" [label = <(LITERAL,&quot;input&quot;,$x = $_GET[&quot;input&quot;])<SUB>10</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"42" [label = <(&lt;operator&gt;.assignment,$y = &quot;Input: &quot;)<SUB>11</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"15" [label = <(IDENTIFIER,$y,$y = &quot;Input: &quot;)<SUB>11</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"43" [label = <(LITERAL,&quot;Input: &quot;,$y = &quot;Input: &quot;)<SUB>11</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"44" [label = <(customSanRef,customSanRef($x))<SUB>12</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"17" [label = <(IDENTIFIER,$x,customSanRef($x))<SUB>12</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"45" [label = <(customUnsanRef,customUnsanRef($y))<SUB>13</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"18" [label = <(IDENTIFIER,$y,customUnsanRef($y))<SUB>13</SUB>>, fillcolor="#ea9999ff", style=filled]
+"46" [label = <(echo,echo $x . $y)<SUB>14</SUB>>, fillcolor="#ea9999ff", style=filled]
+"47" [label = <(&lt;operator&gt;.concat,$x . $y)<SUB>14</SUB>>, fillcolor="#ea9999ff", style=filled]
+"19" [label = <(IDENTIFIER,$x,$x . $y)<SUB>14</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"20" [label = <(IDENTIFIER,$y,$x . $y)<SUB>14</SUB>>, fillcolor="#ea9999ff", style=filled]
+"48" [label = <(METHOD_RETURN,&lt;empty&gt;)>, fillcolor="#ea9999ff", style=filled]
+  "23" -> "24" 
+  "23" -> "48" 
+  "24" -> "25" 
+  "24" -> "31" 
+  "24" -> "39" 
+  "24" -> "42" 
+  "24" -> "44" 
+  "24" -> "45" 
+  "24" -> "46" 
+  "25" -> "4" 
+  "25" -> "26" 
+  "25" -> "29" 
+  "25" -> "30" 
+  "26" -> "27" 
+  "27" -> "3" 
+  "27" -> "28" 
+  "28" -> "5" 
+  "31" -> "7" 
+  "31" -> "32" 
+  "31" -> "37" 
+  "31" -> "38" 
+  "32" -> "10" 
+  "32" -> "33" 
+  "33" -> "6" 
+  "33" -> "34" 
+  "34" -> "8" 
+  "34" -> "35" 
+  "35" -> "9" 
+  "35" -> "36" 
+  "39" -> "11" 
+  "39" -> "40" 
+  "40" -> "13" 
+  "40" -> "41" 
+  "42" -> "15" 
+  "42" -> "43" 
+  "44" -> "17" 
+  "45" -> "18" 
+  "46" -> "47" 
+  "47" -> "19" 
+  "47" -> "20" 
+}
