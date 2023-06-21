@@ -64,12 +64,8 @@ object SanitizationFilter {
                      })
                      identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.methodReturn.ddgIn.isIdentifier.name(identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l(identifier.order-1).name).l
                   }
-                  // assigned but never used variables don't have ddgIn edge
-                  // else if (identifier.ddgIn.isEmpty && !identifier.astParent.assignment.argument(1).isIdentifier.name(identifier.name).isEmpty) {
-                  //    identifier.astParent.assignment.argument(2).l
-                  // }
                   // add identifiers from included files            
-                  else if (identifier.ddgIn.isEmpty && !_cpg.isEmpty) {
+                  else if (identifier.ddgIn.isIdentifier.name(identifier.name).isEmpty && !_cpg.isEmpty) {
                      val includeFileNames = _cpg.get.method.fullName(identifier.file.namespaceBlock.fullName.head).call("include|require").argument.code.map(_.replaceAll("\"","")).l
                      val fileIdentifiers = includeFileNames.flatMap(fileName => _cpg.get.method.fullName(fileName+":<global>").methodReturn.ddgIn.isIdentifier.name(identifier.name).l)
                      fileIdentifiers
