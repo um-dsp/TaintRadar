@@ -65,9 +65,12 @@ object SanitizationFilter {
                      identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.methodReturn.ddgIn.isIdentifier.name(identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l(identifier.order-1).name).l
                   }
                   // add identifiers from included files            
-                  else if (identifier.ddgIn.isIdentifier.name(identifier.name).isEmpty && !_cpg.isEmpty) {
-                     val includeFileNames = _cpg.get.method.fullName(identifier.file.namespaceBlock.fullName.head).call("include|require").argument.code.map(_.replaceAll("\"","")).l
-                     val fileIdentifiers = includeFileNames.flatMap(fileName => _cpg.get.method.fullName(fileName+":<global>").methodReturn.ddgIn.isIdentifier.name(identifier.name).l)
+                  else if (identifier.ddgIn.isEmpty && !_cpg.isEmpty) {
+                     val includeNodes = _cpg.get.method("<global>").where(_.namespaceBlock.fullName.filter(_==identifier.file.namespaceBlock.fullName.head)).call("include|require").l //.argument.code.map(_.replaceAll("\"","")).l
+                     val argumentList = includeNodes.map(_.repeat(_.argument)(_.until(_.not(_.isCall))).l)
+                     val literalList = argumentList.map(_.flatMap(node => if (!node.isLiteral) node.repeat(_.ddgIn)(_.until(_.isLiteral)).l else node).dedup.l)
+                     val directoryList = literalList.map(_.code.map(_.replaceAll("\"","")).l.reduce((a,b) => a+b))
+                     val fileIdentifiers = directoryList.flatMap(fileName => _cpg.get.method.where(_.namespaceBlock.fullName(_cpg.get.metaData.root.head+"/"+fileName.replace("./","")+":<global>")).methodReturn.ddgIn.isIdentifier.name(identifier.name).l)
                      fileIdentifiers
                   }
                   // used variable will have ddgIn periodically pointing to its last usage
@@ -115,8 +118,8 @@ object SanitizationFilter {
       val t0 = System.nanoTime()
       val san_functions = san_functions_specific
       SanitizationFilter.setCpg(cpg)
-      val sanitized = cpg.identifier.filter(SanitizationFilter.isSanitized(_)(san_functions)).name.dedup.l.filter(!List("p1", "p2", "unsan11", "unsan14").contains(_)).sortWith((s1, s2) => s1.replaceAll("[A-Za-z]","").toInt < s2.replaceAll("[A-Za-z]","").toInt)
-      val unsanitized = cpg.identifier.filterNot(SanitizationFilter.isSanitized(_)(san_functions)).name.dedup.l.filter(!List("p1", "p2", "san12", "san61", "tmp", "_GET", "san14").contains(_)).sortWith((s1, s2) => s1.replaceAll("[A-Za-z]","").toInt < s2.replaceAll("[A-Za-z]","").toInt)
+      val sanitized = cpg.identifier.filter(SanitizationFilter.isSanitized(_)(san_functions)).name.dedup.l.filter(!List("p1", "p2", "unsan11", "unsan14").contains(_))//.sortWith((s1, s2) => s1.replaceAll("[A-Za-z_]","").toInt < s2.replaceAll("[A-Za-z]","").toInt)
+      val unsanitized = cpg.identifier.filterNot(SanitizationFilter.isSanitized(_)(san_functions)).name.dedup.l.filter(!List("p1", "p2", "san12", "san6", "tmp", "_GET", "san14").contains(_))//.sortWith((s1, s2) => s1.replaceAll("[A-Za-z_]","").toInt < s2.replaceAll("[A-Za-z]","").toInt)
       // val sanitized = cpg.identifier.filter(SanitizationFilter.isSanitized(_)(san_functions)).name.dedup.l
       // val unsanitized = cpg.identifier.filterNot(SanitizationFilter.isSanitized(_)(san_functions)).name.dedup.l
       println("Sanitized Identifiers: " + sanitized)

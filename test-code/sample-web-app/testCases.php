@@ -84,7 +84,8 @@ $unsan14 = $san14;
 customUnsanRef($unsan14);
 
 // File inclusion
-include 'input.php';
+$base_dir1 = "./";
+include $base_dir . 'input' . '.php';
 $san17 = $san15;
 $unsan16 = $unsan15;
 $unsan17 = $tmp0;
