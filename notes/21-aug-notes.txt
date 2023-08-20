@@ -1,0 +1,4 @@
+Updates on the project:
+1. SanitizationFilter Code walkthrough + added CONFIG lines for php to be changed per language
+2. Constants.scala walkthrough: it now contains attacker input, sanitization functions, and sink functions
+3. 

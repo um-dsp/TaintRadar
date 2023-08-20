@@ -2,9 +2,9 @@
 
 JOERNDIR="/home/umd-user/Desktop/navex_project/joern-repo"
 SCRIPTDIR="/home/umd-user/Desktop/navex_project/navex_utils/test-code"
-WORKSPACEDIR="/home/umd-user/Desktop/navex_project/joern-repo/workspace/presentation.php/cpg.bin"
-WORKSPACEDIR="/home/umd-user/Desktop/navex_project/navex_utils/cpg.bin"
-FILEMAIN="recursive-fun.php:<global>"
+# WORKSPACEDIR="/home/umd-user/Desktop/navex_project/joern-repo/workspace/presentation.php/cpg.bin"
+WORKSPACEDIR="/home/umd-user/Desktop/navex_project/navex_utils/test-code/cpg.bin"
+FILEMAIN="class.php:<global>"
 
 cd $SCRIPTDIR
 joern-parse $SCRIPTDIR/examples

@@ -1,41 +1,49 @@
 digraph "&lt;global&gt;" {  
-"141" [label = <(METHOD,&lt;global&gt;)> ]
-"142" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)> ]
-"143" [label = <(&lt;operator&gt;.assignment,$x = $_GET[&quot;input&quot;] + &quot; .&quot;)<SUB>2</SUB>> ]
-"129" [label = <(IDENTIFIER,$x,$x = $_GET[&quot;input&quot;] + &quot; .&quot;)<SUB>2</SUB>> ]
-"144" [label = <(&lt;operator&gt;.plus,$_GET[&quot;input&quot;] + &quot; .&quot;)<SUB>2</SUB>> ]
-"145" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;input&quot;])<SUB>2</SUB>> ]
-"131" [label = <(IDENTIFIER,$_GET,$_GET[&quot;input&quot;] + &quot; .&quot;)<SUB>2</SUB>> ]
-"146" [label = <(LITERAL,&quot;input&quot;,$_GET[&quot;input&quot;] + &quot; .&quot;)<SUB>2</SUB>> ]
-"147" [label = <(LITERAL,&quot; .&quot;,$_GET[&quot;input&quot;] + &quot; .&quot;)<SUB>2</SUB>> ]
-"148" [label = <(&lt;operator&gt;.assignment,$y = 12 * 24)<SUB>3</SUB>> ]
-"133" [label = <(IDENTIFIER,$y,$y = 12 * 24)<SUB>3</SUB>> ]
-"149" [label = <(&lt;operator&gt;.multiplication,12 * 24)<SUB>3</SUB>> ]
-"150" [label = <(LITERAL,12,12 * 24)<SUB>3</SUB>> ]
-"151" [label = <(LITERAL,24,12 * 24)<SUB>3</SUB>> ]
-"152" [label = <(&lt;operator&gt;.assignment,$z = $_POST[&quot;username&quot;])<SUB>4</SUB>> ]
-"135" [label = <(IDENTIFIER,$z,$z = $_POST[&quot;username&quot;])<SUB>4</SUB>> ]
-"153" [label = <(&lt;operator&gt;.indexAccess,$_POST[&quot;username&quot;])<SUB>4</SUB>> ]
-"137" [label = <(IDENTIFIER,$_POST,$z = $_POST[&quot;username&quot;])<SUB>4</SUB>> ]
-"154" [label = <(LITERAL,&quot;username&quot;,$z = $_POST[&quot;username&quot;])<SUB>4</SUB>> ]
-"155" [label = <(METHOD_RETURN,&lt;empty&gt;)> ]
-  "141" -> "142" 
-  "141" -> "155" 
-  "142" -> "143" 
-  "142" -> "148" 
-  "142" -> "152" 
-  "143" -> "129" 
-  "143" -> "144" 
-  "144" -> "145" 
-  "144" -> "147" 
-  "145" -> "131" 
-  "145" -> "146" 
-  "148" -> "133" 
-  "148" -> "149" 
-  "149" -> "150" 
-  "149" -> "151" 
-  "152" -> "135" 
-  "152" -> "153" 
-  "153" -> "137" 
-  "153" -> "154" 
+"56" [label = <(METHOD,&lt;global&gt;)>, fillcolor="#ea9999ff", style=filled]
+"57" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
+"58" [label = <(&lt;operator&gt;.assignment,$input = $_GET[&quot;username&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"49" [label = <(IDENTIFIER,$input,$input = $_GET[&quot;username&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"59" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;username&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"51" [label = <(IDENTIFIER,$_GET,$input = $_GET[&quot;username&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"60" [label = <(LITERAL,&quot;username&quot;,$input = $_GET[&quot;username&quot;])<SUB>2</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"61" [label = <(define,define(&quot;SAN&quot;,&quot;HELLO&quot;))<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"62" [label = <(LITERAL,&quot;SAN&quot;,define(&quot;SAN&quot;,&quot;HELLO&quot;))<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"63" [label = <(LITERAL,&quot;HELLO&quot;,define(&quot;SAN&quot;,&quot;HELLO&quot;))<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"64" [label = <(define,define(&quot;UNSAN&quot;,&quot;USERNAME: &quot; . $input))<SUB>4</SUB>>, fillcolor="#ea9999ff", style=filled]
+"65" [label = <(LITERAL,&quot;UNSAN&quot;,define(&quot;UNSAN&quot;,&quot;USERNAME: &quot; . $input))<SUB>4</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"66" [label = <(&lt;operator&gt;.concat,&quot;USERNAME: &quot; . $input)<SUB>4</SUB>>, fillcolor="#ea9999ff", style=filled]
+"67" [label = <(LITERAL,&quot;USERNAME: &quot;,&quot;USERNAME: &quot; . $input)<SUB>4</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"53" [label = <(IDENTIFIER,$input,&quot;USERNAME: &quot; . $input)<SUB>4</SUB>>, fillcolor="#ea9999ff", style=filled]
+"68" [label = <(printf,printf(SAN))<SUB>5</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"69" [label = <(&lt;operator&gt;.fieldAccess,SAN)<SUB>5</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"70" [label = <(IDENTIFIER,&lt;global&gt;,printf(SAN))<SUB>5</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"71" [label = <(FIELD_IDENTIFIER,SAN,SAN)<SUB>5</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"72" [label = <(printf,printf(UNSAN))<SUB>6</SUB>>, fillcolor="#ea9999ff", style=filled]
+"73" [label = <(&lt;operator&gt;.fieldAccess,UNSAN)<SUB>6</SUB>>, fillcolor="#ea9999ff", style=filled]
+"74" [label = <(IDENTIFIER,&lt;global&gt;,printf(UNSAN))<SUB>6</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"75" [label = <(FIELD_IDENTIFIER,UNSAN,UNSAN)<SUB>6</SUB>>, fillcolor="#ea9999ff", style=filled]
+"76" [label = <(METHOD_RETURN,&lt;empty&gt;)>, fillcolor="#ea9999ff", style=filled]
+  "56" -> "57" 
+  "56" -> "76" 
+  "57" -> "58" 
+  "57" -> "61" 
+  "57" -> "64" 
+  "57" -> "68" 
+  "57" -> "72" 
+  "58" -> "49" 
+  "58" -> "59" 
+  "59" -> "51" 
+  "59" -> "60" 
+  "61" -> "62" 
+  "61" -> "63" 
+  "64" -> "65" 
+  "64" -> "66" 
+  "66" -> "67" 
+  "66" -> "53" 
+  "68" -> "69" 
+  "69" -> "70" 
+  "69" -> "71" 
+  "72" -> "73" 
+  "73" -> "74" 
+  "73" -> "75" 
 }

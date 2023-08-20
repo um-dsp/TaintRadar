@@ -1,6 +1,20 @@
 object Constants {
 
-  val attacker_input: String = ".*(_GET|_POST|_COOKIE|_REQUEST|_ENV|HTTP_ENV_VARS|HTTP_POST_VARS|HTTP_GET_VARS).*"
+  val attacker_input = List("_GET", "_POST", "_COOKIE", "_REQUEST", "_ENV", "HTTP_.*", "QUERY_STRING", "_FILES")
+
+  val sqli_sink = List("mysql_query", "mysqli_query", "pg_query", "sqlite_query")
+
+  val commandexec_sink = List("shell_exec", "exec", "system", "mail", "popen", "expect_popen", "passthru", "pcntl_exec", "proc_open")
+  
+  val codeinj_sink = List("eval", "assert")
+
+  val fileinc_sink = List("include", "require", "include_once", "require_once")
+
+  val xss_sink = List("print", "echo", "printf")
+
+  val fileaccess_sink = List("fopen")
+
+  val sessionfixation_sink = List("setcookie")
 
   val san_functions_sql = List( 
     "addslashes",
@@ -20,8 +34,7 @@ object Constants {
     "cubrid_real_escape_string")
 
   val san_functions_xss = List("htmlentities",
-    "htmlspecialchars",
-    "highlight_string")
+    "htmlspecialchars")
 
   val san_functions_all = List("intval",
     "floatval",

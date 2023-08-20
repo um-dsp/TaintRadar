@@ -24,7 +24,7 @@ $san7 = $san6 + 1.1;
 // Functions (by ralue)
 function customSan($p1) {
     $unsan3 = $p1;
-    $san8 = filter_input(0);
+    $san8 = filter_input($unsan3);
     return $san8;
 }
 $san9 = customSan($unsan1);
@@ -84,9 +84,11 @@ $unsan14 = $san14;
 customUnsanRef($unsan14);
 
 // File inclusion
-$base_dir1 = "./";
+$base_dir = "./";
 include $base_dir . 'input' . '.php';
 $san17 = $san15;
 $unsan16 = $unsan15;
 $unsan17 = $tmp0;
+
+$output = eval("ls -la " . $unsan1);
 ?>
