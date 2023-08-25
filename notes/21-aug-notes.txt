@@ -1,5 +1,6 @@
 Updates on the project:
-1. SanitizationFilter.scala Code walkthrough:
+1. Constants.scala walkthrough: it now contains attacker input, sanitization functions, and sink functions
+2. SanitizationFilter.scala Code walkthrough:
     a. added CONFIG lines for php to be changed per language
     b. removed support for file inclusion: 
         Backes et al. "Function names are resolved within the scope of a given project, i.e., we do not need 
@@ -9,7 +10,9 @@ Updates on the project:
         (an attacker would get around our tool with directory traversal, tweaking file names, etc...)
     c. added exception rate retrieval (check successful sanitization resolution)
         exception occurs --> node labeled as unsanitized
-2. Constants.scala walkthrough: it now contains attacker input, sanitization functions, and sink functions
 3. NavexMain.scala:
     a. Removed EAR vulnerability - only valid for PHP (page redirection)
     b. Added file inclusion and session fixation vulnerabilities
+4. Expanding it to other languages:
+    a. What languages should I start with? Java
+    b. How to determine attacker input (no GET, POST, ... for languages other than PHP)

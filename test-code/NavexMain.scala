@@ -1,10 +1,11 @@
 object NavexMain {
     import SanitizationFilter._
 
-    val vulnerabilities: List[String] = List("file-access") //"code-injection", "command-exec", "file-inc", "sqli", "xss", "file-access", "session-fixation")
+    val vulnerabilities: List[String] = List("code-injection", "command-exec", "file-inc", "sqli", "xss", "file-access", "session-fixation")
     var attack_san_functions: List[String] = List()
 
     def getSinks(vulnerability: String) = {
+        // outputs the corresponding sanitization functions and sinks of the vulnerability
         val sinkFunctions: List[String] = vulnerability.replaceAll("[^a-zA-Z]", "").toLowerCase() match {
             case "codeinjection" | "codeinj" => {
                 attack_san_functions = Constants.san_functions_code
@@ -40,38 +41,34 @@ object NavexMain {
     }
 
     def getPaths(vulnerability: String) = {
+        // source of the attack vector: assignment nodes whose code contain defined attacker_input
         val source = SanitizationFilter._cpg.get.assignment.argument.filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
-
+        // sink of the atack vector: unsanitized arguments of sink call nodes
         val sinks = (SanitizationFilter._cpg.get.call.filter(node => getSinks(vulnerability).contains(node.name)).argument.filterNot(SanitizationFilter.isSanitized(_)(SanitizationFilter.vulnerabilityType(vulnerability, attack_san_functions)))).l
-        
+        // intra-procedural path from source to sink
         val paths = sinks.reachableByFlows(source)
-        val r1 = paths.map(_.elements).map(path => List(path.head.code, path.head.file.name.head, path.last.code, path.last.file.name.head)).dedup.l
-
+        // inter-procedural path from source to sink
         val pathsFun = sinks.repeat(_.method.callIn(NoResolve).argument.filterNot(SanitizationFilter.isSanitized(_)(SanitizationFilter.vulnerabilityType(vulnerability, attack_san_functions))))(_.until(_.reachableByFlows(source)))
-        val r2= pathsFun.map(path => List(path.head.code, path.head.file.name.head, path.last.code, path.last.file.name.head)).dedup.l
-
+        // display code and file name of first and last node in the attack vector's path
+        val r1 = paths.map(_.elements).map(path => List(path.head.code, path.head.file.name.head, path.last.code, path.last.file.name.head)).dedup.l
+        val r2 = pathsFun.map(path => List(path.head.code, path.head.file.name.head, path.last.code, path.last.file.name.head)).dedup.l
         r1 ++ r2
-
     }
     
-    def getAllPaths(cpg: Cpg) = {
+    def getAllPaths(cpg: Cpg, debug:Boolean = true) = {
+        // map every vulnerability in the list to its list of possible paths
         SanitizationFilter.setCpg(cpg)
-        // vulnerabilities.map(getPaths)
         val t0 = System.nanoTime()
         val result = (vulnerabilities zip vulnerabilities.map(getPaths)).toMap
         val t1 = System.nanoTime()
-        println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
-        println(result.transform{(k,v) => v.size})
+        if (debug) println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
+        if (debug) println("Sanitization exception rate: " + SanitizationFilter.exceptionRate())
+        if (debug) println(result.transform{(k,v) => v.size})
         result
     }
 
     def getStats(cpg: Cpg) = {
-        SanitizationFilter.setCpg(cpg)
-        // vulnerabilities.map(getPaths)
-        val t0 = System.nanoTime()
-        val result = (vulnerabilities zip vulnerabilities.map(getPaths)).toMap
-        val t1 = System.nanoTime()
-        println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
+        val result = getAllPaths(cpg, false)
         result.transform{(k,v) => v.size}
     }
 }

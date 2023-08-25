@@ -173,8 +173,8 @@ object SanitizationFilter {
    }
 }
 
-   def exceptionRate() {
-      println((expt.toFloat/sanitizedNodesMap.size*100).toString + "%")
+   def exceptionRate(): String = {
+      (expt.toFloat/sanitizedNodesMap.size*100).toString + "%"
    }
 
    // make sure to load the cpg of testCases.php into memory before running the command in the joern terminal
