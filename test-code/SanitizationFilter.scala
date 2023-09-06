@@ -22,12 +22,12 @@ object SanitizationFilter {
 
    var constantTable = None: Option[collection.immutable.Map[String, List[Expression]]]
    var _cpg = None: Option[Cpg]
-   var expt, total = 0
+   var expt = 0
    def setCpg(cpgInput: Cpg) = {
       // initializes the maps to be empty, sets the _cpg variable, and creates the constant table
       isSanitizedMap = collection.mutable.Map[isSanitizedInput, Boolean]()
       sanitizedNodesMap = collection.mutable.Map[mapInput, Boolean]()
-      var expt, total = 0
+      var expt = 0
       _cpg = Some(cpgInput)
       // CONF: name of function calls that define global constants: "define"
       val constants: List[String] = _cpg.get.call("define").argument(1).code.l.map(_.replace("\"", "")).distinct
@@ -165,6 +165,7 @@ object SanitizationFilter {
          } catch {
             case _ => {
                expt = expt + 1
+               // println(node)
                false
             }
          }
