@@ -1,0 +1,180 @@
+22,LITERAL,2,,"""IL.TUO.OST""",,,4,2,string
+24,LITERAL,2,,"""USER""",,,5,2,string
+26,LITERAL,2,,"""PASSWORD""",,,6,2,string
+28,LITERAL,2,,"""NOME_DATABASE""",,,7,2,string
+34,LITERAL,1,,"""Could not connect: """,,,9,1,string
+39,LITERAL,1,,"""cosa?""",,,10,1,string
+49,LITERAL,1,,"""</div>\npowered by <a href=\""http://sourceforge.net/projects/geccnuke\"">geccBBlite 1.0</a>\n</body>\n</html> \n""",,,1,1,string
+116,LITERAL,1,,"""database.php""",,,2,1,string
+118,LITERAL,1,,"""header.php""",,,3,1,string
+120,LITERAL,1,,"""<hr />\n""",,,4,1,string
+122,LITERAL,2,,"""SELECT * FROM geccBB_forum WHERE rispostadel=\'\' ORDER BY id DESC""",,,5,2,string
+127,LITERAL,1,,"""devi eseguire prima <a href=\""install.php\"">install.php</a>\n""",,,6,1,string
+129,LITERAL,1,,"""<ul>\n""",,,7,1,string
+136,LITERAL,1,,"""Y/m/d-H:i:s""",,,10,1,string
+149,LITERAL,1,,"""<li>""",,,13,1,string
+152,LITERAL,1,,"""<a href=\""forum.php?azione=espandi&id=""",,,14,1,string
+154,LITERAL,2,,"""id""",,,14,2,string
+155,LITERAL,3,,"""\"">+</a> """,,,14,3,string
+158,LITERAL,1,,"""<a href=\""leggi.php?id=""",,,15,1,string
+160,LITERAL,2,,"""id""",,,15,2,string
+161,LITERAL,3,,"""\"">""",,,15,3,string
+163,LITERAL,2,,"""titolo""",,,15,2,string
+164,LITERAL,5,,"""</a>, \n\t       postato da <i>""",,,15,5,string
+166,LITERAL,2,,"""postatoda""",,,16,2,string
+167,LITERAL,7,,"""</i> il """,,,16,7,string
+169,LITERAL,1,,"""</li>\n""",,,17,1,string
+177,LITERAL,2,,"""espandi""",,,19,2,string
+191,LITERAL,1,,"""<li><a href=\""forum.php\"">-</a> """,,,23,1,string
+194,LITERAL,1,,"""<a href=\""leggi.php?id=""",,,24,1,string
+196,LITERAL,2,,"""id""",,,24,2,string
+197,LITERAL,3,,"""\"">""",,,24,3,string
+199,LITERAL,2,,"""titolo""",,,24,2,string
+200,LITERAL,5,,"""</a>, \n\t\t   postato da """,,,24,5,string
+202,LITERAL,2,,"""postatoda""",,,25,2,string
+203,LITERAL,7,,""" il """,,,25,7,string
+205,LITERAL,1,,"""</li>\n""",,,26,1,string
+224,LITERAL,1,,"""<li>""",,,31,1,string
+227,LITERAL,1,,"""<a href=\""forum.php?azione=espandi&id=""",,,32,1,string
+229,LITERAL,2,,"""id""",,,32,2,string
+230,LITERAL,3,,"""\"">+</a> """,,,32,3,string
+233,LITERAL,1,,"""<a href=\""leggi.php?id=""",,,33,1,string
+235,LITERAL,2,,"""id""",,,33,2,string
+236,LITERAL,3,,"""\"">""",,,33,3,string
+238,LITERAL,2,,"""titolo""",,,33,2,string
+239,LITERAL,5,,"""</a>,\n\t\t   postato da <i>""",,,33,5,string
+241,LITERAL,2,,"""postatoda""",,,34,2,string
+242,LITERAL,7,,"""</i> il """,,,34,7,string
+244,LITERAL,1,,"""</li>\n""",,,35,1,string
+246,LITERAL,1,,"""</ul>\n""",,,39,1,string
+251,LITERAL,1,,"""SELECT * FROM geccBB_forum WHERE rispostadel = \'""",,,43,1,string
+252,LITERAL,3,,"""\'""",,,43,3,string
+261,LITERAL,1,,"""Y/m/d-H:i:s""",,,47,1,string
+268,LITERAL,1,,"""<ul>\n<li><a href=\""leggi.php?id=""",,,48,1,string
+270,LITERAL,2,,"""rispostadel""",,,48,2,string
+271,LITERAL,3,,"""&rd=""",,,48,3,string
+273,LITERAL,2,,"""id""",,,48,2,string
+274,LITERAL,5,,"""\"">\n\t       """,,,48,5,string
+276,LITERAL,2,,"""titolo""",,,49,2,string
+277,LITERAL,7,,"""</a>\n\t       postato da <i>""",,,49,7,string
+279,LITERAL,2,,"""postatoda""",,,50,2,string
+280,LITERAL,9,,"""</i> il """,,,50,9,string
+281,LITERAL,11,,""" </li>\n""",,,50,11,string
+287,LITERAL,2,,0,,,52,2,int
+291,LITERAL,1,,"""SELECT * FROM geccBB_forum WHERE ripostadel = \'""",,,54,1,string
+293,LITERAL,2,,"""id""",,,54,2,string
+294,LITERAL,3,,"""\'""",,,54,3,string
+301,LITERAL,1,,"""</ul>\n""",,,56,1,string
+304,LITERAL,1,,"""</ul>\n""",,,60,1,string
+309,LITERAL,1,,"""footer.php""",,,65,1,string
+311,LITERAL,1,,"""\n\t\n""",,,67,1,string
+321,LITERAL,1,,"""<!DOCTYPE HTML PUBLIC \""-//W3C//DTD HTML 4.01 Transitional//EN\"">\n<html>\n<head>\n  <title>geccBB - il bordo dei bollettini</title>\n  <link href=\""gb.css\"" rel=\""stylesheet\"" media=\""screen\"" type=\""text/css\"" />\n</head>\n  <body>\n            """,,,1,1,string
+323,LITERAL,1,,"""menu.php""",,,8,1,string
+333,LITERAL,1,,"""forum.php""",,,2,1,string
+360,LITERAL,1,,"""database.php""",,,2,1,string
+370,LITERAL,1,,"""<br /><b>installazione completata</b><br />\n""",,,7,1,string
+372,LITERAL,1,,"""vai alla <a href=\""index.php\"">vai al forum</a><br />\n""",,,8,1,string
+374,LITERAL,1,,"""ricordati di cancellare il file install.php<br />\n""",,,9,1,string
+381,LITERAL,1,,"""  <form method=\""post\"" action=\""install.php\"">\n  <input type=\""hidden\"" name=\""cosa\"" value=\""qualsiasicosa\"" />\n  <input type=\""submit\"" value=\""installa\""/>\n  </form>\n  basta premere il bottone\n  """,,,15,1,string
+384,LITERAL,1,,"""Error creating database: %s\n""",,,24,1,string
+393,LITERAL,1,,"""Database sbagliato""",,,29,1,string
+395,LITERAL,2,,"""CREATE TABLE geccBB_forum (\n  `id` int(5) NOT NULL auto_increment,\n  `postatoda` varchar(255) NOT NULL default \'\',\n  `data` int(12) NOT NULL default \'0\',\n  `titolo` varchar(255) NOT NULL default \'\',\n  `testo` text NOT NULL,\n  `rispostadel` int(5) NOT NULL default \'0\',\n  PRIMARY KEY  (`id`)\n  )""",,,31,2,string
+401,LITERAL,1,,"""creazione tabella forum fallita""",,,41,1,string
+405,LITERAL,1,,"""\n""",,,44,1,string
+415,LITERAL,1,,"""header.php""",,,2,1,string
+417,LITERAL,1,,"""<hr />\n<b>istruzioni:</b>\nnon e\' possibile inserire i tag html, quindi non li usare, se li usi poi\nverranno cancellati automaticamente.<br >\nse vuoi inserire un link basta che inserisci l\'indirizzo completo, comprensivo\nanche di <i>http://</i> all\'inizio, e il link verra\' creato\nautomaticamente.<br />\ncompleta tutti i campi riciesti\n""",,,5,1,string
+419,LITERAL,1,,"""footer.php""",,,14,1,string
+528,LITERAL,1,,"""database.php""",,,2,1,string
+530,LITERAL,1,,"""header.php""",,,3,1,string
+545,LITERAL,1,,"""SELECT * FROM geccBB_forum WHERE id=""",,,9,1,string
+552,LITERAL,1,,"""SELECT * FROM geccBB_forum WHERE id=""",,,13,1,string
+554,LITERAL,1,,"""<hr />\n""",,,15,1,string
+563,LITERAL,1,,"""Y/m/d-H:i:s""",,,19,1,string
+570,LITERAL,1,,"""<b>""",,,20,1,string
+572,LITERAL,2,,"""titolo""",,,20,2,string
+573,LITERAL,3,,"""</b> - <i>""",,,20,3,string
+575,LITERAL,2,,"""postatoda""",,,20,2,string
+576,LITERAL,5,,"""</i> - """,,,20,5,string
+577,LITERAL,7,,"""<br />""",,,20,7,string
+590,LITERAL,2,,0,,,22,2,int
+604,LITERAL,1,,"""    <hr />\n    <form method=\""post\"" action=\""rispondi.php\"">\n    <input type=\""text\"" name=\""postatoda\"" />nome<br />\n    <input type=\""text\"" name=\""titolo\"" value=\""""",,,31,1,string
+607,LITERAL,1,,"""re: """,,,34,1,string
+613,LITERAL,1,,"""\"" />titolo<br />\n    <textarea name=\""testo\""></textarea>\n    <input type=\""hidden\"" name=\""rispostadel\"" value=\""""",,,34,1,string
+620,LITERAL,1,,"""\"" />\n    <input type=\""submit\"" value=\""rispondi\"" />\n    </form>\n    """,,,36,1,string
+622,LITERAL,1,,"""<hr />\n""",,,42,1,string
+625,LITERAL,1,,"""SELECT id,rispostadel FROM geccBB_forum WHERE id=""",,,43,1,string
+641,LITERAL,1,,"""SELECT * FROM geccBB_forum WHERE id=""",,,52,1,string
+650,LITERAL,1,,"""Y/m/d-H:i:s""",,,56,1,string
+656,LITERAL,1,,"""<ul>\n""",,,57,1,string
+662,LITERAL,1,,"""<li>""",,,60,1,string
+664,LITERAL,2,,"""titolo""",,,60,2,string
+665,LITERAL,3,,"""\n""",,,60,3,string
+668,LITERAL,1,,""" postato da <i>""",,,61,1,string
+670,LITERAL,2,,"""postatoda""",,,61,2,string
+671,LITERAL,3,,"""</i> il """,,,61,3,string
+672,LITERAL,5,,"""</li>\n""",,,61,5,string
+678,LITERAL,1,,"""<li><a href=\""leggi.php?id=""",,,65,1,string
+680,LITERAL,2,,"""id""",,,65,2,string
+681,LITERAL,3,,"""\"">""",,,65,3,string
+683,LITERAL,2,,"""titolo""",,,65,2,string
+684,LITERAL,5,,"""</a>\n""",,,65,5,string
+687,LITERAL,1,,""" postato da <i>""",,,66,1,string
+689,LITERAL,2,,"""postatoda""",,,66,2,string
+690,LITERAL,3,,"""</i> il """,,,66,3,string
+691,LITERAL,5,,"""</li>\n""",,,66,5,string
+698,LITERAL,1,,"""</ul>\n""",,,69,1,string
+705,LITERAL,1,,"""SELECT * FROM geccBB_forum WHERE rispostadel=""",,,75,1,string
+714,LITERAL,1,,"""Y/m/d-H:i:s""",,,79,1,string
+720,LITERAL,1,,"""<ul>\n""",,,80,1,string
+730,LITERAL,1,,"""<li><a href=\""leggi.php?rd=""",,,83,1,string
+732,LITERAL,2,,"""id""",,,83,2,string
+733,LITERAL,3,,"""&id=""",,,83,3,string
+734,LITERAL,5,,"""\"">""",,,83,5,string
+736,LITERAL,2,,"""titolo""",,,83,2,string
+737,LITERAL,7,,"""</a>\n""",,,83,7,string
+748,LITERAL,1,,"""<li>""",,,87,1,string
+750,LITERAL,2,,"""titolo""",,,87,2,string
+753,LITERAL,1,,""" postato da <i>""",,,89,1,string
+755,LITERAL,2,,"""postatoda""",,,89,2,string
+756,LITERAL,3,,"""</i> il """,,,89,3,string
+757,LITERAL,5,,"""</li>\n""",,,89,5,string
+764,LITERAL,1,,"""</ul>\n""",,,91,1,string
+768,LITERAL,1,,"""footer.php""",,,94,1,string
+778,LITERAL,1,,"""<div id=\""cornice\"">\n[<a href=\""forum.php\"">elenco messaggi</a>]\n[<a href=\""scrivi.php\"">scrivi messaggio</a>]\n[<a href=\""istruzioni.php\"">istruzioni</a>]\n""",,,1,1,string
+836,LITERAL,1,,"""header.php""",,,2,1,string
+838,LITERAL,1,,"""database.php""",,,3,1,string
+858,LITERAL,1,,""" """,,,8,1,string
+863,LITERAL,2,,0,,,10,2,int
+869,LITERAL,1,,"""/(^(http:\\/\\/).+(\\..+)$)/i""",,,12,1,string
+875,LITERAL,1,,""" <a href=\""""",,,14,1,string
+876,LITERAL,3,,"""\"">""",,,14,3,string
+878,LITERAL,5,,"""</a> \n""",,,14,5,string
+883,LITERAL,1,,""" """,,,18,1,string
+892,LITERAL,1,,"""U""",,,23,1,string
+895,LITERAL,1,,"""INSERT INTO geccBB_forum VALUES(\'\', \'""",,,24,1,string
+896,LITERAL,3,,"""\', \'""",,,24,3,string
+897,LITERAL,5,,"""\', \'""",,,24,5,string
+898,LITERAL,7,,"""\', \'""",,,24,7,string
+899,LITERAL,9,,"""\', \'""",,,24,9,string
+900,LITERAL,11,,"""\')""",,,24,11,string
+904,LITERAL,1,,"""<hr />\nrisposta inserita correttamente, <a href=\""forum.php\"">torna al forum</a>...\n""",,,26,1,string
+906,LITERAL,1,,"""footer.php""",,,27,1,string
+965,LITERAL,1,,"""header.php""",,,2,1,string
+967,LITERAL,1,,"""database.php""",,,3,1,string
+969,LITERAL,1,,"""<hr />\n""",,,4,1,string
+990,LITERAL,1,,""" """,,,9,1,string
+995,LITERAL,2,,0,,,11,2,int
+1001,LITERAL,1,,"""/(^(http:\\/\\/).+(\\..+)$)/i""",,,13,1,string
+1007,LITERAL,1,,""" <a href=\""""",,,15,1,string
+1008,LITERAL,3,,"""\"">""",,,15,3,string
+1010,LITERAL,5,,"""</a> \n""",,,15,5,string
+1015,LITERAL,1,,""" """,,,19,1,string
+1025,LITERAL,1,,"""    <form method=\""post\"" action=\""scrivi.php\"">\n<input type=\""text\"" name=\""postatoda\"" />nome<br />\n    <input type=\""text\"" name=\""titolo\"" />titolo<br />\n    <textarea name=\""testo\"">\n    </textarea>\n    <input type=\""submit\"" value=\""invia\"" />\n    </form>\n    """,,,26,1,string
+1033,LITERAL,1,,"""U""",,,37,1,string
+1036,LITERAL,1,,"""INSERT INTO geccBB_forum VALUES(\'\', \'""",,,38,1,string
+1037,LITERAL,3,,"""\', \'""",,,38,3,string
+1038,LITERAL,5,,"""\', \'""",,,38,5,string
+1039,LITERAL,7,,"""\', \'""",,,38,7,string
+1040,LITERAL,9,,"""\', \'\')""",,,38,9,string
+1044,LITERAL,1,,"""messaggio inserito correttamente, <a href=\""forum.php\"">torna all\'elenco dei messaggi...""",,,40,1,string
+1046,LITERAL,1,,"""footer.php""",,,42,1,string
