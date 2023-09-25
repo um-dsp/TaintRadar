@@ -1,6 +1,6 @@
-graph = open("/home/umd-user/Desktop/navex_project/navex_utils/test-code/output_graph/output.dot", "r")
-tags = open("/home/umd-user/Desktop/navex_project/navex_utils/test-code/output_graph/tags.txt", "r")
-newGraph = open("/home/umd-user/Desktop/navex_project/navex_utils/test-code/output_graph/coloredOutput.dot", "w")
+graph = open("/home/umd-user/Desktop/navex_project/navex_utils/code/output_graph/output.dot", "r")
+tags = open("/home/umd-user/Desktop/navex_project/navex_utils/code/output_graph/tags.txt", "r")
+newGraph = open("/home/umd-user/Desktop/navex_project/navex_utils/code/output_graph/coloredOutput.dot", "w")
 
 newGraph.write(graph.readline())
 for line in graph:

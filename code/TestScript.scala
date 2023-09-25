@@ -1,16 +1,15 @@
 import Constants._
-import SanitizationFilter._
 
 @main def exec(cpgFile: String, fileMain: String) = { //, outFile: String) = {
-    implicit val vuln: vulnerabilityType = vulnerabilityType("XSS", Constants.san_functions_xss)
     importCpg(cpgFile)
-    SanitizationFilter.setCpg(cpg)
+    val s = new SanitizationFilter(cpg)
+    implicit val vuln= s.vulnerabilityType("SQLI", Constants.san_functions_sql)
     println(cpg.method.fullName.l)
     // val fileMain = "identifier_basic_san.php:<global>"
     // val fileMain = "identifier_basic_unsan.php:<global>"
     // val fileMain = "method.php:<global>"
-    cpg.method.filter(_.fullName==fileMain).ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filter(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "TRUE").store
-    cpg.method.filter(_.fullName==fileMain).ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filterNot(SanitizationFilter.isSanitized(_)).newTagNodePair("SAN", "FALSE").store
+    cpg.method.filter(_.fullName==fileMain).ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filter(s.isSanitized(_)).newTagNodePair("SAN", "TRUE").store
+    cpg.method.filter(_.fullName==fileMain).ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filterNot(s.isSanitized(_)).newTagNodePair("SAN", "FALSE").store
     
     run.commit
     cpg.method.filter(_.fullName==fileMain).ast.filterNot(_.isInstanceOf[Modifier]).map(node => List(node.id, node.tag.name("SAN").value.head)).l |> "output_graph/tags.txt"

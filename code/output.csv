@@ -1,0 +1,26 @@
+res174: Iterable[String] = List(
+  """
+XSS; $_POST["loginAttempts"]; admin/adminLoginForm.php:42
+XSS; $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; !isset($_POST["loginAttempts"]) ? 1 : $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:43
+XSS; $_POST["loginAttempts"]; admin/adminLoginForm.php:42
+XSS; $_POST["loginAttempts"]; admin/adminLoginForm.php:42
+XSS; $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; !isset($_POST["loginAttempts"]) ? 1 : $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:43
+XSS; !isset($_POST["loginAttempts"]) ? 1 : $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:43
+XSS; !isset($_POST["loginAttempts"]); admin/adminLoginForm.php:42
+XSS; !isset($_POST["loginAttempts"]) ? 1 : $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:43
+XSS; $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; !isset($_POST["loginAttempts"]) ? 1 : $_POST["loginAttempts"] + 1; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:42
+XSS; $loginAttempts; admin/adminLoginForm.php:43
+"""
+)
