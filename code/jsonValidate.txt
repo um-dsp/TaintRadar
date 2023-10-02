@@ -1,0 +1,6 @@
+: True -> : "True"
+: False -> : "False"
+}{ -> },{
+start with [ end with ]
+" -> \"
+' -> "

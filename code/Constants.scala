@@ -36,7 +36,9 @@ object Constants {
   val san_functions_xss = List("htmlentities",
     "htmlspecialchars")
 
-  val san_functions_all = List("intval",
+  val san_functions_all = List(
+    "isset",
+    "intval",
     "floatval",
     "doubleval",
     "filter_input",
