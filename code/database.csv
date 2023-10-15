@@ -1,0 +1,454 @@
+PHPAUCTIONXL_accesseshistoric,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_accesseshistoric,year,"['char(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_accesseshistoric,pageviews,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accesseshistoric,uniquevisitiors,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accesseshistoric,usersessions,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accounts,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_accounts,user,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accounts,description,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_accounts,operation_date,"['varchar(8)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_accounts,operation_type,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accounts,operation_amount,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accounts,account_balance,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_accounts,auction,"['varchar(32)', 'NOT NULL', 'default', ""''"", 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_adminusers,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_adminusers,username,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_adminusers,password,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_adminusers,created,"['varchar(8)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_adminusers,lastlogin,"['varchar(14)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_adminusers,status,"['int(2)', 'NOT NULL', 'default', ""'0'"", 'KEY', '`id` (`id`)']",True
+PHPAUCTIONXL_altpayments,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_altpayments,title,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_altpayments,description,"['text', 'NOT NULL', 'PRIMARY', 'KEY', '(`id`)']",False
+PHPAUCTIONXL_auccounter,auction_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_auccounter,counter,"['int(11)', 'NOT NULL', 'default', ""'0'"", 'PRIMARY', 'KEY', '(`auction_id`)']",True
+PHPAUCTIONXL_auctionextension,status,"[""enum('enabled','disabled')"", 'NOT NULL', 'default', ""'enabled'""]",True
+PHPAUCTIONXL_auctionextension,timebefore,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_auctionextension,extend,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_auctions,id,"['int(32)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_auctions,user,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,title,[],False
+PHPAUCTIONXL_auctions,starts,"['varchar(14)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,description,['text'],False
+PHPAUCTIONXL_auctions,pict_url,[],False
+PHPAUCTIONXL_auctions,category,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,minimum_bid,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,reserve_price,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,buy_now,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,auction_type,"['char(1)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,duration,"['varchar(7)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,increment,"['double(8,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+PHPAUCTIONXL_auctions,location,"['varchar(30)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,location_zip,"['varchar(10)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,shipping,"['char(1)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,payment,[],False
+PHPAUCTIONXL_auctions,international,"['char(1)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,ends,"['varchar(14)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,current_bid,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,closed,"['char(2)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,photo_uploaded,"['char(1)', 'default', 'NULL']",False
+PHPAUCTIONXL_auctions,quantity,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_auctions,suspended,"['int(1)', 'default', ""'0'""]",True
+PHPAUCTIONXL_auctions,private,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_auctions,relist,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_auctions,relisted,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_auctions,num_bids,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_auctions,sold,"[""enum('y','n','s')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_auctions,shipping_terms,['NOT NULL'],False
+PHPAUCTIONXL_auctions,bn_only,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_auctions,adultonly,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'"", 'PRIMARY', 'KEY', '(`id`)', 'KEY', '`id` (`id`)']",True
+PHPAUCTIONXL_banners,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_banners,name,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_banners,type,"[""enum('gif','jpg','png','swf')"", 'default', 'NULL']",True
+PHPAUCTIONXL_banners,views,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_banners,clicks,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_banners,url,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_banners,sponsortext,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_banners,alt,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_banners,purchased,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_banners,width,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_banners,height,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_banners,user,"['int(11)', 'NOT NULL', 'default', ""'0'"", 'KEY', '`id` (`id`)']",True
+PHPAUCTIONXL_bannerscategories,banner,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_bannerscategories,category,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_bannerskeywords,banner,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_bannerskeywords,keyword,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_bannerssettings,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_bannerssettings,sizetype,"[""enum('fix','any')"", 'default', 'NULL']",True
+PHPAUCTIONXL_bannerssettings,width,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_bannerssettings,height,"['int(11)', 'default', 'NULL', 'KEY', '`id` (`id`)']",True
+PHPAUCTIONXL_bannersstats,banner,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_bannersstats,purchased,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_bannersstats,views,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_bannersstats,clicks,"['int(11)', 'default', 'NULL', 'KEY', '`id` (`banner`)']",True
+PHPAUCTIONXL_bannersusers,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_bannersusers,name,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_bannersusers,company,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_bannersusers,email,"['varchar(255)', 'default', 'NULL', 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_bidfind,bidfind,"[""enum('enabled','disabled')"", 'NOT NULL', 'default', ""'enabled'""]",True
+PHPAUCTIONXL_bids,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_bids,auction,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_bids,bidder,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_bids,bid,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_bids,bidwhen,"['varchar(14)', 'default', 'NULL']",False
+PHPAUCTIONXL_bids,quantity,"['int(11)', 'default', ""'0'"", 'PRIMARY', 'KEY', '(`id`)']",True
+PHPAUCTIONXL_browsers,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_browsers,year,"['varchar(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_browsers,browser,"['varchar(50)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_browsers,counter,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_categories,cat_id,"['int(4)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_categories,parent_id,"['int(4)', 'default', 'NULL']",True
+PHPAUCTIONXL_categories,cat_name,[],False
+PHPAUCTIONXL_categories,deleted,"['int(1)', 'default', 'NULL']",True
+PHPAUCTIONXL_categories,sub_counter,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_categories,counter,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_categories,cat_colour,['NOT NULL'],False
+PHPAUCTIONXL_categories,cat_image,['NOT NULL'],False
+PHPAUCTIONXL_categories,feesfree,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'"", 'PRIMARY', 'KEY', '(`cat_id`)']",True
+PHPAUCTIONXL_categories_plain,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_categories_plain,cat_id,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_categories_plain,cat_name,"['PRIMARY', 'KEY', '(`id`)']",False
+PHPAUCTIONXL_cats_translated,cat_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_cats_translated,lang,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_cats_translated,cat_name,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_closedrelisted,auction,"['int(32)', 'default', ""'0'""]",True
+PHPAUCTIONXL_closedrelisted,relistdate,"['varchar(8)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_closedrelisted,newauction,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_comm_messages,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_comm_messages,boardid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_comm_messages,msgdate,"['varchar(14)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_comm_messages,user,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_comm_messages,username,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_comm_messages,message,"['text', 'NOT NULL', 'KEY', '`msg_id` (`id`)']",False
+PHPAUCTIONXL_community,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_community,name,"['varchar(255)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_community,messages,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_community,lastmessage,"['varchar(14)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_community,msgstoshow,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_community,active,"['int(1)', 'NOT NULL', 'default', ""'1'"", 'KEY', '`msg_id` (`id`)']",True
+PHPAUCTIONXL_counters,users,"['int(11)', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,auctions,"['int(11)', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,closedauctions,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,inactiveusers,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,bids,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,transactions,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,totalamount,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,resetdate,"['varchar(8)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_counters,fees,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counters,suspendedauction,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_counterstoshow,auctions,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_counterstoshow,users,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_counterstoshow,online,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_countries,country,"['varchar(30)', 'NOT NULL', 'default', ""''"", 'PRIMARY', 'KEY', '(`country`)']",False
+PHPAUCTIONXL_currencies,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_currencies,currency,"['varchar(100)', 'NOT NULL', 'default', ""''"", 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_currentaccesses,day,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentaccesses,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentaccesses,year,"['char(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentaccesses,pageviews,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_currentaccesses,uniquevisitors,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_currentaccesses,usersessions,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_currentbrowsers,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentbrowsers,year,"['varchar(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentbrowsers,browser,"['varchar(50)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_currentbrowsers,counter,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_currentdomains,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentdomains,year,"['varchar(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentdomains,domain,"['varchar(100)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_currentdomains,counter,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_currentplatforms,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentplatforms,year,"['varchar(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_currentplatforms,platform,"['varchar(50)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_currentplatforms,counter,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_durations,days,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_durations,description,"['varchar(30)', 'default', 'NULL']",False
+PHPAUCTIONXL_faqs,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_faqs,question,"['varchar(200)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_faqs,answer,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_faqs,category,"['int(11)', 'NOT NULL', 'default', ""'0'"", 'KEY', '`id` (`id`)']",True
+PHPAUCTIONXL_faqs_translated,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_faqs_translated,lang,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_faqs_translated,question,"['varchar(200)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_faqs_translated,answer,"['text', 'NOT NULL', 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_faqscat_translated,id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_faqscat_translated,lang,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_faqscat_translated,category,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_faqscategories,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_faqscategories,category,"['varchar(200)', 'NOT NULL', 'default', ""''"", 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_feedbacks,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_feedbacks,rated_user_id,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_feedbacks,rater_user_nick,"['varchar(20)', 'default', 'NULL']",False
+PHPAUCTIONXL_feedbacks,feedback,[],False
+PHPAUCTIONXL_feedbacks,rate,"['int(2)', 'default', 'NULL']",True
+PHPAUCTIONXL_feedbacks,auction_id,"['timestamp', 'int(32)', 'NOT NULL', 'default', ""'0'"", 'PRIMARY', 'KEY', '(`id`)']",True
+PHPAUCTIONXL_feedbacksanswers,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_feedbacksanswers,feedbackid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_feedbacksanswers,rated_user_id,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_feedbacksanswers,feedbackdate,"['text', 'timestamp', 'PRIMARY', 'KEY', '(`id`)']",True
+PHPAUCTIONXL_feedforum,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_feedforum,feed_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_feedforum,user_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_feedforum,seqnum,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_feedforum,COMMENT,"['timestamp', 'text', 'NOT NULL', 'PRIMARY', 'KEY', '(`id`)']",True
+PHPAUCTIONXL_filterwords,word,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_fontsandcolors,err_font,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,err_font_size,"['int(2)', 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,err_font_color,"['varchar(7)', 'default', 'NULL']",False
+PHPAUCTIONXL_fontsandcolors,err_font_bold,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,err_font_italic,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,std_font,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,std_font_size,"['int(2)', 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,std_font_color,"['varchar(7)', 'default', 'NULL']",False
+PHPAUCTIONXL_fontsandcolors,std_font_bold,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,std_font_italic,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,sml_font,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,sml_font_size,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,sml_font_color,"['varchar(7)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_fontsandcolors,sml_font_bold,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_fontsandcolors,sml_font_italic,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_fontsandcolors,tlt_font,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,tlt_font_size,"['int(2)', 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,tlt_font_color,"['varchar(7)', 'default', 'NULL']",False
+PHPAUCTIONXL_fontsandcolors,tlt_font_bold,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,tlt_font_italic,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_fontsandcolors,nav_font,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,nav_font_size,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,nav_font_color,"['varchar(7)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_fontsandcolors,nav_font_bold,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_fontsandcolors,nav_font_italic,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_fontsandcolors,footer_font,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,footer_font_size,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_fontsandcolors,footer_font_color,"['varchar(7)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_fontsandcolors,footer_font_bold,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_fontsandcolors,footer_font_italic,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_fontsandcolors,bordercolor,"['varchar(7)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_fontsandcolors,headercolor,"['varchar(7)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_fontsandcolors,tableheadercolor,"['varchar(7)', 'NOT NULL', 'default', ""'0000'""]",False
+PHPAUCTIONXL_fontsandcolors,linkscolor,"['varchar(7)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_fontsandcolors,vlinkscolor,"['varchar(7)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_fontsandcolors,highlighteditems,"['varchar(7)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_freecategories,category,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_messages,id,"['int( 50 )', 'NOT NULL', 'AUTO_INCREMENT']",True
+PHPAUCTIONXL_messages,sentto,"['int( 25 )', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_messages,from,"['int( 25 )', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_messages,when,"['varchar( 20 )', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_messages,message,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_messages,read,"['int( 1 )', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_messages,subject,"['varchar( 50 )', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_messages,replied,"['int( 1 )', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_messages,noticed,"['int( 1 )', 'NOT NULL', 'default', ""'0'"", 'PRIMARY', 'KEY', '( `id` )']",True
+PHPAUCTIONXL_https,https,"[""enum('yes','no')"", 'default', 'NULL']",True
+PHPAUCTIONXL_https,httpsurl,"['varchar(255)', 'default', 'NULL']",False
+PHPAUCTIONXL_increments,id,"['char(3)', 'default', 'NULL']",False
+PHPAUCTIONXL_increments,low,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_increments,high,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_increments,increment,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_lastupdate,last_update,"['default', 'NULL']",False
+PHPAUCTIONXL_lastupdate,updateinterval,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_maintainance,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_maintainance,active,"[""enum('y','n')"", 'default', 'NULL']",True
+PHPAUCTIONXL_maintainance,superuser,"['varchar(32)', 'default', 'NULL']",False
+PHPAUCTIONXL_maintainance,maintainancetext,"['text', 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_membertypes,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_membertypes,feedbacks,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_membertypes,membertype,"['varchar(30)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_membertypes,discount,"['tinyint(4)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_membertypes,icon,"['varchar(30)', 'NOT NULL', 'default', ""''"", 'PRIMARY', 'KEY', '(`id`)']",False
+PHPAUCTIONXL_news,id,"['int(32)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_news,title,"['varchar(200)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_news,content,['NOT NULL'],False
+PHPAUCTIONXL_news,new_date,"['int(8)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_news,suspended,"['int(1)', 'NOT NULL', 'default', ""'0'"", 'PRIMARY', 'KEY', '(`id`)']",True
+PHPAUCTIONXL_news_translated,id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_news_translated,lang,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_news_translated,title,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_news_translated,content,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_online,ID,"['bigint(21)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_online,SESSION,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_online,time,"['bigint(21)', 'NOT NULL', 'default', ""'0'"", 'PRIMARY', 'KEY', '(`ID`)']",True
+PHPAUCTIONXL_package,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_package,scriptname,"['varchar(60)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_package,scriptdir,"['varchar(60)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_package,scriptdate,"['varchar(8)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_package,scriptversion,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_package,scriptstatus,"[""enum('inuse','updated')"", 'NOT NULL', 'default', ""'inuse'"", 'KEY', '`id` (`id`)']",True
+PHPAUCTIONXL_payments,id,"['int(2)', 'default', 'NULL']",True
+PHPAUCTIONXL_payments,description,"['varchar(30)', 'default', 'NULL']",False
+PHPAUCTIONXL_pendingnotif,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_pendingnotif,auction_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_pendingnotif,seller_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_pendingnotif,winners,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_pendingnotif,auction,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_pendingnotif,seller,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_pendingnotif,thisdate,"['varchar(8)', 'NOT NULL', 'default', ""''"", 'PRIMARY', 'KEY', '(`id`)']",False
+PHPAUCTIONXL_platforms,month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_platforms,year,"['varchar(4)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_platforms,browser,"['varchar(50)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_platforms,counter,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_proxybid,itemid,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_proxybid,userid,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_proxybid,bid,"['double(16,4)', 'default', 'NULL']",True
+PHPAUCTIONXL_rates,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_rates,ime,['NOT NULL'],False
+PHPAUCTIONXL_rates,valuta,['NOT NULL'],False
+PHPAUCTIONXL_rates,rate,"['float(8,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+PHPAUCTIONXL_rates,sifra,['NOT NULL'],False
+PHPAUCTIONXL_rates,symbol,"['char(3)', 'NOT NULL', 'default', ""''"", 'KEY', '`id` (`id`)']",False
+PHPAUCTIONXL_rememberme,userid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_rememberme,hashkey,"['char(32)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,sitename,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,siteurl,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,cookiesprefix,"['varchar(100)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,loginbox,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,newsbox,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,newstoshow,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,moneyformat,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,moneydecimals,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,moneysymbol,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,currency,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,showacceptancetext,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,acceptancetext,['NOT NULL'],False
+PHPAUCTIONXL_settings,adminmail,"['varchar(100)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,banners,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,newsletter,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,logo,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,timecorrection,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,cron,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,archiveafter,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,datesformat,"[""enum('USA','EUR')"", 'NOT NULL', 'default', ""'USA'""]",True
+PHPAUCTIONXL_settings,feetype,"[""enum('prepay','pay')"", 'NOT NULL', 'default', ""'prepay'""]",True
+PHPAUCTIONXL_settings,sellersetupfee,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,sellersetuptype,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,sellerfinalfee,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,sellerfinaltype,"['tinyint(4)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,sellersetupvalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,sellerfinalvalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,buyerfinalfee,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,buyerfinaltype,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,buyerfinalvalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,paypaladdress,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,errortext,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_settings,errormail,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,signupfee,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,signupvalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,picturesgallery,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,maxpictures,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,maxpicturesize,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,picturesgalleryfee,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,picturesgalleryvalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,buy_now,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+PHPAUCTIONXL_settings,alignment,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,featureditemsnumber,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,featuredcolumns,"['int(11)', 'NOT NULL', 'default', ""'2'""]",True
+PHPAUCTIONXL_settings,thimbnailswidth,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,thumb_show,"['smallint(6)', 'NOT NULL', 'default', ""'100'""]",True
+PHPAUCTIONXL_settings,catfeatureditemsnumber,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,featureditems,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,catthumbnailswidth,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,lastitemsnumber,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,higherbidsnumber,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,endingsoonnumber,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,boards,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,boardslink,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,wordsfilter,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,aboutus,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,aboutustext,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_settings,terms,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,termstext,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_settings,invoicing,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,invoicelimit,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,taxpercentage,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,invoicetheadmin,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,userscreditcard,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,defaultcountry,"['varchar(30)', 'NOT NULL', 'default', ""'0'""]",False
+PHPAUCTIONXL_settings,reservefee,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,reservetype,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,reservevalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,privatefee,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,privatefeevalue,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,privatefeetype,"[""enum('fix','percentage')"", 'NOT NULL', 'default', ""'fix'""]",True
+PHPAUCTIONXL_settings,relisting,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,defaultlanguage,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,aboutme,"[""enum('y','n')"", 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,pagewidth,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,pagewidthtype,"[""enum('perc','fix')"", 'NOT NULL', 'default', ""'perc'""]",True
+PHPAUCTIONXL_settings,charge_ivf,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,charge_ivf_auto,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,taxname,"['varchar(10)', 'NOT NULL', 'default', ""'TVA'""]",False
+PHPAUCTIONXL_settings,usignupconfirmation,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,sbsignupconfirmation,"[""enum('n','s','b','sb')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,freecatstext,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_settings,accounttype,"[""enum('sellerbuyer','unique')"", 'NOT NULL', 'default', ""'unique'""]",True
+PHPAUCTIONXL_settings,catsorting,"[""enum('alpha','counter')"", 'NOT NULL', 'default', ""'alpha'""]",True
+PHPAUCTIONXL_settings,usersauth,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,background,['NOT NULL'],False
+PHPAUCTIONXL_settings,brepeat,"[""enum('repeat','repeat-x','repeat-y','no-repeat','no')"", 'NOT NULL', 'default', ""'no'""]",True
+PHPAUCTIONXL_settings,descriptiontag,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_settings,keywordstag,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_settings,maxuploadsize,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,contactseller,"[""enum('always','logged','never')"", 'NOT NULL', 'default', ""'always'""]",True
+PHPAUCTIONXL_settings,theme,[],False
+PHPAUCTIONXL_settings,catstoshow,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,sitemap,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,uniqueseller,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_settings,bn_only,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,adultonly,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,winner_address,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_settings,wanted,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_settings,boardsmsgs,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_statssettings,activate,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_statssettings,accesses,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_statssettings,browsers,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_statssettings,domains,"[""enum('y','n')"", 'NOT NULL', 'default', ""'y'""]",True
+PHPAUCTIONXL_tmp_closed_edited,session,"['varchar(100)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_tmp_closed_edited,auction,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_tmp_closed_edited,editdate,"['varchar(8)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_tmp_closed_edited,seller,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_tmp_closed_edited,fee,"[""enum('homefeatured','catfeatured','bold','highlighted','reserve')"", 'NOT NULL', 'default', ""'homefeatured'""]",True
+PHPAUCTIONXL_tmp_closed_edited,amount,"['double', 'NOT NULL', 'default', ""'0'"", 'KEY', '`session` (`session`)']",True
+PHPAUCTIONXL_users,id,"['int(32)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_users,nick,"['varchar(20)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,password,"['varchar(32)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,name,[],False
+PHPAUCTIONXL_users,address,[],False
+PHPAUCTIONXL_users,city,"['varchar(25)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,prov,"['varchar(10)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,country,"['varchar(30)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,zip,"['varchar(6)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,phone,"['varchar(40)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,email,"['varchar(50)', 'default', 'NULL']",False
+PHPAUCTIONXL_users,rate_sum,"['timestamp', 'int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_users,rate_num,"['int(11)', 'default', 'NULL']",True
+PHPAUCTIONXL_users,birthdate,"['int(8)', 'default', 'NULL']",True
+PHPAUCTIONXL_users,suspended,"['int(1)', 'default', ""'0'""]",True
+PHPAUCTIONXL_users,nletter,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_users,balance,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_users,auc_watch,"['varchar(20)', 'default', ""''""]",False
+PHPAUCTIONXL_users,creditcard,"['text', 'varchar(16)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_users,exp_month,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_users,exp_year,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_users,card_owner,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_users,card_zip,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_users,accounttype,"[""enum('seller','buyer','buyertoseller','unique')"", 'NOT NULL', 'default', ""'unique'""]",True
+PHPAUCTIONXL_users,endemailmode,"[""enum('one','cum','none')"", 'NOT NULL', 'default', ""'one'""]",True
+PHPAUCTIONXL_users,startemailmode,"[""enum('yes','no')"", 'NOT NULL', 'default', ""'yes'""]",True
+PHPAUCTIONXL_users,trusted,"[""enum('y','n')"", 'NOT NULL', 'default', ""'n'""]",True
+PHPAUCTIONXL_users,lastlogin,"['NOT NULL', 'default', ""'0000-00-00 00:00:00'""]",False
+PHPAUCTIONXL_users,payment_details,"['text', 'NOT NULL', 'PRIMARY', 'KEY', '(`id`)']",False
+PHPAUCTIONXL_usersettings,discount,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_usersettings,banemail,"['text', 'NOT NULL']",False
+PHPAUCTIONXL_usersettings,requested_fields,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_usersettings,mandatory_fields,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_usersips,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_usersips,user,"['int(32)', 'default', 'NULL']",True
+PHPAUCTIONXL_usersips,ip,"['varchar(15)', 'default', 'NULL']",False
+PHPAUCTIONXL_usersips,type,"[""enum('first','after')"", 'NOT NULL', 'default', ""'first'""]",True
+PHPAUCTIONXL_usersips,action,"[""enum('accept','deny')"", 'NOT NULL', 'default', ""'accept'"", 'PRIMARY', 'KEY', '(`id`)']",True
+PHPAUCTIONXL_userslanguage,user,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_userslanguage,language,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+PHPAUCTIONXL_winners,id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+PHPAUCTIONXL_winners,auction,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_winners,seller,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_winners,winner,"['int(32)', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_winners,bid,"['double', 'NOT NULL', 'default', ""'0'""]",True
+PHPAUCTIONXL_winners,fee,"['timestamp', 'double', 'NOT NULL', 'default', ""'0'"", 'KEY', '`id` (`id`)']",True

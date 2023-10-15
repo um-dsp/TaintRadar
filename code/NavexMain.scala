@@ -30,49 +30,6 @@ class NavexMain(val cpg: Cpg) {
             case _ => (List(), List())
         }
     }
-    // case class getReachingDefsInput(paths: List[List[AstNode]], sourceIDs: List[Long] = List())
-    // var getReachingDefsMap = collection.mutable.Map[getReachingDefsInput, Boolean]()
-
-    // def getReachingDefsOptimized(paths: List[List[AstNode]], source: List[AstNode] = List()): List[List[AstNode]] = {
-    //     var output = List[List[AstNode]]()
-    //     for (path <- paths) {
-    //         val lastNode: AstNode = path.last
-    //         val lastMethod = lastNode match {
-    //             case identifier: Identifier => identifier.method
-    //             case call: Call => call.method
-    //             case parameter: MethodParameterIn => parameter.method
-    //         }
-    //         output = if (lastMethod.name == "<global>") path ++ lastNode.reachableByFlows(source).map(_.elements).l
-    //         else {
-    //             val pathToParameters = lastNode match {
-    //                 case identifier: Identifier => {
-    //                     if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
-    //                         identifier.method.parameter.name(identifier.name).l
-    //                     List(identifier).reachableByFlows(lastMethod.parameter).map(_.elements).l
-    //                 } 
-    //                 // case call: Call => call.method
-    //                 // case parameter: MethodParameterIn => parameter.method
-    //             }
-    //         }
-    //         }
-    //         output = output :+  {
-    //             if (lastNode.method.name == "<global>") path ++ lastNode.reachableByFlows(source).map(_.elements).l
-    //             else if (!lastNode.reachableByFlows(lastNode.method.parameter).isEmpty)
-    //                 for (param <- lastNode.method.parameter.l) {
-    //                 val reachableByParam = lastNode.reachableByFlows(param).map(_.elements).l
-    //                 if (!reachableByParam.isEmpty) {
-    //                     val passedArg = param.method.callIn(NoResolve).argument(param.index).filterNot(_.isLiteral).l
-    //                     for (arg <- passedArg) {
-    //                         output = output :+ (path ++ reachableByParam :+ arg)
-    //                     }
-    //                 }
-    //             }
-    //             else path
-    //         }
-    //     }
-    //     if (paths.reduce((x,y) => x ++ y).size == output.reduce((x,y) => x ++ y).size) output
-    //     else getReachingDefsOptimized(output, source)
-    // }
 
     def getReachingDefs(paths: List[List[AstNode]], source: List[Call] = List(), vulnerabilityInst: sanitizationObject.vulnerabilityType): List[List[AstNode]] = {
         var output = List[List[AstNode]]()
@@ -135,7 +92,7 @@ class NavexMain(val cpg: Cpg) {
         // source of the attack vector: assignment nodes whose code contain defined attacker_input
         val source = cpg.call.filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst)).l //.groupBy(_.lineNumber).map(x => x._2.head).l 
         // sink of the atack vector: unsanitized arguments of sink call nodes
-        val sinks = (cpg.call.filter(x => sinkFunctions.map(x.name.contains(_)).reduce((x,y) => x || y)).argument.filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst))).l        // intra-procedural path from source to sink
+        val sinks = (cpg.call.filter(x => sinkFunctions.map(x.name.contains(_)).reduce((x,y) => x || y)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst))).l        // intra-procedural path from source to sink
         // intra-procedural path from source to sink
         val globalPaths: List[List[AstNode]] = sinks.reachableByFlows(source).map(_.elements).l
         // inter-procedural path from source to sink
@@ -147,7 +104,20 @@ class NavexMain(val cpg: Cpg) {
             if (!path.isEmpty) paths = paths :+ path
         })
         val totalPaths = globalPaths ++ paths
-        totalPaths.groupBy(_.head).map(_._2.head)
+        val dedupPaths = totalPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
+        // var embeddedPaths: List[List[AstNode]] = List()
+        // for (path <- dedupPaths) {
+        //     for (other <- dedupPaths) {
+        //         if (other!=path) {
+        //             if (path.forall(other.contains)) {
+        //                 embeddedPaths = embeddedPaths :+ path
+        //             }
+                        
+        //         }
+        //     }
+        // }
+        // dedupPaths.filterNot(path => embeddedPaths.contains(path))
+        dedupPaths
     }
     
     def getAllPaths(debug:Boolean = true) = {
@@ -171,15 +141,18 @@ class NavexMain(val cpg: Cpg) {
         val output: String = results.transform{(k,v) => 
         v.map(path => {
             val pathID = v.toSeq.indexOf(path) + 1
-            path.map(x => 
-                "{\n\t\"pathid\": " + pathID + ",\n" + 
-                "\t\"vulnerability\": \"" + k + "\",\n" + 
-                "\t\"nodeid\": " + x.id + ",\n" +
-                "\t\"filename\": \"" + x.file.name.headOption.getOrElse("").replace("\"", "\\\"") + "\",\n" +
-                "\t\"linenumber\": " + x.lineNumber.getOrElse("") + ",\n" +
-                "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\"\n},"
-            ).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
-        output |> "paths/output.json"
+            path.map(x => {
+                        val (attack_san_functions, sinkFunctions) = getSinks(k)
+                        implicit val vulnerabilityInst = sanitizationObject.vulnerabilityType(k, attack_san_functions)
+                    "{\n\t\"pathid\": " + pathID + ",\n" + 
+                    "\t\"vulnerability\": \"" + k + "\",\n" + 
+                    "\t\"nodeid\": " + x.id + ",\n" +
+                    "\t\"filename\": \"" + cpg.metaData.root.head.split("/").last + "/" + x.file.name.headOption.getOrElse("").replace("\"", "\\\"") + "\",\n" +
+                    "\t\"linenumber\": " + x.lineNumber.getOrElse("") + ",\n" +
+                    "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\",\n" +
+                    "\t\"sanitized\": \"" + sanitizationObject.isSanitized(x)(vulnerabilityInst) + "\"\n},"
+    }).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
+        output |> "navex_utils/paths/output.json"
     }
 
 }

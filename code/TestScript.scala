@@ -3,7 +3,7 @@ import Constants._
 @main def exec(cpgFile: String, fileMain: String) = { //, outFile: String) = {
     importCpg(cpgFile)
     val s = new SanitizationFilter(cpg)
-    implicit val vuln= s.vulnerabilityType("SQLI", Constants.san_functions_sql)
+    implicit val vuln= s.vulnerabilityType("XSS", Constants.san_functions_xss)
     println(cpg.method.fullName.l)
     // val fileMain = "identifier_basic_san.php:<global>"
     // val fileMain = "identifier_basic_unsan.php:<global>"

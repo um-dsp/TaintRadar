@@ -7,7 +7,7 @@ WORKSPACEDIR="/home/umd-user/Desktop/navex_project/navex_utils/code/cpg.bin"
 FILEMAIN=$1".php:<global>"
 
 cd $SCRIPTDIR
-joern-parse $SCRIPTDIR/php-tests/traversal
+joern-parse $SCRIPTDIR/php-tests/sanitization
 $JOERNDIR/joern --script $SCRIPTDIR/TestScript.scala --params cpgFile=$WORKSPACEDIR,fileMain=$FILEMAIN --import Constants.scala,SanitizationFilter.scala
 python3 addColor.py
 cd $SCRIPTDIR/output_graph

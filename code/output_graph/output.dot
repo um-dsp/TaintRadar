@@ -1,43 +1,25 @@
 digraph "&lt;global&gt;" {  
-"103" [label = <(METHOD,&lt;global&gt;)> ]
-"104" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)> ]
-"105" [label = <(&lt;operator&gt;.assignment,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"89" [label = <(IDENTIFIER,$name,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"106" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"91" [label = <(IDENTIFIER,$_GET,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"107" [label = <(LITERAL,&quot;name&quot;,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"108" [label = <(&lt;operator&gt;.assignment,$unsanquery = &quot;SELECT * FROM USERS WHERE USERNAME=&quot; . $name)<SUB>3</SUB>> ]
-"93" [label = <(IDENTIFIER,$unsanquery,$unsanquery = &quot;SELECT * FROM USERS WHERE USERNAME=&quot; . $name)<SUB>3</SUB>> ]
-"109" [label = <(&lt;operator&gt;.concat,&quot;SELECT * FROM USERS WHERE USERNAME=&quot; . $name)<SUB>3</SUB>> ]
-"110" [label = <(LITERAL,&quot;SELECT * FROM USERS WHERE USERNAME=&quot;,&quot;SELECT * FROM USERS WHERE USERNAME=&quot; . $name)<SUB>3</SUB>> ]
-"95" [label = <(IDENTIFIER,$name,&quot;SELECT * FROM USERS WHERE USERNAME=&quot; . $name)<SUB>3</SUB>> ]
-"111" [label = <(mysql_query,mysql_query($unsanquery))<SUB>4</SUB>> ]
-"96" [label = <(IDENTIFIER,$unsanquery,mysql_query($unsanquery))<SUB>4</SUB>> ]
-"112" [label = <(&lt;operator&gt;.assignment,$sanquery = mysql_escape_string($unsanquery))<SUB>5</SUB>> ]
-"97" [label = <(IDENTIFIER,$sanquery,$sanquery = mysql_escape_string($unsanquery))<SUB>5</SUB>> ]
-"113" [label = <(mysql_escape_string,mysql_escape_string($unsanquery))<SUB>5</SUB>> ]
-"99" [label = <(IDENTIFIER,$unsanquery,mysql_escape_string($unsanquery))<SUB>5</SUB>> ]
-"114" [label = <(mysql_query,mysql_query($sanquery))<SUB>6</SUB>> ]
-"100" [label = <(IDENTIFIER,$sanquery,mysql_query($sanquery))<SUB>6</SUB>> ]
-"115" [label = <(METHOD_RETURN,&lt;empty&gt;)> ]
-  "103" -> "104" 
-  "103" -> "115" 
-  "104" -> "105" 
-  "104" -> "108" 
-  "104" -> "111" 
-  "104" -> "112" 
-  "104" -> "114" 
-  "105" -> "89" 
-  "105" -> "106" 
-  "106" -> "91" 
-  "106" -> "107" 
-  "108" -> "93" 
-  "108" -> "109" 
-  "109" -> "110" 
-  "109" -> "95" 
-  "111" -> "96" 
-  "112" -> "97" 
-  "112" -> "113" 
-  "113" -> "99" 
-  "114" -> "100" 
+"394" [label = <(METHOD,&lt;global&gt;)> ]
+"395" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)> ]
+"396" [label = <(&lt;operator&gt;.assignment,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
+"387" [label = <(IDENTIFIER,$name,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
+"397" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;name&quot;])<SUB>2</SUB>> ]
+"389" [label = <(IDENTIFIER,$_GET,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
+"398" [label = <(LITERAL,&quot;name&quot;,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
+"399" [label = <(echo,echo &quot;Hello &quot; . $name)<SUB>3</SUB>> ]
+"400" [label = <(&lt;operator&gt;.concat,&quot;Hello &quot; . $name)<SUB>3</SUB>> ]
+"401" [label = <(LITERAL,&quot;Hello &quot;,&quot;Hello &quot; . $name)<SUB>3</SUB>> ]
+"391" [label = <(IDENTIFIER,$name,&quot;Hello &quot; . $name)<SUB>3</SUB>> ]
+"402" [label = <(METHOD_RETURN,&lt;empty&gt;)> ]
+  "394" -> "395" 
+  "394" -> "402" 
+  "395" -> "396" 
+  "395" -> "399" 
+  "396" -> "387" 
+  "396" -> "397" 
+  "397" -> "389" 
+  "397" -> "398" 
+  "399" -> "400" 
+  "400" -> "401" 
+  "400" -> "391" 
 }

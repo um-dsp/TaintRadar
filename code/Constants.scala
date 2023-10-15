@@ -34,7 +34,8 @@ object Constants {
     "cubrid_real_escape_string")
 
   val san_functions_xss = List("htmlentities",
-    "htmlspecialchars")
+    "htmlspecialchars",
+    "sanitize")
 
   val san_functions_all = List(
     "isset",
