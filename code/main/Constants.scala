@@ -2,7 +2,37 @@ object Constants {
 
   val attacker_input = List("_GET", "_POST", "_COOKIE", "_REQUEST", "_ENV", "HTTP_.*", "QUERY_STRING", "_FILES")
 
-  val sqli_sink = List("mysql_", "mysqli_", "pg_", "sqlite_")
+  val sqli_sink: List[String] = List(
+    // MySQLi Functions
+    "mysqli_query",
+    "mysqli_multi_query",
+    "mysqli_real_query",
+    "mysqli_fetch_assoc",
+    "mysqli_fetch_array",
+    "mysqli_fetch_object",
+    "mysqli_fetch_row",
+    // mysql_ Functions (Deprecated)
+    "mysql_query",
+    "mysql_fetch_assoc",
+    "mysql_fetch_array",
+    "mysql_fetch_object",
+    "mysql_fetch_row",
+    // PostgreSQL Functions
+    "pg_query",
+    "pg_query_params",
+    "pg_fetch_array",
+    "pg_fetch_assoc",
+    "pg_fetch_object",
+    "pg_fetch_row",
+    // SQLite Functions
+    "sqlite_query",
+    "sqlite_exec",
+    "sqlite_fetch_array",
+    "sqlite_fetch_single",
+    "sqlite_fetch_string",
+    "sqlite_fetch_all",
+    "sqlite_single_query"
+  )
 
   val commandexec_sink = List("shell_exec", "exec", "system", "mail", "popen", "expect_popen", "passthru", "pcntl_exec", "proc_open")
   
@@ -108,7 +138,7 @@ object Constants {
     "gethostbyname",
     "date", "ctype_digit")
   
-  val san_functions_code = List()
+  val san_functions_code = List
 
   val san_functions_os_command  = List("escapeshellarg",
     "escapeshellcmd")

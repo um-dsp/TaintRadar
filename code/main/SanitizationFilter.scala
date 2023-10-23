@@ -77,51 +77,51 @@ class SanitizationFilter(val cpg: Cpg) {
                // CONF: this & <global> identifiers are sanitized
                if (identifier.name == "<global>" || identifier.name == "this") mapOut = true
                else mapOut = {
-               var isArgumentSanitized = sanitizedParameters
-               // calculate the reaching definition of the identifier
-               val definingNode = {
-                  // identifier coming from a method parameter is unsanitized
-                  if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
-                     identifier.method.parameter.name(identifier.name).l
-                  // identifier used as argument of settype with a safe type will be sanitized
-                  // CONF: function name to set type by reference: settype
-                  else if (!identifier.astParent.isCallTo("settype").isEmpty && safe_types.contains(identifier.astParent.isCallTo("settype").argument(2).code.head.replaceAll("\"","")) ){
-                     identifier.astParent.isCallTo("settype").argument(2).l
+                  var isArgumentSanitized = sanitizedParameters
+                  // calculate the reaching definition of the identifier
+                  val definingNode = {
+                     // identifier coming from a method parameter is unsanitized
+                     if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
+                        identifier.method.parameter.name(identifier.name).l
+                     // identifier used as argument of settype with a safe type will be sanitized
+                     // CONF: function name to set type by reference: settype
+                     else if (!identifier.astParent.isCallTo("settype").isEmpty && safe_types.contains(identifier.astParent.isCallTo("settype").argument(2).code.head.replaceAll("\"","")) ){
+                        identifier.astParent.isCallTo("settype").argument(2).l
+                     }
+                     // CfgNode assigning a variable will have ddgIn pointing to the value of the assignment
+                     else if (identifier == identifier.astParent.assignment.argument(1).headOption.getOrElse(None)) {
+                        identifier.astParent.assignment.argument(2).l
+                     }
+                     // identifier passed by reference to function
+                     else if (identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l.map(p => p.evaluationStrategy == "BY_REFERENCE").lift(identifier.order-1) match {case None => false; case Some(b) => b}) {
+                        isArgumentSanitized = identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].argument.l.map(node => {
+                           var paramsByRef = node.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l.map(p => p.evaluationStrategy == "BY_REFERENCE")
+                           if (!paramsByRef.isEmpty && paramsByRef(node.order-1)) 
+                              isSanitized(node.ddgIn.l, sanitizedParameters)(vulnerabilityInst) 
+                           else isSanitized(node, sanitizedParameters)(vulnerabilityInst)
+                        })
+                        identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.methodReturn.ddgIn.isIdentifier.name(identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l(identifier.order-1).name).l
+                     }
+                     // identifiers from included files            
+                     // else if (identifier.ddgIn.isEmpty && !_cpg.isEmpty) {
+                     //    val includeNodes = cpg.method("<global>").where(_.namespaceBlock.fullName.filter(_==identifier.file.namespaceBlock.fullName.head)).call("include|require").l
+                     //    val argumentList = includeNodes.map(_.repeat(_.argument)(_.until(_.not(_.isCall))).l)
+                     //    val literalList = argumentList.map(_.flatMap(node => if (node.isIdentifier && node.code!="<global>") node.repeat(_.ddgIn)(_.until(_.isLiteral)).l else node).distinct)
+                     //    val directoryList = literalList.map(_.code.map(_.replaceAll("\"","")).l.reduce((a,b) => a+b))
+                     //    val fileIdentifiers = directoryList.flatMap(fileName => cpg.method.where(_.namespaceBlock.fullName("("+cpg.metaData.root.head+"/)?"+fileName.replace("./","")+":<global>")).methodReturn.ddgIn.isIdentifier.name(identifier.name).l)
+                     //    fileIdentifiers
+                     // }
+                     // used variable will have ddgIn periodically pointing to its last usage
+                     else {
+                        identifier.ddgIn.isIdentifier.name(identifier.name).l
+                        // identifier.repeat(_.ddgIn.isIdentifier.name(identifier.name))(_.until(_.astParent.isCallTo("settype|<operator>.assignment").argument(1).isIdentifier.name(identifier.name)))
+                     }
                   }
-                  // CfgNode assigning a variable will have ddgIn pointing to the value of the assignment
-                  else if (identifier == identifier.astParent.assignment.argument(1).headOption.getOrElse(None)) {
-                     identifier.astParent.assignment.argument(2).l
-                  }
-                  // identifier passed by reference to function
-                  else if (identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l.map(p => p.evaluationStrategy == "BY_REFERENCE").lift(identifier.order-1) match {case None => false; case Some(b) => b}) {
-                     isArgumentSanitized = identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].argument.l.map(node => {
-                        var paramsByRef = node.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l.map(p => p.evaluationStrategy == "BY_REFERENCE")
-                        if (!paramsByRef.isEmpty && paramsByRef(node.order-1)) 
-                           isSanitized(node.ddgIn.l, sanitizedParameters)(vulnerabilityInst) 
-                        else isSanitized(node, sanitizedParameters)(vulnerabilityInst)
-                     })
-                     identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.methodReturn.ddgIn.isIdentifier.name(identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l(identifier.order-1).name).l
-                  }
-                  // identifiers from included files            
-                  // else if (identifier.ddgIn.isEmpty && !_cpg.isEmpty) {
-                  //    val includeNodes = cpg.method("<global>").where(_.namespaceBlock.fullName.filter(_==identifier.file.namespaceBlock.fullName.head)).call("include|require").l
-                  //    val argumentList = includeNodes.map(_.repeat(_.argument)(_.until(_.not(_.isCall))).l)
-                  //    val literalList = argumentList.map(_.flatMap(node => if (node.isIdentifier && node.code!="<global>") node.repeat(_.ddgIn)(_.until(_.isLiteral)).l else node).distinct)
-                  //    val directoryList = literalList.map(_.code.map(_.replaceAll("\"","")).l.reduce((a,b) => a+b))
-                  //    val fileIdentifiers = directoryList.flatMap(fileName => cpg.method.where(_.namespaceBlock.fullName("("+cpg.metaData.root.head+"/)?"+fileName.replace("./","")+":<global>")).methodReturn.ddgIn.isIdentifier.name(identifier.name).l)
-                  //    fileIdentifiers
-                  // }
-                  // used variable will have ddgIn periodically pointing to its last usage
-                  else {
-                     identifier.ddgIn.isIdentifier.name(identifier.name).l
-                     // identifier.repeat(_.ddgIn.isIdentifier.name(identifier.name))(_.until(_.astParent.isCallTo("settype|<operator>.assignment").argument(1).isIdentifier.name(identifier.name)))
-                  }
+                  // println(node)
+                  !definingNode.isEmpty && isSanitized(definingNode, isArgumentSanitized)(vulnerabilityInst)
                }
-               // println(node)
-               !definingNode.isEmpty && isSanitized(definingNode, isArgumentSanitized)(vulnerabilityInst)
-            }
-            sanitizedNodesMap(mapInput(identifier.id, vulnerabilityInst.name)) = mapOut
-            mapOut
+               sanitizedNodesMap(mapInput(identifier.id, vulnerabilityInst.name)) = mapOut
+               mapOut
             }
             case constant: FieldIdentifier => {
                if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) magic_constants.contains(constant)
