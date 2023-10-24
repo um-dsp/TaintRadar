@@ -1,0 +1,25 @@
+digraph "&lt;global&gt;" {  
+"394" [label = <(METHOD,&lt;global&gt;)>, fillcolor="#ea9999ff", style=filled]
+"395" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
+"396" [label = <(&lt;operator&gt;.assignment,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"387" [label = <(IDENTIFIER,$name,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"397" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"389" [label = <(IDENTIFIER,$_GET,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
+"398" [label = <(LITERAL,&quot;name&quot;,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"399" [label = <(echo,echo &quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
+"400" [label = <(&lt;operator&gt;.concat,&quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
+"401" [label = <(LITERAL,&quot;Hello &quot;,&quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"391" [label = <(IDENTIFIER,$name,&quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
+"402" [label = <(METHOD_RETURN,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
+  "394" -> "395" 
+  "394" -> "402" 
+  "395" -> "396" 
+  "395" -> "399" 
+  "396" -> "387" 
+  "396" -> "397" 
+  "397" -> "389" 
+  "397" -> "398" 
+  "399" -> "400" 
+  "400" -> "401" 
+  "400" -> "391" 
+}

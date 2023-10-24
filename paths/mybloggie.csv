@@ -1,0 +1,574 @@
+
+XSS; $_GET["year"]; calendar.php:9
+XSS; $_GET["year"]; calendar.php:21
+XSS; $_GET["year"]; calendar.php:22
+XSS; intval($_GET["year"]); calendar.php:22
+XSS; $year; calendar.php:22
+XSS; $year; calendar.php:28
+XSS; $month_no; calendar.php:28
+XSS; $month_no; calendar.php:29
+XSS; $month_no; calendar.php:31
+XSS; $month_no; calendar.php:32
+XSS; $month_no; calendar.php:39
+XSS; $month_no; calendar.php:48
+XSS; $month_no + 1; calendar.php:48
+XSS; $monthchange; calendar.php:48
+XSS; $monthchange; calendar.php:50
+XSS; $monthchange; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no="; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange . "&amp;year="; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange . "&amp;year=" . $yearchange; calendar.php:52
+
+
+XSS; $_GET["year"]; calendar.php:21
+XSS; $_GET["year"]; calendar.php:22
+XSS; intval($_GET["year"]); calendar.php:22
+XSS; $year; calendar.php:22
+XSS; $year; calendar.php:28
+XSS; $year; calendar.php:29
+XSS; $year; calendar.php:31
+XSS; $year; calendar.php:32
+XSS; $year; calendar.php:40
+XSS; $year; calendar.php:46
+XSS; $year; calendar.php:50
+XSS; $year + 1; calendar.php:50
+XSS; $yearchange; calendar.php:50
+XSS; $yearchange; calendar.php:52
+XSS; $yearchange; calendar.php:53
+XSS; mktime(0,0,0,$monthchange,1,$yearchange); calendar.php:53
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)); calendar.php:53
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)) . " "; calendar.php:53
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)) . " " . $yearchange; calendar.php:53
+
+
+XSS; $_REQUEST["message"]; upload.php:212
+
+
+XSS; $_GET["month_no"]; calendar.php:15
+XSS; intval($_GET["month_no"]); calendar.php:15
+XSS; $month_no; calendar.php:15
+XSS; $month_no; calendar.php:28
+XSS; $year; calendar.php:28
+XSS; $year; calendar.php:29
+XSS; $year; calendar.php:31
+XSS; $year; calendar.php:32
+XSS; $year; calendar.php:40
+XSS; $year; calendar.php:46
+XSS; $lang[encaps] . " "; calendar.php:46
+XSS; $lang[encaps] . " " . $year; calendar.php:46
+
+
+XSS; $_GET["post_id"]; editcom.php:54
+XSS; intval($_GET["post_id"]); editcom.php:54
+XSS; $post_id; editcom.php:54
+XSS; $post_id; editcom.php:72
+XSS; $post_id; editcom.php:72
+XSS; $post_id; editcom.php:72
+XSS; $post_id; editcom.php:73
+XSS; $post_id; includes/checks.php:3
+XSS; $post_id; includes/checks.php:3
+XSS; $post_id; editcom.php:73
+XSS; $post_id; editcom.php:83
+XSS; $post_id; editcom.php:115
+XSS; $post_id; editcom.php:177
+XSS; self_url() . "/admin.php?mode=clist&amp;post_id="; editcom.php:177
+XSS; self_url() . "/admin.php?mode=clist&amp;post_id=" . $post_id; editcom.php:177
+XSS; self_url() . "/admin.php?mode=clist&amp;post_id=" . $post_id; editcom.php:177
+XSS; $url; includes/function.php:850
+XSS; $url; includes/function.php:860
+XSS; "<meta http-equiv=\"refresh\" content=\"" . $sec . ";url=" . $url; includes/function.php:860
+XSS; "<meta http-equiv=\"refresh\" content=\"" . $sec . ";url=" . $url . "\" />"; includes/function.php:860
+
+
+XSS; $_GET["month_no"]; calendar.php:9
+XSS; $_GET["month_no"]; calendar.php:9
+XSS; $_GET["month_no"]; calendar.php:14
+XSS; $_GET["month_no"]; calendar.php:15
+XSS; intval($_GET["month_no"]); calendar.php:15
+XSS; $month_no; calendar.php:15
+XSS; $month_no; calendar.php:28
+XSS; $month_no; calendar.php:29
+XSS; $month_no; calendar.php:31
+XSS; $month_no; calendar.php:32
+XSS; $month_no; calendar.php:39
+XSS; $month_no; calendar.php:48
+XSS; $month_no; calendar.php:70
+XSS; $month_no; calendar.php:82
+XSS; $month_no; calendar.php:83
+XSS; $date_of_mth; calendar.php:83
+XSS; $date_of_mth; calendar.php:112
+XSS; $date_of_mth; calendar.php:80
+XSS; $date_of_mth; calendar.php:80
+XSS; $date_of_mth; calendar.php:82
+XSS; mktime(0,0,0,$month_no,$date_of_mth,$year); calendar.php:82
+XSS; date("j",mktime(0,0,0,$month_no,$date_of_mth,$year)); calendar.php:82
+XSS; $date_no; calendar.php:82
+XSS; $date_no; calendar.php:87
+XSS; $date_no; calendar.php:95
+XSS; $date_no; calendar.php:97
+XSS; $linkdate; calendar.php:97
+XSS; $linkdate; calendar.php:100
+
+
+XSS; $_REQUEST["del"]; upload.php:137
+XSS; "Request" . $_REQUEST["del"]; upload.php:137
+
+
+XSS; "Request" . $_REQUEST["del"]; upload.php:137
+
+
+XSS; $_REQUEST["message"]; upload.php:212
+XSS; $_REQUEST["message"]; upload.php:212
+
+
+XSS; $_POST["keyword"]; search.php:39
+XSS; $keyword; search.php:39
+XSS; $keyword; search.php:43
+XSS; strip_tags($keyword); search.php:43
+XSS; $keyword; search.php:43
+XSS; $keyword; search.php:47
+XSS; $html_entities_replace; search.php:47
+XSS; $html_entities_match; search.php:47
+XSS; preg_replace($html_entities_match,$html_entities_replace,$keyword); search.php:47
+XSS; $keyword; search.php:47
+XSS; $keyword; search.php:51
+XSS; addslashes($keyword); search.php:51
+XSS; $keyword; search.php:51
+XSS; $keyword; search.php:55
+XSS; $keyword; search.php:70
+XSS; "SELECT COUNT(a.post_id) AS num_posts\nFROM " . POST_TBL . " a\nWHERE a.subject like \'%" . $keyword; search.php:68
+XSS; "SELECT COUNT(a.post_id) AS num_posts\nFROM " . POST_TBL . " a\nWHERE a.subject like \'%" . $keyword . "%\' OR a.message like \'%"; search.php:68
+XSS; $keyword; search.php:70
+XSS; $keyword; search.php:76
+XSS; $keyword; search.php:93
+XSS; $lang["Search_Error"] . " "; search.php:93
+XSS; $lang["Search_Error"] . " " . $keyword; search.php:93
+XSS; $lang["Search_Error"] . " " . $keyword; search.php:93
+XSS; $message; includes/function.php:571
+XSS; $message; includes/function.php:581
+
+
+XSS; $_POST["post_id"]; del.php:45
+XSS; $post_id; del.php:45
+XSS; $post_id; del.php:47
+XSS; $post_id; del.php:54
+XSS; $post_id; del.php:56
+XSS; " <form action=\"" . $_SERVER["PHP_SELF"] . "?mode=del\" method=\"post\"><br />" . $lang["Msg_Del_error3"] . "<br />\n   <input type=\"hidden\" name=\"post_id\" value=\""; del.php:55
+XSS; " <form action=\"" . $_SERVER["PHP_SELF"] . "?mode=del\" method=\"post\"><br />" . $lang["Msg_Del_error3"] . "<br />\n   <input type=\"hidden\" name=\"post_id\" value=\"" . $post_id; del.php:55
+XSS; " <form action=\"" . $_SERVER["PHP_SELF"] . "?mode=del\" method=\"post\"><br />" . $lang["Msg_Del_error3"] . "<br />\n   <input type=\"hidden\" name=\"post_id\" value=\"" . $post_id . "\" />\n   <input type=\"submit\" name=\"confirm\" value=\"yes\" />&nbsp;&nbsp;<input type=\"submit\" name=\"confirm\" value=\"no\" /></form>"; del.php:55
+XSS; " <form action=\"" . $_SERVER["PHP_SELF"] . "?mode=del\" method=\"post\"><br />" . $lang["Msg_Del_error3"] . "<br />\n   <input type=\"hidden\" name=\"post_id\" value=\"" . $post_id . "\" />\n   <input type=\"submit\" name=\"confirm\" value=\"yes\" />&nbsp;&nbsp;<input type=\"submit\" name=\"confirm\" value=\"no\" /></form>"; del.php:55
+XSS; $message; includes/function.php:596
+XSS; $message; includes/function.php:606
+
+
+XSS; $_GET["month_no"]; calendar.php:14
+XSS; $_GET["month_no"]; calendar.php:15
+XSS; intval($_GET["month_no"]); calendar.php:15
+XSS; $month_no; calendar.php:15
+XSS; $month_no; calendar.php:28
+XSS; $month_no; calendar.php:29
+XSS; $month_no; calendar.php:31
+XSS; $month_no; calendar.php:32
+XSS; $month_no; calendar.php:39
+XSS; $month_no; calendar.php:48
+XSS; $month_no + 1; calendar.php:48
+XSS; $monthchange; calendar.php:48
+XSS; $monthchange; calendar.php:50
+XSS; $monthchange; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no="; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange . "&amp;year="; calendar.php:52
+XSS; $yearchange; calendar.php:52
+XSS; $yearchange; calendar.php:53
+XSS; mktime(0,0,0,$monthchange,1,$yearchange); calendar.php:53
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)); calendar.php:53
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)) . " "; calendar.php:53
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)) . " " . $yearchange; calendar.php:53
+
+
+XSS; $_GET["year"]; calendar.php:9
+XSS; $_GET["year"]; calendar.php:9
+XSS; $_GET["year"]; calendar.php:21
+XSS; $_GET["year"]; calendar.php:22
+XSS; intval($_GET["year"]); calendar.php:22
+XSS; $year; calendar.php:22
+XSS; $year; calendar.php:28
+XSS; $year; calendar.php:29
+XSS; $year; calendar.php:31
+XSS; $year; calendar.php:32
+XSS; $year; calendar.php:40
+XSS; $year - 1; calendar.php:40
+XSS; $yearchange; calendar.php:40
+XSS; $yearchange; calendar.php:43
+XSS; $yearchange; calendar.php:44
+XSS; mktime(0,0,0,$monthchange,1,$yearchange); calendar.php:44
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)); calendar.php:44
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)) . " "; calendar.php:44
+XSS; date("M",mktime(0,0,0,$monthchange,1,$yearchange)) . " " . $yearchange; calendar.php:44
+
+
+XSS; $_GET["year"]; calendar.php:22
+XSS; intval($_GET["year"]); calendar.php:22
+XSS; $year; calendar.php:22
+XSS; $year; calendar.php:28
+XSS; $year; calendar.php:29
+XSS; $year; calendar.php:31
+XSS; $year; calendar.php:32
+XSS; $year; calendar.php:40
+XSS; $year; calendar.php:46
+XSS; $year; calendar.php:50
+XSS; $year; calendar.php:70
+XSS; $year; calendar.php:82
+XSS; $year; calendar.php:83
+XSS; $year; calendar.php:88
+XSS; $month_no; calendar.php:89
+XSS; $month_no; calendar.php:82
+XSS; $month_no; calendar.php:83
+XSS; $date_of_mth; calendar.php:83
+XSS; $date_of_mth; calendar.php:112
+XSS; $date_of_mth; calendar.php:80
+XSS; $date_of_mth; calendar.php:80
+XSS; $date_of_mth; calendar.php:82
+XSS; mktime(0,0,0,$month_no,$date_of_mth,$year); calendar.php:82
+XSS; date("j",mktime(0,0,0,$month_no,$date_of_mth,$year)); calendar.php:82
+XSS; $date_no; calendar.php:82
+XSS; $date_no; calendar.php:87
+XSS; $date_no; calendar.php:95
+XSS; $date_no; calendar.php:104
+XSS; $linkdate; calendar.php:104
+XSS; $linkdate; calendar.php:107
+
+
+XSS; $_REQUEST["del"]; upload.php:137
+XSS; $_REQUEST["del"]; upload.php:137
+XSS; "Request" . $_REQUEST["del"]; upload.php:137
+
+
+XSS; $_POST["keyword"]; search.php:39
+XSS; $_POST["keyword"]; search.php:39
+XSS; $keyword; search.php:39
+XSS; $keyword; search.php:43
+XSS; strip_tags($keyword); search.php:43
+XSS; $keyword; search.php:43
+XSS; $keyword; search.php:47
+XSS; $html_entities_replace; search.php:47
+XSS; $html_entities_match; search.php:47
+XSS; preg_replace($html_entities_match,$html_entities_replace,$keyword); search.php:47
+XSS; $keyword; search.php:47
+XSS; $keyword; search.php:51
+XSS; addslashes($keyword); search.php:51
+XSS; $keyword; search.php:51
+XSS; $keyword; search.php:55
+XSS; str_replace(,"",$keyword); search.php:55
+XSS; explode(" ",str_replace(,"",$keyword)); search.php:55
+XSS; $keywords; search.php:55
+XSS; $keywords; search.php:57
+XSS; $keywords; search.php:110
+XSS; $keywords; search.php:110
+XSS; $keywords; includes/function.php:687
+XSS; $keywords; includes/function.php:693
+XSS; $iter_tmp12; includes/function.php:693
+XSS; $iter_tmp12; includes/function.php:693
+XSS; $iter_tmp12->current(); includes/function.php:693
+XSS; $needle; includes/function.php:693
+XSS; $needle; includes/function.php:693
+XSS; $needle; includes/function.php:699
+
+
+XSS; $HTTP_GET_VARS["pageno"]; blog.php:30
+XSS; isset($HTTP_GET_VARS["pageno"]) ? intval($HTTP_GET_VARS["pageno"]) : 0; blog.php:30
+XSS; $pageno; blog.php:30
+XSS; $pageno; blog.php:38
+XSS; $pageno; includes/function.php:498
+XSS; $pageno; includes/function.php:498
+XSS; $pageno; blog.php:38
+XSS; $pageno; blog.php:43
+XSS; encaps; blog.php:42
+XSS; "SELECT " . CAT_TBL . ".cat_desc, " . POST_TBL . ".cat_id, " . CAT_TBL . ".cat_id, " . POST_TBL . ".post_id, " . POST_TBL . ".subject," . POST_TBL . ".message, " . USER_TBL . ".user, " . POST_TBL . ".timestamp, " . USER_TBL . ".id, " . POST_TBL . ".user_id FROM " . POST_TBL . ", " . USER_TBL . ", " . CAT_TBL . "\nWHERE " . POST_TBL . ".user_id=" . USER_TBL . ".id  AND  " . CAT_TBL . ".cat_id=" . POST_TBL . ".cat_id AND " . POST_TBL . ".timestamp<=\'" . $timestamp . "\'\nOrder by  " . POST_TBL . ".timestamp DESC, " . POST_TBL; blog.php:40
+XSS; "SELECT " . CAT_TBL . ".cat_desc, " . POST_TBL . ".cat_id, " . CAT_TBL . ".cat_id, " . POST_TBL . ".post_id, " . POST_TBL . ".subject," . POST_TBL . ".message, " . USER_TBL . ".user, " . POST_TBL . ".timestamp, " . USER_TBL . ".id, " . POST_TBL . ".user_id FROM " . POST_TBL . ", " . USER_TBL . ", " . CAT_TBL . "\nWHERE " . POST_TBL . ".user_id=" . USER_TBL . ".id  AND  " . CAT_TBL . ".cat_id=" . POST_TBL . ".cat_id AND " . POST_TBL . ".timestamp<=\'" . $timestamp . "\'\nOrder by  " . POST_TBL . ".timestamp DESC, " . POST_TBL . encaps; blog.php:40
+XSS; $sql; blog.php:40
+XSS; $sql; blog.php:45
+XSS; $db; blog.php:45
+XSS; $db; blog.php:47
+XSS; $db; blog.php:51
+XSS; $db->sql_query($sql); blog.php:51
+XSS; $result; blog.php:51
+XSS; $result; blog.php:52
+XSS; $db; blog.php:52
+XSS; $db->sql_fetchrow($result); blog.php:52
+XSS; $row; blog.php:52
+XSS; $row; blog.php:132
+XSS; $row["post_id"]; blog.php:132
+XSS; $row["post_id"]; blog.php:133
+XSS; $row["post_id"]; blog.php:139
+XSS; $row["post_id"]; blog.php:64
+XSS; $row["post_id"]; blog.php:69
+XSS; $row["post_id"]; blog.php:79
+XSS; $row["post_id"]; blog.php:105
+XSS; $post_id; includes/function.php:745
+XSS; $post_id; includes/function.php:745
+XSS; $row["post_id"]; blog.php:105
+XSS; $row["post_id"]; blog.php:106
+XSS; $row["post_id"]; blog.php:112
+XSS; $row["post_id"]; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id="; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id=" . $row["post_id"]; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id=" . $row["post_id"] . "\">"; blog.php:115
+XSS; $lang["Edit"]; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id=" . $row["post_id"] . "\">" . $lang["Edit"]; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id=" . $row["post_id"] . "\">" . $lang["Edit"] . "</a>]\n                                 [<a class=\"std\" href=\"admin.php?mode=del&redirect=index&post_id="; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id=" . $row["post_id"] . "\">" . $lang["Edit"] . "</a>]\n                                 [<a class=\"std\" href=\"admin.php?mode=del&redirect=index&post_id=" . $row["post_id"]; blog.php:115
+XSS; "<span class=\"f10pxgrey\">[<a class=\"std\" href=\"admin.php?mode=edit&redirect=index&cat_id=" . $row["cat_id"] . "&amp;post_id=" . $row["post_id"] . "\">" . $lang["Edit"] . "</a>]\n                                 [<a class=\"std\" href=\"admin.php?mode=del&redirect=index&post_id=" . $row["post_id"] . "\">"; blog.php:115
+XSS; $lang["Del"]; blog.php:116
+XSS; $lang; blog.php:84
+XSS; $lang["Error"]; blog.php:84
+XSS; $lang; blog.php:74
+XSS; $lang["Error"]; blog.php:74
+XSS; $lang["Error"]; blog.php:74
+XSS; $alert; includes/function.php:571
+XSS; $alert; includes/function.php:578
+
+
+XSS; $_GET["month_no"]; calendar.php:9
+XSS; $_GET["month_no"]; calendar.php:14
+XSS; $_GET["month_no"]; calendar.php:15
+XSS; intval($_GET["month_no"]); calendar.php:15
+XSS; $month_no; calendar.php:15
+XSS; $month_no; calendar.php:28
+XSS; $month_no; calendar.php:29
+XSS; $month_no; calendar.php:31
+XSS; $month_no; calendar.php:32
+XSS; $month_no; calendar.php:39
+XSS; $month_no; calendar.php:48
+XSS; $month_no + 1; calendar.php:48
+XSS; $monthchange; calendar.php:48
+XSS; $monthchange; calendar.php:50
+XSS; $monthchange; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no="; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange . "&amp;year="; calendar.php:52
+XSS; $_SERVER["PHP_SELF"] . "?month_no=" . $monthchange . "&amp;year=" . $yearchange; calendar.php:52
+
+
+File Access; $_FILES["userfile"]["tmp_name"]; upload.php:48
+File Access; $tempfilename; upload.php:48
+File Access; $tempfilename; upload.php:54
+
+
+Command Execution; $_POST["commentemail"]; view.php:104
+Command Execution; $_POST["commentemail"]; view.php:104
+Command Execution; $commentemail; view.php:104
+Command Execution; $commentemail; view.php:105
+Command Execution; trim($commentemail); view.php:105
+Command Execution; $commentemail; view.php:105
+Command Execution; $commentemail; view.php:175
+Command Execution; $html_entities_replace; view.php:175
+Command Execution; $html_entities_match; view.php:175
+Command Execution; preg_replace($html_entities_match,$html_entities_replace,$commentemail); view.php:175
+Command Execution; $commentemail; view.php:175
+Command Execution; $commentemail; view.php:194
+Command Execution; $commentsubject; view.php:193
+Command Execution; $user_ip; view.php:194
+Command Execution; $commentname; view.php:194
+Command Execution; $commenthome; view.php:194
+Command Execution; $post_id; view.php:193
+Command Execution; $timestamp; view.php:193
+Command Execution; $timestamp; view.php:211
+Command Execution; $timestamp; view.php:212
+Command Execution; date("d M Y",$timestamp); view.php:212
+Command Execution; $date; view.php:212
+Command Execution; $date; view.php:215
+Command Execution; "Date : " . $date; view.php:215
+Command Execution; "Date : " . $date . "\n"; view.php:215
+Command Execution; $body; view.php:215
+Command Execution; $body; view.php:216
+Command Execution; $body; view.php:217
+Command Execution; $body; view.php:218
+Command Execution; $body; view.php:219
+Command Execution; $body; view.php:220
+Command Execution; $body; view.php:221
+Command Execution; $body; view.php:222
+Command Execution; $body; view.php:222
+Command Execution; $body; view.php:203
+Command Execution; $body; view.php:208
+
+
+SQL Injection; !empty($HTTP_POST_VARS["db_host"]) ? $HTTP_POST_VARS["db_host"] : "localhost"; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:247
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbpasswd; install/wizard.php:262
+
+
+SQL Injection; $HTTP_POST_VARS["db_passwd"]; install/wizard.php:237
+SQL Injection; $HTTP_POST_VARS["db_passwd"]; install/wizard.php:237
+SQL Injection; !empty($HTTP_POST_VARS["db_passwd"]) ? $HTTP_POST_VARS["db_passwd"] : ""; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:250
+SQL Injection; $dbpasswd; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbuser; install/wizard.php:262
+
+
+SQL Injection; !empty($HTTP_POST_VARS["db_passwd"]) ? $HTTP_POST_VARS["db_passwd"] : ""; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:250
+SQL Injection; $dbpasswd; install/wizard.php:262
+SQL Injection; $dbuser; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+
+
+SQL Injection; $HTTP_POST_VARS["db_user"]; install/wizard.php:236
+SQL Injection; !empty($HTTP_POST_VARS["db_user"]) ? $HTTP_POST_VARS["db_user"] : ""; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:249
+SQL Injection; $dbuser; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbpasswd; install/wizard.php:262
+
+
+SQL Injection; $HTTP_POST_VARS["db_host"]; install/wizard.php:235
+SQL Injection; !empty($HTTP_POST_VARS["db_host"]) ? $HTTP_POST_VARS["db_host"] : "localhost"; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:247
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbuser; install/wizard.php:262
+
+
+SQL Injection; !empty($HTTP_POST_VARS["db_user"]); install/wizard.php:236
+SQL Injection; !empty($HTTP_POST_VARS["db_user"]) ? $HTTP_POST_VARS["db_user"] : ""; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:249
+SQL Injection; $dbuser; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+
+
+SQL Injection; !empty($HTTP_POST_VARS["db_user"]) ? $HTTP_POST_VARS["db_user"] : ""; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:249
+SQL Injection; $dbuser; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+
+
+SQL Injection; $_POST["passwd"]; login.php:46
+SQL Injection; $_POST["passwd"]; login.php:47
+SQL Injection; $passwd; login.php:47
+SQL Injection; $passwd; login.php:59
+SQL Injection; trim($passwd); login.php:59
+SQL Injection; md5(trim($passwd)); login.php:59
+SQL Injection; $passwd; login.php:59
+SQL Injection; $passwd; login.php:62
+SQL Injection; $passwd; login.php:64
+SQL Injection; encaps; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL . encaps; login.php:63
+SQL Injection; mysql_query("SELECT user FROM " . USER_TBL . encaps); login.php:63
+SQL Injection; $result; login.php:63
+SQL Injection; $result; login.php:65
+
+
+SQL Injection; !empty($HTTP_POST_VARS["db_passwd"]); install/wizard.php:237
+SQL Injection; !empty($HTTP_POST_VARS["db_passwd"]) ? $HTTP_POST_VARS["db_passwd"] : ""; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:250
+SQL Injection; $dbpasswd; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbuser; install/wizard.php:262
+
+
+SQL Injection; $_POST["username"]; login.php:42
+SQL Injection; $username; login.php:42
+SQL Injection; $username; login.php:50
+SQL Injection; trim($username); login.php:50
+SQL Injection; rtrim(trim($username),"\\"); login.php:50
+SQL Injection; htmlspecialchars(rtrim(trim($username),"\\")); login.php:50
+SQL Injection; $username; login.php:50
+SQL Injection; $username; login.php:51
+SQL Injection; str_replace("\\\'","\'",$username); login.php:51
+SQL Injection; substr(str_replace("\\\'","\'",$username),0,25); login.php:51
+SQL Injection; $username; login.php:51
+SQL Injection; $username; login.php:52
+SQL Injection; str_replace("\'","\\\'",$username); login.php:52
+SQL Injection; $username; login.php:52
+SQL Injection; $username; login.php:58
+SQL Injection; trim($username); login.php:58
+SQL Injection; $username; login.php:58
+SQL Injection; $username; login.php:61
+SQL Injection; $username; login.php:63
+SQL Injection; $passwd; login.php:64
+SQL Injection; encaps; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL . encaps; login.php:63
+
+
+SQL Injection; $HTTP_POST_VARS["db_passwd"]; install/wizard.php:237
+SQL Injection; !empty($HTTP_POST_VARS["db_passwd"]) ? $HTTP_POST_VARS["db_passwd"] : ""; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:237
+SQL Injection; $dbpasswd; install/wizard.php:250
+SQL Injection; $dbpasswd; install/wizard.php:262
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbuser; install/wizard.php:262
+
+
+SQL Injection; $HTTP_POST_VARS["db_user"]; install/wizard.php:236
+SQL Injection; $HTTP_POST_VARS["db_user"]; install/wizard.php:236
+SQL Injection; !empty($HTTP_POST_VARS["db_user"]) ? $HTTP_POST_VARS["db_user"] : ""; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:236
+SQL Injection; $dbuser; install/wizard.php:249
+SQL Injection; $dbuser; install/wizard.php:262
+
+
+SQL Injection; $_POST["passwd"]; login.php:47
+SQL Injection; $passwd; login.php:47
+SQL Injection; $passwd; login.php:59
+SQL Injection; trim($passwd); login.php:59
+SQL Injection; md5(trim($passwd)); login.php:59
+SQL Injection; $passwd; login.php:59
+SQL Injection; $passwd; login.php:62
+SQL Injection; $passwd; login.php:64
+SQL Injection; encaps; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL . encaps; login.php:63
+
+
+SQL Injection; $HTTP_POST_VARS["db_host"]; install/wizard.php:235
+SQL Injection; $HTTP_POST_VARS["db_host"]; install/wizard.php:235
+SQL Injection; !empty($HTTP_POST_VARS["db_host"]) ? $HTTP_POST_VARS["db_host"] : "localhost"; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:247
+SQL Injection; $dbhost; install/wizard.php:262
+
+
+SQL Injection; !empty($HTTP_POST_VARS["db_host"]); install/wizard.php:235
+SQL Injection; !empty($HTTP_POST_VARS["db_host"]) ? $HTTP_POST_VARS["db_host"] : "localhost"; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:235
+SQL Injection; $dbhost; install/wizard.php:247
+SQL Injection; $dbhost; install/wizard.php:262
+SQL Injection; $dbuser; install/wizard.php:262
+
+
+SQL Injection; $_POST["username"]; login.php:41
+SQL Injection; $_POST["username"]; login.php:42
+SQL Injection; $username; login.php:42
+SQL Injection; $username; login.php:50
+SQL Injection; trim($username); login.php:50
+SQL Injection; rtrim(trim($username),"\\"); login.php:50
+SQL Injection; htmlspecialchars(rtrim(trim($username),"\\")); login.php:50
+SQL Injection; $username; login.php:50
+SQL Injection; $username; login.php:51
+SQL Injection; str_replace("\\\'","\'",$username); login.php:51
+SQL Injection; substr(str_replace("\\\'","\'",$username),0,25); login.php:51
+SQL Injection; $username; login.php:51
+SQL Injection; $username; login.php:52
+SQL Injection; str_replace("\'","\\\'",$username); login.php:52
+SQL Injection; $username; login.php:52
+SQL Injection; $username; login.php:58
+SQL Injection; trim($username); login.php:58
+SQL Injection; $username; login.php:58
+SQL Injection; $username; login.php:61
+SQL Injection; $username; login.php:63
+SQL Injection; $passwd; login.php:64
+SQL Injection; encaps; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL; login.php:63
+SQL Injection; "SELECT user FROM " . USER_TBL . encaps; login.php:63

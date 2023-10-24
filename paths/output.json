@@ -1,0 +1,2628 @@
+[{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 537,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 6,
+	"code": "$_GET[rd]",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 428,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 6,
+	"code": "$rd",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 434,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 9,
+	"code": "$rd",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 544,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 9,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 432,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 9,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 440,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 556,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "mysql_query($query_caga_messaggio)",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 886,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 22,
+	"code": "$_POST[rispostadel]",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 816,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 22,
+	"code": "$rispostadel",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 827,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$rispostadel",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 826,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 823,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 824,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 894,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 821,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 830,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 902,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "mysql_query($query_ins_risposta)",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 185,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 218,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 214,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 181,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 500,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 73,
+	"code": "$rif",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 499,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 75,
+	"code": "$rif",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 704,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 75,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 497,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 75,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 503,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 76,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 707,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 76,
+	"code": "mysql_query($query_risposte)",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 532,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 424,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 437,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 551,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 436,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 440,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 556,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "mysql_query($query_caga_messaggio)",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 438,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "$w",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 443,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 17,
+	"code": "$w",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 559,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 17,
+	"code": "mysql_fetch_assoc($w)",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 977,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 6,
+	"code": "strip_tags($_POST[titolo])",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 915,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 6,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 945,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 23,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 948,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 35,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 956,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 955,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1035,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 952,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 959,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1042,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "mysql_query($query_ins_post)",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 851,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 6,
+	"code": "strip_tags($_POST[testo])",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 790,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 6,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 795,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 8,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 857,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 8,
+	"code": "explode(\" \",$testo)",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 793,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 8,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 798,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 9,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 809,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 874,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 808,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 873,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 806,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 813,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 18,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 881,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 18,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 812,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 18,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 826,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 823,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 824,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 894,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 821,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 830,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 902,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "mysql_query($query_ins_risposta)",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 532,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 424,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 437,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 461,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 43,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 624,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 43,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 459,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 43,
+	"code": "$query_caga_thread",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 464,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 44,
+	"code": "$query_caga_thread",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 627,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 44,
+	"code": "mysql_query($query_caga_thread)",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 462,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 44,
+	"code": "$r",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 467,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 45,
+	"code": "$r",
+	"sanitized": "false"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 630,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 45,
+	"code": "mysql_fetch_assoc($r)",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 537,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 6,
+	"code": "$_GET[rd]",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 428,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 6,
+	"code": "$rd",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 434,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 9,
+	"code": "$rd",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 544,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 9,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 432,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 9,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 440,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 556,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "mysql_query($query_caga_messaggio)",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 438,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "$w",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 443,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 17,
+	"code": "$w",
+	"sanitized": "false"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 559,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 17,
+	"code": "mysql_fetch_assoc($w)",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 984,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 7,
+	"code": "$_POST[testo]",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 983,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 7,
+	"code": "strip_tags($_POST[testo])",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 918,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 7,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 923,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 9,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 989,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 9,
+	"code": "explode(\" \",$testo)",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 921,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 9,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 926,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 10,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 937,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1009,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$destroy[$i]",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1006,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 936,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1005,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 934,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 941,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 19,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1013,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 19,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 940,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 19,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 957,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 954,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 956,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 955,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1035,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 952,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 959,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1042,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "mysql_query($query_ins_post)",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 841,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 4,
+	"code": "$_POST[postatoda]",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 840,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 4,
+	"code": "strip_tags($_POST[postatoda])",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 783,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 4,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 823,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 824,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 894,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 821,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 830,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 902,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "mysql_query($query_ins_risposta)",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 185,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 218,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 214,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 181,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 500,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 73,
+	"code": "$rif",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 499,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 75,
+	"code": "$rif",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 704,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 75,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 497,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 75,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 503,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 76,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 707,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 76,
+	"code": "mysql_query($query_risposte)",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 501,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 76,
+	"code": "$re",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 505,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 77,
+	"code": "$re",
+	"sanitized": "false"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 710,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 77,
+	"code": "mysql_fetch_assoc($re)",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 532,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 424,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 437,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 551,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 436,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 440,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "$query_caga_messaggio",
+	"sanitized": "false"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 556,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 16,
+	"code": "mysql_query($query_caga_messaggio)",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 185,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 218,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 214,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 181,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 90,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 41,
+	"code": "$id_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 89,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "$id_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 250,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 87,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 93,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 44,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 254,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 44,
+	"code": "mysql_query($query_risposte)",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 846,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 5,
+	"code": "$_POST[titolo]",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 787,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 5,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 825,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 827,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$rispostadel",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 826,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 823,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 824,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 894,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 821,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 830,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 902,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "mysql_query($query_ins_risposta)",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 185,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 218,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 214,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 181,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 90,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 41,
+	"code": "$id_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 89,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "$id_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 250,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 87,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 93,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 44,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 254,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 44,
+	"code": "mysql_query($query_risposte)",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 91,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 44,
+	"code": "$result",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 96,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 45,
+	"code": "$result",
+	"sanitized": "false"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 257,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 45,
+	"code": "mysql_fetch_assoc($result)",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 185,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 218,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 214,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 29,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 181,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 21,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 207,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 27,
+	"code": "$roba[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 90,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 41,
+	"code": "$id_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 89,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "$id_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 250,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 87,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 43,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 93,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 44,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 106,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 51,
+	"code": "$query_risposte",
+	"sanitized": "false"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 283,
+	"filename": "geccBBlite-0.1/geccBBlite/forum.php",
+	"linenumber": 51,
+	"code": "mysql_query($query_risposte)",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 971,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 5,
+	"code": "strip_tags($_POST[postatoda])",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 911,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 5,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 944,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 23,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 947,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 35,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 948,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 35,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 956,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 955,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1035,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 952,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 959,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1042,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "mysql_query($query_ins_post)",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 983,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 7,
+	"code": "strip_tags($_POST[testo])",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 918,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 7,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 923,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 9,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 989,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 9,
+	"code": "explode(\" \",$testo)",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 921,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 9,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 926,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 10,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 937,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1009,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$destroy[$i]",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1006,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 936,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1005,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 934,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 15,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 941,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 19,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1013,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 19,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 940,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 19,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 957,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 954,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 956,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 955,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1035,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 952,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 959,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1042,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "mysql_query($query_ins_post)",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 840,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 4,
+	"code": "strip_tags($_POST[postatoda])",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 783,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 4,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 823,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 824,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 894,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 821,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 830,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 902,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "mysql_query($query_ins_risposta)",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 972,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 5,
+	"code": "$_POST[postatoda]",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 971,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 5,
+	"code": "strip_tags($_POST[postatoda])",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 911,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 5,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 944,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 23,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 947,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 35,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 948,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 35,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 956,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 955,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1035,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 952,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 959,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1042,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "mysql_query($query_ins_post)",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 532,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$_GET[id]",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 424,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 437,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 13,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 461,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 43,
+	"code": "$id",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 624,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 43,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 459,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 43,
+	"code": "$query_caga_thread",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 464,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 44,
+	"code": "$query_caga_thread",
+	"sanitized": "false"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 627,
+	"filename": "geccBBlite-0.1/geccBBlite/leggi.php",
+	"linenumber": 44,
+	"code": "mysql_query($query_caga_thread)",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 978,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 6,
+	"code": "$_POST[titolo]",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 977,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 6,
+	"code": "strip_tags($_POST[titolo])",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 915,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 6,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 945,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 23,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 948,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 35,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 956,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$titolo",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 955,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1035,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 952,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 38,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 959,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "$query_ins_post",
+	"sanitized": "false"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 1042,
+	"filename": "geccBBlite-0.1/geccBBlite/scrivi.php",
+	"linenumber": 39,
+	"code": "mysql_query($query_ins_post)",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 852,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 6,
+	"code": "$_POST[testo]",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 851,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 6,
+	"code": "strip_tags($_POST[testo])",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 790,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 6,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 795,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 8,
+	"code": "$testo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 857,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 8,
+	"code": "explode(\" \",$testo)",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 793,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 8,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 798,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 9,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 809,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$destroy",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 874,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 808,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 873,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 806,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 14,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 813,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 18,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 881,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 18,
+	"code": "$testonuovo . encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 812,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 18,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 826,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$testonuovo",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 823,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$postatoda",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 824,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$data",
+	"sanitized": "true"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 894,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "encaps",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 821,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 24,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 830,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "$query_ins_risposta",
+	"sanitized": "false"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 902,
+	"filename": "geccBBlite-0.1/geccBBlite/rispondi.php",
+	"linenumber": 25,
+	"code": "mysql_query($query_ins_risposta)",
+	"sanitized": "false"
+}]

@@ -1,0 +1,15 @@
+18,TYPE_DECL,,,,class <global>,,geccBBlite/database.php,geccBBlite/database.php:<global>,,false,,<global>,1
+45,TYPE_DECL,,,,class <global>,,geccBBlite/footer.php,geccBBlite/footer.php:<global>,,false,,<global>,1
+112,TYPE_DECL,,,,class <global>,,geccBBlite/forum.php,geccBBlite/forum.php:<global>,,false,,<global>,1
+317,TYPE_DECL,,,,class <global>,,geccBBlite/header.php,geccBBlite/header.php:<global>,,false,,<global>,1
+329,TYPE_DECL,,,,class <global>,,geccBBlite/index.php,geccBBlite/index.php:<global>,,false,,<global>,1
+356,TYPE_DECL,,,,class <global>,,geccBBlite/install.php,geccBBlite/install.php:<global>,,false,,<global>,1
+411,TYPE_DECL,,,,class <global>,,geccBBlite/istruzioni.php,geccBBlite/istruzioni.php:<global>,,false,,<global>,1
+524,TYPE_DECL,,,,class <global>,,geccBBlite/leggi.php,geccBBlite/leggi.php:<global>,,false,,<global>,1
+774,TYPE_DECL,,,,class <global>,,geccBBlite/menu.php,geccBBlite/menu.php:<global>,,false,,<global>,1
+832,TYPE_DECL,,,,class <global>,,geccBBlite/rispondi.php,geccBBlite/rispondi.php:<global>,,false,,<global>,1
+961,TYPE_DECL,,,,class <global>,,geccBBlite/scrivi.php,geccBBlite/scrivi.php:<global>,,false,,<global>,1
+1069,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,ANY,,true,,ANY,-1
+1070,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,int,,true,,int,-1
+1071,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,string,,true,,string,-1
+1072,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,void,,true,,void,-1

@@ -1,6 +1,0 @@
-7,METHOD,display.php:<global>,<empty>,<empty>,,,display.php,display.php:<global>,,false,,,<global>,1,
-19,METHOD,getInput.php:<global>,<empty>,<empty>,,,getInput.php,getInput.php:<global>,,false,,,<global>,1,
-34,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,include,,true,,,include,0,
-38,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,echo,,true,,,echo,0,
-42,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.assignment,,true,,,<operator>.assignment,0,
-47,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.indexAccess,,true,,,<operator>.indexAccess,0,

@@ -1,0 +1,45 @@
+19,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/database.php,geccBBlite/database.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+46,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/footer.php,geccBBlite/footer.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+113,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/forum.php,geccBBlite/forum.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+247,METHOD,<empty>,<empty>,function risposte($id_risposta),,,geccBBlite/forum.php,risposte,,false,41,,risposte,14,<unresolvedSignature>(1)
+318,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/header.php,geccBBlite/header.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+330,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/index.php,geccBBlite/index.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+357,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/install.php,geccBBlite/install.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+386,METHOD,<empty>,<empty>,function create_tables($dbname),,,geccBBlite/install.php,create_tables,,false,27,,create_tables,7,<unresolvedSignature>(1)
+412,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/istruzioni.php,geccBBlite/istruzioni.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+525,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/leggi.php,geccBBlite/leggi.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+637,METHOD,<empty>,<empty>,"function sbobba($rif,$idpost,$rd)",,,geccBBlite/leggi.php,sbobba,,false,50,,sbobba,24,<unresolvedSignature>(3)
+701,METHOD,<empty>,<empty>,"function risposte($rif,$idpost,$rd)",,,geccBBlite/leggi.php,risposte,,false,73,,risposte,25,<unresolvedSignature>(3)
+775,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/menu.php,geccBBlite/menu.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+833,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/rispondi.php,geccBBlite/rispondi.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+962,METHOD,<empty>,<empty>,VIRTUAL PUBLIC STATIC function <global>(),,,geccBBlite/scrivi.php,geccBBlite/scrivi.php:<global>,,false,,,<global>,1,<unresolvedSignature>(0)
+1073,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.assignment,,true,,,<operator>.assignment,0,
+1078,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.logicalOr,,true,,,<operator>.logicalOr,0,
+1083,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_connect,,true,,,mysql_connect,0,<unresolvedSignature>(3)
+1089,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,exit,,true,,,exit,0,
+1093,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.concat,,true,,,<operator>.concat,0,
+1098,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_error,,true,,,mysql_error,0,<unresolvedSignature>(0)
+1101,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_select_db,,true,,,mysql_select_db,0,<unresolvedSignature>(1)
+1105,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,echo,,true,,,echo,0,
+1109,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,include,,true,,,include,0,
+1113,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_query,,true,,,mysql_query,0,<unresolvedSignature>(1)
+1117,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_fetch_assoc,,true,,,mysql_fetch_assoc,0,<unresolvedSignature>(1)
+1121,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,date,,true,,,date,0,<unresolvedSignature>(2)
+1126,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.indexAccess,,true,,,<operator>.indexAccess,0,
+1131,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.fieldAccess,,true,,,<operator>.fieldAccess,0,
+1136,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.logicalNot,,true,,,<operator>.logicalNot,0,
+1140,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,encaps,,true,,,encaps,0,
+1152,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.equals,,true,,,<operator>.equals,0,
+1157,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.notEquals,,true,,,<operator>.notEquals,0,
+1162,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.greaterThan,,true,,,<operator>.greaterThan,0,
+1167,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_affected_rows,,true,,,mysql_affected_rows,0,<unresolvedSignature>(0)
+1170,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,printf,,true,,,printf,0,<unresolvedSignature>(2)
+1175,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,nl2br,,true,,,nl2br,0,<unresolvedSignature>(1)
+1179,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,strip_tags,,true,,,strip_tags,0,<unresolvedSignature>(1)
+1183,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,explode,,true,,,explode,0,<unresolvedSignature>(2)
+1188,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,count,,true,,,count,0,<unresolvedSignature>(1)
+1192,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.lessThan,,true,,,<operator>.lessThan,0,
+1197,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.postIncrement,,true,,,<operator>.postIncrement,0,
+1201,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,preg_match,,true,,,preg_match,0,<unresolvedSignature>(2)
+1206,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,date,,true,,,date,0,<unresolvedSignature>(1)
+1210,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.logicalAnd,,true,,,<operator>.logicalAnd,0,

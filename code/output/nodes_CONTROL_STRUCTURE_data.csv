@@ -1,0 +1,26 @@
+130,CONTROL_STRUCTURE,-1,,while ($roba = mysql_fetch_assoc($r)),,WHILE,8,12,<empty>
+141,CONTROL_STRUCTURE,-1,,if (!$_GET[azione]),,IF,11,2,PhpIfStmt
+171,CONTROL_STRUCTURE,-1,,"if ($_GET[azione] == ""espandi"")",,IF,19,1,PhpIfStmt
+179,CONTROL_STRUCTURE,-1,,if ($roba[id] == $_GET[id]),,IF,21,1,PhpIfStmt
+212,CONTROL_STRUCTURE,-1,,if ($roba[id] != $_GET[id]),,IF,29,1,PhpIfStmt
+255,CONTROL_STRUCTURE,-1,,while ($risp = mysql_fetch_assoc($result)),,WHILE,45,8,<empty>
+284,CONTROL_STRUCTURE,-1,,if (mysql_affected_rows() > 0),,IF,52,4,PhpIfStmt
+366,CONTROL_STRUCTURE,-1,,if ($cosa),,IF,4,6,PhpIfStmt
+377,CONTROL_STRUCTURE,-1,,if (!$cosa),,IF,12,1,PhpIfStmt
+541,CONTROL_STRUCTURE,-1,,if ($rd),,IF,7,16,PhpIfStmt
+547,CONTROL_STRUCTURE,-1,,if (!$rd),,IF,11,1,PhpIfStmt
+557,CONTROL_STRUCTURE,-1,,while ($leggi = mysql_fetch_assoc($w)),,WHILE,17,19,<empty>
+584,CONTROL_STRUCTURE,-1,,if ($leggi[rispostadel] == 0),,IF,22,4,PhpIfStmt
+628,CONTROL_STRUCTURE,-1,,while ($risp = mysql_fetch_assoc($r)),,WHILE,45,23,<empty>
+644,CONTROL_STRUCTURE,-1,,while ($sbobba = mysql_fetch_assoc($f)),,WHILE,54,6,<empty>
+657,CONTROL_STRUCTURE,-1,,if (!$rd),,IF,58,3,PhpIfStmt
+674,CONTROL_STRUCTURE,-1,,if ($rd),,IF,63,1,PhpIfStmt
+708,CONTROL_STRUCTURE,-1,,while ($risp = mysql_fetch_assoc($re)),,WHILE,77,5,<empty>
+721,CONTROL_STRUCTURE,-1,,if ($risp[id] != $rd),,IF,81,3,PhpIfStmt
+739,CONTROL_STRUCTURE,-1,,if ($risp[id] == $rd),,IF,85,1,PhpIfStmt
+861,CONTROL_STRUCTURE,-1,,for ($i = 0;$i < $pezzi;$i++),,FOR,10,20,PhpForStmt
+867,CONTROL_STRUCTURE,-1,,"if (preg_match(""/(^(http:\\/\\/).+(\\..+)$)/i"",$destroy[$i]))",,IF,12,1,PhpIfStmt
+993,CONTROL_STRUCTURE,-1,,for ($i = 0;$i < $pezzi;$i++),,FOR,11,19,PhpForStmt
+999,CONTROL_STRUCTURE,-1,,"if (preg_match(""/(^(http:\\/\\/).+(\\..+)$)/i"",$destroy[$i]))",,IF,13,1,PhpIfStmt
+1017,CONTROL_STRUCTURE,-1,,if (!$postatoda && !$titolo && !$testo),,IF,23,20,PhpIfStmt
+1027,CONTROL_STRUCTURE,-1,,if ($postatoda && $titolo && $testo),,IF,35,1,PhpIfStmt
