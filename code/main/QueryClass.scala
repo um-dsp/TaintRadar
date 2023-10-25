@@ -85,7 +85,7 @@ case class DBQuery(data: List[AstNode] = List()) {
         val rawCode = this.data.filterNot(_.isIdentifier).map(getCode(_)).mkString(" ")
         val queryCode = rawCode.replaceAll("""(\w)\*""", "$1 *").split(" ").
                                 map(_.replace("\\n", " ").replace("\\t", " ")).flatMap(_.split(" ")).flatMap(_.split(",")).
-                                map(token => if ("[^a-zA-Z0-9 ]".r.replaceAllIn(token, "").size==0) "" else token).filterNot(_.isEmpty) 
+                                map(token => if ("[^a-zA-Z0-9* ]".r.replaceAllIn(token, "").size==0) "" else token).filterNot(_.isEmpty) 
         val queryIndices: Array[Int] = queryCode.zipWithIndex.collect(x => if (sqlStartKeywords.contains(x._1.toLowerCase().filter(!removeChars.contains(_)))) x._2 else -1).filter(_>=0)
         if (queryIndices.size >= 2) queryCode.slice(queryIndices.head, queryIndices.tail.head)
         else queryCode

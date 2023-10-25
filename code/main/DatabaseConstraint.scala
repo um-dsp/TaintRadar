@@ -50,7 +50,7 @@ class DatabaseConstraint(val cpg: Cpg) {
         query.getQueryType() match {
             case QueryType.OtherQuery => QueryLabel.SafeQuery
             case QueryType.SelectQuery => {
-                val queryCode = query.getQueryCode
+                val queryCode = query.getQueryCode.map(_.filter(!removeChars.contains(_)))
                 val queryScope = queryCode.dropWhile(_.toLowerCase() != "select").drop(1).takeWhile(_.toLowerCase() != "from")
                 val queryTable = queryCode.dropWhile(_.toLowerCase() != "from").drop(1).takeWhile(_.toLowerCase() != "where")
                 val queryTableName = tables.map(x => queryTable.exists(x.contains)).zipWithIndex.filter(_._1==true).map(_._2).collect(tables(_)).headOption.getOrElse("NA")
@@ -89,26 +89,33 @@ class DatabaseConstraint(val cpg: Cpg) {
                         val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
                         regex.findFirstIn(_).isDefined}))).map(_.filter(_==true).size).zipWithIndex.maxBy(_._1)._2 
                     val queryTableName = queryTableNames(mostLikelyIndex)
-                    val queryColumns = list_schema.filter(_(0) == queryTableName).map(_(1)) 
+                    val sortedColumns: List[String] = {
+                        if (queryTable.mkString(" ").contains("("))
+                            queryTable.dropWhile(!_.contains("(")).drop(0).toList
+                        else list_schema.filter(_(0) == queryTableName).map(_(1))
+                        } 
                     val unsafeColumns = schema(queryTableName).filterNot(_._2).keys.toList
-                    val setValuesUnsafe = unsafeColumns.map(s => queryValues.exists({
+                    val insertValuesUnsafe = unsafeColumns.map(s => sortedColumns.exists({
                             val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
                             regex.findFirstIn(_).isDefined}))
-                    if (unsafeColumns.isEmpty || !setValuesUnsafe.contains(true))
+                    if (unsafeColumns.isEmpty || !insertValuesUnsafe.contains(true))
                         QueryLabel.SafeQuery
                     else {
                         val valuesParsed = queryValues.map(token => if ("[^a-zA-Z0-9 ]".r.replaceAllIn(token, "").size==0) "" else token).filterNot(_.isEmpty) 
-                        val unsafeIndices = unsafeColumns.map(queryColumns.indexOf(_))
-                        val setUnsafeNodes = query.data.flatMap(x => unsafeIndices.map(valuesParsed(_)).map(searchNode(x, _))).filterNot(_==None)
-                        if (setUnsafeNodes.map(s.isSanitized(_)).contains(false))
-                            QueryLabel.UnsafeQuery
-                        else QueryLabel.SafeQuery
+                        if (valuesParsed.size != sortedColumns.size) QueryLabel.UnsafeQuery
+                        else {
+                            val unsafeIndices = unsafeColumns.map(sortedColumns.indexOf(_))
+                            val setUnsafeNodes = query.data.flatMap(x => unsafeIndices.map(valuesParsed(_)).map(searchNode(x, _))).filterNot(_==None)
+                            if (setUnsafeNodes.map(s.isSanitized(_)).contains(false))
+                                QueryLabel.UnsafeQuery
+                            else QueryLabel.SafeQuery
+                        }
                     }
                 }
             }
             case QueryType.UpdateQuery => {
                 val queryCode = query.getQueryCode
-                val queryTable = queryCode.dropWhile(_.toLowerCase() != "update").drop(1).takeWhile(_.toLowerCase() != "set")
+                val queryTable = queryCode.map(_.filter(!removeChars.contains(_))).dropWhile(_.toLowerCase() != "update").drop(1).takeWhile(_.toLowerCase() != "set")
                 val queryValues = queryCode.dropWhile(_.toLowerCase() != "set").drop(1).takeWhile(_.toLowerCase() != "where")
                 val queryTableNames = tables.map(x => queryTable.exists(x.contains)).zipWithIndex.filter(_._1==true).map(_._2).collect(tables(_)).l
                 if (queryTableNames.isEmpty) {
