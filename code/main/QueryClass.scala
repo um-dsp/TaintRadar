@@ -27,6 +27,33 @@ object QueryLabel extends Enumeration {
     val UnsafeQuery = Value("UNSAFE")
 }
 
+def searchNode(queryRoot: AstNode, code: String): Option[AstNode] = {
+    queryRoot match {
+        case literal: Literal => {
+            if (literal.code == code) Some(literal)
+            else None
+        }
+        case identifier: Identifier => {
+            if (identifier.code == code) Some(identifier)
+            else None
+        }
+        case call: nodes.Call => {
+            if (call.code == code) Some(call)
+            else  call.argument.l.map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
+        }
+        case constant: FieldIdentifier => {
+            if (constant.code == code) Some(constant)
+            else if (magic_constants.contains(constant.canonicalName) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) None
+            else constantTable.get(constant.canonicalName).map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
+            }
+        case _ => {
+            println(queryRoot)
+            None
+            // cpg.method.ast.filter(_.code == code).map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
+        }
+    }
+}
+
 def getCode(node: AstNode, output: String = ""): String = {
     node match {
         case literal: Literal => output + literal.code
@@ -36,7 +63,6 @@ def getCode(node: AstNode, output: String = ""): String = {
             else output + call.code
         }
         case constant: FieldIdentifier => {
-            println("CONSTANT")
             if (magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) output
             else output + getCode(constantTable.get(constant.canonicalName).head)
             }

@@ -124,7 +124,7 @@ class SanitizationFilter(val cpg: Cpg) {
                mapOut
             }
             case constant: FieldIdentifier => {
-               if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) magic_constants.contains(constant)
+               if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) magic_constants.contains(constant.canonicalName)
                else isSanitized(constantTable.get.get(constant.canonicalName), sanitizedParameters)(vulnerabilityInst)
             }
             case metadata: MetaData => true
@@ -146,6 +146,7 @@ class SanitizationFilter(val cpg: Cpg) {
             case returnBlock: Return => isSanitized(returnBlock.astChildren, sanitizedParameters)(vulnerabilityInst)
             case declaredtype: Type => true
             case declaredtype: TypeRef => true
+            case None => true
             case _ => {
                //println(node)
                false

@@ -51,7 +51,7 @@ class DatabaseConstraint(val cpg: Cpg) {
             case QueryType.OtherQuery => QueryLabel.SafeQuery
             case QueryType.SelectQuery => {
                 val queryCode = query.getQueryCode
-                val queryScope = queryCode.dropWhile(_.toLowerCase(). != "select").drop(1).takeWhile(_.toLowerCase() != "from")
+                val queryScope = queryCode.dropWhile(_.toLowerCase() != "select").drop(1).takeWhile(_.toLowerCase() != "from")
                 val queryTable = queryCode.dropWhile(_.toLowerCase() != "from").drop(1).takeWhile(_.toLowerCase() != "where")
                 val queryTableName = tables.map(x => queryTable.exists(x.contains)).zipWithIndex.filter(_._1==true).map(_._2).collect(tables(_)).headOption.getOrElse("NA")
                 if (queryTableName == "NA") {
@@ -91,12 +91,18 @@ class DatabaseConstraint(val cpg: Cpg) {
                     val queryTableName = queryTableNames(mostLikelyIndex)
                     val queryColumns = list_schema.filter(_(0) == queryTableName).map(_(1)) 
                     val unsafeColumns = schema(queryTableName).filterNot(_._2).keys.toList
-                    val setValuesUnsafe = 
+                    val setValuesUnsafe = unsafeColumns.map(s => queryValues.exists({
+                            val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
+                            regex.findFirstIn(_).isDefined}))
                     if (unsafeColumns.isEmpty || !setValuesUnsafe.contains(true))
                         QueryLabel.SafeQuery
                     else {
                         val valuesParsed = queryValues.map(token => if ("[^a-zA-Z0-9 ]".r.replaceAllIn(token, "").size==0) "" else token).filterNot(_.isEmpty) 
-                        QueryLabel.UnsafeQuery
+                        val unsafeIndices = unsafeColumns.map(queryColumns.indexOf(_))
+                        val setUnsafeNodes = query.data.flatMap(x => unsafeIndices.map(valuesParsed(_)).map(searchNode(x, _))).filterNot(_==None)
+                        if (setUnsafeNodes.map(s.isSanitized(_)).contains(false))
+                            QueryLabel.UnsafeQuery
+                        else QueryLabel.SafeQuery
                     }
                 }
             }
