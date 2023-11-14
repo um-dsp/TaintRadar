@@ -103,20 +103,13 @@ class NavexMain(val cpg: Cpg) {
             val path = reachableBySource(sink, source, vulnerabilityInst)
             if (!path.isEmpty) paths = paths :+ path
         })
-        val totalPaths = globalPaths ++ paths
+        val totalPaths = if (vulnerability == "XSS") {
+                // globalPaths ++ paths
+                val dbConstraint = new DatabaseConstraint(cpg)
+                (globalPaths ++ paths).filterNot(dbConstraint.filterPath)
+            } 
+            else globalPaths ++ paths
         val dedupPaths = totalPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
-        // var embeddedPaths: List[List[AstNode]] = List()
-        // for (path <- dedupPaths) {
-        //     for (other <- dedupPaths) {
-        //         if (other!=path) {
-        //             if (path.forall(other.contains)) {
-        //                 embeddedPaths = embeddedPaths :+ path
-        //             }
-                        
-        //         }
-        //     }
-        // }
-        // dedupPaths.filterNot(path => embeddedPaths.contains(path))
         dedupPaths
     }
     
@@ -152,7 +145,7 @@ class NavexMain(val cpg: Cpg) {
                         "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\",\n" +
                         "\t\"sanitized\": \"" + sanitizationObject.isSanitized(x)(vulnerabilityInst) + "\"\n},"
     }).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
-        output #> "navex_utils/paths/output.json"
+        output |> "navex_utils/paths/" + cpg.metaData.root.head.split("/").last.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json"
     }
 
 }

@@ -8,10 +8,6 @@ class SanitizationFilter(val cpg: Cpg) {
    */
    implicit val resolver: ICallResolver = NoResolve
    var exceptions = 0
-   // CONF: safe types in PHP
-   val safe_types: List[String] = List("int", "integer", "bool", "boolean", "float", "double")
-   // CONF: magic constants in PHP
-   val magic_constants: List[String] = List("__LINE__, __FILE__, __DIR__, __FUNCTION__, __CLASS__, __TRAIT__, __METHOD__, __NAMESPACE__")
 
    case class vulnerabilityType(name: String, sanitization_functions: List[String])
    case class mapInput(id: Long, vulnerabilityName: String)
@@ -21,8 +17,8 @@ class SanitizationFilter(val cpg: Cpg) {
    var isSanitizedMap = collection.mutable.Map[isSanitizedInput, Boolean]()
 
    // var constantTable = None: Option[collection.immutable.Map[String, List[Expression]]]
-   val constants: List[String] = cpg.call("define").argument(1).code.l.map(_.replace("\"", "")).distinct
-   val values: List[List[Expression]] = constants.map(constant => cpg.call("define").filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
+   val constants: List[String] = cpg.call(Constants.constant_definition_func).argument(1).code.l.map(_.replace("\"", "")).distinct
+   val values: List[List[Expression]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
    val constantTable = Some((constants zip values).toMap[String, List[Expression]]) 
 
    def isMethodSanitized(function: nodes.Call, arguments: List[Expression], sanitizedParameters: List[Boolean])(implicit vulnerabilityInst: vulnerabilityType): Boolean = {
@@ -37,11 +33,11 @@ class SanitizationFilter(val cpg: Cpg) {
       if (Constants.san_functions_all.contains(method.name) || vulnerabilityInst.sanitization_functions.contains(method.name)) true
       // dynamic dispatch only supported if the function appears only once in the code
       else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size > 1) false
-      else if (function.name == "<operator>.cast") safe_types.contains(function.typeFullName)
+      else if (function.name == "<operator>.cast") Constants.safe_types.contains(function.typeFullName)
       // an assignment function is sanitized if its second argument is sanitized
       else if (method.name == "<operator>.assignment") isArgumentSanitized(1)
-      // CONF: known unsanitized function calls
-      else if (method.name == "readline") false
+      // known unsanitized function calls
+      else if (Constants.input_func.contains(method.name)) false
       // if the function isn't user defined (e.g. <operator>.plus) assume it's sanitized only if all arguments are sanitized
       else if (method.code == "<empty>") !isArgumentSanitized.contains(false)
       // else check if return is sanitized given whether passed arguments are sanitized
@@ -74,8 +70,8 @@ class SanitizationFilter(val cpg: Cpg) {
                mapOut
             }
             case identifier: Identifier => {
-               // CONF: this & <global> identifiers are sanitized
-               if (identifier.name == "<global>" || identifier.name == "this") mapOut = true
+               // this & <global> identifiers are sanitized
+               if (Constants.san_identifiers.contains(identifier.name)) mapOut = true
                else mapOut = {
                   var isArgumentSanitized = sanitizedParameters
                   // calculate the reaching definition of the identifier
@@ -84,8 +80,8 @@ class SanitizationFilter(val cpg: Cpg) {
                      if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
                         identifier.method.parameter.name(identifier.name).l
                      // identifier used as argument of settype with a safe type will be sanitized
-                     // CONF: function name to set type by reference: settype
-                     else if (!identifier.astParent.isCallTo("settype").isEmpty && safe_types.contains(identifier.astParent.isCallTo("settype").argument(2).code.head.replaceAll("\"","")) ){
+                     // function name to set type by reference: settype
+                     else if (!identifier.astParent.isCallTo(Constants.type_cast_byref).isEmpty && Constants.safe_types.contains(identifier.astParent.isCallTo("settype").argument(2).code.head.replaceAll("\"","")) ){
                         identifier.astParent.isCallTo("settype").argument(2).l
                      }
                      // CfgNode assigning a variable will have ddgIn pointing to the value of the assignment
@@ -124,7 +120,7 @@ class SanitizationFilter(val cpg: Cpg) {
                mapOut
             }
             case constant: FieldIdentifier => {
-               if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) magic_constants.contains(constant.canonicalName)
+               if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) Constants.magic_constants.contains(constant.canonicalName)
                else isSanitized(constantTable.get.get(constant.canonicalName), sanitizedParameters)(vulnerabilityInst)
             }
             case metadata: MetaData => true

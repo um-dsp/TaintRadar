@@ -1,0 +1,100 @@
+adminstaff,adminid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+adminstaff,userid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+adminstaff,fname,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+adminstaff,lname,['UNIQUE'],False
+assignments,assignmentid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+assignments,courseid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+assignments,semesterid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+assignments,termid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+assignments,title,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+assignments,totalpoints,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+assignments,assigneddate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+assignments,duedate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+assignments,assignmentinformation,"['PRIMARY', 'KEY', '(assignmentid)']",False
+courses,courseid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+courses,semesterid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+courses,termid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+courses,coursename,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+courses,teacherid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+courses,sectionnum,"['varchar(15)', 'NOT NULL', 'default', ""'0'""]",False
+courses,roomnum,"['varchar(5)', 'NOT NULL', 'default', ""''""]",False
+courses,periodnum,"['char(3)', 'NOT NULL', 'default', ""''""]",False
+courses,q1points,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+courses,q2points,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+courses,totalpoints,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+courses,aperc,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+courses,bperc,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+courses,cperc,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+courses,dperc,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+courses,fperc,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+courses,dotw,"['varchar(5)', 'default', 'NULL']",False
+courses,substituteid,"['int(11)', 'default', 'NULL']",True
+courses,secondcourseid,"['int(11)', 'default', 'NULL']",True
+grades,gradeid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+grades,assignmentid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+grades,courseid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+grades,semesterid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+grades,termid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+grades,studentid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+grades,points,"['double(6,2)', 'default', ""'0.00'"", 'comment', 'text']",True
+grades,submitdate,"['date', 'default', ""'0000-00-00'""]",True
+grades,islate,"['int(1)', 'default', ""'0'""]",True
+parent_student_match,matchid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+parent_student_match,parentid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+parent_student_match,studentid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+parents,parentid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+parents,userid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+parents,fname,"['varchar(15)', 'default', 'NULL']",False
+parents,lname,"['varchar(15)', 'default', 'NULL']",False
+registrations,regid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+registrations,courseid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+registrations,studentid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+registrations,semesterid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+registrations,termid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+registrations,q1currpoints,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+registrations,q2currpoints,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+registrations,currentpoints,"['double(6,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+schoolattendance,sattendid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+schoolattendance,studentid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+schoolattendance,sattenddate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+schoolattendance,semesterid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+schoolattendance,termid,"['int(11)', 'NOT NULL', 'default', ""'0'"", 'type', ""enum('tardy','absent')"", 'default', 'NULL']",True
+schoolbulletins,sbulletinid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+schoolbulletins,title,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+schoolbulletins,message,"['text', 'NOT NULL']",False
+schoolbulletins,bulletindate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+schoolinfo,schoolname,"['varchar(50)', 'NOT NULL', 'default', ""''""]",False
+schoolinfo,address,"['varchar(50)', 'default', 'NULL']",False
+schoolinfo,phonenumber,"['varchar(14)', 'default', 'NULL']",False
+schoolinfo,sitetext,['text'],False
+schoolinfo,sitemessage,['text'],False
+schoolinfo,currenttermid,"['int(11)', 'default', 'NULL']",True
+schoolinfo,numsemesters,"['int(3)', 'NOT NULL', 'default', ""'0'""]",True
+schoolinfo,numperiods,"['int(3)', 'NOT NULL', 'default', ""'0'""]",True
+schoolinfo,apoint,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+schoolinfo,bpoint,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+schoolinfo,cpoint,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+schoolinfo,dpoint,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+schoolinfo,fpoint,"['double(6,3)', 'NOT NULL', 'default', ""'0.000'""]",True
+semesters,semesterid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+semesters,termid,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+semesters,title,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+semesters,startdate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+semesters,midtermdate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+semesters,enddate,"['date', 'NOT NULL', 'default', ""'0000-00-00'"", 'type', ""enum('1','2')"", 'default', 'NULL']",True
+students,studentid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+students,userid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+students,fname,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+students,mi,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+students,lname,['UNIQUE'],False
+teachers,teacherid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+teachers,userid,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+teachers,fname,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+teachers,lname,['UNIQUE'],False
+terms,termid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+terms,title,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+terms,startdate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+terms,enddate,"['date', 'NOT NULL', 'default', ""'0000-00-00'""]",True
+users,userid,"['int(11)', 'NOT NULL', 'auto_increment']",True
+users,username,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+users,password,['UNIQUE'],False

@@ -5,6 +5,10 @@ import re
 import ast
 from tqdm import tqdm
 
+tqdm.pandas()
+appName = 'collabtive'
+appVersion = '3.1'
+
 def getFiles(description):
     extensions = ['php', 'html', 'js']
     result = []
@@ -22,7 +26,7 @@ def getVulnerability(description):
     desc = description.lower()
     if "sql" in desc:
         return "SQL Injection"
-    elif "xss" in desc or "cross-site scripting" in desc:
+    elif "xss" in desc or "cross-site scripting" in desc or "cross site scripting" in desc:
         return "XSS"
     elif "file upload" in desc or "file inclusion" in desc:
         return "File Inclusion"
@@ -34,11 +38,24 @@ def getVulnerability(description):
         return "Code Injection"
     elif "command" in desc:
         return "Command Execution"
-    elif "csrf" in desc or "request forgery" in desc:
-        return "CSRF"
+    # elif "csrf" in desc or "request forgery" in desc:
+    #     return "CSRF"
     else:
         return "NA"
     
+# Compute whether appVersion was released before cveVersion (inclusive)
+def compareVersions(appVersion, cveVersions):
+    flag = False
+    if (len(cveVersions)==0): flag = True
+    for cveVersion in cveVersions:
+        v1 = list(map(int, appVersion.split('.')))
+        v2 = list(map(int, cveVersion.split('.')))
+        size = min(len(v1), len(v2))
+        v1 = v1[:size]
+        v2 = v2[:size]
+        if (v1 <= v2): flag = True
+    return flag
+
 def getParameters(description):
     description = description.replace(".", "")
     words = description.split(" ")
@@ -58,7 +75,7 @@ def getCVEFromNavex(cve, file):
 
 # Process CVEs into a dataframe
 
-r = nvdlib.searchCVE(keywordSearch='mybloggie')
+r = nvdlib.searchCVE(keywordSearch=appName)
 jsonFormattedCVE = json.dumps(ast.literal_eval(str(r)))
 cve = pd.read_json(jsonFormattedCVE)
 cve['descriptions'] = cve['descriptions'].apply(lambda descriptions: list(filter(lambda x: x["lang"]=="en", descriptions)))
@@ -67,22 +84,29 @@ cve['versions'] = cve['descriptions'].apply(getVersions)
 cve['filenames'] = cve['descriptions'].apply(getFiles)
 cve['cve_vulnerability'] = cve['descriptions'].apply(getVulnerability)
 cve['parameters'] = cve['descriptions'].apply(getParameters)
+cve['relevant_version'] = cve['versions'].apply(lambda x: compareVersions(appVersion, x))
+
+cve = cve[cve['cve_vulnerability']!='NA']
+cve = cve[cve['relevant_version']==True]
 cve = cve.loc[:, ['id', 'cve_vulnerability', 'versions', 'filenames', 'parameters', 'descriptions']]
-# cve = pd.read_excel('cve.xlsx', index_col=0)
+
+print(cve)
+
+# cve = pd.read_excel(f'cve/{appName}-cve.xlsx', index_col=0)
 
 # Join potential CVEs and vulnerability paths matches
-navex = pd.concat([pd.read_json('paths/mybloggie.json'), pd.read_json('paths/phpBB3.json')])
-CVE_ids = []
-flag = False
+navex = pd.read_json(f'paths/{appName}-output.json')
 print(navex['vulnerability'].size)
-for index, navexRow in tqdm(navex.iterrows()):
+
+def getCVEids(navexRow):
+    flag = False
     cve_id = 'NA'
     for index, row in cve.iterrows():
         if type(row['filenames'])!=list: files = ast.literal_eval(row['filenames'])
         else: files = row['filenames']
         if not files: files = ['']
         for fileName in files:
-            if fileName in navexRow['filename'] or fileName=='':
+            if fileName in navexRow.loc['filename'] or fileName=='':
                 if row['cve_vulnerability'] == navexRow['vulnerability']: 
                     if not row['parameters'] and fileName!='':
                         flag = True
@@ -94,7 +118,9 @@ for index, navexRow in tqdm(navex.iterrows()):
                             cve_id = row['id']
                             flag = False
                 break
-    CVE_ids.append(cve_id)
+    return cve_id
+
+CVE_ids = navex.progress_apply(getCVEids, axis=1)
 navex['CVE_id'] = CVE_ids
 navex = navex.merge(cve, how='left', left_on='CVE_id', right_on='id').drop(columns=['id', 'cve_vulnerability'])
 
@@ -106,5 +132,5 @@ print(pd.unique(navex['CVE_id']))
 # print(cve)
 
 # Save data to excel
-navex.to_excel("navex.xlsx")
-cve.to_excel("cve.xlsx")
+navex.to_excel(f"cve/{appName}-navex.xlsx")
+cve.to_excel(f"cve/{appName}-cve.xlsx")

@@ -1,3 +1,6 @@
+import org.simmetrics.StringMetric
+import org.simmetrics.metrics.StringMetrics
+
 val sqlStartKeywords: Set[String] = Set("select", "insert", "update", "delete",
                     "create", "alter", "drop", "truncate",
                     "use", "show", "begin", "start transaction", "commit", "rollback")
@@ -8,9 +11,11 @@ val safeSQLFunctions = Set("count(", "sum(", "max(", "min(", "min(", "length(", 
                             "year(", "month(", "day(", "abs(", "round(", "ceil(", "ceiling(", "floor(", 
                             "if(", "rank(", "dense_rank(", "row_number(")
 
-val magic_constants: List[String] = List("__LINE__, __FILE__, __DIR__, __FUNCTION__, __CLASS__, __TRAIT__, __METHOD__, __NAMESPACE__")
-val constants: List[String] = cpg.call("define").argument(1).code.l.map(_.replace("\"", "")).distinct
-val values: List[List[AstNode]] = constants.map(constant => cpg.call("define").filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
+val metric: StringMetric = StringMetrics.levenshtein
+
+val magic_constants: List[String] = Constants.magic_constants
+val constants: List[String] = cpg.call(Constants.constant_definition_func).argument(1).code.l.map(_.replace("\"", "")).distinct
+val values: List[List[AstNode]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
 val constantTable = Some((constants zip values).toMap[String, List[AstNode]]) 
 
 object QueryType extends Enumeration {
@@ -30,19 +35,19 @@ object QueryLabel extends Enumeration {
 def searchNode(queryRoot: AstNode, code: String): Option[AstNode] = {
     queryRoot match {
         case literal: Literal => {
-            if (literal.code == code) Some(literal)
+            if (metric.compare(literal.code, code) > 0.8F) Some(literal)
             else None
         }
         case identifier: Identifier => {
-            if (identifier.code == code) Some(identifier)
+            if (metric.compare(identifier.code, code) > 0.8F) Some(identifier)
             else None
         }
         case call: nodes.Call => {
-            if (call.code == code) Some(call)
+            if (metric.compare(call.code, code) > 0.8F) Some(call)
             else  call.argument.l.map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
         }
         case constant: FieldIdentifier => {
-            if (constant.code == code) Some(constant)
+            if (metric.compare(constant.code, code) > 0.8F) Some(constant)
             else if (magic_constants.contains(constant.canonicalName) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) None
             else constantTable.get(constant.canonicalName).map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
             }
@@ -59,7 +64,7 @@ def getCode(node: AstNode, output: String = ""): String = {
         case literal: Literal => output + literal.code
         case identifier: Identifier => output + identifier.code
         case call: nodes.Call => {
-            if (call.name == "<operator>.concat" || call.name == "encaps") call.argument.l.map(getCode(_, output)).mkString(" ")
+            if (Constants.query_concat_func.contains(call.name)) call.argument.l.map(getCode(_, output)).mkString(" ")
             else output + call.code
         }
         case constant: FieldIdentifier => {

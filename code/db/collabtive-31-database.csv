@@ -1,0 +1,106 @@
+customers_assigned,ID,"['int', 'NOT NULL']",True
+customers_assigned,customer,"['int', 'NOT NULL']",True
+customers_assigned,project,"['int', 'NOT NULL']",True
+files,ID,"['int', 'NOT NULL']",True
+files,name,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+files,desc,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+files,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+files,milestone,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+files,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+files,added,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+files,datei,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''"", 'type', 'varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+files,title,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+files,folder,"['int', 'NOT NULL']",True
+files,visible,"['text', 'NOT NULL']",False
+files_attached,ID,"['int', 'CHECK', '(ID > 0)', 'NOT NULL', 'file', 'int', 'CHECK', '(file > 0)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+files_attached,message,"['int', 'CHECK', '(message > 0)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+log,ID,"['int', 'NOT NULL']",True
+log,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+log,username,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+log,name,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''"", 'type', 'varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+log,action,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+log,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+log,datum,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+messages,ID,"['int', 'NOT NULL']",True
+messages,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+messages,title,"['text', 'text', 'NOT NULL']",False
+messages,tags,"['varchar(255)', 'NOT NULL']",False
+messages,posted,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+messages,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+messages,username,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+messages,replyto,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+messages,milestone,"['int', 'NOT NULL']",True
+messages_assigned,ID,"['int', 'NOT NULL']",True
+messages_assigned,user,"['int', 'NOT NULL']",True
+messages_assigned,message,"['int', 'NOT NULL']",True
+milestones,ID,"['int', 'NOT NULL']",True
+milestones,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+milestones,name,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+milestones,desc,"['start', 'varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+milestones,end,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+milestones,status,"['smallint', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+milestones_assigned,ID,"['int', 'NOT NULL']",True
+milestones_assigned,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+milestones_assigned,milestone,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+projectfolders,ID,"['int', 'CHECK', '(ID > 0)', 'NOT NULL']",True
+projectfolders,parent,"['int', 'CHECK', '(parent > 0)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+projectfolders,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+projectfolders,name,"['text', 'NOT NULL']",False
+projectfolders,description,"['varchar(255)', 'NOT NULL']",False
+projectfolders,visible,"['text', 'NOT NULL']",False
+projekte,ID,"['int', 'NOT NULL']",True
+projekte,name,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+projekte,desc,"['start', 'varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+projekte,end,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+projekte,status,"['smallint', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+projekte,budget,"['double precision', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+projekte_assigned,ID,"['int', 'NOT NULL']",True
+projekte_assigned,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+projekte_assigned,projekt,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+roles_assigned,ID,"['int', 'NOT NULL']",True
+roles_assigned,user,"['int', 'NOT NULL', 'role', 'int', 'NOT NULL']",True
+settings,ID,"['int', 'NOT NULL']",True
+settings,settingsKey,"['varchar(50)', 'NOT NULL']",False
+settings,settingsValue,"['varchar(50)', 'NOT NULL']",False
+tasklist,ID,"['int', 'NOT NULL']",True
+tasklist,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasklist,name,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+tasklist,desc,"['start', 'varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+tasklist,status,"['smallint', 'NOT NULL', 'DEFAULT', ""'0'"", 'access', 'smallint', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasklist,milestone,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasks,ID,"['start', 'varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+tasks,end,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+tasks,title,"['text', 'text', 'NOT NULL']",False
+tasks,liste,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasks,status,"['smallint', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasks,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasks_assigned,ID,"['int', 'NOT NULL']",True
+tasks_assigned,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+tasks_assigned,task,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+timetracker,ID,"['int', 'NOT NULL']",True
+timetracker,user,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+timetracker,project,"['int', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+timetracker,task,"['int', 'NOT NULL', 'DEFAULT', ""'0'"", 'comment', 'text', 'NOT NULL']",True
+timetracker,started,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+timetracker,ended,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+timetracker,hours,"['double precision', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+timetracker,pstatus,"['smallint', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+user,ID,"['int', 'NOT NULL']",True
+user,name,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,email,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,tel1,"['varchar(255)', 'DEFAULT', 'NULL']",False
+user,tel2,"['varchar(255)', 'DEFAULT', 'NULL']",False
+user,pass,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,company,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,lastlogin,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,zip,"['varchar(10)', 'DEFAULT', 'NULL']",False
+user,gender,"['char(1)', 'DEFAULT', ""''""]",False
+user,url,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,adress,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,adress2,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,state,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,country,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,tags,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,locale,"['varchar(6)', 'DEFAULT', ""''""]",False
+user,avatar,"['varchar(255)', 'DEFAULT', ""''""]",False
+user,rate,"['varchar(10)', 'DEFAULT', 'NULL']",False

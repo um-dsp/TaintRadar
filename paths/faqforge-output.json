@@ -1,0 +1,198 @@
+[{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 240,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "!isset($_POST[\"loginAttempts\"]) ? 1 : $_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 223,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 228,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 252,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "echo $loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 247,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$_POST[\"loginAttempts\"]",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 246,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 240,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "!isset($_POST[\"loginAttempts\"]) ? 1 : $_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 223,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 228,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 252,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "echo $loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 246,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 240,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "!isset($_POST[\"loginAttempts\"]) ? 1 : $_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 223,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 228,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 252,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "echo $loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 243,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$_POST[\"loginAttempts\"]",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 247,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$_POST[\"loginAttempts\"]",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 246,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 240,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "!isset($_POST[\"loginAttempts\"]) ? 1 : $_POST[\"loginAttempts\"] + 1",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 223,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 42,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 228,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "$loginAttempts",
+	"sanitized": "false"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 252,
+	"filename": "faqforge-1.3.2/admin/adminLoginForm.php",
+	"linenumber": 43,
+	"code": "echo $loginAttempts",
+	"sanitized": "false"
+}]

@@ -1,0 +1,778 @@
+upgrade_exceptions,upgrade_exception_id,"['smallint(5)', 'NOT NULL', 'auto_increment']",True
+upgrade_exceptions,sql_file,"['varchar(50)', 'default', 'NULL']",False
+upgrade_exceptions,reason,"['varchar(200)', 'default', 'NULL']",False
+upgrade_exceptions,errordate,"['datetime', 'default', ""'0001-01-01 00:00:00'""]",True
+upgrade_exceptions,sqlstatement,"['PRIMARY', 'KEY', '(upgrade_exception_id)']",False
+address_book,address_book_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+address_book,customers_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+address_book,entry_gender,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+address_book,entry_company,"['varchar(64)', 'default', 'NULL']",False
+address_book,entry_firstname,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+address_book,entry_lastname,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+address_book,entry_street_address,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+address_book,entry_suburb,"['varchar(32)', 'default', 'NULL']",False
+address_book,entry_postcode,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+address_book,entry_city,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+address_book,entry_state,"['varchar(32)', 'default', 'NULL']",False
+address_book,entry_country_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+address_book,entry_zone_id,"['KEY', 'idx_address_book_customers_id_zen (customers_id)']",False
+address_format,address_format_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+address_format,address_format,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+address_format,address_summary,"['varchar(48)', 'NOT NULL', 'default', ""''""]",False
+admin_activity_log,log_id,"['bigint(15)', 'NOT NULL', 'auto_increment']",True
+admin_activity_log,access_date,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+admin_activity_log,admin_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+admin_activity_log,page_accessed,"['varchar(80)', 'NOT NULL', 'default', ""''""]",False
+admin_activity_log,page_parameters,['text'],False
+admin_activity_log,ip_address,"['varchar(45)', 'NOT NULL', 'default', ""''""]",False
+admin_activity_log,flagged,"['tinyint', 'NOT NULL', 'default', ""'0'""]",True
+admin_activity_log,attention,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+admin_activity_log,gzpost,['mediumblob'],False
+admin_activity_log,logmessage,"['mediumtext', 'NOT NULL']",False
+admin_activity_log,severity,"['KEY', 'idx_page_accessed_zen (page_accessed)', 'KEY', 'idx_access_date_zen (access_date)', 'KEY', 'idx_flagged_zen (flagged)', 'KEY', 'idx_ip_zen (ip_address)']",True
+admin_menus,menu_key,"['VARCHAR(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+admin_menus,language_key,"['VARCHAR(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+admin_menus,sort_order,"['INT(11)', 'NOT NULL', 'DEFAULT', '0', 'UNIQUE']",False
+admin_pages,page_key,"['VARCHAR(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+admin_pages,language_key,"['VARCHAR(255)', 'NOT NULL', 'DEFAULT', ""''""]",False
+admin_pages,main_page,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+admin_pages,page_params,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+admin_pages,menu_key,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+admin_pages,display_on_menu,"['char(1)', 'NOT NULL', 'default', ""'N'""]",False
+admin_pages,sort_order,"['int(11)', 'NOT NULL', 'default', '0', 'UNIQUE']",True
+admin_profiles,profile_id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+admin_profiles,profile_name,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+admin_pages_to_profiles,profile_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+admin_pages_to_profiles,page_key,"['varchar(255)', 'NOT NULL', 'default', ""''"", 'UNIQUE']",False
+authorizenet,id,"['int(11)', 'unsigned', 'NOT NULL', 'auto_increment']",True
+authorizenet,customer_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+authorizenet,order_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+authorizenet,response_code,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+authorizenet,response_text,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+authorizenet,authorization_type,"['varchar(50)', 'NOT NULL', 'default', ""''""]",False
+authorizenet,transaction_id,"['bigint(20)', 'default', 'NULL']",True
+authorizenet,sent,"['longtext', 'NOT NULL']",True
+authorizenet,received,"['longtext', 'NOT NULL', 'time', 'varchar(50)', 'NOT NULL', 'default', ""''""]",True
+authorizenet,session_id,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+banners,banners_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+banners,banners_title,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+banners,banners_url,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+banners,banners_image,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+banners,banners_group,"['varchar(15)', 'NOT NULL', 'default', ""''""]",False
+banners,banners_html_text,['text'],False
+banners,expires_impressions,"['int(7)', 'default', ""'0'""]",True
+banners,expires_date,"['datetime', 'default', 'NULL']",True
+banners,date_scheduled,"['datetime', 'default', 'NULL']",True
+banners,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+banners,date_status_change,"['datetime', 'default', 'NULL']",True
+banners,status,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+banners,banners_open_new_windows,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+banners,banners_on_ssl,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+banners,banners_sort_order,"['KEY', 'idx_status_group_zen (status,banners_group)', 'KEY', 'idx_expires_date_zen (expires_date)', 'KEY', 'idx_date_scheduled_zen (date_scheduled)']",True
+banners_history,banners_history_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+banners_history,banners_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+banners_history,banners_shown,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+banners_history,banners_clicked,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+banners_history,banners_history_date,"['KEY', 'idx_banners_id_zen (banners_id)']",False
+categories,categories_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+categories,categories_image,"['varchar(64)', 'default', 'NULL']",False
+categories,parent_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+categories,sort_order,"['int(3)', 'default', 'NULL']",True
+categories,date_added,"['datetime', 'default', 'NULL']",True
+categories,last_modified,"['datetime', 'default', 'NULL']",True
+categories,categories_status,"['KEY', 'idx_parent_id_cat_id_zen (parent_id,categories_id)', 'KEY', 'idx_status_zen (categories_status)', 'KEY', 'idx_sort_order_zen (sort_order)']",False
+categories_description,categories_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+categories_description,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+categories_description,categories_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+categories_description,categories_description,"['KEY', 'idx_categories_name_zen (categories_name)']",False
+configuration,configuration_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+configuration,configuration_title,"['text', 'NOT NULL']",False
+configuration,configuration_key,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+configuration,configuration_value,"['text', 'NOT NULL']",False
+configuration,configuration_description,"['text', 'NOT NULL']",False
+configuration,configuration_group_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+configuration,sort_order,"['int(5)', 'default', 'NULL']",True
+configuration,last_modified,"['datetime', 'default', 'NULL']",True
+configuration,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+configuration,use_function,"['text', 'default', 'NULL']",False
+configuration,set_function,['UNIQUE'],False
+configuration_group,configuration_group_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+configuration_group,configuration_group_title,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+configuration_group,configuration_group_description,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+configuration_group,sort_order,"['int(5)', 'default', 'NULL']",True
+configuration_group,visible,"['KEY', 'idx_visible_zen (visible)']",False
+counter,startdate,"['char(8)', 'default', 'NULL']",False
+counter,counter,"['int(12)', 'default', 'NULL']",True
+counter_history,startdate,"['char(8)', 'NOT NULL', 'default', ""''""]",False
+counter_history,counter,"['int(12)', 'default', 'NULL']",True
+counter_history,session_counter,"['int(12)', 'default', 'NULL']",True
+countries,countries_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+countries,countries_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+countries,countries_iso_code_2,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+countries,countries_iso_code_3,"['char(3)', 'NOT NULL', 'default', ""''""]",False
+countries,address_format_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+countries,status,"['KEY', 'idx_countries_name_zen (countries_name)', 'KEY', 'idx_address_format_id_zen (address_format_id)', 'KEY', 'idx_iso_2_zen (countries_iso_code_2)', 'KEY', 'idx_iso_3_zen (countries_iso_code_3)']",False
+coupon_email_track,unique_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+coupon_email_track,coupon_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_email_track,customer_id_sent,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_email_track,sent_firstname,"['varchar(32)', 'default', 'NULL']",False
+coupon_email_track,sent_lastname,"['varchar(32)', 'default', 'NULL']",False
+coupon_email_track,emailed_to,"['varchar(32)', 'default', 'NULL']",False
+coupon_email_track,date_sent,"['KEY', 'idx_coupon_id_zen (coupon_id)']",False
+coupon_gv_customer,customer_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_gv_customer,amount,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+coupon_gv_queue,unique_id,"['int(5)', 'NOT NULL', 'auto_increment']",True
+coupon_gv_queue,customer_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_gv_queue,order_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_gv_queue,amount,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+coupon_gv_queue,date_created,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+coupon_gv_queue,ipaddr,"['varchar(45)', 'NOT NULL', 'default', ""''""]",False
+coupon_gv_queue,release_flag,"['KEY', 'idx_cust_id_order_id_zen (customer_id,order_id)', 'KEY', 'idx_release_flag_zen (release_flag)']",False
+coupon_redeem_track,unique_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+coupon_redeem_track,coupon_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_redeem_track,customer_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_redeem_track,redeem_date,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+coupon_redeem_track,redeem_ip,"['varchar(45)', 'NOT NULL', 'default', ""''""]",False
+coupon_redeem_track,order_id,"['KEY', 'idx_coupon_id_zen (coupon_id)']",False
+coupon_restrict,restrict_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+coupon_restrict,coupon_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_restrict,product_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_restrict,category_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupon_restrict,coupon_restrict,"['KEY', 'idx_coup_id_prod_id_zen (coupon_id,product_id)']",False
+coupons,coupon_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+coupons,coupon_type,"['char(1)', 'NOT NULL', 'default', ""'F'""]",False
+coupons,coupon_code,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+coupons,coupon_amount,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+coupons,coupon_minimum_order,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+coupons,coupon_start_date,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+coupons,coupon_expire_date,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+coupons,uses_per_coupon,"['int(5)', 'NOT NULL', 'default', ""'1'""]",True
+coupons,uses_per_user,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+coupons,restrict_to_products,"['varchar(255)', 'default', 'NULL']",False
+coupons,restrict_to_categories,"['varchar(255)', 'default', 'NULL']",False
+coupons,restrict_to_customers,['text'],False
+coupons,coupon_active,"['char(1)', 'NOT NULL', 'default', ""'Y'""]",False
+coupons,date_created,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+coupons,date_modified,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+coupons,coupon_zone_restriction,"['KEY', 'idx_active_type_zen (coupon_active,coupon_type)', 'KEY', 'idx_coupon_code_zen (coupon_code)', 'KEY', 'idx_coupon_type_zen (coupon_type)']",False
+coupons_description,coupon_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupons_description,language_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+coupons_description,coupon_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+coupons_description,coupon_description,"['PRIMARY', 'KEY', '(coupon_id,language_id)']",False
+currencies,currencies_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+currencies,title,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+currencies,code,"['char(3)', 'NOT NULL', 'default', ""''""]",False
+currencies,symbol_left,"['varchar(32)', 'default', 'NULL']",False
+currencies,symbol_right,"['varchar(32)', 'default', 'NULL']",False
+currencies,decimal_point,"['char(1)', 'default', 'NULL']",False
+currencies,thousands_point,"['char(1)', 'default', 'NULL']",False
+currencies,decimal_places,"['char(1)', 'default', 'NULL']",False
+currencies,value,"['float(13,8)', 'default', 'NULL']",True
+currencies,last_updated,"['datetime', 'default', 'NULL']",True
+customers,customers_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+customers,customers_gender,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_firstname,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_lastname,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_dob,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+customers,customers_email_address,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_nick,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_default_address_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+customers,customers_telephone,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_fax,"['varchar(32)', 'default', 'NULL']",False
+customers,customers_password,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_newsletter,"['char(1)', 'default', 'NULL']",False
+customers,customers_group_pricing,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+customers,customers_email_format,"['varchar(4)', 'NOT NULL', 'default', ""'TEXT'""]",False
+customers,customers_authorization,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+customers,customers_referral,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_paypal_payerid,"['VARCHAR(20)', 'NOT NULL', 'default', ""''""]",False
+customers,customers_paypal_ec,"['KEY', 'idx_email_address_zen (customers_email_address)', 'KEY', 'idx_referral_zen (customers_referral(10))', 'KEY', 'idx_grp_pricing_zen (customers_group_pricing)', 'KEY', 'idx_nick_zen (customers_nick)', 'KEY', 'idx_newsletter_zen (customers_newsletter)']",False
+customers_basket,customers_basket_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+customers_basket,customers_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+customers_basket,products_id,"['tinytext', 'NOT NULL']",False
+customers_basket,customers_basket_quantity,"['float', 'NOT NULL', 'default', ""'0'""]",True
+customers_basket,final_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+customers_basket,customers_basket_date_added,"['KEY', 'idx_customers_id_zen (customers_id)']",False
+customers_basket_attributes,customers_basket_attributes_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+customers_basket_attributes,customers_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+customers_basket_attributes,products_id,"['tinytext', 'NOT NULL']",False
+customers_basket_attributes,products_options_id,"['varchar(64)', 'NOT NULL', 'default', ""'0'""]",False
+customers_basket_attributes,products_options_value_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+customers_basket_attributes,products_options_value_text,"['BLOB', 'NULL']",False
+customers_basket_attributes,products_options_sort_order,"['KEY', 'idx_cust_id_prod_id_zen (customers_id,products_id(36))']",False
+customers_info,customers_info_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+customers_info,customers_info_date_of_last_logon,"['datetime', 'default', 'NULL']",True
+customers_info,customers_info_number_of_logons,"['int(5)', 'default', 'NULL']",True
+customers_info,customers_info_date_account_created,"['datetime', 'default', 'NULL']",True
+customers_info,customers_info_date_account_last_modified,"['datetime', 'default', 'NULL']",True
+customers_info,global_product_notifications,"['int(1)', 'default', ""'0'""]",True
+db_cache,cache_entry_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+db_cache,cache_data,['mediumblob'],False
+db_cache,cache_entry_created,"['int(15)', 'default', 'NULL']",True
+email_archive,archive_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+email_archive,email_to_name,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+email_archive,email_to_address,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+email_archive,email_from_name,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+email_archive,email_from_address,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+email_archive,email_subject,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+email_archive,email_html,"['text', 'NOT NULL']",False
+email_archive,email_text,"['text', 'NOT NULL']",False
+email_archive,date_sent,"['KEY', 'idx_email_to_address_zen (email_to_address)', 'KEY', 'idx_module_zen (module)']",False
+ezpages,pages_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+ezpages,languages_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+ezpages,pages_title,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+ezpages,alt_url,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+ezpages,alt_url_external,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+ezpages,pages_html_text,['mediumtext'],False
+ezpages,status_header,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+ezpages,status_sidebox,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+ezpages,status_footer,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+ezpages,status_toc,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+ezpages,header_sort_order,"['int(3)', 'NOT NULL', 'default', ""'0'""]",True
+ezpages,sidebox_sort_order,"['int(3)', 'NOT NULL', 'default', ""'0'""]",True
+ezpages,footer_sort_order,"['int(3)', 'NOT NULL', 'default', ""'0'""]",True
+ezpages,toc_sort_order,"['int(3)', 'NOT NULL', 'default', ""'0'""]",True
+ezpages,page_open_new_window,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+ezpages,page_is_ssl,"['int(1)', 'NOT NULL', 'default', ""'0'""]",True
+ezpages,toc_chapter,"['KEY', 'idx_lang_id_zen (languages_id)', 'KEY', 'idx_ezp_status_header_zen (status_header)', 'KEY', 'idx_ezp_status_sidebox_zen (status_sidebox)', 'KEY', 'idx_ezp_status_footer_zen (status_footer)', 'KEY', 'idx_ezp_status_toc_zen (status_toc)']",False
+featured,featured_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+featured,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+featured,featured_date_added,"['datetime', 'default', 'NULL']",True
+featured,featured_last_modified,"['datetime', 'default', 'NULL']",True
+featured,expires_date,"['date', 'NOT NULL', 'default', ""'0001-01-01'""]",True
+featured,date_status_change,"['datetime', 'default', 'NULL']",True
+featured,status,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+featured,featured_date_available,"['KEY', 'idx_status_zen (status)', 'KEY', 'idx_products_id_zen (products_id)', 'KEY', 'idx_date_avail_zen (featured_date_available)', 'KEY', 'idx_expires_date_zen (expires_date)']",True
+files_uploaded,files_uploaded_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+files_uploaded,sesskey,"['varchar(32)', 'default', 'NULL']",False
+files_uploaded,customers_id,"['int(11)', 'default', 'NULL']",True
+files_uploaded,files_uploaded_name,"['KEY', 'idx_customers_id_zen (customers_id)']",False
+geo_zones,geo_zone_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+geo_zones,geo_zone_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+geo_zones,geo_zone_description,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+geo_zones,last_modified,"['datetime', 'default', 'NULL']",True
+geo_zones,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+get_terms_to_filter,get_term_name,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+get_terms_to_filter,get_term_table,"['varchar(64)', 'NOT NULL']",False
+get_terms_to_filter,get_term_name_field,"['varchar(64)', 'NOT NULL']",False
+group_pricing,group_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+group_pricing,group_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+group_pricing,group_percentage,"['decimal(5,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+group_pricing,last_modified,"['datetime', 'default', 'NULL']",True
+group_pricing,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+languages,languages_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+languages,name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+languages,code,"['char(2)', 'NOT NULL', 'default', ""''""]",False
+languages,image,"['varchar(64)', 'default', 'NULL', 'directory', 'varchar(32)', 'default', 'NULL']",False
+languages,sort_order,"['KEY', 'idx_languages_name_zen (name)']",False
+layout_boxes,layout_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+layout_boxes,layout_template,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+layout_boxes,layout_box_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+layout_boxes,layout_box_status,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+layout_boxes,layout_box_location,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+layout_boxes,layout_box_sort_order,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+layout_boxes,layout_box_sort_order_single,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+layout_boxes,layout_box_status_single,"['KEY', 'idx_name_template_zen (layout_template,layout_box_name)', 'KEY', 'idx_layout_box_status_zen (layout_box_status)', 'KEY', 'idx_layout_box_sort_order_zen (layout_box_sort_order)']",False
+manufacturers,manufacturers_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+manufacturers,manufacturers_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+manufacturers,manufacturers_image,"['varchar(64)', 'default', 'NULL']",False
+manufacturers,date_added,"['datetime', 'default', 'NULL']",True
+manufacturers,last_modified,"['KEY', 'idx_mfg_name_zen (manufacturers_name)']",False
+manufacturers_info,manufacturers_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+manufacturers_info,languages_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+manufacturers_info,manufacturers_url,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+manufacturers_info,url_clicked,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+manufacturers_info,date_last_click,"['datetime', 'default', 'NULL']",True
+media_clips,clip_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+media_clips,media_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+media_clips,clip_type,"['smallint(6)', 'NOT NULL', 'default', ""'0'""]",True
+media_clips,clip_filename,"['text', 'NOT NULL']",False
+media_clips,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+media_clips,last_modified,"['KEY', 'idx_media_id_zen (media_id)', 'KEY', 'idx_clip_type_zen (clip_type)']",False
+media_manager,media_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+media_manager,media_name,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+media_manager,last_modified,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+media_manager,date_added,"['KEY', 'idx_media_name_zen (media_name)']",False
+media_to_products,media_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+media_to_products,product_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+media_types,type_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+media_types,type_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+media_types,type_ext,"['KEY', 'idx_type_name_zen (type_name)']",False
+meta_tags_categories_description,categories_id,"['int(11)', 'NOT NULL']",True
+meta_tags_categories_description,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+meta_tags_categories_description,metatags_title,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+meta_tags_categories_description,metatags_keywords,['text'],False
+meta_tags_categories_description,metatags_description,"['PRIMARY', 'KEY', '(categories_id,language_id)']",False
+meta_tags_products_description,products_id,"['int(11)', 'NOT NULL']",True
+meta_tags_products_description,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+meta_tags_products_description,metatags_title,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+meta_tags_products_description,metatags_keywords,['text'],False
+meta_tags_products_description,metatags_description,"['PRIMARY', 'KEY', '(products_id,language_id)']",False
+music_genre,music_genre_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+music_genre,music_genre_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+music_genre,date_added,"['datetime', 'default', 'NULL']",True
+music_genre,last_modified,"['KEY', 'idx_music_genre_name_zen (music_genre_name)']",False
+newsletters,newsletters_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+newsletters,title,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+newsletters,content,"['text', 'NOT NULL']",False
+newsletters,content_html,"['text', 'NOT NULL', 'module', 'varchar(255)', 'NOT NULL', 'default', ""''""]",False
+newsletters,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+newsletters,date_sent,"['datetime', 'default', 'NULL']",True
+newsletters,status,"['int(1)', 'default', 'NULL']",True
+newsletters,locked,"['int(1)', 'default', ""'0'""]",True
+orders,orders_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+orders,customers_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders,customers_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_company,"['varchar(64)', 'default', 'NULL']",False
+orders,customers_street_address,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_suburb,"['varchar(32)', 'default', 'NULL']",False
+orders,customers_city,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_postcode,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_state,"['varchar(32)', 'default', 'NULL']",False
+orders,customers_country,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_telephone,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_email_address,"['varchar(96)', 'NOT NULL', 'default', ""''""]",False
+orders,customers_address_format_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+orders,delivery_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders,delivery_company,"['varchar(64)', 'default', 'NULL']",False
+orders,delivery_street_address,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders,delivery_suburb,"['varchar(32)', 'default', 'NULL']",False
+orders,delivery_city,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,delivery_postcode,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+orders,delivery_state,"['varchar(32)', 'default', 'NULL']",False
+orders,delivery_country,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,delivery_address_format_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+orders,billing_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders,billing_company,"['varchar(64)', 'default', 'NULL']",False
+orders,billing_street_address,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders,billing_suburb,"['varchar(32)', 'default', 'NULL']",False
+orders,billing_city,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,billing_postcode,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+orders,billing_state,"['varchar(32)', 'default', 'NULL']",False
+orders,billing_country,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,billing_address_format_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+orders,payment_method,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+orders,payment_module_code,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,shipping_method,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+orders,shipping_module_code,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,coupon_code,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders,cc_type,"['varchar(20)', 'default', 'NULL']",False
+orders,cc_owner,"['varchar(64)', 'default', 'NULL']",False
+orders,cc_number,"['varchar(32)', 'default', 'NULL']",False
+orders,cc_expires,"['varchar(4)', 'default', 'NULL']",False
+orders,cc_cvv,['blob'],False
+orders,last_modified,"['default', 'NULL']",False
+orders,date_purchased,"['datetime', 'default', 'NULL']",True
+orders,orders_status,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+orders,orders_date_finished,"['datetime', 'default', 'NULL']",True
+orders,currency,"['char(3)', 'default', 'NULL']",False
+orders,currency_value,"['decimal(14,6)', 'default', 'NULL']",True
+orders,order_total,"['decimal(14,2)', 'default', 'NULL']",True
+orders,order_tax,"['decimal(14,2)', 'default', 'NULL']",True
+orders,paypal_ipn_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders,ip_address,"['KEY', 'idx_status_orders_cust_zen (orders_status,orders_id,customers_id)', 'KEY', 'idx_date_purchased_zen (date_purchased)', 'KEY', 'idx_cust_id_orders_id_zen (customers_id,orders_id)']",True
+orders_products,orders_products_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+orders_products,orders_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,products_model,"['varchar(32)', 'default', 'NULL']",False
+orders_products,products_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+orders_products,products_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products,final_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products,products_tax,"['decimal(7,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products,products_quantity,"['float', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,onetime_charges,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products,products_priced_by_attribute,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,product_is_free,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,products_discount_type,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,products_discount_type_from,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products,products_prid,"['KEY', 'idx_orders_id_prod_id_zen (orders_id,products_id)', 'KEY', 'idx_prod_id_orders_id_zen (products_id,orders_id)']",False
+orders_products_attributes,orders_products_attributes_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+orders_products_attributes,orders_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,orders_products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,products_options,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+orders_products_attributes,products_options_values,"['text', 'NOT NULL']",False
+orders_products_attributes,options_values_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,price_prefix,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+orders_products_attributes,product_attribute_is_free,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,products_attributes_weight,"['float', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,products_attributes_weight_prefix,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+orders_products_attributes,attributes_discounted,"['tinyint(1)', 'NOT NULL', 'default', ""'1'""]",True
+orders_products_attributes,attributes_price_base_included,"['tinyint(1)', 'NOT NULL', 'default', ""'1'""]",True
+orders_products_attributes,attributes_price_onetime,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_price_factor,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_price_factor_offset,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_price_factor_onetime,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_price_factor_onetime_offset,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_qty_prices,['text'],False
+orders_products_attributes,attributes_qty_prices_onetime,['text'],False
+orders_products_attributes,attributes_price_words,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_price_words_free,"['int(4)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,attributes_price_letters,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+orders_products_attributes,attributes_price_letters_free,"['int(4)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,products_options_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,products_options_values_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_attributes,products_prid,"['KEY', 'idx_orders_id_prod_id_zen (orders_id,orders_products_id)']",False
+orders_products_download,orders_products_download_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+orders_products_download,orders_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_download,orders_products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_download,orders_products_filename,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+orders_products_download,download_maxdays,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_download,download_count,"['int(2)', 'NOT NULL', 'default', ""'0'""]",True
+orders_products_download,products_prid,"['KEY', 'idx_orders_id_zen (orders_id)', 'KEY', 'idx_orders_products_id_zen (orders_products_id)']",False
+orders_status,orders_status_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_status,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+orders_status,orders_status_name,"['KEY', 'idx_orders_status_name_zen (orders_status_name)']",False
+orders_status_history,orders_status_history_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+orders_status_history,orders_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_status_history,orders_status_id,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+orders_status_history,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+orders_status_history,customer_notified,"['int(1)', 'default', ""'0'""]",True
+orders_status_history,comments,"['KEY', 'idx_orders_id_status_id_zen (orders_id,orders_status_id)']",False
+orders_total,orders_total_id,"['int(10)', 'unsigned', 'NOT NULL', 'auto_increment']",True
+orders_total,orders_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+orders_total,title,"['text', 'varchar(255)', 'NOT NULL', 'default', ""''""]",False
+orders_total,value,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'"", 'class', 'varchar(32)', 'NOT NULL', 'default', ""''""]",True
+orders_total,sort_order,"['KEY', 'idx_ot_orders_id_zen (orders_id)', 'KEY', 'idx_ot_class_zen (class)']",False
+paypal,paypal_ipn_id,"['int(11)', 'unsigned', 'NOT NULL', 'auto_increment']",True
+paypal,order_id,"['int(11)', 'unsigned', 'NOT NULL', 'default', ""'0'""]",True
+paypal,txn_type,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal,module_name,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal,module_mode,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal,reason_code,"['varchar(40)', 'default', 'NULL']",False
+paypal,payment_type,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal,payment_status,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal,pending_reason,"['varchar(32)', 'default', 'NULL']",False
+paypal,invoice,"['varchar(128)', 'default', 'NULL']",False
+paypal,mc_currency,"['char(3)', 'NOT NULL', 'default', ""''""]",False
+paypal,first_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal,last_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal,payer_business_name,"['varchar(128)', 'default', 'NULL']",False
+paypal,address_name,"['varchar(64)', 'default', 'NULL']",False
+paypal,address_street,"['varchar(254)', 'default', 'NULL']",False
+paypal,address_city,"['varchar(120)', 'default', 'NULL']",False
+paypal,address_state,"['varchar(120)', 'default', 'NULL']",False
+paypal,address_zip,"['varchar(10)', 'default', 'NULL']",False
+paypal,address_country,"['varchar(64)', 'default', 'NULL']",False
+paypal,address_status,"['varchar(11)', 'default', 'NULL']",False
+paypal,payer_email,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal,payer_id,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal,payer_status,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+paypal,payment_date,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+paypal,business,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal,receiver_email,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal,receiver_id,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal,txn_id,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+paypal,parent_txn_id,"['varchar(20)', 'default', 'NULL']",False
+paypal,num_cart_items,"['tinyint(4)', 'unsigned', 'NOT NULL', 'default', ""'1'""]",True
+paypal,mc_gross,"['decimal(7,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+paypal,mc_fee,"['decimal(7,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+paypal,payment_gross,"['decimal(7,2)', 'default', 'NULL']",True
+paypal,payment_fee,"['decimal(7,2)', 'default', 'NULL']",True
+paypal,settle_amount,"['decimal(7,2)', 'default', 'NULL']",True
+paypal,settle_currency,"['char(3)', 'default', 'NULL']",False
+paypal,exchange_rate,"['decimal(4,2)', 'default', 'NULL']",True
+paypal,notify_version,"['varchar(6)', 'NOT NULL', 'default', ""''""]",False
+paypal,verify_sign,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal,last_modified,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+paypal,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+paypal,memo,"['KEY', 'idx_order_id_zen (order_id)']",False
+paypal_payment_status,payment_status_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+paypal_payment_status,payment_status_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+paypal_payment_status_history,payment_status_history_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+paypal_payment_status_history,paypal_ipn_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+paypal_payment_status_history,txn_id,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+paypal_payment_status_history,parent_txn_id,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+paypal_payment_status_history,payment_status,"['varchar(17)', 'NOT NULL', 'default', ""''""]",False
+paypal_payment_status_history,pending_reason,"['varchar(32)', 'default', 'NULL']",False
+paypal_payment_status_history,date_added,"['KEY', 'idx_paypal_ipn_id_zen (paypal_ipn_id)']",False
+paypal_session,unique_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+paypal_session,session_id,"['text', 'NOT NULL']",False
+paypal_session,saved_session,"['mediumblob', 'NOT NULL']",False
+paypal_session,expiry,"['KEY', 'idx_session_id_zen (session_id(36))']",False
+paypal_testing,paypal_ipn_id,"['int(11)', 'unsigned', 'NOT NULL', 'auto_increment']",True
+paypal_testing,order_id,"['int(11)', 'unsigned', 'NOT NULL', 'default', ""'0'""]",True
+paypal_testing,custom,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,txn_type,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,module_name,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,module_mode,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,reason_code,"['varchar(40)', 'default', 'NULL']",False
+paypal_testing,payment_type,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,payment_status,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,pending_reason,"['varchar(32)', 'default', 'NULL']",False
+paypal_testing,invoice,"['varchar(128)', 'default', 'NULL']",False
+paypal_testing,mc_currency,"['char(3)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,first_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,last_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,payer_business_name,"['varchar(128)', 'default', 'NULL']",False
+paypal_testing,address_name,"['varchar(64)', 'default', 'NULL']",False
+paypal_testing,address_street,"['varchar(254)', 'default', 'NULL']",False
+paypal_testing,address_city,"['varchar(120)', 'default', 'NULL']",False
+paypal_testing,address_state,"['varchar(120)', 'default', 'NULL']",False
+paypal_testing,address_zip,"['varchar(10)', 'default', 'NULL']",False
+paypal_testing,address_country,"['varchar(64)', 'default', 'NULL']",False
+paypal_testing,address_status,"['varchar(11)', 'default', 'NULL']",False
+paypal_testing,payer_email,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,payer_id,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,payer_status,"['varchar(10)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,payment_date,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+paypal_testing,business,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,receiver_email,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,receiver_id,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,txn_id,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,parent_txn_id,"['varchar(20)', 'default', 'NULL']",False
+paypal_testing,num_cart_items,"['tinyint(4)', 'unsigned', 'NOT NULL', 'default', ""'1'""]",True
+paypal_testing,mc_gross,"['decimal(7,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+paypal_testing,mc_fee,"['decimal(7,2)', 'NOT NULL', 'default', ""'0.00'""]",True
+paypal_testing,payment_gross,"['decimal(7,2)', 'default', 'NULL']",True
+paypal_testing,payment_fee,"['decimal(7,2)', 'default', 'NULL']",True
+paypal_testing,settle_amount,"['decimal(7,2)', 'default', 'NULL']",True
+paypal_testing,settle_currency,"['char(3)', 'default', 'NULL']",False
+paypal_testing,exchange_rate,"['decimal(4,2)', 'default', 'NULL']",True
+paypal_testing,notify_version,"['decimal(2,1)', 'NOT NULL', 'default', ""'0.0'""]",True
+paypal_testing,verify_sign,"['varchar(128)', 'NOT NULL', 'default', ""''""]",False
+paypal_testing,last_modified,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+paypal_testing,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+paypal_testing,memo,"['KEY', 'idx_order_id_zen (order_id)']",False
+product_music_extra,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+product_music_extra,artists_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+product_music_extra,record_company_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+product_music_extra,music_genre_id,"['KEY', 'idx_music_genre_id_zen (music_genre_id)', 'KEY', 'idx_artists_id_zen (artists_id)', 'KEY', 'idx_record_company_id_zen (record_company_id)']",False
+product_type_layout,configuration_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+product_type_layout,configuration_title,"['text', 'NOT NULL']",False
+product_type_layout,configuration_key,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+product_type_layout,configuration_value,"['text', 'NOT NULL']",False
+product_type_layout,configuration_description,"['text', 'NOT NULL']",False
+product_type_layout,product_type_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+product_type_layout,sort_order,"['int(5)', 'default', 'NULL']",True
+product_type_layout,last_modified,"['datetime', 'default', 'NULL']",True
+product_type_layout,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+product_type_layout,use_function,"['text', 'default', 'NULL']",False
+product_type_layout,set_function,['UNIQUE'],False
+product_types,type_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+product_types,type_name,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+product_types,type_handler,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+product_types,type_master_type,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+product_types,allow_add_to_cart,"['char(1)', 'NOT NULL', 'default', ""'Y'""]",False
+product_types,default_image,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+product_types,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+product_types,last_modified,"['KEY', 'idx_type_master_type_zen (type_master_type)']",False
+product_types_to_category,product_type_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+product_types_to_category,category_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+products,products_type,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+products,products_quantity,"['float', 'NOT NULL', 'default', ""'0'""]",True
+products,products_model,"['varchar(32)', 'default', 'NULL']",False
+products,products_image,"['varchar(64)', 'default', 'NULL']",False
+products,products_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products,products_virtual,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+products,products_last_modified,"['datetime', 'default', 'NULL']",True
+products,products_date_available,"['datetime', 'default', 'NULL']",True
+products,products_weight,"['float', 'NOT NULL', 'default', ""'0'""]",True
+products,products_status,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_tax_class_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products,manufacturers_id,"['int(11)', 'default', 'NULL']",True
+products,products_ordered,"['float', 'NOT NULL', 'default', ""'0'""]",True
+products,products_quantity_order_min,"['float', 'NOT NULL', 'default', ""'1'""]",True
+products,products_quantity_order_units,"['float', 'NOT NULL', 'default', ""'1'""]",True
+products,products_priced_by_attribute,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,product_is_free,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,product_is_call,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_quantity_mixed,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,product_is_always_free_shipping,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_qty_box_status,"['tinyint(1)', 'NOT NULL', 'default', ""'1'""]",True
+products,products_quantity_order_max,"['float', 'NOT NULL', 'default', ""'0'""]",True
+products,products_sort_order,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_discount_type,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_discount_type_from,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_price_sorter,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products,master_categories_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products,products_mixed_discount_quantity,"['tinyint(1)', 'NOT NULL', 'default', ""'1'""]",True
+products,metatags_title_status,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,metatags_products_name_status,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,metatags_model_status,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,metatags_price_status,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products,metatags_title_tagline_status,"['KEY', 'idx_products_date_added_zen (products_date_added)', 'KEY', 'idx_products_status_zen (products_status)', 'KEY', 'idx_products_date_available_zen (products_date_available)', 'KEY', 'idx_products_ordered_zen (products_ordered)', 'KEY', 'idx_products_model_zen (products_model)', 'KEY', 'idx_products_price_sorter_zen (products_price_sorter)', 'KEY', 'idx_master_categories_id_zen (master_categories_id)', 'KEY', 'idx_products_sort_order_zen (products_sort_order)', 'KEY', 'idx_manufacturers_id_zen (manufacturers_id)']",True
+products_attributes,products_attributes_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+products_attributes,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,options_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,options_values_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,options_values_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,price_prefix,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+products_attributes,products_options_sort_order,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,product_attribute_is_free,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,products_attributes_weight,"['float', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,products_attributes_weight_prefix,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+products_attributes,attributes_display_only,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,attributes_default,"['tinyint(1)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,attributes_discounted,"['tinyint(1)', 'NOT NULL', 'default', ""'1'""]",True
+products_attributes,attributes_image,"['varchar(64)', 'default', 'NULL']",False
+products_attributes,attributes_price_base_included,"['tinyint(1)', 'NOT NULL', 'default', ""'1'""]",True
+products_attributes,attributes_price_onetime,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_price_factor,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_price_factor_offset,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_price_factor_onetime,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_price_factor_onetime_offset,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_qty_prices,['text'],False
+products_attributes,attributes_qty_prices_onetime,['text'],False
+products_attributes,attributes_price_words,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_price_words_free,"['int(4)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,attributes_price_letters,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_attributes,attributes_price_letters_free,"['int(4)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes,attributes_required,"['KEY', 'idx_id_options_id_values_zen (products_id,options_id,options_values_id)', 'KEY', 'idx_opt_sort_order_zen (products_options_sort_order)']",False
+products_attributes_download,products_attributes_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_attributes_download,products_attributes_filename,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+products_attributes_download,products_attributes_maxdays,"['int(2)', 'default', ""'0'""]",True
+products_attributes_download,products_attributes_maxcount,"['int(2)', 'default', ""'0'""]",True
+products_description,products_id,"['int(11)', 'NOT NULL']",True
+products_description,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+products_description,products_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+products_description,products_description,['text'],False
+products_description,products_url,"['varchar(255)', 'default', 'NULL']",False
+products_description,products_viewed,"['KEY', 'idx_products_name_zen (products_name)']",False
+products_discount_quantity,discount_id,"['int(4)', 'NOT NULL', 'default', ""'0'""]",True
+products_discount_quantity,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_discount_quantity,discount_qty,"['float', 'NOT NULL', 'default', ""'0'""]",True
+products_discount_quantity,discount_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+products_notifications,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_notifications,customers_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_notifications,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+products_options,products_options_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_options,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+products_options,products_options_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+products_options,products_options_sort_order,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_options,products_options_type,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+products_options,products_options_length,"['smallint(2)', 'NOT NULL', 'default', ""'32'""]",True
+products_options,products_options_comment,"['varchar(64)', 'default', 'NULL']",False
+products_options,products_options_size,"['smallint(2)', 'NOT NULL', 'default', ""'32'""]",True
+products_options,products_options_images_per_row,"['int(2)', 'default', ""'5'""]",True
+products_options,products_options_images_style,"['int(1)', 'default', ""'0'""]",True
+products_options,products_options_rows,"['KEY', 'idx_lang_id_zen (language_id)', 'KEY', 'idx_products_options_sort_order_zen (products_options_sort_order)', 'KEY', 'idx_products_options_name_zen (products_options_name)']",False
+products_options_types,products_options_types_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_options_types,products_options_types_name,"['varchar(32)', 'default', 'NULL']",False
+products_options_values,products_options_values_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_options_values,language_id,"['int(11)', 'NOT NULL', 'default', ""'1'""]",True
+products_options_values,products_options_values_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+products_options_values,products_options_values_sort_order,"['KEY', 'idx_products_options_values_name_zen (products_options_values_name)', 'KEY', 'idx_products_options_values_sort_order_zen (products_options_values_sort_order)']",False
+products_options_values_to_products_options,products_options_values_to_products_options_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+products_options_values_to_products_options,products_options_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_options_values_to_products_options,products_options_values_id,"['KEY', 'idx_products_options_id_zen (products_options_id)', 'KEY', 'idx_products_options_values_id_zen (products_options_values_id)']",False
+products_to_categories,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+products_to_categories,categories_id,"['KEY', 'idx_cat_prod_id_zen (categories_id,products_id)']",False
+project_version,project_version_id,"['tinyint(3)', 'NOT NULL', 'auto_increment']",True
+project_version,project_version_key,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_major,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_minor,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_patch1,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_patch2,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_patch1_source,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_patch2_source,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_comment,"['varchar(250)', 'NOT NULL', 'default', ""''""]",False
+project_version,project_version_date_applied,['UNIQUE'],False
+project_version_history,project_version_id,"['tinyint(3)', 'NOT NULL', 'auto_increment']",True
+project_version_history,project_version_key,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+project_version_history,project_version_major,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version_history,project_version_minor,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version_history,project_version_patch,"['varchar(20)', 'NOT NULL', 'default', ""''""]",False
+project_version_history,project_version_comment,"['varchar(250)', 'NOT NULL', 'default', ""''""]",False
+project_version_history,project_version_date_applied,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 01:01:01'""]",True
+query_builder,query_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+query_builder,query_category,"['varchar(40)', 'NOT NULL', 'default', ""''""]",False
+query_builder,query_name,"['varchar(80)', 'NOT NULL', 'default', ""''""]",False
+query_builder,query_description,"['TEXT', 'NOT NULL']",False
+query_builder,query_string,"['TEXT', 'NOT NULL']",False
+query_builder,query_keys_list,['UNIQUE'],False
+record_artists,artists_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+record_artists,artists_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+record_artists,artists_image,"['varchar(64)', 'default', 'NULL']",False
+record_artists,date_added,"['datetime', 'default', 'NULL']",True
+record_artists,last_modified,"['KEY', 'idx_rec_artists_name_zen (artists_name)']",False
+record_artists_info,artists_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+record_artists_info,languages_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+record_artists_info,artists_url,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+record_artists_info,url_clicked,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+record_artists_info,date_last_click,"['datetime', 'default', 'NULL']",True
+record_company,record_company_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+record_company,record_company_name,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+record_company,record_company_image,"['varchar(64)', 'default', 'NULL']",False
+record_company,date_added,"['datetime', 'default', 'NULL']",True
+record_company,last_modified,"['KEY', 'idx_rec_company_name_zen (record_company_name)']",False
+record_company_info,record_company_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+record_company_info,languages_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+record_company_info,record_company_url,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+record_company_info,url_clicked,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+record_company_info,date_last_click,"['datetime', 'default', 'NULL']",True
+reviews,reviews_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+reviews,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+reviews,customers_id,"['int(11)', 'default', 'NULL']",True
+reviews,customers_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+reviews,reviews_rating,"['int(1)', 'default', 'NULL']",True
+reviews,date_added,"['datetime', 'default', 'NULL']",True
+reviews,last_modified,"['datetime', 'default', 'NULL']",True
+reviews,reviews_read,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True
+reviews,status,"['KEY', 'idx_products_id_zen (products_id)', 'KEY', 'idx_customers_id_zen (customers_id)', 'KEY', 'idx_status_zen (status)', 'KEY', 'idx_date_added_zen (date_added)']",True
+reviews_description,reviews_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+reviews_description,languages_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+reviews_description,reviews_text,"['text', 'NOT NULL']",False
+salemaker_sales,sale_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+salemaker_sales,sale_status,"['tinyint(4)', 'NOT NULL', 'default', ""'0'""]",True
+salemaker_sales,sale_name,"['varchar(30)', 'NOT NULL', 'default', ""''""]",False
+salemaker_sales,sale_deduction_value,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+salemaker_sales,sale_deduction_type,"['tinyint(4)', 'NOT NULL', 'default', ""'0'""]",True
+salemaker_sales,sale_pricerange_from,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+salemaker_sales,sale_pricerange_to,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+salemaker_sales,sale_specials_condition,"['tinyint(4)', 'NOT NULL', 'default', ""'0'""]",True
+salemaker_sales,sale_categories_selected,['text'],False
+salemaker_sales,sale_categories_all,['text'],False
+salemaker_sales,sale_date_start,"['date', 'NOT NULL', 'default', ""'0001-01-01'""]",True
+salemaker_sales,sale_date_end,"['date', 'NOT NULL', 'default', ""'0001-01-01'""]",True
+salemaker_sales,sale_date_added,"['date', 'NOT NULL', 'default', ""'0001-01-01'""]",True
+salemaker_sales,sale_date_last_modified,"['date', 'NOT NULL', 'default', ""'0001-01-01'""]",True
+salemaker_sales,sale_date_status_change,"['KEY', 'idx_sale_status_zen (sale_status)', 'KEY', 'idx_sale_date_start_zen (sale_date_start)', 'KEY', 'idx_sale_date_end_zen (sale_date_end)']",True
+sessions,sesskey,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+sessions,expiry,"['int(11)', 'unsigned', 'NOT NULL', 'default', ""'0'""]",True
+sessions,value,"['mediumblob', 'NOT NULL']",False
+specials,specials_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+specials,products_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+specials,specials_new_products_price,"['decimal(15,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+specials,specials_date_added,"['datetime', 'default', 'NULL']",True
+specials,specials_last_modified,"['datetime', 'default', 'NULL']",True
+specials,expires_date,"['date', 'NOT NULL', 'default', ""'0001-01-01'""]",True
+specials,date_status_change,"['datetime', 'default', 'NULL']",True
+specials,status,"['int(1)', 'NOT NULL', 'default', ""'1'""]",True
+specials,specials_date_available,"['KEY', 'idx_status_zen (status)', 'KEY', 'idx_products_id_zen (products_id)', 'KEY', 'idx_date_avail_zen (specials_date_available)', 'KEY', 'idx_expires_date_zen (expires_date)']",True
+tax_class,tax_class_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+tax_class,tax_class_title,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+tax_class,tax_class_description,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+tax_class,last_modified,"['datetime', 'default', 'NULL']",True
+tax_class,date_added,"['datetime', 'NOT NULL', 'default', ""'0001-01-01 00:00:00'""]",True
+tax_rates,tax_rates_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+tax_rates,tax_zone_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+tax_rates,tax_class_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+tax_rates,tax_priority,"['int(5)', 'default', ""'1'""]",True
+tax_rates,tax_rate,"['decimal(7,4)', 'NOT NULL', 'default', ""'0.0000'""]",True
+tax_rates,tax_description,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+tax_rates,last_modified,"['datetime', 'default', 'NULL']",True
+tax_rates,date_added,"['KEY', 'idx_tax_zone_id_zen (tax_zone_id)', 'KEY', 'idx_tax_class_id_zen (tax_class_id)']",False
+template_select,template_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+template_select,template_dir,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+template_select,template_language,"['KEY', 'idx_tpl_lang_zen (template_language)']",False
+whos_online,customer_id,"['int(11)', 'default', 'NULL']",True
+whos_online,full_name,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False
+whos_online,session_id,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+whos_online,ip_address,"['varchar(45)', 'NOT NULL', 'default', ""''""]",False
+whos_online,time_entry,"['varchar(14)', 'NOT NULL', 'default', ""''""]",False
+whos_online,time_last_click,"['varchar(14)', 'NOT NULL', 'default', ""''""]",False
+whos_online,last_page_url,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+whos_online,host_address,"['text', 'NOT NULL']",False
+whos_online,user_agent,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+zones,zone_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+zones,zone_country_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+zones,zone_code,"['varchar(32)', 'NOT NULL', 'default', ""''""]",False
+zones,zone_name,"['KEY', 'idx_zone_country_id_zen (zone_country_id)', 'KEY', 'idx_zone_code_zen (zone_code)']",False
+zones_to_geo_zones,association_id,"['int(11)', 'NOT NULL', 'auto_increment']",True
+zones_to_geo_zones,zone_country_id,"['int(11)', 'NOT NULL', 'default', ""'0'""]",True
+zones_to_geo_zones,zone_id,"['int(11)', 'default', 'NULL']",True
+zones_to_geo_zones,geo_zone_id,"['int(11)', 'default', 'NULL']",True
+zones_to_geo_zones,last_modified,"['datetime', 'default', 'NULL']",True
+zones_to_geo_zones,date_added,"['KEY', 'idx_zones_zen (geo_zone_id,zone_country_id,zone_id)']",False

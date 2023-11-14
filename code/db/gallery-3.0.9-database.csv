@@ -1,0 +1,170 @@
+access_caches,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+access_caches,item_id,"['int(9)', 'DEFAULT', 'NULL']",True
+access_caches,view_full_1,"['binary(1)', 'NOT NULL', 'DEFAULT', ""'0'""]",False
+access_caches,edit_1,"['binary(1)', 'NOT NULL', 'DEFAULT', ""'0'""]",False
+access_caches,add_1,"['binary(1)', 'NOT NULL', 'DEFAULT', ""'0'""]",False
+access_caches,view_full_2,"['binary(1)', 'NOT NULL', 'DEFAULT', ""'0'""]",False
+access_caches,edit_2,"['binary(1)', 'NOT NULL', 'DEFAULT', ""'0'""]",False
+access_caches,add_2,"['KEY', '`item_id` (`item_id`)']",False
+access_intents,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+access_intents,item_id,"['int(9)', 'DEFAULT', 'NULL']",True
+access_intents,view_1,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,view_full_1,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,edit_1,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,add_1,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,view_2,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,view_full_2,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,edit_2,"['binary(1)', 'DEFAULT', 'NULL']",False
+access_intents,add_2,"['binary(1)', 'DEFAULT', 'NULL']",False
+caches,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+caches,key,"['varchar(255)', 'NOT NULL']",False
+caches,tags,"['varchar(255)', 'DEFAULT', 'NULL']",False
+caches,expiration,"['int(9)', 'NOT NULL']",True
+caches,cache,['UNIQUE'],False
+comments,author_id,"['int(9)', 'DEFAULT', 'NULL']",True
+comments,created,"['int(9)', 'NOT NULL']",True
+comments,guest_email,"['varchar(128)', 'DEFAULT', 'NULL']",False
+comments,guest_name,"['varchar(128)', 'DEFAULT', 'NULL']",False
+comments,guest_url,"['varchar(255)', 'DEFAULT', 'NULL']",False
+comments,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+comments,item_id,"['int(9)', 'NOT NULL']",True
+comments,server_http_accept_charset,"['varchar(64)', 'DEFAULT', 'NULL']",False
+comments,server_http_accept_encoding,"['varchar(64)', 'DEFAULT', 'NULL']",False
+comments,server_http_accept_language,"['varchar(64)', 'DEFAULT', 'NULL']",False
+comments,server_http_accept,"['varchar(128)', 'DEFAULT', 'NULL']",False
+comments,server_http_connection,"['varchar(64)', 'DEFAULT', 'NULL']",False
+comments,server_http_host,"['varchar(64)', 'DEFAULT', 'NULL']",False
+comments,server_http_referer,"['varchar(255)', 'DEFAULT', 'NULL']",False
+comments,server_http_user_agent,"['varchar(128)', 'DEFAULT', 'NULL']",False
+comments,server_query_string,"['varchar(64)', 'DEFAULT', 'NULL']",False
+comments,server_remote_addr,"['varchar(40)', 'DEFAULT', 'NULL']",False
+comments,server_remote_host,"['varchar(255)', 'DEFAULT', 'NULL']",False
+comments,server_remote_port,"['varchar(16)', 'DEFAULT', 'NULL']",False
+comments,state,"['varchar(15)', 'DEFAULT', ""'unpublished'""]",False
+comments,text,['text'],False
+comments,updated,"['int(9)', 'NOT NULL']",True
+failed_auths,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+failed_auths,count,"['int(9)', 'NOT NULL']",True
+failed_auths,name,"['varchar(255)', 'NOT NULL']",False
+failed_auths,time,"['int(9)', 'NOT NULL']",True
+graphics_rules,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+graphics_rules,active,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+graphics_rules,args,"['varchar(255)', 'DEFAULT', 'NULL']",False
+graphics_rules,module_name,"['varchar(64)', 'NOT NULL']",False
+graphics_rules,operation,"['varchar(64)', 'NOT NULL']",False
+graphics_rules,priority,"['int(9)', 'NOT NULL']",True
+graphics_rules,target,"['varchar(32)', 'NOT NULL']",False
+groups,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+groups,name,"['char(64)', 'DEFAULT', 'NULL']",False
+groups,special,['UNIQUE'],False
+groups_users,group_id,"['int(9)', 'NOT NULL']",True
+groups_users,user_id,['UNIQUE'],False
+incoming_translations,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+incoming_translations,key,"['char(32)', 'NOT NULL']",False
+incoming_translations,locale,"['char(10)', 'NOT NULL']",False
+incoming_translations,message,"['text', 'NOT NULL']",False
+incoming_translations,revision,"['int(9)', 'DEFAULT', 'NULL']",True
+incoming_translations,translation,['UNIQUE'],False
+items,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+items,album_cover_item_id,"['int(9)', 'DEFAULT', 'NULL']",True
+items,captured,"['int(9)', 'DEFAULT', 'NULL']",True
+items,created,"['int(9)', 'DEFAULT', 'NULL']",True
+items,description,['text'],False
+items,height,"['int(9)', 'DEFAULT', 'NULL']",True
+items,left_ptr,"['int(9)', 'NOT NULL']",True
+items,level,"['int(9)', 'NOT NULL']",True
+items,mime_type,"['varchar(64)', 'DEFAULT', 'NULL']",False
+items,name,"['varchar(255)', 'DEFAULT', 'NULL']",False
+items,owner_id,"['int(9)', 'DEFAULT', 'NULL']",True
+items,parent_id,"['int(9)', 'NOT NULL']",True
+items,rand_key,"['decimal(11,10)', 'DEFAULT', 'NULL']",True
+items,relative_path_cache,"['varchar(255)', 'DEFAULT', 'NULL']",False
+items,relative_url_cache,"['varchar(255)', 'DEFAULT', 'NULL']",False
+items,resize_dirty,"['tinyint(1)', 'DEFAULT', ""'1'""]",True
+items,resize_height,"['int(9)', 'DEFAULT', 'NULL']",True
+items,resize_width,"['int(9)', 'DEFAULT', 'NULL']",True
+items,right_ptr,"['int(9)', 'NOT NULL']",True
+items,slug,"['varchar(255)', 'DEFAULT', 'NULL']",False
+items,sort_column,"['varchar(64)', 'DEFAULT', 'NULL']",False
+items,sort_order,"['char(4)', 'DEFAULT', ""'ASC'""]",False
+items,thumb_dirty,"['tinyint(1)', 'DEFAULT', ""'1'""]",True
+items,thumb_height,"['int(9)', 'DEFAULT', 'NULL']",True
+items,thumb_width,"['int(9)', 'DEFAULT', 'NULL']",True
+items,title,"['varchar(255)', 'DEFAULT', 'NULL']",False
+items,type,"['varchar(32)', 'NOT NULL']",False
+items,updated,"['int(9)', 'DEFAULT', 'NULL']",True
+items,view_count,"['int(9)', 'DEFAULT', ""'0'""]",True
+items,weight,"['int(9)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+items,width,"['int(9)', 'DEFAULT', 'NULL']",True
+items,view_1,"['binary(1)', 'DEFAULT', ""'0'""]",False
+items,view_2,"['KEY', '`parent_id` (`parent_id`)', 'KEY', '`type` (`type`)', 'KEY', '`random` (`rand_key`)', 'KEY', '`weight` (`weight`)', 'KEY', '`left_ptr` (`left_ptr`)', 'KEY', '`relative_path_cache` (`relative_path_cache`)']",False
+items_tags,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+items_tags,item_id,"['int(9)', 'NOT NULL']",True
+items_tags,tag_id,"['KEY', '`tag_id` (`tag_id`,`id`)', 'KEY', '`item_id` (`item_id`,`id`)']",False
+logs,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+logs,category,"['varchar(64)', 'DEFAULT', 'NULL']",False
+logs,html,"['varchar(255)', 'DEFAULT', 'NULL']",False
+logs,message,['text'],False
+logs,referer,"['varchar(255)', 'DEFAULT', 'NULL']",False
+logs,severity,"['int(9)', 'DEFAULT', ""'0'""]",True
+logs,timestamp,"['int(9)', 'DEFAULT', ""'0'""]",True
+logs,url,"['varchar(255)', 'DEFAULT', 'NULL']",False
+logs,user_id,"['int(9)', 'DEFAULT', ""'0'""]",True
+messages,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+messages,key,"['varchar(255)', 'DEFAULT', 'NULL']",False
+messages,severity,"['varchar(32)', 'DEFAULT', 'NULL']",False
+messages,value,['UNIQUE'],False
+modules,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+modules,active,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+modules,name,"['varchar(64)', 'DEFAULT', 'NULL']",False
+modules,version,"['int(9)', 'DEFAULT', 'NULL']",True
+modules,weight,['UNIQUE'],False
+outgoing_translations,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+outgoing_translations,base_revision,"['int(9)', 'DEFAULT', 'NULL']",True
+outgoing_translations,key,"['char(32)', 'NOT NULL']",False
+outgoing_translations,locale,"['char(10)', 'NOT NULL']",False
+outgoing_translations,message,"['text', 'NOT NULL']",False
+outgoing_translations,translation,['UNIQUE'],False
+permissions,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+permissions,display_name,"['varchar(64)', 'DEFAULT', 'NULL']",False
+permissions,name,['UNIQUE'],False
+search_records,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+search_records,item_id,"['int(9)', 'DEFAULT', 'NULL']",True
+search_records,dirty,"['tinyint(1)', 'DEFAULT', ""'1'""]",True
+search_records,data,"['KEY', '`item_id` (`item_id`)']",False
+search_records,FULLTEXT,"['KEY', '`data` (`data`)']",False
+sessions,session_id,"['varchar(127)', 'NOT NULL']",False
+sessions,data,"['text', 'NOT NULL']",False
+sessions,last_activity,"['int(10)', 'unsigned', 'NOT NULL']",True
+tags,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+tags,name,"['varchar(128)', 'NOT NULL']",False
+tags,count,['UNIQUE'],False
+tasks,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+tasks,callback,"['varchar(128)', 'DEFAULT', 'NULL']",False
+tasks,context,"['text', 'NOT NULL']",False
+tasks,done,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+tasks,name,"['varchar(128)', 'DEFAULT', 'NULL']",False
+tasks,owner_id,"['int(9)', 'DEFAULT', 'NULL']",True
+tasks,percent_complete,"['int(9)', 'DEFAULT', ""'0'""]",True
+tasks,state,"['varchar(32)', 'DEFAULT', 'NULL']",False
+tasks,status,"['varchar(255)', 'DEFAULT', 'NULL']",False
+tasks,updated,"['KEY', '`owner_id` (`owner_id`)']",False
+themes,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+themes,name,"['varchar(64)', 'DEFAULT', 'NULL']",False
+themes,version,['UNIQUE'],False
+users,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+users,name,"['varchar(32)', 'NOT NULL']",False
+users,full_name,"['varchar(255)', 'NOT NULL']",False
+users,password,"['varchar(64)', 'NOT NULL']",False
+users,login_count,"['int(10)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+users,last_login,"['int(10)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+users,email,"['varchar(64)', 'DEFAULT', 'NULL']",False
+users,admin,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+users,guest,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+users,hash,"['char(32)', 'DEFAULT', 'NULL']",False
+users,url,"['varchar(255)', 'DEFAULT', 'NULL']",False
+users,locale,['UNIQUE'],False
+vars,id,"['int(9)', 'NOT NULL', 'AUTO_INCREMENT']",True
+vars,module_name,"['varchar(64)', 'NOT NULL']",False
+vars,name,"['varchar(64)', 'NOT NULL']",False
+vars,value,['UNIQUE'],False

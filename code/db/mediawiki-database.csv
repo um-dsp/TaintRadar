@@ -1,0 +1,291 @@
+user_name,user_name,[],False
+user_email_token,user_email_token,[],False
+user_email,user_email_token,['user_email(50)'],False
+user_groups,ug_user,"['-- Key to user_id\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+user_groups,ug_group,"[""-- Group names are short symbolic string keys.\n  -- The set of group names is open-ended, though in practice\n  -- only some predefined ones are likely to be used.\n  --\n  -- At runtime $wgGroupPermissions will associate group keys\n  -- with particular permissions. A user will have the combined\n  -- permissions of any group they're explicitly in, plus\n  -- the implicit '*' and 'user' groups.\n  "", 'varbinary(255)', 'NOT NULL', 'default', ""''""]",True
+user_former_groups,ufg_user,"['-- Time at which the user group membership will expire. Set to\n  -- NULL for a non-expiring (infinite) membership.\n  ', 'varbinary(14)', 'NULL', 'default', 'NULL', 'PRIMARY', 'KEY', '(ug_user, ug_group)', '/*$wgDBTableOptions*/', '-- Key to user_id\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+user_newtalk,user_id,"['varbinary(255)', 'NOT NULL', 'default', ""''""]",False
+user_newtalk,user_ip,"['-- If the user is an anonymous user their IP address is stored here\n  -- since the user_id of 0 is ambiguous\n  ', 'varbinary(40)', 'NOT NULL', 'default', ""''""]",False
+user_properties,up_user,"['-- The highest timestamp of revisions of the talk page viewed\n  -- by this user\n  ', 'varbinary(14)', 'NULL', 'default', 'NULL', '/*$wgDBTableOptions*/', '-- Foreign key to user.user_id\n  ', 'int', 'unsigned', 'NOT NULL']",True
+user_properties,up_property,"['-- Name of the option being saved. This is indexed for bulk lookup.\n  ', 'varbinary(255)', 'NOT NULL']",False
+user_properties,up_value,"['-- Property value as a string.\n  ', 'blob']",False
+bot_passwords,bp_user,"['PRIMARY', 'KEY', '(up_user,up_property)', '/*$wgDBTableOptions*/', '-- User ID obtained from CentralIdLookup.\n  ', 'int', 'unsigned', 'NOT NULL']",True
+bot_passwords,bp_app_id,"['-- Application identifier\n  ', 'varbinary(32)', 'NOT NULL']",False
+bot_passwords,bp_password,"['-- Password hashes, like user.user_password\n  ', 'NOT NULL']",False
+bot_passwords,bp_token,"['-- Like user.user_token\n  ', 'binary(32)', 'NOT NULL', 'default', ""''""]",False
+bot_passwords,bp_restrictions,"['-- JSON blob for MWRestrictions\n  ', 'blob', 'NOT NULL']",False
+page,page_id,"['-- Grants allowed to the account when authenticated with this bot-password\n  ', 'blob', 'NOT NULL']",False
+page,page_namespace,"['-- A page name is broken into a namespace and a title.\n  -- The namespace keys are UI-language-independent constants,\n  -- defined in includes/Defines.php\n  ', 'int', 'NOT NULL']",True
+page,page_title,"['-- The rest of the title, as text.\n  -- Spaces are transformed into underscores in title storage.\n  ', 'varchar(255)', 'binary', 'NOT NULL']",True
+page,page_restrictions,"['-- Comma-separated set of permission keys indicating who\n  -- can move or edit the page.\n  ', 'NOT NULL']",True
+page,page_is_redirect,"['-- 1 indicates the article is a redirect.\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+page,page_is_new,"['-- 1 indicates this is a new entry, with only one edit.\n  -- Not all pages with one edit are new pages.\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+page,page_random,"['-- Random value between 0 and 1, used for Special:Randompage\n  ', 'real', 'unsigned', 'NOT NULL']",True
+page,page_touched,"['-- This timestamp is updated whenever the page changes in\n  -- a way requiring it to be re-rendered, invalidating caches.\n  -- Aside from editing this includes permission changes,\n  -- creation or deletion of linked pages, and alteration\n  -- of contained templates.\n  ', 'binary(14)', 'NOT NULL', 'default', ""''""]",True
+page,page_links_updated,"['-- This timestamp is updated whenever a page is re-parsed and\n  -- it has all the link tracking tables updated for it. This is\n  -- useful for de-duplicating expensive backlink update jobs.\n  ', 'varbinary(14)', 'NULL', 'default', 'NULL']",True
+page,page_latest,"[""-- Handy key to revision.rev_id of the current revision.\n  -- This may be 0 during page creation, but that shouldn't\n  -- happen outside of a transaction... hopefully.\n  "", 'int', 'unsigned', 'NOT NULL']",True
+page,page_len,"[""-- Uncompressed length in bytes of the page's current source text.\n  "", 'int', 'unsigned', 'NOT NULL']",True
+page,page_content_model,"['-- content model, see CONTENT_MODEL_XXX constants\n  ', 'varbinary(32)', 'DEFAULT', 'NULL']",False
+revision,rev_id,"['-- Page content language\n  ', 'varbinary(35)', 'DEFAULT', 'NULL', '/*$wgDBTableOptions*/', '-- Unique ID to identify each revision\n  ', 'int', 'unsigned', 'NOT NULL']",True
+revision,rev_page,"['-- Key to page_id. This should _never_ be invalid.\n  ', 'int', 'unsigned', 'NOT NULL']",True
+revision,rev_text_id,"[""-- Key to text.old_id, where the actual bulk text is stored.\n  -- It's possible for multiple revisions to use the same text,\n  -- for instance revisions where only metadata is altered\n  -- or a rollback to a previous version.\n  "", 'int', 'unsigned', 'NOT NULL']",True
+revision,rev_comment,"['-- Text comment summarizing the change. Deprecated in favor of\n  -- revision_comment_temp.revcomment_comment_id.\n  ', 'varbinary(767)', 'NOT NULL', 'default', ""''""]",False
+revision,rev_user,"['-- Key to user.user_id of the user who made this edit.\n  -- Stores 0 for anonymous edits and for some mass imports.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+revision,rev_user_text,"['-- Text username or IP address of the editor.\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+revision,rev_timestamp,"['-- Timestamp of when revision was created\n  ', 'binary(14)', 'NOT NULL', 'default', ""''""]",False
+revision,rev_minor_edit,"[""-- Records whether the user marked the 'minor edit' checkbox.\n  -- Many automated edits are marked as minor.\n  "", 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+revision,rev_deleted,"['-- Restrictions on who can access this revision\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+revision,rev_len,"['-- Length of this revision in bytes\n  ', 'int', 'unsigned']",True
+revision,rev_parent_id,"['-- Key to revision.rev_id\n  -- This field is used to add support for a tree structure (The Adjacency List Model)\n  ', 'int', 'unsigned', 'default', 'NULL']",True
+revision,rev_sha1,"['-- SHA-1 text content hash in base-36\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''""]",False
+revision,rev_content_model,"['-- content model, see CONTENT_MODEL_XXX constants\n  ', 'varbinary(32)', 'DEFAULT', 'NULL']",False
+revision_comment_temp,revcomment_rev,"['-- content format, see CONTENT_FORMAT_XXX constants\n  ', 'varbinary(64)', 'DEFAULT', 'NULL', '/*$wgDBTableOptions*/ ', '-- Key to rev_id\n  ', 'int', 'unsigned', 'NOT NULL']",True
+ip_changes,ipc_rev_id,"['-- Key to comment_id\n  ', 'bigint', 'unsigned', 'NOT NULL']",True
+ip_changes,ipc_rev_timestamp,"['-- The timestamp of the revision\n  ', 'binary(14)', 'NOT NULL', 'DEFAULT', ""''""]",True
+comment_hash,comment_hash,"['-- Hex representation of the IP address, as returned by IP::toHex()\n  -- For IPv4 it will resemble: ABCD1234\n  -- For IPv6: v6-ABCD1234000000000000000000000000\n  -- BETWEEN is then used to identify revisions within a given range\n  ', 'varbinary(35)', 'NOT NULL', 'DEFAULT', ""''"", '/*$wgDBTableOptions*/']",False
+name_title_timestamp,comment_hash,[],False
+name_title_timestamp,ar_namespace,[],False
+name_title_timestamp,ar_title,[],False
+name_title_timestamp,ar_timestamp,[],False
+ar_usertext_timestamp,ar_timestamp,[],False
+ar_usertext_timestamp,ar_user_text,[],False
+ar_revid,ar_rev_id,[],False
+pagelinks,pl_from,"['-- Key to the page_id of the page containing the link.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+pagelinks,pl_from_namespace,"['-- Namespace for this page\n  ', 'int', 'NOT NULL', 'default', '0']",True
+pagelinks,pl_namespace,"['-- Key to page_namespace/page_title of the target page.\n  -- The target page may or may not exist, and due to renames\n  -- and deletions may refer to different page records as time\n  -- goes by.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+templatelinks,tl_from,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+templatelinks,tl_from_namespace,"['-- Namespace for this page\n  ', 'int', 'NOT NULL', 'default', '0']",True
+templatelinks,tl_namespace,"['-- Key to page_namespace/page_title of the target page.\n  -- The target page may or may not exist, and due to renames\n  -- and deletions may refer to different page records as time\n  -- goes by.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+imagelinks,il_from,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+imagelinks,il_from_namespace,"['-- Namespace for this page\n  ', 'int', 'NOT NULL', 'default', '0']",True
+categorylinks,cl_from,"[""-- Filename of target image.\n  -- This is also the page_title of the file's description page;\n  -- all such pages are in namespace 6 (NS_FILE).\n  "", 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+categorylinks,cl_to,"[""-- Name of the category.\n  -- This is also the page_title of the category's description page;\n  -- all such pages are in namespace 14 (NS_CATEGORY).\n  "", 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+categorylinks,cl_sortkey,"['-- A binary string obtained by applying a sortkey generation algorithm\n  -- (Collation::getSortKey()) to page_title, or cl_sortkey_prefix . ""\\n""\n  -- . page_title if cl_sortkey_prefix is nonempty.\n  ', 'varbinary(230)', 'NOT NULL', 'default', ""''""]",False
+categorylinks,cl_sortkey_prefix,"[""-- A prefix for the raw sortkey manually specified by the user, either via\n  -- [[Category:Foo|prefix]] or {{defaultsort:prefix}}.  If nonempty, it's\n  -- concatenated with a line break followed by the page title before the sortkey\n  -- conversion algorithm is run.  We store this so that we can update\n  -- collations without reparsing all pages.\n  -- Note: If you change the length of this field, you also need to change\n  -- code in LinksUpdate.php. See T27254.\n  "", 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",True
+categorylinks,cl_timestamp,"[""-- This isn't really used at present. Provided for an optional\n  -- sorting method by approximate addition time.\n  "", 'timestamp', 'NOT NULL']",True
+categorylinks,cl_collation,"[""-- Stores $wgCategoryCollation at the time cl_sortkey was generated.  This\n  -- can be used to install new collation versions, tracking which rows are not\n  -- yet updated.  '' means no collation, this is a legacy row that needs to be\n  -- updated by updateCollation.php.  In the future, it might be possible to\n  -- specify different collations per category.\n  "", 'varbinary(32)', 'NOT NULL', 'default', ""''""]",True
+category,cat_id,"['-- Stores whether cl_from is a category, file, or other page, so we can\n  -- paginate the three categories separately.  This never has to be updated\n  -- after the page is created, since none of these page types can be moved to\n  -- any other.\n  ', ""ENUM('page', 'subcat', 'file')"", 'NOT NULL', 'default', ""'page'""]",True
+category,cat_title,"['-- Name of the category, in the same form as page_title (with underscores).\n  -- If there is a category page corresponding to this category, by definition,\n  -- it has this name (in the Category namespace).\n  ', 'varchar(255)', 'binary', 'NOT NULL']",False
+category,cat_pages,"['-- The numbers of member pages (including categories and media), subcatego-\n  -- ries, and Image: namespace members, respectively.  These are signed to\n  -- make underflow more obvious.  We make the first number include the second\n  -- two for better sorting: subtracting for display is easy, adding for order-\n  -- ing is not.\n  ', 'int', 'signed', 'NOT NULL', 'default', '0']",True
+category,cat_subcats,"['int', 'signed', 'NOT NULL', 'default', '0']",True
+externallinks,el_id,"['int', 'signed', 'NOT NULL', 'default', '0', '/*$wgDBTableOptions*/', '-- Primary key\n  ', 'int', 'unsigned', 'NOT NULL']",True
+externallinks,el_from,"['-- page_id of the referring page\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+externallinks,el_to,"['-- The URL\n  ', 'blob', 'NOT NULL']",False
+externallinks,el_index,"[""-- In the case of HTTP URLs, this is the URL with any username or password\n  -- removed, and with the labels in the hostname reversed and converted to\n  -- lower case. An extra dot is added to allow for matching of either\n  -- example.com or *.example.com in a single scan.\n  -- Example:\n  --      http://user:password@sub.example.com/page.html\n  --   becomes\n  --      http://com.example.sub./page.html\n  -- which allows for fast searching for all pages under example.com with the\n  -- clause:\n  --      WHERE el_index LIKE 'http://com.example.%'\n  "", 'blob', 'NOT NULL']",True
+langlinks,ll_from,"[""-- This is el_index truncated to 60 bytes to allow for sortable queries that\n  -- aren't supported by a partial index.\n  -- @todo Drop the default once this is deployed everywhere and code is populating it.\n  "", 'varbinary(60)', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', '-- page_id of the referring page\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+langlinks,ll_lang,"['-- Language code of the target\n  ', 'varbinary(20)', 'NOT NULL', 'default', ""''""]",False
+iwlinks,iwl_from,"['-- Title of the target, including namespace\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+iwlinks,iwl_prefix,"['-- Interwiki prefix code of the target\n  ', 'varbinary(20)', 'NOT NULL', 'default', ""''""]",False
+site_stats,ss_row_id,"['-- Title of the target, including namespace\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+site_stats,ss_total_edits,"['-- Total number of edits performed.\n  ', 'bigint', 'unsigned', 'default', '0']",True
+site_stats,ss_good_articles,"[""-- An approximate count of pages matching the following criteria:\n  -- * in namespace 0\n  -- * not a redirect\n  -- * contains the text '[['\n  -- See Article::isCountable() in includes/Article.php\n  "", 'bigint', 'unsigned', 'default', '0']",True
+site_stats,ss_total_pages,"['-- Total pages, theoretically equal to SELECT COUNT(*) FROM page; except faster\n  ', 'bigint', 'default', ""'-1'""]",True
+site_stats,ss_users,"['-- Number of users, theoretically equal to SELECT COUNT(*) FROM user;\n  ', 'bigint', 'default', ""'-1'""]",True
+site_stats,ss_active_users,"['-- Number of users that still edit\n  ', 'bigint', 'default', ""'-1'""]",True
+ipblocks,ipb_id,"['-- Number of images, equivalent to SELECT COUNT(*) FROM image\n  ', 'int', 'default', '0', '/*$wgDBTableOptions*/', '-- Primary key, introduced for privacy.\n  ', 'int', 'NOT NULL']",True
+ipblocks,ipb_address,"['-- Blocked IP address in dotted-quad form or user name.\n  ', 'NOT NULL']",False
+ipblocks,ipb_user,"['-- Blocked user ID or 0 for IP blocks.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+ipblocks,ipb_by,"['-- User ID who made the block.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+ipblocks,ipb_by_text,"['-- User name of blocker\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+ipblocks,ipb_reason,"['-- Text comment made by blocker. Deprecated in favor of ipb_reason_id\n  ', 'varbinary(767)', 'NOT NULL', 'default', ""''""]",False
+ipblocks,ipb_reason_id,"['-- Key to comment_id. Text comment made by blocker.\n  -- (""DEFAULT 0"" is temporary, signaling that ipb_reason should be used)\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+ipblocks,ipb_timestamp,"['-- Creation (or refresh) date in standard YMDHMS form.\n  -- IP blocks expire automatically.\n  ', 'binary(14)', 'NOT NULL', 'default', ""''""]",True
+ipblocks,ipb_auto,"['-- Indicates that the IP address was banned because a banned\n  -- user accessed a page through it. If this is 1, ipb_address\n  -- will be hidden, and the block identified by block ID number.\n  ', 'NOT NULL', 'default', '0']",False
+ipblocks,ipb_anon_only,"['-- If set to 1, block applies only to logged-out users\n  ', 'NOT NULL', 'default', '0']",True
+ipblocks,ipb_create_account,"['-- Block prevents account creation from matching IP addresses\n  ', 'NOT NULL', 'default', '1']",False
+ipblocks,ipb_enable_autoblock,"['-- Block triggers autoblocks\n  ', 'NOT NULL', 'default', ""'1'""]",False
+ipblocks,ipb_expiry,"['-- Time at which the block will expire.\n  -- May be ""infinity""\n  ', 'varbinary(14)', 'NOT NULL', 'default', ""''""]",False
+ipblocks,ipb_range_start,"['-- Start and end of an address range, in hexadecimal\n  -- Size chosen to allow IPv6\n  -- FIXME: these fields were originally blank for single-IP blocks,\n  -- but now they are populated. No migration was ever done. They\n  -- should be fixed to be blank again for such blocks (T51504).\n  ', 'NOT NULL']",True
+ipblocks,ipb_range_end,"['tinyblob', 'NOT NULL']",False
+ipblocks,ipb_deleted,"['-- Flag for entries hidden from users and Sysops\n  ', 'NOT NULL', 'default', '0']",False
+ipblocks,ipb_block_email,"['-- Block prevents user from accessing Special:Emailuser\n  ', 'NOT NULL', 'default', '0']",False
+ipblocks,ipb_allow_usertalk,"['-- Block allows user to edit their own talk page\n  ', 'NOT NULL', 'default', '0']",False
+image,img_name,"['-- ID of the block that caused this block to exist\n  -- Autoblocks set this to the original block\n  -- so that the original block being deleted also\n  -- deletes the autoblocks\n  ', 'int', 'default', 'NULL', '/*$wgDBTableOptions*/', '-- Filename.\n  -- This is also the title of the associated description page,\n  -- which will be in namespace 6 (NS_FILE).\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",True
+image,img_size,"['-- File size in bytes.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+image,img_width,"['-- For images, size in pixels.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+image,img_height,"['int', 'NOT NULL', 'default', '0']",True
+image,img_metadata,"['-- Extracted Exif metadata stored as a serialized PHP array.\n  ', 'NOT NULL']",False
+image,img_bits,"['-- For images, bits per pixel if known.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+image,img_media_type,"['-- Media type as defined by the MEDIATYPE_xxx constants\n  ', 'ENUM(""UNKNOWN"", ""BITMAP"", ""DRAWING"", ""AUDIO"", ""VIDEO"", ""MULTIMEDIA"", ""OFFICE"", ""TEXT"", ""EXECUTABLE"", ""ARCHIVE"", ""3D"")', 'default', 'NULL']",False
+image,unknown,"['-- minor part of a MIME media type as defined by IANA\n  -- the minor parts are not required to adher to any standard\n  -- but should be consistent throughout the database\n  -- see https://www.iana.org/assignments/media-types/\n  ', 'varbinary(100)', 'NOT NULL', 'default']",False
+image,img_description,"['-- Description field as entered by the uploader.\n  -- This is displayed in image upload history and logs.\n  -- Deprecated in favor of image_comment_temp.imgcomment_description_id.\n  ', 'varbinary(767)', 'NOT NULL', 'default', ""''""]",False
+image,img_user,"['-- user_id and user_name of uploader.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+image,img_user_text,"['varchar(255)', 'binary', 'NOT NULL']",False
+image,img_timestamp,"['-- Time of the upload.\n  ', 'varbinary(14)', 'NOT NULL', 'default', ""''""]",False
+image_comment_temp,imgcomment_name,"['-- SHA-1 content hash in base-36\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', '-- Key to img_name (ugh)\n  ', 'varchar(255)', 'binary', 'NOT NULL']",False
+oldimage,oi_name,"['-- Key to comment_id\n  ', 'bigint', 'unsigned', 'NOT NULL']",True
+oldimage,oi_archive_name,"[""-- Filename of the archived file.\n  -- This is generally a timestamp and '!' prepended to the base name.\n  "", 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",True
+oldimage,oi_size,"['-- Other fields as in image...\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+oldimage,oi_width,"['int', 'NOT NULL', 'default', '0']",True
+oldimage,oi_height,"['int', 'NOT NULL', 'default', '0']",True
+oldimage,oi_bits,"['int', 'NOT NULL', 'default', '0']",True
+oldimage,oi_description,"['varbinary(767)', 'NOT NULL', 'default', ""''""]",False
+oldimage,oi_description_id,"['-- Deprecated.\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+oldimage,oi_user,"['-- (""DEFAULT 0"" is temporary, signaling that oi_description should be used)\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+oldimage,oi_user_text,"['varchar(255)', 'binary', 'NOT NULL']",False
+oldimage,oi_timestamp,"['binary(14)', 'NOT NULL', 'default', ""''""]",False
+oldimage,oi_metadata,"['mediumblob', 'NOT NULL']",False
+oldimage,oi_media_type,"['ENUM(""UNKNOWN"", ""BITMAP"", ""DRAWING"", ""AUDIO"", ""VIDEO"", ""MULTIMEDIA"", ""OFFICE"", ""TEXT"", ""EXECUTABLE"", ""ARCHIVE"", ""3D"")', 'default', 'NULL']",False
+oldimage,oi_major_mime,"['ENUM(""unknown"", ""application"", ""audio"", ""image"", ""text"", ""video"", ""message"", ""model"", ""multipart"", ""chemical"")', 'NOT NULL', 'default']",False
+oldimage,unknown,[],False
+oldimage,oi_minor_mime,"['varbinary(100)', 'NOT NULL', 'default']",False
+oldimage,oi_deleted,"['tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+filearchive,fa_id,"['varbinary(32)', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', '-- Unique row id\n  ', 'int', 'NOT NULL']",True
+filearchive,fa_name,"['-- Original base filename; key to image.img_name, page.page_title, etc\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+filearchive,fa_archive_name,"['-- Filename of archived file, if an old revision\n  ', 'varchar(255)', 'binary', 'default', ""''""]",False
+filearchive,fa_storage_group,"[""-- Which storage bin (directory tree or object store) the file data\n  -- is stored in. Should be 'deleted' for files that have been deleted;\n  -- any other bin is not yet in use.\n  "", 'varbinary(16)']",False
+filearchive,fa_storage_key,"['-- SHA-1 of the file contents plus extension, used as a key for storage.\n  -- eg 8f8a562add37052a1848ff7771a2c515db94baa9.jpg\n  --\n  -- If NULL, the file was missing at deletion time or has been purged\n  -- from the archival storage.\n  ', 'varbinary(64)', 'default', ""''""]",True
+filearchive,fa_deleted_user,"['-- Deletion information, if this file is deleted.\n  ', 'int']",True
+filearchive,fa_deleted_timestamp,"['binary(14)', 'default', ""''""]",False
+filearchive,fa_deleted_reason,"['varbinary(767)', 'default', ""''""]",False
+filearchive,fa_deleted_reason_id,"['-- Deprecated\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+filearchive,fa_size,"['-- (""DEFAULT 0"" is temporary, signaling that fa_deleted_reason should be used)\n\n  -- Duped fields from image\n  ', 'int', 'unsigned', 'default', '0']",True
+filearchive,fa_width,"['int', 'default', '0']",True
+filearchive,fa_height,"['int', 'default', '0']",True
+filearchive,fa_metadata,['mediumblob'],False
+filearchive,fa_bits,"['int', 'default', '0']",True
+filearchive,fa_media_type,"['ENUM(""UNKNOWN"", ""BITMAP"", ""DRAWING"", ""AUDIO"", ""VIDEO"", ""MULTIMEDIA"", ""OFFICE"", ""TEXT"", ""EXECUTABLE"", ""ARCHIVE"", ""3D"")', 'default', 'NULL']",False
+filearchive,fa_major_mime,"['ENUM(""unknown"", ""application"", ""audio"", ""image"", ""text"", ""video"", ""message"", ""model"", ""multipart"", ""chemical"")', 'default']",False
+filearchive,unknown,[],False
+filearchive,fa_minor_mime,"['varbinary(100)', 'default']",False
+filearchive,fa_description,"['varbinary(767)', 'default', ""''""]",False
+filearchive,fa_description_id,"['-- Deprecated\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+filearchive,fa_user,"['-- (""DEFAULT 0"" is temporary, signaling that fa_description should be used)\n  ', 'int', 'unsigned', 'default', '0']",True
+filearchive,fa_user_text,"['varchar(255)', 'binary']",False
+filearchive,fa_timestamp,"['binary(14)', 'default', ""''""]",False
+filearchive,fa_deleted,"['-- Visibility of deleted revisions, bitfield\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+uploadstash,us_id,"['-- sha1 hash of file content\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', 'int', 'unsigned', 'NOT NULL']",True
+uploadstash,us_user,"['-- the user who uploaded the file.\n  ', 'int', 'unsigned', 'NOT NULL']",True
+uploadstash,us_key,"['-- file key. this is how applications actually search for the file.\n  -- this might go away, or become the primary key.\n  ', 'varchar(255)', 'NOT NULL']",False
+uploadstash,us_orig_path,"['-- the original path\n  ', 'varchar(255)', 'NOT NULL']",False
+uploadstash,us_path,"['-- the temporary path at which the file is actually stored\n  ', 'varchar(255)', 'NOT NULL']",False
+uploadstash,us_source_type,"['-- which type of upload the file came from (sometimes)\n  ', 'varchar(50)']",True
+uploadstash,us_timestamp,"['-- the date/time on which the file was added\n  ', 'varbinary(14)', 'NOT NULL']",True
+uploadstash,us_status,"['varchar(50)', 'NOT NULL']",False
+uploadstash,us_chunk_inx,"['-- chunk counter starts at 0, current offset is stored in us_size\n  ', 'int', 'unsigned', 'NULL']",True
+uploadstash,us_props,"['-- Serialized file properties from FSFile::getProps()\n  ', 'blob']",False
+uploadstash,us_size,"['-- file size in bytes\n  ', 'int', 'unsigned', 'NOT NULL']",True
+uploadstash,us_sha1,"['-- this hash comes from FSFile::getSha1Base36(), and is 31 characters\n  ', 'varchar(31)', 'NOT NULL']",False
+uploadstash,us_mime,['varchar(255)'],False
+uploadstash,us_media_type,"['-- Media type as defined by the MEDIATYPE_xxx constants, should duplicate definition in the image table\n  ', 'ENUM(""UNKNOWN"", ""BITMAP"", ""DRAWING"", ""AUDIO"", ""VIDEO"", ""MULTIMEDIA"", ""OFFICE"", ""TEXT"", ""EXECUTABLE"", ""ARCHIVE"", ""3D"")', 'default', 'NULL']",False
+uploadstash,us_image_width,"['-- image-specific properties\n  ', 'int', 'unsigned']",True
+uploadstash,us_image_height,"['int', 'unsigned']",True
+recentchanges,rc_id,"['smallint', 'unsigned', '/*$wgDBTableOptions*/', 'int', 'NOT NULL', 'PRIMARY', 'KEY', 'AUTO_INCREMENT']",True
+recentchanges,rc_timestamp,"['varbinary(14)', 'NOT NULL', 'default', ""''""]",False
+recentchanges,rc_user,"['-- As in revision\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_user_text,"['varchar(255)', 'binary', 'NOT NULL']",False
+recentchanges,rc_namespace,"['-- When pages are renamed, their RC entries do _not_ change.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_title,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+recentchanges,rc_comment,"['-- as in revision...\n  ', 'varbinary(767)', 'NOT NULL', 'default', ""''""]",False
+recentchanges,rc_comment_id,"['-- Deprecated.\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+recentchanges,rc_minor,"['-- (""DEFAULT 0"" is temporary, signaling that rc_comment should be used)\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_bot,"[""-- Edits by user accounts with the 'bot' rights key are\n  -- marked with a 1 here, and will be hidden from the\n  -- default view.\n  "", 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_new,"['-- Set if this change corresponds to a page creation\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_cur_id,"['-- Key to page_id (was cur_id prior to 1.5).\n  -- This will keep links working after moves while\n  -- retaining the at-the-time name in the changes list.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_this_oldid,"['-- rev_id of the given revision\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_last_oldid,"['-- rev_id of the prior revision, for generating diff links.\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_type,"['-- The type of change entry (RC_EDIT,RC_NEW,RC_LOG,RC_EXTERNAL)\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_source,"[""-- The source of the change entry (replaces rc_type)\n  -- default of '' is temporary, needed for initial migration\n  "", 'varchar(16)', 'binary', 'not null', 'default', ""''""]",False
+recentchanges,rc_patrolled,"['-- If the Recent Changes Patrol option is enabled,\n  -- users may mark edits as having been reviewed to\n  -- remove a warning flag on the RC list.\n  -- A value of 1 indicates the page has been reviewed.\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_ip,"['-- Recorded IP address the edit was made from, if the\n  -- $wgPutIPinRC option is enabled.\n  ', 'varbinary(40)', 'NOT NULL', 'default', ""''""]",False
+recentchanges,rc_old_len,"['-- Text length in characters before\n  -- and after the edit\n  ', 'int']",True
+recentchanges,rc_new_len,['int'],True
+recentchanges,rc_deleted,"['-- Visibility of recent changes items, bitfield\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_logid,"['-- Value corresponding to log_id, specific log entries\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+recentchanges,rc_log_type,"['-- Store log type info here, or null\n  ', 'varbinary(255)', 'NULL', 'default', 'NULL']",False
+recentchanges,rc_log_action,"['-- Store log action or null\n  ', 'varbinary(255)', 'NULL', 'default', 'NULL']",False
+watchlist,wl_id,"['-- Log params\n  ', 'blob', 'NULL', '/*$wgDBTableOptions*/', 'int', 'unsigned', 'NOT NULL']",True
+watchlist,wl_user,"['-- Key to user.user_id\n  ', 'int', 'unsigned', 'NOT NULL']",True
+watchlist,wl_namespace,"['-- Key to page_namespace/page_title\n  -- Note that users may watch pages which do not exist yet,\n  -- or existed in the past but have been deleted.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+watchlist,wl_title,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+searchindex,si_page,"['-- Timestamp used to send notification e-mails and show ""updated since last visit"" markers on\n  -- history and recent changes / watchlist. Set to NULL when the user visits the latest revision\n  -- of the page, which means that they should be sent an e-mail on the next change.\n  ', 'varbinary(14)', '/*$wgDBTableOptions*/', '-- Key to page_id\n  ', 'int', 'unsigned', 'NOT NULL']",True
+searchindex,si_title,"['-- Munged version of title\n  ', 'varchar(255)', 'NOT NULL', 'default', ""''""]",False
+searchindex,si_text,"['-- Munged version of body text\n  ', 'NOT NULL']",False
+interwiki,iw_prefix,"['-- The interwiki prefix, (e.g. ""Meatball"", or the language prefix ""de"")\n  ', 'varchar(32)', 'NOT NULL']",True
+interwiki,iw_url,"['-- The URL of the wiki, with ""$1"" as a placeholder for an article name.\n  -- Any spaces in the name will be transformed to underscores before\n  -- insertion.\n  ', 'blob', 'NOT NULL']",False
+interwiki,iw_api,"['-- The URL of the file api.php\n  ', 'blob', 'NOT NULL']",False
+interwiki,iw_wikiid,"[""-- The name of the database (for a connection to be established with wfGetLB( 'wikiid' ))\n  "", 'varchar(64)', 'NOT NULL']",False
+interwiki,iw_local,"['-- A boolean value indicating whether the wiki is in this project\n  -- (used, for example, to detect redirect loops)\n  ', 'NOT NULL']",True
+querycache,qc_type,"['-- Boolean value indicating whether interwiki transclusions are allowed.\n  ', 'tinyint', 'NOT NULL', 'default', '0', '/*$wgDBTableOptions*/', '-- A key name, generally the base name of of the special page.\n  ', 'varbinary(32)', 'NOT NULL']",True
+querycache,qc_value,"['-- Some sort of stored value. Sizes, counts...\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+querycache,qc_namespace,"['-- Target namespace+title\n  ', 'int', 'NOT NULL', 'default', '0']",True
+objectcache,keyname,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', 'varbinary(255)', 'NOT NULL', 'default', ""''"", 'PRIMARY', 'KEY']",False
+objectcache,value,['mediumblob'],False
+transcache,tc_url,"['datetime', '/*$wgDBTableOptions*/', 'varbinary(255)', 'NOT NULL', 'PRIMARY', 'KEY']",True
+transcache,tc_contents,['text'],False
+logging,log_id,"['binary(14)', 'NOT NULL', '/*$wgDBTableOptions*/', '-- Log ID, for referring to this specific log entry, probably for deletion and such.\n  ', 'int', 'unsigned', 'NOT NULL']",True
+logging,log_type,"['-- Symbolic keys for the general log type and the action type\n  -- within the log. The output format will be controlled by the\n  -- action field, but only the type controls categorization.\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''""]",False
+logging,log_action,"['varbinary(32)', 'NOT NULL', 'default', ""''""]",False
+logging,log_timestamp,"['-- Timestamp. Duh.\n  ', 'binary(14)', 'NOT NULL', 'default', ""'19700101000000'""]",False
+logging,log_user,"['-- The user who performed this action; key to user_id\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+logging,log_user_text,"['-- Name of the user who performed this action\n  ', 'varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+logging,log_namespace,"['-- Key to the page affected. Where a user is the target,\n  -- this will point to the user page.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+logging,log_title,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+logging,log_page,"['int', 'unsigned', 'NULL']",True
+logging,log_comment,"['-- Freeform text. Interpreted as edit history comments.\n  -- Deprecated in favor of log_comment_id.\n  ', 'varbinary(767)', 'NOT NULL', 'default', ""''""]",False
+logging,log_comment_id,"['-- Key to comment_id. Comment summarizing the change.\n  -- (""DEFAULT 0"" is temporary, signaling that log_comment should be used)\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+logging,log_params,"['-- miscellaneous parameters:\n  -- LF separated list (old system) or serialized PHP array (new system)\n  ', 'blob', 'NOT NULL']",False
+log_search,ls_field,"['-- rev_deleted for logs\n  ', 'tinyint', 'unsigned', 'NOT NULL', 'default', '0', '/*$wgDBTableOptions*/', '-- The type of ID (rev ID, log ID, rev timestamp, username)\n  ', 'varbinary(32)', 'NOT NULL']",True
+log_search,ls_value,"['-- The value of the ID\n  ', 'varchar(255)', 'NOT NULL']",False
+job,job_id,"['-- Key to log_id\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+job,job_cmd,"['-- Command name\n  -- Limited to 60 to prevent key length overflow\n  ', 'varbinary(60)', 'NOT NULL', 'default', ""''""]",False
+job,job_namespace,"[""-- Namespace and title to act on\n  -- Should be 0 and '' if the command does not operate on a title\n  "", 'int', 'NOT NULL']",True
+job,job_title,"['varchar(255)', 'binary', 'NOT NULL']",False
+job,job_timestamp,"['-- Timestamp of when the job was inserted\n  -- NULL for jobs added before addition of the timestamp\n  ', 'varbinary(14)', 'NULL', 'default', 'NULL']",True
+job,job_params,"['-- Any other parameters to the command\n  -- Stored as a PHP serialized array, or an empty string if there are no parameters\n  ', 'blob', 'NOT NULL']",False
+job,job_random,"['-- Random, non-unique, number used for job acquisition (for lock concurrency)\n  ', 'integer', 'unsigned', 'NOT NULL', 'default', '0']",True
+job,job_attempts,"['-- The number of times this job has been locked\n  ', 'integer', 'unsigned', 'NOT NULL', 'default', '0']",True
+job,job_token,"['-- Field that conveys process locks on rows via process UUIDs\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''""]",False
+job,job_token_timestamp,"['-- Timestamp when the job was locked\n  ', 'varbinary(14)', 'NULL', 'default', 'NULL']",False
+querycache_info,qci_type,"['-- Base 36 SHA1 of the job parameters relevant to detecting duplicates\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', '-- Special page name\n  -- Corresponds to a qc_type value\n  ', 'varbinary(32)', 'NOT NULL', 'default', ""''""]",False
+redirect,rd_from,"['-- Timestamp of last update\n  ', 'binary(14)', 'NOT NULL', 'default', ""'19700101000000'"", '/*$wgDBTableOptions*/', '-- Key to the page_id of the redirect page\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+redirect,rd_namespace,"['-- Key to page_namespace/page_title of the target page.\n  -- The target page may or may not exist, and due to renames\n  -- and deletions may refer to different page records as time\n  -- goes by.\n  ', 'int', 'NOT NULL', 'default', '0']",True
+redirect,rd_title,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+redirect,rd_interwiki,"['varchar(32)', 'default', 'NULL']",False
+querycachetwo,qcc_type,"['varchar(255)', 'binary', 'default', 'NULL', '/*$wgDBTableOptions*/', '-- A key name, generally the base name of of the special page.\n  ', 'varbinary(32)', 'NOT NULL']",False
+querycachetwo,qcc_value,"['-- Some sort of stored value. Sizes, counts...\n  ', 'int', 'unsigned', 'NOT NULL', 'default', '0']",True
+querycachetwo,qcc_namespace,"['-- Target namespace+title\n  ', 'int', 'NOT NULL', 'default', '0']",True
+querycachetwo,qcc_title,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''""]",False
+querycachetwo,qcc_namespacetwo,"['-- Target namespace+title2\n  ', 'int', 'NOT NULL', 'default', '0']",True
+page_restrictions,pr_id,"['varchar(255)', 'binary', 'NOT NULL', 'default', ""''"", '/*$wgDBTableOptions*/', '-- Field for an ID for this restrictions row (sort-key for Special:ProtectedPages)\n  ', 'int', 'unsigned', 'NOT NULL']",True
+page_restrictions,pr_page,"['-- Page to apply restrictions to (Foreign Key to page).\n  ', 'int', 'NOT NULL']",True
+page_restrictions,pr_type,"['-- The protection type (edit, move, etc)\n  ', 'varbinary(60)', 'NOT NULL']",False
+page_restrictions,pr_level,"['-- The protection level (Sysop, autoconfirmed, etc)\n  ', 'varbinary(60)', 'NOT NULL']",False
+page_restrictions,pr_cascade,"['-- Whether or not to cascade the protection down to pages transcluded.\n  ', 'tinyint', 'NOT NULL']",True
+page_restrictions,pr_user,"['-- Field for future support of per-user restriction.\n  ', 'int', 'unsigned', 'NULL']",True
+protected_titles,pt_namespace,"['-- Field for time-limited protection.\n  ', 'varbinary(14)', 'NULL', '/*$wgDBTableOptions*/', 'int', 'NOT NULL']",True
+protected_titles,pt_title,"['varchar(255)', 'binary', 'NOT NULL']",False
+protected_titles,pt_user,"['int', 'unsigned', 'NOT NULL']",True
+protected_titles,pt_reason,"['varbinary(767)', 'default', ""''""]",False
+protected_titles,pt_reason_id,"['-- Deprecated.\n  ', 'bigint', 'unsigned', 'NOT NULL', 'DEFAULT', '0']",True
+protected_titles,pt_timestamp,"['-- (""DEFAULT 0"" is temporary, signaling that pt_reason should be used)\n  ', 'binary(14)', 'NOT NULL']",False
+protected_titles,pt_expiry,"['varbinary(14)', 'NOT NULL', 'default', ""''""]",False
+page_props,pp_page,"['varbinary(60)', 'NOT NULL', '/*$wgDBTableOptions*/', 'int', 'NOT NULL']",True
+page_props,pp_propname,"['varbinary(60)', 'NOT NULL']",False
+page_props,pp_value,"['blob', 'NOT NULL']",False
+updatelog,ul_key,"['float', 'DEFAULT', 'NULL', '/*$wgDBTableOptions*/', 'varchar(255)', 'NOT NULL', 'PRIMARY', 'KEY']",True
+change_tag,ct_id,"['blob', '/*$wgDBTableOptions*/', 'int', 'unsigned', 'NOT NULL']",True
+change_tag,ct_rc_id,"['-- RCID for the change\n  ', 'int', 'NULL']",True
+change_tag,ct_log_id,"['-- LOGID for the change\n  ', 'int', 'unsigned', 'NULL']",True
+change_tag,ct_rev_id,"['-- REVID for the change\n  ', 'int', 'unsigned', 'NULL']",True
+change_tag,ct_tag,"['-- Tag applied\n  ', 'varchar(255)', 'NOT NULL']",False
+tag_summary,ts_id,"['-- Parameters for the tag, presently unused\n  ', 'blob', 'NULL', '/*$wgDBTableOptions*/', 'int', 'unsigned', 'NOT NULL']",True
+tag_summary,ts_rc_id,"['-- RCID for the change\n  ', 'int', 'NULL']",True
+tag_summary,ts_log_id,"['-- LOGID for the change\n  ', 'int', 'unsigned', 'NULL']",True
+tag_summary,ts_rev_id,"['-- REVID for the change\n  ', 'int', 'unsigned', 'NULL']",True
+l10n_cache,lc_lang,"['-- Comma-separated list of tags\n  ', 'blob', 'NOT NULL', '/*$wgDBTableOptions*/', 'varchar(255)', 'NOT NULL']",False
+l10n_cache,lc_key,"['-- Cache key\n  ', 'varchar(255)', 'NOT NULL']",False
+module_deps,md_module,"['-- Value\n  ', 'NOT NULL']",False
+module_deps,md_skin,"['-- Module context vary (includes skin and language; called ""md_skin"" for legacy reasons)\n  ', 'varbinary(32)', 'NOT NULL']",False
+sites,site_id,"['-- JSON blob with file dependencies\n  ', 'NOT NULL']",False
+sites,site_global_key,"[""-- Global identifier for the site, ie 'enwiktionary'\n  "", 'varbinary(32)', 'NOT NULL']",False
+sites,site_type,"[""-- Type of the site, ie 'mediawiki'\n  "", 'varbinary(32)', 'NOT NULL']",False
+sites,site_group,"[""-- Group of the site, ie 'wikipedia'\n  "", 'varbinary(32)', 'NOT NULL']",False
+sites,site_source,"[""-- Source of the site data, ie 'local', 'wikidata', 'my-magical-repo'\n  "", 'varbinary(32)', 'NOT NULL']",False
+sites,site_language,"['-- Language code of the sites primary language.\n  ', 'varbinary(32)', 'NOT NULL']",False
+sites,site_protocol,"[""-- Protocol of the site, ie 'http://', 'irc://', '//'\n  -- This field is an index for lookups and is build from type specific data in site_data.\n  "", 'varbinary(32)', 'NOT NULL']",False
+sites,site_domain,"[""-- Domain of the site in reverse order, ie 'org.mediawiki.www.'\n  -- This field is an index for lookups and is build from type specific data in site_data.\n  "", 'VARCHAR(255)', 'NOT NULL']",False
+sites,site_data,"['-- Type dependent site data.\n  ', 'BLOB', 'NOT NULL']",False
+sites,site_forward,"['-- If site.tld/path/key:pageTitle should forward users to  the page on\n  -- the actual site, where ""key"" is the local identifier.\n  ', 'NOT NULL']",False
+site_identifiers,si_site,"[""-- Type dependent site config.\n  -- For instance if template transclusion should be allowed if it's a MediaWiki.\n  "", 'BLOB', 'NOT NULL', '/*$wgDBTableOptions*/', '-- Key on site.site_id\n  ', 'INT', 'UNSIGNED', 'NOT NULL']",False
+site_identifiers,si_type,"[""-- local key type, ie 'interwiki' or 'langlink'\n  "", 'varbinary(32)', 'NOT NULL']",True

@@ -2,6 +2,22 @@ object Constants {
 
   val attacker_input = List("_GET", "_POST", "_COOKIE", "_REQUEST", "_ENV", "HTTP_.*", "QUERY_STRING", "_FILES")
 
+  val sql_func: List[String] = List("mysql_", "mysqli_", "pg_", "sqlite_")
+
+  val safe_types: List[String] = List("int", "integer", "bool", "boolean", "float", "double")
+
+  val magic_constants: List[String] = List("__LINE__, __FILE__, __DIR__, __FUNCTION__, __CLASS__, __TRAIT__, __METHOD__, __NAMESPACE__")
+
+  val input_func: List[String] = List("readline")
+
+  val san_identifiers: List[String] = List("<global>", "this")
+
+  val type_cast_byref: String = "settype"
+
+  val constant_definition_func: String = "define"
+
+  val query_concat_func: List[String] = List("<operator>.concat", "encaps")
+
   val sqli_sink: List[String] = List(
     // MySQLi Functions
     "mysqli_query",
@@ -138,7 +154,7 @@ object Constants {
     "gethostbyname",
     "date", "ctype_digit")
   
-  val san_functions_code = List
+  val san_functions_code = List()
 
   val san_functions_os_command  = List("escapeshellarg",
     "escapeshellcmd")

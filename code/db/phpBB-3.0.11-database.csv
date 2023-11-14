@@ -1,0 +1,540 @@
+phpbb_acl_groups,group_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_groups,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_groups,auth_option_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_groups,auth_role_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_groups,auth_setting,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_options,auth_option_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_acl_options,auth_option,"['varchar(50)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_acl_options,is_global,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_options,is_local,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_options,founder_only,"['UNIQUE', 'auth_option (auth_option)']",False
+phpbb_acl_roles,role_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_acl_roles,role_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_acl_roles,role_description,"['text', 'NOT NULL']",False
+phpbb_acl_roles,role_type,"['varchar(10)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_acl_roles,role_order,"['KEY', 'role_type (role_type)', 'KEY', 'role_order (role_order)']",False
+phpbb_acl_roles_data,role_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_roles_data,auth_option_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_roles_data,auth_setting,"['KEY', 'ath_op_id (auth_option_id)']",False
+phpbb_acl_users,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_users,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_users,auth_option_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_users,auth_role_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_acl_users,auth_setting,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_banlist,ban_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_banlist,ban_userid,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_banlist,ban_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_banlist,ban_email,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_banlist,ban_start,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_banlist,ban_end,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_banlist,ban_exclude,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_banlist,ban_reason,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_banlist,ban_give_reason,"['KEY', 'ban_end (ban_end)', 'KEY', 'ban_user (ban_userid, ban_exclude)', 'KEY', 'ban_email (ban_email, ban_exclude)', 'KEY', 'ban_ip (ban_ip, ban_exclude)']",False
+phpbb_bbcodes,bbcode_id,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_bbcodes,bbcode_tag,"['varchar(16)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_bbcodes,bbcode_helpline,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_bbcodes,display_on_posting,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_bbcodes,bbcode_match,"['text', 'NOT NULL']",False
+phpbb_bbcodes,bbcode_tpl,"['mediumtext', 'NOT NULL']",False
+phpbb_bbcodes,first_pass_match,"['mediumtext', 'NOT NULL']",False
+phpbb_bbcodes,first_pass_replace,"['mediumtext', 'NOT NULL']",False
+phpbb_bbcodes,second_pass_match,"['mediumtext', 'NOT NULL']",False
+phpbb_bbcodes,second_pass_replace,"['KEY', 'display_on_post (display_on_posting)']",False
+phpbb_bookmarks,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_bookmarks,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_bots,bot_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_bots,bot_active,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_bots,bot_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_bots,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_bots,bot_agent,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_bots,bot_ip,"['KEY', 'bot_active (bot_active)']",False
+phpbb_config,config_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_config,config_value,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_config,is_dynamic,"['KEY', 'is_dynamic (is_dynamic)']",False
+phpbb_confirm,confirm_id,"['char(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_confirm,session_id,"['char(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_confirm,confirm_type,"['tinyint(3)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_confirm,code,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_confirm,seed,"['int(10)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_confirm,attempts,"['KEY', 'confirm_type (confirm_type)']",False
+phpbb_disallow,disallow_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_disallow,disallow_username,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_drafts,draft_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_drafts,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_drafts,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_drafts,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_drafts,save_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_drafts,draft_subject,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_drafts,draft_message,"['KEY', 'save_time (save_time)']",True
+phpbb_extensions,extension_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_extensions,group_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_extensions,extension,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_extension_groups,group_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_extension_groups,group_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_extension_groups,cat_id,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_extension_groups,allow_group,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_extension_groups,download_mode,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_extension_groups,upload_icon,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_extension_groups,max_filesize,"['int(20)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_extension_groups,allowed_forums,"['text', 'NOT NULL']",False
+phpbb_extension_groups,allow_in_pm,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_forums,parent_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,left_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,right_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_parents,"['mediumtext', 'NOT NULL']",False
+phpbb_forums,forum_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_desc,"['text', 'NOT NULL']",False
+phpbb_forums,forum_desc_bitfield,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_desc_options,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'7'"", 'NOT NULL']",True
+phpbb_forums,forum_desc_uid,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_link,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_password,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_style,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_image,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_rules,"['text', 'NOT NULL']",False
+phpbb_forums,forum_rules_link,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_rules_bitfield,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_rules_options,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'7'"", 'NOT NULL']",True
+phpbb_forums,forum_rules_uid,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_topics_per_page,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_status,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_posts,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_topics,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_topics_real,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_last_post_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_last_poster_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_last_post_subject,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_last_post_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,forum_last_poster_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_last_poster_colour,"['varchar(6)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums,forum_flags,"['tinyint(4)', 'DEFAULT', ""'32'"", 'NOT NULL']",True
+phpbb_forums,forum_options,"['int(20)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,display_subforum_list,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_forums,display_on_index,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_forums,enable_indexing,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_forums,enable_icons,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_forums,enable_prune,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,prune_next,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,prune_days,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,prune_viewed,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums,prune_freq,"['KEY', 'left_right_id (left_id, right_id)', 'KEY', 'forum_lastpost_id (forum_last_post_id)']",False
+phpbb_forums_access,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_access,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_access,session_id,"['char(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_forums_track,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_track,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_track,mark_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_watch,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_watch,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_forums_watch,notify_status,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_groups,group_type,"['tinyint(4)', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_groups,group_founder_manage,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_skip_auth,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_groups,group_desc,"['text', 'NOT NULL']",False
+phpbb_groups,group_desc_bitfield,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_groups,group_desc_options,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'7'"", 'NOT NULL']",True
+phpbb_groups,group_desc_uid,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_groups,group_display,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_avatar,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_groups,group_avatar_type,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_avatar_width,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_avatar_height,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_rank,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_colour,"['varchar(6)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_groups,group_sig_chars,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_receive_pm,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_message_limit,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_max_recipients,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_groups,group_legend,"['KEY', 'group_legend_name (group_legend, group_name)']",False
+phpbb_icons,icons_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_icons,icons_url,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_icons,icons_width,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_icons,icons_height,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_icons,icons_order,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_icons,display_on_posting,"['KEY', 'display_on_posting (display_on_posting)']",False
+phpbb_lang,lang_id,"['tinyint(4)', 'NOT NULL', 'auto_increment']",True
+phpbb_lang,lang_iso,"['varchar(30)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_lang,lang_dir,"['varchar(30)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_lang,lang_english_name,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_lang,lang_local_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_lang,lang_author,"['KEY', 'lang_iso (lang_iso)']",False
+phpbb_log,log_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_log,log_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_log,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_log,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_log,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_log,reportee_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_log,log_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_log,log_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_log,log_operation,"['text', 'NOT NULL']",False
+phpbb_log,log_data,"['KEY', 'log_type (log_type)', 'KEY', 'forum_id (forum_id)', 'KEY', 'topic_id (topic_id)', 'KEY', 'reportee_id (reportee_id)', 'KEY', 'user_id (user_id)']",False
+phpbb_login_attempts,attempt_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_login_attempts,attempt_browser,"['varchar(150)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_login_attempts,attempt_forwarded_for,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_login_attempts,attempt_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_login_attempts,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_login_attempts,username,"['varchar(255)', 'DEFAULT', ""'0'"", 'NOT NULL']",False
+phpbb_login_attempts,username_clean,"['varchar(255)', 'DEFAULT', ""'0'"", 'NOT NULL']",False
+phpbb_moderator_cache,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_moderator_cache,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_moderator_cache,username,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_moderator_cache,group_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_moderator_cache,group_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_moderator_cache,display_on_index,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_modules,module_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_modules,module_enabled,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_modules,module_display,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_modules,module_basename,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_modules,module_class,"['varchar(10)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_modules,parent_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_modules,left_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_modules,right_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_modules,module_langname,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_modules,module_mode,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_modules,module_auth,"['KEY', 'left_right_id (left_id, right_id)', 'KEY', 'module_enabled (module_enabled)', 'KEY', 'class_left_id (module_class, left_id)']",False
+phpbb_poll_options,poll_option_id,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_poll_options,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_poll_options,poll_option_text,"['text', 'NOT NULL']",False
+phpbb_poll_options,poll_option_total,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_poll_votes,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_poll_votes,poll_option_id,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_poll_votes,vote_user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_poll_votes,vote_user_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,post_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_posts,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,poster_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,icon_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,poster_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,post_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,post_approved,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_posts,post_reported,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,enable_bbcode,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_posts,enable_smilies,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_posts,enable_magic_url,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_posts,enable_sig,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_posts,post_username,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,post_subject,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL', 'COLLATE']",False
+phpbb_posts,utf8_unicode_ci,[],False
+phpbb_posts,post_text,"['mediumtext', 'NOT NULL']",False
+phpbb_posts,post_checksum,"['varchar(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,post_attachment,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,bbcode_bitfield,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,bbcode_uid,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,post_postcount,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_posts,post_edit_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,post_edit_reason,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_posts,post_edit_user,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,post_edit_count,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_posts,post_edit_locked,"['KEY', 'forum_id (forum_id)', 'KEY', 'topic_id (topic_id)', 'KEY', 'poster_ip (poster_ip)', 'KEY', 'poster_id (poster_id)', 'KEY', 'post_approved (post_approved)', 'KEY', 'post_username (post_username)', 'KEY', 'tid_post_time (topic_id, post_time)']",True
+phpbb_privmsgs,msg_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_privmsgs,root_level,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,author_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,icon_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,author_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_privmsgs,message_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,enable_bbcode,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_privmsgs,enable_smilies,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_privmsgs,enable_magic_url,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_privmsgs,enable_sig,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_privmsgs,mediumtext,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL', 'message_text', 'NOT NULL']",False
+phpbb_privmsgs,message_edit_reason,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_privmsgs,message_edit_user,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,message_attachment,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,bbcode_bitfield,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_privmsgs,bbcode_uid,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_privmsgs,message_edit_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,message_edit_count,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs,to_address,"['text', 'NOT NULL']",False
+phpbb_privmsgs,bcc_address,"['text', 'NOT NULL']",False
+phpbb_privmsgs,message_reported,"['KEY', 'author_ip (author_ip)', 'KEY', 'message_time (message_time)', 'KEY', 'author_id (author_id)', 'KEY', 'root_level (root_level)']",True
+phpbb_privmsgs_folder,folder_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_privmsgs_folder,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_folder,folder_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_privmsgs_folder,pm_count,"['KEY', 'user_id (user_id)']",False
+phpbb_privmsgs_rules,rule_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_privmsgs_rules,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_rules,rule_check,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_rules,rule_connection,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_rules,rule_string,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_privmsgs_rules,rule_user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_rules,rule_group_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_rules,rule_action,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_rules,rule_folder_id,"['KEY', 'user_id (user_id)']",False
+phpbb_privmsgs_to,msg_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,author_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,pm_deleted,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,pm_new,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_privmsgs_to,pm_unread,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_privmsgs_to,pm_replied,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,pm_marked,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,pm_forwarded,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_privmsgs_to,folder_id,"['int(11)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_profile_fields,field_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_ident,"['varchar(20)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_length,"['varchar(20)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_minlen,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_maxlen,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_novalue,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_default_value,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_validation,"['varchar(20)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_fields,field_required,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_show_novalue,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_show_on_reg,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_show_on_vt,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_show_profile,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_hide,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_no_view,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_active,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields,field_order,"['KEY', 'fld_type (field_type)', 'KEY', 'fld_ordr (field_order)']",False
+phpbb_profile_fields_data,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields_lang,field_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields_lang,lang_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields_lang,option_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields_lang,field_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_fields_lang,lang_value,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_lang,field_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_lang,lang_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_profile_lang,lang_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_profile_lang,lang_explain,"['text', 'NOT NULL']",False
+phpbb_profile_lang,lang_default_value,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_ranks,rank_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_ranks,rank_title,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_ranks,rank_min,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_ranks,rank_special,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_ranks,rank_image,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_reports,report_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_reports,reason_id,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,post_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,pm_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,user_notify,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,report_closed,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,report_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_reports,report_text,"['KEY', 'post_id (post_id)', 'KEY', 'pm_id (pm_id)']",False
+phpbb_reports_reasons,reason_id,"['smallint(4)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_reports_reasons,reason_title,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_reports_reasons,reason_description,"['mediumtext', 'NOT NULL']",False
+phpbb_reports_reasons,reason_order,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_search_results,search_key,"['varchar(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_search_results,search_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_search_results,search_keywords,"['mediumtext', 'NOT NULL']",False
+phpbb_search_results,search_authors,"['mediumtext', 'NOT NULL']",False
+phpbb_search_wordlist,word_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_search_wordlist,word_text,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_search_wordlist,word_common,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_search_wordlist,word_count,"['UNIQUE', 'wrd_txt (word_text)']",False
+phpbb_search_wordmatch,post_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_search_wordmatch,word_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_search_wordmatch,title_match,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL', 'UNIQUE', 'unq_mtch (word_id, post_id, title_match)']",True
+phpbb_sessions,session_id,"['char(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions,session_user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions,session_forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions,session_last_visit,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions,session_start,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions,session_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions,session_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions,session_browser,"['varchar(150)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions,session_forwarded_for,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions,session_page,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions,session_viewonline,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_sessions,session_autologin,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions,session_admin,"['KEY', 'session_time (session_time)', 'KEY', 'session_user_id (session_user_id)', 'KEY', 'session_fid (session_forum_id)']",True
+phpbb_sessions_keys,key_id,"['char(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions_keys,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_sessions_keys,last_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sessions_keys,last_login,"['KEY', 'last_login (last_login)']",False
+phpbb_sitelist,site_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_sitelist,site_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sitelist,site_hostname,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_sitelist,ip_exclude,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_smilies,smiley_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_smilies,code,"['varchar(50)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_smilies,emotion,"['varchar(50)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_smilies,smiley_url,"['varchar(50)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_smilies,smiley_width,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_smilies,smiley_height,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_smilies,smiley_order,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_smilies,display_on_posting,"['KEY', 'display_on_post (display_on_posting)']",False
+phpbb_styles,style_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_styles,style_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles,style_copyright,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles,style_active,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_styles,template_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles,theme_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles,imageset_id,"['UNIQUE', 'style_name (style_name)']",False
+phpbb_styles_template,template_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_styles_template,template_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_template,template_copyright,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_template,template_path,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_template,bbcode_bitfield,"['varchar(255)', 'DEFAULT', ""'kNg='"", 'NOT NULL']",False
+phpbb_styles_template,template_storedb,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_template,template_inherits_id,"['int(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_template,template_inherit_path,"['UNIQUE', 'tmplte_nm (template_name)']",False
+phpbb_styles_template_data,template_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_template_data,template_filename,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_template_data,template_included,"['text', 'NOT NULL']",False
+phpbb_styles_template_data,template_mtime,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_template_data,template_data,"['mediumtext', 'NOT NULL']",False
+phpbb_styles_theme,theme_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_styles_theme,theme_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_theme,theme_copyright,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_theme,theme_path,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_theme,theme_storedb,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_theme,theme_mtime,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_theme,theme_data,"['UNIQUE', 'theme_name (theme_name)']",False
+phpbb_styles_imageset,imageset_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_styles_imageset,imageset_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_imageset,imageset_copyright,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_imageset,imageset_path,"['UNIQUE', 'imgset_nm (imageset_name)']",True
+phpbb_styles_imageset_data,image_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_styles_imageset_data,image_name,"['varchar(200)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_imageset_data,image_filename,"['varchar(200)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_imageset_data,image_lang,"['varchar(30)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_styles_imageset_data,image_height,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_imageset_data,image_width,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_styles_imageset_data,imageset_id,"['KEY', 'i_d (imageset_id)']",True
+phpbb_topics,topic_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_topics,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,icon_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_attachment,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_approved,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_topics,topic_reported,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_title,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL', 'COLLATE']",False
+phpbb_topics,utf8_unicode_ci,[],False
+phpbb_topics,topic_poster,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_time_limit,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_views,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_replies,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_replies_real,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_status,"['tinyint(3)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_type,"['tinyint(3)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_first_post_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_first_poster_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_topics,topic_first_poster_colour,"['varchar(6)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_topics,topic_last_post_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_last_poster_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_last_poster_name,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_topics,topic_last_poster_colour,"['varchar(6)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_topics,topic_last_post_subject,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_topics,topic_last_post_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_last_view_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_moved_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_bumped,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,topic_bumper,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,poll_title,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_topics,poll_start,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,poll_length,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,poll_max_options,"['tinyint(4)', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_topics,poll_last_vote,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics,poll_vote_change,"['KEY', 'forum_id (forum_id)', 'KEY', 'forum_id_type (forum_id, topic_type)', 'KEY', 'last_post_time (topic_last_post_time)', 'KEY', 'topic_approved (topic_approved)', 'KEY', 'forum_appr_last (forum_id, topic_approved, topic_last_post_id)', 'KEY', 'fid_time_moved (forum_id, topic_last_post_time, topic_moved_id)']",True
+phpbb_topics_track,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_track,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_track,forum_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_track,mark_time,"['KEY', 'topic_id (topic_id)', 'KEY', 'forum_id (forum_id)']",False
+phpbb_topics_posted,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_posted,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_posted,topic_posted,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_watch,topic_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_watch,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_topics_watch,notify_status,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_user_group,group_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_user_group,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_user_group,group_leader,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_user_group,user_pending,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_users,user_type,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,group_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'3'"", 'NOT NULL']",True
+phpbb_users,user_permissions,"['mediumtext', 'NOT NULL']",False
+phpbb_users,user_perm_from,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_ip,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_regdate,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,username,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,username_clean,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_password,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_passchg,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_pass_convert,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_email,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_email_hash,"['bigint(20)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_birthday,"['varchar(10)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_lastvisit,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_lastmark,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_lastpost_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_lastpage,"['varchar(200)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_last_confirm_key,"['varchar(10)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_last_search,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_warnings,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_last_warning,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_login_attempts,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_inactive_reason,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_inactive_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_posts,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_lang,"['varchar(30)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_timezone,"['decimal(5,2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_dst,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_dateformat,"['varchar(30)', 'DEFAULT', ""'d M Y H:i'"", 'NOT NULL']",False
+phpbb_users,user_style,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_rank,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_colour,"['varchar(6)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_new_privmsg,"['int(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_unread_privmsg,"['int(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_last_privmsg,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_message_rules,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_full_folder,"['int(11)', 'DEFAULT', ""'-3'"", 'NOT NULL']",True
+phpbb_users,user_emailtime,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_topic_show_days,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_topic_sortby_type,"['varchar(1)', 'DEFAULT', ""'t'"", 'NOT NULL']",False
+phpbb_users,user_topic_sortby_dir,"['varchar(1)', 'DEFAULT', ""'d'"", 'NOT NULL']",False
+phpbb_users,user_post_show_days,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_post_sortby_type,"['varchar(1)', 'DEFAULT', ""'t'"", 'NOT NULL']",False
+phpbb_users,user_post_sortby_dir,"['varchar(1)', 'DEFAULT', ""'a'"", 'NOT NULL']",False
+phpbb_users,user_notify,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_notify_pm,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_notify_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_allow_pm,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_allow_viewonline,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_allow_viewemail,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_allow_massemail,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_options,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'230271'"", 'NOT NULL']",True
+phpbb_users,user_avatar,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_avatar_type,"['tinyint(2)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_avatar_width,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_avatar_height,"['smallint(4)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_sig,"['mediumtext', 'NOT NULL']",False
+phpbb_users,user_sig_bbcode_uid,"['varchar(8)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_sig_bbcode_bitfield,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_from,"['varchar(100)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_icq,"['varchar(15)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_aim,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_yim,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_msnm,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_jabber,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_website,"['varchar(200)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_occ,"['text', 'NOT NULL']",False
+phpbb_users,user_interests,"['text', 'NOT NULL']",False
+phpbb_users,user_actkey,"['varchar(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_newpasswd,"['varchar(40)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_form_salt,"['varchar(32)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_users,user_new,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'1'"", 'NOT NULL']",True
+phpbb_users,user_reminded,"['tinyint(4)', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_users,user_reminded_time,"['KEY', 'user_birthday (user_birthday)', 'KEY', 'user_email_hash (user_email_hash)', 'KEY', 'user_type (user_type)', 'UNIQUE', 'username_clean (username_clean)']",False
+phpbb_warnings,warning_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_warnings,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_warnings,post_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_warnings,log_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_warnings,warning_time,"['int(11)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_words,word_id,"['mediumint(8)', 'UNSIGNED', 'NOT NULL', 'auto_increment']",True
+phpbb_words,word,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_words,replacement,"['varchar(255)', 'DEFAULT', ""''"", 'NOT NULL']",False
+phpbb_zebra,user_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_zebra,zebra_id,"['mediumint(8)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_zebra,friend,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
+phpbb_zebra,foe,"['tinyint(1)', 'UNSIGNED', 'DEFAULT', ""'0'"", 'NOT NULL']",True
