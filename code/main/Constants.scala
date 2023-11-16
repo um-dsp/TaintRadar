@@ -47,7 +47,9 @@ object Constants {
     "sqlite_fetch_single",
     "sqlite_fetch_string",
     "sqlite_fetch_all",
-    "sqlite_single_query"
+    "sqlite_single_query",
+    // Miscellaneous
+    "sql_query"
   )
 
   val commandexec_sink = List("shell_exec", "exec", "system", "mail", "popen", "expect_popen", "passthru", "pcntl_exec", "proc_open")

@@ -4,6 +4,7 @@ import pandas as pd
 import re
 import ast
 from tqdm import tqdm
+import sys
 
 tqdm.pandas()
 appName = 'collabtive'
@@ -73,26 +74,35 @@ def getCVEFromNavex(cve, file):
     if not flag: cve_id = 'NA'
     return cve_id
 
+matchedCVEs = []
+def matched(value):
+    if value not in matchedCVEs:
+        matchedCVEs.append(value)
+        # print(value)
+
 # Process CVEs into a dataframe
+if len(sys.argv)>1:
+    cve = pd.read_excel(f'cve/{appName}-cve.xlsx', index_col=0)
 
-r = nvdlib.searchCVE(keywordSearch=appName)
-jsonFormattedCVE = json.dumps(ast.literal_eval(str(r)))
-cve = pd.read_json(jsonFormattedCVE)
-cve['descriptions'] = cve['descriptions'].apply(lambda descriptions: list(filter(lambda x: x["lang"]=="en", descriptions)))
-cve['descriptions'] = cve['descriptions'].apply(lambda descriptions: descriptions[0]['value'])
-cve['versions'] = cve['descriptions'].apply(getVersions)
-cve['filenames'] = cve['descriptions'].apply(getFiles)
-cve['cve_vulnerability'] = cve['descriptions'].apply(getVulnerability)
-cve['parameters'] = cve['descriptions'].apply(getParameters)
-cve['relevant_version'] = cve['versions'].apply(lambda x: compareVersions(appVersion, x))
+else:
+    r = nvdlib.searchCVE(keywordSearch=appName)
+    jsonFormattedCVE = json.dumps(ast.literal_eval(str(r)))
+    cve = pd.read_json(jsonFormattedCVE)
+    cve['descriptions'] = cve['descriptions'].apply(lambda descriptions: list(filter(lambda x: x["lang"]=="en", descriptions)))
+    cve['descriptions'] = cve['descriptions'].apply(lambda descriptions: descriptions[0]['value'])
+    cve['versions'] = cve['descriptions'].apply(getVersions)
+    cve['filenames'] = cve['descriptions'].apply(getFiles)
+    cve['cve_vulnerability'] = cve['descriptions'].apply(getVulnerability)
+    cve['parameters'] = cve['descriptions'].apply(getParameters)
+    cve['relevant_version'] = cve['versions'].apply(lambda x: compareVersions(appVersion, x))
 
-cve = cve[cve['cve_vulnerability']!='NA']
-cve = cve[cve['relevant_version']==True]
-cve = cve.loc[:, ['id', 'cve_vulnerability', 'versions', 'filenames', 'parameters', 'descriptions']]
+    cve = cve[cve['cve_vulnerability']!='NA']
+    cve = cve[cve['relevant_version']==True]
+    # cve = cve[cve['filenames'].map(lambda x: x!=[]) | cve['parameters'].map(lambda x: x!=[])]
+    cve = cve.loc[:, ['id', 'cve_vulnerability', 'versions', 'filenames', 'parameters', 'descriptions']]
 
 print(cve)
 
-# cve = pd.read_excel(f'cve/{appName}-cve.xlsx', index_col=0)
 
 # Join potential CVEs and vulnerability paths matches
 navex = pd.read_json(f'paths/{appName}-output.json')
@@ -100,24 +110,30 @@ print(navex['vulnerability'].size)
 
 def getCVEids(navexRow):
     flag = False
+    debug = False
     cve_id = 'NA'
     for index, row in cve.iterrows():
+        if row['id']=='CVE-2005-2838' and ("$_POST[\"username\"]") in navexRow['code']: debug = True
+
         if type(row['filenames'])!=list: files = ast.literal_eval(row['filenames'])
         else: files = row['filenames']
+        if type(row['parameters'])!=list: cveParams = ast.literal_eval(row['parameters'])
+        else: cveParams = row['parameters']
         if not files: files = ['']
         for fileName in files:
             if fileName in navexRow.loc['filename'] or fileName=='':
                 if row['cve_vulnerability'] == navexRow['vulnerability']: 
-                    if not row['parameters'] and fileName!='':
+                    if not cveParams and fileName!='':
                         flag = True
                     else:
-                        for param in row['parameters']:
+                        for param in cveParams:
                             if param.lower().replace('$','') in navexRow['code'].lower():
                                 flag = True
                     if flag:
                             cve_id = row['id']
                             flag = False
-                break
+                            matched(cve_id)
+                            # return cve_id
     return cve_id
 
 CVE_ids = navex.progress_apply(getCVEids, axis=1)
@@ -126,7 +142,9 @@ navex = navex.merge(cve, how='left', left_on='CVE_id', right_on='id').drop(colum
 
 print(navex)
 
-print("Number of exploit matches:", len(pd.unique(navex['CVE_id']))-1, "out of #" + str(len(cve['id'])), "CVEs")
+# print("Number of exploit matches:", len(pd.unique(navex['CVE_id']))-1, "out of #" + str(len(cve['id'])), "CVEs")
+print("Number of exploit matches:", len(matchedCVEs), "out of #" + str(len(cve['id'])), "CVEs")
+print(matchedCVEs)
 print(pd.unique(navex['CVE_id']))
 # print(navex['pathid'].size)
 # print(cve)
