@@ -13,10 +13,10 @@ import os
 import fnmatch
 
 tqdm.pandas()
-directory_path = "/home/umd-user/Desktop/navex_project/navex_tests/osCommerce"
-appName = 'oscommerce'
+directory_path = "/home/umd-user/Desktop/navex_project/navex_tests/mybloggie214"
+appName = 'mybloggie'
 extension = ''
-appVersion = '2.3.4.1'
+appVersion = '2.1.4'
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -120,7 +120,7 @@ def getFilesFromParameters(parameters):
                 content = file.read()
                 if re.search(pattern, content):
                     file_paths.append(file_path)
-    return file_paths
+    return list(set(file_paths))
 
 matchedCVEs = []
 def matched(value):
@@ -142,14 +142,14 @@ else:
     cve['filenames'] = cve['descriptions'].apply(getFiles)
     cve['cve_vulnerability'] = cve['descriptions'].apply(getVulnerability)
     cve['parameters'] = cve['descriptions'].apply(getParameters)
-    cve['relevant_version'] = cve['versions'].apply(lambda x: compareVersions(appVersion, x)) # and compareVersions(x[0], ['5.0.0']))
+    cve['relevant_version'] = cve['versions'].apply(lambda x: compareVersions(appVersion, x))# and compareVersions(x[0], ['2.1.4']))
 
     cve = cve[cve['cve_vulnerability']!='NA']
     cve = cve[cve['relevant_version']==True]
     cve = cve[cve['filenames'].apply(filterOnFiles)]
     cve = cve[cve['parameters'].apply(lambda params: getFilesFromParameters(params) != [])]
     cve = cve[cve['filenames'].map(lambda x: x!=[]) | cve['parameters'].map(lambda x: x!=[])]
-    cve['filenames'] = cve.apply(lambda x: x.filenames if x.filenames!=[] else list(map(lambda x: x.split('/')[-1], getFilesFromParameters(x.parameters))), axis=1)
+    # cve['filenames'] = cve.apply(lambda x: x.filenames if x.filenames!=[] else list(map(lambda x: x.split('/')[-1], getFilesFromParameters(x.parameters))), axis=1)
 
     cve = cve.loc[:, ['id', 'cve_vulnerability', 'versions', 'filenames', 'parameters', 'descriptions']]
 
@@ -179,7 +179,7 @@ def getCVEids(navexRow):
                         flag = True
                     else:
                         for param in cveParams:
-                            if param.lower().replace('$','') in navexRow['code'].lower():
+                            if param.lower().replace('$','') in navexRow['code'].lower() or param == navexRow['methodname']:
                                 flag = True
                     if flag:
                             cve_id = row['id']

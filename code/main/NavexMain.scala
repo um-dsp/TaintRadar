@@ -84,15 +84,29 @@ class NavexMain(val cpg: Cpg) {
         path.map(cpg.method.ast.id(_).head)
     }
 
+    def getMethodName(node: AstNode) = {
+        node match {
+            case identifier: Identifier => identifier.method.name
+            case call: nodes.Call => call.method.name
+            case param: MethodParameterIn => param.method.name
+            case _ => "" 
+        }
+    }
+
     def getPaths(vulnerability: String) = {
         println(vulnerability)
         // get all sink functions for the given vulnerability
         val (attack_san_functions, sinkFunctions) = getSinks(vulnerability)
         implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
+        // extend the cpg with the sanitization tags
+        val tagName = "SAN_" + vulnerability.replace(" ", "_")
+        cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filter(sanitizationObject.isSanitized(_)(vulnerabilityInst)).newTagNodePair(tagName, "TRUE").store()
+        cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst)).newTagNodePair(tagName, "FALSE").store()
+        run.commit
         // source of the attack vector: assignment nodes whose code contain defined attacker_input
         val source = cpg.call.filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst)).l //.groupBy(_.lineNumber).map(x => x._2.head).l 
         // sink of the atack vector: unsanitized arguments of sink call nodes
-        val sinks = (cpg.call.filter(x => sinkFunctions.map(x.name.contains(_)).reduce((x,y) => x || y)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst))).l        // intra-procedural path from source to sink
+        val sinks = (cpg.call.filter(x => sinkFunctions.map(_ == x.name).reduce((x,y) => x || y)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst))).l        // intra-procedural path from source to sink
         // intra-procedural path from source to sink
         val globalPaths: List[List[AstNode]] = sinks.reachableByFlows(source).map(_.elements).l
         // inter-procedural path from source to sink
@@ -103,13 +117,20 @@ class NavexMain(val cpg: Cpg) {
             val path = reachableBySource(sink, source, vulnerabilityInst)
             if (!path.isEmpty) paths = paths :+ path
         })
-        val totalPaths = if (vulnerability == "XSS") {
+        val totalPaths = {
+            if (vulnerability == "XSS") {
                 // globalPaths ++ paths
                 val dbConstraint = new DatabaseConstraint(cpg)
                 (globalPaths ++ paths).filterNot(dbConstraint.filterPath)
             } 
             else globalPaths ++ paths
-        val dedupPaths = totalPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
+        }
+        // if methodParamIn depends on a sanitized node: the path is sanitized
+        val unsanPaths = totalPaths.filterNot(path => path.dropRight(1).zip(path.drop(1)).map(
+            (r,c) => (r.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE") && (c.isInstanceOf[MethodParameterIn])
+            ).contains(true))
+        // val unsanPaths = totalPaths.filterNot(path => path.map(node => sanitizationObject.isSanitized(node)(vulnerabilityInst)).contains(true))
+        val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
         dedupPaths
     }
     
@@ -140,12 +161,13 @@ class NavexMain(val cpg: Cpg) {
                         "{\n\t\"pathid\": " + pathID + ",\n" + 
                         "\t\"vulnerability\": \"" + k + "\",\n" + 
                         "\t\"nodeid\": " + x.id + ",\n" +
+                        "\t\"methodname\": \"" + getMethodName(x) + "\",\n" +
                         "\t\"filename\": \"" + cpg.metaData.root.head.split("/").last + "/" + x.file.name.headOption.getOrElse("").replace("\"", "\\\"") + "\",\n" +
                         "\t\"linenumber\": " + x.lineNumber.getOrElse("") + ",\n" +
                         "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\",\n" +
                         "\t\"sanitized\": \"" + sanitizationObject.isSanitized(x)(vulnerabilityInst) + "\"\n},"
     }).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
-        output |> "navex_utils/paths/" + cpg.metaData.root.head.split("/").last.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json"
+        output #> ("navex_utils/paths/" + cpg.metaData.root.head.split("/").last.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json")
     }
 
 }

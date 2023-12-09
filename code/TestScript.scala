@@ -17,6 +17,9 @@ import Constants._
     dotAst |> "output_graph/output.dot"
 }
 
+path.drop(1).scanLeft(path.head) {case (r,c) => {
+    if ((r.tag.name("SAN").value.headOption.getOrElse("NA")=="TRUE") && (c.getClass.getTypeName == "io.shiftleft.codepropertygraph.generated.nodes.MethodParameterIn")) print("Found")
+    c }}
 
 // sink.reachableByFlows(source).map(node => {
 //     List(List(node.elements.head.file.name.l.head + ":" + node.elements.head.lineNumber.getOrElse(""), node.elements.head.code),
