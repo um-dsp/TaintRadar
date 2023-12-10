@@ -171,4 +171,8 @@ class DatabaseConstraint(val cpg: Cpg) {
         val queries = path.filter(databaseCalls.contains).map(getQuery(_))
         queries.map(labelQuery(_)).contains(queryObject.QueryLabel.SafeQuery) || !path.filter(safeDbCalls.contains).isEmpty
     }
+
+    val queries = databaseCalls.map(x => getQuery(x))
+    queries.map(_.getQueryCode().mkString(" ")).size
+    queries.map(_.getQueryCode().mkString(" ")).dedup.size
 }

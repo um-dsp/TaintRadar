@@ -33,20 +33,20 @@ def filterDesc(desc):
 
 # Replace 'your_database.sql' with the path to your SQL file
 sql_file_paths = []
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WeBid/install/sql/dump.sql') # WeBid sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/osCommerce/catalog/install/oscommerce.sql') # OsCommerce sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/collabtive-31/pgsql.sql') # Collabtive sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # FAQForge sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/gallery-3.0.9/gallery3/installer/install.sql') # Gallery sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/hotcrp-2.60/Code/schema.sql') # Hotcrp-2.60 sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/hotcrp-2.100/src/schema.sql') # Hotcrp-2.60 sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/Joomla_3.7.0-Stable-Full_Package/installation/sql/sqlazure/joomla.sql') # Joomla sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/mssql/tables.sql') # Mediawiki mssql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/tables.sql') # Mediawiki sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WeBid/install/sql/dump.sql') # WeBid sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/osCommerce/catalog/install/oscommerce.sql') # OsCommerce sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/collabtive-31/pgsql.sql') # Collabtive sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # FAQForge sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/gallery-3.0.9/gallery3/installer/install.sql') # Gallery sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/hotcrp-2.60/Code/schema.sql') # Hotcrp-2.60 sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/hotcrp-2.100/src/schema.sql') # Hotcrp-2.60 sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/Joomla_3.7.0-Stable-Full_Package/installation/sql/sqlazure/joomla.sql') # Joomla sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/mssql/tables.sql') # Mediawiki mssql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/tables.sql') # Mediawiki sql file 
 sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-2.0.23/phpBB2/install/schemas/mysql_schema.sql') # phpBB2 sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-3.0.11/phpBB3/install/schemas/mysql_41_schema.sql') # phpBB3 sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/SchoolMate_v1.5.4/schoolmate/SchoolMate.sql') # SchoolMate sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/zen-cart-v1.5.5/zc_install/sql/install/mysql_zencart.sql') # Zencart sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-3.0.11/phpBB3/install/schemas/mysql_41_schema.sql') # phpBB3 sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/SchoolMate_v1.5.4/schoolmate/SchoolMate.sql') # SchoolMate sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/zen-cart-v1.5.5/zc_install/sql/install/mysql_zencart.sql') # Zencart sql file 
 # sql_file_paths.append('/home/kali/Desktop/navex_project/joern-repo/navex_tests/WeBid/install/sql/dump.sql')
 
 for sql_file_path in sql_file_paths:
@@ -55,7 +55,7 @@ for sql_file_path in sql_file_paths:
     sql_file_path.split('/').index('navex_tests')
     # Read the SQL script
     with open(sql_file_path, 'r') as sql_file:
-        sql_script = sql_file.read().replace(' ,', ',')
+        sql_script = sql_file.read().replace(' ,', ',').replace('#', '--')
 
     # Parse the SQL script
     parsed = sqlparse.parse(sql_script)
@@ -133,7 +133,7 @@ for sql_file_path in sql_file_paths:
             tables.append(table_name)
             columns.append(column_name)
             properties.append(data_type)
-
+            
     db = pd.DataFrame()
     db['Table'] = tables
     db['Column'] = columns

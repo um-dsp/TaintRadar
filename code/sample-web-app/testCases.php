@@ -21,6 +21,16 @@ settype($san6, "double");
 settype($unsan2, "string");
 $san7 = $san6 + 1.1;
 
+//If-Else Statements
+$cond = 1.0;
+if ($cond > 1.0) {
+    $indep = 1;
+    $dep = $cond * 2;
+} else {
+    $indep = 0;
+    $dep = $cond / 2;
+}
+
 // Functions (by ralue)
 function customSan($p1) {
     $unsan3 = $p1;

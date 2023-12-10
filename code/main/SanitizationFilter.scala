@@ -33,7 +33,8 @@ class SanitizationFilter(val cpg: Cpg) {
       if (Constants.san_functions_all.contains(method.name) || vulnerabilityInst.sanitization_functions.contains(method.name)) true
       // dynamic dispatch only supported if the function appears only once in the code
       else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size > 1) false
-      else if (function.name == "<operator>.cast") Constants.safe_types.contains(function.typeFullName)
+      // Safe return type
+      else if (Constants.safe_types.contains(function.typeFullName)) true
       // an assignment function is sanitized if its second argument is sanitized
       else if (method.name == "<operator>.assignment") isArgumentSanitized(1)
       // known unsanitized function calls

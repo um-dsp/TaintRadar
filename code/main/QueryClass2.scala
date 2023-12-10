@@ -5,15 +5,13 @@ val sqlStartKeywords: Set[String] = Set("select", "insert", "update", "delete",
                     "create", "alter", "drop", "truncate",
                     "use", "show", "begin", "start transaction", "commit", "rollback")
 
-val removeChars = Set(',', '"', '\\', '`', '\'')
+val removeChars = Set('"', '\\', '`', '\'')
 
 val safeSQLFunctions = Set("count(", "sum(", "max(", "min(", "min(", "length(", "len(", "now(", "date(", 
                             "year(", "month(", "day(", "abs(", "round(", "ceil(", "ceiling(", "floor(", 
                             "if(", "rank(", "dense_rank(", "row_number(")
 
 val metric: StringMetric = StringMetrics.levenshtein
-
-var getNodeDataMap = collection.mutable.Map[AstNode, List[AstNode]]()
 
 val magic_constants: List[String] = Constants.magic_constants
 val constants: List[String] = cpg.call(Constants.constant_definition_func).argument(1).code.l.map(_.replace("\"", "")).distinct
@@ -34,24 +32,24 @@ object QueryLabel extends Enumeration {
     val UnsafeQuery = Value("UNSAFE")
 }
 
-def searchNode(queryRoot: AstNode, code: String): Option[AstNode] = {
+def searchNode(queryRoot: AstNode, code: String, stringDist: Float): Option[AstNode] = {
     queryRoot match {
         case literal: Literal => {
-            if (metric.compare(literal.code, code) > 0.8F) Some(literal)
+            if (metric.compare(literal.code, code) > stringDist) Some(literal)
             else None
         }
         case identifier: Identifier => {
-            if (metric.compare(identifier.code, code) > 0.8F) Some(identifier)
+            if (metric.compare(identifier.code, code) > stringDist) Some(identifier)
             else None
         }
         case call: nodes.Call => {
-            if (metric.compare(call.code, code) > 0.8F) Some(call)
-            else  call.argument.l.map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
+            if (metric.compare(call.code, code) > stringDist) Some(call)
+            else  call.argument.l.map(searchNode(_, code, stringDist)).filterNot(_ == None).headOption.getOrElse(None)
         }
         case constant: FieldIdentifier => {
-            if (metric.compare(constant.code, code) > 0.8F) Some(constant)
+            if (metric.compare(constant.code, code) > stringDist) Some(constant)
             else if (magic_constants.contains(constant.canonicalName) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) None
-            else constantTable.get(constant.canonicalName).map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
+            else constantTable.get(constant.canonicalName).map(searchNode(_, code, stringDist)).filterNot(_ == None).headOption.getOrElse(None)
             }
         case _ => {
             println(queryRoot)
@@ -67,10 +65,12 @@ def getCode(node: AstNode, output: String = ""): String = {
         case identifier: Identifier => output + identifier.code
         case call: nodes.Call => {
             if (Constants.query_concat_func.contains(call.name)) call.argument.l.map(getCode(_, output)).mkString(" ")
+            else if (call.name == "<operator>.fieldAccess") getCode(call.argument(2))
             else output + call.code
         }
         case constant: FieldIdentifier => {
             if (magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) output
+            else if (constantTable.get(constant.canonicalName).head.isCall) output + constantTable.get(constant.canonicalName).head.isCallTo(".*").argument.filterNot(_.isIdentifier).l.map(getCode(_)).mkString(" ")
             else output + getCode(constantTable.get(constant.canonicalName).head)
             }
         case _ => {
@@ -80,58 +80,81 @@ def getCode(node: AstNode, output: String = ""): String = {
     }
 }
 
-def getNodeData(node: AstNode, depth: Int = 0): List[AstNode] = {
-    getNodeDataMap.get(node) match {
+var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
+var removeObjects: List[AstNode] = List()
+def dataFlowStep(node: AstNode): List[AstNode] = {
+    dataFlowStepMap.get(node) match {
         case Some(queryData: List[AstNode]) => queryData
         case None => {
-            val result: List[AstNode] = if (depth > 1000) List()
-            else node match {
-                case function: nodes.Call => {
-                    if (function.name == "<operator>.concat" || function.name == "encaps") {
-                        // If concat operator already found
-                        List(function)
+            val result = {
+                node match {
+                    case function: nodes.Call => {
+                        if (function.dispatchType == "DYNAMIC_DISPATCH") {
+                            removeObjects = removeObjects :+ function.argument(0)
+                            function.argument.drop(1).dedup.l
+                        }
+                        else function.argument.dedup.l
                     }
-                    // else if (function.name == "encaps") newOutput
-                    else function.argument.l.map(getNodeData(_, depth+1)).reduceOption((x,y) => x ++ y).getOrElse(List()).dedup.l
-                }
-                case identifier: Identifier => {
-                    identifier.ddgIn.l.map(getNodeData(_, depth+1)).reduceOption((x,y) => x ++ y).getOrElse(List()).dedup.l 
-                }
-                case literal: Literal => List(literal)
-                case parameter: MethodParameterIn => List()
-                case constant: FieldIdentifier => {
-                    if (magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
-                    else constantTable.get(constant.canonicalName).map(getNodeData(_, depth+1)).reduceOption((x,y) => x ++ y).getOrElse(List()).dedup.l
-                }
-                case block: Block => block.ddgIn.l.map(getNodeData(_, depth+1)).reduceOption((x,y) => x ++ y).getOrElse(List()).dedup.l
-                case typeRef: TypeRef => List()
-                case _ => {
-                    println(node)
-                    List()
+                    case identifier: Identifier => {
+                        identifier.ddgIn.dedup.l 
+                    }
+                    case literal: Literal => List(literal)
+                    case parameter: MethodParameterIn => List()
+                    case constant: FieldIdentifier => {
+                        if (magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
+                        else constantTable.get(constant.canonicalName).dedup.l
+                    }
+                    case block: Block => block.ddgIn.dedup.l
+                    case typeRef: TypeRef => List()
+                    case _ => {
+                        println(node)
+                        List()
+                    }
                 }
             }
-            getNodeDataMap(node) = result
-            result
+            dataFlowStepMap(node) = result.filterNot(removeObjects.contains(_))
+            result.filterNot(removeObjects.contains(_))
         }
     }
 }
 
+def isSqlCode(node: AstNode): Boolean = {
+    node match {
+        case function: nodes.Call =>     
+            if (Constants.query_concat_func.contains(function.name)) {
+                sqlStartKeywords.map(function.code.toLowerCase.contains(_)).contains(true)
+            }
+            else false
+        case _ => false
+    }
+}
+
+def getSqlCodeNode(node: AstNode) : List[AstNode] = {
+    var dataFlowNodes: List[AstNode] = dataFlowStep(node)
+    var i = 0
+    while (!dataFlowNodes.map(isSqlCode).contains(true) && i < 100) {
+        dataFlowNodes = dataFlowNodes.map(dataFlowStep(_)).flatten.dedup.l
+        i = i + 1
+    }
+    dataFlowNodes.filter(isSqlCode).dedup.l
+}
+
 case class DBQuery(callNode: nodes.Call) {
-    val data: List[AstNode] = getNodeData(this.callNode)
+    val sqlCodeNode: List[AstNode] = getSqlCodeNode(this.callNode)
     val queryType: QueryType.Value = this.getQueryType()
     val queryCode: Array[String] = this.getQueryCode()
 
-    def ++(that: DBQuery): List[AstNode] = this.data ++ that.data
-    def ==(that: DBQuery): Boolean = this.data == that.data
-    def dedup: List[AstNode] = this.data.dedup.l
-    def :+(that: AstNode): List[AstNode] = this.data :+ that
-    def +:(that: AstNode): List[AstNode] = that +: this.data
-    def order(): List[AstNode] = this.data.sorted(Ordering.by[AstNode, Long](_.id))
+    def ++(that: DBQuery): List[AstNode] = this.sqlCodeNode ++ that.sqlCodeNode
+    def ==(that: DBQuery): Boolean = this.sqlCodeNode == that.sqlCodeNode
+    def dedup: List[AstNode] = this.sqlCodeNode.dedup.l
+    def :+(that: AstNode): List[AstNode] = this.sqlCodeNode :+ that
+    def +:(that: AstNode): List[AstNode] = that +: this.sqlCodeNode
+    def order(): List[AstNode] = this.sqlCodeNode.sorted(Ordering.by[AstNode, Long](_.id))
 
     def getQueryCode(): Array[String] = {
-        val rawCode = this.data.filterNot(_.isIdentifier).map(getCode(_)).mkString(" ")
+        val rawCode = this.sqlCodeNode.filterNot(_.isIdentifier).map(getCode(_)).mkString(" ")
         val queryCode = rawCode.replaceAll("""(\w)\*""", "$1 *").split(" ").
-                                map(_.replace("\\n", " ").replace("\\t", " ")).flatMap(_.split(" ")).flatMap(_.split(",")).
+                                map(_.replace("\\n", " ").replace("\\t", " ").replace(",", ", ")).flatMap(_.split(" ")).
                                 flatMap(_.filterNot(removeChars.contains(_)).split(" ").filterNot(_.isEmpty))
         val queryIndices: Array[Int] = queryCode.zipWithIndex.collect(x => if (sqlStartKeywords.contains(x._1.toLowerCase().filter(!removeChars.contains(_)))) x._2 else -1).filter(_>=0)
         if (queryIndices.size >= 2) queryCode.slice(queryIndices.head, queryIndices.tail.head)
@@ -149,7 +172,7 @@ case class DBQuery(callNode: nodes.Call) {
         }
     }
     
-    def searchNodeFromQuery(code: String): Option[AstNode] = {
-        this.data.map(searchNode(_, code)).filterNot(_ == None).headOption.getOrElse(None)
+    def searchNodeFromQuery(code: String, stringDist: Float = 0.8): Option[AstNode] = {
+        this.sqlCodeNode.map(searchNode(_, code, stringDist)).filterNot(_ == None).headOption.getOrElse(None)
     }
 }
