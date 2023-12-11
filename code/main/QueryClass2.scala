@@ -7,7 +7,7 @@ val sqlStartKeywords: Set[String] = Set("select", "insert", "update", "delete",
 
 val removeChars = Set('"', '\\', '`', '\'')
 
-val safeSQLFunctions = Set("count(", "sum(", "max(", "min(", "min(", "length(", "len(", "now(", "date(", 
+val safeSQLFunctions = Set("count(", "sum(", "length(", "len(", "now(", "date(", 
                             "year(", "month(", "day(", "abs(", "round(", "ceil(", "ceiling(", "floor(", 
                             "if(", "rank(", "dense_rank(", "row_number(")
 
@@ -35,19 +35,19 @@ object QueryLabel extends Enumeration {
 def searchNode(queryRoot: AstNode, code: String, stringDist: Float): Option[AstNode] = {
     queryRoot match {
         case literal: Literal => {
-            if (metric.compare(literal.code, code) > stringDist) Some(literal)
+            if (metric.compare(literal.code.toLowerCase(), code) > stringDist) Some(literal)
             else None
         }
         case identifier: Identifier => {
-            if (metric.compare(identifier.code, code) > stringDist) Some(identifier)
+            if (metric.compare(identifier.code.toLowerCase(), code) > stringDist) Some(identifier)
             else None
         }
         case call: nodes.Call => {
-            if (metric.compare(call.code, code) > stringDist) Some(call)
+            if (metric.compare(call.code.toLowerCase(), code) > stringDist) Some(call)
             else  call.argument.l.map(searchNode(_, code, stringDist)).filterNot(_ == None).headOption.getOrElse(None)
         }
         case constant: FieldIdentifier => {
-            if (metric.compare(constant.code, code) > stringDist) Some(constant)
+            if (metric.compare(constant.code.toLowerCase(), code) > stringDist) Some(constant)
             else if (magic_constants.contains(constant.canonicalName) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) None
             else constantTable.get(constant.canonicalName).map(searchNode(_, code, stringDist)).filterNot(_ == None).headOption.getOrElse(None)
             }

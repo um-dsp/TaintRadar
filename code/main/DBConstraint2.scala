@@ -5,6 +5,7 @@ class DatabaseConstraint(val cpg: Cpg) {
     implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType("XSS", Constants.san_functions_xss)
     val removeChars = Set(',', '"', '\\', '`', '\'')
     val calculationPattern = "\\s*([-+=/*><!()])\\s*".r
+    val parenthesisPattern = "\\([^)]*\\)".r
 
     // Get all database calls (unsafe queries on the database)
     val databaseCalls: List[nodes.Call] = cpg.call.filter(x => Constants.sqli_sink.map(x.name.contains(_)).reduce((x,y) => x || y)).l
@@ -19,28 +20,115 @@ class DatabaseConstraint(val cpg: Cpg) {
     reader_data.map(row => db_schema(row.head) = db_schema.get(row.head).getOrElse(Map()) + (row(1) -> row(3).toBooleanOption.getOrElse(false)))
     val tables: List[String] = db_schema.keys.toList
 
-    def getUnsafeColumnOutput(query: DBQuery): List[(String, String)] = {
+    def getQueryCodeAndScope(query: DBQuery): (Array[String], Array[String]) = {
         query.queryType match {
-            case QueryType.InsertQuery => List()
-            case QueryType.UpdateQuery => List()
+            case QueryType.OtherQuery => (Array(), Array())
+            case QueryType.SelectQuery => {   
+                val queryCode = query.queryCode.map(_.toLowerCase)
+                val queryScope = queryCode.dropWhile(_ != "select").drop(1).takeWhile(_ != "from")
+                (queryCode, queryScope)
+            }
+            case QueryType.InsertQuery => {
+                val queryCode = query.queryCode.mkString(" ").toLowerCase.replace("values(", "values ( ").split(" ")
+                val queryScope = queryCode.dropWhile(_ != "into").drop(1).takeWhile(!_.contains("values")).map(_.replace("(", " ( ").replace(")", " ) ")).mkString(" ").split(" ").filterNot(_.isEmpty)
+                (queryCode, queryScope)
+            }
+            case QueryType.UpdateQuery => {
+                val queryCode = query.queryCode.map(_.toLowerCase)
+                val queryValues = queryCode.dropWhile(_ != "set").drop(1).takeWhile(token => !token.contains(";") && token.toLowerCase!="where")
+                (queryCode, queryValues)
+            }
+        }
+    }
+
+    def parseQuery(query: DBQuery): (String, List[String], List[String]) = {
+        query.queryType match {
+            case QueryType.OtherQuery => ("NA", List(), List())
+            case QueryType.SelectQuery => {
+                    val (queryCode, queryScope) = getQueryCodeAndScope(query)
+
+                    val queryTable = queryCode.dropWhile(_ != "from").drop(1).takeWhile(_ != "where")
+                    val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
+                    val closestTable = if (tableDistances.max < 0.2) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+
+                    val scopeWithoutAlias = queryScope.sliding(2).filterNot(_(0) == "as").flatten.filterNot(_ == "as").l
+                    val removeFuncHash = Constants.sql_builtin_function.map(fun => scopeWithoutAlias.map(s=> s.replace(fun.toLowerCase+"(","").filter(_.isLetterOrDigit)).l)
+                    val scopeWithoutFunc = scopeWithoutAlias.indices.map(i => removeFuncHash.map(_(i)).reduce((x,y) => if (x.length < y.length) x else y)).toList
+                    val dbColumns = list_schema.filter(_(0) == closestTable).map(_(1))
+                    val queryColumns = if (queryScope.contains("*")) dbColumns else scopeWithoutFunc
+
+                    val queryCond = query.queryCode.dropWhile(_.toLowerCase() != "where").drop(1)
+                    val condCodes = queryCond.map(query.searchNodeFromQuery(_)).filterNot(_ == None).map(_.get.code).toList
+                    // val condCode = condNodes.map(_.code).mkString("; ")
+                    (closestTable, queryColumns.dedup.l, condCodes.dedup.l)
+                }
+            case QueryType.InsertQuery => {
+                val (queryCode, queryScope) = getQueryCodeAndScope(query)
+                
+                val queryTable = parenthesisPattern.replaceAllIn(queryScope.mkString(" "), "").split(" ")
+                val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
+                val closestTable = if (tableDistances.max < 0.3) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                val sortedColumns: List[String] = {
+                    if (queryScope.contains("("))
+                        queryScope.dropWhile(!_.contains("(")).drop(1).takeWhile(!_.contains(")")).map(_.filterNot(_ == ',')).toList
+                    else list_schema.filter(_(0) == closestTable).map(_(1))
+                    } 
+                
+                val queryValues = queryCode.dropWhile(!_.contains("values")).drop(1).takeWhile(token => !token.contains(";") && token.toLowerCase!="where")
+                val valueCodes = queryValues.map(query.searchNodeFromQuery(_)).filterNot(_ == None).map(_.get.code).toList
+
+                (closestTable, sortedColumns.dedup.l, valueCodes.dedup.l)
+                }
+            case QueryType.UpdateQuery => {
+                val (queryCode, queryValues) = getQueryCodeAndScope(query)
+
+                val queryTable = queryCode.dropWhile(_ != "update").drop(1).takeWhile(_ != "set")
+                val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
+                val closestTable = if (tableDistances.max < 0.3) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                
+                val valuesParsed =  queryValues.mkString(" ").replace("=", " = ").split(" ").filterNot(_.isEmpty)
+                val potentialCol = valuesParsed.sliding(2).filter(_(1)=="=").map(_(0)).l
+                val colInd = potentialCol.indices
+                val dbColumns = list_schema.filter(_(0) == closestTable).map(_(1))
+                val closestColMetric = colInd.map(i => dbColumns.map(col => potentialCol.map(metric.compare(col, _))).map(_(i)))
+                val queryColumns = closestColMetric.map(x => x.indexOf(x.maxOption.getOrElse(-1))).map(dbColumns.lift(_).getOrElse("")).toList
+
+                val valueCodes = queryValues.map(query.searchNodeFromQuery(_)).filterNot(_ == None).map(_.get.code).toList
+
+                (closestTable, queryColumns.dedup.l, valueCodes.dedup.l)
+                }
+            case _ => ("NA", List(), List())
+        }
+    }
+
+    def getUnsafeColumn(query: DBQuery): List[(String, String)] = {
+        query.queryType match {
             case QueryType.OtherQuery => List()
             case QueryType.SelectQuery => {
-                val queryCode = query.queryCode.map(_.filter(!removeChars.contains(_))).filterNot(_.isEmpty)
-                val queryScope = queryCode.dropWhile(_.toLowerCase() != "select").drop(1).takeWhile(_.toLowerCase() != "from")
-                val queryTable = queryCode.dropWhile(_.toLowerCase() != "from").drop(1).takeWhile(_.toLowerCase() != "where")
-                val queryCond = queryCode.dropWhile(_.toLowerCase() != "where").drop(1)
-                val queryTableName = tables.map(x => queryTable.exists(x.contains)).zipWithIndex.filter(_._1==true).map(_._2).collect(tables(_)).headOption.getOrElse("NA")
-                if (queryTableName == "NA") {
+                val (queryTable, queryColumns, condCodes) = parseQuery(query)
+                if (queryTable == "NA") {
                     // println(query)
                     List()
                 }
                 else {
-                    val queryColumns = db_schema(queryTableName) 
-                    val unsafeColumns = db_schema(queryTableName).filterNot(_._2).keys.toList
-                    if (queryScope.contains("*")) unsafeColumns.map((queryTableName, _))
-                    else {
-                        queryScope.filter(unsafeColumns.contains(_)).toList.map((queryTableName, _))
-                    }
+                    val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
+                    queryColumns.filter(unsafeColumns.contains(_)).toList.map((queryTable, _))
+                }
+            }
+            case QueryType.InsertQuery => {
+                val (queryTable, queryColumns, condCodes) = parseQuery(query)
+                if (queryTable == "NA") List()
+                else {
+                    val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
+                    queryColumns.filter(unsafeColumns.contains(_)).toList.map((queryTable, _))
+                }
+            }
+            case QueryType.UpdateQuery => {
+                val (queryTable, queryColumns, condCodes) = parseQuery(query)
+                if (queryTable == "NA") List()
+                else {
+                    val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
+                    queryColumns.filter(unsafeColumns.contains(_)).toList.map((queryTable, _))
                 }
             }
         }
@@ -52,19 +140,16 @@ class DatabaseConstraint(val cpg: Cpg) {
             case QueryType.UpdateQuery => QueryLabel.SafeQuery
             case QueryType.OtherQuery => QueryLabel.SafeQuery
             case QueryType.SelectQuery => {
-                val queryCode = query.queryCode.map(_.filter(!removeChars.contains(_))).filterNot(_.isEmpty)
-                val queryScope = queryCode.dropWhile(_.toLowerCase() != "select").drop(1).takeWhile(_.toLowerCase() != "from")
-                val queryTable = queryCode.dropWhile(_.toLowerCase() != "from").drop(1).takeWhile(_.toLowerCase() != "where")
-                val queryCond = queryCode.dropWhile(_.toLowerCase() != "where").drop(1)
-                val queryTableName = tables.map(x => queryTable.exists(x.contains)).zipWithIndex.filter(_._1==true).map(_._2).collect(tables(_)).headOption.getOrElse("NA")
-                if (queryTableName == "NA") {
-                    // println(query)
+                val (queryTable, queryColumns, condCodes) = parseQuery(query)
+                val queryScope = query.queryCode.map(_.toLowerCase).dropWhile(_ != "select").drop(1).takeWhile(_ != "from")
+                val scopeWithoutAlias = queryScope.sliding(2).filterNot(_(0) == "as").flatten.filterNot(_ == "as").l
+                if (queryTable == "NA") {
+                    // queryTable(query)
                     QueryLabel.UnsafeQuery
                 }
                 else {
-                    val queryColumns = db_schema(queryTableName) 
-                    val unsafeColumns = db_schema(queryTableName).filterNot(_._2).keys.toList
-                    if (queryScope.map(scope => (scope == "*" && !unsafeColumns.isEmpty) || (!safeSQLFunctions.exists(scope.contains(_)) && unsafeColumns.exists(scope.contains(_)))).contains(true))
+                    val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
+                    if (scopeWithoutAlias.map(scope => (scope == "*" && !unsafeColumns.isEmpty) || (!safeSQLFunctions.exists(scope.contains(_)) && unsafeColumns.exists(scope.contains(_)))).contains(true))
                         QueryLabel.UnsafeQuery
                     else QueryLabel.SafeQuery
                 }
@@ -78,46 +163,28 @@ class DatabaseConstraint(val cpg: Cpg) {
             case QueryType.OtherQuery => QueryLabel.SafeQuery
             case QueryType.SelectQuery => QueryLabel.SafeQuery
             case QueryType.InsertQuery => {
-                val queryCode = query.queryCode.mkString(" ").toLowerCase.replace("values(", "values ( ").split(" ")
-                val queryTable = queryCode.dropWhile(_ != "into").drop(1).takeWhile(!_.contains("values"))
-                val queryValues = queryCode.dropWhile(!_.contains("values")).drop(1).takeWhile(token => !token.contains(";") && token.toLowerCase!="where")
-                val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
-                val closestTable = if (tableDistances.max < 0.3) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
-                if (closestTable == "NA") {
-                    // Unable to find a matching table from the query
-                    // println(query)
+                val (queryCode, queryScope) = getQueryCodeAndScope(query)
+                val (queryTable, queryColumns, condCodes) = parseQuery(query)
+                if (queryTable == "NA") {
                     QueryLabel.UnsafeQuery
                 }
-                else {
-                    // val queryTableName = {
-                    //     if (queryTableNames.size == 1) queryTableNames(0)
-                    //     else {
-                    //         val tableColumns = queryTableNames.map(db_schema.get(_).get.keys)
-                    //         // get most likely table
-                    //         val mostLikelyIndex = tableColumns.map(_.toList.map(s => queryCode.exists({
-                    //             val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
-                    //             regex.findFirstIn(_).isDefined}))).map(_.filter(_==true).size).zipWithIndex.maxBy(_._1)._2 
-                    //         queryTableNames(mostLikelyIndex)
-                    //     }
-                    // }
-                    val queryTableName = closestTable
-                    val sortedColumns: List[String] = {
-                        if (queryTable.mkString(" ").contains("("))
-                            queryTable.dropWhile(!_.contains("(")).drop(0).toList.map(_.replace("(", "").replace(")", ""))
-                        else list_schema.filter(_(0) == queryTableName).map(_(1))
-                        } 
-                    val unsafeColumns = db_schema(queryTableName).filterNot(_._2).keys.toList
-                    val insertValuesUnsafe = unsafeColumns.map(s => sortedColumns.exists({
+                else { 
+                    val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
+                    val insertValuesUnsafe = unsafeColumns.map(s => queryColumns.exists({
                             val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
                             regex.findFirstIn(_).isDefined}))
                     if (unsafeColumns.isEmpty || !insertValuesUnsafe.contains(true))
                         QueryLabel.SafeQuery
                     else {
-                        val valuesParsed =  calculationPattern.replaceAllIn(queryValues.mkString(" "), matchResult => "PARSED_SPACE" + matchResult.group(1) + "PARSED_SPACE").split(" ").filter(_.exists(_.isLetterOrDigit)).toList
-                        if (valuesParsed.size != sortedColumns.size) QueryLabel.UnsafeQuery
+                        val queryValues = queryCode.dropWhile(!_.contains("values")).drop(1).takeWhile(token => !token.contains(";") && token.toLowerCase!="where")
+                        val parsedVal = queryValues.map(_.replace("(", " ( ").replace(")", " ) ")).mkString(" ").split(" ").filterNot(_.isEmpty)
+                        val start = if (parsedVal.lift(0).getOrElse("") == "(") 1 else 0
+                        val end = if (parsedVal.lift(parsedVal.size-1).getOrElse("") == ")") parsedVal.size-1 else parsedVal.size
+                        val valuesParsed =  calculationPattern.replaceAllIn(parsedVal.slice(start, end).mkString(" "), matchResult => matchResult.group(1)).split(" ").filter(_.exists(_.isLetterOrDigit)).toList
+                        if (valuesParsed.size != queryColumns.size) QueryLabel.UnsafeQuery
                         else {
-                            val unsafeIndices = unsafeColumns.map(sortedColumns.indexOf(_))
-                            val unsafeNodes = unsafeIndices.map(valuesParsed.lift(_).getOrElse("").replace("PARSED_SPACE", " ")).map(query.searchNodeFromQuery(_, 0.7F)).filterNot(_==None)                         
+                            val unsafeIndices = unsafeColumns.map(queryColumns.indexOf(_))
+                            val unsafeNodes = unsafeIndices.map(valuesParsed.lift(_).getOrElse("")).map(query.searchNodeFromQuery(_, 0.7F)).filterNot(_==None)                         
                             if (unsafeNodes.map(sanitizationObject.isSanitized(_)).contains(false))
                                 QueryLabel.UnsafeQuery
                             else QueryLabel.SafeQuery
@@ -126,40 +193,21 @@ class DatabaseConstraint(val cpg: Cpg) {
                 }
             }
             case QueryType.UpdateQuery => {
-                val queryCode = query.queryCode.map(_.toLowerCase)
-                val queryTable = queryCode.dropWhile(_ != "update").drop(1).takeWhile(_ != "set")
-                val queryValues = queryCode.dropWhile(_ != "set").drop(1).takeWhile(token => !token.contains(";") && token.toLowerCase!="where")
-                val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
-                val closestTable = if (tableDistances.max < 0.3) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
-                if (closestTable == "NA") {
-                    // Unable to find a matching table from the query
-                    // println(query)
+                val (queryCode, queryValues) = getQueryCodeAndScope(query)
+                val (queryTable, queryColumns, condCodes) = parseQuery(query)
+                if (queryTable == "NA") {
                     QueryLabel.UnsafeQuery
                 }
                 else {
-                    // val queryTableName = {
-                    //     if (queryTableNames.size == 1) queryTableNames(0)
-                    //     else {
-                    //         val tableColumns = queryTableNames.map(db_schema.get(_).get.keys)
-                    //         // get most likely table
-                    //         val mostLikelyIndex = tableColumns.map(_.toList.map(s => queryCode.exists({
-                    //             val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
-                    //             regex.findFirstIn(_).isDefined}))).map(_.filter(_==true).size).zipWithIndex.maxBy(_._1)._2 
-                    //         queryTableNames(mostLikelyIndex)
-                    //     }
-                    // }
-                    val queryTableName = closestTable
-                    val queryColumns = db_schema(queryTableName) 
-                    val unsafeColumns = db_schema(queryTableName).filterNot(_._2).keys.toList
-                    val setValuesUnsafe = unsafeColumns.map(s => queryValues.exists({
-                            val regex = s"(?<!\\p{Alnum})$s(?![\\p{Alnum}])".r
-                            regex.findFirstIn(_).isDefined}))
+                    val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
+                    val setValuesUnsafe = queryColumns.map(unsafeColumns.contains(_))
                     if (unsafeColumns.isEmpty || !setValuesUnsafe.contains(true))
                         QueryLabel.SafeQuery
                     else {
-                        val valuesParsed =  calculationPattern.replaceAllIn(queryValues.map(_.filter(!removeChars.contains(_))).filterNot(_.isEmpty).mkString(" "), matchResult => matchResult.group(1)).split(" ").filter(_.exists(_.isLetterOrDigit)).toList
-                        val unsafeValues = valuesParsed.filter(token => unsafeColumns.contains(token.split("=")(0)))
-                        val unsafeNodes = unsafeValues.map(_.split("=").lift(1).getOrElse("")).map(query.searchNodeFromQuery(_)) 
+                        val queryValuesEqSign =  queryValues.mkString(" ").replace("=", " = ").split(" ").filterNot(_.isEmpty)
+                        val valuesParsed = queryValuesEqSign.sliding(2).filter(_(0)=="=").map(_(1)).l
+                        val valuesIndices = valuesParsed.indices.l
+                        val unsafeNodes = valuesIndices.map(i => if (setValuesUnsafe.lift(i).getOrElse(false)) query.searchNodeFromQuery(valuesParsed.lift(i).getOrElse("")) else None)
                         if (unsafeNodes.map(sanitizationObject.isSanitized(_)).contains(false))
                             QueryLabel.UnsafeQuery
                         else QueryLabel.SafeQuery
@@ -171,22 +219,14 @@ class DatabaseConstraint(val cpg: Cpg) {
             }
         }
     }
-
-    // val allDbCalls = cpg.call.filter(x => Constants.sql_func.map(x.name.contains(_)).reduce((x,y) => x || y)).l
-    // def filterInnerCalls(path: List[AstNode]): Boolean = {
-    //     if (!path.map(allDbCalls.contains(_)).contains(true)) true
-        
-    // }
-
-    // def filterPath(path: List[AstNode]): Boolean = {
-    //     val safeDbCalls: List[nodes.Call] = cpg.call.filter(x => Constants.sql_func.map(x.name.contains(_)).reduce((x,y) => x || y)).l.filterNot(element => databaseCalls.contains(element))
-    //     val queries = path.filter(databaseCalls.contains).map(getQuery(_))
-    //     queries.map(labelQuery(_)).contains(QueryLabel.SafeQuery) || !path.filter(safeDbCalls.contains).isEmpty
-    // }
+    
 
     def debug() = {
-        val typeAndCode = (queries.map(_.queryType) zip queries.map("\"" + _.queryCode.mkString(" ") + "\"")).map(_.toString)
-        typeAndCode.map(_.replaceAll("^.|.$", "")) #> "parsedQueries.csv"
+        val typeAndCode = queries.map(query => query.queryType.toString + "; \"" + query.queryCode.mkString(" ") + "\"; " + parseQuery(query)(0) + "; \"" + parseQuery(query)(1) + "\"; \"" + parseQuery(query)(2) + "\"")
+        typeAndCode #> "parsedQueries.csv"
+        val selectUnsafe = queries.filter(_.queryType==QueryType.SelectQuery).map(getUnsafeColumn(_)).flatten.dedup.l
+        val insertUnsafe = queries.filter(q => q.queryType==QueryType.InsertQuery || q.queryType == QueryType.UpdateQuery).map(getUnsafeColumn(_)).flatten.dedup.l
+        insertUnsafe.map(selctUnsafe.contains(_)).size
         println("\tNumber of queries\t|\tSafe Input\t|\tSafe Output")
         println("Select: \t" + queries.filter(_.queryType == QueryType.SelectQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.SelectQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.SelectQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
         println("Insert: \t" + queries.filter(_.queryType == QueryType.InsertQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.InsertQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.InsertQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
