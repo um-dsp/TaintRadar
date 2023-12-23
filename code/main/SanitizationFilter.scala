@@ -11,9 +11,9 @@ class SanitizationFilter(val cpg: Cpg) {
 
    case class vulnerabilityType(name: String, sanitization_functions: List[String])
    case class mapInput(id: Long, vulnerabilityName: String)
-   var sanitizedNodesMap = collection.mutable.Map[mapInput, Boolean]()
+   // var sanitizedNodesMap = collection.mutable.Map[mapInput, Boolean]()
    // stores isSanitized result in a Map for quicker lookup
-   case class isSanitizedInput(node: Any, sanitizedParameters: List[Boolean] = List(), vulnerabilityInst: vulnerabilityType)   
+   case class isSanitizedInput(node: Any, sanitizedParameters: List[Boolean] = List(), sanitization_functions: List[String])   
    var isSanitizedMap = collection.mutable.Map[isSanitizedInput, Boolean]()
 
    // var constantTable = None: Option[collection.immutable.Map[String, List[Expression]]]
@@ -21,16 +21,16 @@ class SanitizationFilter(val cpg: Cpg) {
    val values: List[List[Expression]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
    val constantTable = Some((constants zip values).toMap[String, List[Expression]]) 
 
-   def isMethodSanitized(function: nodes.Call, arguments: List[Expression], sanitizedParameters: List[Boolean])(implicit vulnerabilityInst: vulnerabilityType): Boolean = {
+   def isMethodSanitized(function: nodes.Call, arguments: List[Expression], sanitizedParameters: List[Boolean])(implicit sanitization_functions: List[String]): Boolean = {
       // if the function is dynamizally dispatched, search cpg for the first function that matches its name, otherwise go to callee
       val method: Method = {
          if (function.dispatchType != "DYNAMIC_DISPATCH") function.callee.head
          else cpg.method(function.name).filter(_.code!="<empty>").head
       }
       // map arguments for the function call on whether they're sanitized or not
-      val isArgumentSanitized: List[Boolean] = arguments.map(isSanitized(_, sanitizedParameters)(vulnerabilityInst))
+      val isArgumentSanitized: List[Boolean] = arguments.map(isSanitized(_, sanitizedParameters)(sanitization_functions))
       // sanitization function returns a sanitized result
-      if (Constants.san_functions_all.contains(method.name) || vulnerabilityInst.sanitization_functions.contains(method.name)) true
+      if (Constants.san_functions_all.contains(method.name) || sanitization_functions.contains(method.name)) true
       // dynamic dispatch only supported if the function appears only once in the code
       else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size > 1) false
       // Safe return type
@@ -43,31 +43,31 @@ class SanitizationFilter(val cpg: Cpg) {
       else if (method.code == "<empty>") !isArgumentSanitized.contains(false)
       // else check if return is sanitized given whether passed arguments are sanitized
       else {
-         isSanitized(method.ast.isReturn, isArgumentSanitized)(vulnerabilityInst)
+         isSanitized(method.ast.isReturn, isArgumentSanitized)(sanitization_functions)
       }
    }
 
    // Check whether given CPG Node is sanitized, filter accordingly
-   def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit vulnerabilityInst: vulnerabilityType): Boolean = 
+   def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit sanitization_functions: List[String]): Boolean = 
       // check the Map to see if node was traversed or not
-      isSanitizedMap.get(isSanitizedInput(node, sanitizedParameters, vulnerabilityInst)) match {
+      isSanitizedMap.get(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) match {
       case Some(result) => result
       case None => {
          var mapOut: Boolean = false
          val result: Boolean = 
          try { 
             node match {
-            case Some(nodeOption) => isSanitized(nodeOption, sanitizedParameters)(vulnerabilityInst)
+            case Some(nodeOption) => isSanitized(nodeOption, sanitizedParameters)(sanitization_functions)
             case List() => true
-            case traversal: overflowdb.traversal.Traversal[_] => isSanitized(traversal.l, sanitizedParameters)(vulnerabilityInst)
-            case listOfNodes: List[_] => listOfNodes.map(isSanitized(_, sanitizedParameters)(vulnerabilityInst)).reduce((x,y) => x && y)
+            case traversal: overflowdb.traversal.Traversal[_] => isSanitized(traversal.l, sanitizedParameters)(sanitization_functions)
+            case listOfNodes: List[_] => listOfNodes.map(isSanitized(_, sanitizedParameters)(sanitization_functions)).reduce((x,y) => x && y)
             case literal: Literal => {
-               sanitizedNodesMap(mapInput(literal.id, vulnerabilityInst.name)) = true
+               // sanitizedNodesMap(mapInput(literal.id, vulnerabilityInst.name)) = true
                true
             }
             case function: nodes.Call => { 
-               mapOut = isMethodSanitized(function, function.argument.l, sanitizedParameters)(vulnerabilityInst) 
-               sanitizedNodesMap(mapInput(function.id, vulnerabilityInst.name)) = mapOut 
+               mapOut = isMethodSanitized(function, function.argument.l, sanitizedParameters)(sanitization_functions) 
+               // sanitizedNodesMap(mapInput(function.id, vulnerabilityInst.name)) = mapOut 
                mapOut
             }
             case identifier: Identifier => {
@@ -94,8 +94,8 @@ class SanitizationFilter(val cpg: Cpg) {
                         isArgumentSanitized = identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].argument.l.map(node => {
                            var paramsByRef = node.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l.map(p => p.evaluationStrategy == "BY_REFERENCE")
                            if (!paramsByRef.isEmpty && paramsByRef(node.order-1)) 
-                              isSanitized(node.ddgIn.l, sanitizedParameters)(vulnerabilityInst) 
-                           else isSanitized(node, sanitizedParameters)(vulnerabilityInst)
+                              isSanitized(node.ddgIn.l, sanitizedParameters)(sanitization_functions) 
+                           else isSanitized(node, sanitizedParameters)(sanitization_functions)
                         })
                         identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.methodReturn.ddgIn.isIdentifier.name(identifier.astParent.filter(_.isCall).l.asInstanceOf[List[nodes.Call]].callee.parameter.l(identifier.order-1).name).l
                      }
@@ -115,14 +115,14 @@ class SanitizationFilter(val cpg: Cpg) {
                      }
                   }
                   // println(node)
-                  !definingNode.isEmpty && isSanitized(definingNode, isArgumentSanitized)(vulnerabilityInst)
+                  !definingNode.isEmpty && isSanitized(definingNode, isArgumentSanitized)(sanitization_functions)
                }
-               sanitizedNodesMap(mapInput(identifier.id, vulnerabilityInst.name)) = mapOut
+               // sanitizedNodesMap(mapInput(identifier.id, vulnerabilityInst.name)) = mapOut
                mapOut
             }
             case constant: FieldIdentifier => {
                if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) Constants.magic_constants.contains(constant.canonicalName)
-               else isSanitized(constantTable.get.get(constant.canonicalName), sanitizedParameters)(vulnerabilityInst)
+               else isSanitized(constantTable.get.get(constant.canonicalName), sanitizedParameters)(sanitization_functions)
             }
             case metadata: MetaData => true
             case namespace: Namespace => true
@@ -133,14 +133,14 @@ class SanitizationFilter(val cpg: Cpg) {
             case local: Local => true
             case member: Member => true
             case method: Method => false
-            // case method: Method => isMethodSanitized(method, method.parameter.l, List.fill(method.parameter.size)(false))(vulnerabilityInst)
+            // case method: Method => isMethodSanitized(method, method.parameter.l, List.fill(method.parameter.size)(false))(sanitization_functions)
             case methodReturn: MethodReturn => true
             case methodParamOut: MethodParameterOut => true
             case methodParam: MethodParameterIn => {
                if (sanitizedParameters.isEmpty) false
                else sanitizedParameters(methodParam.index-1)
             }
-            case returnBlock: Return => isSanitized(returnBlock.astChildren, sanitizedParameters)(vulnerabilityInst)
+            case returnBlock: Return => isSanitized(returnBlock.astChildren, sanitizedParameters)(sanitization_functions)
             case declaredtype: Type => true
             case declaredtype: TypeRef => true
             case None => true
@@ -155,24 +155,21 @@ class SanitizationFilter(val cpg: Cpg) {
                false
             }
          }
-         isSanitizedMap(isSanitizedInput(node, sanitizedParameters, vulnerabilityInst)) = result
+         isSanitizedMap(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) = result
          result
    }
 }
-
-   def exceptionRate(): String = {
-      (exceptions.toFloat/sanitizedNodesMap.size*100).toString + "%"
-   }
    
    def printTestOutput() = {
       val t0 = System.nanoTime()
-      val vulnerabilityInst = vulnerabilityType(name = "", sanitization_functions = List())
-      val sanitized = cpg.identifier.filter(isSanitized(_)(vulnerabilityInst)).name.dedup.l.filter(!List("p1", "p2", "unsan11", "unsan14").contains(_))
-      val unsanitized = cpg.identifier.filterNot(isSanitized(_)(vulnerabilityInst)).name.dedup.l.filter(!List("p1", "p2", "san12", "san6", "tmp", "_GET", "san14").contains(_))
-      val sanitizedConstants = cpg.method.ast.isFieldIdentifier.filter(isSanitized(_)(vulnerabilityInst)).canonicalName.dedup.l
-      val unsanitizedConstants = cpg.method.ast.isFieldIdentifier.filterNot(isSanitized(_)(vulnerabilityInst)).canonicalName.dedup.l
-      // val sanitized = cpg.identifier.filter(isSanitized(_)(vulnerabilityInst)).name.dedup.l
-      // val unsanitized = cpg.identifier.filterNot(isSanitized(_)(vulnerabilityInst)).name.dedup.l
+      val sanitization_functions = List()
+      val vulnerabilityInst = vulnerabilityType(name = "", sanitization_functions)
+      val sanitized = cpg.identifier.filter(isSanitized(_)(sanitization_functions)).name.dedup.l.filter(!List("p1", "p2", "unsan11", "unsan14").contains(_))
+      val unsanitized = cpg.identifier.filterNot(isSanitized(_)(sanitization_functions)).name.dedup.l.filter(!List("p1", "p2", "san12", "san6", "tmp", "_GET", "san14").contains(_))
+      val sanitizedConstants = cpg.method.ast.isFieldIdentifier.filter(isSanitized(_)(sanitization_functions)).canonicalName.dedup.l
+      val unsanitizedConstants = cpg.method.ast.isFieldIdentifier.filterNot(isSanitized(_)(sanitization_functions)).canonicalName.dedup.l
+      // val sanitized = cpg.identifier.filter(isSanitized(_)(sanitization_functions)).name.dedup.l
+      // val unsanitized = cpg.identifier.filterNot(isSanitized(_)(sanitization_functions)).name.dedup.l
       println("Sanitized Identifiers: " + (sanitized ::: sanitizedConstants))
       println("Unsanitized Identifiers: " + (unsanitized ::: unsanitizedConstants))
       val t1 = System.nanoTime()

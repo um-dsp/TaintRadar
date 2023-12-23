@@ -1,8 +1,8 @@
 import com.github.tototoshi.csv._
 
 class DatabaseConstraint(val cpg: Cpg) {
-    val sanitizationObject = new SanitizationFilter(cpg)
-    implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType("XSS", Constants.san_functions_xss)
+    // val sanitizationObject = new SanitizationFilter(cpg)
+    // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType("XSS", Constants.san_functions_xss)
     val removeChars = Set(',', '"', '\\', '`', '\'')
     val calculationPattern = "\\s*([-+=/*><!()])\\s*".r
     val parenthesisPattern = "\\([^)]*\\)".r
@@ -13,7 +13,7 @@ class DatabaseConstraint(val cpg: Cpg) {
 
     // Get database schema from csv file
     val file_name = cpg.metaData.root.head.split("/").last
-    val reader = CSVReader.open("navex_utils/code/db/" + file_name + "-database.csv")
+    val reader = CSVReader.open("navex_utils/code/db/schemas/" + file_name + "-database.csv")
     val reader_data: List[List[String]] = reader.all()
     val list_schema: List[List[String]] = reader_data.map(ls => List(ls(0), ls(1), ls(3))) 
     val db_schema = scala.collection.mutable.Map[String, Map[String, Boolean]]()
@@ -101,7 +101,7 @@ class DatabaseConstraint(val cpg: Cpg) {
         }
     }
 
-    def getUnsafeColumn(query: DBQuery): List[(String, String)] = {
+    def getUnsafeColumns(query: DBQuery): List[(String, String)] = {
         query.queryType match {
             case QueryType.OtherQuery => List()
             case QueryType.SelectQuery => {
@@ -149,7 +149,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                 }
                 else {
                     val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
-                    if (scopeWithoutAlias.map(scope => (scope == "*" && !unsafeColumns.isEmpty) || (!safeSQLFunctions.exists(scope.contains(_)) && unsafeColumns.exists(scope.contains(_)))).contains(true))
+                    if (scopeWithoutAlias.map(scope => (scope.contains("*") && !unsafeColumns.isEmpty) || (!safeSQLFunctions.exists(scope.contains(_)) && unsafeColumns.exists(scope.contains(_)))).contains(true))
                         QueryLabel.UnsafeQuery
                     else QueryLabel.SafeQuery
                 }
@@ -185,7 +185,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                         else {
                             val unsafeIndices = unsafeColumns.map(queryColumns.indexOf(_))
                             val unsafeNodes = unsafeIndices.map(valuesParsed.lift(_).getOrElse("")).map(query.searchNodeFromQuery(_, 0.7F)).filterNot(_==None)                         
-                            if (unsafeNodes.map(sanitizationObject.isSanitized(_)).contains(false))
+                            if (unsafeNodes.map(_.tag.name("SAN_XSS").value.headOption.getOrElse("NA")=="TRUE").contains(false))
                                 QueryLabel.UnsafeQuery
                             else QueryLabel.SafeQuery
                         }
@@ -208,7 +208,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                         val valuesParsed = queryValuesEqSign.sliding(2).filter(_(0)=="=").map(_(1)).l
                         val valuesIndices = valuesParsed.indices.l
                         val unsafeNodes = valuesIndices.map(i => if (setValuesUnsafe.lift(i).getOrElse(false)) query.searchNodeFromQuery(valuesParsed.lift(i).getOrElse("")) else None)
-                        if (unsafeNodes.map(sanitizationObject.isSanitized(_)).contains(false))
+                        if (unsafeNodes.map(_.tag.name("SAN_XSS").value.headOption.getOrElse("NA")=="TRUE").contains(false))
                             QueryLabel.UnsafeQuery
                         else QueryLabel.SafeQuery
                     }
@@ -219,21 +219,35 @@ class DatabaseConstraint(val cpg: Cpg) {
             }
         }
     }
-    
+
+    def augmentDbCalls() = {
+        if (tables.isEmpty) println("No database to parse")
+        else {
+            databaseCalls.map(x => List(x).newTagNodePair("QUERY_TYPE", DBQuery(x).queryType.toString).store())
+            databaseCalls.map(x => {
+                val flag = labelQueryInput(DBQuery(x))==QueryLabel.SafeQuery && labelQueryOutput(DBQuery(x))==QueryLabel.SafeQuery
+                val label = if (flag) QueryLabel.SafeQuery else QueryLabel.UnsafeQuery
+                List(x).newTagNodePair("QUERY_LABEL", label.toString).store()
+            })
+            databaseCalls.map(x => List(x).newTagNodePair("QUERY_COLUMNS", getUnsafeColumns(DBQuery(x)).map((table,column) => table+":"+column).mkString(", ")).store())
+            run.commit
+            println("Database parsed")
+        }
+    }
 
     def debug() = {
-        val typeAndCode = queries.map(query => query.queryType.toString + "; \"" + query.queryCode.mkString(" ") + "\"; " + parseQuery(query)(0) + "; \"" + parseQuery(query)(1) + "\"; \"" + parseQuery(query)(2) + "\"")
-        typeAndCode #> "parsedQueries.csv"
-        val selectUnsafe = queries.filter(_.queryType==QueryType.SelectQuery).map(getUnsafeColumn(_)).flatten.dedup.l
-        val insertUnsafe = queries.filter(q => q.queryType==QueryType.InsertQuery || q.queryType == QueryType.UpdateQuery).map(getUnsafeColumn(_)).flatten.dedup.l
-        insertUnsafe.map(selctUnsafe.contains(_)).size
+        val typeAndCode = queries.map(query => query.queryType.toString + "; \"" + query.queryCode.mkString(" ") + "\"; " + parseQuery(query)(0) + "; \"" + parseQuery(query)(1).mkString(", ") + "\"; \"" + parseQuery(query)(2).mkString(", ") + "\"" + "; " + (labelQueryInput(query)==QueryLabel.SafeQuery && labelQueryOutput(query)==QueryLabel.SafeQuery).toString)
+        typeAndCode #> ("navex_utils/code/db/parsed-queries/" + file_name + ".csv")
+        val selectUnsafe = queries.filter(_.queryType==QueryType.SelectQuery).map(getUnsafeColumns(_)).flatten.dedup.l
+        val insertUnsafe = queries.filter(q => q.queryType==QueryType.InsertQuery || q.queryType == QueryType.UpdateQuery).map(getUnsafeColumns(_)).flatten.dedup.l
+        val bothUnsafe: List[(String, String)] = insertUnsafe.filter(selectUnsafe.contains(_))
         println("\tNumber of queries\t|\tSafe Input\t|\tSafe Output")
-        println("Select: \t" + queries.filter(_.queryType == QueryType.SelectQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.SelectQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.SelectQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
-        println("Insert: \t" + queries.filter(_.queryType == QueryType.InsertQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.InsertQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.InsertQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
-        println("Update: \t" + queries.filter(_.queryType == QueryType.UpdateQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.UpdateQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.UpdateQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
-        println("Other: \t\t" + queries.filter(_.queryType == QueryType.OtherQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.OtherQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.OtherQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
-        println("Total: \t\t" + queries.size + "\t\t|\t" + queries.filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(labelQueryInput(_) == QueryLabel.SafeQuery).size)
+        println("Select: \t" + queries.filter(_.queryType == QueryType.SelectQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.SelectQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.SelectQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size)
+        println("Insert: \t" + queries.filter(_.queryType == QueryType.InsertQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.InsertQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.InsertQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size)
+        println("Update: \t" + queries.filter(_.queryType == QueryType.UpdateQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.UpdateQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.UpdateQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size)
+        println("Other: \t\t" + queries.filter(_.queryType == QueryType.OtherQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.OtherQuery).filter(labelQueryInput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(_.queryType == QueryType.OtherQuery).filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size)
+        println("Total: \t\t" + queries.size + "\t\t|\t" + queries.filter(labelQueryInput(_) == QueryLabel.SafeQuery).size + "\t\t|\t" + queries.filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size)
         // println("Safe queries: " + queries.filter(labelQueryOutput(_) == QueryLabel.SafeQuery).size)
-        println("Unsafe database columns: " + queries.map(getUnsafeColumnOutput(_)).flatten.dedup.l.size + " out of " + list_schema.size)
+        println("Unsafe database columns: [" + bothUnsafe.map(_(1)).mkString(", ") + "]\n\t" + bothUnsafe.size + " out of " + list_schema.size + " database columns")
     }
 }

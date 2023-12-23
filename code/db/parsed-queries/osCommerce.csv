@@ -1,0 +1,11 @@
+OTHER; "alter table $table convert to character set utf8 collate utf8_unicode_ci"; NA; ""; ""; true
+INSERT; "INSERT INTO $DBPrefix faqs_translated VALUES( $id , $k , addslashes($_POST[question][$k]) , addslashes($_POST[answer][$k]) )"; tax_rates; "tax_rates_id, tax_zone_id, tax_class_id, tax_priority, tax_rate, tax_description, last_modified, date_added"; "$id, $k, addslashes($_POST["question"][$k]), addslashes($_POST["answer"][$k])"; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+UPDATE; "UPDATE $DBPrefix users SET endemailmode= addslashes($_POST[endemailmod]) , startemailmode= addslashes($_POST[startemailmod]) , reg_date=reg_date WHERE id= intval($_SESSION[PHPAUCTION_LOGGED_IN])"; customers; "customers_email_address, customers_lastname"; "addslashes($_POST["endemailmod"])"; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true

@@ -1,146 +1,66 @@
 class NavexMain(val cpg: Cpg) {
-    val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS")
-    // val vulnerabilities: List[String] = List("Command Execution")
-    val sanitizationObject = new SanitizationFilter(cpg)
 
-    def getSinks(vulnerability: String) = {
-        // outputs the corresponding sanitization functions and sinks of the vulnerability
-        vulnerability.replaceAll("[^a-zA-Z]", "").toLowerCase() match {
-            case "codeinjection" | "codeinj" => {
-                (Constants.san_functions_code, Constants.codeinj_sink)
-            }
-            case "commandexec" | "commandexecution" => {
-                (Constants.san_functions_os_command, Constants.commandexec_sink)
-            }
-            case "fileinclusion" | "fileinc" => {
-                (Constants.san_functions_file, Constants.fileinc_sink)
-            }
-            case "sqli" | "sqlinjection" => {
-                (Constants.san_functions_sql, Constants.sqli_sink)
-            }
-            case "xss" | "crosssitescripting" => {
-                (Constants.san_functions_xss, Constants.xss_sink)
-            }
-            case "fileaccess" => {
-                (List(), Constants.fileaccess_sink)
-            }
-            case "sessionfixation" => {
-                (List(), Constants.sessionfixation_sink)
-            }
-            case _ => (List(), List())
-        }
-    }
-
-    def getReachingDefs(paths: List[List[AstNode]], source: List[nodes.Call] = List(), vulnerabilityInst: sanitizationObject.vulnerabilityType): List[List[AstNode]] = {
-        var output = List[List[AstNode]]()
-        val result = paths.map(path => {
-            val lastNode: AstNode = path.last
-            // println(path.size)
-            val reachingDefs: List[AstNode] = (lastNode match {
-                case identifier: Identifier => {
-                    if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
-                    identifier.method.parameter.name(identifier.name).l
-                    else if (!List(identifier).reachableByFlows(source).isEmpty) {
-                        output = output :+ (path ++ List(identifier).reachableByFlows(source).map(_.elements).head.reverse)
-                        List()
-                    }
-                    else identifier.ddgIn.filterNot(_.isLiteral).l
-                }
-                case call: nodes.Call => {
-                    if (!List(call).reachableByFlows(source).isEmpty) {
-                        output = output :+ (path ++ List(call).reachableByFlows(source).map(_.elements).head.reverse)
-                        List()
-                    }
-                    else call.ddgIn.filterNot(_.isLiteral).l
-                }
-                case literal: Literal => List()
-                case block: Block => List()
-                case parameter: MethodParameterIn => parameter.method.callIn.argument(parameter.index).filterNot(_.isLiteral).l
-                case _ => {
-                    println(lastNode)
-                    List()
-                }
-            }).filterNot(node => path.contains(node) || sanitizationObject.isSanitized(node)(vulnerabilityInst))
-            if (reachingDefs.isEmpty) (output = output :+ path)
-            else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
-            })
-        val sourceInPaths: Int = paths.map(_.exists(source.contains)).indexOf(true) 
-        // if the calculated path is the same as the previous one, return the list of paths
-        if (paths.reduce((x,y) => x ++ y).size == output.reduce((x,y) => x ++ y).size) output
-        // if source reached return the path
-        else if (sourceInPaths >= 0) List(paths(sourceInPaths))
-        // otherwise add the next reaching definitions to the paths
-        else if (paths.size > 100) output
-        else getReachingDefs(output, source, vulnerabilityInst) 
-    }
-
-    def reachableBySource(sink: AstNode, source: List[nodes.Call] = List(),  vulnerabilityInst: sanitizationObject.vulnerabilityType): List[AstNode] = {
-        val paths: List[List[AstNode]] = getReachingDefs(List(List(sink)), source, vulnerabilityInst)
-        val sourceInPaths: Int = paths.map(_.exists(source.contains)).indexOf(true)
-        if (sourceInPaths >= 0) paths(sourceInPaths).reverse else List()
-    }
-
-    def getNodesFromID(path: List[Long]): List[AstNode] = {
-        path.map(cpg.method.ast.id(_).head)
-    }
-
-    def getMethodName(node: AstNode) = {
-        node match {
-            case identifier: Identifier => identifier.method.name
-            case call: nodes.Call => call.method.name
-            case param: MethodParameterIn => param.method.name
-            case _ => "" 
-        }
-    }
+    Utils.augmentWithSanTag()
+    Utils.augmentWithQueryTag()
 
     def getPaths(vulnerability: String) = {
         println(vulnerability)
-        // get all sink functions for the given vulnerability
-        val (attack_san_functions, sinkFunctions) = getSinks(vulnerability)
-        implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
-        // extend the cpg with the sanitization tags
         val tagName = "SAN_" + vulnerability.replace(" ", "_")
-        cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filter(sanitizationObject.isSanitized(_)(vulnerabilityInst)).newTagNodePair(tagName, "TRUE").store()
-        cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst)).newTagNodePair(tagName, "FALSE").store()
-        run.commit
+        // get all sink functions for the given vulnerability
+        val sinkFunctions = Utils.getSinks(vulnerability)
         // source of the attack vector: assignment nodes whose code contain defined attacker_input
-        val source = cpg.call.filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst)).l //.groupBy(_.lineNumber).map(x => x._2.head).l 
+        val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).filterNot(_.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l
         // sink of the atack vector: unsanitized arguments of sink call nodes
-        val sinks = (cpg.call.filter(x => sinkFunctions.map(_ == x.name).reduce((x,y) => x || y)).filterNot(sanitizationObject.isSanitized(_)(vulnerabilityInst))).l        // intra-procedural path from source to sink
-        // intra-procedural path from source to sink
-        val globalPaths: List[List[AstNode]] = sinks.reachableByFlows(source).map(_.elements).l
-        // inter-procedural path from source to sink
-        var paths: List[List[AstNode]] = List()
-        val functionSinks = sinks.filterNot(_.method.name == "<global>").filterNot(x => globalPaths.map(_.head).contains(x))
-        println(functionSinks.size)
-        functionSinks.map(sink => {
-            val path = reachableBySource(sink, source, vulnerabilityInst)
-            if (!path.isEmpty) paths = paths :+ path
-        })
-        val totalPaths = {
-            if (vulnerability == "XSS") {
-                // globalPaths ++ paths
-                val dbConstraint = new DatabaseConstraint(cpg)
-                (globalPaths ++ paths).filterNot(dbConstraint.filterPath)
-            } 
-            else globalPaths ++ paths
+        val sinks = cpg.call.filter(x => sinkFunctions.map(_ == x.name).reduce((x,y) => x || y)).filterNot(_.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l        // intra-procedural path from source to sink
+        // intra and inter-procedural path from source to sink
+        val paths: List[List[AstNode]] = sinks.flatMap(Utils.reachableBySource(_, sources, tagName))
+        
+        val withoutDbCalls = paths.filterNot(p => p.dropRight(1).map(Utils.db.databaseCalls.contains(_)).contains(true))
+
+        val cpgDatabasePaths: List[List[AstNode]] = {
+            if (vulnerability=="SQL Injection") List()
+            else {
+                val insertQuerySinks = cpg.call.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
+                val m1: Map[nodes.Call, List[List[AstNode]]] = ( insertQuerySinks zip insertQuerySinks.map(Utils.reachableBySource(_, sources, tagName)) ).toMap
+                
+                val selectQuerySources = cpg.call.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
+                val selectToSink = sinks.flatMap(Utils.reachableBySource(_, selectQuerySources, tagName))
+                val m2: Map[nodes.Call, List[List[AstNode]]] = ( selectQuerySources zip selectQuerySources.map(q => selectToSink.filter(_.head == q)) ).toMap
+
+                val insertCols = insertQuerySinks.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
+                val selectCols = selectQuerySources.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
+
+                val columnMatching: Map[Int, List[Int]] = ( insertCols.indices zip insertCols.map(_.flatMap(queryCol => selectCols.filter(_.contains(queryCol))).toSet).map(Utils.indicesOfElements(_, selectCols)) ).toMap
+                val interQueryPaths: List[List[AstNode]] = columnMatching.keySet.toList.map(insertIndex => {
+                        val insertQuery = insertQuerySinks(insertIndex)
+                        val insertPaths = m1(insertQuery)
+                        val selectQuery = columnMatching(insertIndex).map(selectQuerySources(_))
+                        val selectPaths = selectQuery.map(m2(_)).filterNot(_.isEmpty)
+                        val queryPaths = for { x <- insertPaths; y <- selectPaths.flatten } yield (x++y)
+                        queryPaths
+                    }).filterNot(_.isEmpty).flatten
+                interQueryPaths
+            }
         }
+
+        val totalPaths = (withoutDbCalls ++ cpgDatabasePaths).filterNot(_.map(_.tag.name(tagName).value.head == "TRUE").contains(true))
+
         // if methodParamIn depends on a sanitized node: the path is sanitized
         val unsanPaths = totalPaths.filterNot(path => path.dropRight(1).zip(path.drop(1)).map(
             (r,c) => (r.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE") && (c.isInstanceOf[MethodParameterIn])
             ).contains(true))
-        // val unsanPaths = totalPaths.filterNot(path => path.map(node => sanitizationObject.isSanitized(node)(vulnerabilityInst)).contains(true))
-        val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
-        dedupPaths
+        unsanPaths
+        // val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
+        // dedupPaths
     }
     
     def getAllPaths(debug:Boolean = true) = {
         // map every vulnerability in the list to its list of possible paths
         val t0 = System.nanoTime()
-        val result = (vulnerabilities zip vulnerabilities.map(getPaths)).toMap
+        val result = (Utils.vulnerabilities zip Utils.vulnerabilities.map(getPaths)).toMap
         val t1 = System.nanoTime()
         if (debug) println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
-        if (debug) println("Sanitization exception rate: " + sanitizationObject.exceptionRate())
+        if (debug) println("Sanitization exception rate: " + Utils.exceptionRate())
         if (debug) println(result.transform{(k,v) => v.size})
         result
     }
@@ -156,16 +76,16 @@ class NavexMain(val cpg: Cpg) {
         v.map(path => {
             val pathID = v.toSeq.indexOf(path) + 1
             path.map(x => {
-                        val (attack_san_functions, sinkFunctions) = getSinks(k)
-                        implicit val vulnerabilityInst = sanitizationObject.vulnerabilityType(k, attack_san_functions)
+                        val tagName = "SAN_" + k.replace(" ", "_")
+                        val sinkFunctions = Utils.getSinks(k)
                         "{\n\t\"pathid\": " + pathID + ",\n" + 
                         "\t\"vulnerability\": \"" + k + "\",\n" + 
                         "\t\"nodeid\": " + x.id + ",\n" +
-                        "\t\"methodname\": \"" + getMethodName(x) + "\",\n" +
+                        "\t\"methodname\": \"" + Utils.getMethodName(x) + "\",\n" +
                         "\t\"filename\": \"" + cpg.metaData.root.head.split("/").last + "/" + x.file.name.headOption.getOrElse("").replace("\"", "\\\"") + "\",\n" +
                         "\t\"linenumber\": " + x.lineNumber.getOrElse("") + ",\n" +
                         "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\",\n" +
-                        "\t\"sanitized\": \"" + sanitizationObject.isSanitized(x)(vulnerabilityInst) + "\"\n},"
+                        "\t\"sanitized\": \"" + x.tag.name(tagName).value.headOption.getOrElse("NA") + "\"\n},"
     }).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
         output #> ("navex_utils/paths/" + cpg.metaData.root.head.split("/").last.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json")
     }
