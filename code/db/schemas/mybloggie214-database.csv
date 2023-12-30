@@ -1,0 +1,24 @@
+comment,comment_id,"['MANUAL']",True
+comment,post_id,"['MANUAL']",True
+comment,comment_subject,"['MANUAL']",False
+comment,com_tstamp,"['MANUAL']",False
+comment,poster,"['MANUAL']",False
+comment,email,"['MANUAL']",False
+comment,home,"['MANUAL']",False
+comment,comments,"['MANUAL']",False
+comment,comment_type,"['MANUAL']",True
+comment,ip,"['MANUAL']",False
+posts,post_id,"['smallint(5)', 'unsigned', 'NOT NULL', 'auto_increment']",True
+posts,user_id,"['varchar(4)', 'NOT NULL', 'default', ""''""]",False
+posts,subject,['tinytext'],False
+posts,message,['longtext'],True
+posts,timestamp,"['int(11)', 'NOT NULL', 'default', '0']",True
+posts,cat_id,"['tinyint(2)', 'NOT NULL', 'default', '0']",True
+posts,allow_tb,"['char(1)', 'NOT NULL', 'default', ""''""]",False
+user,user,"['MANUAL']",False
+user,id,"['MANUAL']",True
+user,password,"['MANUAL']",False
+user,level,"['MANUAL']",True
+user,session_time,"['MANUAL']",True
+category,cat_id,"['tinyint(2)', 'NOT NULL', 'auto_increment']",True
+category,cat_desc,"['varchar(64)', 'NOT NULL', 'default', ""''""]",False

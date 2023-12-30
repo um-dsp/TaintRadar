@@ -1,0 +1,9 @@
+SELECT; "SELECT * FROM geccBB_forum WHERE rispostadel = $id_risposta"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$id_risposta"; false
+SELECT; "SELECT * FROM geccBB_forum WHERE ripostadel = $risp[id]"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$risp["id"]"; false
+SELECT; "SELECT * FROM geccBB_forum WHERE id= $rd"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$rd"; false
+SELECT; "SELECT * FROM geccBB_forum WHERE id= $id"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$id"; false
+SELECT; "SELECT id, rispostadel FROM geccBB_forum WHERE id= $id"; geccBB_forum; "id, rispostadel"; "$id"; true
+SELECT; "SELECT * FROM geccBB_forum WHERE id= $rif"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$rif"; false
+SELECT; "SELECT * FROM geccBB_forum WHERE rispostadel= $rif"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$rif"; false
+INSERT; "INSERT INTO geccBB_forum VALUES(, $postatoda , $data , $titolo , $testonuovo , $rispostadel )"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$postatoda, $data, $titolo, $testonuovo, $rispostadel"; false
+INSERT; "INSERT INTO geccBB_forum VALUES(, $postatoda , $data , $titolo , $testonuovo , )"; geccBB_forum; "id, postatoda, data, titolo, testo, rispostadel"; "$postatoda, $data, $titolo, $testonuovo"; false

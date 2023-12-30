@@ -1,0 +1,572 @@
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "SELECT comment_ID FROM WHERE comment_approved = $comment_status AND $delete_time > comment_date_gmt"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE link_id = %d"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS current($drop_table)"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE blog_id = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_key = $blog_prefix autosave_draft_ids"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE ID = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = %d"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id = %d"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+INSERT; "INSERT INTO (option_name, option_value, autoload) VALUES $insert"; NA; "option_name, option_value, autoload"; "$insert"; false
+OTHER; "DELETE FROM WHERE option_name REGEXP ^rss_[0-9a-f]{32}(_ts)?$"; NA; ""; ""; true
+INSERT; "INSERT INTO ( site_id, meta_key, meta_value ) VALUES $insert"; NA; "site_id, meta_key, meta_value"; "$insert"; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "user-edit.php?user_id="; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id != %d AND meta_key = %s $table_prefix user_level"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id != %d AND meta_key = %s"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = %d AND meta_key = %s"; NA; ""; ""; true
+UPDATE; "UPDATE SET db_version = $wp_db_version WHERE blog_id ="; NA; ""; "$wp_db_version"; false
+INSERT; "INSERT INTO ( blog_id , db_version , last_updated ) VALUES ( , $wp_db_version , NOW());"; NA; "blog_id, , db_version, last_updated"; "$wp_db_version"; false
+UPDATE; "UPDATE SET post_name = %s WHERE ID = %d"; NA; ""; ""; false
+UPDATE; "UPDATE SET option_value = REPLACE(option_value, wp-links/links-images/, wp-images/links/) WHERE option_name LIKE links_rating_image% AND option_value LIKE wp-links/links-images/%"; NA; ""; ""; false
+UPDATE; "UPDATE SET post_date_gmt = DATE_ADD(post_date, INTERVAL $add_hours : $add_minutes HOUR_MINUTE)"; NA; ""; "$add_hours, $add_minutes"; false
+UPDATE; "UPDATE SET post_modified = post_date"; NA; ""; ""; false
+UPDATE; "UPDATE SET post_modified_gmt = DATE_ADD(post_modified, INTERVAL $add_hours : $add_minutes HOUR_MINUTE) WHERE post_modified != 0000-00-00 00:00:00"; NA; ""; "$add_hours, $add_minutes"; false
+UPDATE; "UPDATE SET comment_date_gmt = DATE_ADD(comment_date, INTERVAL $add_hours : $add_minutes HOUR_MINUTE)"; NA; ""; "$add_hours, $add_minutes"; false
+UPDATE; "UPDATE SET user_registered = DATE_ADD(user_registered, INTERVAL $add_hours : $add_minutes HOUR_MINUTE)"; NA; ""; "$add_hours, $add_minutes"; false
+OTHER; "DROP TABLE IF EXISTS optionvalues"; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS optiontypes"; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS optiongroups"; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS optiongroup_options"; NA; ""; ""; true
+UPDATE; "UPDATE SET comment_type=trackback, comment_content = REPLACE(comment_content, <trackback />, ) WHERE comment_content LIKE <trackback />%"; NA; ""; ""; false
+UPDATE; "UPDATE SET comment_type=pingback, comment_content = REPLACE(comment_content, <pingback />, ) WHERE comment_content LIKE <pingback />%"; NA; ""; ""; false
+OTHER; "DELETE FROM WHERE option_id IN ( $dupe_ids )"; NA; ""; ""; true
+OTHER; "ALTER TABLE"; NA; ""; ""; true
+UPDATE; "UPDATE SET post_status = %s, post_type = %s WHERE ID = %d"; NA; ""; ""; false
+UPDATE; "UPDATE SET post_status = future WHERE post_status = publish AND post_date_gmt > $now"; NA; ""; ""; false
+UPDATE; "UPDATE SET term_group = %d WHERE term_id = %d"; NA; ""; ""; false
+INSERT; "INSERT INTO (term_id, name, slug, term_group) VALUES (%d, %s, %s, %d)"; NA; "term_id, name, slug, term_group"; ""; false
+INSERT; "INSERT INTO (term_id, taxonomy, description, parent, count) VALUES ( %d, %s, %s, %d, %d)"; NA; "term_id, taxonomy, description, parent, count"; ""; false
+INSERT; "INSERT INTO (term_id, taxonomy, description, parent, count) VALUES ( %d, %s, %s, %d, %d)"; NA; "term_id, taxonomy, description, parent, count"; ""; false
+OTHER; "DROP TABLE IF EXISTS linkcategories"; NA; ""; ""; true
+OTHER; "ALTER TABLE"; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS categories"; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS link2cat"; NA; ""; ""; true
+OTHER; "DROP TABLE IF EXISTS post2cat"; NA; ""; ""; true
+UPDATE; "UPDATE SET meta_key = _wp_old_slug WHERE meta_key = old_slug"; NA; ""; ""; false
+UPDATE; "UPDATE SET user_activation_key ="; NA; ""; ""; false
+UPDATE; "UPDATE SET post_date = post_modified WHERE post_date = 0000-00-00 00:00:00"; NA; ""; ""; false
+OTHER; "DELETE FROM WHERE meta_key IN( menu_type, object_id, menu_new_window, menu_link, _menu_item_append, menu_item_append, menu_item_type, menu_item_object_id, menu_item_target, menu_item_classes, menu_item_xfn, menu_item_url )"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_key LIKE $prefix %meta-box-hidden% OR meta_key LIKE $prefix %closedpostboxes% OR meta_key LIKE $prefix %manage-%-columns-hidden% OR meta_key LIKE $prefix %meta-box-order% OR meta_key LIKE $prefix %metaboxorder% OR meta_key LIKE $prefix %screen_layout% OR meta_key = manageedittagscolumnshidden OR meta_key=managecategoriescolumnshidden OR meta_key = manageedit-tagscolumnshidden OR meta_key = manageeditcolumnshidden OR meta_key = categories_per_page OR meta_key = edit_tags_per_page"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "ALTER TABLE $table"; NA; ""; ""; true
+OTHER; "ALTER TABLE $table"; NA; ""; ""; true
+OTHER; "ALTER TABLE $table ADD INDEX ( $index )"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE o1 FROM AS o1 JOIN AS o2 USING (option_name) WHERE o2.option_id > o1.option_id"; NA; ""; ""; true
+OTHER; "ALTER TABLE"; NA; ""; ""; true
+OTHER; "ALTER TABLE"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE ID = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = $id AND meta_key = $level_key"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = $userid AND meta_key = $blog_prefix capabilities AND meta_value = a:0:{}"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "wp_nonce_url(ms-edit.php, deleteuser) &amp;action=deleteuser&amp;id= $user[ID]"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "plugin-editor.php?file= $file &liveupdate=1&scrollto= $scrollto &networkwide= $network_wide"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+UPDATE; "UPDATE SET post_parent = %d WHERE post_type = attachment AND ID IN ( $attach )"; NA; ""; ""; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "SELECT ID FROM WHERE post_type=attachment AND post_status = trash"; NA; ""; ""; true
+OTHER; "SELECT ID FROM WHERE post_type=attachment AND post_status = trash"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+UPDATE; "UPDATE SET user_email = %s WHERE user_login = %s"; NA; ""; ""; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+UPDATE; "UPDATE SET user_email = %s WHERE user_login = %s"; NA; ""; ""; false
+OTHER; "IS_PROFILE_PAGE ? profile.php? : user-edit.php?user_id= . $user_id . & updated=true"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "CREATE TABLE $this->options[prefix][0] cache_data (id TEXT CHARACTER SET utf8 NOT NULL, items SMALLINT NOT NULL DEFAULT 0, data BLOB NOT NULL, mtime INT UNSIGNED NOT NULL, UNIQUE (id(125)))"; NA; ""; ""; true
+OTHER; "CREATE TABLE $this->options[prefix][0] items (feed_id TEXT CHARACTER SET utf8 NOT NULL, id TEXT CHARACTER SET utf8 NOT NULL, data TEXT CHARACTER SET utf8 NOT NULL, posted INT UNSIGNED NOT NULL, INDEX feed_id (feed_id(125)))"; NA; ""; ""; true
+SELECT; "SELECT id FROM $this->options[prefix][0] cache_data WHERE id = $feed_id"; commentmeta; "id"; "$feed_id"; true
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET data = mysql_real_escape_string($prepared[0]) , mtime = time() WHERE id = $feed_id"; commentmeta; "meta_id, meta_key"; "mysql_real_escape_string($prepared[0]), time()"; false
+INSERT; "INSERT INTO $this->options[prefix][0] cache_data (id, items, data, mtime) VALUES( $feed_id , count($prepared[1]) , mysql_real_escape_string($prepared[0]) , time() )"; commentmeta; "id, items, data, mtime"; "$feed_id, count($prepared[1]), mysql_real_escape_string($prepared[0]), time()"; true
+OTHER; "SELECT id FROM $this->options[prefix][0] items WHERE id = implode( OR id = , $database_ids) AND feed_id = $feed_id"; NA; ""; ""; true
+INSERT; "INSERT INTO $this->options[prefix][0] items (feed_id, id, data, posted) VALUES( $feed_id , mysql_real_escape_string($new_id) , mysql_real_escape_string(serialize($prepared[1][$new_id]->data)) , $date )"; terms; "feed_id, id, data, posted"; "$feed_id, mysql_real_escape_string($new_id), mysql_real_escape_string(serialize($prepared[1][$new_id]->data)), $date"; true
+SELECT; "SELECT id FROM $this->options[prefix][0] cache_data WHERE id = $feed_id"; commentmeta; "id"; "$feed_id"; true
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET items = 0, data = mysql_real_escape_string(serialize($data)) , mtime = time() WHERE id = $feed_id"; commentmeta; "meta_id, meta_key"; "mysql_real_escape_string(serialize($data)), time()"; false
+INSERT; "INSERT INTO $this->options[prefix][0] cache_data (id, items, data, mtime) VALUES( mysql_real_escape_string($this->id) , 0, mysql_real_escape_string(serialize($data)) , time() )"; commentmeta; "id, items, data, mtime"; "mysql_real_escape_string($this->id), mysql_real_escape_string(serialize($data)), time()"; true
+SELECT; "SELECT items, data FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; commentmeta; "items, data"; "id, mysql_real_escape_string($this->id)"; true
+OTHER; "SELECT data FROM $this->options[prefix][0] items WHERE feed_id = mysql_real_escape_string($this->id) ORDER BY posted DESC"; NA; ""; ""; true
+SELECT; "SELECT mtime FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; commentmeta; "mtime"; "id, mysql_real_escape_string($this->id)"; true
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET mtime = time() WHERE id = mysql_real_escape_string($this->id)"; commentmeta; "meta_key"; "time()"; true
+OTHER; "DELETE FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; NA; ""; ""; true
+OTHER; "DELETE FROM $this->options[prefix][0] items WHERE feed_id = mysql_real_escape_string($this->id)"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id IN ( $in_meta_ids )"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE comment_ID = %d LIMIT 1"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id = %d"; NA; ""; ""; true
+UPDATE; "UPDATE SET to_ping = TRIM(REPLACE(to_ping, $tb_ping , )) WHERE ID = %d"; NA; ""; "$tb_ping"; false
+OTHER; ""; NA; ""; ""; true
+UPDATE; "UPDATE SET pinged = CONCAT(pinged, , $tb_url ) WHERE ID = %d"; NA; ""; "$tb_url"; false
+UPDATE; "UPDATE SET to_ping = TRIM(REPLACE(to_ping, $tb_url , )) WHERE ID = %d"; NA; ""; "$tb_url"; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = %d AND meta_key = %s AND meta_value = %s"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_id = %d AND meta_key = %s"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+INSERT; "INSERT INTO (option_name, option_value, autoload) VALUES (%s, %s, %s) ON DUPLICATE KEY"; NA; "option_name, option_value, autoload"; ""; false
+OTHER; "DELETE FROM WHERE option_name = %s"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id IN(%s)"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_key = %s AND site_id = %d"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM $table WHERE $id_column IN( implode(, , $meta_ids) )"; NA; ""; ""; true
+UPDATE; "UPDATE SET post_author = %d WHERE post_author = %d"; NA; ""; ""; false
+UPDATE; "UPDATE SET link_owner = %d WHERE link_owner = %d"; NA; ""; ""; false
+OTHER; "DELETE FROM WHERE user_login = %s"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE user_email = %s"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE domain = %s AND path = %s"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_key = %s $table_prefix user_level"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_key = %s"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id IN( $in )"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id IN( $in_post_meta_ids )"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE ID = %d"; NA; ""; ""; true
+UPDATE; "UPDATE SET comment_approved = $status WHERE comment_ID IN ( $comments_in )"; NA; ""; "$status"; false
+OTHER; "DELETE FROM WHERE meta_key = _thumbnail_id AND meta_value = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE meta_id IN( $in_post_meta_ids )"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE ID = %d"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE object_id = %d AND term_taxonomy_id IN ( $in_tt_ids )"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE term_taxonomy_id = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE term_id = %d"; NA; ""; ""; true
+OTHER; "DELETE FROM WHERE object_id = %d AND term_taxonomy_id IN ( $in_delete_terms )"; NA; ""; ""; true
+INSERT; "INSERT INTO (object_id, term_taxonomy_id, term_order) VALUES join(, , $values) ON DUPLICATE KEY"; NA; "object_id, term_taxonomy_id, term_order"; "$values"; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; "/( | | | | | )/i"; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+UPDATE; "UPDATE $table SET implode(, , $bits) WHERE implode( AND , $wheres)"; NA; ""; "$bits"; false
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true
+OTHER; ""; NA; ""; ""; true

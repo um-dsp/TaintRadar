@@ -1,0 +1,6 @@
+geccBB_forum,id,"['int(5)', 'NOT NULL', 'auto_increment']",True
+geccBB_forum,postatoda,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+geccBB_forum,data,"['int(12)', 'NOT NULL', 'default', ""'0'""]",True
+geccBB_forum,titolo,"['varchar(255)', 'NOT NULL', 'default', ""''""]",False
+geccBB_forum,testo,"['text', 'NOT NULL']",False
+geccBB_forum,rispostadel,"['int(5)', 'NOT NULL', 'default', ""'0'""]",True

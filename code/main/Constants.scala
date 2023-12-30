@@ -23,34 +23,16 @@ object Constants {
     "mysqli_query",
     "mysqli_multi_query",
     "mysqli_real_query",
-    // "mysqli_fetch_assoc",
-    // "mysqli_fetch_array",
-    // "mysqli_fetch_object",
-    // "mysqli_fetch_row",
     // mysql_ Functions (Deprecated)
     "mysql_query",
-    // "mysql_fetch_assoc",
-    // "mysql_fetch_array",
-    // "mysql_fetch_object",
-    // "mysql_fetch_row",
     // PostgreSQL Functions
     "pg_query",
     "pg_query_params",
-    // "pg_fetch_array",
-    // "pg_fetch_assoc",
-    // "pg_fetch_object",
-    // "pg_fetch_row",
     // SQLite Functions
     "sqlite_query",
     "sqlite_exec",
-    // "sqlite_fetch_array",
-    // "sqlite_fetch_single",
-    // "sqlite_fetch_string",
-    // "sqlite_fetch_all",
-    // "sqlite_single_query",
     // Miscellaneous
     "sql_query",
-    // "sql_fetchrow"
   )
 
   val commandexec_sink = List("shell_exec", "exec", "system", "mail", "popen", "expect_popen", "passthru", "pcntl_exec", "proc_open")
@@ -85,6 +67,15 @@ object Constants {
   val san_functions_xss = List("htmlentities",
     "htmlspecialchars",
     "sanitize")
+
+  val san_functions_code = List()
+
+  val san_functions_os_command  = List("escapeshellarg",
+    "escapeshellcmd")
+  
+  val san_functions_file= List("basename",
+    "dirname",
+    "pathinfo")
 
   val san_functions_all = List(
     "isset",
@@ -157,15 +148,6 @@ object Constants {
     "gethostbyname",
     "date", "ctype_digit")
   
-  val san_functions_code = List()
-
-  val san_functions_os_command  = List("escapeshellarg",
-    "escapeshellcmd")
-  
-  val san_functions_file= List("basename",
-    "dirname",
-    "pathinfo")
-
   val sql_builtin_function: Set[String] = Set(
     "ABBREV",
     "ABORT",

@@ -1,0 +1,35 @@
+games,gameID,"['SMALLINT', 'NOT NULL', 'AUTO_INCREMENT']",True
+games,whitePlayer,"['MEDIUMINT', 'NOT NULL']",True
+games,blackPlayer,"['MEDIUMINT', 'NOT NULL']",True
+games,gameMessage,"[""ENUM('playerInvited', 'inviteDeclined', 'draw', 'playerResigned', 'checkMate')"", 'NULL']",True
+games,messageFrom,"[""ENUM('black', 'white')"", 'NULL']",True
+games,dateCreated,"['DATETIME', 'NOT NULL']",True
+games,lastMove,"['DATETIME', 'NOT NULL']",True
+history,timeOfMove,['NOT NULL'],False
+history,gameID,"['SMALLINT', 'NOT NULL']",True
+history,curPiece,"[""ENUM('pawn', 'bishop', 'knight', 'rook', 'queen', 'king')"", 'NOT NULL']",True
+history,curColor,"[""ENUM('white', 'black')"", 'NOT NULL']",True
+history,fromRow,"['SMALLINT', 'NOT NULL']",True
+history,fromCol,"['SMALLINT', 'NOT NULL']",True
+history,toRow,"['SMALLINT', 'NOT NULL']",True
+history,toCol,"['SMALLINT', 'NOT NULL']",True
+history,replaced,"[""ENUM('pawn', 'bishop', 'knight', 'rook', 'queen', 'king')"", 'NULL']",True
+history,promotedTo,"[""ENUM('pawn', 'bishop', 'knight', 'rook', 'queen', 'king')"", 'NULL']",True
+history,isInCheck,"['BOOL', 'NOT NULL']",True
+messages,msgID,"['INT', 'NOT NULL', 'AUTO_INCREMENT']",True
+messages,gameID,"['SMALLINT', 'NOT NULL']",True
+messages,msgType,"[""ENUM('undo', 'draw')"", 'NOT NULL']",True
+messages,msgStatus,"[""ENUM('request', 'approved', 'denied')"", 'NOT NULL']",True
+messages,destination,"[""ENUM('black', 'white')"", 'NOT NULL']",True
+pieces,gameID,"['SMALLINT', 'NOT NULL']",True
+pieces,color,"[""ENUM('white','black')"", 'NOT NULL']",True
+pieces,piece,"[""ENUM('pawn','rook','knight','bishop','queen','king')"", 'NOT NULL']",True
+pieces,col,"['SMALLINT', 'NOT NULL', 'row', 'SMALLINT', 'NOT NULL']",True
+players,playerID,"['INT', 'NOT NULL', 'AUTO_INCREMENT']",True
+players,password,"['CHAR(16)', 'NOT NULL']",False
+players,firstName,"['CHAR(20)', 'NOT NULL']",False
+players,lastName,"['CHAR(20)', 'NOT NULL']",False
+players,nick,"['CHAR(20)', 'NOT NULL', 'UNIQUE']",False
+preferences,playerID,"['INT', 'NOT NULL']",True
+preferences,preference,"['CHAR(20)', 'NOT NULL']",False
+preferences,value,"['CHAR(50)', 'NULL']",False

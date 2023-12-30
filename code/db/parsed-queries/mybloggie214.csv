@@ -1,0 +1,99 @@
+SELECT; "SELECT category .cat_desc , category .cat_id FROM category ORDER BY category .cat_desc ASC"; category; "category, catdesc, , catid"; ""; false
+SELECT; "SELECT category .cat_desc FROM category WHERE category .cat_id = $cat_id"; category; "category, catdesc"; "$cat_id"; false
+INSERT; "INSERT INTO posts SET user_id= $user_id , subject= $subject , message= $message , timestamp= $timestamp , cat_id= $cat_id"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; ""; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT cat_id, cat_desc FROM category"; category; "catid, catdesc"; ""; false
+SELECT; "SELECT cat_desc FROM category WHERE cat_desc= $cat_desc"; category; "catdesc"; "$cat_desc"; false
+INSERT; "INSERT INTO category SET cat_desc= $cat_desc"; category; "cat_id, cat_desc"; ""; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT user FROM user WHERE user= $user"; user; "user"; "$user"; false
+INSERT; "INSERT INTO user SET user= $user , password= $password , level= $level"; user; "user, id, password, level, session_time"; ""; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT COUNT(p.comment_id) AS num_comments FROM comment p"; comment; "pcommentid"; ""; true
+SELECT; "SELECT * FROM comment Order by comment .com_tstamp ASC, comment .comment_type ASC LIMIT $pageno , $editlimit"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; ""; false
+SELECT; "SELECT DISTINCT DATE_FORMAT( FROM_UNIXTIME( timestamp ) , %m ) AS m, DATE_FORMAT( FROM_UNIXTIME( timestamp ) , %Y ) AS y, COUNT( m ) as t FROM posts WHERE posts .timestamp<= $timestamp GROUP BY m ORDER BY y DESC, DATE_FORMAT( FROM_UNIXTIME( timestamp ) , %m ) DESC LIMIT 0 , $archivelimit"; posts; "distinct, , fromunix, timestamp, m, y"; "$timestamp, $archivelimit"; true
+SELECT; "SELECT COUNT(p.post_id) AS num_posts FROM posts p"; posts; "ppostid"; ""; true
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND posts .timestamp<= $timestamp Order by posts .timestamp DESC, posts .post_id DESC LIMIT $pageno , $bloglimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $timestamp, $pageno, $bloglimit"; false
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type!=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT * FROM posts WHERE DATE_FORMAT(FROM_UNIXTIME(timestamp) , %e) = $date_no AND DATE_FORMAT(FROM_UNIXTIME(timestamp) , %Y) = $year AND DATE_FORMAT(FROM_UNIXTIME(timestamp) , %c) = $month_no AND posts .timestamp<= $timestamp"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; "$date_no, $year, $month_no, $timestamp"; false
+SELECT; "SELECT DISTINCT posts .cat_id AS c, category .cat_id, category .cat_desc, COUNT( c ) as z FROM posts , category WHERE posts .cat_id = category .cat_id AND posts .timestamp<= $timestamp GROUP BY c ORDER BY category .cat_desc ASC"; category; "distinct, posts, catid, c, category, catdesc, "; "$timestamp"; false
+SELECT; "SELECT COUNT(p.comment_id) AS num_comments FROM comment p WHERE p.post_id = $post_id"; comment; "pcommentid"; "$post_id"; true
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND posts .post_id= $post_id"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $post_id"; false
+SELECT; "SELECT * FROM comment WHERE comment .post_id = $post_id Order by comment .com_tstamp ASC, comment .comment_type ASC"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; "$post_id"; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT post_id FROM posts WHERE post_id= $post_id"; posts; "postid"; "$post_id"; true
+SELECT; "SELECT * FROM posts WHERE post_id= $post_id and user_id= $user_id"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; "$post_id, $user_id"; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT cat_id FROM category WHERE cat_id= $cat_id"; category; "catid"; "$cat_id"; true
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT id, user FROM user WHERE id= $id"; user; "id, user"; "$id"; false
+SELECT; "SELECT user .user, user .level, user .id FROM user Order by user .id ASC"; user; "user, level, id"; ""; false
+SELECT; "SELECT * FROM posts WHERE post_id= $post_id"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; "$post_id"; false
+SELECT; "SELECT * FROM posts WHERE post_id= $post_id and user_id= $user_id"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; "$post_id, $user_id"; false
+SELECT; "SELECT category .cat_desc , category .cat_id FROM category ORDER BY category .cat_desc ASC"; category; "category, catdesc, , catid"; ""; false
+SELECT; "SELECT category .cat_desc FROM category WHERE category .cat_id = $cat_id"; category; "category, catdesc"; "$cat_id"; false
+UPDATE; "UPDATE posts SET subject= $subject , message= $message , timestamp= $timestamp , cat_id= $cat_id WHERE post_id= $post_id"; posts; "subject, message, timestamp, cat_id"; "$subject, $message, $timestamp, $cat_id"; false
+UPDATE; "UPDATE posts SET subject= $subject , message= $message , cat_id= $cat_id WHERE post_id= $post_id"; posts; "subject, message, cat_id"; "$subject, $message, $cat_id"; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT cat_id, cat_desc FROM category"; category; "catid, catdesc"; ""; false
+SELECT; "SELECT cat_id, cat_desc FROM category WHERE cat_id= $cat_id"; category; "catid, catdesc"; "$cat_id"; false
+SELECT; "SELECT cat_desc, cat_id FROM category WHERE cat_desc= $cat_desc"; category; "catdesc, catid"; "$cat_desc"; false
+UPDATE; "UPDATE category SET cat_desc= $cat_desc where cat_id= $cat_id"; category; "cat_desc"; "$cat_desc"; true
+SELECT; "SELECT * FROM comment WHERE comment .comment_id = $comment_id"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; "$comment_id"; false
+SELECT; "SELECT MAX(com_tstamp) AS most_recent_time FROM comment WHERE ip = $user_ip AND post_id = $post_id"; comment; "comtstamp"; "$user_ip, $post_id"; false
+UPDATE; "UPDATE comment SET comment_subject= $commentsubject , comments= $commenttext , poster = $commentname , email= $commentemail , home= $commenthome Where comment_id= $comment_id"; comment; "comment_subject, comments, poster, email, home"; "$commentsubject, $commenttext, $commentname, $commentemail"; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT * FROM user WHERE id= $id"; user; "user, id, password, level, session_time"; "$id"; false
+SELECT; "SELECT user, id FROM user WHERE user= $user"; user; "user, id"; "$user"; false
+UPDATE; "UPDATE user SET user= $user , password= $password , level= $level where id= $id"; user; "user, password, level"; "$user, $password, $level"; false
+UPDATE; "UPDATE user SET user= $user , level= $level where id= $id"; user; "user, level"; "$user, $level"; false
+SELECT; "SELECT user .user, user .level, user .id FROM user Order by user .id ASC"; user; "user, level, id"; ""; false
+SELECT; "SELECT post_id FROM posts WHERE post_id= $post_id"; posts; "postid"; "$post_id"; true
+SELECT; "SELECT comment .comment_id FROM comment WHERE comment .comment_id = $comment_id"; comment; "comment, commentid"; "$comment_id"; true
+SELECT; "SELECT category .cat_id FROM category WHERE category .cat_id = $cat_id"; category; "category, catid"; "$cat_id"; true
+SELECT; "SELECT user, password FROM user WHERE user= $username AND password= $passwd"; user; "user, password"; "$username, $passwd"; false
+SELECT; "SELECT * from posts ;"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; ""; false
+INSERT; "INSERT INTO posts SET user_id=1, subject=Testing Message for myBloggie, message=This is a test Message. You can delete this message after you logged in, timestamp= $timestamp , cat_id=1"; posts; "post_id, user_id, subject, message, timestamp, cat_id, allow_tb"; ""; false
+INSERT; "INSERT INTO category VALUES (1, General)"; category; "cat_id, cat_desc"; ""; true
+INSERT; "INSERT INTO user SET user= $admin_name , password= $admin_pass , level=1"; user; "user, id, password, level, session_time"; ""; false
+SELECT; "SELECT user FROM user WHERE user= $username AND password= $passwd"; user; "user"; "$username, $passwd"; false
+SELECT; "select post from log_pingback where post = $id and source = $src"; NA; "post"; "$id, $src"; false
+INSERT; "insert into log_pingback values( $id , $src , $title , $lang , NOW() )"; NA; ""; "$id, $src, $title, $lang"; false
+SELECT; "SELECT COUNT(p.post_id) AS num_posts FROM posts p"; posts; "ppostid"; ""; true
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id Order by posts .timestamp DESC, posts .post_id DESC LIMIT $pageno , $editlimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $pageno, $editlimit"; false
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id]"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT post_id, subject FROM posts WHERE posts .timestamp<= $timestamp ORDER BY timestamp DESC limit 0 , $recentlimit"; posts; "postid, subject"; "$timestamp, $recentlimit"; false
+SELECT; "SELECT posts .post_id, posts .subject, posts .timestamp FROM posts Order by posts .timestamp DESC LIMIT 0, 5"; posts; "posts, postid, subject, timestamp"; ""; false
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id Order by posts .timestamp DESC, posts .post_id DESC LIMIT 0, 5"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=""; false
+SELECT; "SELECT COUNT(a.post_id) AS num_posts FROM posts a WHERE a.subject like % $keyword % OR a.message like % $keyword %"; posts; "apostid"; "$keyword"; true
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND ( $searchlogic ) Order by posts .post_id DESC LIMIT $pageno , $bloglimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $searchlogic, $pageno, $bloglimit"; false
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id]"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT post_id FROM posts WHERE posts .post_id = $tb_id"; posts; "postid"; "$tb_id"; true
+INSERT; "INSERT INTO comment SET post_id= $tb_id , comment_subject= $title , comments= $excerpt , com_tstamp= $timestamp , poster = $blog_name , home= $url , comment_type=trackback"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; ""; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT DISTINCT posts .user_id AS u , user .user, COUNT( c ) as z FROM posts , user WHERE posts .user_id = user .id AND posts .timestamp<= $timestamp GROUP BY u ORDER BY user .user ASC"; user; "distinct, posts, userid, u, , user, c"; "$timestamp"; false
+SELECT; "SELECT user .user, user .level, user .id FROM user Order by user .id ASC"; user; "user, level, id"; ""; false
+SELECT; "SELECT session_id FROM SESSIONS_TABLE"; NA; "sessionid"; ""; false
+SELECT; "SELECT COUNT(session_id) AS attempts FROM CONFIRM_TABLE WHERE session_id = $userdata[session_id]"; NA; "sessionid"; ""session_id", $userdata["session_id"]"; false
+INSERT; "INSERT INTO CONFIRM_TABLE (confirm_id, session_id, code) VALUES ( $confirm_id , $userdata[session_id] , $code )"; NA; "confirm_id, session_id, code"; "$confirm_id, $userdata["session_id"], $code"; false
+SELECT; "SELECT id, user, level FROM user WHERE user= $username"; user; "id, user, level"; "$username"; false
+SELECT; "SELECT * FROM comment WHERE comment .comment_id = $comment_id"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; "$comment_id"; false
+SELECT; "SELECT MAX(com_tstamp) AS most_recent_time FROM comment WHERE ip = $user_ip AND post_id = $post_id"; comment; "comtstamp"; "$user_ip, $post_id"; false
+INSERT; "INSERT INTO comment SET post_id= $post_id , comment_subject= $commentsubject , comments= $commenttext , com_tstamp= $timestamp , poster = $commentname , email= $commentemail , home= $commenthome , ip= $user_ip"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; ""; false
+UPDATE; "UPDATE comment SET comment_subject= $commentsubject , comments= $commenttext , poster = $commentname , email= $commentemail , home= $commenthome Where comment_id= $comment_id"; comment; "comment_subject, comments, poster, email, home"; "$commentsubject, $commenttext, $commentname, $commentemail"; false
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND posts .post_id = $post_id Order by posts .post_id DESC"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $post_id"; false
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type!=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT * FROM comment WHERE comment .post_id = $post_id AND comment .comment_type = trackback Order by comment .com_tstamp ASC"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; "$post_id"; false
+SELECT; "SELECT * FROM comment WHERE comment .post_id = $post_id AND comment .comment_type <> trackback Order by comment .com_tstamp ASC"; comment; "comment_id, post_id, comment_subject, com_tstamp, poster, email, home, comments, comment_type, ip"; "$post_id"; false
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND DATE_FORMAT(FROM_UNIXTIME( posts .timestamp) , %e) = $date_no AND DATE_FORMAT(FROM_UNIXTIME( posts .timestamp) , %Y) = $year AND DATE_FORMAT(FROM_UNIXTIME( posts .timestamp) , %c) = $month_no Order by posts .post_id DESC LIMIT $pageno , $bloglimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $date_no, $year, $month_no, $pageno, $bloglimit"; false
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND DATE_FORMAT(FROM_UNIXTIME( posts .timestamp) , %Y) = $year AND DATE_FORMAT(FROM_UNIXTIME( posts .timestamp) , %c) = $month_no Order by posts .post_id DESC LIMIT $pageno , $bloglimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $year, $month_no, $pageno, $bloglimit"; false
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= user .id AND category .cat_id= posts .cat_id AND posts .cat_id= $cat_id Order by posts .post_id DESC LIMIT $pageno , $bloglimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $cat_id, $pageno, $bloglimit"; false
+SELECT; "SELECT COUNT( posts .post_id) AS num_posts FROM posts WHERE $condition"; posts; ", posts, postid"; "$condition"; true
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type!=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT category .cat_desc, posts .cat_id, category .cat_id, posts .post_id, posts .subject, posts .message, user .user, posts .timestamp, user .id, posts .user_id FROM posts , user , category WHERE posts .user_id= $user_id AND posts .user_id= user .id AND category .cat_id= posts .cat_id Order by posts .timestamp DESC LIMIT $pageno , $bloglimit"; category; "category, catdesc, posts, catid, postid, subject, message, user, timestamp, id, userid"; "".user_id=", $user_id, $pageno, $bloglimit"; false
+SELECT; "SELECT COUNT( posts .post_id) AS num_posts FROM posts WHERE $condition"; posts; ", posts, postid"; "$condition"; true
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type!=trackback"; comment; "commentid"; "$row["post_id"]"; true
+SELECT; "SELECT comment_id FROM comment WHERE comment .post_id = $row[post_id] and comment_type=trackback"; comment; "commentid"; "$row["post_id"]"; true

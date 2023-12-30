@@ -1,6 +1,6 @@
 object Utils {
     val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS")
-    // val vulnerabilities: List[String] = List("Command Execution")
+    // val vulnerabilities: List[String] = List("SQL Injection", "XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
 
@@ -64,46 +64,107 @@ object Utils {
         }
     }
 
-    def getReachingDefs(paths: List[List[AstNode]], source: List[nodes.Call] = List(), tagName: String): List[AstNode] = {
+    var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
+    def dataFlowStep(node: AstNode): List[AstNode] = {
+        dataFlowStepMap.get(node) match {
+            case Some(queryData: List[AstNode]) => queryData
+            case None => {
+                val result = {
+                    node match {
+                        case call: nodes.Call => {
+                            val method = {
+                                if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
+                                else call.callee
+                            }
+                            method.filterNot(_.code == "<empty>").l ++ call.ddgIn.dedup.l
+                        }
+                        case identifier: Identifier => {
+                            if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
+                            identifier.method.parameter.name(identifier.name).l
+                            else identifier.ddgIn.filterNot(_.isLiteral).l
+                        }
+                        case literal: Literal => List(literal)
+                        case parameter: MethodParameterIn => {
+                            cpg.call(parameter.method.name).filter(_.methodFullName == parameter.method.fullName).map(_.argument.l).map(_.lift(parameter.index)).filterNot(_ == None).map(_.get).l
+                        }
+                        case constant: FieldIdentifier => {
+                            if (magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
+                            else constantTable.get(constant.canonicalName).dedup.l
+                        }
+                        case block: Block => block.ddgIn.dedup.l
+                        case typeRef: TypeRef => List()
+                        case method: Method => {
+                            method.ast.isReturn.l
+                        }
+                        case returnNode: Return => returnNode.ddgIn.l
+                        case _ => {
+                            println(node)
+                            List()
+                        }
+                    }
+                }
+                dataFlowStepMap(node) = result.filterNot(_.isLiteral)
+                result.filterNot(_.isLiteral)
+            }
+        }
+    }
+    // var i = 0
+        // var visistedNodes: List[AstNode] = List()
+        // def backwardTraversal(sink: AstNode, sources: List[AstNode]): List[AstNode] = {
+        //     if (visistedNodes.contains(sink)) List()
+        //     else {
+        //         visistedNodes = visistedNodes :+ sink
+        //         i = i+1
+        //         val stepDdg: List[AstNode] = dataFlowStep(sink)
+        //         if (stepDdg.isEmpty) List()
+        //         else if (stepDdg.exists(sources.contains(_))) List(sink, stepDdg(stepDdg.map(sources.contains(_)).indexOf(true)))
+        //         else {
+        //             if (i>100) List()
+        //             else {
+        //                 for (node <- stepDdg) {
+        //                     if (!backwardTraversal(node, sources).isEmpty) println(backwardTraversal(node, sources))
+        //                 }
+        //                 List()
+        //                 // val nextStep = stepDdg.map(node => backwardTraversal(node, sources)).filterNot(_.isEmpty)
+        //                 // if (nextStep.isEmpty) List()
+        //                 // else sink +: nextStep.head
+        //             }
+        //         }
+        //     }
+        // }
+    // var dataFlowNodes: List[AstNode] = sinks
+    // var i = 0
+    // var dbFound: List[AstNode] = List()
+    // while (i < 50) {
+    //     dbFound = dbFound ++ dataFlowNodes.filter(databaseCalls.contains(_)).l
+    //     dataFlowNodes = dataFlowNodes.filterNot(databaseCalls.contains(_)).flatMap(dataFlowStep(_)).dedup.l
+    //     i = i + 1
+    // }
+    // dbFound = dbFound.dedup.l
+    // dbFound.size
+
+    def getReachingDefs(paths: List[List[AstNode]], source: List[AstNode] = List(), tagName: String): List[AstNode] = {
         var output = List[List[AstNode]]()
         val visitedNodes = paths.flatten.dedup.l
-        val result = paths.map(path => {
-            val lastNode: AstNode = path.last
-            // println(path.size)
-            val reachingDefs: List[AstNode] = (lastNode match {
-                case identifier: Identifier => {
-                    if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
-                    identifier.method.parameter.name(identifier.name).l
-                    else identifier.ddgIn.filterNot(_.isLiteral).l
-                }
-                case call: nodes.Call => {
-                    call.ddgIn.filterNot(_.isLiteral).l
-                }
-                case literal: Literal => List()
-                case block: Block => List()
-                case parameter: MethodParameterIn => parameter.method.callIn.argument(parameter.index).filterNot(_.isLiteral).l
-                case _ => {
-                    println(lastNode)
-                    List()
-                }
-            }).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
+        val result = paths.map( path => {
+            val reachingDefs = dataFlowStep(path.last).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
             if (reachingDefs.isEmpty) (output = output :+ path)
             else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
-            })
+        })
         val sourceInPaths: Int = output.map(_.exists(source.contains)).indexOf(true) 
         // if source reached return the path
         if (sourceInPaths >= 0) output(sourceInPaths)
         // if the calculated path is the same as the previous one, return the list of paths
         else if (paths.flatten.size == output.flatten.size) List()
         // otherwise add the next reaching definitions to the paths
-        else if (paths.size > 1000) {
-            println("Wooh! that's a lot of paths")
+        else if (paths.flatten.dedup.size > 200) {
+            // println("Wooh! that's a lot of paths")
             List()
         }
         else getReachingDefs(output, source, tagName) 
     }
 
-    def reachableBySource(sink: AstNode, sources: List[nodes.Call] = List(), tagName: String): List[List[AstNode]] = {
+    def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[List[AstNode]] = {
         val paths: List[List[AstNode]] = sources.map(source => getReachingDefs(List(List(sink)), List(source), tagName).reverse).filterNot(_.isEmpty)
         paths
     }
@@ -128,8 +189,8 @@ object Utils {
             // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
             // extend the cpg with the sanitization tags
             val tagName = "SAN_" + vulnerability.replace(" ", "_")
-            cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
-            cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
+            cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl] || node.isInstanceOf[NamespaceBlock]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
+            cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl] || node.isInstanceOf[NamespaceBlock]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
             run.commit
             "Success"
         })
@@ -139,7 +200,10 @@ object Utils {
     def augmentWithQueryTag() = {
         db.augmentDbCalls()
     }
-    
+
+    def debugDatabaseParsing() = {
+        db.debug()
+    }
 
     def exceptionRate() = {
         sanitizationObject.exceptions.toFloat / (sanitizationObject.isSanitizedMap.map(_(0).node).dedup.size * vulnerabilities.size)

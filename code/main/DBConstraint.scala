@@ -1,14 +1,13 @@
 import com.github.tototoshi.csv._
 
 class DatabaseConstraint(val cpg: Cpg) {
-    // val sanitizationObject = new SanitizationFilter(cpg)
-    // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType("XSS", Constants.san_functions_xss)
     val removeChars = Set(',', '"', '\\', '`', '\'')
     val calculationPattern = "\\s*([-+=/*><!()])\\s*".r
     val parenthesisPattern = "\\([^)]*\\)".r
 
     // Get all database calls (unsafe queries on the database)
-    val databaseCalls: List[nodes.Call] = cpg.call.filter(x => Constants.sqli_sink.map(x.name.contains(_)).reduce((x,y) => x || y)).l
+    val databaseCallsDuplicates: List[nodes.Call] = cpg.call("<operator>.concat|encaps").filter(x => mainSqlKeywords.exists(x.argument.head.code.toLowerCase.replaceFirst("^[^a-zA-Z0-9]*", "").startsWith(_))).l
+    val databaseCalls = databaseCallsDuplicates.filterNot(c1 => databaseCallsDuplicates.exists(c2 => c2.astChildren.contains(c1))).l
     val queries = databaseCalls.map(DBQuery(_))
 
     // Get database schema from csv file
@@ -49,8 +48,13 @@ class DatabaseConstraint(val cpg: Cpg) {
 
                     val queryTable = queryCode.dropWhile(_ != "from").drop(1).takeWhile(_ != "where")
                     val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
-                    val closestTable = if (tableDistances.max < 0.2) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
-
+                    val closestTable = {
+                                        if (tableDistances.isEmpty) "NA" 
+                                        else {
+                                            if (tableDistances.max < 0.3) "NA" 
+                                            else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                                        }
+                                    }
                     val scopeWithoutAlias = queryScope.sliding(2).filterNot(_(0) == "as").flatten.filterNot(_ == "as").l
                     val removeFuncHash = Constants.sql_builtin_function.map(fun => scopeWithoutAlias.map(s=> s.replace(fun.toLowerCase+"(","").filter(_.isLetterOrDigit)).l)
                     val scopeWithoutFunc = scopeWithoutAlias.indices.map(i => removeFuncHash.map(_(i)).reduce((x,y) => if (x.length < y.length) x else y)).toList
@@ -67,7 +71,13 @@ class DatabaseConstraint(val cpg: Cpg) {
                 
                 val queryTable = parenthesisPattern.replaceAllIn(queryScope.mkString(" "), "").split(" ")
                 val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
-                val closestTable = if (tableDistances.max < 0.3) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                val closestTable = {
+                                        if (tableDistances.isEmpty) "NA" 
+                                        else {
+                                            if (tableDistances.max < 0.3) "NA" 
+                                            else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                                        }
+                                    }
                 val sortedColumns: List[String] = {
                     if (queryScope.contains("("))
                         queryScope.dropWhile(!_.contains("(")).drop(1).takeWhile(!_.contains(")")).map(_.filterNot(_ == ',')).toList
@@ -84,10 +94,16 @@ class DatabaseConstraint(val cpg: Cpg) {
 
                 val queryTable = queryCode.dropWhile(_ != "update").drop(1).takeWhile(_ != "set")
                 val tableDistances = tables.map(db_table => queryTable.map(metric.compare(db_table, _))).flatten.l
-                val closestTable = if (tableDistances.max < 0.3) "NA" else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                val closestTable =  {
+                                        if (tableDistances.isEmpty) "NA" 
+                                        else {
+                                            if (tableDistances.max < 0.3) "NA" 
+                                            else tables(tableDistances.indexOf(tableDistances.max)/queryTable.size)
+                                        }
+                                    }
                 
                 val valuesParsed =  queryValues.mkString(" ").replace("=", " = ").split(" ").filterNot(_.isEmpty)
-                val potentialCol = valuesParsed.sliding(2).filter(_(1)=="=").map(_(0)).l
+                val potentialCol = if (valuesParsed.contains("=")) valuesParsed.sliding(2).filter(_(1)=="=").map(_(0)).l else List()
                 val colInd = potentialCol.indices
                 val dbColumns = list_schema.filter(_(0) == closestTable).map(_(1))
                 val closestColMetric = colInd.map(i => dbColumns.map(col => potentialCol.map(metric.compare(col, _))).map(_(i)))
