@@ -31,6 +31,7 @@ class SanitizationFilter(val cpg: Cpg) {
       val isArgumentSanitized: List[Boolean] = arguments.map(isSanitized(_, sanitizedParameters)(sanitization_functions))
       // sanitization function returns a sanitized result
       if (Constants.san_functions_all.contains(method.name) || sanitization_functions.contains(method.name)) true
+      else if (method.name == "filter_var") Constants.filter_var_arguments.contains(function.arguments(2).head.code)
       // dynamic dispatch only supported if the function appears only once in the code
       else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size > 1) false
       // Safe return type
@@ -39,6 +40,19 @@ class SanitizationFilter(val cpg: Cpg) {
       else if (method.name == "<operator>.assignment") isArgumentSanitized(1)
       // known unsanitized function calls
       else if (Constants.input_func.contains(method.name)) false
+      // If the function implicitly casts the type (e.g. unsan + 0)
+      else if (Constants.implicit_cast.contains(method.name)) {
+         if (function.argument.size != 2) !isArgumentSanitized.contains(false)
+         else {
+            val argumentTypes = function.argument.map(arg => {
+               if (arg.isInstanceOf[Literal]) arg.asInstanceOf[Literal].typeFullName
+               else if (arg.isInstanceOf[Identifier]) arg.asInstanceOf[Identifier].typeFullName
+               else if (arg.isInstanceOf[nodes.Call]) arg.asInstanceOf[nodes.Call].typeFullName
+               else "NA"
+            }).l
+            Constants.safe_types.exists(argumentTypes.contains(_))
+         }
+      }
       // if the function isn't user defined (e.g. <operator>.plus) assume it's sanitized only if all arguments are sanitized
       else if (method.code == "<empty>") !isArgumentSanitized.contains(false)
       // else check if return is sanitized given whether passed arguments are sanitized

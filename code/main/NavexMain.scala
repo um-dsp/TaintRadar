@@ -4,50 +4,85 @@ class NavexMain(val cpg: Cpg) {
     Utils.augmentWithQueryTag()
     Utils.debugDatabaseParsing()
 
-    // source of the attack vector: assignment nodes whose code contain defined attacker_input
+    var logger: List[String] = List()
+
+    // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
     val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
+
+    val databaseCalls = getSinkCalls("SQL Injection", "NA", false)
+
+    val insertStatements = Utils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
+    // val vulnerableInsert = if (insertStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > insertStatements.size/2) insertStatements.filter(Utils.isReachableBy(_, databaseCalls)) else insertStatements
+    val vulnerableInsert = insertStatements.filter(Utils.isReachableBy(_, databaseCalls))
+    val m1: Map[nodes.Call, List[List[AstNode]]] = (vulnerableInsert zip vulnerableInsert.map(Utils.reachableBySource(_, sources, "SAN_XSS")) ).toMap
+
+
+    val selectStatements = Utils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
+    // val vulnerableSelect = if (selectStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > selectStatements.size/2) selectStatements.filter(Utils.isReachableBy(_, databaseCalls)) else selectStatements
+    val vulnerableSelect = selectStatements.filter(Utils.isReachableBy(_, databaseCalls))
+
+    def getSinkCalls(vulnerability: String, tagName: String, debug: Boolean = false) = {
+        // get all sink function names for the given vulnerability
+        val sinkFunctions: List[String] = Utils.getSinks(vulnerability)
+        // sink of the attack vector: unsanitized calls to sensitive functions
+        val totalSinks: List[nodes.Call] = cpg.call.filter(x => sinkFunctions.exists(_ == x.name)).l
+        if (debug) {
+            println("Sensitive sink functions size: " + totalSinks.size)
+            logger ++= List(totalSinks.size.toString)
+        }
+        val unsanSinks: List[nodes.Call] = totalSinks.filterNot(_.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l
+        if (debug) {
+            println("Sensitive unsanitized sink functions size: " + unsanSinks.size)
+            logger ++= List(unsanSinks.size.toString)
+        }
+
+        unsanSinks
+    }
         
     def getPaths(vulnerability: String, debug: Boolean = false) = {
         println(vulnerability)
-        val tagName = "SAN_" + vulnerability.replace(" ", "_")
-        // get all sink functions for the given vulnerability
-        val sinkFunctions = Utils.getSinks(vulnerability)
-        // sink of the atack vector: unsanitized arguments of sink call nodes
-        val totalSinks = cpg.call.filter(x => sinkFunctions.exists(_ == x.name)).l
-        if (debug) println("Sensitive sink functions size: " + totalSinks.size)
-        val sinks = totalSinks.filterNot(_.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l
-        if (debug) println("Sensitive unsanitized sink functions size: " + sinks.size)
+        val tagName: String = Utils.getTagName(vulnerability)
+        val sinks = getSinkCalls(vulnerability, tagName, debug)
         // intra and inter-procedural path from source to sink
-        val paths: List[List[AstNode]] = sinks.flatMap(Utils.reachableBySource(_, sources, tagName))
+        val paths: List[List[AstNode]] = sinks.map(sink => Utils.getReachingDefs(List(List(sink)), sources, tagName).reverse).filterNot(_.isEmpty)
         if (debug) println("Number of paths within CPG: " + paths.size)
-        
-        val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(n => cpg.call.filter(x => Utils.getSinks("SQL Injection").exists(_ == x.name)).contains(n)))
-        // val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(n => Utils.db.databaseCalls.code.exists(n.code.contains(_))))
+        logger ++= List(paths.size.toString)
+
+        val databaseCalls = getSinkCalls("SQL Injection", tagName, false)
+        // remove any paths that depend on a database call
+        val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(databaseCalls.contains(_)))
+        // val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(n => databaseCalls.code.exists(n.code.contains(_))))
         if (debug) println("Number of paths not containing database calls within CPG: " + withoutDbCalls.size)
 
         val cpgDatabasePaths: List[List[AstNode]] = {
             if (vulnerability=="SQL Injection" || sinks.isEmpty) List()
             else {
-                val insertQuerySinks = Utils.db.databaseCalls.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
-                val selectQuerySources = Utils.db.databaseCalls.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
+                // Get unsafe query statements that are of type INSERT or UPDATE 
+                // val insertStatements = Utils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
+                // val vulnerableInsert = if (insertStatements.filter(Utils.isReachableBy(_, databaseCalls)).size < insertStatements.size/2) insertStatements.filter(Utils.isReachableBy(_, databaseCalls)) else insertStatements
                 
-                if (debug) println("Number of insert queries as sink: " + insertQuerySinks.size)
-                if (debug) println("Number of select queries as source: " + selectQuerySources.size)
+                // val selectStatements = Utils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
+                // val vulnerableSelect = if (selectStatements.filter(Utils.isReachableBy(_, databaseCalls)).size < selectStatements.size/2) selectStatements.filter(Utils.isReachableBy(_, databaseCalls)) else selectStatements
+
+                if (debug) println("Number of insert statements: " + insertStatements.size)
+                if (debug) println("Number of insert statements as sink: " + vulnerableInsert.size)
+                if (debug) println("Number of select statements: " + selectStatements.size)
+                if (debug) println("Number of select statements as source: " + vulnerableSelect.size)
                 
-                if (insertQuerySinks.size == 0 || selectQuerySources.size == 0) List()
+                if (vulnerableInsert.size == 0 || vulnerableSelect.size == 0) List()
                 else {
-                    val m1: Map[nodes.Call, List[List[AstNode]]] = ( insertQuerySinks zip insertQuerySinks.map(Utils.reachableBySource(_, sources, tagName)) ).toMap
-                    val selectToSink = sinks.flatMap(Utils.reachableBySource(_, selectQuerySources, tagName))
-                    val m2: Map[nodes.Call, List[List[AstNode]]] = ( selectQuerySources zip selectQuerySources.map(q => selectToSink.filter(_.head == q)) ).toMap
+                    // val m1: Map[nodes.Call, List[List[AstNode]]] = ( vulnerableInsert zip vulnerableInsert.map(Utils.reachableBySource(_, sources, tagName)) ).toMap
+                    val selectToSink = sinks.flatMap(Utils.reachableBySource(_, vulnerableSelect, tagName))
+                    val m2: Map[nodes.Call, List[List[AstNode]]] = ( vulnerableSelect zip vulnerableSelect.map(q => selectToSink.filter(_.head == q)) ).toMap
                     
-                    val insertCols = insertQuerySinks.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
-                    val selectCols = selectQuerySources.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
+                    val insertCols = vulnerableInsert.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
+                    val selectCols = vulnerableSelect.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
 
                     val columnMatching: Map[Int, List[Int]] = ( insertCols.indices zip insertCols.map(_.flatMap(queryCol => selectCols.filter(_.contains(queryCol))).toSet).map(Utils.indicesOfElements(_, selectCols)) ).toMap
                     val interQueryPaths: List[List[AstNode]] = columnMatching.keySet.toList.map(insertIndex => {
-                            val insertQuery = insertQuerySinks(insertIndex)
+                            val insertQuery = vulnerableInsert(insertIndex)
                             val insertPaths = m1(insertQuery)
-                            val selectQuery = columnMatching(insertIndex).map(selectQuerySources(_))
+                            val selectQuery = columnMatching(insertIndex).map(vulnerableSelect(_))
                             val selectPaths = selectQuery.map(m2(_)).filterNot(_.isEmpty)
                             val queryPaths = for { x <- insertPaths; y <- selectPaths.flatten } yield (x++y)
                             queryPaths
@@ -57,17 +92,20 @@ class NavexMain(val cpg: Cpg) {
             }
         }
         if (debug) println("Number of paths across the CPG and database: " + cpgDatabasePaths.size)
+        logger ++= List(cpgDatabasePaths.size.toString)
 
         val totalPaths = (withoutDbCalls ++ cpgDatabasePaths)
         if (debug) println("Total paths: " + totalPaths.size)
+        logger ++= List(totalPaths.size.toString)
 
         // if methodParamIn depends on a sanitized node: the path is sanitized
         val unsanPaths = totalPaths.filterNot(path => path.dropRight(1).zip(path.drop(1)).map(
             (r,c) => (r.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE") && (c.isInstanceOf[MethodParameterIn])
-            ).contains(true)).filterNot(_.map(_.tag.name(tagName).value.head == "TRUE").contains(true))
+            ).contains(true)).filterNot(_.map(_.tag.name(tagName).value.headOption.getOrElse("NA") == "TRUE").contains(true))
         if (debug) println("Total unsanitized paths: " + unsanPaths.size)
         val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
         if (debug) println("Total deduplicated unsanitized paths: " + dedupPaths.size)
+        logger ++= List(dedupPaths.size.toString)
         if (debug) println()
         dedupPaths
     }
@@ -75,11 +113,21 @@ class NavexMain(val cpg: Cpg) {
     def getAllPaths(debug:Boolean = true) = {
         // map every vulnerability in the list to its list of possible paths
         val t0 = System.nanoTime()
+        logger ++= List(cpg.metaData.root.head.split("/").last)
+
         if (debug) println("Attacker-controlled sources size: " + sources.size + "\n")
+        logger ++= List(sources.size.toString)
+        logger ++= List(vulnerableInsert.size.toString)
+        logger ++= List(vulnerableSelect.size.toString)
+
         val result = (Utils.vulnerabilities zip Utils.vulnerabilities.map(getPaths(_, true))).toMap
         val t1 = System.nanoTime()
         if (debug) println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
+        logger ++= List(((t1 - t0)*1e-9).toString)
+
         if (debug) println("Sanitization exception rate: " + Utils.exceptionRate())
+        logger ++= List(Utils.exceptionRate().toString)
+
         if (debug) println(result.transform{(k,v) => v.size})
         result
     }
@@ -95,7 +143,7 @@ class NavexMain(val cpg: Cpg) {
         v.map(path => {
             val pathID = v.toSeq.indexOf(path) + 1
             path.map(x => {
-                        val tagName = "SAN_" + k.replace(" ", "_")
+                        val tagName = Utils.getTagName(k)
                         val sinkFunctions = Utils.getSinks(k)
                         "{\n\t\"pathid\": " + pathID + ",\n" + 
                         "\t\"vulnerability\": \"" + k + "\",\n" + 
@@ -107,6 +155,9 @@ class NavexMain(val cpg: Cpg) {
                         "\t\"sanitized\": \"" + x.tag.name(tagName).value.headOption.getOrElse("NA") + "\"\n},"
     }).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
         output #> ("navex_utils/paths/" + cpg.metaData.root.head.split("/").last.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json")
+    
+        logger.mkString(",") #>> "navex_utils/app-stats.csv"
+
     }
 
 }

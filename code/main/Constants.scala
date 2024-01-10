@@ -6,6 +6,9 @@ object Constants {
 
   val safe_types: List[String] = List("int", "integer", "bool", "boolean", "float", "double")
 
+  val implicit_cast: List[String] = List("<operator>.plus", "<operator>.minus", "<operator>.multiplication", "<operator>.division", "<operator>.xor", 
+                                          "<operator>.assignmentPlus", "<operator>.assignmentMinus" )
+
   val magic_constants: List[String] = List("__LINE__, __FILE__, __DIR__, __FUNCTION__, __CLASS__, __TRAIT__, __METHOD__, __NAMESPACE__")
 
   val input_func: List[String] = List("readline")
@@ -67,6 +70,16 @@ object Constants {
   val san_functions_xss = List("htmlentities",
     "htmlspecialchars",
     "sanitize")
+
+  val filter_var_arguments = List("FILTER_SANITIZE_EMAIL",
+    "FILTER_VALIDATE_EMAIL",
+    "FILTER_SANITIZE_FULL_SPECIAL_CHARS",
+    "FILTER_SANITIZE_MAGIC_QUOTES",
+    "FILTER_SANITIZE_NUMBER_FLOAT",
+    "FILTER_VALIDATE_FLOAT",
+    "FILTER_SANITIZE_NUMBER_INT",
+    "FILTER_VALIDATE_INT",
+    "FILTER_SANITIZE_SPECIAL_CHARS")
 
   val san_functions_code = List()
 
@@ -146,7 +159,13 @@ object Constants {
     "gethostname",
     "gethostbynamel",
     "gethostbyname",
-    "date", "ctype_digit")
+    "date", "ctype_digit",
+    "in_array",
+    "<operator>.equals",
+    "<operator>.lessThan",
+    "<operator>.lessEqualsThan",
+    "<operator>.greaterThan",
+    "<operator>.greaterEqualsThan")
   
   val sql_builtin_function: Set[String] = Set(
     "ABBREV",

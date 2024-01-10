@@ -47,7 +47,8 @@ sql_file_paths = []
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/geccBBlite-0.1/geccBBlite/schema.sql') # geccBBlite sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # faqforge sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WebChess_0.9.0/schema.sql') # WebChess sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mybloggie214/schema.sql') # MyBloggie sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mybloggie214/schema.sql') # MyBloggie sql file 
+sql_file_paths.append('/home/umd-user/Desktop/navex_project/DVWA/database/create_mssql_db.sql') # DVWA sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-2.0.23/phpBB2/install/schemas/mysql_schema.sql') # phpBB2 sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-3.0.11/phpBB3/install/schemas/mysql_41_schema.sql') # phpBB3 sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/SchoolMate_v1.5.4/schoolmate/SchoolMate.sql') # SchoolMate sql file 

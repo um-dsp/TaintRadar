@@ -265,7 +265,7 @@ SELECT; "SELECT word FROM words"; phpbb_words; "word"; ""; false
 SELECT; "SELECT ban_email FROM banlist"; phpbb_banlist; "banemail"; ""; false
 SELECT; "SELECT user_email FROM users WHERE user_email = str_replace(, , $email)"; phpbb_users; "useremail"; "$email"; false
 SELECT; "SELECT u.username, u.user_id, u.user_allow_viewonline, u.user_level, s.session_logged_in, s.session_ip FROM users u, sessions s WHERE u.user_id = s.session_user_id AND s.session_time >= time() - 300 $user_forum_sql ORDER BY u.username ASC, s.session_ip ASC"; phpbb_sessions; "uusername, uuserid, uuserallowviewonline, uuserlevel, ssessionloggedin, ssessionip"; "time(), 300, $user_forum_sql"; false
-UPDATE; "UPDATE config SET config_value = $total_online_users WHERE config_name = record_online_users"; phpbb_config; "config_value"; "$total_online_users"; false
+UPDATE; "UPDATE config SET config_value = $total_online_users WHERE config_name = record_online_users"; phpbb_config; "config_value"; "$total_online_users"; true
 UPDATE; "UPDATE config SET config_value = $board_config[record_online_date] WHERE config_name = record_online_date"; phpbb_config; "config_value"; "$board_config["record_online_date"]"; false
 UPDATE; "UPDATE users SET user_last_privmsg = $userdata[user_lastvisit] WHERE user_id = $userdata[user_id]"; phpbb_users; "user_last_privmsg"; "$userdata["user_lastvisit"]"; true
 SELECT; "SELECT topic_id FROM topics WHERE topic_last_post_id = 0"; phpbb_topics; "topicid"; ""; true

@@ -5,9 +5,6 @@ import Constants._
     val s = new SanitizationFilter(cpg)
     implicit val vuln= s.vulnerabilityType("XSS", Constants.san_functions_xss)
     println(cpg.method.fullName.l)
-    // val fileMain = "identifier_basic_san.php:<global>"
-    // val fileMain = "identifier_basic_unsan.php:<global>"
-    // val fileMain = "method.php:<global>"
     cpg.method.filter(_.fullName==fileMain).ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filter(s.isSanitized(_)).newTagNodePair("SAN", "TRUE").store
     cpg.method.filter(_.fullName==fileMain).ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl]).filterNot(s.isSanitized(_)).newTagNodePair("SAN", "FALSE").store
     
@@ -17,11 +14,15 @@ import Constants._
     dotAst |> "output_graph/output.dot"
 }
 
-path.drop(1).scanLeft(path.head) {case (r,c) => {
-    if ((r.tag.name("SAN").value.headOption.getOrElse("NA")=="TRUE") && (c.getClass.getTypeName == "io.shiftleft.codepropertygraph.generated.nodes.MethodParameterIn")) print("Found")
-    c }}
 
-// sink.reachableByFlows(source).map(node => {
-//     List(List(node.elements.head.file.name.l.head + ":" + node.elements.head.lineNumber.getOrElse(""), node.elements.head.code),
-//     List(node.elements.last.file.name.l.head + ":" + node.elements.last.lineNumber.getOrElse(""), node.elements.last.code))
-//  }).toJsonPretty |> "../test-apps/output" 
+def testSuite() = {
+    val tn: Float = cpg.call("echo").filter(_.code.contains("tainted")).filterNot(_.lineNumber == Some(1)).filter(_.file.name.head.contains("unsafe/")).filter(_.tag.name("SAN_XSS").value.head=="FALSE").size.toFloat
+    val tp: Float = cpg.call("echo").filter(_.code.contains("tainted")).filterNot(_.lineNumber == Some(1)).filterNot(_.file.name.head.contains("unsafe/")).filter(_.tag.name("SAN_XSS").value.head=="TRUE").size.toFloat
+
+    val fp: Float = cpg.call("echo").filter(_.code.contains("tainted")).filterNot(_.lineNumber == Some(1)).filter(_.file.name.head.contains("unsafe/")).filter(_.tag.name("SAN_XSS").value.head=="TRUE").size.toFloat
+    val fn: Float = cpg.call("echo").filter(_.code.contains("tainted")).filterNot(_.lineNumber == Some(1)).filterNot(_.file.name.head.contains("unsafe/")).filter(_.tag.name("SAN_XSS").value.head=="FALSE").size.toFloat
+    
+    println("Precision: " + tp/(tp+fp)*100 + "%")
+    println("Recall/Sensitivity: " + tp/(tp+fn)*100 + "%")
+    println("Specificity: " + tn/(tn+fp)*100 + "%")
+}

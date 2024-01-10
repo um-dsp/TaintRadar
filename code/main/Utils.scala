@@ -76,7 +76,7 @@ object Utils {
                                 if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
                                 else call.callee
                             }
-                            method.filterNot(_.code == "<empty>").l ++ call.ddgIn.dedup.l
+                            method.filterNot(_.code == "<empty>").l ++ call.argument.dedup.l
                         }
                         case identifier: Identifier => {
                             if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
@@ -88,8 +88,8 @@ object Utils {
                             cpg.call(parameter.method.name).filter(_.methodFullName == parameter.method.fullName).map(_.argument.l).map(_.lift(parameter.index)).filterNot(_ == None).map(_.get).l
                         }
                         case constant: FieldIdentifier => {
-                            if (magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
-                            else constantTable.get(constant.canonicalName).dedup.l
+                            if (Constants.magic_constants.contains(constant) || db.constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
+                            else db.constantTable.get(constant.canonicalName).dedup.l
                         }
                         case block: Block => block.ddgIn.dedup.l
                         case typeRef: TypeRef => List()
@@ -108,42 +108,23 @@ object Utils {
             }
         }
     }
-    // var i = 0
-        // var visistedNodes: List[AstNode] = List()
-        // def backwardTraversal(sink: AstNode, sources: List[AstNode]): List[AstNode] = {
-        //     if (visistedNodes.contains(sink)) List()
-        //     else {
-        //         visistedNodes = visistedNodes :+ sink
-        //         i = i+1
-        //         val stepDdg: List[AstNode] = dataFlowStep(sink)
-        //         if (stepDdg.isEmpty) List()
-        //         else if (stepDdg.exists(sources.contains(_))) List(sink, stepDdg(stepDdg.map(sources.contains(_)).indexOf(true)))
-        //         else {
-        //             if (i>100) List()
-        //             else {
-        //                 for (node <- stepDdg) {
-        //                     if (!backwardTraversal(node, sources).isEmpty) println(backwardTraversal(node, sources))
-        //                 }
-        //                 List()
-        //                 // val nextStep = stepDdg.map(node => backwardTraversal(node, sources)).filterNot(_.isEmpty)
-        //                 // if (nextStep.isEmpty) List()
-        //                 // else sink +: nextStep.head
-        //             }
-        //         }
-        //     }
-        // }
-    // var dataFlowNodes: List[AstNode] = sinks
-    // var i = 0
-    // var dbFound: List[AstNode] = List()
-    // while (i < 50) {
-    //     dbFound = dbFound ++ dataFlowNodes.filter(databaseCalls.contains(_)).l
-    //     dataFlowNodes = dataFlowNodes.filterNot(databaseCalls.contains(_)).flatMap(dataFlowStep(_)).dedup.l
-    //     i = i + 1
-    // }
-    // dbFound = dbFound.dedup.l
-    // dbFound.size
 
-    def getReachingDefs(paths: List[List[AstNode]], source: List[AstNode] = List(), tagName: String): List[AstNode] = {
+    // Checks whether the node is reachable by any element of sinks
+    def isReachableBy(node: AstNode, sinks: List[AstNode]): Boolean = {
+        var i = 0
+        var dataFlowNodes: List[AstNode] = sinks
+        var found: Boolean = false
+        while (i < 50 && !found) {
+            if (dataFlowNodes.contains(node)) found = true
+            dataFlowNodes = dataFlowNodes.flatMap(dataFlowStep(_)).dedup.l
+            i = i + 1
+        }
+        found
+    }
+    
+
+    def getReachingDefs(paths: List[List[AstNode]], source: List[AstNode], tagName: String): List[AstNode] = {
+    try {
         var output = List[List[AstNode]]()
         val visitedNodes = paths.flatten.dedup.l
         val result = paths.map( path => {
@@ -157,11 +138,18 @@ object Utils {
         // if the calculated path is the same as the previous one, return the list of paths
         else if (paths.flatten.size == output.flatten.size) List()
         // otherwise add the next reaching definitions to the paths
-        else if (paths.flatten.dedup.size > 200) {
+        else if (paths.flatten.dedup.size > 500) {
             // println("Wooh! that's a lot of paths")
             List()
         }
         else getReachingDefs(output, source, tagName) 
+    }
+    catch {
+        case _ => {
+            println(source.toString + paths.map(_.last).dedup.l.mkString(", "))
+            List()
+        }
+    }
     }
 
     def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[List[AstNode]] = {
@@ -180,6 +168,10 @@ object Utils {
             case param: MethodParameterIn => param.method.name
             case _ => "" 
         }
+    }
+
+    def getTagName(vulnerability: String) = {
+        "SAN_" + vulnerability.replace(" ", "_")
     }
 
     def augmentWithSanTag() = {

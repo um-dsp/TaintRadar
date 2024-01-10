@@ -1,0 +1,6147 @@
+[{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12691,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 51,
+	"code": "$_POST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12690,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 51,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12714,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 62,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12733,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12730,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12760,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12757,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 12764,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20262,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 5,
+	"code": "$_POST[\"mtxMessage\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20261,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 5,
+	"code": "trim($_POST[\"mtxMessage\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20260,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 5,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20274,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20273,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 9,
+	"code": "stripslashes($message)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20272,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20291,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 10,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20288,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20305,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20337,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20334,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 20341,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12059,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 9,
+	"code": "$_POST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12058,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 9,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12089,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12088,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12107,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12104,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12134,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12131,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 12138,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16468,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16467,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16481,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 10,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16479,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 10,
+	"code": "\"SELECT first_name, last_name FROM users WHERE user_id = \\'\" . $id . \"\\';\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16478,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 10,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16490,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 11,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16484,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 11,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 16491,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 11,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12054,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 8,
+	"code": "$_POST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12053,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 8,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12088,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12107,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12104,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12134,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12131,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 12138,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13051,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 5,
+	"code": "$_GET[\"callback\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13050,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 5,
+	"code": "$callback",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13070,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 12,
+	"code": "$callback",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13069,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 12,
+	"code": "$callback . \"(\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13068,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 12,
+	"code": "$callback . \"(\" . json_encode($outp)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13067,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 12,
+	"code": "$callback . \"(\" . json_encode($outp) . \")\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 13066,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csp/source/jsonp.php",
+	"linenumber": 12,
+	"code": "echo $callback . \"(\" . json_encode($outp) . \")\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11636,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 5,
+	"code": "$_GET[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11635,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 5,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11655,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 6,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11652,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 6,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11674,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11710,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11707,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 11714,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 7446,
+	"methodname": "dvwaSecurityLevelGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 144,
+	"code": "$_COOKIE[\"security\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 7445,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 144,
+	"code": "return $_COOKIE[\"security\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 7435,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 139,
+	"code": "function dvwaSecurityLevelGet()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8545,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 478,
+	"code": "dvwaSecurityLevelGet()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8544,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 478,
+	"code": "$security",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8556,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "$security",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8553,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "\"vulnerabilities/view_source.php?id=\" . $pId . \"&security=\" . $security . \"\\' )\\\">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8547,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "\"<input type=\\\"button\\\" value=\\\"View Source\\\" class=\\\"popup_button\\\" id=\\'source_button\\' data-source-url=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_source.php?id=\" . $pId . \"&security=\" . $security . \"\\' )\\\">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8546,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "return \"<input type=\\\"button\\\" value=\\\"View Source\\\" class=\\\"popup_button\\\" id=\\'source_button\\' data-source-url=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_source.php?id=\" . $pId . \"&security=\" . $security . \"\\' )\\\">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8541,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 477,
+	"code": "function dvwaButtonSourceHtmlGet($pId)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8356,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 313,
+	"code": "dvwaButtonSourceHtmlGet($pPage[\"source_button\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8355,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 313,
+	"code": "dvwaButtonSourceHtmlGet($pPage[\"source_button\"]) . \" \" . $systemInfoHtml",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8354,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 313,
+	"code": "$systemInfoHtml",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8421,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 370,
+	"code": "$systemInfoHtml",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8412,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 346,
+	"code": "\"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8384,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "\"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8383,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "\"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\" . DVWA_WEB_PAGE_TO_ROOT",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8382,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "\"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/add_event_listeners.js\\'></script>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t</div>\\n\\n\\t</body>\\n\\n</html>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 8381,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "echo \"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/add_event_listeners.js\\'></script>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t</div>\\n\\n\\t</body>\\n\\n</html>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 7441,
+	"methodname": "dvwaSecurityLevelGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 143,
+	"code": "$_COOKIE[\"security\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 7446,
+	"methodname": "dvwaSecurityLevelGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 144,
+	"code": "$_COOKIE[\"security\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 7445,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 144,
+	"code": "return $_COOKIE[\"security\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 7435,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 139,
+	"code": "function dvwaSecurityLevelGet()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8545,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 478,
+	"code": "dvwaSecurityLevelGet()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8544,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 478,
+	"code": "$security",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8556,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "$security",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8553,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "\"vulnerabilities/view_source.php?id=\" . $pId . \"&security=\" . $security . \"\\' )\\\">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8547,
+	"methodname": "dvwaButtonSourceHtmlGet",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "\"<input type=\\\"button\\\" value=\\\"View Source\\\" class=\\\"popup_button\\\" id=\\'source_button\\' data-source-url=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_source.php?id=\" . $pId . \"&security=\" . $security . \"\\' )\\\">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8546,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 479,
+	"code": "return \"<input type=\\\"button\\\" value=\\\"View Source\\\" class=\\\"popup_button\\\" id=\\'source_button\\' data-source-url=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_source.php?id=\" . $pId . \"&security=\" . $security . \"\\' )\\\">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8541,
+	"methodname": "",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 477,
+	"code": "function dvwaButtonSourceHtmlGet($pId)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8356,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 313,
+	"code": "dvwaButtonSourceHtmlGet($pPage[\"source_button\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8355,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 313,
+	"code": "dvwaButtonSourceHtmlGet($pPage[\"source_button\"]) . \" \" . $systemInfoHtml",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8354,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 313,
+	"code": "$systemInfoHtml",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8421,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 370,
+	"code": "$systemInfoHtml",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8412,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 346,
+	"code": "\"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8384,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "\"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8383,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "\"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\" . DVWA_WEB_PAGE_TO_ROOT",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8382,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "\"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/add_event_listeners.js\\'></script>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t</div>\\n\\n\\t</body>\\n\\n</html>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 8381,
+	"methodname": "dvwaHtmlEcho",
+	"filename": "DVWA/dvwa/includes/dvwaPage.inc.php",
+	"linenumber": 324,
+	"code": "echo \"<!DOCTYPE html>\\n\\n<html lang=\\\"en-GB\\\">\\n\\n\\t<head>\\n\\t\\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\\n\\n\\t\\t<title>\" . $pPage[\"title\"] . \"</title>\\n\\n\\t\\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\\n\\n\\t\\t<link rel=\\\"icon\\\" type=\\\"\\\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\\n\\n\\t\\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\\n\\n\\t</head>\\n\\n\\t<body class=\\\"home\\\">\\n\\t\\t<div id=\\\"container\\\">\\n\\n\\t\\t\\t<div id=\\\"header\\\">\\n\\n\\t\\t\\t\\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_menu\\\">\\n\\n\\t\\t\\t\\t<div id=\\\"main_menu_padded\\\">\\n\\t\\t\\t\\t\" . $menuHtml . \"\\n\\t\\t\\t\\t</div>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"main_body\\\">\\n\\n\\t\\t\\t\\t\" . $pPage[\"body\"] . \"\\n\\t\\t\\t\\t<br /><br />\\n\\t\\t\\t\\t\" . $messagesHtml . \"\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div class=\\\"clear\\\">\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"system_info\\\">\\n\\t\\t\\t\\t\" . $systemInfoHtml . \"\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t<div id=\\\"footer\\\">\\n\\n\\t\\t\\t\\t<p>Damn Vulnerable Web Application (DVWA)</p>\\n\\t\\t\\t\\t<script src=\\'\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/add_event_listeners.js\\'></script>\\n\\n\\t\\t\\t</div>\\n\\n\\t\\t</div>\\n\\n\\t</body>\\n\\n</html>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13856,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 8,
+	"code": "$_GET[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13855,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 8,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13862,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 11,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13861,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13880,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13877,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13907,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13904,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 13911,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20019,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 6,
+	"code": "$_POST[\"txtName\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20018,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 6,
+	"code": "trim($_POST[\"txtName\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20017,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 6,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20061,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20058,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 14,
+	"code": "preg_replace(\"/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i\",\"\",$name)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20057,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20078,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 15,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20075,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20099,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20096,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 20103,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20384,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 6,
+	"code": "$_POST[\"txtName\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20383,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 6,
+	"code": "trim($_POST[\"txtName\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20382,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 6,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20426,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20423,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 14,
+	"code": "str_replace(\"<script>\",\"\",$name)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20422,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20443,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 15,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20440,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20464,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20461,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 20468,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13851,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 7,
+	"code": "$_GET[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13850,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 7,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13861,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13880,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13877,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13907,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13904,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 13911,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11529,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 5,
+	"code": "$_GET[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11528,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 5,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11545,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 12,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11543,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 12,
+	"code": "\"SELECT * FROM `users` WHERE user = \\'\" . $user . \"\\' AND password = \\'\" . $pass . \"\\';\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11542,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 12,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 13,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11550,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 13,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 11557,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 13,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12696,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 52,
+	"code": "$_POST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12695,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 52,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12715,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 62,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12714,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 62,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12733,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12730,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12760,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12757,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 12764,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13727,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 5,
+	"code": "$_GET[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13726,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 5,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13737,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 9,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13756,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13753,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13783,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13780,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 13787,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16617,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16616,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16626,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16623,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16643,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 12,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16640,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 12,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 16647,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 12,
+	"code": "exit(\"<pre>\" . mysqli_error($GLOBALS[\"___mysqli_ston\"]) . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20268,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 6,
+	"code": "$_POST[\"txtName\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20267,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 6,
+	"code": "trim($_POST[\"txtName\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20266,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 6,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20316,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 13,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20313,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20337,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20334,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 20341,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20013,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 5,
+	"code": "$_POST[\"mtxMessage\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20012,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 5,
+	"code": "trim($_POST[\"mtxMessage\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20011,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 5,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20026,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20025,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 9,
+	"code": "addslashes($message)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20024,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 9,
+	"code": "strip_tags(addslashes($message))",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20023,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20043,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 10,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20040,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20067,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20099,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20096,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 20103,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11666,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 9,
+	"code": "$_GET[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11665,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 9,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11685,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 10,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11682,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11710,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11707,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 11714,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12500,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 50,
+	"code": "$_POST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12499,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 50,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12510,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 54,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12529,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12526,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12553,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 12560,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20378,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 5,
+	"code": "$_POST[\"mtxMessage\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20377,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 5,
+	"code": "trim($_POST[\"mtxMessage\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20376,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 5,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20391,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20390,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 9,
+	"code": "addslashes($message)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20389,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 9,
+	"code": "strip_tags(addslashes($message))",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20388,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20408,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 10,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20405,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20432,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20464,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20461,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 20468,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13732,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 6,
+	"code": "$_GET[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13731,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 6,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13738,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 9,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13737,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 9,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13756,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13753,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13783,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13780,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 13787,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16617,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16616,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16626,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16623,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16749,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 55,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16746,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 55,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 16753,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 55,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11094,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 13,
+	"code": "$_GET[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11093,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 13,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11100,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 14,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11099,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 14,
+	"code": "stripslashes($pass)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11098,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 14,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11117,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 15,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11114,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11142,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11139,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 11146,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12505,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 51,
+	"code": "$_POST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12504,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 51,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12511,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 54,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12510,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 54,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12529,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12526,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12553,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 12560,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11060,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 8,
+	"code": "$_GET[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11059,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 8,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11066,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 9,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11065,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 9,
+	"code": "stripslashes($user)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11064,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 9,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11083,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 10,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11080,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11106,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11142,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11139,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 11146,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "exit(\"<pre>\" . is_object($GLOBALS[\"___mysqli_ston\"]) ? mysqli_error($GLOBALS[\"___mysqli_ston\"]) : $___mysqli_res = mysqli_connect_error() ? $___mysqli_res : false . \"</pre>\")",
+	"sanitized": "FALSE"
+},{
+	"pathid": 1,
+	"vulnerability": "Session Fixation",
+	"nodeid": 16880,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/cookie-input.php",
+	"linenumber": 12,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "Session Fixation",
+	"nodeid": 16878,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/cookie-input.php",
+	"linenumber": 12,
+	"code": "setcookie(\"id\",$_POST[\"id\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Session Fixation",
+	"nodeid": 16874,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/cookie-input.php",
+	"linenumber": 11,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Session Fixation",
+	"nodeid": 16880,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/cookie-input.php",
+	"linenumber": 12,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Session Fixation",
+	"nodeid": 16878,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/cookie-input.php",
+	"linenumber": 12,
+	"code": "setcookie(\"id\",$_POST[\"id\"])",
+	"sanitized": "FALSE"
+},{
+	"pathid": 1,
+	"vulnerability": "Command Execution",
+	"nodeid": 14489,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "Command Execution",
+	"nodeid": 14488,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 5,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "Command Execution",
+	"nodeid": 14503,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 10,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "Command Execution",
+	"nodeid": 14501,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 10,
+	"code": "\"ping  \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "Command Execution",
+	"nodeid": 14500,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 10,
+	"code": "shell_exec(\"ping  \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14382,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 8,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14381,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 8,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14388,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 9,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14387,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 9,
+	"code": "stripslashes($target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14386,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 9,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14393,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 12,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14391,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 12,
+	"code": "explode(\".\",$target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14390,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 12,
+	"code": "$octet",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14440,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 17,
+	"code": "$octet[3]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14422,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 17,
+	"code": "$octet[0] . \".\" . $octet[1] . \".\" . $octet[2] . \".\" . $octet[3]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14421,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 17,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14461,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 26,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14459,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 26,
+	"code": "\"ping  -c 4 \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "Command Execution",
+	"nodeid": 14458,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 26,
+	"code": "shell_exec(\"ping  -c 4 \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14533,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14532,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 5,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 14,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14552,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 14,
+	"code": "str_replace(array_keys($substitutions),$substitutions,$target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14551,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 14,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14575,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 23,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14573,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 23,
+	"code": "\"ping  -c 4 \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "Command Execution",
+	"nodeid": 14572,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 23,
+	"code": "shell_exec(\"ping  -c 4 \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14274,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14273,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 5,
+	"code": "trim($_REQUEST[\"ip\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14272,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 5,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14332,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 21,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14328,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 21,
+	"code": "str_replace(array_keys($substitutions),$substitutions,$target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14327,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 21,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14351,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 30,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14349,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 30,
+	"code": "\"ping  -c 4 \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "Command Execution",
+	"nodeid": 14348,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 30,
+	"code": "shell_exec(\"ping  -c 4 \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14274,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14273,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 5,
+	"code": "trim($_REQUEST[\"ip\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14272,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 5,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14332,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 21,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14328,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 21,
+	"code": "str_replace(array_keys($substitutions),$substitutions,$target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14327,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 21,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14344,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 26,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14342,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 26,
+	"code": "\"ping  \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "Command Execution",
+	"nodeid": 14341,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/high.php",
+	"linenumber": 26,
+	"code": "shell_exec(\"ping  \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14382,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 8,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14381,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 8,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14388,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 9,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14387,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 9,
+	"code": "stripslashes($target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14386,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 9,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14393,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 12,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14391,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 12,
+	"code": "explode(\".\",$target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14390,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 12,
+	"code": "$octet",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14440,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 17,
+	"code": "$octet[3]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14422,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 17,
+	"code": "$octet[0] . \".\" . $octet[1] . \".\" . $octet[2] . \".\" . $octet[3]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14421,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 17,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14454,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 22,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14452,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 22,
+	"code": "\"ping  \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "Command Execution",
+	"nodeid": 14451,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/impossible.php",
+	"linenumber": 22,
+	"code": "shell_exec(\"ping  \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14533,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14532,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 5,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 14,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14552,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 14,
+	"code": "str_replace(array_keys($substitutions),$substitutions,$target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14551,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 14,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14568,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 19,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14566,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 19,
+	"code": "\"ping  \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "Command Execution",
+	"nodeid": 14565,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/medium.php",
+	"linenumber": 19,
+	"code": "shell_exec(\"ping  \" . $target)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "Command Execution",
+	"nodeid": 14489,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"ip\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "Command Execution",
+	"nodeid": 14488,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 5,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "Command Execution",
+	"nodeid": 14510,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 14,
+	"code": "$target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "Command Execution",
+	"nodeid": 14508,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 14,
+	"code": "\"ping  -c 4 \" . $target",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "Command Execution",
+	"nodeid": 14507,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/exec/source/low.php",
+	"linenumber": 14,
+	"code": "shell_exec(\"ping  -c 4 \" . $target)",
+	"sanitized": "FALSE"
+},{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11636,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 5,
+	"code": "$_GET[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11635,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 5,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11655,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 6,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11652,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 6,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11674,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11710,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11709,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9738,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 24,
+	"code": "$_POST[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9737,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 24,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9744,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 25,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9743,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 25,
+	"code": "stripslashes($pass)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9742,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 25,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9761,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 26,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9758,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9786,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 33,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9785,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 33,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11060,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 8,
+	"code": "$_GET[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11059,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 8,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11066,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 9,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11065,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 9,
+	"code": "stripslashes($user)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11064,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 9,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11083,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 10,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11080,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11106,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11142,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11141,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13456,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 25,
+	"code": "$_REQUEST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13455,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13478,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 36,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13487,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 38,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13484,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 38,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13506,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 43,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13505,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 43,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9704,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 20,
+	"code": "$_POST[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9703,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 20,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9710,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 21,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9709,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 21,
+	"code": "stripslashes($user)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9708,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 21,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9727,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 22,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9724,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 22,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9750,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9786,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 33,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9817,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 40,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9816,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 40,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12054,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 8,
+	"code": "$_POST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12053,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 8,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12088,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12107,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12104,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12134,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12133,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20019,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 6,
+	"code": "$_POST[\"txtName\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20018,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 6,
+	"code": "trim($_POST[\"txtName\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20017,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 6,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20061,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20058,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 14,
+	"code": "preg_replace(\"/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i\",\"\",$name)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20057,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20078,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 15,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20075,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20099,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20098,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/high.php",
+	"linenumber": 19,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16617,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16616,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16626,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16623,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16643,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 12,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16642,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 12,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17591,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/medium.php",
+	"linenumber": 5,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17590,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/medium.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17619,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/medium.php",
+	"linenumber": 10,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17616,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/medium.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17637,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/medium.php",
+	"linenumber": 14,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17636,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/medium.php",
+	"linenumber": 14,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17208,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 3,
+	"code": "$_COOKIE[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17214,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 5,
+	"code": "$_COOKIE[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17213,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17230,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 11,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17228,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 11,
+	"code": "\"SELECT first_name, last_name FROM users WHERE user_id = \\'\" . $id . \"\\' LIMIT 1;\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17227,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 11,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17238,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 12,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17234,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 12,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9738,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 24,
+	"code": "$_POST[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9737,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 24,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9744,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 25,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9743,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 25,
+	"code": "stripslashes($pass)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9742,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 25,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9761,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 26,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9758,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9786,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 33,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9817,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 40,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9816,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 40,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11094,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 13,
+	"code": "$_GET[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11093,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 13,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11100,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 14,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11099,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 14,
+	"code": "stripslashes($pass)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11098,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 14,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11117,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 15,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11114,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11142,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11141,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/high.php",
+	"linenumber": 20,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13727,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 5,
+	"code": "$_GET[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13726,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 5,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13737,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 9,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13756,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13753,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13783,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13782,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11529,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 5,
+	"code": "$_GET[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11528,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 5,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11545,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 12,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11543,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 12,
+	"code": "\"SELECT * FROM `users` WHERE user = \\'\" . $user . \"\\' AND password = \\'\" . $pass . \"\\';\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11542,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 12,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 13,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11552,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/low.php",
+	"linenumber": 13,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14005,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 16,
+	"code": "$_POST[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14004,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 16,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14011,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 17,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14010,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 17,
+	"code": "stripslashes($pass)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14009,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 17,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14018,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 18,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14015,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 18,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14036,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 22,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14035,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 22,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16468,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 5,
+	"code": "$_REQUEST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16467,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16481,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 10,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16479,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 10,
+	"code": "\"SELECT first_name, last_name FROM users WHERE user_id = \\'\" . $id . \"\\';\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16478,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 10,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16490,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 11,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16486,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/low.php",
+	"linenumber": 11,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13732,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 6,
+	"code": "$_GET[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13731,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 6,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13738,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 9,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13737,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 9,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13756,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13753,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 11,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13783,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13782,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/low.php",
+	"linenumber": 16,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12691,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 51,
+	"code": "$_POST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12690,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 51,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12714,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 62,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12733,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12730,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12760,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12759,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12059,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 9,
+	"code": "$_POST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12058,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 9,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12089,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12088,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 25,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12107,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12104,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12134,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12133,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/high.php",
+	"linenumber": 31,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12696,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 52,
+	"code": "$_POST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12695,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 52,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12715,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 62,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12714,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 62,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12733,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12730,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 64,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12760,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12759,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/medium.php",
+	"linenumber": 69,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12505,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 51,
+	"code": "$_POST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12504,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 51,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12511,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 54,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12510,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 54,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12529,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12526,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12555,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16617,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$_POST[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16616,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16626,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16623,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 7,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16749,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 55,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "SQL Injection",
+	"nodeid": 16748,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli/source/medium.php",
+	"linenumber": 55,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13856,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 8,
+	"code": "$_GET[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13855,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 8,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13862,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 11,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13861,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13880,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13877,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13907,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13906,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20384,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 6,
+	"code": "$_POST[\"txtName\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20383,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 6,
+	"code": "trim($_POST[\"txtName\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20382,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 6,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20426,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20423,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 14,
+	"code": "str_replace(\"<script>\",\"\",$name)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20422,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 14,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20443,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 15,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20440,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20464,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20463,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/medium.php",
+	"linenumber": 19,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11666,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 9,
+	"code": "$_GET[\"password\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11665,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 9,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11685,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 10,
+	"code": "$pass",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11682,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11710,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "SQL Injection",
+	"nodeid": 11709,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/brute/source/medium.php",
+	"linenumber": 15,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12500,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 50,
+	"code": "$_POST[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12499,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 50,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12510,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 54,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12529,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12526,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 56,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12556,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "SQL Injection",
+	"nodeid": 12555,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/captcha/source/low.php",
+	"linenumber": 61,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20268,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 6,
+	"code": "$_POST[\"txtName\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20267,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 6,
+	"code": "trim($_POST[\"txtName\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20266,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 6,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20316,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 13,
+	"code": "$name",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20313,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20337,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20336,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17214,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 5,
+	"code": "$_COOKIE[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17213,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17230,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 11,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17228,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 11,
+	"code": "\"SELECT first_name, last_name FROM users WHERE user_id = \\'\" . $id . \"\\' LIMIT 1;\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17227,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 11,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17238,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 12,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17234,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/high.php",
+	"linenumber": 12,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13461,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 26,
+	"code": "$_REQUEST[\"password_conf\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13460,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 26,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13479,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 36,
+	"code": "$pass_conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13478,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 36,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13487,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 38,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13484,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 38,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13506,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 43,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13505,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/high.php",
+	"linenumber": 43,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9704,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 20,
+	"code": "$_POST[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9703,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 20,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9710,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 21,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9709,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 21,
+	"code": "stripslashes($user)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9708,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 21,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9727,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 22,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9724,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 22,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9750,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 26,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9786,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 33,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "SQL Injection",
+	"nodeid": 9785,
+	"methodname": "<global>",
+	"filename": "DVWA/login.php",
+	"linenumber": 33,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13851,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 7,
+	"code": "$_GET[\"password_new\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13850,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 7,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13861,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 11,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13880,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$pass_new",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13877,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13907,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13906,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/source/medium.php",
+	"linenumber": 18,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$insert)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13989,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 12,
+	"code": "$_POST[\"username\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13988,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 12,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13995,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 13,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13994,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 13,
+	"code": "stripslashes($user)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13993,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 13,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14002,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 14,
+	"code": "$user",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 13999,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 14,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14015,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 18,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14036,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 22,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "SQL Injection",
+	"nodeid": 14035,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/csrf/test_credentials.php",
+	"linenumber": 22,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20262,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 5,
+	"code": "$_POST[\"mtxMessage\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20261,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 5,
+	"code": "trim($_POST[\"mtxMessage\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20260,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 5,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20274,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20273,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 9,
+	"code": "stripslashes($message)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20272,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 9,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20291,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 10,
+	"code": "$message",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20288,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 10,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20305,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 13,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20337,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "$GLOBALS[\"___mysqli_ston\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "SQL Injection",
+	"nodeid": 20336,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/xss_s/source/low.php",
+	"linenumber": 17,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17473,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 5,
+	"code": "$_GET[\"id\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17472,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 5,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17489,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 11,
+	"code": "$id",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17487,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 11,
+	"code": "\"SELECT first_name, last_name FROM users WHERE user_id = \\'\" . $id . \"\\';\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17486,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 11,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17497,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 12,
+	"code": "$query",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "SQL Injection",
+	"nodeid": 17493,
+	"methodname": "<global>",
+	"filename": "DVWA/vulnerabilities/sqli_blind/source/low.php",
+	"linenumber": 12,
+	"code": "mysqli_query($GLOBALS[\"___mysqli_ston\"],$query)",
+	"sanitized": "FALSE"
+}]
