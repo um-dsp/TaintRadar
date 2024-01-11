@@ -36,8 +36,8 @@ SELECT; "SELECT post_id FROM postmeta WHERE meta_id = %d"; postmeta; "postid"; "
 SELECT; "SELECT DISTINCT post_mime_type FROM posts WHERE post_type = %s"; posts; "distinct, postmimetype"; ""; false
 SELECT; "SELECT option_name FROM options"; NA; "optionname"; ""; false
 INSERT; "INSERT INTO options (option_name, option_value, autoload) VALUES $insert"; NA; "option_name, option_value, autoload"; "$insert"; false
-SELECT; "SELECT id FROM site WHERE id = %d"; NA; "id"; ""; false
-INSERT; "INSERT INTO sitemeta ( site_id, meta_key, meta_value ) VALUES $insert"; usermeta; "site_id, meta_key, meta_value"; "$insert"; false
+SELECT; "SELECT id FROM site WHERE id = %d"; items; "id"; ""; true
+INSERT; "INSERT INTO sitemeta ( site_id, meta_key, meta_value ) VALUES $insert"; postmeta; "site_id, meta_key, meta_value"; "$insert"; false
 SELECT; "SELECT * $query $orderby"; NA; ""; ""; false
 SELECT; "SELECT COUNT(c.comment_ID) $query"; NA; "ccommentid, query"; ""; false
 OTHER; "<select $multi ? : id=mm name=mm $tab_index_attribute >"; NA; ""; ""; true
@@ -90,13 +90,13 @@ SELECT; "SELECT term_id, term_group FROM terms WHERE slug = %s"; terms; "termid,
 SELECT; "SELECT link_id, link_category FROM links"; links; "linkid, linkcategory"; ""; true
 SELECT; "SELECT link_id, category_id FROM link2cat GROUP BY link_id, category_id"; links; "linkid, categoryid"; ""; true
 SELECT; "SELECT term_taxonomy_id, taxonomy FROM term_taxonomy"; term_taxonomy; "termtaxonomyid, taxonomy"; ""; false
-SELECT; "SELECT COUNT(*) FROM term_relationships , posts WHERE posts .ID = term_relationships .object_id AND post_status = publish AND post_type = post AND term_taxonomy_id = %d"; term_relationships; ""; "posts, term_relationships"; false
+SELECT; "SELECT COUNT(*) FROM term_relationships , posts WHERE posts .ID = term_relationships .object_id AND post_status = publish AND post_type = post AND term_taxonomy_id = %d"; posts; ""; "posts, term_relationships"; false
 SELECT; "SELECT COUNT(*) FROM term_relationships WHERE term_taxonomy_id = %d"; term_relationships; ""; ""; false
 UPDATE; "UPDATE postmeta SET meta_key = _wp_old_slug WHERE meta_key = old_slug"; postmeta; "meta_key"; ""; false
 UPDATE; "UPDATE users SET user_activation_key ="; users; "user_activation_key"; ""; true
 UPDATE; "UPDATE posts SET post_date = post_modified WHERE post_date = 0000-00-00 00:00:00"; posts; "post_date"; ""; true
 SELECT; "SELECT option_name, option_value FROM options ORDER BY option_id LIMIT $start , 20"; links; "optionname, optionvalue"; ""; true
-SELECT; "SELECT meta_key, meta_value FROM sitemeta ORDER BY meta_id LIMIT $start , 20"; usermeta; "metakey, metavalue"; ""; false
+SELECT; "SELECT meta_key, meta_value FROM sitemeta ORDER BY meta_id LIMIT $start , 20"; postmeta; "metakey, metavalue"; ""; false
 SELECT; "SELECT option_name, option_value FROM options"; NA; "optionname, optionvalue"; ""; false
 SELECT; "SELECT option_value FROM options WHERE option_name = %s"; NA; "optionvalue"; ""; false
 SELECT; "SELECT user_id FROM usermeta WHERE meta_key = %s AND meta_value != 0"; usermeta; "userid"; ""; true
@@ -119,7 +119,7 @@ SELECT; "SELECT * FROM blogs WHERE site_id = siteid AND spam = 0 AND deleted = 0
 SELECT; "SELECT * FROM users"; users; "ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name"; ""; false
 SELECT; "SELECT domain FROM site ORDER BY id ASC LIMIT 1"; links; "domain"; ""; true
 SELECT; "SELECT ID FROM posts WHERE post_date < DATE_SUB(NOW(), INTERVAL 1 MONTH) AND post_status = publish"; posts; "id"; ""; true
-SELECT; "SELECT meta_value FROM sitemeta WHERE site_id = 1 AND meta_key = subdomain_install"; usermeta; "metavalue"; ""; false
+SELECT; "SELECT meta_value FROM sitemeta WHERE site_id = 1 AND meta_key = subdomain_install"; postmeta; "metavalue"; ""; false
 SELECT; "SELECT * FROM options ORDER BY option_name"; NA; ""; ""; false
 SELECT; "SELECT ID FROM posts WHERE post_type = attachment AND post_parent > 0 and post_parent NOT IN ( SELECT ID FROM posts WHERE post_type NOT IN (attachment, join(, , get_post_types()) ) )"; posts; "id"; "posts, get_post_types()"; true
 UPDATE; "UPDATE posts SET post_parent = %d WHERE post_type = attachment AND ID IN ( $attach )"; posts; "post_parent"; ""; true
@@ -136,7 +136,7 @@ SELECT; "SELECT meta_value FROM usermeta WHERE user_id = $user_id AND meta_key =
 SELECT; "SELECT * FROM users WHERE user_login = %s AND user_email = %s"; users; "ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name"; ""; false
 SELECT; "SELECT activation_key FROM signups WHERE user_login = %s AND user_email = %s"; links; "activationkey"; ""; true
 SELECT; "SELECT ID, user_login FROM users ORDER BY user_login"; users; "id, userlogin"; ""; false
-SELECT; "SELECT ID, user_login FROM users , usermeta WHERE users .ID = usermeta .user_id AND meta_key = prefix capabilities ORDER BY user_login"; usermeta; "id, userlogin"; "users, usermeta, prefix"; true
+SELECT; "SELECT ID, user_login FROM users , usermeta WHERE users .ID = usermeta .user_id AND meta_key = prefix capabilities ORDER BY user_login"; users; "id, userlogin"; "users, usermeta, prefix"; false
 SELECT; "SELECT ID, user_nicename from users WHERE ID IN( $author_ids ) $exclude_admin ? AND user_login <> admin : ORDER BY display_name"; users; "id, usernicename"; "$author_ids, $exclude_admin"; false
 SELECT; "SELECT DISTINCT post_author, COUNT(ID) AS count FROM posts WHERE post_type = post AND get_private_posts_cap_sql(post) GROUP BY post_author"; posts; "distinct, postauthor, id"; "get_private_posts_cap_sql("post")"; true
 SELECT; "SELECT * FROM links WHERE link_id = %d LIMIT 1"; links; "link_id, link_url, link_name, link_image, link_target, link_description, link_visible, link_owner, link_rating, link_updated, link_rel, link_notes, link_rss"; ""; false
@@ -144,19 +144,19 @@ SELECT; "SELECT * $length $recently_updated_test $get_updated FROM links $join W
 SELECT; "SELECT post_type, post_parent FROM posts WHERE ID = %d"; posts; "posttype, postparent"; ""; false
 SELECT; "SELECT ID FROM posts WHERE $where AND post_status = publish"; posts; "id"; "$where"; true
 OTHER; "<select name= $name id= $id class= $class $tab_index_attribute >"; NA; ""; ""; true
-SELECT; "SELECT id FROM $this->options[prefix][0] cache_data WHERE id = $feed_id"; commentmeta; "id"; "$feed_id"; true
-UPDATE; "UPDATE $this->options[prefix][0] cache_data SET items = $items , data = mysql_real_escape_string($prepared[0]) , mtime = time() WHERE id = $feed_id"; commentmeta; "meta_id, meta_key"; "$items, mysql_real_escape_string($prepared[0]), time()"; false
-UPDATE; "UPDATE $this->options[prefix][0] cache_data SET data = mysql_real_escape_string($prepared[0]) , mtime = time() WHERE id = $feed_id"; commentmeta; "meta_id, meta_key"; "mysql_real_escape_string($prepared[0]), time()"; false
-INSERT; "INSERT INTO $this->options[prefix][0] cache_data (id, items, data, mtime) VALUES( $feed_id , count($prepared[1]) , mysql_real_escape_string($prepared[0]) , time() )"; commentmeta; "id, items, data, mtime"; "$feed_id, count($prepared[1]), mysql_real_escape_string($prepared[0]), time()"; true
-SELECT; "SELECT id FROM $this->options[prefix][0] items WHERE id = implode( OR id = , $database_ids) AND feed_id = $feed_id"; terms; "id"; "$database_ids, $feed_id"; true
-INSERT; "INSERT INTO $this->options[prefix][0] items (feed_id, id, data, posted) VALUES( $feed_id , mysql_real_escape_string($new_id) , mysql_real_escape_string(serialize($prepared[1][$new_id]->data)) , $date )"; terms; "feed_id, id, data, posted"; "$feed_id, mysql_real_escape_string($new_id), mysql_real_escape_string(serialize($prepared[1][$new_id]->data)), $date"; true
-SELECT; "SELECT id FROM $this->options[prefix][0] cache_data WHERE id = $feed_id"; commentmeta; "id"; "$feed_id"; true
-UPDATE; "UPDATE $this->options[prefix][0] cache_data SET items = 0, data = mysql_real_escape_string(serialize($data)) , mtime = time() WHERE id = $feed_id"; commentmeta; "meta_id, meta_key"; "mysql_real_escape_string(serialize($data)), time()"; false
-INSERT; "INSERT INTO $this->options[prefix][0] cache_data (id, items, data, mtime) VALUES( mysql_real_escape_string($this->id) , 0, mysql_real_escape_string(serialize($data)) , time() )"; commentmeta; "id, items, data, mtime"; "mysql_real_escape_string($this->id), mysql_real_escape_string(serialize($data)), time()"; true
-SELECT; "SELECT items, data FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; commentmeta; "items, data"; "id, mysql_real_escape_string($this->id)"; true
-SELECT; "SELECT data FROM $this->options[prefix][0] items WHERE feed_id = mysql_real_escape_string($this->id) ORDER BY posted DESC"; terms; "data"; "mysql_real_escape_string($this->id)"; true
-SELECT; "SELECT mtime FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; commentmeta; "mtime"; "id, mysql_real_escape_string($this->id)"; true
-UPDATE; "UPDATE $this->options[prefix][0] cache_data SET mtime = time() WHERE id = mysql_real_escape_string($this->id)"; commentmeta; "meta_key"; "time()"; true
+SELECT; "SELECT id FROM $this->options[prefix][0] cache_data WHERE id = $feed_id"; cache_data; "id"; "$feed_id"; true
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET items = $items , data = mysql_real_escape_string($prepared[0]) , mtime = time() WHERE id = $feed_id"; cache_data; "items, data, mtime"; "$items, mysql_real_escape_string($prepared[0]), time()"; false
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET data = mysql_real_escape_string($prepared[0]) , mtime = time() WHERE id = $feed_id"; cache_data; "data, mtime"; "mysql_real_escape_string($prepared[0]), time()"; false
+INSERT; "INSERT INTO $this->options[prefix][0] cache_data (id, items, data, mtime) VALUES( $feed_id , count($prepared[1]) , mysql_real_escape_string($prepared[0]) , time() )"; cache_data; "id, items, data, mtime"; "$feed_id, count($prepared[1]), mysql_real_escape_string($prepared[0]), time()"; true
+SELECT; "SELECT id FROM $this->options[prefix][0] items WHERE id = implode( OR id = , $database_ids) AND feed_id = $feed_id"; items; "id"; "$database_ids, $feed_id"; true
+INSERT; "INSERT INTO $this->options[prefix][0] items (feed_id, id, data, posted) VALUES( $feed_id , mysql_real_escape_string($new_id) , mysql_real_escape_string(serialize($prepared[1][$new_id]->data)) , $date )"; items; "feed_id, id, data, posted"; "$feed_id, mysql_real_escape_string($new_id), mysql_real_escape_string(serialize($prepared[1][$new_id]->data)), $date"; true
+SELECT; "SELECT id FROM $this->options[prefix][0] cache_data WHERE id = $feed_id"; cache_data; "id"; "$feed_id"; true
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET items = 0, data = mysql_real_escape_string(serialize($data)) , mtime = time() WHERE id = $feed_id"; cache_data; "items, data, mtime"; "mysql_real_escape_string(serialize($data)), time()"; false
+INSERT; "INSERT INTO $this->options[prefix][0] cache_data (id, items, data, mtime) VALUES( mysql_real_escape_string($this->id) , 0, mysql_real_escape_string(serialize($data)) , time() )"; cache_data; "id, items, data, mtime"; "mysql_real_escape_string($this->id), mysql_real_escape_string(serialize($data)), time()"; false
+SELECT; "SELECT items, data FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; cache_data; "items, data"; "id, mysql_real_escape_string($this->id)"; false
+SELECT; "SELECT data FROM $this->options[prefix][0] items WHERE feed_id = mysql_real_escape_string($this->id) ORDER BY posted DESC"; items; "data"; "mysql_real_escape_string($this->id)"; true
+SELECT; "SELECT mtime FROM $this->options[prefix][0] cache_data WHERE id = mysql_real_escape_string($this->id)"; cache_data; "mtime"; "id, mysql_real_escape_string($this->id)"; true
+UPDATE; "UPDATE $this->options[prefix][0] cache_data SET mtime = time() WHERE id = mysql_real_escape_string($this->id)"; cache_data; "mtime"; "time()"; true
 SELECT; "SELECT * FROM comments WHERE comment_post_ID = %d AND (comment_approved = 1 OR ( user_id = %d AND comment_approved = 0 ) ) ORDER BY comment_date_gmt"; comments; "comment_ID, comment_post_ID, comment_author, comment_author_email, comment_author_url, comment_author_IP, comment_date, comment_date_gmt, comment_content, comment_karma, comment_approved, comment_agent, comment_type, comment_parent, user_id"; ""; false
 SELECT; "SELECT * FROM comments WHERE comment_post_ID = %d AND ( comment_approved = 1 OR ( comment_author = %s AND comment_author_email = %s AND comment_approved = 0 ) ) ORDER BY comment_date_gmt"; comments; "comment_ID, comment_post_ID, comment_author, comment_author_email, comment_author_url, comment_author_IP, comment_date, comment_date_gmt, comment_content, comment_karma, comment_approved, comment_agent, comment_type, comment_parent, user_id"; ""; false
 SELECT; "SELECT link_id FROM links WHERE link_url LIKE (%s) LIMIT 1"; links; "linkid"; ""; true
@@ -193,16 +193,16 @@ SELECT; "SELECT option_value FROM options WHERE option_name = %s LIMIT 1"; NA; "
 SELECT; "SELECT option_value FROM options WHERE option_name = %s LIMIT 1"; NA; "optionvalue"; ""; false
 SELECT; "SELECT option_name, option_value FROM options WHERE autoload = yes"; NA; "optionname, optionvalue"; ""; false
 SELECT; "SELECT option_name, option_value FROM options"; NA; "optionname, optionvalue"; ""; false
-SELECT; "SELECT meta_key, meta_value FROM sitemeta WHERE meta_key IN ( $core_options_in ) AND site_id = %d"; usermeta; "metakey, metavalue"; "$core_options_in"; false
+SELECT; "SELECT meta_key, meta_value FROM sitemeta WHERE meta_key IN ( $core_options_in ) AND site_id = %d"; postmeta; "metakey, metavalue"; "$core_options_in"; false
 INSERT; "INSERT INTO options (option_name, option_value, autoload) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE option_name = VALUES(option_name), option_value = VALUES(option_value), autoload = VALUES(autoload)"; NA; "option_name, option_value, autoload"; ""; false
 SELECT; "SELECT autoload FROM options WHERE option_name = %s"; NA; "autoload"; ""; false
 SELECT; "SELECT meta_id FROM postmeta WHERE post_id = %d AND meta_key = enclosure AND meta_value LIKE (%s)"; postmeta; "metaid"; ""; true
 SELECT; "SELECT post_id FROM postmeta WHERE post_id = %d AND meta_key = enclosure AND meta_value LIKE (%s)"; postmeta; "postid"; ""; true
 SELECT; "SELECT option_value FROM options WHERE option_name = siteurl"; NA; "optionvalue"; ""; false
-SELECT; "SELECT meta_value FROM sitemeta WHERE meta_key = %s AND site_id = %d"; usermeta; "metavalue"; ""; false
-SELECT; "SELECT meta_value FROM sitemeta WHERE meta_key = %s AND site_id = %d"; usermeta; "metavalue"; ""; false
-SELECT; "SELECT meta_id FROM sitemeta WHERE meta_key = %s AND site_id = %d"; usermeta; "metaid"; ""; true
-SELECT; "SELECT meta_value FROM sitemeta WHERE meta_key = %s AND site_id = %d"; usermeta; "metavalue"; ""; false
+SELECT; "SELECT meta_value FROM sitemeta WHERE meta_key = %s AND site_id = %d"; postmeta; "metavalue"; ""; false
+SELECT; "SELECT meta_value FROM sitemeta WHERE meta_key = %s AND site_id = %d"; postmeta; "metavalue"; ""; false
+SELECT; "SELECT meta_id FROM sitemeta WHERE meta_key = %s AND site_id = %d"; postmeta; "metaid"; ""; true
+SELECT; "SELECT meta_value FROM sitemeta WHERE meta_key = %s AND site_id = %d"; postmeta; "metavalue"; ""; false
 SELECT; "SELECT post_id FROM postmeta WHERE meta_key = _wp_trash_meta_time AND meta_value < %d"; postmeta; "postid"; ""; true
 SELECT; "SELECT comment_id FROM commentmeta WHERE meta_key = _wp_trash_meta_time AND meta_value < %d"; commentmeta; "commentid"; ""; true
 SELECT; "SELECT display_name FROM users WHERE user_nicename = %s"; users; "displayname"; ""; false
@@ -234,7 +234,7 @@ SELECT; "SELECT blog_id, domain, path FROM blogs WHERE site_id = %d AND public =
 SELECT; "SELECT blog_id, domain, path FROM blogs WHERE site_id = %d AND public = 1 AND archived = 0 AND mature = 0 AND spam = 0 AND deleted = 0 ORDER BY registered DESC"; NA; "blogid, domain, path"; ""; false
 SELECT; "SELECT COUNT(ID) FROM $wpdb->get_blog_prefix($details[blog_id]) posts WHERE post_status=publish AND post_type=post"; posts; "id"; ""; true
 SELECT; "SELECT COUNT(ID) FROM users"; users; "id"; ""; true
-SELECT; "SELECT id FROM site WHERE domain = %s AND path = %s"; NA; "id"; ""; false
+SELECT; "SELECT id FROM site WHERE domain = %s AND path = %s"; items; "id"; ""; true
 SELECT; "SELECT u.ID, u.user_login, u.user_pass FROM users AS u, sitemeta AS sm WHERE sm.meta_key = admin_user_id AND u.ID = sm.meta_value AND sm.site_id = %d"; users; "uid, uuserlogin, uuserpass"; ""; false
 SELECT; "SELECT COUNT(ID) as c FROM users WHERE spam = 0 AND deleted = 0"; users; "id"; ""; true
 SELECT; "SELECT COUNT(blog_id) as c FROM blogs WHERE site_id = %d AND spam = 0 AND deleted = 0 and archived = 0"; NA; "blogid"; ""; false
@@ -257,17 +257,17 @@ SELECT; "SELECT cat_ID FROM sitecategories WHERE cat_ID = %d"; NA; "catid"; ""; 
 SELECT; "SELECT MAX(cat_ID) FROM sitecategories"; NA; "catid"; ""; false
 SELECT; "SELECT MAX(term_id) FROM terms"; terms; "termid"; ""; true
 SELECT; "SELECT term_id FROM terms WHERE term_id = %d"; terms; "termid"; ""; true
-SELECT; "SELECT meta_value FROM sitemeta WHERE site_id = %d AND meta_key = site_name"; usermeta; "metavalue"; ""; false
-SELECT; "SELECT * FROM site"; NA; ""; ""; false
+SELECT; "SELECT meta_value FROM sitemeta WHERE site_id = %d AND meta_key = site_name"; postmeta; "metavalue"; ""; false
+SELECT; "SELECT * FROM site"; items; "feed_id, id, data, posted"; ""; true
 SELECT; "SELECT blog_id FROM blogs WHERE domain = %s AND path = %s"; NA; "blogid"; ""; false
-SELECT; "SELECT * FROM site WHERE domain = %s AND path = %s"; NA; ""; ""; false
-SELECT; "SELECT * FROM site WHERE domain IN ( %s, %s ) AND path = %s ORDER BY CHAR_LENGTH( domain ) DESC LIMIT 1"; NA; ""; ""; false
-SELECT; "SELECT * FROM site WHERE domain = %s AND path=/"; NA; ""; ""; false
-SELECT; "SELECT * FROM site WHERE domain IN ( %s, %s ) AND path = / ORDER BY CHAR_LENGTH( domain ) DESC LIMIT 1"; NA; ""; ""; false
-SELECT; "SELECT * FROM site WHERE domain = %s AND path = %s"; NA; ""; ""; false
-SELECT; "SELECT * FROM site WHERE domain = %s AND path=/"; NA; ""; ""; false
+SELECT; "SELECT * FROM site WHERE domain = %s AND path = %s"; items; "feed_id, id, data, posted"; ""; true
+SELECT; "SELECT * FROM site WHERE domain IN ( %s, %s ) AND path = %s ORDER BY CHAR_LENGTH( domain ) DESC LIMIT 1"; items; "feed_id, id, data, posted"; ""; true
+SELECT; "SELECT * FROM site WHERE domain = %s AND path=/"; items; "feed_id, id, data, posted"; ""; true
+SELECT; "SELECT * FROM site WHERE domain IN ( %s, %s ) AND path = / ORDER BY CHAR_LENGTH( domain ) DESC LIMIT 1"; items; "feed_id, id, data, posted"; ""; true
+SELECT; "SELECT * FROM site WHERE domain = %s AND path = %s"; items; "feed_id, id, data, posted"; ""; true
+SELECT; "SELECT * FROM site WHERE domain = %s AND path=/"; items; "feed_id, id, data, posted"; ""; true
 SELECT; "SELECT blog_id FROM blogs WHERE domain = %s AND path = %s"; NA; "blogid"; ""; false
-SELECT; "SELECT * FROM site WHERE id = %d"; NA; ""; ""; false
+SELECT; "SELECT * FROM site WHERE id = %d"; items; "feed_id, id, data, posted"; ""; true
 SELECT; "SELECT * FROM users WHERE ID = %d LIMIT 1"; users; "ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name"; ""; false
 SELECT; "SELECT * FROM users WHERE ID IN ( $list )"; users; "ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name"; "$list"; false
 SELECT; "SELECT * FROM users WHERE $field = %s"; users; "ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name"; "$field"; false
@@ -315,7 +315,7 @@ SELECT; "SELECT post_modified FROM posts WHERE post_status = publish AND post_ty
 SELECT; "SELECT DATE_ADD(post_modified_gmt, INTERVAL $add_seconds_server SECOND) FROM posts WHERE post_status = publish AND post_type = post ORDER BY post_modified_gmt DESC LIMIT 1"; posts; "postmodifiedgmt, interval, addsecondsserver, second"; ""; true
 SELECT; "SELECT ID FROM posts WHERE post_parent = %d"; posts; "id"; ""; true
 SELECT; "SELECT post_parent FROM posts WHERE ID = %d LIMIT 1"; posts; "postparent"; ""; true
-SELECT; "SELECT p.ID FROM posts p INNER JOIN term_relationships tr ON (p.ID = tr.object_id) INNER JOIN term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN terms t ON (tt.term_id = t.term_id)"; term_relationships; "pid"; ""; true
+SELECT; "SELECT p.ID FROM posts p INNER JOIN term_relationships tr ON (p.ID = tr.object_id) INNER JOIN term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN terms t ON (tt.term_id = t.term_id)"; posts; "pid"; ""; true
 SELECT; "SELECT $distinct comments .* FROM comments $cjoin $cwhere $cgroupby $corderby $climits"; comments; "distinct, comments, "; ""; false
 SELECT; "SELECT $found_rows $distinct $fields FROM posts $join WHERE 1=1 $where $groupby $orderby $limits"; posts; "foundrows, distinct, fields"; "$where, $groupby, $orderby, $limits"; true
 SELECT; "SELECT comments .* FROM comments $cjoin $cwhere $cgroupby $corderby $climits"; comments; "comments, "; ""; false
@@ -355,14 +355,14 @@ SELECT; "SELECT term_id FROM terms WHERE slug = %s"; terms; "termid"; ""; true
 SELECT; "SELECT tt.term_taxonomy_id FROM term_taxonomy AS tt INNER JOIN terms AS t ON tt.term_id = t.term_id WHERE tt.taxonomy = %s AND t.term_id = %d"; terms; "tttermtaxonomyid"; ""; true
 SELECT; "SELECT COUNT(*) FROM term_relationships WHERE term_taxonomy_id = %d"; term_relationships; ""; ""; false
 SELECT; "SELECT term_id, taxonomy FROM term_taxonomy WHERE term_taxonomy_id IN ( $tt_ids )"; term_taxonomy; "termid, taxonomy"; "term_taxonomy, $tt_ids"; false
-SELECT; "SELECT object_id, term_taxonomy_id FROM term_relationships INNER JOIN posts ON object_id = ID WHERE term_taxonomy_id IN ( implode(, , array_keys($term_ids)) ) AND post_type IN ( implode(, , $object_types) ) AND post_status = publish"; term_relationships; "objectid, termtaxonomyid"; "array_keys($term_ids), $object_types"; true
-SELECT; "SELECT COUNT(*) FROM term_relationships , posts WHERE posts .ID = term_relationships .object_id AND post_status = publish AND post_type IN ( implode(, , $object_types) ) AND term_taxonomy_id = %d"; term_relationships; ""; "posts, term_relationships, $object_types"; false
+SELECT; "SELECT object_id, term_taxonomy_id FROM term_relationships INNER JOIN posts ON object_id = ID WHERE term_taxonomy_id IN ( implode(, , array_keys($term_ids)) ) AND post_type IN ( implode(, , $object_types) ) AND post_status = publish"; posts; "objectid, termtaxonomyid"; "array_keys($term_ids), $object_types"; true
+SELECT; "SELECT COUNT(*) FROM term_relationships , posts WHERE posts .ID = term_relationships .object_id AND post_status = publish AND post_type IN ( implode(, , $object_types) ) AND term_taxonomy_id = %d"; posts; ""; "posts, term_relationships, $object_types"; false
 SELECT; "SELECT COUNT(*) FROM posts $where"; posts; ""; ""; false
 SELECT; "SELECT post_author, COUNT(*) FROM posts $where AND post_author IN ( $userlist ) GROUP BY post_author"; posts; "postauthor, "; ""; false
-SELECT; "SELECT user_id, user_id AS ID, user_login, display_name, user_email, meta_value FROM users , usermeta WHERE users .ID = usermeta .user_id AND meta_key = $blog_prefix capabilities ORDER BY usermeta .user_id"; usermeta; "userid, id, userlogin, displayname, useremail, metavalue"; "users, usermeta, $blog_prefix"; false
+SELECT; "SELECT user_id, user_id AS ID, user_login, display_name, user_email, meta_value FROM users , usermeta WHERE users .ID = usermeta .user_id AND meta_key = $blog_prefix capabilities ORDER BY usermeta .user_id"; users; "userid, id, userlogin, displayname, useremail, metavalue"; "users, usermeta, $blog_prefix"; false
 SELECT; "SELECT $select_count , COUNT(*) FROM usermeta WHERE meta_key = $blog_prefix capabilities"; usermeta; "selectcount, "; "$blog_prefix"; false
 SELECT; "SELECT meta_value FROM usermeta WHERE meta_key = $blog_prefix capabilities"; usermeta; "metavalue"; "$blog_prefix"; false
-SELECT; "SELECT users .* FROM users , usermeta WHERE users .ID = usermeta .user_id AND meta_key = $blog_prefix capabilities"; usermeta; "users, "; "users, usermeta, $blog_prefix"; false
+SELECT; "SELECT users .* FROM users , usermeta WHERE users .ID = usermeta .user_id AND meta_key = $blog_prefix capabilities"; users; "users, "; "users, usermeta, $blog_prefix"; false
 OTHER; "<select name= $name $id class= $class >"; NA; ""; ""; true
 SELECT; "SELECT user_id, meta_key, meta_value FROM usermeta WHERE user_id IN ( $list )"; usermeta; "userid, metakey, metavalue"; "$list"; false
 UPDATE; "UPDATE $table SET implode(, , $bits) WHERE implode( AND , $wheres)"; NA; ""; "$bits"; false

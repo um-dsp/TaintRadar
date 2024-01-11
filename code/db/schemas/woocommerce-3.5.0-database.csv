@@ -1,0 +1,131 @@
+wp_commentmeta,meta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_commentmeta,comment_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_commentmeta,utf8mb4_unicode_ci,"['KEY', '`comment_id` (`comment_id`)', 'KEY', '`meta_key` (`meta_key`(191))']",False
+wp_commentmeta,meta_value,"['longtext', 'COLLATE']",True
+wp_comments,comment_ID,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_comments,comment_post_ID,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_comments,utf8mb4_unicode_ci,"['varchar(20)', 'COLLATE', 'NOT NULL', 'DEFAULT', ""''""]",False
+wp_comments,comment_date,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_comments,comment_date_gmt,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_comments,comment_karma,"['int(11)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_comments,comment_parent,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_comments,user_id,"['KEY', '`comment_post_ID` (`comment_post_ID`)', 'KEY', '`comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`)', 'KEY', '`comment_date_gmt` (`comment_date_gmt`)', 'KEY', '`comment_parent` (`comment_parent`)', 'KEY', '`comment_author_email` (`comment_author_email`(10))', 'KEY', '`woo_idx_comment_type` (`comment_type`)']",True
+wp_links,link_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_links,utf8mb4_unicode_ci,"['KEY', '`link_visible` (`link_visible`)']",False
+wp_links,link_owner,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'1'""]",True
+wp_links,link_rating,"['int(11)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_links,link_updated,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_options,option_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_options,utf8mb4_unicode_ci,['UNIQUE'],False
+wp_postmeta,meta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_postmeta,post_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_postmeta,utf8mb4_unicode_ci,"['KEY', '`post_id` (`post_id`)', 'KEY', '`meta_key` (`meta_key`(191))']",False
+wp_postmeta,meta_value,"['longtext', 'COLLATE']",True
+wp_posts,ID,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_posts,post_author,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_posts,post_date,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_posts,post_date_gmt,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_posts,utf8mb4_unicode_ci,"['varchar(100)', 'COLLATE', 'NOT NULL', 'DEFAULT', ""''""]",False
+wp_posts,post_modified,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_posts,post_modified_gmt,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_posts,post_parent,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_posts,menu_order,"['int(11)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_posts,comment_count,"['KEY', '`post_name` (`post_name`(191))', 'KEY', '`type_status_date` (`post_type`,`post_status`,`post_date`,`ID`)', 'KEY', '`post_parent` (`post_parent`)', 'KEY', '`post_author` (`post_author`)']",True
+wp_term_relationships,object_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_term_relationships,term_taxonomy_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_term_relationships,term_order,"['KEY', '`term_taxonomy_id` (`term_taxonomy_id`)']",False
+wp_term_taxonomy,term_taxonomy_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_term_taxonomy,term_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_term_taxonomy,utf8mb4_unicode_ci,"['longtext', 'COLLATE', 'NOT NULL']",True
+wp_term_taxonomy,parent,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_term_taxonomy,count,['UNIQUE'],False
+wp_termmeta,meta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_termmeta,term_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_termmeta,utf8mb4_unicode_ci,"['KEY', '`term_id` (`term_id`)', 'KEY', '`meta_key` (`meta_key`(191))']",False
+wp_termmeta,meta_value,"['longtext', 'COLLATE']",True
+wp_terms,term_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_terms,utf8mb4_unicode_ci,"['varchar(200)', 'COLLATE', 'NOT NULL', 'DEFAULT', ""''""]",False
+wp_terms,term_group,"['KEY', '`slug` (`slug`(191))', 'KEY', '`name` (`name`(191))']",False
+wp_usermeta,umeta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_usermeta,user_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_usermeta,utf8mb4_unicode_ci,"['KEY', '`user_id` (`user_id`)', 'KEY', '`meta_key` (`meta_key`(191))']",False
+wp_usermeta,meta_value,"['longtext', 'COLLATE']",True
+wp_users,ID,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_users,utf8mb4_unicode_ci,"['KEY', '`user_login_key` (`user_login`)', 'KEY', '`user_nicename` (`user_nicename`)', 'KEY', '`user_email` (`user_email`)']",False
+wp_users,user_registered,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_users,user_status,"['int(11)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_wc_download_log,download_log_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_wc_download_log,timestamp,"['datetime', 'NOT NULL']",True
+wp_wc_download_log,permission_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_wc_download_log,user_id,"['bigint(20)', 'unsigned', 'DEFAULT', 'NULL']",True
+wp_wc_download_log,utf8mb4_unicode_ci,"['varchar(100)', 'COLLATE', 'DEFAULT', ""''""]",False
+wp_wc_download_log,wp_wc_download_log_ibfk_1,"['KEY', '`permission_id` (`permission_id`)', 'KEY', '`timestamp` (`timestamp`)']",True
+wp_wc_webhooks,webhook_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_wc_webhooks,utf8mb4_unicode_ci,"['varchar(200)', 'COLLATE', 'NOT NULL']",False
+wp_wc_webhooks,user_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_wc_webhooks,date_created,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_wc_webhooks,date_created_gmt,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_wc_webhooks,date_modified,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_wc_webhooks,date_modified_gmt,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_wc_webhooks,api_version,"['smallint(4)', 'NOT NULL']",True
+wp_wc_webhooks,failure_count,"['smallint(10)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_wc_webhooks,pending_delivery,"['KEY', '`user_id` (`user_id`)']",False
+wp_woocommerce_api_keys,key_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_api_keys,user_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_api_keys,utf8mb4_unicode_ci,"['char(7)', 'COLLATE', 'NOT NULL']",False
+wp_woocommerce_api_keys,nonces,"['longtext', 'COLLATE']",True
+wp_woocommerce_api_keys,last_access,"['KEY', '`consumer_key` (`consumer_key`)', 'KEY', '`consumer_secret` (`consumer_secret`)']",False
+wp_woocommerce_attribute_taxonomies,attribute_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_attribute_taxonomies,utf8mb4_unicode_ci,"['varchar(20)', 'COLLATE', 'NOT NULL']",False
+wp_woocommerce_attribute_taxonomies,attribute_public,"['KEY', '`attribute_name` (`attribute_name`(20))']",False
+wp_woocommerce_downloadable_product_permissions,permission_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_downloadable_product_permissions,utf8mb4_unicode_ci,"['varchar(9)', 'COLLATE', 'DEFAULT', 'NULL']",False
+wp_woocommerce_downloadable_product_permissions,product_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_downloadable_product_permissions,order_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_woocommerce_downloadable_product_permissions,user_id,"['bigint(20)', 'unsigned', 'DEFAULT', 'NULL']",True
+wp_woocommerce_downloadable_product_permissions,access_granted,"['datetime', 'NOT NULL', 'DEFAULT', ""'0000-00-00 00:00:00'""]",True
+wp_woocommerce_downloadable_product_permissions,access_expires,"['datetime', 'DEFAULT', 'NULL']",True
+wp_woocommerce_downloadable_product_permissions,download_count,"['KEY', '`download_order_key_product` (`product_id`,`order_id`,`order_key`(16),`download_id`)', 'KEY', '`download_order_product` (`download_id`,`order_id`,`product_id`)', 'KEY', '`order_id` (`order_id`)']",False
+wp_woocommerce_log,log_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_log,timestamp,"['datetime', 'NOT NULL']",True
+wp_woocommerce_log,level,"['smallint(4)', 'NOT NULL']",True
+wp_woocommerce_log,utf8mb4_unicode_ci,"['KEY', '`level` (`level`)']",False
+wp_woocommerce_log,context,"['longtext', 'COLLATE']",True
+wp_woocommerce_order_itemmeta,meta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_order_itemmeta,order_item_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_order_itemmeta,utf8mb4_unicode_ci,"['KEY', '`order_item_id` (`order_item_id`)', 'KEY', '`meta_key` (`meta_key`(32))']",False
+wp_woocommerce_order_itemmeta,meta_value,"['longtext', 'COLLATE']",True
+wp_woocommerce_order_items,order_item_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_order_items,utf8mb4_unicode_ci,"['varchar(200)', 'COLLATE', 'NOT NULL', 'DEFAULT', ""''""]",False
+wp_woocommerce_order_items,order_id,"['KEY', '`order_id` (`order_id`)']",False
+wp_woocommerce_payment_tokenmeta,meta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_payment_tokenmeta,payment_token_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_payment_tokenmeta,utf8mb4_unicode_ci,"['KEY', '`payment_token_id` (`payment_token_id`)', 'KEY', '`meta_key` (`meta_key`(32))']",False
+wp_woocommerce_payment_tokenmeta,meta_value,"['longtext', 'COLLATE']",True
+wp_woocommerce_payment_tokens,token_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_payment_tokens,utf8mb4_unicode_ci,"['varchar(200)', 'COLLATE', 'NOT NULL']",False
+wp_woocommerce_payment_tokens,user_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_woocommerce_payment_tokens,is_default,"['KEY', '`user_id` (`user_id`)']",False
+wp_woocommerce_sessions,session_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_sessions,utf8mb4_unicode_ci,"['longtext', 'COLLATE', 'NOT NULL']",True
+wp_woocommerce_sessions,session_expiry,['UNIQUE'],False
+wp_woocommerce_shipping_zone_locations,location_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_shipping_zone_locations,zone_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_shipping_zone_locations,utf8mb4_unicode_ci,"['KEY', '`location_id` (`location_id`)', 'KEY', '`location_type_code` (`location_type`(10),`location_code`(20))']",False
+wp_woocommerce_shipping_zone_methods,zone_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_shipping_zone_methods,instance_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_shipping_zone_methods,utf8mb4_unicode_ci,"['varchar(200)', 'COLLATE', 'NOT NULL']",False
+wp_woocommerce_shipping_zone_methods,method_order,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_shipping_zone_methods,is_enabled,"['tinyint(1)', 'NOT NULL', 'DEFAULT', ""'1'""]",True
+wp_woocommerce_shipping_zones,zone_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_shipping_zones,utf8mb4_unicode_ci,"['varchar(200)', 'COLLATE', 'NOT NULL']",False
+wp_woocommerce_shipping_zones,zone_order,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_tax_rate_locations,location_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_tax_rate_locations,utf8mb4_unicode_ci,"['KEY', '`tax_rate_id` (`tax_rate_id`)', 'KEY', '`location_type_code` (`location_type`(10),`location_code`(20))']",False
+wp_woocommerce_tax_rate_locations,tax_rate_id,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_tax_rates,tax_rate_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'AUTO_INCREMENT']",True
+wp_woocommerce_tax_rates,utf8mb4_unicode_ci,"['KEY', '`tax_rate_country` (`tax_rate_country`)', 'KEY', '`tax_rate_state` (`tax_rate_state`(2))', 'KEY', '`tax_rate_class` (`tax_rate_class`(10))', 'KEY', '`tax_rate_priority` (`tax_rate_priority`)']",False
+wp_woocommerce_tax_rates,tax_rate_priority,"['bigint(20)', 'unsigned', 'NOT NULL']",True
+wp_woocommerce_tax_rates,tax_rate_compound,"['int(1)', 'NOT NULL', 'DEFAULT', ""'0'""]",True
+wp_woocommerce_tax_rates,tax_rate_shipping,"['int(1)', 'NOT NULL', 'DEFAULT', ""'1'""]",True
+wp_woocommerce_tax_rates,tax_rate_order,"['bigint(20)', 'unsigned', 'NOT NULL']",True

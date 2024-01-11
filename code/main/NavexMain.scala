@@ -1,5 +1,7 @@
 class NavexMain(val cpg: Cpg) {
 
+    val cpgSize = cpg.all.size
+
     Utils.augmentWithSanTag()
     Utils.augmentWithQueryTag()
     Utils.debugDatabaseParsing()
@@ -12,14 +14,14 @@ class NavexMain(val cpg: Cpg) {
     val databaseCalls = getSinkCalls("SQL Injection", "NA", false)
 
     val insertStatements = Utils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
-    // val vulnerableInsert = if (insertStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > insertStatements.size/2) insertStatements.filter(Utils.isReachableBy(_, databaseCalls)) else insertStatements
-    val vulnerableInsert = insertStatements.filter(Utils.isReachableBy(_, databaseCalls))
+    val vulnerableInsert = if (insertStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > 0) insertStatements.filter(Utils.isReachableBy(_, databaseCalls)) else insertStatements
+    // val vulnerableInsert = insertStatements.filter(Utils.isReachableBy(_, databaseCalls))
     val m1: Map[nodes.Call, List[List[AstNode]]] = (vulnerableInsert zip vulnerableInsert.map(Utils.reachableBySource(_, sources, "SAN_XSS")) ).toMap
 
 
     val selectStatements = Utils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
-    // val vulnerableSelect = if (selectStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > selectStatements.size/2) selectStatements.filter(Utils.isReachableBy(_, databaseCalls)) else selectStatements
-    val vulnerableSelect = selectStatements.filter(Utils.isReachableBy(_, databaseCalls))
+    val vulnerableSelect = if (selectStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > 0) selectStatements.filter(Utils.isReachableBy(_, databaseCalls)) else selectStatements
+    // val vulnerableSelect = selectStatements.filter(Utils.isReachableBy(_, databaseCalls))
 
     def getSinkCalls(vulnerability: String, tagName: String, debug: Boolean = false) = {
         // get all sink function names for the given vulnerability
@@ -114,6 +116,7 @@ class NavexMain(val cpg: Cpg) {
         // map every vulnerability in the list to its list of possible paths
         val t0 = System.nanoTime()
         logger ++= List(cpg.metaData.root.head.split("/").last)
+        logger ++= List(cpgSize.toString)
 
         if (debug) println("Attacker-controlled sources size: " + sources.size + "\n")
         logger ++= List(sources.size.toString)

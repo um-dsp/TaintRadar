@@ -83,3 +83,11 @@ usermeta,umeta_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'auto_increment']",Tru
 usermeta,user_id,"['bigint(20)', 'unsigned', 'NOT NULL', 'default', ""'0'""]",True
 usermeta,meta_key,"['varchar(255)', 'default', 'NULL']",False
 usermeta,meta_value,"['KEY', 'user_id (user_id)', 'KEY', 'meta_key (meta_key)']",False
+cache_data,id,"['TEXT', 'CHARACTER', 'SET', 'NOT NULL']",True
+cache_data,items,"['SMALLINT', 'NOT NULL', 'DEFAULT', '0']",True
+cache_data,data,"['BLOB', 'NOT NULL']",False
+cache_data,mtime,"['INT', 'UNSIGNED', 'NOT NULL', 'UNIQUE', '(id(125))']",True
+items,feed_id,"['TEXT', 'CHARACTER', 'SET', 'NOT NULL']",True
+items,id,"['TEXT', 'CHARACTER', 'SET', 'NOT NULL']",True
+items,data,"['TEXT', 'CHARACTER', 'SET', 'NOT NULL']",True
+items,posted,"['UNSIGNED', 'INT', 'NOT NULL', 'INDEX', 'feed_id (feed_id(125))']",True

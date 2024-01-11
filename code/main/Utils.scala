@@ -114,7 +114,7 @@ object Utils {
         var i = 0
         var dataFlowNodes: List[AstNode] = sinks
         var found: Boolean = false
-        while (i < 50 && !found) {
+        while (i < 100 && !found) {
             if (dataFlowNodes.contains(node)) found = true
             dataFlowNodes = dataFlowNodes.flatMap(dataFlowStep(_)).dedup.l
             i = i + 1

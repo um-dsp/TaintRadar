@@ -7,7 +7,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                         "create", "alter", "drop", "truncate",
                         "use", "show", "begin", "start transaction", "commit", "rollback")
 
-    val mainSqlKeywords: Set[String] = Set("select ", "select*", "insert into ", "insert ignore into ", "update ")
+    val mainSqlKeywords: Set[String] = Set("select ", "select*", "insert into ", "insert ignore into ", "update ", "update ignore ")
 
     val removeChars = Set('"', '\\', '`', '\'')
 
@@ -95,7 +95,9 @@ class DatabaseConstraint(val cpg: Cpg) {
             val queryCode = rawCode.replaceAll("""(\w)\*""", "$1 *").split(" ").
                                     map(_.replace("\\n", " ").replace("\\t", " ").replace(",", ", ")).flatMap(_.split(" ")).
                                     flatMap(_.filterNot(removeChars.contains(_)).split(" ").filterNot(_.isEmpty))
-            queryCode
+            if (queryCode.mkString.headOption.getOrElse('(') == '(')
+                queryCode.mkString(" ").drop(1).split(" ")
+            else queryCode
         }
 
         def getQueryType(): QueryType.Value = {
@@ -274,7 +276,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                 }
                 else {
                     val unsafeColumns = db_schema(queryTable).filterNot(_._2).keys.toList
-                    if (scopeWithoutAlias.map(scope => (scope.contains("*") && !unsafeColumns.isEmpty) || (!safeSQLFunctions.exists(scope.contains(_)) && unsafeColumns.exists(scope.contains(_)))).contains(true))
+                    if (scopeWithoutAlias.map(scope => (scopeWithoutAlias.contains("*") && !unsafeColumns.isEmpty) || (!safeSQLFunctions.exists(scope.contains(_)) && unsafeColumns.exists(scope.contains(_)))).contains(true))
                         QueryLabel.UnsafeQuery
                     else QueryLabel.SafeQuery
                 }

@@ -43,17 +43,20 @@ sql_file_paths = []
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/Joomla_3.7.0-Stable-Full_Package/installation/sql/sqlazure/joomla.sql') # Joomla sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/mssql/tables.sql') # Mediawiki mssql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/tables.sql') # Mediawiki sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/wordpress-6.0/schema.sql') # Wordpress sql file 
+sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/wordpress-6.0/schema.sql') # Wordpress sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/wordpress-3.0/schema.sql') # Wordpress sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/geccBBlite-0.1/geccBBlite/schema.sql') # geccBBlite sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # faqforge sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WebChess_0.9.0/schema.sql') # WebChess sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mybloggie214/schema.sql') # MyBloggie sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/DVWA/database/create_mssql_db.sql') # DVWA sql file 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/DVWA/database/create_mssql_db.sql') # DVWA sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-2.0.23/phpBB2/install/schemas/mysql_schema.sql') # phpBB2 sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-3.0.11/phpBB3/install/schemas/mysql_41_schema.sql') # phpBB3 sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/SchoolMate_v1.5.4/schoolmate/SchoolMate.sql') # SchoolMate sql file 
 # sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/zen-cart-v1.5.5/zc_install/sql/install/mysql_zencart.sql') # Zencart sql file 
-# sql_file_paths.append('/home/kali/Desktop/navex_project/joern-repo/navex_tests/WeBid/install/sql/dump.sql')
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WeBid/install/sql/dump.sql')
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WCF/wcfsetup/setup/db/install.sql') # 
+# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/woocommerce-3.5.0/tests/e2e-tests/data/e2e-db.sql') # WooCommerce
 
 for sql_file_path in sql_file_paths:
     file_index = sql_file_path.split('/').index('navex_tests')+1
@@ -145,4 +148,4 @@ for sql_file_path in sql_file_paths:
     db['Column'] = columns
     db['Properties'] = properties
     db['SafeType'] = list(map(isSafe, properties))
-    db.to_csv(f'code/db/schemas/{file_name}-database.csv', index=False, header=False)
+    db.to_csv(f'navex_utils/code/db/schemas/{file_name}-database.csv', index=False, header=False)
