@@ -1,0 +1,22 @@
+auth_tokens,id,"['int(11)', 'UNSIGNED', 'NOT NULL']",True
+auth_tokens,user_email,"['varchar(255)', 'NOT NULL']",False
+auth_tokens,auth_type,"['varchar(255)', 'NOT NULL']",False
+auth_tokens,selector,"['text', 'NOT NULL']",False
+auth_tokens,token,"['longtext', 'NOT NULL']",True
+auth_tokens,created_at,"['timestamp', 'NOT NULL', 'DEFAULT', 'current_timestamp()', 'ON', 'UPDATE', 'current_timestamp()']",True
+auth_tokens,expires_at,"['timestamp', 'NULL', 'DEFAULT', 'NULL']",True
+users,id,"['int(11)', 'UNSIGNED', 'NOT NULL']",True
+users,username,"['varchar(255)', 'NOT NULL']",False
+users,email,"['varchar(255)', 'NOT NULL']",False
+users,password,"['varchar(255)', 'NOT NULL']",False
+users,first_name,"['varchar(255)', 'DEFAULT', 'NULL']",False
+users,last_name,"['varchar(255)', 'DEFAULT', 'NULL']",False
+users,gender,"['char(1)', 'DEFAULT', 'NULL']",False
+users,headline,"['varchar(255)', 'DEFAULT', 'NULL']",False
+users,bio,"['text', 'DEFAULT', 'NULL']",False
+users,profile_image,"['varchar(255)', 'NOT NULL', 'DEFAULT', ""'_defaultUser.png'""]",False
+users,verified_at,"['timestamp', 'NULL', 'DEFAULT', 'NULL']",True
+users,created_at,"['timestamp', 'NULL', 'DEFAULT', 'NULL']",True
+users,updated_at,"['timestamp', 'NOT NULL', 'DEFAULT', 'current_timestamp()', 'ON', 'UPDATE', 'current_timestamp()']",True
+users,deleted_at,"['timestamp', 'NULL', 'DEFAULT', 'NULL']",True
+users,last_login_at,"['timestamp', 'NULL', 'DEFAULT', 'NULL']",True

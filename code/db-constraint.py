@@ -1,3 +1,4 @@
+import sys
 import sqlparse
 import pandas as pd
 import re
@@ -31,32 +32,37 @@ def filterDesc(desc):
         desc = desc[:remove_index]
     return desc
 
+user_path = "umd-user/Desktop"
+if len(sys.argv) > 1 != '': user_path = sys.argv[1]
+
+
 # Replace 'your_database.sql' with the path to your SQL file
 sql_file_paths = []
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WeBid/install/sql/dump.sql') # WeBid sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/osCommerce/catalog/install/oscommerce.sql') # OsCommerce sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/collabtive-31/pgsql.sql') # Collabtive sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # FAQForge sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/gallery-3.0.9/gallery3/installer/install.sql') # Gallery sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/hotcrp-2.60/Code/schema.sql') # Hotcrp-2.60 sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/hotcrp-2.100/src/schema.sql') # Hotcrp-2.60 sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/Joomla_3.7.0-Stable-Full_Package/installation/sql/sqlazure/joomla.sql') # Joomla sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/mssql/tables.sql') # Mediawiki mssql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mediawiki/maintenance/tables.sql') # Mediawiki sql file 
-sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/wordpress-6.0/schema.sql') # Wordpress sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/wordpress-3.0/schema.sql') # Wordpress sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/geccBBlite-0.1/geccBBlite/schema.sql') # geccBBlite sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # faqforge sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WebChess_0.9.0/schema.sql') # WebChess sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/mybloggie214/schema.sql') # MyBloggie sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/DVWA/database/create_mssql_db.sql') # DVWA sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-2.0.23/phpBB2/install/schemas/mysql_schema.sql') # phpBB2 sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/phpBB-3.0.11/phpBB3/install/schemas/mysql_41_schema.sql') # phpBB3 sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/SchoolMate_v1.5.4/schoolmate/SchoolMate.sql') # SchoolMate sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/zen-cart-v1.5.5/zc_install/sql/install/mysql_zencart.sql') # Zencart sql file 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WeBid/install/sql/dump.sql')
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/WCF/wcfsetup/setup/db/install.sql') # 
-# sql_file_paths.append('/home/umd-user/Desktop/navex_project/navex_tests/woocommerce-3.5.0/tests/e2e-tests/data/e2e-db.sql') # WooCommerce
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/WeBid/install/sql/dump.sql') # WeBid sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/osCommerce/catalog/install/oscommerce.sql') # OsCommerce sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/collabtive-31/pgsql.sql') # Collabtive sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # FAQForge sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/gallery-3.0.9/gallery3/installer/install.sql') # Gallery sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/hotcrp-2.60/Code/schema.sql') # Hotcrp-2.60 sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/hotcrp-2.100/src/schema.sql') # Hotcrp-2.60 sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/Joomla_3.7.0-Stable-Full_Package/installation/sql/sqlazure/joomla.sql') # Joomla sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/mediawiki/maintenance/mssql/tables.sql') # Mediawiki mssql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/mediawiki/maintenance/tables.sql') # Mediawiki sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/wordpress-6.0/schema.sql') # Wordpress sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/wordpress-3.0/schema.sql') # Wordpress sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/geccBBlite-0.1/geccBBlite/schema.sql') # geccBBlite sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/faqforge-1.3.2/sql/faqforge.sql') # faqforge sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/WebChess_0.9.0/schema.sql') # WebChess sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/mybloggie214/schema.sql') # MyBloggie sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/DVWA/database/create_mssql_db.sql') # DVWA sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/phpBB-2.0.23/phpBB2/install/schemas/mysql_schema.sql') # phpBB2 sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/phpBB-3.0.11/phpBB3/install/schemas/mysql_41_schema.sql') # phpBB3 sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/SchoolMate_v1.5.4/schoolmate/SchoolMate.sql') # SchoolMate sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/zen-cart-v1.5.5/zc_install/sql/install/mysql_zencart.sql') # Zencart sql file 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/WeBid/install/sql/dump.sql')
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/WCF/wcfsetup/setup/db/install.sql') # 
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/woocommerce-3.5.0/tests/e2e-tests/data/e2e-db.sql') # WooCommerce
+sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/php-login-system-2.0.1/assets/setup/DBcreation.sql') # PHP Login System
 
 for sql_file_path in sql_file_paths:
     file_index = sql_file_path.split('/').index('navex_tests')+1

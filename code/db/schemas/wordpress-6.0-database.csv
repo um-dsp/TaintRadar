@@ -129,3 +129,7 @@ items,feed_id,"['TEXT', 'CHARACTER', 'SET', 'NOT NULL']",True
 items,id,"['TEXT', 'CHARACTER', 'SET', 'NOT NULL']",True
 items,data,"['MEDIUMBLOB', 'NOT NULL']",False
 items,posted,"['INT', 'UNSIGNED', 'NOT NULL', 'INDEX', '`feed_id` (`feed_id`(125))']",True
+sitecategories,cat_ID,"['bigint(20)', 'NOT NULL', 'auto_increment']",True
+sitecategories,cat_name,"['varchar(55)', 'NOT NULL', 'default', ""''""]",False
+sitecategories,category_nicename,"['varchar(200)', 'NOT NULL', 'default', ""''""]",False
+sitecategories,last_updated,"['KEY', 'category_nicename (category_nicename)', 'KEY', 'last_updated (last_updated)']",True
