@@ -62,7 +62,8 @@ sql_file_paths = []
 # sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/WeBid/install/sql/dump.sql')
 # sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/WCF/wcfsetup/setup/db/install.sql') # 
 # sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/woocommerce-3.5.0/tests/e2e-tests/data/e2e-db.sql') # WooCommerce
-sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/php-login-system-2.0.1/assets/setup/DBcreation.sql') # PHP Login System
+# sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/php-login-system-2.0.1/assets/setup/DBcreation.sql') # PHP Login System
+sql_file_paths.append(f'/home/{user_path}//navex_project/navex_tests/openemr-6.0.0/sql/database.sql') # PHP Login System
 
 for sql_file_path in sql_file_paths:
     file_index = sql_file_path.split('/').index('navex_tests')+1

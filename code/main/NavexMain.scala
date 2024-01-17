@@ -8,21 +8,6 @@ class NavexMain(val cpg: Cpg) {
 
     var logger: List[String] = List()
 
-    // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
-    val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
-
-    val databaseCalls = getSinkCalls("SQL Injection", "NA", false)
-
-    val insertStatements = Utils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
-    val vulnerableInsert = if (insertStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > 0) insertStatements.filter(Utils.isReachableBy(_, databaseCalls)) else insertStatements
-    // val vulnerableInsert = insertStatements.filter(Utils.isReachableBy(_, databaseCalls))
-    val m1: Map[nodes.Call, List[List[AstNode]]] = (vulnerableInsert zip vulnerableInsert.map(Utils.reachableBySource(_, sources, "SAN_XSS")) ).toMap
-
-
-    val selectStatements = Utils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
-    val vulnerableSelect = if (selectStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > 0) selectStatements.filter(Utils.isReachableBy(_, databaseCalls)) else selectStatements
-    // val vulnerableSelect = selectStatements.filter(Utils.isReachableBy(_, databaseCalls))
-
     def getSinkCalls(vulnerability: String, tagName: String, debug: Boolean = false) = {
         // get all sink function names for the given vulnerability
         val sinkFunctions: List[String] = Utils.getSinks(vulnerability)
@@ -40,17 +25,39 @@ class NavexMain(val cpg: Cpg) {
 
         unsanSinks
     }
+
+    // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
+    val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
+
+    val databaseCalls = getSinkCalls("Stored XSS", Utils.getTagName("XSS"), false)
+
+    val insertStatements = Utils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
+    val vulnerableInsert = if (insertStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > 0) insertStatements.filter(Utils.isReachableBy(_, databaseCalls)) else insertStatements
+    // val vulnerableInsert = insertStatements.filter(Utils.isReachableBy(_, databaseCalls))
+    val dbCallsPerInsert = vulnerableInsert.map(q => databaseCalls.filter(dbcall => Utils.isReachableBy(q, List(dbcall))))
+    val dbCallsToSource = dbCallsPerInsert.map(dbcall => sources.map(s => Utils.getReachingDefs(dbcall.map(List(_)), List(s), "SAN_XSS").reverse).filterNot(_.isEmpty))
+    val m1: Map[AstNode, List[List[AstNode]]] = (vulnerableInsert zip  dbCallsToSource).toMap
+
+
+    val selectStatements = Utils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
+    val vulnerableSelect = if (selectStatements.filter(Utils.isReachableBy(_, databaseCalls)).size > 0) selectStatements.filter(Utils.isReachableBy(_, databaseCalls)) else selectStatements
+    val dbCallsPerSelect = vulnerableSelect.map(q => databaseCalls.filter(dbcall => Utils.isReachableBy(q, List(dbcall))))
+    
+    // val vulnerableSelect = selectStatements.filter(Utils.isReachableBy(_, databaseCalls))
         
     def getPaths(vulnerability: String, debug: Boolean = false) = {
         println(vulnerability)
         val tagName: String = Utils.getTagName(vulnerability)
         val sinks = getSinkCalls(vulnerability, tagName, debug)
         // intra and inter-procedural path from source to sink
-        val paths: List[List[AstNode]] = sinks.map(sink => Utils.getReachingDefs(List(List(sink)), sources, tagName).reverse).filterNot(_.isEmpty)
+        // paths considering every source node separately (one or no path per source node)
+        val paths: List[List[AstNode]] = sinks.flatMap(sink => Utils.reachableBySource(sink, sources, tagName))
+        // paths considering all source nodes together (one or no path per list of sources)
+        // val paths: List[List[AstNode]] = sinks.map(sink => Utils.getReachingDefs(List(List(sink)), sources, tagName).reverse).filterNot(_.isEmpty)
         if (debug) println("Number of paths within CPG: " + paths.size)
         logger ++= List(paths.size.toString)
 
-        val databaseCalls = getSinkCalls("SQL Injection", tagName, false)
+        // val databaseCalls = getSinkCalls("SQL Injection", tagName, false)
         // remove any paths that depend on a database call
         val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(databaseCalls.contains(_)))
         // val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(n => databaseCalls.code.exists(n.code.contains(_))))
@@ -73,9 +80,11 @@ class NavexMain(val cpg: Cpg) {
                 
                 if (vulnerableInsert.size == 0 || vulnerableSelect.size == 0) List()
                 else {
-                    // val m1: Map[nodes.Call, List[List[AstNode]]] = ( vulnerableInsert zip vulnerableInsert.map(Utils.reachableBySource(_, sources, tagName)) ).toMap
-                    val selectToSink = sinks.flatMap(Utils.reachableBySource(_, vulnerableSelect, tagName))
-                    val m2: Map[nodes.Call, List[List[AstNode]]] = ( vulnerableSelect zip vulnerableSelect.map(q => selectToSink.filter(_.head == q)) ).toMap
+                    // val m1: Map[AstNode, List[List[AstNode]]] = ( vulnerableInsert zip vulnerableInsert.map(Utils.reachableBySource(_, sources, tagName)) ).toMap
+                    val dbCallsToSink = dbCallsPerSelect.map(dbcall => sinks.flatMap(s => Utils.reachableBySource(s, dbcall, tagName)))
+
+                    val selectToSink = sinks.flatMap(Utils.reachableBySource(_, dbCallsPerSelect.flatten.dedup.l, tagName))
+                    val m2: Map[AstNode, List[List[AstNode]]] = ( vulnerableSelect zip dbCallsToSink ).toMap
                     
                     val insertCols = vulnerableInsert.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
                     val selectCols = vulnerableSelect.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)

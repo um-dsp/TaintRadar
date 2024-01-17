@@ -14,11 +14,11 @@ SELECT; "SELECT * FROM $table"; NA; ""; ""; false
 INSERT; "INSERT INTO $table $table_list VALUES("; phpbb_banlist; "ban_id, ban_userid, ban_ip, ban_email"; ""; false
 INSERT; "INSERT INTO disallow (disallow_username) VALUES( str_replace(, , $disallowed_user) )"; phpbb_disallow; "disallow_username"; "$disallowed_user"; false
 SELECT; "SELECT * FROM disallow"; phpbb_disallow; "disallow_id, disallow_username"; ""; false
-SELECT; "SELECT f.* FROM forums f, categories c WHERE c.cat_id = f.cat_id $forum_sql ORDER BY c.cat_order ASC, f.forum_order ASC"; phpbb_categories; "f"; "$forum_sql"; false
+SELECT; "SELECT f.* FROM forums f, categories c WHERE c.cat_id = f.cat_id $forum_sql ORDER BY c.cat_order ASC, f.forum_order ASC"; phpbb_categories; "f"; "$forum_sql"; true
 OTHER; "<select name= f >"; NA; ""; ""; true
 UPDATE; "UPDATE forums SET $sql WHERE forum_id = $forum_id"; phpbb_forums; ""; "$sql"; true
 UPDATE; "UPDATE forums SET $sql WHERE forum_id = $forum_id"; phpbb_forums; ""; "$sql"; true
-SELECT; "SELECT f.* FROM forums f, categories c WHERE c.cat_id = f.cat_id $forum_sql ORDER BY c.cat_order ASC, f.forum_order ASC"; phpbb_categories; "f"; "$forum_sql"; false
+SELECT; "SELECT f.* FROM forums f, categories c WHERE c.cat_id = f.cat_id $forum_sql ORDER BY c.cat_order ASC, f.forum_order ASC"; phpbb_categories; "f"; "$forum_sql"; true
 OTHER; "<select name= f >"; NA; ""; ""; true
 SELECT; "SELECT count(*) as total FROM $table"; NA; ""; ""; false
 SELECT; "SELECT * FROM $table WHERE $idfield = $id"; NA; ""; "$idfield, $id"; false
@@ -44,7 +44,7 @@ UPDATE; "UPDATE posts SET forum_id = $to_id WHERE forum_id = $from_id"; phpbb_po
 SELECT; "SELECT ug.user_id FROM auth_access a, user_group ug WHERE a.forum_id <> $from_id AND a.auth_mod = 1 AND ug.group_id = a.group_id"; phpbb_auth_access; "uguserid"; "$from_id"; true
 SELECT; "SELECT ug.user_id FROM auth_access a, user_group ug WHERE a.forum_id = $from_id AND a.auth_mod = 1 AND ug.group_id = a.group_id AND ug.user_id NOT IN ( $user_ids )"; phpbb_auth_access; "uguserid"; "$from_id, $user_ids"; true
 UPDATE; "UPDATE users SET user_level = 0 WHERE user_id IN ( $user_ids ) AND user_level <> 1"; phpbb_users; "user_level"; "0"; true
-SELECT; "SELECT count(*) as total FROM forums"; phpbb_forums; ""; ""; false
+SELECT; "SELECT count(*) as total FROM forums"; phpbb_forums; ""; ""; true
 SELECT; "SELECT * FROM categories WHERE cat_id IN ( $from_id , $to_id )"; phpbb_categories; "cat_id, cat_title, cat_order"; "$from_id, $to_id"; false
 UPDATE; "UPDATE forums SET cat_id = $to_id WHERE cat_id = $from_id"; phpbb_forums; "cat_id"; "$to_id"; true
 UPDATE; "UPDATE forums SET forum_order = forum_order + $move WHERE forum_id = $forum_id"; phpbb_forums; "forum_order"; "$move"; true
@@ -102,8 +102,8 @@ UPDATE; "UPDATE users SET user_level = 1 WHERE user_id = $user_id"; phpbb_users;
 UPDATE; "UPDATE auth_access SET auth_view = 0, auth_read = 0, auth_post = 0, auth_reply = 0, auth_edit = 0, auth_delete = 0, auth_sticky = 0, auth_announce = 0 WHERE group_id = $group_id"; phpbb_auth_access; "auth_view, auth_read, auth_post, auth_reply, auth_edit, auth_delete, auth_sticky, auth_announce"; ""; true
 UPDATE; "UPDATE auth_access SET auth_view = 0, auth_read = 0, auth_post = 0, auth_reply = 0, auth_edit = 0, auth_delete = 0, auth_sticky = 0, auth_announce = 0 WHERE group_id = $group_id"; phpbb_auth_access; "auth_view, auth_read, auth_post, auth_reply, auth_edit, auth_delete, auth_sticky, auth_announce"; ""; true
 UPDATE; "UPDATE users SET user_level = 0 WHERE user_id = $user_id"; phpbb_users; "user_level"; "0"; true
-SELECT; "SELECT f.* FROM forums f, categories c WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order ASC"; phpbb_categories; "f"; ""; false
-SELECT; "SELECT f.* FROM forums f, categories c WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order"; phpbb_categories; "f"; ""; false
+SELECT; "SELECT f.* FROM forums f, categories c WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order ASC"; phpbb_categories; "f"; ""; true
+SELECT; "SELECT f.* FROM forums f, categories c WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order"; phpbb_categories; "f"; ""; true
 SELECT; "SELECT aa.* FROM auth_access aa, user_group ug, groups g WHERE ug.user_id = $user_id AND g.group_id = ug.group_id AND aa.group_id = ug.group_id AND g.group_single_user = TRUE"; phpbb_auth_access; "aa"; "$user_id"; true
 SELECT; "SELECT * FROM auth_access WHERE group_id = $group_id"; phpbb_auth_access; "group_id, forum_id, auth_view, auth_read, auth_post, auth_reply, auth_edit, auth_delete, auth_sticky, auth_announce, auth_vote, auth_pollcreate, auth_attachments, auth_mod"; "$group_id"; true
 INSERT; "INSERT INTO auth_access (forum_id, group_id, $sql_field ) VALUES ( $forum_id , $group_id , $sql_value )"; phpbb_auth_access; "forum_id, group_id, $sql_field"; "$forum_id, $group_id, $sql_value"; true
@@ -117,7 +117,7 @@ UPDATE; "UPDATE users SET user_level = 0 WHERE user_id IN ( $unset_mod )"; phpbb
 SELECT; "SELECT user_id FROM user_group WHERE group_id = $group_id"; phpbb_user_group; "userid"; "$group_id"; true
 SELECT; "SELECT ug.user_id, COUNT(auth_mod) AS is_auth_mod FROM auth_access aa, user_group ug WHERE ug.user_id IN ( implode(, , $group_user) ) AND aa.group_id = ug.group_id AND aa.auth_mod = 1 GROUP BY ug.user_id"; phpbb_auth_access; "uguserid, authmod"; "$group_user"; true
 UPDATE; "UPDATE users SET user_level = 0 WHERE user_id IN ( implode(, , $group_user) ) AND user_level = 2"; phpbb_users; "user_level"; "0"; true
-SELECT; "SELECT f.* FROM forums f, categories c WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order ASC"; phpbb_categories; "f"; ""; false
+SELECT; "SELECT f.* FROM forums f, categories c WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order ASC"; phpbb_categories; "f"; ""; true
 SELECT; "SELECT u.user_id, u.username, u.user_level, g.group_id, g.group_name, g.group_single_user, ug.user_pending FROM users u, groups g, user_group ug WHERE"; phpbb_user_group; "uuserid, uusername, uuserlevel, ggroupid, ggroupname, ggroupsingleuser, uguserpending"; ""; true
 SELECT; "SELECT aa.*, g.group_single_user FROM auth_access aa, user_group ug, groups g WHERE ug.user_id = $user_id AND g.group_id = ug.group_id AND aa.group_id = ug.group_id AND g.group_single_user = 1"; phpbb_auth_access; "aa, ggroupsingleuser"; "$user_id"; true
 SELECT; "SELECT * FROM auth_access WHERE group_id = $group_id"; phpbb_auth_access; "group_id, forum_id, auth_view, auth_read, auth_post, auth_reply, auth_edit, auth_delete, auth_sticky, auth_announce, auth_vote, auth_pollcreate, auth_attachments, auth_mod"; "$group_id"; true
@@ -273,7 +273,7 @@ SELECT; "SELECT t.topic_id FROM posts p, topics t WHERE t.forum_id = $forum_id $
 SELECT; "SELECT post_id FROM posts WHERE forum_id = $forum_id AND topic_id IN ( $sql_topics )"; phpbb_posts; "postid"; "$forum_id, $sql_topics"; true
 SELECT; "SELECT * FROM forum_prune WHERE forum_id = $forum_id"; phpbb_forum_prune; "prune_id, forum_id, prune_days, prune_freq"; "$forum_id"; true
 UPDATE; "UPDATE forums SET prune_next = $next_prune WHERE forum_id = $forum_id"; phpbb_forums; "prune_next"; "$next_prune"; true
-SELECT; "SELECT u.* FROM users u, sessions_keys k WHERE u.user_id = (int) $user_id AND u.user_active = 1 AND k.user_id = u.user_id AND k.key_id = md5($sessiondata[autologinid])"; phpbb_sessions_keys; "u"; "$user_id, md5($sessiondata["autologinid"])"; false
+SELECT; "SELECT u.* FROM users u, sessions_keys k WHERE u.user_id = (int) $user_id AND u.user_active = 1 AND k.user_id = u.user_id AND k.key_id = md5($sessiondata[autologinid])"; phpbb_sessions_keys; "u"; "$user_id, md5($sessiondata["autologinid"])"; true
 SELECT; "SELECT * FROM users WHERE user_id = (int) $user_id AND user_active = 1"; phpbb_users; "user_id, user_active, username, user_password, user_session_time, user_session_page, user_lastvisit, user_regdate, user_level, user_posts, user_timezone, user_style, user_lang, user_dateformat, user_new_privmsg, user_unread_privmsg, user_last_privmsg, user_login_tries, user_last_login_try, user_emailtime, user_viewemail, user_attachsig, user_allowhtml, user_allowbbcode, user_allowsmile, user_allowavatar, user_allow_pm, user_allow_viewonline, user_notify, user_notify_pm, user_popup_pm, user_rank, user_avatar, user_avatar_type, user_email, user_icq, user_website, user_from, user_sig, user_sig_bbcode_uid, user_aim, user_yim, user_msnm, user_occ, user_interests, user_actkey, user_newpasswd"; "$user_id"; false
 SELECT; "SELECT * FROM users WHERE user_id = (int) $user_id"; phpbb_users; "user_id, user_active, username, user_password, user_session_time, user_session_page, user_lastvisit, user_regdate, user_level, user_posts, user_timezone, user_style, user_lang, user_dateformat, user_new_privmsg, user_unread_privmsg, user_last_privmsg, user_login_tries, user_last_login_try, user_emailtime, user_viewemail, user_attachsig, user_allowhtml, user_allowbbcode, user_allowsmile, user_allowavatar, user_allow_pm, user_allow_viewonline, user_notify, user_notify_pm, user_popup_pm, user_rank, user_avatar, user_avatar_type, user_email, user_icq, user_website, user_from, user_sig, user_sig_bbcode_uid, user_aim, user_yim, user_msnm, user_occ, user_interests, user_actkey, user_newpasswd"; "$user_id"; false
 SELECT; "SELECT ban_ip, ban_userid, ban_email FROM banlist WHERE ban_ip IN ( $user_ip_parts[1] $user_ip_parts[2] $user_ip_parts[3] $user_ip_parts[4] , $user_ip_parts[1] $user_ip_parts[2] $user_ip_parts[3] ff, $user_ip_parts[1] $user_ip_parts[2] ffff, $user_ip_parts[1] ffffff) OR ban_userid = $user_id"; phpbb_banlist; "banip, banuserid, banemail"; "$user_ip_parts[1], $user_id"; false
@@ -282,7 +282,7 @@ INSERT; "INSERT INTO sessions (session_id, session_user_id, session_start, sessi
 UPDATE; "UPDATE users SET user_session_time = $current_time , user_session_page = $page_id , user_lastvisit = $last_visit WHERE user_id = $user_id"; phpbb_users; "user_session_time, user_session_page, user_lastvisit"; "$current_time, $page_id, $last_visit"; true
 UPDATE; "UPDATE sessions_keys SET last_ip = $user_ip , key_id = md5($auto_login_key) , last_login = $current_time WHERE key_id = md5($sessiondata[autologinid])"; phpbb_sessions_keys; "last_ip, key_id, last_login"; "$user_ip, md5($auto_login_key), $current_time"; false
 INSERT; "INSERT INTO sessions_keys (key_id, user_id, last_ip, last_login) VALUES ( md5($auto_login_key) , $user_id , $user_ip , $current_time )"; phpbb_sessions_keys; "key_id, user_id, last_ip, last_login"; "md5($auto_login_key), $user_id, $current_time"; false
-SELECT; "SELECT u.*, s.* FROM sessions s, users u WHERE s.session_id = $session_id AND u.user_id = s.session_user_id"; phpbb_sessions; "u, s"; "$session_id"; false
+SELECT; "SELECT u.*, s.* FROM sessions s, users u WHERE s.session_id = $session_id AND u.user_id = s.session_user_id"; phpbb_sessions; "u, s"; "$session_id"; true
 UPDATE; "UPDATE sessions SET session_time = $current_time , session_page = $thispage_id $update_admin WHERE session_id = $userdata[session_id]"; phpbb_sessions; "session_time, session_page"; "$current_time, $thispage_id, $update_admin"; true
 UPDATE; "UPDATE users SET user_session_time = $current_time , user_session_page = $thispage_id WHERE user_id = $userdata[user_id]"; phpbb_users; "user_session_time, user_session_page"; "$current_time, $thispage_id"; true
 SELECT; "SELECT * FROM users WHERE user_id = 1"; phpbb_users; "user_id, user_active, username, user_password, user_session_time, user_session_page, user_lastvisit, user_regdate, user_level, user_posts, user_timezone, user_style, user_lang, user_dateformat, user_new_privmsg, user_unread_privmsg, user_last_privmsg, user_login_tries, user_last_login_try, user_emailtime, user_viewemail, user_attachsig, user_allowhtml, user_allowbbcode, user_allowsmile, user_allowavatar, user_allow_pm, user_allow_viewonline, user_notify, user_notify_pm, user_popup_pm, user_rank, user_avatar, user_avatar_type, user_email, user_icq, user_website, user_from, user_sig, user_sig_bbcode_uid, user_aim, user_yim, user_msnm, user_occ, user_interests, user_actkey, user_newpasswd"; "1"; false
@@ -312,9 +312,9 @@ SELECT; "SELECT user_id, username, user_email, user_active, user_lang FROM users
 UPDATE; "UPDATE users SET user_newpasswd = md5($user_password) , user_actkey = $user_actkey WHERE user_id = $row[user_id]"; phpbb_users; "user_newpasswd, user_actkey"; "md5($user_password), $user_actkey"; false
 SELECT; "SELECT * FROM ranks ORDER BY rank_special, rank_min"; phpbb_ranks; "rank_id, rank_title, rank_min, rank_special, rank_image"; ""; false
 SELECT; "SELECT c.cat_id, c.cat_title, c.cat_order FROM categories c ORDER BY c.cat_order"; phpbb_categories; "ccatid, ccattitle, ccatorder"; ""; false
-SELECT; "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id FROM forums f, posts p, users u WHERE p.post_id = f.forum_last_post_id AND u.user_id = p.poster_id UNION ( SELECT f.*, NULL, NULL, NULL, NULL FROM forums f WHERE NOT EXISTS ( SELECT p.post_time FROM posts p WHERE p.post_id = f.forum_last_post_id ) ) ORDER BY cat_id, forum_order"; phpbb_forums; "f, pposttime, ppostusername, uusername, uuserid"; ""; false
-SELECT; "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id FROM forums f, posts p, users u WHERE p.post_id = f.forum_last_post_id(+) AND u.user_id = p.poster_id(+) ORDER BY f.cat_id, f.forum_order"; phpbb_forums; "f, pposttime, ppostusername, uusername, uuserid"; ""; false
-SELECT; "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id FROM (( forums f LEFT JOIN posts p ON p.post_id = f.forum_last_post_id ) LEFT JOIN users u ON u.user_id = p.poster_id ) ORDER BY f.cat_id, f.forum_order"; phpbb_forums; "f, pposttime, ppostusername, uusername, uuserid"; ""; false
+SELECT; "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id FROM forums f, posts p, users u WHERE p.post_id = f.forum_last_post_id AND u.user_id = p.poster_id UNION ( SELECT f.*, NULL, NULL, NULL, NULL FROM forums f WHERE NOT EXISTS ( SELECT p.post_time FROM posts p WHERE p.post_id = f.forum_last_post_id ) ) ORDER BY cat_id, forum_order"; phpbb_forums; "f, pposttime, ppostusername, uusername, uuserid"; ""; true
+SELECT; "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id FROM forums f, posts p, users u WHERE p.post_id = f.forum_last_post_id(+) AND u.user_id = p.poster_id(+) ORDER BY f.cat_id, f.forum_order"; phpbb_forums; "f, pposttime, ppostusername, uusername, uuserid"; ""; true
+SELECT; "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id FROM (( forums f LEFT JOIN posts p ON p.post_id = f.forum_last_post_id ) LEFT JOIN users u ON u.user_id = p.poster_id ) ORDER BY f.cat_id, f.forum_order"; phpbb_forums; "f, pposttime, ppostusername, uusername, uuserid"; ""; true
 SELECT; "SELECT t.forum_id, t.topic_id, p.post_time FROM topics t, posts p WHERE p.post_id = t.topic_last_post_id AND p.post_time > $userdata[user_lastvisit] AND t.topic_moved_id = 0"; phpbb_topics; "tforumid, ttopicid, pposttime"; "$userdata["user_lastvisit"]"; true
 SELECT; "SELECT aa.forum_id, u.user_id, u.username FROM auth_access aa, user_group ug, groups g, users u WHERE aa.auth_mod = TRUE AND g.group_single_user = 1 AND ug.group_id = aa.group_id AND g.group_id = aa.group_id AND u.user_id = ug.user_id GROUP BY u.user_id, u.username, aa.forum_id ORDER BY aa.forum_id, u.user_id"; phpbb_auth_access; "aaforumid, uuserid, uusername"; ""; true
 SELECT; "SELECT aa.forum_id, g.group_id, g.group_name FROM auth_access aa, user_group ug, groups g WHERE aa.auth_mod = TRUE AND g.group_single_user = 0 AND g.group_type <> 2 AND ug.group_id = aa.group_id AND g.group_id = aa.group_id GROUP BY g.group_id, g.group_name, aa.forum_id ORDER BY aa.forum_id, g.group_id"; phpbb_auth_access; "aaforumid, ggroupid, ggroupname"; "2"; true
@@ -374,7 +374,7 @@ UPDATE; "UPDATE $table SET $field = encode_ip($row[$field]) WHERE $field_id = $r
 UPDATE; "UPDATE $table SET $fields[$i] = UNIX_TIMESTAMP( $fields[$i] )"; NA; ""; "$fields[$i]"; false
 UPDATE; "UPDATE $table SET $field = REPLACE( $field , addslashes($search) , addslashes($replace) )"; NA; ""; "$field, addslashes($search), addslashes($replace)"; false
 SELECT; "SELECT p.post_id FROM posts p LEFT JOIN topics t ON p.topic_id = t.topic_id WHERE t.topic_id IS NULL"; phpbb_topics; "ppostid"; ""; true
-SELECT; "SELECT COUNT(*) AS total, MAX(user_id) AS maxid FROM users"; phpbb_users; ", total, userid"; ""; false
+SELECT; "SELECT COUNT(*) AS total, MAX(user_id) AS maxid FROM users"; phpbb_users; ", total, userid"; ""; true
 SELECT; "SELECT * FROM users WHERE user_id BETWEEN $batchstart AND $batchend"; phpbb_users; "user_id, user_active, username, user_password, user_session_time, user_session_page, user_lastvisit, user_regdate, user_level, user_posts, user_timezone, user_style, user_lang, user_dateformat, user_new_privmsg, user_unread_privmsg, user_last_privmsg, user_login_tries, user_last_login_try, user_emailtime, user_viewemail, user_attachsig, user_allowhtml, user_allowbbcode, user_allowsmile, user_allowavatar, user_allow_pm, user_allow_viewonline, user_notify, user_notify_pm, user_popup_pm, user_rank, user_avatar, user_avatar_type, user_email, user_icq, user_website, user_from, user_sig, user_sig_bbcode_uid, user_aim, user_yim, user_msnm, user_occ, user_interests, user_actkey, user_newpasswd"; "$batchstart, $batchend"; false
 INSERT; "INSERT INTO groups (group_name, group_description, group_single_user) VALUES ( addslashes($row[username]) , Personal User, 1)"; phpbb_groups; "group_name, group_description, group_single_user"; "addslashes($row["username"])"; false
 INSERT; "INSERT INTO user_group (group_id, user_id, user_pending) VALUES ( $group_id , $row[user_id] , 0)"; phpbb_user_group; "group_id, user_id, user_pending"; "$group_id, $row["user_id"]"; true
@@ -384,13 +384,13 @@ INSERT; "INSERT INTO groups (group_type, group_name, group_description, group_mo
 SELECT; "SELECT forum_id FROM forums"; phpbb_forums; "forumid"; ""; true
 INSERT; "INSERT INTO auth_access (group_id, forum_id, auth_mod) VALUES ( $group_id , $row[forum_id] , 1)"; phpbb_auth_access; "group_id, forum_id, auth_mod"; "$group_id, $row["forum_id"]"; true
 INSERT; "INSERT INTO user_group (group_id, user_id, user_pending) VALUES ( $group_id , $super_mods[$i] , 0)"; phpbb_user_group; "group_id, user_id, user_pending"; "$group_id, $super_mods[$i]"; true
-SELECT; "SELECT COUNT(*) as total, MAX(post_id) as maxid FROM posts_text"; phpbb_posts_text; ", total, postid"; ""; false
+SELECT; "SELECT COUNT(*) as total, MAX(post_id) as maxid FROM posts_text"; phpbb_posts_text; ", total, postid"; ""; true
 SELECT; "SELECT * FROM posts_text WHERE post_id BETWEEN $batchstart AND $batchend"; phpbb_posts_text; "post_id, bbcode_uid, post_subject, post_text"; "$batchstart, $batchend"; false
 UPDATE; "UPDATE posts_text SET post_text = $checksig , bbcode_uid = $uid WHERE post_id = $row[post_id]"; phpbb_posts_text; "post_text, bbcode_uid"; "$checksig, $uid"; false
 UPDATE; "UPDATE posts SET enable_sig = $enable_sig $edited_sql WHERE post_id = $row[post_id]"; phpbb_posts; "enable_sig"; "$enable_sig, $edited_sql"; true
 SELECT; "SELECT DISTINCT p.post_id FROM posts p LEFT JOIN users u ON p.poster_id = u.user_id WHERE u.user_id IS NULL"; phpbb_posts; "distinct, ppostid"; ""; true
 UPDATE; "UPDATE posts SET poster_id = 1 , enable_sig = 0 WHERE post_id IN ( implode(, , $post_id_ary) )"; phpbb_posts; "poster_id, enable_sig"; "1"; true
-SELECT; "SELECT COUNT(*) as total, max(msg_id) as maxid FROM privmsgs"; phpbb_privmsgs; ", total, msgid"; ""; false
+SELECT; "SELECT COUNT(*) as total, max(msg_id) as maxid FROM privmsgs"; phpbb_privmsgs; ", total, msgid"; ""; true
 SELECT; "SELECT * FROM privmsgs WHERE msg_id BETWEEN $batchstart AND $batchend"; phpbb_privmsgs; "privmsgs_id, privmsgs_type, privmsgs_subject, privmsgs_from_userid, privmsgs_to_userid, privmsgs_date, privmsgs_ip, privmsgs_enable_bbcode, privmsgs_enable_html, privmsgs_enable_smilies, privmsgs_attach_sig"; "$batchstart, $batchend"; false
 INSERT; "INSERT INTO privmsgs_text (privmsgs_text_id, privmsgs_bbcode_uid, privmsgs_text) VALUES ( $row[msg_id] , $uid , $row[msg_text] )"; phpbb_privmsgs_text; "privmsgs_text_id, privmsgs_bbcode_uid, privmsgs_text"; "$row["msg_id"], $uid, $row["msg_text"]"; false
 UPDATE; "UPDATE privmsgs SET msg_text = NULL, msg_status = $row[msg_status] , privmsgs_subject = $subject , privmsgs_attach_sig = $enable_sig WHERE msg_id = $row[msg_id]"; phpbb_privmsgs; "privmsgs_type, privmsgs_attach_sig, privmsgs_subject"; ""msg_status", $row["msg_status"], $subject, $enable_sig"; false
@@ -419,14 +419,14 @@ UPDATE; "UPDATE $table_prefix config SET config_value = $server_name WHERE confi
 UPDATE; "UPDATE $table_prefix config SET config_value = $server_port WHERE config_name = server_port"; phpbb_config; "config_value"; "$server_port"; false
 UPDATE; "UPDATE $table_prefix config SET config_value = $board_email WHERE config_name = board_email"; phpbb_config; "config_value"; "$board_email"; false
 UPDATE; "UPDATE $table_prefix config SET config_value = $script_path WHERE config_name = script_path"; phpbb_config; "config_value"; "$script_path"; false
-SELECT; "SELECT COUNT(*) as total, MAX(post_id) as max_post_id FROM posts_text"; phpbb_posts_text; ", total, postid"; ""; false
+SELECT; "SELECT COUNT(*) as total, MAX(post_id) as max_post_id FROM posts_text"; phpbb_posts_text; ", total, postid"; ""; true
 SELECT; "SELECT * FROM posts_text WHERE post_id BETWEEN $batchstart AND $batchend"; phpbb_posts_text; "post_id, bbcode_uid, post_subject, post_text"; "$batchstart, $batchend"; false
 SELECT; "SELECT user_id, username, user_password, user_active, user_level, user_login_tries, user_last_login_try FROM users WHERE username = str_replace(, , $username)"; phpbb_users; "userid, username, userpassword, useractive, userlevel, userlogintries, userlastlogintry"; "$username"; false
 UPDATE; "UPDATE users SET user_login_tries = 0, user_last_login_try = 0 WHERE user_id = $row[user_id]"; phpbb_users; "user_login_tries, user_last_login_try"; ""; true
 UPDATE; "UPDATE users SET user_login_tries = 0, user_last_login_try = 0 WHERE user_id = $row[user_id]"; phpbb_users; "user_login_tries, user_last_login_try"; ""; true
 UPDATE; "UPDATE users SET user_login_tries = user_login_tries + 1, user_last_login_try = time() WHERE user_id = $row[user_id]"; phpbb_users; "user_login_tries, user_last_login_try"; "time()"; true
 SELECT; "SELECT username, user_id, user_viewemail, user_posts, user_regdate, user_from, user_website, user_email, user_icq, user_aim, user_yim, user_msnm, user_avatar, user_avatar_type, user_allowavatar FROM users WHERE user_id <> 1 ORDER BY $order_by"; phpbb_users; "username, userid, userviewemail, userposts, userregdate, userfrom, userwebsite, useremail, usericq, useraim, useryim, usermsnm, useravatar, useravatartype, userallowavatar"; "1, $order_by"; false
-SELECT; "SELECT count(*) AS total FROM users WHERE user_id <> 1"; phpbb_users; ""; "1"; false
+SELECT; "SELECT count(*) AS total FROM users WHERE user_id <> 1"; phpbb_users; ""; "1"; true
 SELECT; "SELECT f.forum_id, f.forum_name, f.forum_topics FROM topics t, forums f WHERE t.topic_id = $topic_id AND f.forum_id = t.forum_id"; phpbb_topics; "fforumid, fforumname, fforumtopics"; "$topic_id"; true
 SELECT; "SELECT forum_name, forum_topics FROM forums WHERE forum_id = $forum_id"; phpbb_forums; "forumname, forumtopics"; "$forum_id"; false
 SELECT; "SELECT topic_id FROM topics WHERE topic_id IN ( $topic_id_sql ) AND forum_id = $forum_id"; phpbb_topics; "topicid"; "$topic_id_sql, $forum_id"; true
@@ -450,11 +450,11 @@ UPDATE; "UPDATE posts SET topic_id = $new_topic_id , forum_id = $new_forum_id WH
 SELECT; "SELECT u.username, p.*, pt.post_text, pt.bbcode_uid, pt.post_subject, p.post_username FROM posts p, users u, posts_text pt WHERE p.topic_id = $topic_id AND p.poster_id = u.user_id AND p.post_id = pt.post_id ORDER BY p.post_time ASC"; phpbb_posts_text; "uusername, p, ptposttext, ptbbcodeuid, ptpostsubject, ppostusername"; "$topic_id"; false
 SELECT; "SELECT poster_ip, poster_id FROM posts WHERE post_id = $post_id AND forum_id = $forum_id"; phpbb_posts; "posterip, posterid"; "$post_id, $forum_id"; false
 SELECT; "SELECT poster_ip, COUNT(*) AS postings FROM posts WHERE poster_id = $poster_id GROUP BY poster_ip ORDER BY SQL_LAYER == msaccess ? COUNT(*) : postings DESC"; phpbb_posts; "posterip, "; "$poster_id"; false
-SELECT; "SELECT u.user_id, u.username, COUNT(*) as postings FROM users u, posts p WHERE p.poster_id = u.user_id AND p.poster_ip = $post_row[poster_ip] GROUP BY u.user_id, u.username ORDER BY SQL_LAYER == msaccess ? COUNT(*) : postings DESC"; phpbb_posts; "uuserid, uusername, "; "$post_row["poster_ip"]"; false
-SELECT; "SELECT t.*, u.username, u.user_id, p.post_time FROM topics t, users u, posts p WHERE t.forum_id = $forum_id AND t.topic_poster = u.user_id AND p.post_id = t.topic_last_post_id ORDER BY t.topic_type DESC, p.post_time DESC LIMIT $start , $board_config[topics_per_page]"; phpbb_topics; "t, uusername, uuserid, pposttime"; "$forum_id, $start, $board_config["topics_per_page"]"; false
+SELECT; "SELECT u.user_id, u.username, COUNT(*) as postings FROM users u, posts p WHERE p.poster_id = u.user_id AND p.poster_ip = $post_row[poster_ip] GROUP BY u.user_id, u.username ORDER BY SQL_LAYER == msaccess ? COUNT(*) : postings DESC"; phpbb_posts; "uuserid, uusername, "; "$post_row["poster_ip"]"; true
+SELECT; "SELECT t.*, u.username, u.user_id, p.post_time FROM topics t, users u, posts p WHERE t.forum_id = $forum_id AND t.topic_poster = u.user_id AND p.post_id = t.topic_last_post_id ORDER BY t.topic_type DESC, p.post_time DESC LIMIT $start , $board_config[topics_per_page]"; phpbb_topics; "t, uusername, uuserid, pposttime"; "$forum_id, $start, $board_config["topics_per_page"]"; true
 SELECT; "SELECT * FROM forums WHERE forum_id = $forum_id"; phpbb_forums; "forum_id, cat_id, forum_name, forum_desc, forum_status, forum_order, forum_posts, forum_topics, forum_last_post_id, prune_next, prune_enable, auth_view, auth_read, auth_post, auth_reply, auth_edit, auth_delete, auth_sticky, auth_announce, auth_vote, auth_pollcreate, auth_attachments"; "$forum_id"; false
 SELECT; "SELECT f.*, t.topic_status, t.topic_title, t.topic_type FROM forums f, topics t WHERE t.topic_id = $topic_id AND f.forum_id = t.forum_id"; phpbb_topics; "f, ttopicstatus, ttopictitle, ttopictype"; "$topic_id"; false
-SELECT; "SELECT f.*, t.topic_id, t.topic_status, t.topic_type, t.topic_first_post_id, t.topic_last_post_id, t.topic_vote, p.post_id, p.poster_id $select_sql FROM posts p, topics t, forums f $from_sql WHERE p.post_id = $post_id AND t.topic_id = p.topic_id AND f.forum_id = p.forum_id $where_sql"; phpbb_topics; "f, ttopicid, ttopicstatus, ttopictype, ttopicfirstpostid, ttopiclastpostid, ttopicvote, ppostid, pposterid, selectsql"; "$post_id, $where_sql"; false
+SELECT; "SELECT f.*, t.topic_id, t.topic_status, t.topic_type, t.topic_first_post_id, t.topic_last_post_id, t.topic_vote, p.post_id, p.poster_id $select_sql FROM posts p, topics t, forums f $from_sql WHERE p.post_id = $post_id AND t.topic_id = p.topic_id AND f.forum_id = p.forum_id $where_sql"; phpbb_topics; "f, ttopicid, ttopicstatus, ttopictype, ttopicfirstpostid, ttopiclastpostid, ttopicvote, ppostid, pposterid, selectsql"; "$post_id, $where_sql"; true
 SELECT; "SELECT * FROM vote_desc vd, vote_results vr WHERE vd.topic_id = $topic_id AND vr.vote_id = vd.vote_id ORDER BY vr.vote_option_id"; phpbb_vote_results; "vote_id, vote_option_id, vote_option_text, vote_result"; "$topic_id"; false
 SELECT; "SELECT topic_id FROM topics_watch WHERE topic_id = $topic_id AND user_id = $userdata[user_id]"; phpbb_topics_watch; "topicid"; "$topic_id, $userdata["user_id"]"; true
 SELECT; "SELECT vd.vote_id FROM vote_desc vd, vote_results vr WHERE vd.topic_id = $topic_id AND vr.vote_id = vd.vote_id AND vr.vote_option_id = $vote_option_id GROUP BY vd.vote_id"; phpbb_vote_results; "vdvoteid"; "$topic_id, $vote_option_id"; true
@@ -508,15 +508,15 @@ UPDATE; "UPDATE search_results SET search_id = $search_id , search_time = $curre
 INSERT; "INSERT INTO search_results (search_id, session_id, search_time, search_array) VALUES( $search_id , $userdata[session_id] , $current_time , str_replace(, , $result_array) )"; phpbb_search_results; "search_id, session_id, search_time, search_array"; "$search_id, $userdata["session_id"], $current_time, $result_array"; false
 SELECT; "SELECT search_array FROM search_results WHERE search_id = $search_id AND session_id = $userdata[session_id]"; phpbb_search_results; "searcharray"; "$search_id, "session_id", $userdata["session_id"]"; false
 SELECT; "SELECT pt.post_text, pt.bbcode_uid, pt.post_subject, p.*, f.forum_id, f.forum_name, t.*, u.username, u.user_id, u.user_sig, u.user_sig_bbcode_uid FROM forums f, topics t, users u, posts p, posts_text pt WHERE p.post_id IN ( $search_results ) AND pt.post_id = p.post_id AND f.forum_id = p.forum_id AND p.topic_id = t.topic_id AND p.poster_id = u.user_id"; phpbb_posts_text; "ptposttext, ptbbcodeuid, ptpostsubject, p, fforumid, fforumname, t, uusername, uuserid, uusersig, uusersigbbcodeuid"; "$search_results"; false
-SELECT; "SELECT t.*, f.forum_id, f.forum_name, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_username, p2.post_username AS post_username2, p2.post_time FROM topics t, forums f, users u, posts p, posts p2, users u2 WHERE t.topic_id IN ( $search_results ) AND t.topic_poster = u.user_id AND f.forum_id = t.forum_id AND p.post_id = t.topic_first_post_id AND p2.post_id = t.topic_last_post_id AND u2.user_id = p2.poster_id"; phpbb_topics; "t, fforumid, fforumname, uusername, uuserid, u2username, user2, u2userid, id2, ppostusername, p2postusername, postusername2, p2posttime"; "$search_results"; false
+SELECT; "SELECT t.*, f.forum_id, f.forum_name, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_username, p2.post_username AS post_username2, p2.post_time FROM topics t, forums f, users u, posts p, posts p2, users u2 WHERE t.topic_id IN ( $search_results ) AND t.topic_poster = u.user_id AND f.forum_id = t.forum_id AND p.post_id = t.topic_first_post_id AND p2.post_id = t.topic_last_post_id AND u2.user_id = p2.poster_id"; phpbb_topics; "t, fforumid, fforumname, uusername, uuserid, u2username, user2, u2userid, id2, ppostusername, p2postusername, postusername2, p2posttime"; "$search_results"; true
 SELECT; "SELECT c.cat_title, c.cat_id, f.forum_name, f.forum_id FROM categories c, forums f WHERE f.cat_id = c.cat_id ORDER BY c.cat_order, f.forum_order"; phpbb_categories; "ccattitle, ccatid, fforumname, fforumid"; ""; false
 SELECT; "SELECT * FROM forums WHERE forum_id = $forum_id"; phpbb_forums; "forum_id, cat_id, forum_name, forum_desc, forum_status, forum_order, forum_posts, forum_topics, forum_last_post_id, prune_next, prune_enable, auth_view, auth_read, auth_post, auth_reply, auth_edit, auth_delete, auth_sticky, auth_announce, auth_vote, auth_pollcreate, auth_attachments"; "$forum_id"; false
 SELECT; "SELECT MAX(post_time) AS last_post FROM posts WHERE forum_id = $forum_id"; phpbb_posts; "posttime"; "$forum_id"; true
 SELECT; "SELECT u.user_id, u.username FROM auth_access aa, user_group ug, groups g, users u WHERE aa.forum_id = $forum_id AND aa.auth_mod = TRUE AND g.group_single_user = 1 AND ug.group_id = aa.group_id AND g.group_id = aa.group_id AND u.user_id = ug.user_id GROUP BY u.user_id, u.username ORDER BY u.user_id"; phpbb_auth_access; "uuserid, uusername"; "$forum_id"; true
 SELECT; "SELECT g.group_id, g.group_name FROM auth_access aa, user_group ug, groups g WHERE aa.forum_id = $forum_id AND aa.auth_mod = TRUE AND g.group_single_user = 0 AND g.group_type <> 2 AND ug.group_id = aa.group_id AND g.group_id = aa.group_id GROUP BY g.group_id, g.group_name ORDER BY g.group_id"; phpbb_auth_access; "ggroupid, ggroupname"; "$forum_id, 2"; true
 SELECT; "SELECT COUNT(t.topic_id) AS forum_topics FROM topics t, posts p WHERE t.forum_id = $forum_id AND p.post_id = t.topic_last_post_id AND p.post_time >= $min_topic_time"; phpbb_topics; "ttopicid"; "$forum_id, $min_topic_time"; true
-SELECT; "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_time, p.post_username FROM topics t, users u, posts p, users u2 WHERE t.forum_id = $forum_id AND t.topic_poster = u.user_id AND p.post_id = t.topic_last_post_id AND p.poster_id = u2.user_id AND t.topic_type = 2 ORDER BY t.topic_last_post_id DESC"; phpbb_topics; "t, uusername, uuserid, u2username, user2, u2userid, id2, pposttime, ppostusername"; "$forum_id, 2"; false
-SELECT; "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_username, p2.post_username AS post_username2, p2.post_time FROM topics t, users u, posts p, posts p2, users u2 WHERE t.forum_id = $forum_id AND t.topic_poster = u.user_id AND p.post_id = t.topic_first_post_id AND p2.post_id = t.topic_last_post_id AND u2.user_id = p2.poster_id AND t.topic_type <> 2 $limit_topics_time ORDER BY t.topic_type DESC, t.topic_last_post_id DESC LIMIT $start , $board_config[topics_per_page]"; phpbb_topics; "t, uusername, uuserid, u2username, user2, u2userid, id2, ppostusername, p2postusername, postusername2, p2posttime"; "$forum_id, 2, $limit_topics_time, $start, $board_config["topics_per_page"]"; false
+SELECT; "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_time, p.post_username FROM topics t, users u, posts p, users u2 WHERE t.forum_id = $forum_id AND t.topic_poster = u.user_id AND p.post_id = t.topic_last_post_id AND p.poster_id = u2.user_id AND t.topic_type = 2 ORDER BY t.topic_last_post_id DESC"; phpbb_topics; "t, uusername, uuserid, u2username, user2, u2userid, id2, pposttime, ppostusername"; "$forum_id, 2"; true
+SELECT; "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_username, p2.post_username AS post_username2, p2.post_time FROM topics t, users u, posts p, posts p2, users u2 WHERE t.forum_id = $forum_id AND t.topic_poster = u.user_id AND p.post_id = t.topic_first_post_id AND p2.post_id = t.topic_last_post_id AND u2.user_id = p2.poster_id AND t.topic_type <> 2 $limit_topics_time ORDER BY t.topic_type DESC, t.topic_last_post_id DESC LIMIT $start , $board_config[topics_per_page]"; phpbb_topics; "t, uusername, uuserid, u2username, user2, u2userid, id2, ppostusername, p2postusername, postusername2, p2posttime"; "$forum_id, 2, $limit_topics_time, $start, $board_config["topics_per_page"]"; true
 SELECT; "SELECT forum_name, forum_id FROM forums"; phpbb_forums; "forumname, forumid"; ""; false
 SELECT; "SELECT u.user_id, u.username, u.user_allow_viewonline, u.user_level, s.session_logged_in, s.session_time, s.session_page, s.session_ip FROM users u, sessions s WHERE u.user_id = s.session_user_id AND s.session_time >= time() - 300 ORDER BY u.username ASC, s.session_ip ASC"; phpbb_sessions; "uuserid, uusername, uuserallowviewonline, uuserlevel, ssessionloggedin, ssessiontime, ssessionpage, ssessionip"; "time(), 300"; false
 SELECT; "SELECT p.post_id FROM posts p, sessions s, users u WHERE s.session_id = $session_id AND u.user_id = s.session_user_id AND p.topic_id = $topic_id AND p.post_time >= u.user_lastvisit ORDER BY p.post_time ASC LIMIT 1"; phpbb_sessions; "ppostid"; "$session_id, $topic_id"; true
@@ -531,3 +531,49 @@ SELECT; "SELECT * FROM ranks ORDER BY rank_special, rank_min"; phpbb_ranks; "ran
 SELECT; "SELECT vd.vote_id, vd.vote_text, vd.vote_start, vd.vote_length, vr.vote_option_id, vr.vote_option_text, vr.vote_result FROM vote_desc vd, vote_results vr WHERE vd.topic_id = $topic_id AND vr.vote_id = vd.vote_id ORDER BY vr.vote_option_id ASC"; phpbb_vote_results; "vdvoteid, vdvotetext, vdvotestart, vdvotelength, vrvoteoptionid, vrvoteoptiontext, vrvoteresult"; "$topic_id"; false
 SELECT; "SELECT vote_id FROM vote_voters WHERE vote_id = $vote_id AND vote_user_id = intval($userdata[user_id])"; phpbb_vote_voters; "voteid"; "$vote_id, intval($userdata["user_id"])"; true
 UPDATE; "UPDATE topics SET topic_views = topic_views + 1 WHERE topic_id = $topic_id"; phpbb_topics; "topic_views"; ""; true
+SELECT; "SELECT relname FROM pg_class WHERE NOT relname ~ pg_.* AND relkind = S ORDER BY relname"; phpbb_smilies; "relname"; ""; true
+OTHER; "<select name=disallowed_id>"; NA; ""; ""; true
+OTHER; "<select name=simpleauth>"; NA; ""; ""; true
+OTHER; "<select name=to_id>"; NA; ""; ""; true
+OTHER; "<select name=to_id>"; NA; ""; ""; true
+OTHER; "<select name=template_name>"; NA; ""; ""; true
+OTHER; "<select name=export_template>"; NA; ""; ""; true
+SELECT; "SELECT VERSION() AS mysql_version"; NA; ""; ""; false
+SELECT; "SELECT ((SUM(size) * 8.0) * 1024.0) as dbsize FROM sysfiles"; phpbb_smilies; "smilies_id, code, smile_url, emoticon"; ""; false
+SELECT; "SELECT relname FROM pg_class WHERE relkind = r AND relname NOT LIKE pg_%"; phpbb_smilies; "relname"; ""; true
+SELECT; "SELECT @@IDENTITY"; NA; "identity"; ""; false
+SELECT; "SELECT @@IDENTITY"; NA; "identity"; ""; false
+SELECT; "SELECT @@IDENTITY AS id, @@ROWCOUNT as affected"; NA; "identity, id, rowcount"; ""; false
+SELECT; "SELECT @@ROWCOUNT as affected"; NA; "rowcount"; ""; false
+SELECT; "SELECT"; NA; ""; ""; false
+OTHER; "<select name=avatarcategory>"; NA; ""; ""; true
+OTHER; "<select name=lang onchange=this.form.submit()>"; NA; ""; ""; true
+OTHER; "<select name=dbms onchange=if(this.form.upgrade.options[this.form.upgrade.selectedIndex].value == 1){ this.selectedIndex = 0;}>"; NA; ""; ""; true
+OTHER; "<select name=upgrade"; NA; ""; ""; true
+SELECT; "SELECT code, smile_url FROM smiles"; phpbb_smilies; "code, smileurl"; ""; false
+OTHER; "/(INSERT INTO (w+)s.*);/i"; NA; ""; ""; true
+SELECT; "SELECT * FROM forum_mods"; phpbb_words; "word_id, word, replacement"; ""; false
+SELECT; "SELECT VERSION() AS mysql_version"; NA; ""; ""; false
+SELECT; "Select a file"; NA; "a, file"; ""; false
+SELECT; "Select a User"; NA; "a, user"; ""; false
+SELECT; "Select a Group"; NA; "a, group"; ""; false
+SELECT; "Select a Forum"; NA; "a, forum"; ""; false
+SELECT; "Select a Username"; NA; "a, username"; ""; false
+SELECT; "Select an IP address"; NA; "an, ip, address"; ""; false
+SELECT; "Select an Email address"; NA; "an, email, address"; ""; false
+UPDATE; "Update Order"; NA; ""; ""; false
+SELECT; "Select Pack (.pak) File"; NA; "pack, pak, file"; ""; false
+SELECT; "Select a group"; NA; "a, group"; ""; false
+UPDATE; "Update word censor"; phpbb_words; ""; ""; true
+SELECT; "Select a Template"; NA; "a, template"; ""; false
+SELECT; "Select a forum"; NA; "a, forum"; ""; false
+SELECT; "Select Avatar from the gallery"; NA; "avatar"; ""; false
+SELECT; "Select Avatar from gallery"; NA; "avatar"; ""; false
+SELECT; "Select avatar"; NA; "avatar"; ""; false
+SELECT; "Select category"; NA; "category"; ""; false
+SELECT; "Select sort method"; NA; "sort, method"; ""; false
+OTHER; "<select name=mode>"; NA; ""; ""; true
+OTHER; "<select name=order>"; NA; ""; ""; true
+OTHER; "<select name=topicdays>"; NA; ""; ""; true
+OTHER; "<select name=postdays>"; NA; ""; ""; true
+OTHER; "<select name=postorder>"; NA; ""; ""; true

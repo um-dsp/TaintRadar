@@ -166,4 +166,30 @@ SELECT; "select ifnull(min(paperId), 0) from Paper where defval($Values, pc_seea
 INSERT; "insert into Settings (name, value, data) values substr($aq, 2)"; Settings; "name, value, data"; "substr($aq,2)"; false
 SELECT; "select firstName, lastName, email from ContactInfo where paperselPredicate($papersel) order by lastName, firstName, email"; ContactInfo; "firstname, lastname, email"; "paperselPredicate($papersel)"; false
 SELECT; "select firstName, lastName, email, affiliation from ContactInfo where paperselPredicate($papersel) order by lastName, firstName, email"; ContactInfo; "firstname, lastname, email, affiliation"; "paperselPredicate($papersel)"; false
-SELECT; "select firstName, lastName, email, voicePhoneNumber, ContactAddress.* from ContactInfo left join ContactAddress using (contactId) where paperselPredicate($papersel) order by lastName, firstName, email"; ContactAddress; "firstname, lastname, email, voicephonenumber, contactaddress"; "paperselPredicate($papersel)"; false
+SELECT; "select firstName, lastName, email, voicePhoneNumber, ContactAddress.* from ContactInfo left join ContactAddress using (contactId) where paperselPredicate($papersel) order by lastName, firstName, email"; ContactAddress; "firstname, lastname, email, voicephonenumber, contactaddress"; "paperselPredicate($papersel)"; true
+SELECT; "select outcome, count(paperId) from Paper where timeSubmitted>0 group by outcome"; Paper; "outcome, paperid"; ""; true
+SELECT; "select cmt.*, u.firstName as reviewFirstName, u.lastName as reviewLastName, u.email as reviewEmail from PaperComment cmt join ContactInfo u on (u.contactId=cmt.contactId)"; PaperComment; "cmt, ufirstname, reviewfirstname, ulastname, reviewlastname, uemail"; ""; true
+INSERT; "insert into Settings (name, value) values (paperlead, 1) on duplicate key update value=1"; Settings; "name, value"; ""; false
+SELECT; "select distinct tag from PaperTag t"; PaperTag; "distinct, tag"; ""; false
+SELECT; "select * from Formula order by lower(name)"; Formula; "formulaId, name, heading, headingTitle, expression, authorView, createdBy, timeModified"; ""; false
+SELECT; "select reviewType, reviewModified, reviewSubmitted, requestedBy, paperId, firstName, lastName, email, password, roles, reviewToken, preferredEmail"; NA; "reviewtype, reviewmodified, reviewsubmitted, requestedby, paperid, firstname, lastname, email, password, roles, reviewtoken, preferredemail"; ""; false
+SELECT; "select PC.contactId, group_concat(R.reviewType separator ), group_concat(R.reviewType separator ) from PCMember PC left join PaperReview R on (R.contactId=PC.contactId) left join Paper P on (P.paperId=R.paperId) where P.paperId is null or P.timeWithdrawn<=0 group by PC.contactId"; PaperReview; "pccontactid, grouprreviewtype, separator, "; ""; true
+SELECT; "Select one or more PC members to assign."; NA; "one, or, more, pc, members, to, assign"; ""; false
+SELECT; "select PCMember.contactId, paperId, reviewId, reviewType, reviewModified from PCMember join PaperReview using (contactId)"; PaperReview; "pcmembercontactid, paperid, reviewid, reviewtype, reviewmodified"; ""; true
+INSERT; "insert into Settings (name, value) values (paperlead, 1) on duplicate key update value=1"; Settings; "name, value"; ""; false
+SELECT; "Select an assignments file to upload."; NA; "an, assignments, file, to, upload"; ""; false
+INSERT; "insert into Settings (name, value) values (bug_doubleencoding, 1)"; Settings; "name, value"; ""; true
+SELECT; "select outcome, count(paperId) from Paper where timeSubmitted>0 group by outcome"; Paper; "outcome, paperid"; ""; true
+SELECT; "select PaperReview.contactId, count(reviewSubmitted), count(if(reviewNeedsSubmit=0, reviewSubmitted, 1)), group_concat(overAllMerit), PCMember.contactId as pc from PaperReview join Paper using (paperId) left join PCMember on (PaperReview.contactId=PCMember.contactId) where Paper.timeSubmitted>0 group by PaperReview.contactId"; PaperReview; "paperreviewcontactid, reviewsubmitted, ifreviewneedssubmit0, 1, groupoverallmerit, pcmembercontactid"; ""; true
+SELECT; "select outcome, count(paperId), max(leadContactId), max(shepherdContactId) from Paper group by outcome"; Paper; "outcome, paperid, leadcontactid, shepherdcontactid"; ""; true
+SELECT; "select * from MailLog order by mailId desc limit 18"; MailLog; "mailId, recipients, paperIds, cc, replyto, subject, emailBody"; ""; false
+SELECT; "Select a PC member)"; NA; "a, pc, member"; ""; false
+SELECT; "select contactId from ChairAssistant"; ChairAssistant; "contactid"; ""; true
+SELECT; "Select a review form to upload."; NA; "a, review, form, to, upload"; ""; false
+SELECT; "Select a preferences file to upload."; NA; "a, preferences, file, to, upload"; ""; false
+SELECT; ". Select a column heading to sort by that column. Enter preferences in the text boxes, or on each paper’s detail page. You may also upload preferences from a text file; see the “Download” and “Upload” links below the paper list.</p>"; Paper; "a, column, heading, to, sort, by, that, enter, preferences, in, the, text, boxes, or, on, each, papers, detail, page, you, may, also, upload"; ""; true
+SELECT; "select ContactInfo.contactId, firstName, lastName, count(preference) as preferenceCount from ContactInfo join PCMember using (contactId) left join PaperReviewPreference on (ContactInfo.contactId=PaperReviewPreference.contactId) group by contactId order by lastName, firstName, email"; PaperReviewPreference; "contactinfocontactid, firstname, lastname, preference"; ""; true
+INSERT; "insert into Settings (name, value) values (formulas, 1) on duplicate key update value=1"; Settings; "name, value"; ""; false
+SELECT; "Select a user&rsquo;s name to edit a profile or change PC/administrator status.</p>"; NA; "a, userrsquos, name, to, edit, profile, or, change, pcadministrator, statusp"; ""; false
+SELECT; "select topicId, interest, count(*) from TopicInterest group by topicId, interest"; TopicInterest; "topicid, interest, "; ""; true
+SELECT; "select outcome, count(*) from Paper where timeSubmitted>0 group by outcome"; Paper; "outcome, "; ""; true

@@ -1,5 +1,5 @@
 object Utils {
-    val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS")
+    val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
     // val vulnerabilities: List[String] = List("SQL Injection", "XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
@@ -25,6 +25,9 @@ object Utils {
             }
             case "xss" | "crosssitescripting" => {
                 Constants.xss_sink
+            }
+            case "storedxss" => {
+                Constants.stored_xss_func
             }
             case "fileaccess" => {
                 Constants.fileaccess_sink
@@ -54,6 +57,9 @@ object Utils {
             case "xss" | "crosssitescripting" => {
                 Constants.san_functions_xss
             }
+            case "storedxss" => {
+                Constants.san_functions_xss
+            }
             case "fileaccess" => {
                 List()
             }
@@ -65,46 +71,55 @@ object Utils {
     }
 
     var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
-    def dataFlowStep(node: AstNode): List[AstNode] = {
+    def dataFlowStep(node: AstNode, goToCallIn: Boolean = true): List[AstNode] = {
         dataFlowStepMap.get(node) match {
             case Some(queryData: List[AstNode]) => queryData
             case None => {
                 val result = {
                     node match {
-                        case call: nodes.Call => {
+                        // For a call node: traverse its arguments and method definition node
+                        case call: nodes.Call => {  
                             val method = {
                                 if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
                                 else call.callee
                             }
                             method.filterNot(_.code == "<empty>").l ++ call.argument.dedup.l
                         }
+                        // For an identifier: if it points to a method parameter, traverse this parameter, otherwise follow the data dependency edges
                         case identifier: Identifier => {
                             if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
                             identifier.method.parameter.name(identifier.name).l
-                            else identifier.ddgIn.filterNot(_.isLiteral).l
+                            else identifier.ddgIn.l
                         }
+                        // For a literal: output the literal
                         case literal: Literal => List(literal)
+                        // For a method parameter: potentially go to all method callers and output their corresponding argument (same index as the parameter)
+                        // This is intended to be performed only if the path started within the method node itself, otherwise don't output anything
                         case parameter: MethodParameterIn => {
-                            cpg.call(parameter.method.name).filter(_.methodFullName == parameter.method.fullName).map(_.argument.l).map(_.lift(parameter.index)).filterNot(_ == None).map(_.get).l
+                            if (goToCallIn)
+                                cpg.call(parameter.method.name).filter(_.methodFullName == parameter.method.fullName).map(_.argument.l).map(_.lift(parameter.index)).filterNot(_ == None).map(_.get).l
+                            else List()
                         }
+                        // For a constant, try resolving it statically by checking the "define" function calls
                         case constant: FieldIdentifier => {
                             if (Constants.magic_constants.contains(constant) || db.constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
                             else db.constantTable.get(constant.canonicalName).dedup.l
                         }
-                        case block: Block => block.ddgIn.dedup.l
-                        case typeRef: TypeRef => List()
+                        // For a method node, traverse its return block (after traversing it make sure not to try resolving the parameters)
                         case method: Method => {
                             method.ast.isReturn.l
                         }
                         case returnNode: Return => returnNode.ddgIn.l
+                        case block: Block => block.ddgIn.dedup.l
+                        case typeRef: TypeRef => List()
                         case _ => {
                             println(node)
                             List()
                         }
                     }
                 }
-                dataFlowStepMap(node) = result.filterNot(_.isLiteral)
-                result.filterNot(_.isLiteral)
+                dataFlowStepMap(node) = result
+                result
             }
         }
     }
@@ -128,7 +143,7 @@ object Utils {
         var output = List[List[AstNode]]()
         val visitedNodes = paths.flatten.dedup.l
         val result = paths.map( path => {
-            val reachingDefs = dataFlowStep(path.last).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
+            val reachingDefs = dataFlowStep(path.last, !path.last.isMethod).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
             if (reachingDefs.isEmpty) (output = output :+ path)
             else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
         })
@@ -180,7 +195,7 @@ object Utils {
             val attack_san_functions = getSanitization(vulnerability)
             // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
             // extend the cpg with the sanitization tags
-            val tagName = "SAN_" + vulnerability.replace(" ", "_")
+            val tagName = getTagName(vulnerability)
             cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl] || node.isInstanceOf[NamespaceBlock]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
             cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl] || node.isInstanceOf[NamespaceBlock]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
             run.commit

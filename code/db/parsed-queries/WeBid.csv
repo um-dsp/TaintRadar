@@ -2,7 +2,7 @@ SELECT; "SELECT count(id) AS auctions FROM $DBPrefix auctions WHERE user= intval
 SELECT; "SELECT * FROM $DBPrefix auctions WHERE user= intval($user_id) AND closed=0 AND starts <= $NOW"; PHPAUCTIONXL_auctions; "id, user, title, starts, description, pict_url, category, minimum_bid, reserve_price, buy_now, auction_type, duration, increment, location, location_zip, shipping, payment, international, ends, current_bid, closed, photo_uploaded, quantity, suspended, private, relist, relisted, num_bids, sold, shipping_terms, bn_only, adultonly"; "intval($user_id)"; false
 SELECT; "SELECT bid FROM $DBPrefix bids WHERE auction= $row[id]"; NA; "bid"; "$row[id]"; false
 SELECT; "SELECT * FROM $DBPrefix users WHERE id= intval($_GET[user_id])"; NA; ""; "intval($_GET[user_id])"; false
-SELECT; "SELECT f.*, u.nick, a.title FROM $DBPrefix feedbacks f, $DBPrefix users u LEFT OUTER JOIN $DBPrefix auctions a ON a.id=f.auction_id WHERE u.id=f.rated_user_id AND f.id= intval($feed_id)"; PHPAUCTIONXL_feedbacks; "f, unick, atitle"; "intval($feed_id)"; false
+SELECT; "SELECT f.*, u.nick, a.title FROM $DBPrefix feedbacks f, $DBPrefix users u LEFT OUTER JOIN $DBPrefix auctions a ON a.id=f.auction_id WHERE u.id=f.rated_user_id AND f.id= intval($feed_id)"; PHPAUCTIONXL_feedbacks; "f, unick, atitle"; "intval($feed_id)"; true
 SELECT; "SELECT id, rate_num, rate_sum FROM $DBPrefix users WHERE nick= $feed_disp[username]"; NA; "id, ratenum, ratesum"; "$feed_disp["username"]"; false
 SELECT; "SELECT * FROM $DBPrefix feedforum WHERE feed_id= intval($_REQUEST[feed_id]) ORDER BY seqnum ASC"; PHPAUCTIONXL_feedforum; "id, feed_id, user_id, seqnum, commentdate, COMMENT"; ""; false
 INSERT; "INSERT INTO $DBPrefix feedforum values(NULL, intval($_REQUEST[feed_id]) , $_SESSION[PHPAUCTION_LOGGED_IN] , intval($_REQUEST[seqnum]) , NULL, addslashes(strip_tags($_POST[comment])) )"; PHPAUCTIONXL_feedforum; "id, feed_id, user_id, seqnum, commentdate, COMMENT"; "intval($_REQUEST["feed_id"]), $_SESSION["PHPAUCTION_LOGGED_IN"], intval($_REQUEST["seqnum"]), addslashes(strip_tags($_POST["comment"]))"; false
@@ -203,7 +203,7 @@ SELECT; "select count(id) as auctions from $DBPrefix auctions WHERE closed<>0 AN
 SELECT; "SELECT DISTINCT(a.id), a.closed, u.nick, a.title, a.starts, a.description, c.cat_name, d.description as duration, a.suspended FROM $DBPrefix auctions a, $DBPrefix users u, $DBPrefix categories c, $DBPrefix durations d where u.id = a.user and c.cat_id = a.category and d.days = a.duration AND a.closed<>0 AND a.suspended=0 ORDER BY u.nick limit $offset , $limit"; PHPAUCTIONXL_categories; "aid, aclosed, unick, atitle, astarts, adescription, ccatname, ddescription, duration, asuspended"; "$limit, $offset"; false
 SELECT; "SELECT id FROM $DBPrefix winners WHERE auction= $id"; PHPAUCTIONXL_winners; "id"; "$id"; true
 SELECT; "select count(id) as auctions from $DBPrefix auctions WHERE suspended<>0"; PHPAUCTIONXL_auctions; "id"; ""; true
-SELECT; "SELECT a.*, u.*, c.*, d.description as duration FROM $DBPrefix auctions a, $DBPrefix users u, $DBPrefix categories c, $DBPrefix durations d WHERE u.id = a.user AND c.cat_id = a.category AND a.suspended<>0 group by a.id ORDER BY u.nick limit $offset , $limit"; PHPAUCTIONXL_categories; "a, u, c, ddescription"; "$limit, $offset"; false
+SELECT; "SELECT a.*, u.*, c.*, d.description as duration FROM $DBPrefix auctions a, $DBPrefix users u, $DBPrefix categories c, $DBPrefix durations d WHERE u.id = a.user AND c.cat_id = a.category AND a.suspended<>0 group by a.id ORDER BY u.nick limit $offset , $limit"; PHPAUCTIONXL_categories; "a, u, c, ddescription"; "$limit, $offset"; true
 SELECT; "select count(id) as COUNT from $DBPrefix users WHERE suspended= $Q"; NA; "id"; ""; false
 SELECT; "select count(id) as COUNT from $DBPrefix users WHERE accounttype= $account"; NA; "id"; "$account"; false
 SELECT; "select count(id) as COUNT from $DBPrefix users"; NA; "id"; ""; false
@@ -327,8 +327,8 @@ SELECT; "SELECT wordsfilter FROM $DBPrefix settings"; PHPAUCTIONXL_settings; "wo
 SELECT; "SELECT * FROM $DBPrefix filterwords"; PHPAUCTIONXL_filterwords; "word"; ""; false
 SELECT; "select * FROM $DBPrefix categories WHERE parent_id= intval($catsubtree[$i])"; PHPAUCTIONXL_categories; "cat_id, parent_id, cat_name, deleted, sub_counter, counter, cat_colour, cat_image, feesfree"; "intval($catsubtree[$i])"; false
 SELECT; "select id from $DBPrefix users where nick = addslashes($_GET[seller])"; NA; "id"; "addslashes($_GET["seller"])"; false
-SELECT; "select count(*) as total FROM $DBPrefix auctions au WHERE (au.suspended=0) AND ( $wher au.private=n $ora ) AND au.starts<= $NOW ORDER BY $by"; PHPAUCTIONXL_auctions; ""; "$wher, $ora, $by"; false
-SELECT; "select au.* FROM $DBPrefix auctions au WHERE (au.suspended=0) AND ( $wher au.private=n $ora ) AND au.starts<= $NOW ORDER BY $by LIMIT intval($left_limit) , intval($lines)"; PHPAUCTIONXL_auctions; "au"; "$wher, $ora, $by, intval($left_limit), intval($lines)"; false
+SELECT; "select count(*) as total FROM $DBPrefix auctions au WHERE (au.suspended=0) AND ( $wher au.private=n $ora ) AND au.starts<= $NOW ORDER BY $by"; PHPAUCTIONXL_auctions; ""; "$wher, $ora, $by"; true
+SELECT; "select au.* FROM $DBPrefix auctions au WHERE (au.suspended=0) AND ( $wher au.private=n $ora ) AND au.starts<= $NOW ORDER BY $by LIMIT intval($left_limit) , intval($lines)"; PHPAUCTIONXL_auctions; "au"; "$wher, $ora, $by, intval($left_limit), intval($lines)"; true
 SELECT; "select * from $DBPrefix payments"; PHPAUCTIONXL_payments; "id, description"; ""; false
 SELECT; "select * FROM $DBPrefix categories_plain"; PHPAUCTIONXL_categories_plain; "id, cat_id, cat_name"; ""; false
 SELECT; "SELECT cat_name FROM $DBPrefix cats_translated WHERE cat_id= $row[cat_id] AND lang= $language"; PHPAUCTIONXL_cats_translated; "catname"; "$row["cat_id"], $language"; false
@@ -393,7 +393,7 @@ SELECT; "SELECT * FROM $DBPrefix categories WHERE cat_id= intval($par_id)"; PHPA
 SELECT; "SELECT cat_name FROM $DBPrefix cats_translated WHERE cat_id= $rw[cat_id] AND lang= $language"; PHPAUCTIONXL_cats_translated; "catname"; "$rw["cat_id"], $language"; false
 SELECT; "SELECT * FROM $DBPrefix categories WHERE parent_id= intval($id) ORDER BY cat_name"; PHPAUCTIONXL_categories; "cat_id, parent_id, cat_name, deleted, sub_counter, counter, cat_colour, cat_image, feesfree"; "intval($id)"; false
 SELECT; "SELECT cat_name FROM $DBPrefix cats_translated WHERE cat_id= $row[cat_id] AND lang= $language"; PHPAUCTIONXL_cats_translated; "catname"; "$row["cat_id"], $language"; false
-SELECT; "SELECT count(*) FROM $DBPrefix auctions WHERE category IN $catalist AND starts<= $NOW AND closed=0 AND private=n AND suspended =0"; PHPAUCTIONXL_auctions; ""; "$catalist"; false
+SELECT; "SELECT count(*) FROM $DBPrefix auctions WHERE category IN $catalist AND starts<= $NOW AND closed=0 AND private=n AND suspended =0"; PHPAUCTIONXL_auctions; ""; "$catalist"; true
 SELECT; "SELECT * FROM $DBPrefix auctions WHERE category IN $catalist AND starts<= $NOW AND closed=0 AND private=n AND suspended =0"; PHPAUCTIONXL_auctions; "id, user, title, starts, description, pict_url, category, minimum_bid, reserve_price, buy_now, auction_type, duration, increment, location, location_zip, shipping, payment, international, ends, current_bid, closed, photo_uploaded, quantity, suspended, private, relist, relisted, num_bids, sold, shipping_terms, bn_only, adultonly"; "$catalist"; false
 SELECT; "select * from $DBPrefix auctions where id= intval($_REQUEST[id])"; PHPAUCTIONXL_auctions; "id, user, title, starts, description, pict_url, category, minimum_bid, reserve_price, buy_now, auction_type, duration, increment, location, location_zip, shipping, payment, international, ends, current_bid, closed, photo_uploaded, quantity, suspended, private, relist, relisted, num_bids, sold, shipping_terms, bn_only, adultonly"; ""; false
 SELECT; "select max(bid) AS maxbid FROM $DBPrefix proxybid WHERE itemid= intval($_REQUEST[id])"; PHPAUCTIONXL_proxybid; "bid"; ""; true
@@ -486,7 +486,7 @@ UPDATE; "UPDATE $DBPrefix users SET rate_sum= intval($arr[rate_sum]) , rate_num=
 INSERT; "INSERT INTO $DBPrefix feedbacks (rated_user_id, rater_user_nick, feedback, rate, feedbackdate, auction_id) VALUES ( intval($secid) , addslashes($secTPL_rater_nick) , addslashes($secTPL_feedback) , intval($_POST[TPL_rate]) , $NOW , intval($_REQUEST[auction_id]) )"; PHPAUCTIONXL_feedbacks; "rated_user_id, rater_user_nick, feedback, rate, feedbackdate, auction_id"; "intval($secid), addslashes($secTPL_rater_nick), addslashes($secTPL_feedback), intval($_POST["TPL_rate"]), $NOW, intval($_REQUEST["auction_id"])"; false
 SELECT; "SELECT nick, rate_sum, rate_num FROM $DBPrefix users WHERE id= intval($secid)"; NA; "nick, ratesum, ratenum"; "intval($secid)"; false
 SELECT; "SELECT rate_sum FROM $DBPrefix users WHERE id= intval($secid)"; NA; "ratesum"; "intval($secid)"; false
-SELECT; "SELECT f.*, a.title FROM $DBPrefix feedbacks f LEFT OUTER JOIN $DBPrefix auctions a ON a.id=f.auction_id WHERE rated_user_id= intval($secid) ORDER by feedbackdate DESC LIMIT intval($left_limit) , intval($lines)"; PHPAUCTIONXL_feedbacks; "f, atitle"; "intval($secid), intval($left_limit), intval($lines)"; false
+SELECT; "SELECT f.*, a.title FROM $DBPrefix feedbacks f LEFT OUTER JOIN $DBPrefix auctions a ON a.id=f.auction_id WHERE rated_user_id= intval($secid) ORDER by feedbackdate DESC LIMIT intval($left_limit) , intval($lines)"; PHPAUCTIONXL_feedbacks; "f, atitle"; "intval($secid), intval($left_limit), intval($lines)"; true
 SELECT; "SELECT id, rate_num, rate_sum FROM $DBPrefix users WHERE nick= $feed_disp[$i][username]"; NA; "id, ratenum, ratesum"; "$feed_disp[$i]["username"]"; false
 SELECT; "SELECT * FROM $DBPrefix feedforum WHERE feed_id= intval($arrfeed[id]) ORDER BY seqnum ASC"; PHPAUCTIONXL_feedforum; "id, feed_id, user_id, seqnum, commentdate, COMMENT"; "intval($arrfeed["id"])"; false
 SELECT; "SELECT email, id FROM $DBPrefix users WHERE nick= AddSlashes($_POST[TPL_username]) OR email= addslashes($_POST[TPL_username])"; NA; "email, id"; ""; false
@@ -513,7 +513,7 @@ UPDATE; "UPDATE $DBPrefix banners set views=views+1 WHERE id= $THISBANNER[id]"; 
 SELECT; "SELECT bid FROM $DBPrefix bids WHERE auction= $row[id]"; NA; "bid"; ""; false
 SELECT; "SELECT * FROM $DBPrefix rates WHERE symbol= $FROM"; NA; ""; ""; false
 SELECT; "SELECT * FROM $DBPrefix rates WHERE symbol= $INTO"; NA; ""; ""; false
-SELECT; "select *, NOW()-(last_update) as dif from $DBPrefix lastupdate;"; PHPAUCTIONXL_lastupdate; ", lastupdate"; ""; false
+SELECT; "select *, NOW()-(last_update) as dif from $DBPrefix lastupdate;"; PHPAUCTIONXL_lastupdate; ", lastupdate"; ""; true
 SELECT; "SELECT * FROM $DBPrefix rates WHERE sifra= $ime[0]"; NA; ""; "$ime[0]"; false
 INSERT; "INSERT INTO $DBPrefix rates VALUES( NULL, $ime[0] , , $usd , $ime[0] )"; NA; ""; "$ime[0], $usd"; false
 UPDATE; "UPDATE $DBPrefix rates SET rate= $usd WHERE sifra= $ime[0]"; NA; ""; "$usd"; false
@@ -588,7 +588,7 @@ UPDATE; "UPDATE $DBPrefix categories SET counter= $category[counter] , sub_count
 SELECT; "SELECT * FROM $DBPrefix faqs"; NA; ""; ""; false
 SELECT; "SELECT * FROM $DBPrefix faqs_translated WHERE lang= $k AND id= $row[id]"; PHPAUCTIONXL_faqs_translated; "id, lang, question, answer"; "$k"; false
 INSERT; "INSERT INTO $DBPrefix faqs_translated VALUES ( $row[id] , $k , addslashes($row[question]) , addslashes($row[answer]) )"; PHPAUCTIONXL_faqs_translated; "id, lang, question, answer"; "$k, addslashes($row["question"]), addslashes($row["answer"])"; false
-SELECT; "SELECT *, NOW()-(last_update) as dif from $DBPrefix lastupdate"; PHPAUCTIONXL_lastupdate; ", lastupdate"; ""; false
+SELECT; "SELECT *, NOW()-(last_update) as dif from $DBPrefix lastupdate"; PHPAUCTIONXL_lastupdate; ", lastupdate"; ""; true
 SELECT; "SELECT * FROM $DBPrefix rates WHERE sifra= $ime[0]"; NA; ""; "$ime[0]"; false
 UPDATE; "UPDATE $DBPrefix rates SET rate= $usd WHERE sifra= $ime[0]"; NA; ""; "$usd"; false
 UPDATE; "UPDATE $DBPrefix lastupdate SET last_update=NOW();"; PHPAUCTIONXL_lastupdate; ""; ""; true
@@ -1793,7 +1793,7 @@ INSERT; "INSERT INTO $DBPrefix userslanguage VALUES (1, EN);"; PHPAUCTIONXL_user
 SELECT; "SELECT * FROM $DBPrefix auctions WHERE id= $_SESSION[CURRENT_ITEM] and suspended=0"; PHPAUCTIONXL_auctions; "id, user, title, starts, description, pict_url, category, minimum_bid, reserve_price, buy_now, auction_type, duration, increment, location, location_zip, shipping, payment, international, ends, current_bid, closed, photo_uploaded, quantity, suspended, private, relist, relisted, num_bids, sold, shipping_terms, bn_only, adultonly"; ""; false
 SELECT; "SELECT item_watch from $DBPrefix users where nick= addslashes($_SESSION[PHPAUCTION_LOGGED_IN_USERNAME])"; NA; "itemwatch"; ""; false
 SELECT; "select * from $DBPrefix bids where auction= intval($id) ORDER BY id DESC"; NA; ""; "intval($id)"; false
-SELECT; "SELECT a.*, u.country, u.zip FROM $DBPrefix auctions a LEFT JOIN $DBPrefix users u ON (u.id = a.user) WHERE a.id= intval($id)"; PHPAUCTIONXL_auctions; "a, ucountry, uzip"; "intval($id)"; false
+SELECT; "SELECT a.*, u.country, u.zip FROM $DBPrefix auctions a LEFT JOIN $DBPrefix users u ON (u.id = a.user) WHERE a.id= intval($id)"; PHPAUCTIONXL_auctions; "a, ucountry, uzip"; "intval($id)"; true
 SELECT; "SELECT counter as counter from $DBPrefix auccounter where auction_id= intval($id)"; PHPAUCTIONXL_auccounter; "counter"; "intval($id)"; true
 INSERT; "INSERT INTO $DBPrefix auccounter VALUES ( intval($id) , 1)"; PHPAUCTIONXL_auccounter; "auction_id, counter"; "intval($id)"; true
 UPDATE; "UPDATE $DBPrefix auccounter set counter= intval($TPL_nr + 1) where auction_id= intval($id)"; PHPAUCTIONXL_auccounter; "counter"; ""; true
@@ -1807,9 +1807,9 @@ SELECT; "select id, nick, trusted from $DBPrefix users where id= intval($high_bi
 SELECT; "SELECT increment FROM $DBPrefix increments WHERE ((low<= $HIGH_BID AND high>= $HIGH_BID ) OR (low< $HIGH_BID AND high< $HIGH_BID )) ORDER BY increment DESC"; PHPAUCTIONXL_increments; "increment"; ""; true
 SELECT; "SELECT rated_user_id FROM $DBPrefix feedbacks WHERE rated_user_id= intval($user_id)"; PHPAUCTIONXL_feedbacks; "rateduserid"; "intval($user_id)"; true
 SELECT; "SELECT rated_user_id FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id"; PHPAUCTIONXL_feedbacks; "rateduserid"; "$user_id"; true
-SELECT; "SELECT distinct count(*) total FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id AND rate<>0"; PHPAUCTIONXL_feedbacks; "distinct, , total"; "$user_id"; false
-SELECT; "SELECT distinct count(*) negative FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id and rate=-1"; PHPAUCTIONXL_feedbacks; "distinct, , negative"; "$user_id"; false
-SELECT; "SELECT distinct count(*) positive FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id and rate=1"; PHPAUCTIONXL_feedbacks; "distinct, , positive"; "$user_id"; false
+SELECT; "SELECT distinct count(*) total FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id AND rate<>0"; PHPAUCTIONXL_feedbacks; "distinct, , total"; "$user_id"; true
+SELECT; "SELECT distinct count(*) negative FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id and rate=-1"; PHPAUCTIONXL_feedbacks; "distinct, , negative"; "$user_id"; true
+SELECT; "SELECT distinct count(*) positive FROM $DBPrefix feedbacks WHERE rated_user_id= $user_id and rate=1"; PHPAUCTIONXL_feedbacks; "distinct, , positive"; "$user_id"; true
 SELECT; "select rated_user_id from $DBPrefix feedbacks where rated_user_id= intval($high_bidder_id)"; PHPAUCTIONXL_feedbacks; "rateduserid"; "intval($high_bidder_id)"; true
 SELECT; "select rate_sum, nick, id from $DBPrefix users where nick= addslashes($high_bidder_nick)"; NA; "ratesum, nick, id"; "addslashes($high_bidder_nick)"; false
 SELECT; "select id, nick from $DBPrefix users where id= $bidrec[bidder]"; NA; "id, nick"; "$bidrec["bidder"]"; false
@@ -1869,9 +1869,9 @@ SELECT; "SELECT id FROM $DBPrefix auctions WHERE id= intval($_POST[auction]) AND
 SELECT; "SELECT email, nick FROM $DBPrefix users WHERE id= intval($_POST[poster])"; NA; "email, nick"; ""; false
 SELECT; "SELECT language FROM $DBPrefix userslanguage WHERE user= intval($_POST[poster])"; PHPAUCTIONXL_userslanguage; "language"; ""; false
 UPDATE; "UPDATE $DBPrefix wanted SET answers=answers+1 WHERE id= intval($_POST[adid])"; NA; ""; ""; false
-SELECT; "SELECT count(*) FROM $DBPrefix auctions WHERE ( $qp1 ) AND ( closed=0) AND ( suspended=0) AND private=n AND starts<= $NOW ORDER BY ends"; PHPAUCTIONXL_auctions; ""; "$qp1"; false
+SELECT; "SELECT count(*) FROM $DBPrefix auctions WHERE ( $qp1 ) AND ( closed=0) AND ( suspended=0) AND private=n AND starts<= $NOW ORDER BY ends"; PHPAUCTIONXL_auctions; ""; "$qp1"; true
 SELECT; "SELECT * FROM $DBPrefix auctions WHERE ( $qp1 ) AND ( closed=0) AND ( suspended =0) AND private=n AND starts<= $NOW ORDER BY ends"; PHPAUCTIONXL_auctions; "id, user, title, starts, description, pict_url, category, minimum_bid, reserve_price, buy_now, auction_type, duration, increment, location, location_zip, shipping, payment, international, ends, current_bid, closed, photo_uploaded, quantity, suspended, private, relist, relisted, num_bids, sold, shipping_terms, bn_only, adultonly"; "$qp1"; false
-SELECT; "SELECT count(*) FROM $DBPrefix categories WHERE ( $qpc1 ) ORDER BY cat_name ASC"; PHPAUCTIONXL_categories; ""; "$qpc1"; false
+SELECT; "SELECT count(*) FROM $DBPrefix categories WHERE ( $qpc1 ) ORDER BY cat_name ASC"; PHPAUCTIONXL_categories; ""; "$qpc1"; true
 SELECT; "SELECT * FROM $DBPrefix categories WHERE $qp ORDER BY cat_name ASC"; PHPAUCTIONXL_categories; "cat_id, parent_id, cat_name, deleted, sub_counter, counter, cat_colour, cat_image, feesfree"; "$qp"; false
 SELECT; "SELECT cat_name FROM $DBPrefix cats_translated WHERE cat_id= $row[cat_id] AND lang= $language"; PHPAUCTIONXL_cats_translated; "catname"; "$row["cat_id"], $language"; false
 SELECT; "SELECT count(cat_id) as childs FROM $DBPrefix categories WHERE parent_id= addslashes($_POST[$VARNAME])"; PHPAUCTIONXL_categories; "catid"; ""; true
@@ -1934,8 +1934,8 @@ SELECT; "SELECT id FROM $DBPrefix usersips where USER= $_SESSION[PHPAUCTION_LOGG
 INSERT; "INSERT INTO $DBPrefix usersips VALUES( NULL, $_SESSION[PHPAUCTION_LOGGED_IN] , $_SERVER[REMOTE_ADDR] , after, accept)"; PHPAUCTIONXL_usersips; "id, user, ip, type, action"; "$_SESSION["PHPAUCTION_LOGGED_IN"], $_SERVER["REMOTE_ADDR"]"; false
 UPDATE; "UPDATE $DBPrefix users SET email= AddSlashes($TPL_email) , birthdate= AddSlashes($TPL_birthdate) , address= AddSlashes($TPL_address) , city= AddSlashes($TPL_city) , prov= AddSlashes($TPL_prov) , country= AddSlashes($TPL_country) , zip= AddSlashes($TPL_zip) , phone= AddSlashes($TPL_phone) , reg_date=reg_date, , nletter= AddSlashes($TPL_nletter)"; NA; ""; "AddSlashes($TPL_email), AddSlashes($TPL_birthdate), AddSlashes($TPL_address), AddSlashes($TPL_city), AddSlashes($TPL_prov), AddSlashes($TPL_nletter)"; false
 UPDATE; "UPDATE $DBPrefix users SET accounttype=buyertoseller, reg_date=reg_date WHERE id= $_SESSION[PHPAUCTION_LOGGED_IN]"; NA; ""; ""; false
-SELECT; "SELECT count(*) AS active_auctions FROM $DBPrefix auctions WHERE user= $_SESSION[PHPAUCTION_LOGGED_IN] AND closed=0 AND starts<= $NOW AND suspended=0"; PHPAUCTIONXL_auctions; ""; ""; false
-SELECT; "SELECT count(*) AS closed_auctions FROM $DBPrefix auctions WHERE user= $_SESSION[PHPAUCTION_LOGGED_IN] AND closed=1 AND suspended<>8 AND (num_bids=0 OR (num_bids>0 AND reserve_price > 0 AND current_bid < reserve_price AND sold=n))"; PHPAUCTIONXL_auctions; ""; ""; false
+SELECT; "SELECT count(*) AS active_auctions FROM $DBPrefix auctions WHERE user= $_SESSION[PHPAUCTION_LOGGED_IN] AND closed=0 AND starts<= $NOW AND suspended=0"; PHPAUCTIONXL_auctions; ""; ""; true
+SELECT; "SELECT count(*) AS closed_auctions FROM $DBPrefix auctions WHERE user= $_SESSION[PHPAUCTION_LOGGED_IN] AND closed=1 AND suspended<>8 AND (num_bids=0 OR (num_bids>0 AND reserve_price > 0 AND current_bid < reserve_price AND sold=n))"; PHPAUCTIONXL_auctions; ""; ""; true
 SELECT; "SELECT COUNT(id) as COUNT FROM $DBPrefix auctions WHERE user= $_SESSION[PHPAUCTION_LOGGED_IN] AND starts> $NOW AND suspended=0"; PHPAUCTIONXL_auctions; "id"; ""; true
 SELECT; "SELECT count(id) as COUNT FROM $DBPrefix auctions WHERE user= $_SESSION[PHPAUCTION_LOGGED_IN] AND closed= 0 AND suspended<>0"; PHPAUCTIONXL_auctions; "id"; ""; true
 SELECT; "SELECT DISTINCT auction FROM $DBPrefix winners WHERE seller = $_SESSION[PHPAUCTION_LOGGED_IN]"; PHPAUCTIONXL_winners; "distinct, auction"; ""; true
@@ -2009,13 +2009,13 @@ SELECT; "select * from $DBPrefix durations order by days"; PHPAUCTIONXL_duration
 SELECT; "SELECT photo_uploaded, pict_url FROM $DBPrefix auctions where id= $v"; PHPAUCTIONXL_auctions; "photouploaded, picturl"; "$v"; false
 UPDATE; "UPDATE $DBPrefix counters SET closedauctions=(closedauctions-1)"; PHPAUCTIONXL_counters; "closedauctions"; ""; true
 SELECT; "select * FROM $DBPrefix bids WHERE auction= $v"; NA; ""; "$v"; false
-SELECT; "SELECT a.* FROM $DBPrefix auctions a, $DBPrefix winners w WHERE a.user= $_SESSION[PHPAUCTION_LOGGED_IN] AND a.closed=1 AND a.suspended<>8 AND a.id=w.auction GROUP BY w.auction"; PHPAUCTIONXL_auctions; "a"; ""; false
-SELECT; "SELECT a.* FROM $DBPrefix auctions a, $DBPrefix winners w WHERE a.user= $_SESSION[PHPAUCTION_LOGGED_IN] AND a.closed=1 AND a.suspended<>8 AND a.id=w.auction GROUP BY w.auction ORDER BY $_SESSION[solda_ord] $_SESSION[solda_type] LIMIT $OFFSET , $LIMIT"; PHPAUCTIONXL_auctions; "a"; ""; false
+SELECT; "SELECT a.* FROM $DBPrefix auctions a, $DBPrefix winners w WHERE a.user= $_SESSION[PHPAUCTION_LOGGED_IN] AND a.closed=1 AND a.suspended<>8 AND a.id=w.auction GROUP BY w.auction"; PHPAUCTIONXL_auctions; "a"; ""; true
+SELECT; "SELECT a.* FROM $DBPrefix auctions a, $DBPrefix winners w WHERE a.user= $_SESSION[PHPAUCTION_LOGGED_IN] AND a.closed=1 AND a.suspended<>8 AND a.id=w.auction GROUP BY w.auction ORDER BY $_SESSION[solda_ord] $_SESSION[solda_type] LIMIT $OFFSET , $LIMIT"; PHPAUCTIONXL_auctions; "a"; ""; true
 SELECT; "select * from $DBPrefix durations order by days"; PHPAUCTIONXL_durations; "days, description"; ""; false
 SELECT; "select a.current_bid, a.id, a.title, a.ends, b.bid FROM $DBPrefix auctions a, $DBPrefix bids b WHERE a.id=b.auction AND a.closed=0 AND b.bidder= $_SESSION[PHPAUCTION_LOGGED_IN] order by a.ends asc, b.bidwhen desc"; PHPAUCTIONXL_auctions; "acurrentbid, aid, atitle, aends, bbid"; ""; false
 SELECT; "SELECT nick, rate_sum, rate_num FROM $DBPrefix users WHERE id= intval($secid)"; NA; "nick, ratesum, ratenum"; "intval($secid)"; false
-SELECT; "SELECT count(*) FROM $DBPrefix feedbacks WHERE rated_user_id= intval($secid)"; PHPAUCTIONXL_feedbacks; ""; "intval($secid)"; false
-SELECT; "SELECT f.*, a.title FROM $DBPrefix feedbacks f LEFT OUTER JOIN $DBPrefix auctions a ON a.id=f.auction_id WHERE rated_user_id= $secid ORDER by feedbackdate DESC LIMIT $left_limit , $lines"; PHPAUCTIONXL_feedbacks; "f, atitle"; "$secid, $left_limit, $lines"; false
+SELECT; "SELECT count(*) FROM $DBPrefix feedbacks WHERE rated_user_id= intval($secid)"; PHPAUCTIONXL_feedbacks; ""; "intval($secid)"; true
+SELECT; "SELECT f.*, a.title FROM $DBPrefix feedbacks f LEFT OUTER JOIN $DBPrefix auctions a ON a.id=f.auction_id WHERE rated_user_id= $secid ORDER by feedbackdate DESC LIMIT $left_limit , $lines"; PHPAUCTIONXL_feedbacks; "f, atitle"; "$secid, $left_limit, $lines"; true
 SELECT; "SELECT id, rate_num, rate_sum FROM $DBPrefix users WHERE nick= $feed_disp[$i][username]"; NA; "id, ratenum, ratesum"; "$feed_disp[$i]["username"]"; false
 SELECT; "SELECT * FROM $DBPrefix feedforum WHERE feed_id= $arrfeed[id] ORDER BY seqnum ASC"; PHPAUCTIONXL_feedforum; "id, feed_id, user_id, seqnum, commentdate, COMMENT"; "$arrfeed["id"]"; false
 SELECT; "SELECT * FROM $DBPrefix users WHERE id= $_SESSION[PHPAUCTION_LOGGED_IN]"; NA; ""; ""; false
@@ -2023,3 +2023,43 @@ SELECT; "SELECT * FROM $DBPrefix messages WHERE sentto= $userid AND id= $message
 SELECT; "SELECT * FROM $DBPrefix messages WHERE id= $messageid"; PHPAUCTIONXL_messages; "id, sentto, from, when, message, read, subject, replied, noticed"; "$messageid"; false
 SELECT; "SELECT * FROM $DBPrefix users WHERE id= $from"; NA; ""; "$from"; false
 UPDATE; "UPDATE $DBPrefix messages SET read=1 WHERE id= $messageid"; PHPAUCTIONXL_messages; "read"; ""; true
+OTHER; "<SELECT NAME=category>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=categories[] ROWS=12 MULTIPLE>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=usersfilter onChange=SubmitFilter()> <OPTION VALUE=all>"; NA; ""; ""; true
+OTHER; "<select name=theme>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=categories[] ROWS=12 MULTIPLE>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=id>"; NA; ""; ""; true
+OTHER; "<select name=category onChange=javascript:document.adsearch.submit()><option></option>"; NA; ""; ""; true
+OTHER; "<select name=country>"; NA; ""; ""; true
+SELECT; "Select category ID number to enter in the tab delimited file for bulk uploading</FONT></TD> </tr> <TR> <TD WIDTH=30%>"; NA; "category, id, number, to, enter, in, the, tab, delimited, file, for, bulk, uploadingfonttd, tr, td, width30"; ""; false
+SELECT; "Select exact Country Name to enter in the tab delimited file for bulk uploading</FONT></TD> </tr> <TR> <TD WIDTH=100%>"; NA; "exact, country, name, to, enter, in, the, tab, delimited, file, for, bulk, uploadingfonttd, tr, td, width100"; ""; false
+OTHER; "<select name=item size=3 Style=width:100%;>"; NA; ""; ""; true
+OTHER; "<select name=cd onchange=submit(); style=Width: 350px;>"; NA; ""; ""; true
+OTHER; "<select name=file onchange=submit(); style=Width: 250px;>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=id> <OPTION VALUE=>Select your category</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=0>All categories</OPTION> </SELECT>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=id> <OPTION VALUE=>Select your category</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=0>All categories</OPTION> </SELECT>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=qty SIZE=1>"; NA; ""; ""; true
+OTHER; "<SELECT NAME=id> <OPTION VALUE=>Select a category</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=1>Art & Antiques</OPTION> <OPTION VALUE=28>Books</OPTION> <OPTION VALUE=220>Cars & Vehicles</OPTION> <OPTION VALUE=69>Clothing & Accessories</OPTION> <OPTION VALUE=73>Coins & Stamps</OPTION> <OPTION VALUE=76>Collectibles</OPTION> <OPTION VALUE=114>Comics, Cards & Science Fiction</OPTION> <OPTION VALUE=123>Computers & Software</OPTION> <OPTION VALUE=128>Electronics & Photography</OPTION> <OPTION VALUE=134>Gemstones & Jewelry</OPTION> <OPTION VALUE=149>Home & Garden</OPTION> <OPTION VALUE=159>Movies & Video</OPTION> <OPTION VALUE=164>Music</OPTION> <OPTION VALUE=171>Office & Business</OPTION> <OPTION VALUE=176>Other Goods & Services</OPTION> <OPTION VALUE=221>Real Estate</OPTION> <OPTION VALUE=184>Sports & Recreation</OPTION> <OPTION VALUE=188>Toys & Games</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=0>View all categories</OPTION> </SELECT>"; NA; ""; ""; true
+OTHER; "--Select here"; NA; ""; ""; true
+SELECT; "---- Select here"; NA; "here"; ""; false
+SELECT; "Select <b>Yes</b> if you want the users login box to be displayed in the Home page. Otherwise select <b>No</b>"; NA; "byesb, if, you, want, the, users, login, box, to, be, displayed, in, home, page, otherwise, select, bnob"; ""; false
+SELECT; "Select <b>Yes</b> if you want the news box to be displayed in the Home page. Otherwise select <b>No</b>"; NA; "byesb, if, you, want, the, news, box, to, be, displayed, in, home, page, otherwise, select, bnob"; ""; false
+SELECT; "Select the file to upload"; NA; "the, file, to, upload"; ""; false
+UPDATE; "UPDATE COUNTERS"; PHPAUCTIONXL_counters; ""; ""; true
+UPDATE; "Update Counters Utility"; PHPAUCTIONXL_counters; ""; ""; true
+SELECT; "Select <b>yes</b> if you want a link to the message boards to appear in the header and footer of your site."; NA; "byesb, if, you, want, a, link, to, the, message, boards, appear, in, header, and, footer, of, your, site"; ""; false
+UPDATE; "Update Counters"; PHPAUCTIONXL_counters; ""; ""; true
+SELECT; "Select which type of statistics you want to generate"; NA; "which, type, of, statistics, you, want, to, generate"; ""; false
+SELECT; "Select <b>Yes</b> if you want a copy of the invoices to be sent to the admin e-mail address."; NA; "byesb, if, you, want, a, copy, of, the, invoices, to, be, sent, admin, email, address"; ""; false
+SELECT; "Select banner"; NA; "banner"; ""; false
+SELECT; "Select your category"; NA; "your, category"; ""; false
+SELECT; "SELECT CATEGORY &gt;&gt;"; NA; "category, gtgt"; ""; false
+SELECT; "select value"; NA; "value"; ""; false
+SELECT; "Select the currency to use for Paypal payments (USD, GBP, JPY, CAD, EUR only)"; NA; "the, currency, to, use, for, paypal, payments, usd, gbp, jpy, cad, eur, only"; ""; false
+OTHER; "<SELECT NAME=id> <OPTION VALUE=>Selecciona la categor&iacute;a</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=1>Arte y Antiguedades</OPTION> <OPTION VALUE=220>Autos y Vehiculos</OPTION> <OPTION VALUE=221>Casas y Terrenos</OPTION> <OPTION VALUE=76>Coleccionables</OPTION> <OPTION VALUE=114>Comics, Cromos & Ciencia Ficcion</OPTION> <OPTION VALUE=184>Deportes y Ocio</OPTION> <OPTION VALUE=128>Electrnica y Fotografia</OPTION> <OPTION VALUE=134>Gemas y Joyas</OPTION> <OPTION VALUE=149>Hogar y Jardin</OPTION> <OPTION VALUE=188>Juguetes y Juegos</OPTION> <OPTION VALUE=28>Libros</OPTION> <OPTION VALUE=73>Monedas y Sellos</OPTION> <OPTION VALUE=164>Musica</OPTION> <OPTION VALUE=171>Oficina y Negocios</OPTION> <OPTION VALUE=123>Ordenadores & Software</OPTION> <OPTION VALUE=176>Otros Bienes y Servicios</OPTION> <OPTION VALUE=159>Peliculas & Video</OPTION> <OPTION VALUE=69>Ropa y Complementos</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=0>Todas las categor&iacute;as</OPTION> </SELECT>"; NA; ""; ""; true
+OTHER; "<select name=atype>"; NA; ""; ""; true
+OTHER; "<select name=duration>"; NA; ""; ""; true
+SELECT; "SELECT LAST_INSERT_ID() as id"; NA; ""; ""; false
+OTHER; "<select name=country>"; NA; ""; ""; true
+OTHER; "<select NAME=auction_type>"; NA; ""; ""; true
+OTHER; "<select NAME=category>"; NA; ""; ""; true

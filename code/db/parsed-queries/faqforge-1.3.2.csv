@@ -48,3 +48,17 @@ SELECT; "SELECT * from Faq WHERE parent_id = $faq1[id]"; Faq; "id, title, parent
 SELECT; "SELECT * FROM Faq WHERE context = $helpContext"; Faq; "id, title, parent_id, context, list_order, publish"; "$helpContext"; false
 SELECT; "SELECT * FROM Faq WHERE id = $faqId"; Faq; "id, title, parent_id, context, list_order, publish"; "$faqId"; false
 SELECT; "SELECT * FROM FaqPage WHERE owner_id = $helpId"; FaqPage; "id, faqText, page_num, owner_id, publish"; "$helpId"; false
+SELECT; "SELECT id FROM Faq WHERE parent_id = 0 ORDER BY id"; Faq; "id"; ""; true
+OTHER; "<select name=topicParent>"; NA; ""; ""; true
+UPDATE; "UPDATE Faq SET"; Faq; ""; ""; true
+SELECT; "SELECT * FROM Faq WHERE parent_id = 0 ORDER BY list_order"; Faq; "id, title, parent_id, context, list_order, publish"; ""; false
+SELECT; "SELECT * FROM Faq WHERE parent_id = 0 ORDER BY list_order"; Faq; "id, title, parent_id, context, list_order, publish"; ""; false
+OTHER; "<select name=newParent>"; NA; ""; ""; true
+SELECT; "SELECT * FROM Faq WHERE parent_id = 0 AND publish = y"; Faq; "id, title, parent_id, context, list_order, publish"; ""; false
+SELECT; "SELECT id FROM Faq WHERE parent_id = 0 ORDER BY id"; Faq; "id"; ""; true
+OTHER; "<select name=topicParent>"; NA; ""; ""; true
+UPDATE; "UPDATE Faq SET"; Faq; ""; ""; true
+SELECT; "SELECT * FROM Faq WHERE parent_id = 0 ORDER BY list_order"; Faq; "id, title, parent_id, context, list_order, publish"; ""; false
+SELECT; "SELECT * FROM Faq WHERE parent_id = 0 ORDER BY list_order"; Faq; "id, title, parent_id, context, list_order, publish"; ""; false
+OTHER; "<select name=newParent>"; NA; ""; ""; true
+SELECT; "SELECT * FROM Faq WHERE parent_id = 0 AND publish = y"; Faq; "id, title, parent_id, context, list_order, publish"; ""; false

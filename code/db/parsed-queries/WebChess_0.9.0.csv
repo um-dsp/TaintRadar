@@ -80,3 +80,5 @@ SELECT; "SELECT whitePlayer, blackPlayer FROM games WHERE gameID = $_POST[gameID
 SELECT; "SELECT nick FROM players WHERE playerID = $opponentsID"; players; "nick"; "$opponentsID"; false
 SELECT; "SELECT Max(timeOfMove) FROM history WHERE gameID = $_SESSION[gameID]"; history; "timeofmove"; ""; true
 SELECT; "SELECT * FROM history WHERE gameID = $_SESSION[gameID] AND timeOfMove = $maxTime"; history; "timeOfMove, gameID, curPiece, curColor, fromRow, fromCol, toRow, toCol, replaced, promotedTo, isInCheck"; "$maxTime"; false
+SELECT; "SELECT gameID FROM games WHERE gameMessage = playerInvited"; games; "gameid"; ""; true
+INSERT; "INSERT INTO games (whitePlayer, blackPlayer, gameMessage, messageFrom, dateCreated, lastMove) VALUES ("; games; "whiteplayer, blackplayer, gamemessage, messagefrom, datecreated, lastmove"; ""; true

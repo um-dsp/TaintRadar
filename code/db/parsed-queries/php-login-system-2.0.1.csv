@@ -1,0 +1,20 @@
+INSERT; "INSERT INTO auth_tokens (user_email, auth_type, selector, token, expires_at) VALUES (?, account_verify, ?, ?, $expires );"; auth_tokens; "user_email, auth_type, selector, token, expires_at"; "$expires"; false
+INSERT; "INSERT INTO auth_tokens (user_email, auth_type, selector, token, expires_at) VALUES (?, password_reset, ?, ?, $expires );"; auth_tokens; "user_email, auth_type, selector, token, expires_at"; "$expires"; false
+INSERT; "INSERT INTO auth_tokens (user_email, auth_type, selector, token, expires_at) VALUES (?, account_verify, ?, ?, $expires );"; auth_tokens; "user_email, auth_type, selector, token, expires_at"; "$expires"; false
+SELECT; "SELECT * FROM users WHERE email=?;"; users; "id, username, email, password, first_name, last_name, gender, headline, bio, profile_image, verified_at, created_at, updated_at, deleted_at, last_login_at"; ""; false
+SELECT; "SELECT * FROM auth_tokens WHERE auth_type=remember_me AND selector=? AND expires_at >= NOW() LIMIT 1;"; auth_tokens; "id, user_email, auth_type, selector, token, created_at, expires_at"; ""; false
+SELECT; "select id from users where username=?;"; users; "id"; ""; true
+SELECT; "select id from users where email=?;"; users; "id"; ""; true
+UPDATE; "UPDATE users SET last_login_at=NOW() WHERE username=?;"; users; "last_login_at"; ""; true
+SELECT; "SELECT * FROM users WHERE username=?;"; users; "id, username, email, password, first_name, last_name, gender, headline, bio, profile_image, verified_at, created_at, updated_at, deleted_at, last_login_at"; ""; false
+INSERT; "INSERT INTO auth_tokens (user_email, auth_type, selector, token, expires_at) VALUES (?, remember_me, ?, ?, ?);"; auth_tokens; "user_email, auth_type, selector, token, expires_at"; ""; false
+SELECT; "SELECT password FROM users WHERE id=?;"; users; "password"; ""; false
+UPDATE; "UPDATE users SET username=?, email=?, first_name=?, last_name=?, gender=?, headline=?, bio=?, profile_image=?"; users; "username, email, first_name, last_name, gender, headline, bio, profile_image"; ""; false
+INSERT; "insert into users(username, email, password, first_name, last_name, gender, headline, bio, profile_image, created_at) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() )"; users; "username, email, password, first_name, last_name, gender, headline, bio, profile_image, created_at"; ""; false
+SELECT; "SELECT * FROM auth_tokens WHERE auth_type=password_reset AND selector=? AND expires_at >= NOW() LIMIT 1"; auth_tokens; "id, user_email, auth_type, selector, token, created_at, expires_at"; ""; false
+SELECT; "SELECT * FROM users WHERE email=?;"; users; "id, username, email, password, first_name, last_name, gender, headline, bio, profile_image, verified_at, created_at, updated_at, deleted_at, last_login_at"; ""; false
+UPDATE; "UPDATE users SET password=? WHERE email=?;"; users; "password"; ""; false
+SELECT; "SELECT id FROM users WHERE email=?;"; users; "id"; ""; true
+SELECT; "SELECT * FROM auth_tokens WHERE auth_type=account_verify AND selector=? AND expires_at >= NOW() LIMIT 1;"; auth_tokens; "id, user_email, auth_type, selector, token, created_at, expires_at"; ""; false
+SELECT; "SELECT * FROM users WHERE email=? LIMIT 1;"; users; "id, username, email, password, first_name, last_name, gender, headline, bio, profile_image, verified_at, created_at, updated_at, deleted_at, last_login_at"; ""; false
+UPDATE; "UPDATE users SET verified_at=NOW() WHERE email=?;"; users; "verified_at"; ""; true

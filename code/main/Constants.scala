@@ -2,8 +2,6 @@ object Constants {
 
   val attacker_input = List("_GET", "_POST", "_COOKIE", "_REQUEST", "_ENV", "HTTP_.*", "QUERY_STRING", "_FILES")
 
-  val sql_func: List[String] = List("mysql_", "mysqli_", "pg_", "sqlite_", "sql_")
-
   val safe_types: List[String] = List("int", "integer", "bool", "boolean", "float", "double")
 
   val implicit_cast: List[String] = List("<operator>.plus", "<operator>.minus", "<operator>.multiplication", "<operator>.division", "<operator>.xor", 
@@ -34,9 +32,18 @@ object Constants {
     // SQLite Functions
     "sqlite_query",
     "sqlite_exec",
+    "queryExec",
     // Miscellaneous
     "sql_query",
-    "query"
+    "query",
+    "real_query"
+  )
+
+  // Useful for Stored XSS processing, i.e. not vulnerable to SQL Injection but interacts with the database
+  val stored_xss_func: List[String] = sqli_sink ++ List(
+    "mysqli_stmt_execute",
+    "execute",
+    "pg_execute"
   )
 
   val commandexec_sink = List("shell_exec", "exec", "system", "mail", "popen", "expect_popen", "passthru", "pcntl_exec", "proc_open")

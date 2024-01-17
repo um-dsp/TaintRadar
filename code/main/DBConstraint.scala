@@ -10,6 +10,8 @@ class DatabaseConstraint(val cpg: Cpg) {
     val mainSqlKeywords: Set[String] = Set("select ", "select*", "insert into ", "insert ignore into ", "update ", "update ignore ")
 
     val removeChars = Set('"', '\\', '`', '\'')
+    val calculationPattern = "\\s*([-+=/*><!()])\\s*".r
+    val parenthesisPattern = "\\([^)]*\\)".r
 
     val safeSQLFunctions = Set("count(", "sum(", "length(", "len(", "now(", "date(", 
                                 "year(", "month(", "day(", "abs(", "round(", "ceil(", "ceiling(", "floor(", 
@@ -83,7 +85,7 @@ class DatabaseConstraint(val cpg: Cpg) {
         }
     }
 
-    case class DBQuery(sqlCodeNode: nodes.Call) {
+    case class DBQuery(sqlCodeNode: AstNode) {
         // val sqlCodeNode: List[AstNode] = getSqlCodeNode(this.callNode)
         val queryType: QueryType.Value = this.getQueryType()
         val queryCode: Array[String] = this.getQueryCode()
@@ -113,12 +115,10 @@ class DatabaseConstraint(val cpg: Cpg) {
         }
     }
 
-    val calculationPattern = "\\s*([-+=/*><!()])\\s*".r
-    val parenthesisPattern = "\\([^)]*\\)".r
-
     // Get all database query statements
     val queryStatementsDuplicates: List[nodes.Call] = cpg.call("<operator>.concat|encaps").filter(x => mainSqlKeywords.exists(x.argument.head.code.toLowerCase.replaceFirst("^[^a-zA-Z0-9]*", "").startsWith(_))).l
-    val queryStatements = queryStatementsDuplicates.filterNot(c1 => queryStatementsDuplicates.exists(c2 => c2.astChildren.contains(c1))).l
+    val queryStatementsLiterals: List[Literal] = cpg.literal.filter(x => mainSqlKeywords.exists(x.code.toLowerCase.replaceFirst("^[^a-zA-Z0-9]*", "").startsWith(_))).l
+    val queryStatements = (queryStatementsDuplicates ++ queryStatementsLiterals).filterNot(c1 => (queryStatementsDuplicates ++ queryStatementsLiterals).exists(c2 => c2.astChildren.contains(c1))).l
     val queries = queryStatements.map(DBQuery(_))
 
     // Get database schema from csv file
