@@ -104,9 +104,9 @@ class DatabaseConstraint(val cpg: Cpg) {
 
         def getQueryType(): QueryType.Value = {
             val queryCode = this.getQueryCode().map(_.toLowerCase()).map(_.filter(!removeChars.contains(_)))
-            if (queryCode.contains("insert")) QueryType.InsertQuery
-            else if (queryCode.contains("update")) QueryType.UpdateQuery
-            else if (queryCode.contains("select")) QueryType.SelectQuery
+            if (queryCode.contains("insert") && queryCode.contains("into")) QueryType.InsertQuery
+            else if (queryCode.contains("update") && queryCode.contains("set")) QueryType.UpdateQuery
+            else if (queryCode.contains("select") && queryCode.contains("from")) QueryType.SelectQuery
             else QueryType.OtherQuery
         }
         
@@ -116,7 +116,7 @@ class DatabaseConstraint(val cpg: Cpg) {
     }
 
     // Get all database query statements
-    val queryStatementsDuplicates: List[nodes.Call] = cpg.call("<operator>.concat|encaps").filter(x => mainSqlKeywords.exists(x.argument.head.code.toLowerCase.replaceFirst("^[^a-zA-Z0-9]*", "").startsWith(_))).l
+    val queryStatementsDuplicates: List[nodes.Call] = cpg.call.filter(call => Constants.query_concat_func.contains(call.name)).filter(x => mainSqlKeywords.exists(x.argument.head.code.toLowerCase.replaceFirst("^[^a-zA-Z0-9]*", "").startsWith(_))).l
     val queryStatementsLiterals: List[Literal] = cpg.literal.filter(x => mainSqlKeywords.exists(x.code.toLowerCase.replaceFirst("^[^a-zA-Z0-9]*", "").startsWith(_))).l
     val queryStatements = (queryStatementsDuplicates ++ queryStatementsLiterals).filterNot(c1 => (queryStatementsDuplicates ++ queryStatementsLiterals).exists(c2 => c2.astChildren.contains(c1))).l
     val queries = queryStatements.map(DBQuery(_))
@@ -167,7 +167,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                                         }
                                     }
                     val scopeWithoutAlias = queryScope.sliding(2).filterNot(_(0) == "as").flatten.filterNot(_ == "as").l
-                    val removeFuncHash = Constants.sql_builtin_function.map(fun => scopeWithoutAlias.map(s=> s.replace(fun.toLowerCase+"(","").filter(_.isLetterOrDigit)).l)
+                    val removeFuncHash = SQLConstants.sql_builtin_function.map(fun => scopeWithoutAlias.map(s=> s.replace(fun.toLowerCase+"(","").filter(_.isLetterOrDigit)).l)
                     val scopeWithoutFunc = scopeWithoutAlias.indices.map(i => removeFuncHash.map(_(i)).reduce((x,y) => if (x.length < y.length) x else y)).toList
                     val dbColumns = list_schema.filter(_(0) == closestTable).map(_(1))
                     val queryColumns = if (queryScope.contains("*")) dbColumns else scopeWithoutFunc

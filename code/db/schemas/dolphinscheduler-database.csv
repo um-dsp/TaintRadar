@@ -1,0 +1,612 @@
+QRTZ_BLOB_TRIGGERS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_BLOB_TRIGGERS,TRIGGER_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_BLOB_TRIGGERS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_BLOB_TRIGGERS,BLOB_DATA,"['PRIMARY', 'KEY', '(`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`)']",False
+QRTZ_BLOB_TRIGGERS,QRTZ_BLOB_TRIGGERS_ibfk_1,"['KEY', '`SCHED_NAME` (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`)']",False
+QRTZ_CALENDARS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_CALENDARS,CALENDAR_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_CALENDARS,CALENDAR,"['blob', 'NOT NULL']",False
+QRTZ_CRON_TRIGGERS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_CRON_TRIGGERS,TRIGGER_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_CRON_TRIGGERS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_CRON_TRIGGERS,CRON_EXPRESSION,"['varchar(120)', 'NOT NULL']",False
+QRTZ_CRON_TRIGGERS,TIME_ZONE_ID,"['varchar(80)', 'DEFAULT', 'NULL']",False
+QRTZ_CRON_TRIGGERS,QRTZ_CRON_TRIGGERS_ibfk_1,"['CONSTRAINT', 'FOREIGN', 'KEY', '(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)', 'REFERENCES', '`QRTZ_TRIGGERS` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)']",True
+QRTZ_FIRED_TRIGGERS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_FIRED_TRIGGERS,ENTRY_ID,"['varchar(200)', 'NOT NULL']",False
+QRTZ_FIRED_TRIGGERS,TRIGGER_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_FIRED_TRIGGERS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_FIRED_TRIGGERS,INSTANCE_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_FIRED_TRIGGERS,FIRED_TIME,"['bigint(13)', 'NOT NULL']",True
+QRTZ_FIRED_TRIGGERS,SCHED_TIME,"['bigint(13)', 'NOT NULL']",True
+QRTZ_FIRED_TRIGGERS,PRIORITY,"['int(11)', 'NOT NULL']",True
+QRTZ_FIRED_TRIGGERS,STATE,"['varchar(16)', 'NOT NULL']",False
+QRTZ_FIRED_TRIGGERS,JOB_NAME,"['varchar(200)', 'DEFAULT', 'NULL']",False
+QRTZ_FIRED_TRIGGERS,JOB_GROUP,"['varchar(200)', 'DEFAULT', 'NULL']",False
+QRTZ_FIRED_TRIGGERS,IS_NONCONCURRENT,"['varchar(1)', 'DEFAULT', 'NULL']",False
+QRTZ_FIRED_TRIGGERS,REQUESTS_RECOVERY,"['KEY', '`IDX_QRTZ_FT_TRIG_INST_NAME` (`SCHED_NAME`,`INSTANCE_NAME`)', 'KEY', '`IDX_QRTZ_FT_INST_JOB_REQ_RCVRY` (`SCHED_NAME`,`INSTANCE_NAME`,`REQUESTS_RECOVERY`)', 'KEY', '`IDX_QRTZ_FT_J_G` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`)', 'KEY', '`IDX_QRTZ_FT_JG` (`SCHED_NAME`,`JOB_GROUP`)', 'KEY', '`IDX_QRTZ_FT_T_G` (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`)', 'KEY', '`IDX_QRTZ_FT_TG` (`SCHED_NAME`,`TRIGGER_GROUP`)']",False
+QRTZ_JOB_DETAILS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,JOB_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,JOB_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,DESCRIPTION,"['varchar(250)', 'DEFAULT', 'NULL']",False
+QRTZ_JOB_DETAILS,JOB_CLASS_NAME,"['varchar(250)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,IS_DURABLE,"['varchar(1)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,IS_NONCONCURRENT,"['varchar(1)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,IS_UPDATE_DATA,"['varchar(1)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,REQUESTS_RECOVERY,"['varchar(1)', 'NOT NULL']",False
+QRTZ_JOB_DETAILS,JOB_DATA,"['KEY', '`IDX_QRTZ_J_REQ_RECOVERY` (`SCHED_NAME`,`REQUESTS_RECOVERY`)', 'KEY', '`IDX_QRTZ_J_GRP` (`SCHED_NAME`,`JOB_GROUP`)']",False
+QRTZ_LOCKS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_LOCKS,LOCK_NAME,"['varchar(40)', 'NOT NULL']",False
+QRTZ_PAUSED_TRIGGER_GRPS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_PAUSED_TRIGGER_GRPS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_SCHEDULER_STATE,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_SCHEDULER_STATE,INSTANCE_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_SCHEDULER_STATE,LAST_CHECKIN_TIME,"['bigint(13)', 'NOT NULL']",True
+QRTZ_SCHEDULER_STATE,CHECKIN_INTERVAL,"['bigint(13)', 'NOT NULL']",True
+QRTZ_SIMPLE_TRIGGERS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_SIMPLE_TRIGGERS,TRIGGER_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_SIMPLE_TRIGGERS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_SIMPLE_TRIGGERS,REPEAT_COUNT,"['bigint(7)', 'NOT NULL']",True
+QRTZ_SIMPLE_TRIGGERS,REPEAT_INTERVAL,"['bigint(12)', 'NOT NULL']",True
+QRTZ_SIMPLE_TRIGGERS,TIMES_TRIGGERED,"['bigint(10)', 'NOT NULL']",True
+QRTZ_SIMPLE_TRIGGERS,QRTZ_SIMPLE_TRIGGERS_ibfk_1,"['CONSTRAINT', 'FOREIGN', 'KEY', '(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)', 'REFERENCES', '`QRTZ_TRIGGERS` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)']",True
+QRTZ_SIMPROP_TRIGGERS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_SIMPROP_TRIGGERS,TRIGGER_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_SIMPROP_TRIGGERS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_SIMPROP_TRIGGERS,STR_PROP_1,"['varchar(512)', 'DEFAULT', 'NULL']",False
+QRTZ_SIMPROP_TRIGGERS,STR_PROP_2,"['varchar(512)', 'DEFAULT', 'NULL']",False
+QRTZ_SIMPROP_TRIGGERS,STR_PROP_3,"['varchar(512)', 'DEFAULT', 'NULL']",False
+QRTZ_SIMPROP_TRIGGERS,INT_PROP_1,"['int(11)', 'DEFAULT', 'NULL']",True
+QRTZ_SIMPROP_TRIGGERS,INT_PROP_2,"['int(11)', 'DEFAULT', 'NULL']",True
+QRTZ_SIMPROP_TRIGGERS,LONG_PROP_1,"['bigint(20)', 'DEFAULT', 'NULL']",True
+QRTZ_SIMPROP_TRIGGERS,LONG_PROP_2,"['bigint(20)', 'DEFAULT', 'NULL']",True
+QRTZ_SIMPROP_TRIGGERS,DEC_PROP_1,"['decimal(13,4)', 'DEFAULT', 'NULL']",True
+QRTZ_SIMPROP_TRIGGERS,DEC_PROP_2,"['decimal(13,4)', 'DEFAULT', 'NULL']",True
+QRTZ_SIMPROP_TRIGGERS,BOOL_PROP_1,"['varchar(1)', 'DEFAULT', 'NULL']",False
+QRTZ_SIMPROP_TRIGGERS,BOOL_PROP_2,"['varchar(1)', 'DEFAULT', 'NULL']",False
+QRTZ_SIMPROP_TRIGGERS,QRTZ_SIMPROP_TRIGGERS_ibfk_1,"['CONSTRAINT', 'FOREIGN', 'KEY', '(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)', 'REFERENCES', '`QRTZ_TRIGGERS` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)']",True
+QRTZ_TRIGGERS,SCHED_NAME,"['varchar(120)', 'NOT NULL']",False
+QRTZ_TRIGGERS,TRIGGER_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_TRIGGERS,TRIGGER_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_TRIGGERS,JOB_NAME,"['varchar(200)', 'NOT NULL']",False
+QRTZ_TRIGGERS,JOB_GROUP,"['varchar(200)', 'NOT NULL']",False
+QRTZ_TRIGGERS,DESCRIPTION,"['varchar(250)', 'DEFAULT', 'NULL']",False
+QRTZ_TRIGGERS,NEXT_FIRE_TIME,"['bigint(13)', 'DEFAULT', 'NULL']",True
+QRTZ_TRIGGERS,PREV_FIRE_TIME,"['bigint(13)', 'DEFAULT', 'NULL']",True
+QRTZ_TRIGGERS,PRIORITY,"['int(11)', 'DEFAULT', 'NULL']",True
+QRTZ_TRIGGERS,TRIGGER_STATE,"['varchar(16)', 'NOT NULL']",False
+QRTZ_TRIGGERS,TRIGGER_TYPE,"['varchar(8)', 'NOT NULL']",False
+QRTZ_TRIGGERS,START_TIME,"['bigint(13)', 'NOT NULL']",True
+QRTZ_TRIGGERS,END_TIME,"['bigint(13)', 'DEFAULT', 'NULL']",True
+QRTZ_TRIGGERS,CALENDAR_NAME,"['varchar(200)', 'DEFAULT', 'NULL']",False
+QRTZ_TRIGGERS,MISFIRE_INSTR,"['smallint(2)', 'DEFAULT', 'NULL']",True
+QRTZ_TRIGGERS,JOB_DATA,"['PRIMARY', 'KEY', '(`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`)']",False
+QRTZ_TRIGGERS,QRTZ_TRIGGERS_ibfk_1,"['KEY', '`IDX_QRTZ_T_J` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`)', 'KEY', '`IDX_QRTZ_T_JG` (`SCHED_NAME`,`JOB_GROUP`)', 'KEY', '`IDX_QRTZ_T_C` (`SCHED_NAME`,`CALENDAR_NAME`)', 'KEY', '`IDX_QRTZ_T_G` (`SCHED_NAME`,`TRIGGER_GROUP`)', 'KEY', '`IDX_QRTZ_T_STATE` (`SCHED_NAME`,`TRIGGER_STATE`)', 'KEY', '`IDX_QRTZ_T_N_STATE` (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`,`TRIGGER_STATE`)', 'KEY', '`IDX_QRTZ_T_N_G_STATE` (`SCHED_NAME`,`TRIGGER_GROUP`,`TRIGGER_STATE`)', 'KEY', '`IDX_QRTZ_T_NEXT_FIRE_TIME` (`SCHED_NAME`,`NEXT_FIRE_TIME`)', 'KEY', '`IDX_QRTZ_T_NFT_ST` (`SCHED_NAME`,`TRIGGER_STATE`,`NEXT_FIRE_TIME`)', 'KEY', '`IDX_QRTZ_T_NFT_MISFIRE` (`SCHED_NAME`,`MISFIRE_INSTR`,`NEXT_FIRE_TIME`)', 'KEY', '`IDX_QRTZ_T_NFT_ST_MISFIRE` (`SCHED_NAME`,`MISFIRE_INSTR`,`NEXT_FIRE_TIME`,`TRIGGER_STATE`)', 'KEY', '`IDX_QRTZ_T_NFT_ST_MISFIRE_GRP` (`SCHED_NAME`,`MISFIRE_INSTR`,`NEXT_FIRE_TIME`,`TRIGGER_GROUP`,`TRIGGER_STATE`)']",True
+t_ds_access_token,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_access_token,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'user id'""]",True
+t_ds_access_token,token,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'token'""]",False
+t_ds_access_token,expire_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'end time of token '""]",True
+t_ds_access_token,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_access_token,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_alert,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_alert,title,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'title'""]",False
+t_ds_alert,sign,"['char(40)', 'NOT NULL', 'DEFAULT', ""''"", 'COMMENT', ""'sign=sha1(content)'""]",False
+t_ds_alert,content,"['signsha1()', 'text', 'COMMENT', ""'Message content (can be email, can be SMS. Mail is stored in JSON map, and SMS is string)'""]",False
+t_ds_alert,alert_status,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'0:wait running,1:success,2:failed'""]",True
+t_ds_alert,warning_type,"['tinyint(4)', 'DEFAULT', ""'2'"", 'COMMENT', ""'1 process is successfully, 2 process/task is failed'""]",True
+t_ds_alert,log,"['text', 'COMMENT', ""'log'""]",False
+t_ds_alert,alertgroup_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'alert group id'""]",True
+t_ds_alert,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_alert,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_alert,project_code,"['bigint(20)', 'DEFAULT', 'NULL', 'COMMENT', ""'project_code'""]",True
+t_ds_alert,process_definition_code,"['bigint(20)', 'DEFAULT', 'NULL', 'COMMENT', ""'process_definition_code'""]",True
+t_ds_alert,process_instance_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process_instance_id'""]",True
+t_ds_alert,alert_type,"['KEY', '`idx_status` (`alert_status`)', 'USING']",False
+t_ds_alert,BTREE,"['KEY', '`idx_sign` (`sign`)', 'USING']",False
+t_ds_alertgroup,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_alertgroup,alert_instance_ids,"['varchar (255)', 'DEFAULT', 'NULL', 'COMMENT', ""'alert instance ids'""]",False
+t_ds_alertgroup,create_user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'create user id'""]",True
+t_ds_alertgroup,group_name,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'group name'""]",False
+t_ds_alertgroup,description,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_alertgroup,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_alertgroup,update_time,['UNIQUE'],False
+t_ds_command,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_command,command_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'Command type: 0 start workflow, 1 start execution from current node, 2 resume fault-tolerant workflow, 3 resume pause process, 4 start execution from failed node, 5 complement, 6 schedule, 7 rerun, 8 pause, 9 stop, 10 resume waiting thread'""]",True
+t_ds_command,process_definition_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'process definition code'""]",True
+t_ds_command,process_definition_version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process definition version'""]",True
+t_ds_command,process_instance_id,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process instance id'""]",True
+t_ds_command,command_param,"['text', 'COMMENT', ""'json command parameters'""]",False
+t_ds_command,task_depend_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'Node dependency type: 0 current node, 1 forward, 2 backward'""]",True
+t_ds_command,failure_strategy,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'Failed policy: 0 end, 1 continue'""]",True
+t_ds_command,warning_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'Alarm type: 0 is not sent, 1 process is sent successfully, 2 process is sent failed, 3 process is sent successfully and all failures are sent'""]",True
+t_ds_command,warning_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'warning group'""]",True
+t_ds_command,schedule_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'schedule time'""]",True
+t_ds_command,start_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'start time'""]",True
+t_ds_command,executor_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'executor id'""]",True
+t_ds_command,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_command,process_instance_priority,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance priority: 0 Highest,1 High,2 Medium,3 Low,4 Lowest'""]",True
+t_ds_command,worker_group,"['varchar(64)', 'COMMENT', ""'worker group'""]",False
+t_ds_command,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_command,dry_run,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'dry run flag：0 normal, 1 dry run'""]",True
+t_ds_command,BTREE,"['KEY', '`priority_id_index` (`process_instance_priority`,`id`)', 'USING']",False
+t_ds_datasource,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_datasource,name,"['varchar(64)', 'NOT NULL', 'COMMENT', ""'data source name'""]",False
+t_ds_datasource,note,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'description'""]",False
+t_ds_datasource,type,"['tinyint(4)', 'NOT NULL', 'COMMENT', ""'data source type: 0:mysql,1:postgresql,2:hive,3:spark'""]",True
+t_ds_datasource,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'the creator id'""]",True
+t_ds_datasource,connection_params,"['text', 'NOT NULL', 'COMMENT', ""'json connection params'""]",False
+t_ds_datasource,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_datasource,update_time,['UNIQUE'],False
+t_ds_error_command,id,"['int(11)', 'NOT NULL', 'COMMENT', ""'key'""]",True
+t_ds_error_command,command_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'command type'""]",True
+t_ds_error_command,executor_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'executor id'""]",True
+t_ds_error_command,process_definition_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'process definition code'""]",True
+t_ds_error_command,process_definition_version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process definition version'""]",True
+t_ds_error_command,process_instance_id,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process instance id: 0'""]",True
+t_ds_error_command,command_param,"['text', 'COMMENT', ""'json command parameters'""]",False
+t_ds_error_command,task_depend_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'task depend type'""]",True
+t_ds_error_command,failure_strategy,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'failure strategy'""]",True
+t_ds_error_command,warning_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'warning type'""]",True
+t_ds_error_command,warning_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'warning group id'""]",True
+t_ds_error_command,schedule_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'scheduler time'""]",True
+t_ds_error_command,start_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'start time'""]",True
+t_ds_error_command,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_error_command,process_instance_priority,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance priority, 0 Highest,1 High,2 Medium,3 Low,4 Lowest'""]",True
+t_ds_error_command,worker_group,"['varchar(64)', 'COMMENT', ""'worker group'""]",False
+t_ds_error_command,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_error_command,message,"['text', 'COMMENT', ""'message'""]",False
+t_ds_error_command,BTREE,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'dry run flag: 0 normal, 1 dry run'""]",True
+t_ds_process_definition,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'self-increasing id'""]",True
+t_ds_process_definition,code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'encoding'""]",True
+t_ds_process_definition,name,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'process definition name'""]",False
+t_ds_process_definition,version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process definition version'""]",True
+t_ds_process_definition,description,"['text', 'COMMENT', ""'description'""]",False
+t_ds_process_definition,project_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'project code'""]",True
+t_ds_process_definition,release_state,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'process definition release state：0:offline,1:online'""]",True
+t_ds_process_definition,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process definition creator id'""]",True
+t_ds_process_definition,global_params,"['text', 'COMMENT', ""'global parameters'""]",False
+t_ds_process_definition,flag,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_process_definition,locations,"['text', 'COMMENT', ""'Node location information'""]",False
+t_ds_process_definition,warning_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'alert group id'""]",True
+t_ds_process_definition,timeout,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'time out, unit: minute'""]",True
+t_ds_process_definition,tenant_id,"['int(11)', 'NOT NULL', 'DEFAULT', ""'-1'"", 'COMMENT', ""'tenant id'""]",True
+t_ds_process_definition,execution_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'execution_type 0:parallel,1:serial wait,2:serial discard,3:serial priority'""]",True
+t_ds_process_definition,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_process_definition,update_time,"['datetime', 'NOT NULL', 'COMMENT', ""'update time'""]",True
+t_ds_process_definition,BTREE,['UNIQUE'],False
+t_ds_process_definition_log,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'self-increasing id'""]",True
+t_ds_process_definition_log,code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'encoding'""]",True
+t_ds_process_definition_log,name,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'process definition name'""]",False
+t_ds_process_definition_log,version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process definition version'""]",True
+t_ds_process_definition_log,description,"['text', 'COMMENT', ""'description'""]",False
+t_ds_process_definition_log,project_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'project code'""]",True
+t_ds_process_definition_log,release_state,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'process definition release state：0:offline,1:online'""]",True
+t_ds_process_definition_log,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process definition creator id'""]",True
+t_ds_process_definition_log,global_params,"['text', 'COMMENT', ""'global parameters'""]",False
+t_ds_process_definition_log,flag,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_process_definition_log,locations,"['text', 'COMMENT', ""'Node location information'""]",False
+t_ds_process_definition_log,warning_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'alert group id'""]",True
+t_ds_process_definition_log,timeout,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'time out,unit: minute'""]",True
+t_ds_process_definition_log,tenant_id,"['int(11)', 'NOT NULL', 'DEFAULT', ""'-1'"", 'COMMENT', ""'tenant id'""]",True
+t_ds_process_definition_log,execution_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'execution_type 0:parallel,1:serial wait,2:serial discard,3:serial priority'""]",True
+t_ds_process_definition_log,operator,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'operator user id'""]",True
+t_ds_process_definition_log,operate_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'operate time'""]",True
+t_ds_process_definition_log,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_process_definition_log,update_time,"['datetime', 'NOT NULL', 'COMMENT', ""'update time'""]",True
+t_ds_task_definition,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'self-increasing id'""]",True
+t_ds_task_definition,code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'encoding'""]",True
+t_ds_task_definition,name,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'task definition name'""]",False
+t_ds_task_definition,version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'task definition version'""]",True
+t_ds_task_definition,description,"['text', 'COMMENT', ""'description'""]",False
+t_ds_task_definition,project_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'project code'""]",True
+t_ds_task_definition,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'task definition creator id'""]",True
+t_ds_task_definition,task_type,"['varchar(50)', 'NOT NULL', 'COMMENT', ""'task type'""]",False
+t_ds_task_definition,task_params,"['longtext', 'COMMENT', ""'job custom parameters'""]",True
+t_ds_task_definition,flag,"['tinyint(2)', 'DEFAULT', 'NULL', 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_task_definition,task_priority,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'job priority'""]",True
+t_ds_task_definition,worker_group,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'worker grouping'""]",False
+t_ds_task_definition,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_task_definition,fail_retry_times,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'number of failed retries'""]",True
+t_ds_task_definition,fail_retry_interval,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'failed retry interval'""]",True
+t_ds_task_definition,timeout_flag,"['tinyint(2)', 'DEFAULT', ""'0'"", 'COMMENT', ""'timeout flag:0 close, 1 open'""]",True
+t_ds_task_definition,timeout_notify_strategy,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'timeout notification policy: 0 warning, 1 fail'""]",True
+t_ds_task_definition,timeout,"['notificationpolicy0warning', 'int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'timeout length,unit: minute'""]",True
+t_ds_task_definition,delay_time,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'delay execution time,unit: minute'""]",True
+t_ds_task_definition,resource_ids,"['text', 'COMMENT', ""'resource id, separated by comma'""]",False
+t_ds_task_definition,task_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'task group id'""]",True
+t_ds_task_definition,task_group_priority,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'task group priority'""]",True
+t_ds_task_definition,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_task_definition,update_time,"['datetime', 'NOT NULL', 'COMMENT', ""'update time'""]",True
+t_ds_task_definition_log,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'self-increasing id'""]",True
+t_ds_task_definition_log,code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'encoding'""]",True
+t_ds_task_definition_log,name,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'task definition name'""]",False
+t_ds_task_definition_log,version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'task definition version'""]",True
+t_ds_task_definition_log,description,"['text', 'COMMENT', ""'description'""]",False
+t_ds_task_definition_log,project_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'project code'""]",True
+t_ds_task_definition_log,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'task definition creator id'""]",True
+t_ds_task_definition_log,task_type,"['varchar(50)', 'NOT NULL', 'COMMENT', ""'task type'""]",False
+t_ds_task_definition_log,task_params,"['longtext', 'COMMENT', ""'job custom parameters'""]",True
+t_ds_task_definition_log,flag,"['tinyint(2)', 'DEFAULT', 'NULL', 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_task_definition_log,task_priority,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'job priority'""]",True
+t_ds_task_definition_log,worker_group,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'worker grouping'""]",False
+t_ds_task_definition_log,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_task_definition_log,fail_retry_times,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'number of failed retries'""]",True
+t_ds_task_definition_log,fail_retry_interval,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'failed retry interval'""]",True
+t_ds_task_definition_log,timeout_flag,"['tinyint(2)', 'DEFAULT', ""'0'"", 'COMMENT', ""'timeout flag:0 close, 1 open'""]",True
+t_ds_task_definition_log,timeout_notify_strategy,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'timeout notification policy: 0 warning, 1 fail'""]",True
+t_ds_task_definition_log,timeout,"['notificationpolicy0warning', 'int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'timeout length,unit: minute'""]",True
+t_ds_task_definition_log,delay_time,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'delay execution time,unit: minute'""]",True
+t_ds_task_definition_log,resource_ids,"['text', 'DEFAULT', 'NULL', 'COMMENT', ""'resource id, separated by comma'""]",False
+t_ds_task_definition_log,operator,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'operator user id'""]",True
+t_ds_task_definition_log,task_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'task group id'""]",True
+t_ds_task_definition_log,task_group_priority,"['tinyint(4)', 'DEFAULT', '0', 'COMMENT', ""'task group priority'""]",True
+t_ds_task_definition_log,operate_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'operate time'""]",True
+t_ds_task_definition_log,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_task_definition_log,update_time,"['KEY', '`idx_code_version` (`code`,`version`)', 'KEY', '`idx_project_code` (`project_code`)']",False
+t_ds_process_task_relation,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'self-increasing id'""]",True
+t_ds_process_task_relation,name,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'relation name'""]",False
+t_ds_process_task_relation,project_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'project code'""]",True
+t_ds_process_task_relation,process_definition_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'process code'""]",True
+t_ds_process_task_relation,process_definition_version,"['int(11)', 'NOT NULL', 'COMMENT', ""'process version'""]",True
+t_ds_process_task_relation,pre_task_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'pre task code'""]",True
+t_ds_process_task_relation,pre_task_version,"['int(11)', 'NOT NULL', 'COMMENT', ""'pre task version'""]",True
+t_ds_process_task_relation,post_task_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'post task code'""]",True
+t_ds_process_task_relation,post_task_version,"['int(11)', 'NOT NULL', 'COMMENT', ""'post task version'""]",True
+t_ds_process_task_relation,condition_type,"['tinyint(2)', 'DEFAULT', 'NULL', 'COMMENT', ""'condition type : 0 none, 1 judge 2 delay'""]",True
+t_ds_process_task_relation,condition_params,"['text', 'COMMENT', ""'condition params(json)'""]",False
+t_ds_process_task_relation,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_process_task_relation,update_time,"['KEY', '`idx_code` (`project_code`,`process_definition_code`)', 'KEY', '`idx_pre_task_code_version` (`pre_task_code`,`pre_task_version`)', 'KEY', '`idx_post_task_code_version` (`post_task_code`,`post_task_version`)']",False
+t_ds_process_task_relation_log,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'self-increasing id'""]",True
+t_ds_process_task_relation_log,name,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'relation name'""]",False
+t_ds_process_task_relation_log,project_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'project code'""]",True
+t_ds_process_task_relation_log,process_definition_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'process code'""]",True
+t_ds_process_task_relation_log,process_definition_version,"['int(11)', 'NOT NULL', 'COMMENT', ""'process version'""]",True
+t_ds_process_task_relation_log,pre_task_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'pre task code'""]",True
+t_ds_process_task_relation_log,pre_task_version,"['int(11)', 'NOT NULL', 'COMMENT', ""'pre task version'""]",True
+t_ds_process_task_relation_log,post_task_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'post task code'""]",True
+t_ds_process_task_relation_log,post_task_version,"['int(11)', 'NOT NULL', 'COMMENT', ""'post task version'""]",True
+t_ds_process_task_relation_log,condition_type,"['tinyint(2)', 'DEFAULT', 'NULL', 'COMMENT', ""'condition type : 0 none, 1 judge 2 delay'""]",True
+t_ds_process_task_relation_log,condition_params,"['text', 'COMMENT', ""'condition params(json)'""]",False
+t_ds_process_task_relation_log,operator,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'operator user id'""]",True
+t_ds_process_task_relation_log,operate_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'operate time'""]",True
+t_ds_process_task_relation_log,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_process_task_relation_log,update_time,"['KEY', '`idx_process_code_version` (`process_definition_code`,`process_definition_version`)']",False
+t_ds_process_instance,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_process_instance,name,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance name'""]",False
+t_ds_process_instance,process_definition_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'process definition code'""]",True
+t_ds_process_instance,process_definition_version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'process definition version'""]",True
+t_ds_process_instance,state,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance Status: 0 commit succeeded, 1 running, 2 prepare to pause, 3 pause, 4 prepare to stop, 5 stop, 6 fail, 7 succeed, 8 need fault tolerance, 9 kill, 10 wait for thread, 11 wait for dependency to complete'""]",True
+t_ds_process_instance,recovery,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance failover flag：0:normal,1:failover instance'""]",True
+t_ds_process_instance,start_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance start time'""]",True
+t_ds_process_instance,end_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance end time'""]",True
+t_ds_process_instance,run_times,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance run times'""]",True
+t_ds_process_instance,host,"['varchar(135)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance host'""]",False
+t_ds_process_instance,command_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'command type'""]",True
+t_ds_process_instance,command_param,"['text', 'COMMENT', ""'json command parameters'""]",False
+t_ds_process_instance,task_depend_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'task depend type. 0: only current node,1:before the node,2:later nodes'""]",True
+t_ds_process_instance,max_try_times,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'max try times'""]",True
+t_ds_process_instance,failure_strategy,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'failure strategy. 0:end the process when node failed,1:continue running the other nodes when node failed'""]",True
+t_ds_process_instance,warning_type,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'warning type. 0:no warning,1:warning if process success,2:warning if process failed,3:warning if success'""]",True
+t_ds_process_instance,warning_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'warning group id'""]",True
+t_ds_process_instance,schedule_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'schedule time'""]",True
+t_ds_process_instance,command_start_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'command start time'""]",True
+t_ds_process_instance,global_params,"['text', 'COMMENT', ""'global parameters'""]",False
+t_ds_process_instance,flag,"['tinyint(4)', 'DEFAULT', ""'1'"", 'COMMENT', ""'flag'""]",True
+t_ds_process_instance,update_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP', 'ON', 'UPDATE', 'CURRENT_TIMESTAMP']",True
+t_ds_process_instance,is_sub_process,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'flag, whether the process is sub process'""]",True
+t_ds_process_instance,executor_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'executor id'""]",True
+t_ds_process_instance,history_cmd,"['text', 'COMMENT', ""'history commands of process instance operation'""]",False
+t_ds_process_instance,process_instance_priority,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance priority. 0 Highest,1 High,2 Medium,3 Low,4 Lowest'""]",True
+t_ds_process_instance,worker_group,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'worker group id'""]",False
+t_ds_process_instance,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_process_instance,timeout,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'time out'""]",True
+t_ds_process_instance,tenant_id,"['int(11)', 'NOT NULL', 'DEFAULT', ""'-1'"", 'COMMENT', ""'tenant id'""]",True
+t_ds_process_instance,var_pool,"['longtext', 'COMMENT', ""'var_pool'""]",True
+t_ds_process_instance,dry_run,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'dry run flag：0 normal, 1 dry run'""]",True
+t_ds_process_instance,next_process_instance_id,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'serial queue next processInstanceId'""]",True
+t_ds_process_instance,restart_time,"['KEY', '`process_instance_index` (`process_definition_code`,`id`)', 'USING']",False
+t_ds_process_instance,BTREE,"['KEY', '`start_time_index` (`start_time`,`end_time`)', 'USING']",True
+t_ds_project,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_project,name,"['varchar(100)', 'DEFAULT', 'NULL', 'COMMENT', ""'project name'""]",False
+t_ds_project,code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'encoding'""]",True
+t_ds_project,description,"['varchar(200)', 'DEFAULT', 'NULL']",False
+t_ds_project,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'creator id'""]",True
+t_ds_project,flag,"['tinyint(4)', 'DEFAULT', ""'1'"", 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_project,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_project,update_time,"['KEY', '`user_id_index` (`user_id`)', 'USING']",False
+t_ds_project,BTREE,['UNIQUE'],False
+t_ds_queue,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_queue,queue_name,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'queue name'""]",False
+t_ds_queue,queue,"['name', 'varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'yarn queue name'""]",False
+t_ds_queue,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_queue,update_time,['UNIQUE'],False
+t_ds_relation_datasource_user,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_relation_datasource_user,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_relation_datasource_user,datasource_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'data source id'""]",True
+t_ds_relation_datasource_user,perm,"['int(11)', 'DEFAULT', ""'1'"", 'COMMENT', ""'limits of authority'""]",True
+t_ds_relation_datasource_user,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_relation_datasource_user,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_relation_process_instance,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_relation_process_instance,parent_process_instance_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'parent process instance id'""]",True
+t_ds_relation_process_instance,parent_task_instance_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'parent process instance id'""]",True
+t_ds_relation_process_instance,process_instance_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'child process instance id'""]",True
+t_ds_relation_project_user,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_relation_project_user,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_relation_project_user,project_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'project id'""]",True
+t_ds_relation_project_user,perm,"['int(11)', 'DEFAULT', ""'1'"", 'COMMENT', ""'limits of authority'""]",True
+t_ds_relation_project_user,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_relation_project_user,update_time,['UNIQUE'],False
+t_ds_relation_resources_user,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_relation_resources_user,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_relation_resources_user,resources_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'resource id'""]",True
+t_ds_relation_resources_user,perm,"['int(11)', 'DEFAULT', ""'1'"", 'COMMENT', ""'limits of authority'""]",True
+t_ds_relation_resources_user,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_relation_resources_user,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_relation_udfs_user,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_relation_udfs_user,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'userid'""]",True
+t_ds_relation_udfs_user,udf_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'udf id'""]",True
+t_ds_relation_udfs_user,perm,"['int(11)', 'DEFAULT', ""'1'"", 'COMMENT', ""'limits of authority'""]",True
+t_ds_relation_udfs_user,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_relation_udfs_user,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_resources,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_resources,alias,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'alias'""]",False
+t_ds_resources,file_name,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'file name'""]",False
+t_ds_resources,description,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_resources,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'user id'""]",True
+t_ds_resources,type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'resource type,0:FILE，1:UDF'""]",True
+t_ds_resources,size,"['bigint(20)', 'DEFAULT', 'NULL', 'COMMENT', ""'resource size'""]",True
+t_ds_resources,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_resources,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_resources,pid,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_resources,full_name,"['varchar(128)', 'DEFAULT', 'NULL']",False
+t_ds_resources,is_directory,['UNIQUE'],False
+t_ds_schedules,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_schedules,process_definition_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'process definition code'""]",True
+t_ds_schedules,start_time,"['datetime', 'NOT NULL', 'COMMENT', ""'start time'""]",True
+t_ds_schedules,end_time,"['datetime', 'NOT NULL', 'COMMENT', ""'end time'""]",True
+t_ds_schedules,timezone_id,"['varchar(40)', 'DEFAULT', 'NULL', 'COMMENT', ""'schedule timezone id'""]",True
+t_ds_schedules,crontab,"['varchar(255)', 'NOT NULL', 'COMMENT', ""'crontab description'""]",False
+t_ds_schedules,failure_strategy,"['tinyint(4)', 'NOT NULL', 'COMMENT', ""'failure strategy. 0:end,1:continue'""]",True
+t_ds_schedules,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_schedules,release_state,"['tinyint(4)', 'NOT NULL', 'COMMENT', ""'release state. 0:offline,1:online '""]",True
+t_ds_schedules,warning_type,"['tinyint(4)', 'NOT NULL', 'COMMENT', ""'Alarm type: 0 is not sent, 1 process is sent successfully, 2 process is sent failed, 3 process is sent successfully and all failures are sent'""]",True
+t_ds_schedules,warning_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'alert group id'""]",True
+t_ds_schedules,process_instance_priority,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance priority：0 Highest,1 High,2 Medium,3 Low,4 Lowest'""]",True
+t_ds_schedules,worker_group,"['varchar(64)', 'DEFAULT', ""''"", 'COMMENT', ""'worker group id'""]",False
+t_ds_schedules,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_schedules,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_schedules,update_time,"['datetime', 'NOT NULL', 'COMMENT', ""'update time'""]",True
+t_ds_session,id,"['varchar(64)', 'NOT NULL', 'COMMENT', ""'key'""]",False
+t_ds_session,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'user id'""]",True
+t_ds_session,ip,"['varchar(45)', 'DEFAULT', 'NULL', 'COMMENT', ""'ip'""]",False
+t_ds_session,last_login_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'last login time'""]",True
+t_ds_task_instance,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_task_instance,name,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'task name'""]",False
+t_ds_task_instance,task_type,"['varchar(50)', 'NOT NULL', 'COMMENT', ""'task type'""]",False
+t_ds_task_instance,task_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'task definition code'""]",True
+t_ds_task_instance,task_definition_version,"['int(11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'task definition version'""]",True
+t_ds_task_instance,process_instance_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'process instance id'""]",True
+t_ds_task_instance,state,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'Status: 0 commit succeeded, 1 running, 2 prepare to pause, 3 pause, 4 prepare to stop, 5 stop, 6 fail, 7 succeed, 8 need fault tolerance, 9 kill, 10 wait for thread, 11 wait for dependency to complete'""]",True
+t_ds_task_instance,submit_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'task submit time'""]",True
+t_ds_task_instance,start_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'task start time'""]",True
+t_ds_task_instance,end_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'task end time'""]",True
+t_ds_task_instance,host,"['varchar(135)', 'DEFAULT', 'NULL', 'COMMENT', ""'host of task running on'""]",False
+t_ds_task_instance,execute_path,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'task execute path in the host'""]",False
+t_ds_task_instance,log_path,"['longtext', 'DEFAULT', 'NULL', 'COMMENT', ""'task log path'""]",True
+t_ds_task_instance,alert_flag,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'whether alert'""]",True
+t_ds_task_instance,retry_times,"['int(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'task retry times'""]",True
+t_ds_task_instance,pid,"['int(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'pid of task'""]",True
+t_ds_task_instance,app_link,"['text', 'COMMENT', ""'yarn app id'""]",False
+t_ds_task_instance,task_params,"['longtext', 'COMMENT', ""'job custom parameters'""]",True
+t_ds_task_instance,flag,"['tinyint(4)', 'DEFAULT', ""'1'"", 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_task_instance,retry_interval,"['int(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'retry interval when task failed '""]",True
+t_ds_task_instance,max_retry_times,"['int(2)', 'DEFAULT', 'NULL', 'COMMENT', ""'max retry times'""]",True
+t_ds_task_instance,task_instance_priority,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'task instance priority:0 Highest,1 High,2 Medium,3 Low,4 Lowest'""]",True
+t_ds_task_instance,worker_group,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'worker group id'""]",False
+t_ds_task_instance,environment_code,"['bigint(20)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'environment code'""]",True
+t_ds_task_instance,environment_config,"['text', 'COMMENT', ""'this config contains many environment variables config'""]",False
+t_ds_task_instance,executor_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_task_instance,first_submit_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'task first submit time'""]",True
+t_ds_task_instance,delay_time,"['int(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'task delay execution time'""]",True
+t_ds_task_instance,var_pool,"['longtext', 'COMMENT', ""'var_pool'""]",True
+t_ds_task_instance,task_group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'task group id'""]",True
+t_ds_task_instance,dry_run,"['KEY', '`process_instance_id` (`process_instance_id`)', 'USING']",False
+t_ds_task_instance,BTREE,"['KEY', '`idx_code_version` (`task_code`, `task_definition_version`)', 'USING']",False
+t_ds_task_instance,foreign_key_instance_id,"['CONSTRAINT', 'FOREIGN', 'KEY', '(`process_instance_id`)', 'REFERENCES', '`t_ds_process_instance` (`id`)', 'ON', 'DELETE', 'CASCADE']",True
+t_ds_tenant,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_tenant,tenant_code,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'tenant code'""]",False
+t_ds_tenant,description,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_tenant,queue_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'queue id'""]",True
+t_ds_tenant,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_tenant,update_time,['UNIQUE'],False
+t_ds_udfs,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_udfs,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_udfs,func_name,"['varchar(100)', 'NOT NULL', 'COMMENT', ""'UDF function name'""]",False
+t_ds_udfs,class_name,"['varchar(255)', 'NOT NULL', 'COMMENT', ""'class of udf'""]",False
+t_ds_udfs,type,"['tinyint(4)', 'NOT NULL', 'COMMENT', ""'Udf function type'""]",True
+t_ds_udfs,arg_types,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'arguments types'""]",False
+t_ds_udfs,database,"['varchar(255)', 'DEFAULT', 'NULL', 'COMMENT', ""'data base'""]",False
+t_ds_udfs,description,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_udfs,resource_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'resource id'""]",True
+t_ds_udfs,resource_name,"['varchar(255)', 'NOT NULL', 'COMMENT', ""'resource name'""]",False
+t_ds_udfs,create_time,"['datetime', 'NOT NULL', 'COMMENT', ""'create time'""]",True
+t_ds_udfs,update_time,['UNIQUE'],False
+t_ds_user,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'user id'""]",True
+t_ds_user,user_name,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'user name'""]",False
+t_ds_user,user_password,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'user password'""]",False
+t_ds_user,user_type,"['tinyint(4)', 'DEFAULT', 'NULL', 'COMMENT', ""'user type, 0:administrator，1:ordinary user'""]",True
+t_ds_user,email,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'email'""]",False
+t_ds_user,phone,"['varchar(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'phone'""]",False
+t_ds_user,tenant_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'tenant id'""]",True
+t_ds_user,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_user,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_user,queue,"['varchar(64)', 'DEFAULT', 'NULL', 'COMMENT', ""'queue'""]",False
+t_ds_user,state,"['tinyint(4)', 'DEFAULT', ""'1'"", 'COMMENT', ""'state 0:disable 1:enable'""]",True
+t_ds_user,time_zone,['UNIQUE'],False
+t_ds_worker_group,id,"['bigint(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'id'""]",True
+t_ds_worker_group,name,"['varchar(255)', 'NOT NULL', 'COMMENT', ""'worker group name'""]",False
+t_ds_worker_group,addr_list,"['text', 'NULL', 'DEFAULT', 'NULL', 'COMMENT', ""'worker addr list. split by [,]'""]",False
+t_ds_worker_group,create_time,"['datetime', 'NULL', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_worker_group,update_time,['UNIQUE'],False
+t_ds_version,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_version,version,['UNIQUE'],False
+t_ds_plugin_define,id,"['int', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_plugin_define,plugin_name,"['varchar(100)', 'NOT NULL', 'COMMENT', ""'the name of plugin eg: email'""]",False
+t_ds_plugin_define,plugin_type,"['varchar(100)', 'NOT NULL', 'COMMENT', ""'plugin type . alert=alert plugin, job=job plugin'""]",False
+t_ds_plugin_define,plugin_params,"['text', 'COMMENT', ""'plugin params'""]",False
+t_ds_plugin_define,create_time,"['timestamp', 'NOT NULL', 'DEFAULT', 'CURRENT_TIMESTAMP']",True
+t_ds_plugin_define,update_time,['UNIQUE'],False
+t_ds_alert_plugin_instance,id,"['int', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_alert_plugin_instance,plugin_define_id,"['int', 'NOT NULL']",True
+t_ds_alert_plugin_instance,plugin_instance_params,"['text', 'COMMENT', ""'plugin instance params. Also contain the params value which user input in web ui.'""]",False
+t_ds_alert_plugin_instance,create_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP']",True
+t_ds_alert_plugin_instance,update_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP', 'ON', 'UPDATE', 'CURRENT_TIMESTAMP']",True
+t_ds_alert_plugin_instance,instance_name,"['varchar(200)', 'DEFAULT', 'NULL', 'COMMENT', ""'alert instance name'""]",False
+t_ds_dq_comparison_type,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_dq_comparison_type,type,"['varchar(100)', 'NOT NULL']",False
+t_ds_dq_comparison_type,execute_sql,"['text', 'DEFAULT', 'NULL']",False
+t_ds_dq_comparison_type,output_table,"['varchar(100)', 'DEFAULT', 'NULL']",False
+t_ds_dq_comparison_type,name,"['varchar(100)', 'DEFAULT', 'NULL']",False
+t_ds_dq_comparison_type,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_comparison_type,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_comparison_type,is_inner_source,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+t_ds_dq_execute_result,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_dq_execute_result,process_definition_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,process_instance_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,task_instance_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,rule_type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,rule_name,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_execute_result,statistics_value,"['double', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,comparison_value,"['double', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,check_type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,threshold,"['double', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,operator,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,failure_strategy,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,state,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,user_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,comparison_type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,error_output_path,"['text', 'DEFAULT', 'NULL']",False
+t_ds_dq_execute_result,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_execute_result,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_dq_rule,name,"['varchar(100)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule,type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule,user_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_execute_sql,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_dq_rule_execute_sql,index,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_execute_sql,sql,"['text', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_execute_sql,table_alias,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_execute_sql,type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_execute_sql,is_error_output_sql,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+t_ds_dq_rule_execute_sql,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_execute_sql,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_input_entry,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_dq_rule_input_entry,field,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_input_entry,type,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_input_entry,title,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_input_entry,value,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_input_entry,options,"['text', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_input_entry,placeholder,"['varchar(255)', 'DEFAULT', 'NULL']",False
+t_ds_dq_rule_input_entry,option_source_type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_input_entry,value_type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_input_entry,input_type,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_input_entry,is_show,"['tinyint(1)', 'DEFAULT', ""'1'""]",True
+t_ds_dq_rule_input_entry,can_edit,"['tinyint(1)', 'DEFAULT', ""'1'""]",True
+t_ds_dq_rule_input_entry,is_emit,"['tinyint(1)', 'DEFAULT', ""'0'""]",True
+t_ds_dq_rule_input_entry,is_validate,"['tinyint(1)', 'DEFAULT', ""'1'""]",True
+t_ds_dq_rule_input_entry,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_rule_input_entry,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_task_statistics_value,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_dq_task_statistics_value,process_definition_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_task_statistics_value,task_instance_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_dq_task_statistics_value,rule_id,"['int(11)', 'NOT NULL']",True
+t_ds_dq_task_statistics_value,unique_code,"['varchar(255)', 'NULL']",False
+t_ds_dq_task_statistics_value,statistics_name,"['varchar(255)', 'NULL']",False
+t_ds_dq_task_statistics_value,statistics_value,"['double', 'NULL']",True
+t_ds_dq_task_statistics_value,data_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_task_statistics_value,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_dq_task_statistics_value,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_execute_sql,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_relation_rule_execute_sql,rule_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_execute_sql,execute_sql_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_execute_sql,create_time,"['datetime', 'NULL']",True
+t_ds_relation_rule_execute_sql,update_time,"['datetime', 'NULL']",True
+t_ds_relation_rule_input_entry,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_relation_rule_input_entry,rule_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_input_entry,rule_input_entry_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_input_entry,values_map,"['text', 'DEFAULT', 'NULL']",False
+t_ds_relation_rule_input_entry,index,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_input_entry,create_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_relation_rule_input_entry,update_time,"['datetime', 'DEFAULT', 'NULL']",True
+t_ds_environment,id,"['bigint(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'id'""]",True
+t_ds_environment,code,"['bigint(20)', 'DEFAULT', 'NULL', 'COMMENT', ""'encoding'""]",True
+t_ds_environment,name,"['varchar(100)', 'NOT NULL', 'COMMENT', ""'environment name'""]",False
+t_ds_environment,config,"['text', 'NULL', 'DEFAULT', 'NULL', 'COMMENT', ""'this config contains many environment variables config'""]",False
+t_ds_environment,description,"['text', 'NULL', 'DEFAULT', 'NULL', 'COMMENT', ""'the details'""]",False
+t_ds_environment,operator,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'operator user id'""]",True
+t_ds_environment,create_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP']",True
+t_ds_environment,update_time,['UNIQUE'],False
+t_ds_environment_worker_group_relation,id,"['bigint(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'id'""]",True
+t_ds_environment_worker_group_relation,environment_code,"['bigint(20)', 'NOT NULL', 'COMMENT', ""'environment code'""]",True
+t_ds_environment_worker_group_relation,worker_group,"['varchar(255)', 'NOT NULL', 'COMMENT', ""'worker group id'""]",False
+t_ds_environment_worker_group_relation,operator,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'operator user id'""]",True
+t_ds_environment_worker_group_relation,create_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP']",True
+t_ds_environment_worker_group_relation,update_time,['UNIQUE'],False
+t_ds_task_group_queue,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_task_group_queue,task_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'taskintanceid'""]",True
+t_ds_task_group_queue,task_name,"['varchar(100)', 'DEFAULT', 'NULL', 'COMMENT', ""'TaskInstance name'""]",False
+t_ds_task_group_queue,group_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'taskGroup id'""]",True
+t_ds_task_group_queue,process_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'processInstace id'""]",True
+t_ds_task_group_queue,priority,"['int(8)', 'DEFAULT', ""'0'"", 'COMMENT', ""'priority'""]",True
+t_ds_task_group_queue,status,"['tinyint(4)', 'DEFAULT', ""'-1'"", 'COMMENT', ""'-1: waiting  1: running  2: finished'""]",True
+t_ds_task_group_queue,force_start,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'is force start 0 NO,1 YES'""]",True
+t_ds_task_group_queue,in_queue,"['tinyint(4)', 'DEFAULT', ""'0'"", 'COMMENT', ""'ready to get the queue by other task finish 0 NO,1 YES'""]",True
+t_ds_task_group_queue,create_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP']",True
+t_ds_task_group_queue,update_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP', 'ON', 'UPDATE', 'CURRENT_TIMESTAMP']",True
+t_ds_task_group,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_task_group,name,"['varchar(100)', 'DEFAULT', 'NULL', 'COMMENT', ""'task_group name'""]",False
+t_ds_task_group,description,"['varchar(200)', 'DEFAULT', 'NULL']",False
+t_ds_task_group,group_size,"['int (11)', 'NOT NULL', 'COMMENT', ""'group size'""]",True
+t_ds_task_group,use_size,"['int (11)', 'DEFAULT', ""'0'"", 'COMMENT', ""'used size'""]",True
+t_ds_task_group,user_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'creator id'""]",True
+t_ds_task_group,project_code,"['bigint(20)', 'DEFAULT', '0', 'COMMENT', ""'project code'""]",True
+t_ds_task_group,status,"['tinyint(4)', 'DEFAULT', ""'1'"", 'COMMENT', ""'0 not available, 1 available'""]",True
+t_ds_task_group,create_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP']",True
+t_ds_task_group,update_time,"['timestamp', 'NULL', 'DEFAULT', 'CURRENT_TIMESTAMP', 'ON', 'UPDATE', 'CURRENT_TIMESTAMP']",True
+t_ds_audit_log,id,"['bigint(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_audit_log,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_audit_log,resource_type,"['int(11)', 'NOT NULL', 'COMMENT', ""'resource type'""]",True
+t_ds_audit_log,operation,"['int(11)', 'NOT NULL', 'COMMENT', ""'operation'""]",True
+t_ds_audit_log,time,"['date', 'DEFAULT', 'CURRENT_TIMESTAMP', 'COMMENT', ""'create time'""]",True
+t_ds_audit_log,resource_id,"['int(11)', 'NULL', 'DEFAULT', 'NULL', 'COMMENT', ""'resource id'""]",True
+t_ds_k8s,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_k8s,k8s_name,"['varchar(100)', 'DEFAULT', 'NULL']",False
+t_ds_k8s,k8s_config,"['text', 'DEFAULT', 'NULL']",False
+t_ds_k8s,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_k8s,update_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'update time'""]",True
+t_ds_k8s_namespace,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_k8s_namespace,limits_memory,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,namespace,"['varchar(100)', 'DEFAULT', 'NULL']",False
+t_ds_k8s_namespace,online_job_num,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,user_id,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,pod_replicas,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,pod_request_cpu,"['decimal(14,3)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,pod_request_memory,"['int(11)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,limits_cpu,"['decimal(14,3)', 'DEFAULT', 'NULL']",True
+t_ds_k8s_namespace,k8s,"['varchar(100)', 'DEFAULT', 'NULL']",False
+t_ds_k8s_namespace,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_k8s_namespace,update_time,['UNIQUE'],False
+t_ds_relation_namespace_user,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT', 'COMMENT', ""'key'""]",True
+t_ds_relation_namespace_user,user_id,"['int(11)', 'NOT NULL', 'COMMENT', ""'user id'""]",True
+t_ds_relation_namespace_user,namespace_id,"['int(11)', 'DEFAULT', 'NULL', 'COMMENT', ""'namespace id'""]",True
+t_ds_relation_namespace_user,perm,"['int(11)', 'DEFAULT', ""'1'"", 'COMMENT', ""'limits of authority'""]",True
+t_ds_relation_namespace_user,create_time,"['datetime', 'DEFAULT', 'NULL', 'COMMENT', ""'create time'""]",True
+t_ds_relation_namespace_user,update_time,['UNIQUE'],False
+t_ds_alert_send_status,id,"['int(11)', 'NOT NULL', 'AUTO_INCREMENT']",True
+t_ds_alert_send_status,alert_id,"['int(11)', 'NOT NULL']",True
+t_ds_alert_send_status,alert_plugin_instance_id,"['int(11)', 'NOT NULL']",True
+t_ds_alert_send_status,send_status,"['tinyint(4)', 'DEFAULT', ""'0'""]",True
+t_ds_alert_send_status,log,['text'],False
+t_ds_alert_send_status,create_time,['UNIQUE'],False

@@ -1,6 +1,6 @@
 object Utils {
-    val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
-    // val vulnerabilities: List[String] = List("SQL Injection", "XSS")
+    // val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
+    val vulnerabilities: List[String] = List("SQL Injection", "XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
 
@@ -196,8 +196,8 @@ object Utils {
             // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
             // extend the cpg with the sanitization tags
             val tagName = getTagName(vulnerability)
-            cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl] || node.isInstanceOf[NamespaceBlock]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
-            cpg.method.ast.filterNot(node => node.isInstanceOf[Modifier] || node.isInstanceOf[TypeDecl] || node.isInstanceOf[NamespaceBlock]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
+            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
+            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
             run.commit
             "Success"
         })

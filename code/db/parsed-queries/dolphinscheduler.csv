@@ -1,0 +1,21 @@
+SELECT; "select count(1) as count from %s"; NA; "1"; ""; false
+SELECT; "select * from %s"; NA; ""; ""; false
+SELECT; "SELECT * FROM eamp_hive_log_hd WHERE PROC_NAME=%s and PROC_DATE like %s"; NA; ""; ""; false
+OTHER; "SELECT 1"; NA; ""; ""; true
+OTHER; "select current_schema()"; NA; ""; ""; true
+SELECT; "SELECT id, process_definition_json FROM t_ds_process_definition"; t_ds_process_definition; "id, processdefinitionjson"; ""; true
+UPDATE; "UPDATE t_ds_process_definition SET process_definition_json=? where id=?"; t_ds_process_definition; "description"; ""; false
+SELECT; "SELECT id, full_name FROM t_ds_resources"; t_ds_resources; "id, fullname"; ""; false
+SELECT; "select version from %s"; NA; "version"; ""; false
+OTHER; "update process definition json workergroup error"; NA; ""; ""; true
+OTHER; "update process definition json resource list error"; NA; ""; ""; true
+UPDATE; "update %s set version = ?"; NA; ""; ""; false
+UPDATE; "update %s set version = ?"; NA; ""; ""; false
+UPDATE; "update %s set version = ?"; NA; ""; ""; false
+OTHER; "update process definition json sqoop task params error: {}"; NA; ""; ""; true
+SELECT; "select id, name from t_ds_worker_group"; t_ds_worker_group; "id, name"; ""; false
+SELECT; "select count(*) from pg_stat_activity;"; t_ds_task_definition; ""; ""; true
+SELECT; "select count(*) from pg_stat_activity pg where pg.state = active;"; t_ds_task_definition; ""; ""; true
+OTHER; "select query type [%s] is not support"; NA; ""; ""; true
+SELECT; "SELECT t.* FROM ( %s ) t WHERE 0 = 1"; NA; "t"; ""; false
+OTHER; "update key : {} , value : {}"; NA; ""; ""; true

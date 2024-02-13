@@ -27,7 +27,8 @@ class NavexMain(val cpg: Cpg) {
     }
 
     // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
-    val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
+    // val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
+    val sources = cpg.call.filter(node => Constants.attacker_input.contains(node.name)).l
 
     val databaseCalls = getSinkCalls("Stored XSS", Utils.getTagName("XSS"), false)
 

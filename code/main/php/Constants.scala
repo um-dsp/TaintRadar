@@ -1,10 +1,11 @@
-object JavaConstants {
+object Constants {
 
   val attacker_input = List("_GET", "_POST", "_COOKIE", "_REQUEST", "_ENV", "HTTP_.*", "QUERY_STRING", "_FILES")
 
-  val sql_func: List[String] = List("mysql_", "mysqli_", "pg_", "sqlite_")
-
   val safe_types: List[String] = List("int", "integer", "bool", "boolean", "float", "double")
+
+  val implicit_cast: List[String] = List("<operator>.plus", "<operator>.minus", "<operator>.multiplication", "<operator>.division", "<operator>.xor", 
+                                          "<operator>.assignmentPlus", "<operator>.assignmentMinus" )
 
   val magic_constants: List[String] = List("__LINE__, __FILE__, __DIR__, __FUNCTION__, __CLASS__, __TRAIT__, __METHOD__, __NAMESPACE__")
 
@@ -23,36 +24,39 @@ object JavaConstants {
     "mysqli_query",
     "mysqli_multi_query",
     "mysqli_real_query",
-    "mysqli_fetch_assoc",
-    "mysqli_fetch_array",
-    "mysqli_fetch_object",
-    "mysqli_fetch_row",
     // mysql_ Functions (Deprecated)
     "mysql_query",
-    "mysql_fetch_assoc",
-    "mysql_fetch_array",
-    "mysql_fetch_object",
-    "mysql_fetch_row",
     // PostgreSQL Functions
     "pg_query",
     "pg_query_params",
-    "pg_fetch_array",
-    "pg_fetch_assoc",
-    "pg_fetch_object",
-    "pg_fetch_row",
     // SQLite Functions
     "sqlite_query",
     "sqlite_exec",
-    "sqlite_fetch_array",
-    "sqlite_fetch_single",
-    "sqlite_fetch_string",
-    "sqlite_fetch_all",
-    "sqlite_single_query",
+    "queryExec",
     // Miscellaneous
-    "sql_query"
+    "sql_query",
+    "query",
+    "real_query"
   )
 
-  val commandexec_sink = List("java.lang.Runtime.exec")
+  // Useful for Stored XSS processing, i.e. not vulnerable to SQL Injection but interacts with the database
+  val stored_xss_func: List[String] = sqli_sink ++ List(
+    "mysqli_stmt_execute",
+    "execute",
+    "pg_execute"
+  )
+
+  val commandexec_sink = List(
+    "shell_exec", 
+    "exec", 
+    "system", 
+    "mail", 
+    "popen", 
+    "expect_popen", 
+    "passthru", 
+    "pcntl_exec", 
+    "proc_open"
+  )
   
   val codeinj_sink = List("eval", "assert")
 
@@ -84,6 +88,25 @@ object JavaConstants {
   val san_functions_xss = List("htmlentities",
     "htmlspecialchars",
     "sanitize")
+
+  val filter_var_arguments = List("FILTER_SANITIZE_EMAIL",
+    "FILTER_VALIDATE_EMAIL",
+    "FILTER_SANITIZE_FULL_SPECIAL_CHARS",
+    "FILTER_SANITIZE_MAGIC_QUOTES",
+    "FILTER_SANITIZE_NUMBER_FLOAT",
+    "FILTER_VALIDATE_FLOAT",
+    "FILTER_SANITIZE_NUMBER_INT",
+    "FILTER_VALIDATE_INT",
+    "FILTER_SANITIZE_SPECIAL_CHARS")
+
+  val san_functions_code = List()
+
+  val san_functions_os_command  = List("escapeshellarg",
+    "escapeshellcmd")
+  
+  val san_functions_file= List("basename",
+    "dirname",
+    "pathinfo")
 
   val san_functions_all = List(
     "isset",
@@ -154,14 +177,12 @@ object JavaConstants {
     "gethostname",
     "gethostbynamel",
     "gethostbyname",
-    "date", "ctype_digit")
-  
-  val san_functions_code = List()
+    "date", "ctype_digit",
+    "in_array",
+    "<operator>.equals",
+    "<operator>.lessThan",
+    "<operator>.lessEqualsThan",
+    "<operator>.greaterThan",
+    "<operator>.greaterEqualsThan")
 
-  val san_functions_os_command  = List("escapeshellarg",
-    "escapeshellcmd")
-  
-  val san_functions_file= List("basename",
-    "dirname",
-    "pathinfo")
 }
