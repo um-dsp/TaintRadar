@@ -4,6 +4,10 @@ object Utils {
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
 
+    val constants: List[String] = cpg.call(Constants.constant_definition_func).argument(1).code.l.map(_.replace("\"", "")).distinct
+    val values: List[List[AstNode]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
+    val constantTable = Some((constants zip values).toMap[String, List[AstNode]])
+
     def indicesOfElements[T](elements: Set[T], list: List[T]): List[Int] = {
         list.zipWithIndex.collect { case (element, index) if elements.contains(element) => index }
     }
@@ -102,8 +106,8 @@ object Utils {
                         }
                         // For a constant, try resolving it statically by checking the "define" function calls
                         case constant: FieldIdentifier => {
-                            if (Constants.magic_constants.contains(constant) || db.constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
-                            else db.constantTable.get(constant.canonicalName).dedup.l
+                            if (Constants.magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
+                            else constantTable.get(constant.canonicalName).dedup.l
                         }
                         // For a method node, traverse its return block (after traversing it make sure not to try resolving the parameters)
                         case method: Method => {
@@ -214,5 +218,12 @@ object Utils {
 
     def exceptionRate() = {
         sanitizationObject.exceptions.toFloat / (sanitizationObject.isSanitizedMap.map(_(0).node).dedup.size * vulnerabilities.size)
+    }
+    
+    def outputCpgJson() = {
+        cpg.all.filter(x => x.isInstanceOf[nodes.Call] || x.isInstanceOf[Identifier] || x.isInstanceOf[MethodParameterIn] )
+                .map(x => {
+                    (x.productElementNames.l.zip(x.productIterator.l).toMap ++ x.tag.map(y => (y.name, y.value)).toMap + ("file" -> x.file.name.head))
+        }).toJsonPretty #> "navex_utils/cpg.json"
     }
 }

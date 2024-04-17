@@ -1,8 +1,15 @@
 object Constants {
 
+  val unsafe_types: List[String] = List(
+    "HttpServletRequest",
+    "HttpExchange",
+
+  )
+
   val attacker_input = List(
     "getHeader",
     "getRequest",
+    "getRequestBody",
     "getCookie",
     "getParameter",
     "getParameterMap",
@@ -23,11 +30,29 @@ object Constants {
     "double", 
     "short",
     "byte",
-    "character"
+    "character",
+    "java.lang.Integer",
+    "java.lang.Boolean",
+    "java.lang.Number",
+    "java.lang.Float",
+    "java.lang.Long",
+    "java.lang.Double",
+    "java.lang.Short",
+    "java.lang.Byte",
+    "java.lang.Character"
   )
 
-  val implicit_cast: List[String] = List("<operator>.plus", "<operator>.minus", "<operator>.multiplication", "<operator>.division", "<operator>.xor", 
-                                          "<operator>.assignmentPlus", "<operator>.assignmentMinus" )
+  val implicit_cast: List[String] = List(
+    "<operator>.plus", 
+    "<operator>.addition",
+    "<operator>.minus",
+    "<operator>.subtraction",
+    "<operator>.multiplication", 
+    "<operator>.division", 
+    "<operator>.xor", 
+    "<operator>.assignmentPlus", 
+    "<operator>.assignmentMinus" 
+  )
 
   val magic_constants: List[String] = List(
     
@@ -99,7 +124,8 @@ object Constants {
   )
 
   val san_functions_sql = List( 
-    
+    "prepareStatement",
+
   )
 
   val san_functions_xss = List(
@@ -121,7 +147,6 @@ object Constants {
   )
 
   val san_functions_all = List(
-    
     "<operator>.equals",
     "<operator>.lessThan",
     "<operator>.lessEqualsThan",

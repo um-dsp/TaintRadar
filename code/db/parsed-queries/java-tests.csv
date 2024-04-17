@@ -1,0 +1,5 @@
+SELECT; "SELECT * FROM users WHERE username=? AND password=?"; NA; ""; ""; false
+SELECT; "SELECT * FROM users WHERE username=? AND password=?"; NA; ""; ""; false
+SELECT; "SELECT * FROM users WHERE username="; NA; ""; ""; false
+SELECT; "SELECT * FROM users WHERE username="; NA; ""; ""; false
+SELECT; "SELECT * FROM users WHERE username="; NA; ""; ""; false

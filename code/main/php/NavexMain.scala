@@ -17,7 +17,8 @@ class NavexMain(val cpg: Cpg) {
             println("Sensitive sink functions size: " + totalSinks.size)
             logger ++= List(totalSinks.size.toString)
         }
-        val unsanSinks: List[nodes.Call] = totalSinks.filterNot(_.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l
+        // val unsanSinks: List[nodes.Call] = totalSinks.filterNot(_.argument.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l
+        val unsanSinks: List[nodes.Call] = totalSinks.filter(_.argument.tag.name(tagName).value.contains("FALSE")).l
         if (debug) {
             println("Sensitive unsanitized sink functions size: " + unsanSinks.size)
             logger ++= List(unsanSinks.size.toString)
