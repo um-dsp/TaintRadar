@@ -29,7 +29,7 @@ class NavexMain(val cpg: Cpg) {
 
     // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
     // val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
-    val sources = cpg.call.filter(node => Constants.attacker_input.contains(node.name)).l
+    val sources = cpg.call.filter(node => Constants.attacker_input.contains(node.name)).l  ++ cpg.parameter("args").filter(_.method.name=="main").l
 
     val databaseCalls = getSinkCalls("Stored XSS", Utils.getTagName("XSS"), false)
 
@@ -50,7 +50,7 @@ class NavexMain(val cpg: Cpg) {
     def getPaths(vulnerability: String, debug: Boolean = false) = {
         println(vulnerability)
         val tagName: String = Utils.getTagName(vulnerability)
-        val sinks = getSinkCalls(vulnerability, tagName, debug)
+        val sinks = getSinkCalls(vulnerability, tagName, debug).argument.l
         // intra and inter-procedural path from source to sink
         // paths considering every source node separately (one or no path per source node)
         val paths: List[List[AstNode]] = sinks.flatMap(sink => Utils.reachableBySource(sink, sources, tagName))

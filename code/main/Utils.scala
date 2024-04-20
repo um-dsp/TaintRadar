@@ -2,7 +2,7 @@ object Utils {
     // val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
     val vulnerabilities: List[String] = List("SQL Injection", "XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
-    val db = new DatabaseConstraint(cpg)
+    // val db = new DatabaseConstraint(cpg)
 
     val constants: List[String] = cpg.call(Constants.constant_definition_func).argument(1).code.l.map(_.replace("\"", "")).distinct
     val values: List[List[AstNode]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
@@ -200,21 +200,21 @@ object Utils {
             // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
             // extend the cpg with the sanitization tags
             val tagName = getTagName(vulnerability)
-            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
-            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
+            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal] || node.isInstanceOf[MethodParameterIn]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
+            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal] || node.isInstanceOf[MethodParameterIn]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
             run.commit
             "Success"
         })
     }
 
     // make sure to run this after augmenting with Sanitization tags first (function above)
-    def augmentWithQueryTag() = {
-        db.augmentDbCalls()
-    }
+    // def augmentWithQueryTag() = {
+    //     db.augmentDbCalls()
+    // }
 
-    def debugDatabaseParsing() = {
-        db.debug()
-    }
+    // def debugDatabaseParsing() = {
+    //     db.debug()
+    // }
 
     def exceptionRate() = {
         sanitizationObject.exceptions.toFloat / (sanitizationObject.isSanitizedMap.map(_(0).node).dedup.size * vulnerabilities.size)

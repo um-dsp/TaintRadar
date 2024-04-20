@@ -3,10 +3,10 @@ object Constants {
   val unsafe_types: List[String] = List(
     "HttpServletRequest",
     "HttpExchange",
-
   )
 
   val attacker_input = List(
+    "args",
     "getHeader",
     "getRequest",
     "getRequestBody",
@@ -125,6 +125,7 @@ object Constants {
 
   val san_functions_sql = List( 
     "prepareStatement",
+    "escape",
 
   )
 
