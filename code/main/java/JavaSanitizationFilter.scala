@@ -30,7 +30,7 @@ class SanitizationFilter(val cpg: Cpg) {
       }
       // map arguments for the function call on whether they're sanitized or not
       val objectAccess: Option[Identifier] = arguments.isIdentifier.filter(p => function.methodFullName.startsWith(p.typeFullName)).headOption
-      val isObjSan: Boolean = !Constants.unsafe_types.exists(objectAccess.typeFullName.headOption.getOrElse("").contains(_)) && objectAccess != None
+      val isObjSan: Boolean = Constants.safe_object_types.exists(objectAccess.typeFullName.headOption.getOrElse("").contains(_)) || isSanitized(objectAccess, sanitizedParameters)(sanitization_functions)
       
       val isArgumentSanitizedRaw: List[Boolean] = arguments.map(isSanitized(_, sanitizedParameters)(sanitization_functions))
       val isArgumentSanitized: List[Boolean] = {
@@ -45,6 +45,10 @@ class SanitizationFilter(val cpg: Cpg) {
       else if (Constants.safe_types.contains(function.typeFullName)) true
       // an assignment function is sanitized if its second argument is sanitized
       else if (function.name == "<operator>.assignment") isArgumentSanitized(1)
+      // if the function is a constructor (new), check if the object is sanitized (joern doesn't provide built-in DDG edges in that case)
+      else if (function.name == "<operator>.alloc" && function.argument.l.isEmpty) {
+         isSanitized(cpg.call("<init>").filter(_.id == function.id + 1).l, sanitizedParameters)(sanitization_functions)
+      }
       // known unsanitized function calls
       else if (Constants.attacker_input.contains(function.name)) false
       // if the function implicitly casts the type (e.g. unsan + 0)
@@ -142,7 +146,7 @@ class SanitizationFilter(val cpg: Cpg) {
                mapOut
             }
             case constant: FieldIdentifier => {
-               if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) Constants.magic_constants.contains(constant.canonicalName)
+               if (constantTable.getOrElse(Map()).get(constant.canonicalName).isEmpty) Constants.magic_constants.contains(constant.canonicalName) || isSanitized(constant.ddgIn.l, sanitizedParameters)(sanitization_functions)
                else isSanitized(constantTable.get.get(constant.canonicalName), sanitizedParameters)(sanitization_functions)
             }
             case metadata: MetaData => true

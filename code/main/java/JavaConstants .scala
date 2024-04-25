@@ -1,8 +1,12 @@
 object Constants {
 
-  val unsafe_types: List[String] = List(
+  val unsafe_object_types: List[String] = List(
     "HttpServletRequest",
     "HttpExchange",
+  )
+
+  val safe_object_types: List[String] = List(
+    "HttpServletResponse",
   )
 
   val attacker_input = List(
@@ -63,8 +67,10 @@ object Constants {
   )
 
   val san_identifiers: List[String] = List(
-
+    "<global>", 
+    "this"
   )
+
 
   val type_cast_byref: String = ""
 

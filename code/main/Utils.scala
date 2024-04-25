@@ -87,7 +87,13 @@ object Utils {
                                 if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
                                 else call.callee
                             }
-                            method.filterNot(_.code == "<empty>").l ++ call.argument.dedup.l
+                            val arguments = {
+                                if (call.name == "<operator>.alloc" && call.argument.l.isEmpty) {
+                                    cpg.call("<init>").filter(_.id == call.id + 1).l
+                                }
+                                else call.argument.dedup.l
+                            }
+                            method.filterNot(_.code == "<empty>").l ++ arguments
                         }
                         // For an identifier: if it points to a method parameter, traverse this parameter, otherwise follow the data dependency edges
                         case identifier: Identifier => {
@@ -193,6 +199,14 @@ object Utils {
         "SAN_" + vulnerability.replace(" ", "_")
     }
 
+    def isRelevantType(node: AstNode): Boolean = {
+        node.isInstanceOf[nodes.Call] || 
+        node.isInstanceOf[Identifier] || 
+        node.isInstanceOf[Literal] || 
+        node.isInstanceOf[MethodParameterIn] ||
+        node.isInstanceOf[FieldIdentifier]
+    }
+
     def augmentWithSanTag() = {
         // get all sink functions for the given vulnerability
         vulnerabilities.map(vulnerability => {
@@ -200,8 +214,8 @@ object Utils {
             // implicit val vulnerabilityInst: sanitizationObject.vulnerabilityType = sanitizationObject.vulnerabilityType(vulnerability, attack_san_functions)
             // extend the cpg with the sanitization tags
             val tagName = getTagName(vulnerability)
-            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal] || node.isInstanceOf[MethodParameterIn]).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
-            cpg.method.ast.filter(node => node.isInstanceOf[nodes.Call] || node.isInstanceOf[Identifier] || node.isInstanceOf[Literal] || node.isInstanceOf[MethodParameterIn]).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
+            cpg.method.ast.filter(isRelevantType).filter(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "TRUE").store()
+            cpg.method.ast.filter(isRelevantType).filterNot(sanitizationObject.isSanitized(_)(attack_san_functions)).newTagNodePair(tagName, "FALSE").store()
             run.commit
             "Success"
         })
@@ -219,11 +233,18 @@ object Utils {
     def exceptionRate() = {
         sanitizationObject.exceptions.toFloat / (sanitizationObject.isSanitizedMap.map(_(0).node).dedup.size * vulnerabilities.size)
     }
+
+    def iteratorToJson(it: Iterator[StoredNode]) = {
+        it.map(x => {
+                (x.productElementNames.l.zip(x.productIterator.l).toMap ++ x.tag.map(y => (y.name, y.value)).toMap + ("file" -> x.file.name.headOption.getOrElse("None")))
+            }).toJsonPretty
+    }
     
-    def outputCpgJson() = {
-        cpg.all.filter(x => x.isInstanceOf[nodes.Call] || x.isInstanceOf[Identifier] || x.isInstanceOf[MethodParameterIn] )
-                .map(x => {
-                    (x.productElementNames.l.zip(x.productIterator.l).toMap ++ x.tag.map(y => (y.name, y.value)).toMap + ("file" -> x.file.name.head))
-        }).toJsonPretty #> "navex_utils/cpg.json"
+    def cpgToJson() = {
+        iteratorToJson(cpg.all.filterNot(_.isInstanceOf[Tag])) #> "cpg.json"
+    }
+
+    def relevantCpgToJson() = {
+        iteratorToJson(cpg.method.ast.filter(isRelevantType)) #> "cpg.json"
     }
 }
