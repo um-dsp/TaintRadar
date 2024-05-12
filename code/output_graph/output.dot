@@ -1,25 +1,84 @@
-digraph "&lt;global&gt;" {  
-"394" [label = <(METHOD,&lt;global&gt;)> ]
-"395" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)> ]
-"396" [label = <(&lt;operator&gt;.assignment,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"387" [label = <(IDENTIFIER,$name,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"397" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"389" [label = <(IDENTIFIER,$_GET,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"398" [label = <(LITERAL,&quot;name&quot;,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>> ]
-"399" [label = <(echo,echo &quot;Hello &quot; . $name)<SUB>3</SUB>> ]
-"400" [label = <(&lt;operator&gt;.concat,&quot;Hello &quot; . $name)<SUB>3</SUB>> ]
-"401" [label = <(LITERAL,&quot;Hello &quot;,&quot;Hello &quot; . $name)<SUB>3</SUB>> ]
-"391" [label = <(IDENTIFIER,$name,&quot;Hello &quot; . $name)<SUB>3</SUB>> ]
-"402" [label = <(METHOD_RETURN,&lt;empty&gt;)> ]
-  "394" -> "395" 
-  "394" -> "402" 
-  "395" -> "396" 
-  "395" -> "399" 
-  "396" -> "387" 
-  "396" -> "397" 
-  "397" -> "389" 
-  "397" -> "398" 
-  "399" -> "400" 
-  "400" -> "401" 
-  "400" -> "391" 
+digraph "main" {  
+"59" [label = <(METHOD,main)<SUB>20</SUB>> ]
+"60" [label = <(PARAM,String[] args)<SUB>20</SUB>> ]
+"61" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)<SUB>20</SUB>> ]
+"62" [label = <(LOCAL,String[] array: java.lang.String[])<SUB>21</SUB>> ]
+"63" [label = <(&lt;operator&gt;.assignment,String[] array = new String[] { &quot;First Element&quot; })<SUB>21</SUB>> ]
+"64" [label = <(IDENTIFIER,array,String[] array = new String[] { &quot;First Element&quot; })<SUB>21</SUB>> ]
+"65" [label = <(&lt;operator&gt;.arrayInitializer,new String[] { &quot;First Element&quot; })<SUB>21</SUB>> ]
+"66" [label = <(LITERAL,&quot;First Element&quot;,new String[] { &quot;First Element&quot; })<SUB>21</SUB>> ]
+"67" [label = <(LOCAL,test t: test)<SUB>22</SUB>> ]
+"68" [label = <(&lt;operator&gt;.assignment,test t = new test())<SUB>22</SUB>> ]
+"69" [label = <(IDENTIFIER,t,test t = new test())<SUB>22</SUB>> ]
+"70" [label = <(&lt;operator&gt;.alloc,new test())<SUB>22</SUB>> ]
+"71" [label = <(&lt;init&gt;,new test())<SUB>22</SUB>> ]
+"72" [label = <(IDENTIFIER,t,new test())<SUB>22</SUB>> ]
+"73" [label = <(LOCAL,String comment1: java.lang.String)<SUB>23</SUB>> ]
+"74" [label = <(&lt;operator&gt;.assignment,String comment1 = t.unsan())<SUB>23</SUB>> ]
+"75" [label = <(IDENTIFIER,comment1,String comment1 = t.unsan())<SUB>23</SUB>> ]
+"76" [label = <(unsan,unsan())<SUB>23</SUB>> ]
+"77" [label = <(IDENTIFIER,t,unsan())<SUB>23</SUB>> ]
+"78" [label = <(LOCAL,String comment2: java.lang.String)<SUB>24</SUB>> ]
+"79" [label = <(&lt;operator&gt;.assignment,String comment2 = t.san())<SUB>24</SUB>> ]
+"80" [label = <(IDENTIFIER,comment2,String comment2 = t.san())<SUB>24</SUB>> ]
+"81" [label = <(san,san())<SUB>24</SUB>> ]
+"82" [label = <(IDENTIFIER,t,san())<SUB>24</SUB>> ]
+"83" [label = <(println,System.out.println(t.x))<SUB>25</SUB>> ]
+"84" [label = <(&lt;operator&gt;.fieldAccess,System.out)<SUB>25</SUB>> ]
+"85" [label = <(IDENTIFIER,System,System.out.println(t.x))<SUB>25</SUB>> ]
+"86" [label = <(FIELD_IDENTIFIER,out,out)<SUB>25</SUB>> ]
+"87" [label = <(&lt;operator&gt;.fieldAccess,t.x)<SUB>25</SUB>> ]
+"88" [label = <(IDENTIFIER,t,System.out.println(t.x))<SUB>25</SUB>> ]
+"89" [label = <(FIELD_IDENTIFIER,x,x)<SUB>25</SUB>> ]
+"90" [label = <(println,System.out.println(array[0]))<SUB>26</SUB>> ]
+"91" [label = <(&lt;operator&gt;.fieldAccess,System.out)<SUB>26</SUB>> ]
+"92" [label = <(IDENTIFIER,System,System.out.println(array[0]))<SUB>26</SUB>> ]
+"93" [label = <(FIELD_IDENTIFIER,out,out)<SUB>26</SUB>> ]
+"94" [label = <(&lt;operator&gt;.indexAccess,array[0])<SUB>26</SUB>> ]
+"95" [label = <(IDENTIFIER,array,System.out.println(array[0]))<SUB>26</SUB>> ]
+"96" [label = <(LITERAL,0,System.out.println(array[0]))<SUB>26</SUB>> ]
+"97" [label = <(MODIFIER,PUBLIC)> ]
+"98" [label = <(MODIFIER,STATIC)> ]
+"99" [label = <(METHOD_RETURN,void)<SUB>20</SUB>> ]
+  "59" -> "60" 
+  "59" -> "61" 
+  "59" -> "97" 
+  "59" -> "98" 
+  "59" -> "99" 
+  "61" -> "62" 
+  "61" -> "63" 
+  "61" -> "67" 
+  "61" -> "68" 
+  "61" -> "71" 
+  "61" -> "73" 
+  "61" -> "74" 
+  "61" -> "78" 
+  "61" -> "79" 
+  "61" -> "83" 
+  "61" -> "90" 
+  "63" -> "64" 
+  "63" -> "65" 
+  "65" -> "66" 
+  "68" -> "69" 
+  "68" -> "70" 
+  "71" -> "72" 
+  "74" -> "75" 
+  "74" -> "76" 
+  "76" -> "77" 
+  "79" -> "80" 
+  "79" -> "81" 
+  "81" -> "82" 
+  "83" -> "84" 
+  "83" -> "87" 
+  "84" -> "85" 
+  "84" -> "86" 
+  "87" -> "88" 
+  "87" -> "89" 
+  "90" -> "91" 
+  "90" -> "94" 
+  "91" -> "92" 
+  "91" -> "93" 
+  "94" -> "95" 
+  "94" -> "96" 
 }
+

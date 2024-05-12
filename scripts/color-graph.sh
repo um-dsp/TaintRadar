@@ -1,14 +1,13 @@
 #!/bin/bash
 
-JOERNDIR="/home/umd-user/Desktop/navex_project/joern-repo"
-SCRIPTDIR="/home/umd-user/Desktop/navex_project/navex_utils/code/"
-# WORKSPACEDIR="/home/umd-user/Desktop/navex_project/joern-repo/workspace/presentation.php/cpg.bin"
-WORKSPACEDIR="/home/umd-user/Desktop/navex_project/navex_utils/code/cpg.bin"
-FILEMAIN=$1".php:<global>"
+JOERNDIR="/Users/elirizk/Desktop/navex_project/joern"
+SCRIPTDIR="/Users/elirizk/Desktop/navex_project/navex_utils/code"
+WORKSPACEDIR="/Users/elirizk/Desktop/navex_project/navex_utils/code/cpg.bin"
+FILEMAIN="test.main:void(java.lang.String[])"
 
 cd $SCRIPTDIR
-joern-parse $SCRIPTDIR/php-tests/sanitization
-$JOERNDIR/joern --script $SCRIPTDIR/TestScript.scala --params cpgFile=$WORKSPACEDIR,fileMain=$FILEMAIN --import Constants.scala,SanitizationFilter.scala
+$JOERNDIR/joern-parse $SCRIPTDIR/tests/java-tests/Safe/test.java
+$JOERNDIR/joern --script $SCRIPTDIR/TestScript.scala --param cpgFile=$WORKSPACEDIR --param fileMain=$FILEMAIN --import main/java/Constants.scala --import main/java/SanitizationFilter.scala
 python3 addColor.py
 cd $SCRIPTDIR/output_graph
 dot -Tpng coloredOutput.dot > output.png

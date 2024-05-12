@@ -1,25 +1,84 @@
-digraph "&lt;global&gt;" {  
-"394" [label = <(METHOD,&lt;global&gt;)>, fillcolor="#ea9999ff", style=filled]
-"395" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
-"396" [label = <(&lt;operator&gt;.assignment,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
-"387" [label = <(IDENTIFIER,$name,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
-"397" [label = <(&lt;operator&gt;.indexAccess,$_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
-"389" [label = <(IDENTIFIER,$_GET,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#ea9999ff", style=filled]
-"398" [label = <(LITERAL,&quot;name&quot;,$name = $_GET[&quot;name&quot;])<SUB>2</SUB>>, fillcolor="#b6d7a8ff", style=filled]
-"399" [label = <(echo,echo &quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
-"400" [label = <(&lt;operator&gt;.concat,&quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
-"401" [label = <(LITERAL,&quot;Hello &quot;,&quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#b6d7a8ff", style=filled]
-"391" [label = <(IDENTIFIER,$name,&quot;Hello &quot; . $name)<SUB>3</SUB>>, fillcolor="#ea9999ff", style=filled]
-"402" [label = <(METHOD_RETURN,&lt;empty&gt;)>, fillcolor="#b6d7a8ff", style=filled]
-  "394" -> "395" 
-  "394" -> "402" 
-  "395" -> "396" 
-  "395" -> "399" 
-  "396" -> "387" 
-  "396" -> "397" 
-  "397" -> "389" 
-  "397" -> "398" 
-  "399" -> "400" 
-  "400" -> "401" 
-  "400" -> "391" 
+digraph "main" {  
+"59" [label = <(METHOD,main)<SUB>20</SUB>>, fillcolor="#ea9999ff", style=filled]
+"60" [label = <(PARAM,String[] args)<SUB>20</SUB>>, fillcolor="#ea9999ff", style=filled]
+"61" [label = <(BLOCK,&lt;empty&gt;,&lt;empty&gt;)<SUB>20</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"62" [label = <(LOCAL,String[] array: java.lang.String[])<SUB>21</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"63" [label = <(&lt;operator&gt;.assignment,String[] array = new String[] { &quot;First Element&quot; })<SUB>21</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"64" [label = <(IDENTIFIER,array,String[] array = new String[] { &quot;First Element&quot; })<SUB>21</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"65" [label = <(&lt;operator&gt;.arrayInitializer,new String[] { &quot;First Element&quot; })<SUB>21</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"66" [label = <(LITERAL,&quot;First Element&quot;,new String[] { &quot;First Element&quot; })<SUB>21</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"67" [label = <(LOCAL,test t: test)<SUB>22</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"68" [label = <(&lt;operator&gt;.assignment,test t = new test())<SUB>22</SUB>>, fillcolor="#ea9999ff", style=filled]
+"69" [label = <(IDENTIFIER,t,test t = new test())<SUB>22</SUB>>, fillcolor="#ea9999ff", style=filled]
+"70" [label = <(&lt;operator&gt;.alloc,new test())<SUB>22</SUB>>, fillcolor="#ea9999ff", style=filled]
+"71" [label = <(&lt;init&gt;,new test())<SUB>22</SUB>>, fillcolor="#ea9999ff", style=filled]
+"72" [label = <(IDENTIFIER,t,new test())<SUB>22</SUB>>, fillcolor="#ea9999ff", style=filled]
+"73" [label = <(LOCAL,String comment1: java.lang.String)<SUB>23</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"74" [label = <(&lt;operator&gt;.assignment,String comment1 = t.unsan())<SUB>23</SUB>>, fillcolor="#ea9999ff", style=filled]
+"75" [label = <(IDENTIFIER,comment1,String comment1 = t.unsan())<SUB>23</SUB>>, fillcolor="#ea9999ff", style=filled]
+"76" [label = <(unsan,unsan())<SUB>23</SUB>>, fillcolor="#ea9999ff", style=filled]
+"77" [label = <(IDENTIFIER,t,unsan())<SUB>23</SUB>>, fillcolor="#ea9999ff", style=filled]
+"78" [label = <(LOCAL,String comment2: java.lang.String)<SUB>24</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"79" [label = <(&lt;operator&gt;.assignment,String comment2 = t.san())<SUB>24</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"80" [label = <(IDENTIFIER,comment2,String comment2 = t.san())<SUB>24</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"81" [label = <(san,san())<SUB>24</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"82" [label = <(IDENTIFIER,t,san())<SUB>24</SUB>>, fillcolor="#ea9999ff", style=filled]
+"83" [label = <(println,System.out.println(t.x))<SUB>25</SUB>>, fillcolor="#ea9999ff", style=filled]
+"84" [label = <(&lt;operator&gt;.fieldAccess,System.out)<SUB>25</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"85" [label = <(IDENTIFIER,System,System.out.println(t.x))<SUB>25</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"86" [label = <(FIELD_IDENTIFIER,out,out)<SUB>25</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"87" [label = <(&lt;operator&gt;.fieldAccess,t.x)<SUB>25</SUB>>, fillcolor="#ea9999ff", style=filled]
+"88" [label = <(IDENTIFIER,t,System.out.println(t.x))<SUB>25</SUB>>, fillcolor="#ea9999ff", style=filled]
+"89" [label = <(FIELD_IDENTIFIER,x,x)<SUB>25</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"90" [label = <(println,System.out.println(array[0]))<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"91" [label = <(&lt;operator&gt;.fieldAccess,System.out)<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"92" [label = <(IDENTIFIER,System,System.out.println(array[0]))<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"93" [label = <(FIELD_IDENTIFIER,out,out)<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"94" [label = <(&lt;operator&gt;.indexAccess,array[0])<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"95" [label = <(IDENTIFIER,array,System.out.println(array[0]))<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"96" [label = <(LITERAL,0,System.out.println(array[0]))<SUB>26</SUB>>, fillcolor="#b6d7a8ff", style=filled]
+"97" [label = <(MODIFIER,PUBLIC)>, fillcolor="#b6d7a8ff", style=filled]
+"98" [label = <(MODIFIER,STATIC)>, fillcolor="#b6d7a8ff", style=filled]
+"99" [label = <(METHOD_RETURN,void)<SUB>20</SUB>> ]
+  "59" -> "60" 
+  "59" -> "61" 
+  "59" -> "97" 
+  "59" -> "98" 
+  "59" -> "99" 
+  "61" -> "62" 
+  "61" -> "63" 
+  "61" -> "67" 
+  "61" -> "68" 
+  "61" -> "71" 
+  "61" -> "73" 
+  "61" -> "74" 
+  "61" -> "78" 
+  "61" -> "79" 
+  "61" -> "83" 
+  "61" -> "90" 
+  "63" -> "64" 
+  "63" -> "65" 
+  "65" -> "66" 
+  "68" -> "69" 
+  "68" -> "70" 
+  "71" -> "72" 
+  "74" -> "75" 
+  "74" -> "76" 
+  "76" -> "77" 
+  "79" -> "80" 
+  "79" -> "81" 
+  "81" -> "82" 
+  "83" -> "84" 
+  "83" -> "87" 
+  "84" -> "85" 
+  "84" -> "86" 
+  "87" -> "88" 
+  "87" -> "89" 
+  "90" -> "91" 
+  "90" -> "94" 
+  "91" -> "92" 
+  "91" -> "93" 
+  "94" -> "95" 
+  "94" -> "96" 
 }
+

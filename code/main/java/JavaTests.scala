@@ -38,7 +38,10 @@ object JavaTests {
     getTag (cpg.call("executeQuery").filter(byFile(_,test3)), 0, "SAN_XSS") shouldBe List("FALSE")
 
     val test4 = "test.java"
-    getTag (cpg.identifier("this").filter(byFile(_,test3)), -1) shouldBe List("FALSE")
+    val constants: List[String] = cpg.call("<operator>.fieldAccess").filter(_.argument(1).code=="this").argument(2).code.l.map(_.replace("\"", "")).distinct
+    val values: List[List[Expression]] = constants.map(constant => cpg.call("<operator>.fieldAccess").filter(_.argument(2).code.replace("\"", "") == constant).astParent.isCall.argument(2).l)
+    values.filter(_.size==1).flatMap(v => v.map(w => "navex_tests/halo/" + w.file.name.head + ":" + w.lineNumber.getOrElse(0)))
+    getTag (cpg.identifier("this").filter(byFile(_,test4)), -1) shouldBe List("FALSE")
     getTag (cpg.identifier("password").filter(byFile(_,test3)), -1) shouldBe List("FALSE")
     getTag (cpg.identifier("sqlQuery").filter(byFile(_,test3)), -1) shouldBe List("TRUE")
     getTag (cpg.call("executeQuery").filter(byFile(_,test3)), 0, "SAN_SQL_Injection") shouldBe List("TRUE")
