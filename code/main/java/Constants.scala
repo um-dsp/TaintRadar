@@ -13,8 +13,8 @@ object Constants {
 
   val attacker_object_types = List(
     "HttpServletRequest",
-    "HttpURLConnection",
     "HttpExchange",
+    "HttpURLConnection",
     "URLConnection"
   )
 

@@ -84,6 +84,7 @@ object Utils {
                         // For a call node: traverse its arguments and method definition node
                         case call: nodes.Call => {  
                             val method = {
+                                // if (call.callee.code == "<empty>") cpg.method.filter(_.name == call.name).filter(_.code != "<empty>")
                                 if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
                                 else call.callee
                             }
@@ -91,6 +92,7 @@ object Utils {
                                 if (call.name == "<operator>.alloc" && call.argument.l.isEmpty) {
                                     cpg.call("<init>").filter(_.id == call.id + 1).l
                                 }
+                                else if (call.name == "<operator>.assignment") List(call.argument(2))
                                 else call.argument.dedup.l
                             }
                             method.filterNot(_.code == "<empty>").l ++ arguments
@@ -117,7 +119,8 @@ object Utils {
                         }
                         // For a method node, traverse its return block (after traversing it make sure not to try resolving the parameters)
                         case method: Method => {
-                            method.ast.isReturn.l
+                            if (method.name ==  "<init>") method.ast.filter(_.isInstanceOf[MethodReturn]).l
+                            else method.ast.isReturn.l
                         }
                         case returnNode: Return => returnNode.ddgIn.l
                         case block: Block => block.ddgIn.dedup.l

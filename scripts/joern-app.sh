@@ -10,8 +10,15 @@ NEO4JPSSWD="dabaddest"
 cd $JOERNDIR
 # ./joern-parse $APPDIR
 rm -r $APPDIR/output
-# ./joern-export --repr=all --format=neo4jcsv --out=$CODEDIR/output
-# $NEO4JDIR/bin/neo4j-admin server console
+# ./joern-export --repr=all --format=neo4jcsv --out=$CODEDIR/output  
+
+
+
+gggggghhhhffwqfrghgf   dfdsfsdf    nm adsfddsf b  dfkjsdfkdslfjsdk         
+
+ 
+  
+     # $NEO4JDIR/bin/neo4j-admin server console
 # cp $CODEDIR/output/*_data.csv $NEO4JDIR/import
 
 find $CODEDIR/output -name 'nodes_*_cypher.csv' -exec $NEO4JDIR/bin/cypher-shell -u neo4j -p $NEO4JPSSWD --file {} \;
