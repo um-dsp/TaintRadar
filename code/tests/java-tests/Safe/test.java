@@ -27,8 +27,13 @@ public class test {
         this.x = "Changed value: " + this.x;
     }
 
+    public void dontChange() {
+        System.out.println("Original value: " + this.x);
+    }
+
     public static void change(test o, String message) {
         o.x = message + o.x;
+        System.out.println(o.x);
     }
 
     public String unsan(HttpServletRequest request) {
@@ -51,7 +56,8 @@ public class test {
         test t = new test();
         t.change();
         test.change(t, "Original value: ");
-        // test t2 = new test();
+        println(t.x);
+        test t = new test();
         t.x = "Original value: " + t.x;
         t.x = t.x + " .";
         String comment1 = t.unsan();
