@@ -31,7 +31,7 @@ public class test {
         System.out.println("Original value: " + this.x);
     }
 
-    public static void change(test o, String message) {
+    public static void (test o, String message) {
         o.x = message + o.x;
         System.out.println(o.x);
     }
