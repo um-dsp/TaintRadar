@@ -8,7 +8,7 @@ public class test {
     String message;
     Connection connection;
 
-    public test() {
+    public test(String m) {
         this.x = "Hello";
         this.message = "Hey there!";
         this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "password");
@@ -31,7 +31,7 @@ public class test {
         System.out.println("Original value: " + this.x);
     }
 
-    public static void (test o, String message) {
+    public static void change(test o, String message) {
         o.x = message + o.x;
         System.out.println(o.x);
     }
@@ -53,11 +53,11 @@ public class test {
 
     public static void main(String[] args) {
         // String[] array = new String[]{"First Element"};
-        test t = new test();
+        test t = new test(args[0]);
         t.change();
         test.change(t, "Original value: ");
         println(t.x);
-        test t = new test();
+        test t = new test(args[0]);
         t.x = "Original value: " + t.x;
         t.x = t.x + " .";
         String comment1 = t.unsan();

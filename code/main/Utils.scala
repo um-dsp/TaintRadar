@@ -75,6 +75,7 @@ object Utils {
     }
 
     var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
+    var reachabilityArgs = collection.mutable.Map[AstNode, (List[AstNode], List[String])]()
     def dataFlowStep(node: AstNode, goToCallIn: Boolean = true): List[AstNode] = {
         dataFlowStepMap.get(node) match {
             case Some(queryData: List[AstNode]) => queryData
@@ -95,7 +96,13 @@ object Utils {
                                 else if (call.name == "<operator>.assignment") List(call.argument(2))
                                 else call.argument.dedup.l
                             }
-                            method.filterNot(_.code == "<empty>").l ++ arguments
+                            if (call.name == "<operator>.fieldAccess") {
+                                val (calls, vars) = if reachabilityArgs.contains(node) reachabilityArgs(node) else (List(), List())
+                                val (defs, newCalls, newVars) = getReachingDef(call, call.code, 0, calls, vars)
+                                reachabilityArgs(node) = (newCalls, newVars)
+                                defs
+                            }
+                            else method.filterNot(_.code == "<empty>").l ++ arguments
                         }
                         // For an identifier: if it points to a method parameter, traverse this parameter, otherwise follow the data dependency edges
                         case identifier: Identifier => {

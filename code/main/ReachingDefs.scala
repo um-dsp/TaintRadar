@@ -65,20 +65,22 @@ def getReachingDef(
     i: Int = 0, 
     callStack: List[nodes.Call] = List(), 
     varNames: List[String] = List()
-): (List[nodes.Call], List[nodes.Call], List[String]) = {
-
+): Map[nodes.Call, (List[nodes.Call], List[String])] = {
     if (isDefinition(node, varName)) {
         println("Found definition")
         println(node.productIterator.toList)
-        (node.assignment.toList, callStack, varNames)
+        Map(node.assignment.head -> (callStack, varNames))
     } 
     else if (node.isCall && isInitCall(node, varName.split('.').head)) {
         println("Found init call")
         val results = node.isCallTo("<init>").callee.methodReturn.map(
-            getReachingDefRec(_, "this." + varName.split('.').last, i + 1, callStack, varNames)
+            getReachingDef(_, "this." + varName.split('.').last, i + 1, callStack, varNames)
         )
-        results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
-            (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
+        //     (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // }
+        results.foldLeft(Map[nodes.Call, (List[nodes.Call], List[String])]()) { (acc, res) =>
+            acc ++ res
         }
     } 
     else if (node.isCall && !node.isCallTo(".*").filter(c => {
@@ -88,10 +90,13 @@ def getReachingDef(
         }).isEmpty) {
         println(node.isCallTo(".*").head.name)
         val results = node.isCallTo(".*").callee.methodReturn.map(
-            getReachingDefRec(_, "this." + varName.split('.').last, i + 1, node.isCallTo(".*").head +: callStack, varName +: varNames)
+            getReachingDef(_, "this." + varName.split('.').last, i + 1, node.isCallTo(".*").head +: callStack, varName +: varNames)
         )
-        results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
-            (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
+        //     (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // }
+        results.foldLeft(Map[nodes.Call, (List[nodes.Call], List[String])]()) { (acc, res) =>
+            acc ++ res
         }
     } 
     else if (node.isCall && !node.isCallTo(".*").callee.filter(_.code != "<empty>").isEmpty && node.ddgIn.exists(_.code == varName.split('.').head)) {
@@ -100,36 +105,47 @@ def getReachingDef(
         val paramNode = node.isCallTo(".*").callee.parameter.filter(_.order == idArg - 1).name.headOption.getOrElse("")
         val newNames = s"$paramNode.$varCd"
         val results = node.isCallTo(".*").callee.methodReturn.map(
-            getReachingDefRec(_, newNames, i + 1, node.isCallTo(".*").head +: callStack, varName +: varNames)
+            getReachingDef(_, newNames, i + 1, node.isCallTo(".*").head +: callStack, varName +: varNames)
         )
-        results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
-            (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
+        //     (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // }
+        results.foldLeft(Map[nodes.Call, (List[nodes.Call], List[String])]()) { (acc, res) =>
+            acc ++ res
         }
     } 
     else if (i > 200) {
         println("Reached max depth")
-        (List(), callStack, varNames)
+        // (List(), callStack, varNames)
+        Map()
     } 
     else if (node.cfgPrev.isEmpty) {
         println("Reached end of CFG")
         if (callStack.isEmpty) {
-            (List(), callStack, varNames)
+            // (List(), callStack, varNames)
+            Map()
         } else {
             val results = callStack.head.cfgPrev.map(
-                getReachingDefRec(_, varNames.head, i + 1, callStack.tail, varNames.tail)
+                getReachingDef(_, varNames.head, i + 1, callStack.tail, varNames.tail)
             )
-            results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
-                (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
-            }
+            // results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
+            //     (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+            // }
+            results.foldLeft(Map[nodes.Call, (List[nodes.Call], List[String])]()) { (acc, res) =>
+            acc ++ res
+        }
         }
     } 
     else {
         println("Traversing CFG")
         val results = node.cfgPrev.map(
-            getReachingDefRec(_, varName, i + 1, callStack, varNames)
+            getReachingDef(_, varName, i + 1, callStack, varNames)
         )
-        results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
-            (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // results.foldLeft((List[nodes.Call](), List[nodes.Call](), List[String]())) { (acc, res) =>
+        //     (acc._1 ++ res._1, acc._2 ++ res._2, acc._3 ++ res._3)
+        // }
+        results.foldLeft(Map[nodes.Call, (List[nodes.Call], List[String])]()) { (acc, res) =>
+            acc ++ res
         }
     }
 }

@@ -57,6 +57,11 @@ class SanitizationFilter(val cpg: Cpg) {
       else if (function.name == "<operator>.alloc" && function.argument.l.isEmpty) {
          isSanitized(cpg.call("<init>").filter(_.id == function.id + 1).l, sanitizedParameters)(sanitization_functions)
       }
+      // for field access, check if the attribute's reaching definitions are sanitized
+      else if (function.name == "<operator>.fieldAccess") {
+         val (defs, calls, vars) = getReachingDef(function, function.code)
+         isSanitized(defs, sanitizedParameters)(sanitization_functions)
+      }
       // known unsanitized function calls
       else if (Constants.attacker_input.contains(function.name) || Constants.attacker_object_types.map(t => function.typeFullName.contains(t)).contains(true)) false
       // if the function implicitly casts the type (e.g. unsan + 0)
