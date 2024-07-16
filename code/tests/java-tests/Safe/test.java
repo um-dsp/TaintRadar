@@ -54,7 +54,9 @@ public class test {
     public static void main(String[] args) {
         // String[] array = new String[]{"First Element"};
         test t = new test(args[0]);
-        t.change();
+        if (true) {
+            t.change();
+        }
         test.change(t, "Original value: ");
         println(t.x);
         test t = new test(args[0]);
