@@ -40,7 +40,7 @@ class SanitizationFilter(val cpg: Cpg) {
          else !Constants.unsafe_object_types.exists(objectAccessIdentifier.typeFullName.headOption.getOrElse("").contains(_))
       }
       // map arguments for the function call on whether they're sanitized or not
-      val isArgumentSanitized: List[Boolean] = arguments.map(isSanitized(_, sanitizedParameters)(sanitization_functions))
+      val isArgumentSanitized: List[Boolean] = if (function.name == "<operator>.fieldAccess") arguments.map(x => true) else arguments.map(isSanitized(_, sanitizedParameters)(sanitization_functions))
       // val isArgumentSanitized: List[Boolean] = {
       //    if (objectAccess == None) isArgumentSanitizedRaw
       //    else isObjSan +: isArgumentSanitizedRaw.slice(1, isArgumentSanitizedRaw.size)
@@ -61,7 +61,8 @@ class SanitizationFilter(val cpg: Cpg) {
       else if (function.name == "<operator>.fieldAccess") {
          val defMaps = getReachingDef(function, function.code)
          println(defMaps)
-         isSanitized(defMaps.keys.l, sanitizedParameters)(sanitization_functions)
+         if (defMaps.keys.l.isEmpty) false
+         else isSanitized(defMaps.keys.l, sanitizedParameters)(sanitization_functions)
       }
       // known unsanitized function calls
       else if (Constants.attacker_input.contains(function.name) || Constants.attacker_object_types.map(t => function.typeFullName.contains(t)).contains(true)) false
@@ -89,9 +90,14 @@ class SanitizationFilter(val cpg: Cpg) {
    // Check whether given CPG Node is sanitized, filter accordingly
    def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit sanitization_functions: List[String]): Boolean = 
       // check the Map to see if node was traversed or not
+      node match {
+         case n: Expression => println(n.code)
+         case _ => None
+      }
       isSanitizedMap.get(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) match {
       case Some(result) => result
       case None => {
+         isSanitizedMap(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) = true
          var mapOut: Boolean = false
          val result: Boolean = 
          try { 
@@ -197,6 +203,14 @@ class SanitizationFilter(val cpg: Cpg) {
             }
          }
          isSanitizedMap(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) = result
+         node match {
+            case function: nodes.Call => {
+               if (function.name == "<operator>.fieldAccess") 
+                  isSanitizedMap.-=(isSanitizedInput(node, sanitizedParameters, sanitization_functions))
+               else None
+            }
+            case _ => None
+         }
          result
       }
    }
@@ -217,3 +231,4 @@ class SanitizationFilter(val cpg: Cpg) {
       println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
    }
 }
+val sanObject = SanitizationFilter(cpg)

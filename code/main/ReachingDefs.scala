@@ -67,12 +67,12 @@ def getReachingDef(
     varNames: List[String] = List()
 ): Map[nodes.Call, (List[nodes.Call], List[String])] = {
     if (isDefinition(node, varName)) {
-        println("Found definition")
-        println(node.productIterator.toList)
+        // println("Found definition")
+        // println(node.productIterator.toList)
         Map(node.assignment.head -> (callStack, varNames))
     } 
     else if (node.isCall && isInitCall(node, varName.split('.').head)) {
-        println("Found init call")
+        // println("Found init call")
         val results = node.isCallTo("<init>").callee.methodReturn.map(
             getReachingDef(_, "this." + varName.split('.').last, i + 1, callStack, varNames)
         )
@@ -88,7 +88,7 @@ def getReachingDef(
             (c.argument.isIdentifier.name.headOption.getOrElse("") == varName.split('.').head) && 
             (c.argument.isIdentifier.order.headOption.getOrElse(0) == 1)
         }).isEmpty) {
-        println(node.isCallTo(".*").head.name)
+        // println(node.isCallTo(".*").head.name)
         val results = node.isCallTo(".*").callee.methodReturn.map(
             getReachingDef(_, "this." + varName.split('.').last, i + 1, node.isCallTo(".*").head +: callStack, varName +: varNames)
         )
@@ -115,12 +115,12 @@ def getReachingDef(
         }
     } 
     else if (i > 200) {
-        println("Reached max depth")
+        // println("Reached max depth")
         // (List(), callStack, varNames)
         Map()
     } 
     else if (node.cfgPrev.isEmpty) {
-        println("Reached end of CFG")
+        // println("Reached end of CFG")
         if (callStack.isEmpty) {
             // (List(), callStack, varNames)
             Map()
@@ -137,7 +137,7 @@ def getReachingDef(
         }
     } 
     else {
-        println("Traversing CFG")
+        // println("Traversing CFG")
         val results = node.cfgPrev.map(
             getReachingDef(_, varName, i + 1, callStack, varNames)
         )
