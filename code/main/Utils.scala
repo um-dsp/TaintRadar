@@ -75,8 +75,10 @@ object Utils {
     }
 
     var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
-    var reachabilityArgs = collection.mutable.Map[nodes.Call, (List[nodes.Call], List[String])]()
-    def dataFlowStep(node: AstNode, goToCallIn: Boolean = true): List[AstNode] = {
+    // reachibilityArgs maps the first field access call node of backward data flow to a map of definitions and their scope
+    // FieldAccess Call (Sink) -> { Definition Node -> Scope: (CallStack, VarStack) }
+    var reachabilityArgs = collection.mutable.Map[nodes.Call, collection.mutable.Map[nodes.Call, (List[nodes.Call], List[String])]]()
+    def dataFlowStep(node: AstNode, goToCallIn: Boolean = true)(implicit resolver: (Option[nodes.Call], Option[nodes.Call])): List[AstNode] = {
         dataFlowStepMap.get(node) match {
             case Some(queryData: List[AstNode]) => queryData
             case None => {
@@ -97,9 +99,19 @@ object Utils {
                                 else call.argument.dedup.l
                             }
                             if (call.name == "<operator>.fieldAccess") {
-                                val scope = if (reachabilityArgs.contains(call)) reachabilityArgs(call) else (List(), List())
+                                val startNode = if (resolver._1 == None) call else resolver._1.get
+                                if (!reachabilityArgs.contains(startNode)) reachabilityArgs(startNode) = collection.mutable.Map[nodes.Call, (List[nodes.Call], List[String])]()
+                                val scope = {
+                                    if (resolver._2 != None) {
+                                        val lastAssignment =  resolver._2.get
+                                        if (reachabilityArgs(startNode).contains(lastAssignment)) 
+                                            reachabilityArgs(startNode)(lastAssignment) 
+                                        else (List(), List())
+                                    }
+                                    else (List(), List())
+                                }
                                 val defMaps: Map[nodes.Call, (List[nodes.Call], List[String])] = getReachingDef(call, call.code, 0, scope._1, scope._2)
-                                reachabilityArgs ++= defMaps
+                                reachabilityArgs(startNode) ++= defMaps
                                 defMaps.keys.l
                             }
                             else method.filterNot(_.code == "<empty>").l ++ arguments
@@ -144,7 +156,7 @@ object Utils {
             }
         }
     }
-
+/*
     // var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
     // var reachabilityArgs = collection.mutable.Map[AstNode, (List[AstNode], List[String])]()
     // def dataFlowStep(node: AstNode, goToCallIn: Boolean = true): List[AstNode] = {
@@ -214,7 +226,7 @@ object Utils {
     //         }
     //     }
     // }
-
+*/
     // Checks whether the node is reachable by any element of sinks
     def isReachableBy(node: AstNode, sinks: List[AstNode]): Boolean = {
         var i = 0
@@ -222,7 +234,7 @@ object Utils {
         var found: Boolean = false
         while (i < 100 && !found) {
             if (dataFlowNodes.contains(node)) found = true
-            dataFlowNodes = dataFlowNodes.flatMap(dataFlowStep(_)).dedup.l
+            dataFlowNodes = dataFlowNodes.flatMap(n => dataFlowStep(n)(None, None)).dedup.l
             i = i + 1
         }
         found
@@ -234,7 +246,7 @@ object Utils {
         var output = List[List[AstNode]]()
         val visitedNodes = paths.flatten.dedup.l
         val result = paths.map( path => {
-            val reachingDefs = dataFlowStep(path.last, !path.last.isMethod).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
+            val reachingDefs = dataFlowStep(path.last, !path.last.isMethod)(path.isCallTo("<operator>.fieldAccess").headOption, path.isCall.assignment.lastOption).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
             if (reachingDefs.isEmpty) (output = output :+ path)
             else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
         })

@@ -15,7 +15,8 @@ public class test {
         this.x = "Original value: " + this.x;
         for (int i = 0; i < 10; i++) {
             if (i % 2 == 0) {
-                this.x = this.x + " .";
+                // this.x = this.x + " .";
+                this.change();
             }
             else {
                 this.x = this.x + " !";
