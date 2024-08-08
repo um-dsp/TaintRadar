@@ -148,7 +148,8 @@ object Constants {
   )
 
   val san_functions_xss = List(
-    
+    "sanitize",
+    "sanitize.*",
   )
 
   val filter_var_arguments = List(

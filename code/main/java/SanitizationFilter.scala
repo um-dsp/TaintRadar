@@ -60,7 +60,7 @@ class SanitizationFilter(val cpg: Cpg) {
       // for field access, check if the attribute's reaching definitions are sanitized
       else if (function.name == "<operator>.fieldAccess") {
          val defMaps = getReachingDef(function, function.code)
-         println(defMaps)
+         // println(defMaps)
          if (defMaps.keys.l.isEmpty) false
          else isSanitized(defMaps.keys.l, sanitizedParameters)(sanitization_functions)
       }
@@ -91,7 +91,7 @@ class SanitizationFilter(val cpg: Cpg) {
    def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit sanitization_functions: List[String]): Boolean = 
       // check the Map to see if node was traversed or not
       node match {
-         case n: Expression => println(n.code)
+         case n: Expression => if (n.id%100==0) println(n.id.toString + ": " + n.code) else None
          case _ => None
       }
       isSanitizedMap.get(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) match {

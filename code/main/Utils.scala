@@ -2,7 +2,7 @@ object Utils {
     // val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
     val vulnerabilities: List[String] = List("SQL Injection", "XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
-    // val db = new DatabaseConstraint(cpg)
+    val db = new DatabaseConstraint(cpg)
 
     val constants: List[String] = cpg.call(Constants.constant_definition_func).argument(1).code.l.map(_.replace("\"", "")).distinct
     val values: List[List[AstNode]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
@@ -87,8 +87,8 @@ object Utils {
                         // For a call node: traverse its arguments and method definition node
                         case call: nodes.Call => {
                             val method = {
-                                // if (call.callee.code == "<empty>") cpg.method.filter(_.name == call.name).filter(_.code != "<empty>")
-                                if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
+                                if (call.callee.filter(_.code != "<empty>").isEmpty) cpg.method.filter(_.name == call.name).filter(_.code != "<empty>")
+                                else if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
                                 else call.callee
                             }
                             val arguments = {
@@ -152,81 +152,19 @@ object Utils {
                     }
                 }
                 dataFlowStepMap(node) = result
+                node match {
+                    case function: nodes.Call => {
+                        if (function.name == "<operator>.fieldAccess") 
+                            dataFlowStepMap.-=(node)
+                        else None
+                    }
+                    case _ => None
+                }
                 result
             }
         }
     }
-/*
-    // var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
-    // var reachabilityArgs = collection.mutable.Map[AstNode, (List[AstNode], List[String])]()
-    // def dataFlowStep(node: AstNode, goToCallIn: Boolean = true): List[AstNode] = {
-    //     dataFlowStepMap.get(node) match {
-    //         case Some(queryData: List[AstNode]) => queryData
-    //         case None => {
-    //             val result = {
-    //                 node match {
-    //                     // For a call node: traverse its arguments and method definition node
-    //                     case call: nodes.Call => {  
-    //                         val method = {
-    //                             // if (call.callee.code == "<empty>") cpg.method.filter(_.name == call.name).filter(_.code != "<empty>")
-    //                             if (call.dispatchType == "DYNAMIC_DISPATCH") cpg.method.filter(_.fullName == call.methodFullName)
-    //                             else call.callee
-    //                         }
-    //                         val arguments = {
-    //                             if (call.name == "<operator>.alloc" && call.argument.l.isEmpty) {
-    //                                 cpg.call("<init>").filter(_.id == call.id + 1).l
-    //                             }
-    //                             else if (call.name == "<operator>.assignment") List(call.argument(2))
-    //                             else call.argument.dedup.l
-    //                         }
-    //                         if (call.name == "<operator>.fieldAccess") {
-    //                             val (calls, vars) = if reachabilityArgs.contains(node) reachabilityArgs(node) else (List(), List())
-    //                             val (defs, newCalls, newVars) = getReachingDef(call, call.code, 0, calls, vars)
-    //                             reachabilityArgs(node) = (newCalls, newVars)
-    //                             defs
-    //                         }
-    //                         else method.filterNot(_.code == "<empty>").l ++ arguments
-    //                     }
-    //                     // For an identifier: if it points to a method parameter, traverse this parameter, otherwise follow the data dependency edges
-    //                     case identifier: Identifier => {
-    //                         if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
-    //                         identifier.method.parameter.name(identifier.name).l
-    //                         else identifier.ddgIn.l
-    //                     }
-    //                     // For a literal: output the literal
-    //                     case literal: Literal => List(literal)
-    //                     // For a method parameter: potentially go to all method callers and output their corresponding argument (same index as the parameter)
-    //                     // This is intended to be performed only if the path started within the method node itself, otherwise don't output anything
-    //                     case parameter: MethodParameterIn => {
-    //                         if (goToCallIn)
-    //                             cpg.call(parameter.method.name).filter(_.methodFullName == parameter.method.fullName).map(_.argument.l).map(_.lift(parameter.index)).filterNot(_ == None).map(_.get).l
-    //                         else List()
-    //                     }
-    //                     // For a constant, try resolving it statically by checking the "define" function calls
-    //                     case constant: FieldIdentifier => {
-    //                         if (Constants.magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
-    //                         else constantTable.get(constant.canonicalName).dedup.l
-    //                     }
-    //                     // For a method node, traverse its return block (after traversing it make sure not to try resolving the parameters)
-    //                     case method: Method => {
-    //                         if (method.name ==  "<init>") method.ast.filter(_.isInstanceOf[MethodReturn]).l
-    //                         else method.ast.isReturn.l
-    //                     }
-    //                     case returnNode: Return => returnNode.ddgIn.l
-    //                     case block: Block => block.ddgIn.dedup.l
-    //                     case typeRef: TypeRef => List()
-    //                     case _ => {
-    //                         println(node)
-    //                         List()
-    //                     }
-    //                 }
-    //             }
-    //             dataFlowStepMap(node) = result
-    //             result
-    //         }
-    //     }
-    // }
-*/
+
     // Checks whether the node is reachable by any element of sinks
     def isReachableBy(node: AstNode, sinks: List[AstNode]): Boolean = {
         var i = 0
@@ -246,6 +184,7 @@ object Utils {
         var output = List[List[AstNode]]()
         val visitedNodes = paths.flatten.dedup.l
         val result = paths.map( path => {
+            // println(path.map(_.code).mkString(", ") + " " + !path.last.isMethod)
             val reachingDefs = dataFlowStep(path.last, !path.last.isMethod)(path.isCallTo("<operator>.fieldAccess").headOption, path.isCall.assignment.lastOption).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
             if (reachingDefs.isEmpty) (output = output :+ path)
             else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
@@ -315,13 +254,13 @@ object Utils {
     }
 
     // make sure to run this after augmenting with Sanitization tags first (function above)
-    // def augmentWithQueryTag() = {
-    //     db.augmentDbCalls()
-    // }
+    def augmentWithQueryTag() = {
+        db.augmentDbCalls()
+    }
 
-    // def debugDatabaseParsing() = {
-    //     db.debug()
-    // }
+    def debugDatabaseParsing() = {
+        db.debug()
+    }
 
     def exceptionRate() = {
         sanitizationObject.exceptions.toFloat / (sanitizationObject.isSanitizedMap.map(_(0).node).dedup.size * vulnerabilities.size)

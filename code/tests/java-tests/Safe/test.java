@@ -48,7 +48,8 @@ public class test {
 
     public String san(HttpServletRequest request) {
         String comment = request.getParameter("comment");
-        comment = connection.escape(comment);
+        // comment = connection.escape(comment);
+        comment = sanitize(comment);
         return comment;
     }
 
@@ -65,8 +66,12 @@ public class test {
         t.x = t.x + " .";
         String comment1 = t.unsan();
         String comment2 = t.san();
-        // System.out.println(t.x);
-        // System.out.println(array[0]);
+        t.printComment(comment1);
+        t.printComment(comment2);
+        System.out.println(comment1);
+        System.out.println(comment2);
+        System.out.println(t.x);
+        System.out.println(args[0]);
     }
 }
 

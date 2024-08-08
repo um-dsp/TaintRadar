@@ -122,8 +122,8 @@ class DatabaseConstraint(val cpg: Cpg) {
     val queries = queryStatements.map(DBQuery(_))
 
     // Get database schema from csv file
-    val file_name = cpg.metaData.root.head.split("/").last
-    val reader = CSVReader.open("navex_utils/code/db/schemas/" + file_name + "-database.csv")
+    val file_name = cpg.metaData.root.head.split("/").last.split('.').head
+    val reader = CSVReader.open("code/db/schemas/" + file_name + "-database.csv")
     val reader_data: List[List[String]] = reader.all()
     val list_schema: List[List[String]] = reader_data.map(ls => List(ls(0), ls(1), ls(3))) 
     val db_schema = scala.collection.mutable.Map[String, Map[String, Boolean]]()
@@ -364,7 +364,7 @@ class DatabaseConstraint(val cpg: Cpg) {
 
     def debug() = {
         val typeAndCode = queries.map(query => query.queryType.toString + "; \"" + query.queryCode.mkString(" ") + "\"; " + parseQuery(query)(0) + "; \"" + parseQuery(query)(1).mkString(", ") + "\"; \"" + parseQuery(query)(2).mkString(", ") + "\"" + "; " + (labelQueryInput(query)==QueryLabel.SafeQuery && labelQueryOutput(query)==QueryLabel.SafeQuery).toString)
-        typeAndCode #> ("navex_utils/code/db/parsed-queries/" + file_name + ".csv")
+        typeAndCode #> ("code/db/parsed-queries/" + file_name + ".csv")
         val selectUnsafe = queries.filter(_.queryType==QueryType.SelectQuery).map(getUnsafeColumns(_)).flatten.dedup.l
         val insertUnsafe = queries.filter(q => q.queryType==QueryType.InsertQuery || q.queryType == QueryType.UpdateQuery).map(getUnsafeColumns(_)).flatten.dedup.l
         val bothUnsafe: List[(String, String)] = insertUnsafe.filter(selectUnsafe.contains(_))
