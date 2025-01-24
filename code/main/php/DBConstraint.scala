@@ -124,6 +124,7 @@ class DatabaseConstraint(val cpg: Cpg) {
     // Get database schema from csv file
     val file_name = cpg.metaData.root.head.split("/").last.split('.').head
     val reader = CSVReader.open("code/db/schemas/" + file_name + "-database.csv")
+    // val reader = CSVReader.open("code/db/schemas/" + "empty" + "-database.csv")
     val reader_data: List[List[String]] = reader.all()
     val list_schema: List[List[String]] = reader_data.map(ls => List(ls(0), ls(1), ls(3))) 
     val db_schema = scala.collection.mutable.Map[String, Map[String, Boolean]]()

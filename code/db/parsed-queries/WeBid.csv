@@ -2031,8 +2031,8 @@ OTHER; "<SELECT NAME=categories[] ROWS=12 MULTIPLE>"; NA; ""; ""; true
 OTHER; "<SELECT NAME=id>"; NA; ""; ""; true
 OTHER; "<select name=category onChange=javascript:document.adsearch.submit()><option></option>"; NA; ""; ""; true
 OTHER; "<select name=country>"; NA; ""; ""; true
-SELECT; "Select category ID number to enter in the tab delimited file for bulk uploading</FONT></TD> </tr> <TR> <TD WIDTH=30%>"; NA; "category, id, number, to, enter, in, the, tab, delimited, file, for, bulk, uploadingfonttd, tr, td, width30"; ""; false
-SELECT; "Select exact Country Name to enter in the tab delimited file for bulk uploading</FONT></TD> </tr> <TR> <TD WIDTH=100%>"; NA; "exact, country, name, to, enter, in, the, tab, delimited, file, for, bulk, uploadingfonttd, tr, td, width100"; ""; false
+OTHER; "Select category ID number to enter in the tab delimited file for bulk uploading</FONT></TD> </tr> <TR> <TD WIDTH=30%>"; NA; ""; ""; true
+OTHER; "Select exact Country Name to enter in the tab delimited file for bulk uploading</FONT></TD> </tr> <TR> <TD WIDTH=100%>"; NA; ""; ""; true
 OTHER; "<select name=item size=3 Style=width:100%;>"; NA; ""; ""; true
 OTHER; "<select name=cd onchange=submit(); style=Width: 350px;>"; NA; ""; ""; true
 OTHER; "<select name=file onchange=submit(); style=Width: 250px;>"; NA; ""; ""; true
@@ -2041,25 +2041,25 @@ OTHER; "<SELECT NAME=id> <OPTION VALUE=>Select your category</OPTION> <OPTION VA
 OTHER; "<SELECT NAME=qty SIZE=1>"; NA; ""; ""; true
 OTHER; "<SELECT NAME=id> <OPTION VALUE=>Select a category</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=1>Art & Antiques</OPTION> <OPTION VALUE=28>Books</OPTION> <OPTION VALUE=220>Cars & Vehicles</OPTION> <OPTION VALUE=69>Clothing & Accessories</OPTION> <OPTION VALUE=73>Coins & Stamps</OPTION> <OPTION VALUE=76>Collectibles</OPTION> <OPTION VALUE=114>Comics, Cards & Science Fiction</OPTION> <OPTION VALUE=123>Computers & Software</OPTION> <OPTION VALUE=128>Electronics & Photography</OPTION> <OPTION VALUE=134>Gemstones & Jewelry</OPTION> <OPTION VALUE=149>Home & Garden</OPTION> <OPTION VALUE=159>Movies & Video</OPTION> <OPTION VALUE=164>Music</OPTION> <OPTION VALUE=171>Office & Business</OPTION> <OPTION VALUE=176>Other Goods & Services</OPTION> <OPTION VALUE=221>Real Estate</OPTION> <OPTION VALUE=184>Sports & Recreation</OPTION> <OPTION VALUE=188>Toys & Games</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=0>View all categories</OPTION> </SELECT>"; NA; ""; ""; true
 OTHER; "--Select here"; NA; ""; ""; true
-SELECT; "---- Select here"; NA; "here"; ""; false
-SELECT; "Select <b>Yes</b> if you want the users login box to be displayed in the Home page. Otherwise select <b>No</b>"; NA; "byesb, if, you, want, the, users, login, box, to, be, displayed, in, home, page, otherwise, select, bnob"; ""; false
-SELECT; "Select <b>Yes</b> if you want the news box to be displayed in the Home page. Otherwise select <b>No</b>"; NA; "byesb, if, you, want, the, news, box, to, be, displayed, in, home, page, otherwise, select, bnob"; ""; false
-SELECT; "Select the file to upload"; NA; "the, file, to, upload"; ""; false
-UPDATE; "UPDATE COUNTERS"; PHPAUCTIONXL_counters; ""; ""; true
-UPDATE; "Update Counters Utility"; PHPAUCTIONXL_counters; ""; ""; true
-SELECT; "Select <b>yes</b> if you want a link to the message boards to appear in the header and footer of your site."; NA; "byesb, if, you, want, a, link, to, the, message, boards, appear, in, header, and, footer, of, your, site"; ""; false
-UPDATE; "Update Counters"; PHPAUCTIONXL_counters; ""; ""; true
-SELECT; "Select which type of statistics you want to generate"; NA; "which, type, of, statistics, you, want, to, generate"; ""; false
-SELECT; "Select <b>Yes</b> if you want a copy of the invoices to be sent to the admin e-mail address."; NA; "byesb, if, you, want, a, copy, of, the, invoices, to, be, sent, admin, email, address"; ""; false
-SELECT; "Select banner"; NA; "banner"; ""; false
-SELECT; "Select your category"; NA; "your, category"; ""; false
-SELECT; "SELECT CATEGORY &gt;&gt;"; NA; "category, gtgt"; ""; false
-SELECT; "select value"; NA; "value"; ""; false
-SELECT; "Select the currency to use for Paypal payments (USD, GBP, JPY, CAD, EUR only)"; NA; "the, currency, to, use, for, paypal, payments, usd, gbp, jpy, cad, eur, only"; ""; false
+OTHER; "---- Select here"; NA; ""; ""; true
+OTHER; "Select <b>Yes</b> if you want the users login box to be displayed in the Home page. Otherwise select <b>No</b>"; NA; ""; ""; true
+OTHER; "Select <b>Yes</b> if you want the news box to be displayed in the Home page. Otherwise select <b>No</b>"; NA; ""; ""; true
+OTHER; "Select the file to upload"; NA; ""; ""; true
+OTHER; "UPDATE COUNTERS"; NA; ""; ""; true
+OTHER; "Update Counters Utility"; NA; ""; ""; true
+OTHER; "Select <b>yes</b> if you want a link to the message boards to appear in the header and footer of your site."; NA; ""; ""; true
+OTHER; "Update Counters"; NA; ""; ""; true
+OTHER; "Select which type of statistics you want to generate"; NA; ""; ""; true
+OTHER; "Select <b>Yes</b> if you want a copy of the invoices to be sent to the admin e-mail address."; NA; ""; ""; true
+OTHER; "Select banner"; NA; ""; ""; true
+OTHER; "Select your category"; NA; ""; ""; true
+OTHER; "SELECT CATEGORY &gt;&gt;"; NA; ""; ""; true
+OTHER; "select value"; NA; ""; ""; true
+OTHER; "Select the currency to use for Paypal payments (USD, GBP, JPY, CAD, EUR only)"; NA; ""; ""; true
 OTHER; "<SELECT NAME=id> <OPTION VALUE=>Selecciona la categor&iacute;a</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=1>Arte y Antiguedades</OPTION> <OPTION VALUE=220>Autos y Vehiculos</OPTION> <OPTION VALUE=221>Casas y Terrenos</OPTION> <OPTION VALUE=76>Coleccionables</OPTION> <OPTION VALUE=114>Comics, Cromos & Ciencia Ficcion</OPTION> <OPTION VALUE=184>Deportes y Ocio</OPTION> <OPTION VALUE=128>Electrnica y Fotografia</OPTION> <OPTION VALUE=134>Gemas y Joyas</OPTION> <OPTION VALUE=149>Hogar y Jardin</OPTION> <OPTION VALUE=188>Juguetes y Juegos</OPTION> <OPTION VALUE=28>Libros</OPTION> <OPTION VALUE=73>Monedas y Sellos</OPTION> <OPTION VALUE=164>Musica</OPTION> <OPTION VALUE=171>Oficina y Negocios</OPTION> <OPTION VALUE=123>Ordenadores & Software</OPTION> <OPTION VALUE=176>Otros Bienes y Servicios</OPTION> <OPTION VALUE=159>Peliculas & Video</OPTION> <OPTION VALUE=69>Ropa y Complementos</OPTION> <OPTION VALUE=></OPTION> <OPTION VALUE=0>Todas las categor&iacute;as</OPTION> </SELECT>"; NA; ""; ""; true
 OTHER; "<select name=atype>"; NA; ""; ""; true
 OTHER; "<select name=duration>"; NA; ""; ""; true
-SELECT; "SELECT LAST_INSERT_ID() as id"; NA; ""; ""; false
+OTHER; "SELECT LAST_INSERT_ID() as id"; NA; ""; ""; true
 OTHER; "<select name=country>"; NA; ""; ""; true
 OTHER; "<select NAME=auction_type>"; NA; ""; ""; true
 OTHER; "<select NAME=category>"; NA; ""; ""; true

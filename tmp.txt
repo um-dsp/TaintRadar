@@ -1,1 +1,0 @@
-io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; id=5]

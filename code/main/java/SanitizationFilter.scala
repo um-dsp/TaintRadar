@@ -59,10 +59,11 @@ class SanitizationFilter(val cpg: Cpg) {
       }
       // for field access, check if the attribute's reaching definitions are sanitized
       else if (function.name == "<operator>.fieldAccess") {
-         val defMaps = getReachingDef(function, function.code)
-         // println(defMaps)
-         if (defMaps.keys.l.isEmpty) false
-         else isSanitized(defMaps.keys.l, sanitizedParameters)(sanitization_functions)
+         // val defMaps = getReachingDef(function, function.code)
+         // // println(defMaps)
+         // if (defMaps.keys.l.isEmpty) false
+         // else isSanitized(defMaps.keys.l, sanitizedParameters)(sanitization_functions)
+         false
       }
       // known unsanitized function calls
       else if (Constants.attacker_input.contains(function.name) || Constants.attacker_object_types.map(t => function.typeFullName.contains(t)).contains(true)) false
