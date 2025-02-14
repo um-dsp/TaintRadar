@@ -1,10 +1,12 @@
-class NavexMain(val cpg: Cpg) {
+class NavexMain(val cpg: Cpg,val sani:Boolean) {
 
     val cpgSize = cpg.all.size
-
+    if (sani){
     Utils.augmentWithSanTag()
     Utils.augmentWithQueryTag()
     Utils.debugDatabaseParsing()
+    }
+
 
     var logger: List[String] = List()
 
@@ -169,7 +171,7 @@ class NavexMain(val cpg: Cpg) {
                         "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\",\n" +
                         "\t\"sanitized\": \"" + x.tag.name(tagName).value.headOption.getOrElse("NA") + "\"\n},"
     }).mkString("\n")}).mkString("[", "\n", "]")}.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
-        output #> ("paths/" + cpg.metaData.root.head.split("/").last.split('.').head.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json")
+        output #> ("/home/umd-user/joern/projectcpg/paths/" + cpg.metaData.root.head.split("/").last.split('.').head.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json")
     
         logger.mkString(",") #>> "app-stats.csv"
 
