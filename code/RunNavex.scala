@@ -1,6 +1,8 @@
-@main def exec(path: String, name: String) = {
-    println("______________" + name + "______________")
+@main def exec(path: String) = {
     importCpg(path)
+    // importCpg("/home/umd-user/joern/workspace/jenkinscpg.bin/cpg.bin.tmp")
     val n = new NavexMain(cpg)
-    n.getStats()
+    // save
+    // n.getStats() 
+    n.outputPaths(false)   
 }

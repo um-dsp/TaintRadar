@@ -1,24 +1,21 @@
-from cpgqls_client import CPGQLSClient, import_code_query
+import os
 
-server_endpoint = "localhost:8080"
-client = CPGQLSClient(server_endpoint)
+# Path to the directory containing the CSV files
+schema_dir = "/home/umd-user/joern/projectcpg/code/db/schemas"
 
-query = import_code_query("/home/umd-user/Desktop/navex_project/navex_tests/mybloggie214", "test-app")    
-result = client.execute(query)
-print(result['stdout'])
-
-# execute a simple CPGQuery to list all methods in the code
-file = open("Constants.scala")
-client.execute(file.read())
-file = open("SanitizationFilter.scala")
-client.execute(file.read())
-file = open("NavexMain.scala")
-client.execute(file.read())
-query = "val n = new NavexMain(cpg)"
-client.execute(query)
-query = "n.outputPaths()"
-result = client.execute(query)
-file = open("output.csv", "w")
-file.write(result['stdout'])
-print(result)
-	
+# Check if the directory exists
+if os.path.exists(schema_dir) and os.listdir(schema_dir):
+    for file_name in os.listdir(schema_dir):
+        file_path = os.path.join(schema_dir, file_name)
+        
+        # Check if it is a CSV file
+        if file_name.endswith(".csv") and os.path.isfile(file_path):
+            try:
+                # Open the file in write mode to clear its contents
+                with open(file_path, 'w') as csv_file:
+                    pass  # Writing nothing clears the file
+                print(f"Cleared contents of file: {file_path}")
+            except Exception as e:
+                print(f"Failed to clear contents of file {file_name}: {e}")
+else:
+    print(f"Schema directory does not exist or is empty: {schema_dir}")
