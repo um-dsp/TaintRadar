@@ -122,9 +122,8 @@ class DatabaseConstraint(val cpg: Cpg) {
     val queries = queryStatements.map(DBQuery(_))
 
     // Get database schema from csv file
-    val file_name = cpg.metaData.root.head.split("/").last.split('.').head
-    val reader = CSVReader.open("code/db/schemas/" + file_name + "-database.csv")
-    // val reader = CSVReader.open("code/db/schemas/" + "empty" + "-database.csv")
+    val file_name = cpg.metaData.root.head.split("/").last
+    val reader = CSVReader.open("projectcpg/code/db/schemas/" + file_name + "-database.csv")
     val reader_data: List[List[String]] = reader.all()
     val list_schema: List[List[String]] = reader_data.map(ls => List(ls(0), ls(1), ls(3))) 
     val db_schema = scala.collection.mutable.Map[String, Map[String, Boolean]]()
@@ -168,7 +167,7 @@ class DatabaseConstraint(val cpg: Cpg) {
                                         }
                                     }
                     val scopeWithoutAlias = queryScope.sliding(2).filterNot(_(0) == "as").flatten.filterNot(_ == "as").l
-                    val removeFuncHash = SQLConstants.sql_builtin_function.map(fun => scopeWithoutAlias.map(s=> s.replace(fun.toLowerCase+"(","").filter(_.isLetterOrDigit)).l)
+                    val removeFuncHash = SQLConstants.sql_builtin_function.map(fun => scopeWithoutAlias.map(s=> s.replace(fun.toLowerCase+'(',"").filter(_.isLetterOrDigit)).l)
                     val scopeWithoutFunc = scopeWithoutAlias.indices.map(i => removeFuncHash.map(_(i)).reduce((x,y) => if (x.length < y.length) x else y)).toList
                     val dbColumns = list_schema.filter(_(0) == closestTable).map(_(1))
                     val queryColumns = if (queryScope.contains("*")) dbColumns else scopeWithoutFunc
@@ -365,7 +364,7 @@ class DatabaseConstraint(val cpg: Cpg) {
 
     def debug() = {
         val typeAndCode = queries.map(query => query.queryType.toString + "; \"" + query.queryCode.mkString(" ") + "\"; " + parseQuery(query)(0) + "; \"" + parseQuery(query)(1).mkString(", ") + "\"; \"" + parseQuery(query)(2).mkString(", ") + "\"" + "; " + (labelQueryInput(query)==QueryLabel.SafeQuery && labelQueryOutput(query)==QueryLabel.SafeQuery).toString)
-        typeAndCode #> ("code/db/parsed-queries/" + file_name + ".csv")
+        typeAndCode #> ("projectcpg/code/db/parsed-queries/" + file_name + ".csv")
         val selectUnsafe = queries.filter(_.queryType==QueryType.SelectQuery).map(getUnsafeColumns(_)).flatten.dedup.l
         val insertUnsafe = queries.filter(q => q.queryType==QueryType.InsertQuery || q.queryType == QueryType.UpdateQuery).map(getUnsafeColumns(_)).flatten.dedup.l
         val bothUnsafe: List[(String, String)] = insertUnsafe.filter(selectUnsafe.contains(_))
