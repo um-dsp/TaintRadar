@@ -99,20 +99,18 @@ object Utils {
                                 else call.argument.dedup.l
                             }
                             if (call.name == "<operator>.fieldAccess") {
-                                val startNode = if (resolver._1 == None) call else resolver._1.get
-                                if (!reachabilityArgs.contains(startNode)) reachabilityArgs(startNode) = collection.mutable.Map[nodes.Call, (List[nodes.Call], List[String])]()
-                                val scope = {
-                                    if (resolver._2 != None) {
-                                        val lastAssignment =  resolver._2.get
-                                        if (reachabilityArgs(startNode).contains(lastAssignment)) 
-                                            reachabilityArgs(startNode)(lastAssignment) 
-                                        else (List(), List())
-                                    }
-                                    else (List(), List())
+                                val startNode = resolver._1.getOrElse(call)
+                                if (!reachabilityArgs.contains(startNode)) {
+                                    reachabilityArgs(startNode) = collection.mutable.Map[nodes.Call, (List[nodes.Call], List[String])]()
                                 }
-                                val defMaps: Map[nodes.Call, (List[nodes.Call], List[String])] = getReachingDef(call, call.code, 0, scope._1, scope._2)
+                                val scope = resolver._2
+                                    .map(lastAssignment =>
+                                        reachabilityArgs(startNode).getOrElse(lastAssignment, (List(), List()))
+                                    )
+                                    .getOrElse((List(), List()))
+                                val defMaps = getReachingDef(call, call.code, 0, scope._1, scope._2, Set(call.id))
                                 reachabilityArgs(startNode) ++= defMaps
-                                defMaps.keys.l
+                                defMaps.keys.toList
                             }
                             else method.filterNot(_.code == "<empty>").l ++ arguments
                             // method.filterNot(_.code == "<empty>").l ++ arguments
@@ -146,7 +144,7 @@ object Utils {
                         case block: Block => block.ddgIn.dedup.l
                         case typeRef: TypeRef => List()
                         case _ => {
-                            println(node)
+                            // println(node)
                             List()
                         }
                     }
@@ -203,7 +201,7 @@ object Utils {
     }
     catch {
         case _ => {
-            println(source.toString + paths.map(_.last).dedup.l.mkString(", "))
+            // println(source.toString + paths.map(_.last).dedup.l.mkString(", "))
             List()
         }
     }
