@@ -1,6 +1,7 @@
 object Utils {
     // val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
-    val vulnerabilities: List[String] = List("SQL Injection", "XSS")
+    // val vulnerabilities: List[String] = List("SQL Injection", "XSS")
+    val vulnerabilities: List[String] = List("XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
 

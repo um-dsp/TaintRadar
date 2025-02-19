@@ -1,0 +1,42 @@
+90194313216,LITERAL,2,,"""input""",,,7,2,,string
+90194313217,LITERAL,2,,"""input""",,,10,2,,string
+90194313218,LITERAL,2,,"""Input: """,,,11,2,,string
+90194313219,LITERAL,2,,"""DefaultName""",,,4,2,,string
+90194313220,LITERAL,2,,"""name""",,,12,2,,string
+90194313221,LITERAL,1,,"""Trevor""",,,19,2,,string
+90194313222,LITERAL,1,,"""Bernard""",,,20,2,,string
+90194313223,LITERAL,2,,"""username""",,,2,2,,string
+90194313224,LITERAL,1,,"""SAN""",,,3,1,,string
+90194313225,LITERAL,2,,"""HELLO""",,,3,2,,string
+90194313226,LITERAL,1,,"""UNSAN""",,,4,1,,string
+90194313227,LITERAL,1,,"""USERNAME: """,,,4,1,,string
+90194313228,LITERAL,1,,"""neverused.php""",,,2,1,,string
+90194313229,LITERAL,2,,"""admin""",,,2,2,,string
+90194313230,LITERAL,2,,"""username""",,,3,2,,string
+90194313231,LITERAL,2,,""".php""",,,4,2,,string
+90194313232,LITERAL,2,,"""php""",,,5,2,,string
+90194313233,LITERAL,2,,0,,,2,2,,int
+90194313234,LITERAL,2,,12,,,3,2,,int
+90194313235,LITERAL,2,,0,,,2,2,,int
+90194313236,LITERAL,2,,"""input""",,,3,2,,string
+90194313237,LITERAL,1,,"""INPUT: """,,,3,1,,string
+90194313238,LITERAL,2,,"""input""",,,3,2,,string
+90194313239,LITERAL,2,,""" .""",,,3,2,,string
+90194313240,LITERAL,1,,12,,,7,1,,int
+90194313241,LITERAL,2,,24,,,7,2,,int
+90194313242,LITERAL,2,,"""username""",,,11,2,,string
+90194313243,LITERAL,1,,"""SELECT * FROM USERS WHERE ID = """,,,3,1,,string
+90194313244,LITERAL,2,,""" AND USERNAME = """,,,3,2,,string
+90194313245,LITERAL,2,,""" AND PASSWORD = """,,,3,2,,string
+90194313246,LITERAL,2,,"""uid""",,,7,2,,string
+90194313247,LITERAL,2,,"""username""",,,8,2,,string
+90194313248,LITERAL,2,,"""password""",,,10,2,,string
+90194313249,LITERAL,2,,"""name""",,,2,2,,string
+90194313250,LITERAL,1,,"""Hello """,,,3,1,,string
+90194313251,LITERAL,2,,"""name""",,,2,2,,string
+90194313252,LITERAL,1,,"""Hello """,,,3,1,,string
+90194313253,LITERAL,2,,0,,,3,2,,int
+90194313254,LITERAL,1,,1,,,3,1,,int
+90194313255,LITERAL,2,,1,,,4,2,,int
+90194313256,LITERAL,2,,"""input""",,,2,2,,string
+90194313257,LITERAL,2,,"""int""",,,3,2,,string
