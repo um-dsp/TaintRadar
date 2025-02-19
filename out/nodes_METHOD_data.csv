@@ -1,0 +1,48 @@
+111669149696,METHOD,byreference.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,byreference.php,byreference.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149697,METHOD,byreference.php:<global>,METHOD,function customSanRef(&$p1),,,byreference.php,customSanRef,<empty>,,false,2,,customSanRef,,,4,<unresolvedSignature>(1)
+111669149698,METHOD,byreference.php:<global>,METHOD,function customUnsanRef(&$p1),,,byreference.php,customUnsanRef,<empty>,,false,6,,customUnsanRef,,,5,<unresolvedSignature>(1)
+111669149699,METHOD,class.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,class.php,class.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149700,METHOD,User,TYPE_DECL,User->__construct,,,class.php,User->__construct,<empty>,,false,2,,__construct,,,3,<unresolvedSignature>(0)
+111669149701,METHOD,User,TYPE_DECL,"function set_name(this,$name)",,,class.php,User->set_name,<empty>,,false,8,,set_name,,,4,<unresolvedSignature>(1)
+111669149702,METHOD,User,TYPE_DECL,function get_name(this),,,class.php,User->get_name,<empty>,,false,11,,get_name,,,5,<unresolvedSignature>(0)
+111669149703,METHOD,field_identifiers.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,field_identifiers.php,field_identifiers.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149704,METHOD,file-inclusion.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,file-inclusion.php,file-inclusion.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149705,METHOD,fileaccess.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,fileaccess.php,fileaccess.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149706,METHOD,identifier_basic_san.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,identifier_basic_san.php,identifier_basic_san.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149707,METHOD,identifier_basic_unsan.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,identifier_basic_unsan.php,identifier_basic_unsan.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149708,METHOD,method.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,method.php,method.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149709,METHOD,method.php:<global>,METHOD,function customSan($x),,,method.php,customSan,<empty>,,false,2,,customSan,,,1,<unresolvedSignature>(1)
+111669149710,METHOD,neverused.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,neverused.php,neverused.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149711,METHOD,neverused.php:<global>,METHOD,function getX(),,,neverused.php,getX,<empty>,,false,2,,getX,,,3,<unresolvedSignature>(0)
+111669149712,METHOD,neverused.php:<global>,METHOD,function getY(),,,neverused.php,getY,<empty>,,false,6,,getY,,,4,<unresolvedSignature>(0)
+111669149713,METHOD,paperexample.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,paperexample.php,paperexample.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149714,METHOD,paperexample.php:<global>,METHOD,"function getCustomerData($id,$name,$psswd)",,,paperexample.php,getCustomerData,<empty>,,false,2,,getCustomerData,,,7,<unresolvedSignature>(3)
+111669149715,METHOD,papersan.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,papersan.php,papersan.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149716,METHOD,paperunsan.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,paperunsan.php,paperunsan.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149717,METHOD,recursive-fun.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,recursive-fun.php,recursive-fun.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149718,METHOD,recursive-fun.php:<global>,METHOD,function factorial($n),,,recursive-fun.php,factorial,<empty>,,false,2,,factorial,,,1,<unresolvedSignature>(1)
+111669149719,METHOD,settype.php:<global>,TYPE_DECL,VIRTUAL PUBLIC STATIC function <global>(),,,settype.php,settype.php:<global>,<empty>,,false,,,<global>,,,1,<unresolvedSignature>(0)
+111669149720,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.assignment,<empty>,,true,,,<operator>.assignment,,,0,
+111669149721,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,filter_input,<empty>,,true,,,filter_input,,,0,<unresolvedSignature>(1)
+111669149722,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.concat,<empty>,,true,,,<operator>.concat,,,0,
+111669149723,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.indexAccess,<empty>,,true,,,<operator>.indexAccess,,,0,
+111669149724,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,echo,<empty>,,true,,,echo,,,0,
+111669149725,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.fieldAccess,<empty>,,true,,,<operator>.fieldAccess,,,0,
+111669149726,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.alloc,<empty>,,true,,,<operator>.alloc,,,0,
+111669149727,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<unresolvedNamespace>\\$user1->set_name,<empty>,,true,,,set_name,,,0,<unresolvedSignature>(1)
+111669149728,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<unresolvedNamespace>\\$user2->set_name,<empty>,,true,,,set_name,,,0,<unresolvedSignature>(1)
+111669149729,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<unresolvedNamespace>\\$user1->get_name,<empty>,,true,,,get_name,,,0,<unresolvedSignature>(0)
+111669149730,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,define,<empty>,,true,,,define,,,0,<unresolvedSignature>(2)
+111669149731,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,printf,<empty>,,true,,,printf,,,0,<unresolvedSignature>(1)
+111669149732,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,include,<empty>,,true,,,include,,,0,
+111669149733,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,print,<empty>,,true,,,print,,,0,
+111669149734,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,fopen,<empty>,,true,,,fopen,,,0,<unresolvedSignature>(1)
+111669149735,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.plus,<empty>,,true,,,<operator>.plus,,,0,
+111669149736,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.multiplication,<empty>,,true,,,<operator>.multiplication,,,0,
+111669149737,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_query,<empty>,,true,,,mysql_query,,,0,<unresolvedSignature>(1)
+111669149738,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.cast,<empty>,,true,,,<operator>.cast,,,0,
+111669149739,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,mysql_escape_string,<empty>,,true,,,mysql_escape_string,,,0,<unresolvedSignature>(1)
+111669149740,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,htmlentities,<empty>,,true,,,htmlentities,,,0,<unresolvedSignature>(1)
+111669149741,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.equals,<empty>,,true,,,<operator>.equals,,,0,
+111669149742,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,<operator>.minus,<empty>,,true,,,<operator>.minus,,,0,
+111669149743,METHOD,<global>,NAMESPACE_BLOCK,<empty>,,,<empty>,settype,<empty>,,true,,,settype,,,0,<unresolvedSignature>(2)

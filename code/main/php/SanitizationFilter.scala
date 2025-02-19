@@ -73,7 +73,7 @@ class SanitizationFilter(val cpg: Cpg) {
             node match {
             case Some(nodeOption) => isSanitized(nodeOption, sanitizedParameters)(sanitization_functions)
             case List() => true
-            case traversal: overflowdb.traversal.Traversal[_] => isSanitized(traversal.l, sanitizedParameters)(sanitization_functions)
+            case iterator: Iterator[_] => isSanitized(iterator.l, sanitizedParameters)(sanitization_functions)
             case listOfNodes: List[_] => listOfNodes.map(isSanitized(_, sanitizedParameters)(sanitization_functions)).reduce((x,y) => x && y)
             case literal: Literal => {
                // sanitizedNodesMap(mapInput(literal.id, vulnerabilityInst.name)) = true

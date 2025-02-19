@@ -1,4 +1,9 @@
 var dfgInMap = collection.mutable.Map[AstNode, List[AstNode]]()
+implicit val sanitizedParameters: List[String] = Constants.san_functions_sql
+
+val s = SanitizationFilter(cpg)
+val isSanitizedMap = s.isSanitizedMap
+def isSanitized = s.isSanitized
 
 def dfgIn(node: CfgNode): List[CfgNode] = {
     dfgInMap.get(node) match {
@@ -14,7 +19,7 @@ def dfgIn(node: CfgNode): List[CfgNode] = {
                 // Define the method that the function calls
                 val method: Method = {
                     // If function is dynamically dispatched with only one definition, the method is uniquely determined
-                    else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size == 1) cpg.method(function.name).filter(_.code!="<empty>").head
+                    if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size == 1) cpg.method(function.name).filter(_.code!="<empty>").head
                     // Otherwise get method definition (if dynamically dispatched will return a method node with empty code)
                     else cpg.callee.head
                 }

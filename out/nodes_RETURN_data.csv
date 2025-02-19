@@ -1,0 +1,7 @@
+146028888064,RETURN,-1,,return $x,,13,4
+146028888065,RETURN,-1,,return $x,,5,4
+146028888066,RETURN,-1,,return $x,,4,4
+146028888067,RETURN,-1,,return $y,,8,3
+146028888068,RETURN,-1,,return mysql_query($query),,4,3
+146028888069,RETURN,-1,,return 1,,3,1
+146028888070,RETURN,-1,,return $n * factorial($n - 1),,4,1

@@ -1,0 +1,18 @@
+171798691840,TYPE_DECL,,byreference.php:<global>,NAMESPACE_BLOCK,class <global>,,byreference.php,byreference.php:<global>,<empty>,,false,,<global>,,,1
+171798691841,TYPE_DECL,,class.php:<global>,NAMESPACE_BLOCK,class <global>,,class.php,class.php:<global>,<empty>,,false,,<global>,,,1
+171798691842,TYPE_DECL,,class.php:<global>,METHOD,class User,,class.php,User,<empty>,,false,2,User,,,6
+171798691843,TYPE_DECL,,field_identifiers.php:<global>,NAMESPACE_BLOCK,class <global>,,field_identifiers.php,field_identifiers.php:<global>,<empty>,,false,,<global>,,,1
+171798691844,TYPE_DECL,,file-inclusion.php:<global>,NAMESPACE_BLOCK,class <global>,,file-inclusion.php,file-inclusion.php:<global>,<empty>,,false,,<global>,,,1
+171798691845,TYPE_DECL,,fileaccess.php:<global>,NAMESPACE_BLOCK,class <global>,,fileaccess.php,fileaccess.php:<global>,<empty>,,false,,<global>,,,1
+171798691846,TYPE_DECL,,identifier_basic_san.php:<global>,NAMESPACE_BLOCK,class <global>,,identifier_basic_san.php,identifier_basic_san.php:<global>,<empty>,,false,,<global>,,,1
+171798691847,TYPE_DECL,,identifier_basic_unsan.php:<global>,NAMESPACE_BLOCK,class <global>,,identifier_basic_unsan.php,identifier_basic_unsan.php:<global>,<empty>,,false,,<global>,,,1
+171798691848,TYPE_DECL,,method.php:<global>,NAMESPACE_BLOCK,class <global>,,method.php,method.php:<global>,<empty>,,false,,<global>,,,1
+171798691849,TYPE_DECL,,neverused.php:<global>,NAMESPACE_BLOCK,class <global>,,neverused.php,neverused.php:<global>,<empty>,,false,,<global>,,,1
+171798691850,TYPE_DECL,,paperexample.php:<global>,NAMESPACE_BLOCK,class <global>,,paperexample.php,paperexample.php:<global>,<empty>,,false,,<global>,,,1
+171798691851,TYPE_DECL,,papersan.php:<global>,NAMESPACE_BLOCK,class <global>,,papersan.php,papersan.php:<global>,<empty>,,false,,<global>,,,1
+171798691852,TYPE_DECL,,paperunsan.php:<global>,NAMESPACE_BLOCK,class <global>,,paperunsan.php,paperunsan.php:<global>,<empty>,,false,,<global>,,,1
+171798691853,TYPE_DECL,,recursive-fun.php:<global>,NAMESPACE_BLOCK,class <global>,,recursive-fun.php,recursive-fun.php:<global>,<empty>,,false,,<global>,,,1
+171798691854,TYPE_DECL,,settype.php:<global>,NAMESPACE_BLOCK,class <global>,,settype.php,settype.php:<global>,<empty>,,false,,<global>,,,1
+171798691855,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,ANY,<empty>,,true,,ANY,,,-1
+171798691856,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,int,<empty>,,true,,int,,,-1
+171798691857,TYPE_DECL,,<global>,NAMESPACE_BLOCK,<empty>,,<unknown>,string,<empty>,,true,,string,,,-1
