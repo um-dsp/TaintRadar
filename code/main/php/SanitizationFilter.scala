@@ -146,8 +146,8 @@ class SanitizationFilter(val cpg: Cpg) {
             case file: File => true
             case local: Local => true
             case member: Member => true
-            case method: Method => false
-            // case method: Method => isMethodSanitized(method, method.parameter.l, List.fill(method.parameter.size)(false))(sanitization_functions)
+            // case method: Method => false
+            case method: Method => isMethodSanitized(method, method.parameter.l, List.fill(method.parameter.size)(false))(sanitization_functions)
             case methodReturn: MethodReturn => true
             case methodParamOut: MethodParameterOut => true
             case methodParam: MethodParameterIn => {
