@@ -1,4 +1,4 @@
 <?php
-$name = $_GET['name'];
-echo("Hello ". htmlentities($name));
+    $name = $_GET['name'];
+    echo("Hello ". htmlentities($name));
 ?>

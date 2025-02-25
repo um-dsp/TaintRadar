@@ -1,7 +1,6 @@
 object Utils {
     // val vulnerabilities: List[String] = List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
-    // val vulnerabilities: List[String] = List("SQL Injection", "XSS")
-    val vulnerabilities: List[String] = List("XSS")
+    val vulnerabilities: List[String] = List("SQL Injection", "XSS")
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
 
@@ -235,7 +234,8 @@ object Utils {
         node.isInstanceOf[Identifier] || 
         node.isInstanceOf[Literal] || 
         node.isInstanceOf[MethodParameterIn] ||
-        node.isInstanceOf[FieldIdentifier]
+        node.isInstanceOf[FieldIdentifier] ||
+        node.isInstanceOf[Return]
     }
 
     def augmentWithSanTag() = {
