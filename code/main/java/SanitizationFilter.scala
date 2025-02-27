@@ -120,7 +120,7 @@ class SanitizationFilter(val cpg: Cpg) {
             case identifier: Identifier => {
                // this & <global> identifiers are sanitized
                if (Constants.safe_types.contains(identifier.typeFullName) || Constants.san_identifiers.contains(identifier.name)) mapOut = true
-               else if (Constants.attacker_object_types.map(t => identifier.typeFullName.contains(t)).contains(true)) mapOut = false
+               else if (Constants.attacker_object_types.map(t => identifier.typeFullName.contains(t)).contains(true) || Constants.attacker_input.contains(identifier.name)) mapOut = false
                else mapOut = {
                   var isArgumentSanitized = sanitizedParameters
                   // calculate the reaching definition of the identifier
