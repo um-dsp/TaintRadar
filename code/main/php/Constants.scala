@@ -185,4 +185,7 @@ object Constants {
     "<operator>.greaterThan",
     "<operator>.greaterEqualsThan")
 
+  val attacker_object_types = List()
+
+  val unsafe_object_types = List()
 }

@@ -87,15 +87,10 @@ class SanitizationFilter(val cpg: Cpg) {
          isSanitized(method.ast.isReturn, isArgumentSanitized)(sanitization_functions)
       }
    } 
-   // println(n.id.toString + ": " + n.code)
-// 
+
    // Check whether given CPG Node is sanitized, filter accordingly
    def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit sanitization_functions: List[String]): Boolean = 
       // check the Map to see if node was traversed or not
-      node match {
-         case n: Expression => if (n.id%100==0) None else None
-         case _ => None
-      }
       isSanitizedMap.get(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) match {
       case Some(result) => result
       case None => {
@@ -106,7 +101,7 @@ class SanitizationFilter(val cpg: Cpg) {
             node match {
             case Some(nodeOption) => isSanitized(nodeOption, sanitizedParameters)(sanitization_functions)
             case List() => true
-            case traversal: overflowdb.traversal.Traversal[_] => isSanitized(traversal.l, sanitizedParameters)(sanitization_functions)
+            case iterator: Iterator[_] => isSanitized(iterator.l, sanitizedParameters)(sanitization_functions)
             case listOfNodes: List[_] => listOfNodes.map(isSanitized(_, sanitizedParameters)(sanitization_functions)).reduce((x,y) => x && y)
             case literal: Literal => {
                // sanitizedNodesMap(mapInput(literal.id, vulnerabilityInst.name)) = true
@@ -120,7 +115,7 @@ class SanitizationFilter(val cpg: Cpg) {
             case identifier: Identifier => {
                // this & <global> identifiers are sanitized
                if (Constants.safe_types.contains(identifier.typeFullName) || Constants.san_identifiers.contains(identifier.name)) mapOut = true
-               else if (Constants.attacker_object_types.map(t => identifier.typeFullName.contains(t)).contains(true)) mapOut = false
+               else if (Constants.attacker_object_types.map(t => identifier.typeFullName.contains(t)).contains(true) || Constants.attacker_input.contains(identifier.name)) mapOut = false
                else mapOut = {
                   var isArgumentSanitized = sanitizedParameters
                   // calculate the reaching definition of the identifier

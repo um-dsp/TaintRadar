@@ -1,0 +1,6500 @@
+[{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 80446,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/search.php",
+	"linenumber": 1567,
+	"code": "$tOpt[$_REQUEST[\"t\"]]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 80445,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/search.php",
+	"linenumber": 1567,
+	"code": "strtolower($tOpt[$_REQUEST[\"t\"]])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 1,
+	"vulnerability": "XSS",
+	"nodeid": 80443,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/search.php",
+	"linenumber": 1567,
+	"code": "echo \" in \",strtolower($tOpt[$_REQUEST[\"t\"]])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 63927,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 14,
+	"code": "$_REQUEST[\"user\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 67578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 661,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 67577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 661,
+	"code": "defval($_REQUEST,\"ass\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 67574,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 661,
+	"code": "tagg_checkbox_h(\"ass\",1,defval($_REQUEST,\"ass\"))",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 2,
+	"vulnerability": "XSS",
+	"nodeid": 67573,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 661,
+	"code": "echo tagg_checkbox_h(\"ass\",1,defval($_REQUEST,\"ass\")),\"&nbsp;</td><td>\",tagg_label(\"System administrator\"),\"<br />\",\"<div class=\\'hint\\'>System administrators have full control over all site operations.  Administrators need not be members of the PC.  There’s always at least one system administrator.</div></td></tr></table>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf->parseTextForm($tf)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58567,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req[\"paperId\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 58577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59383,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59410,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 177,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59446,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 186,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59541,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 218,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59548,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf->settingText(\"tag_rank\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59547,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59560,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59596,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 229,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59594,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 229,
+	"code": "\"setrank=1&amp;tag=%7E\" . $ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59592,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 229,
+	"code": "hoturl_post(\"offline\",\"setrank=1&amp;tag=%7E\" . $ranktag)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 3,
+	"vulnerability": "XSS",
+	"nodeid": 59590,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 228,
+	"code": "echo \"<td><h3>Upload ranking file</h3>\\n<form action=\\'\",hoturl_post(\"offline\",\"setrank=1&amp;tag=%7E\" . $ranktag),\"\\' method=\\'post\\' enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'><div class=\\'inform\\'>\\n\\t<input type=\\'hidden\\' name=\\'upload\\' value=\\'1\\' />\\n\\t<input type=\\'file\\' name=\\'file\\' accept=\\'text/plain\\' size=\\'30\\' \" . $disabled . \"/>&nbsp; <input class=\\'b\\' type=\\'submit\\' value=\\'Go\\' \" . $disabled . \"/>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 41008,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/bulkassign.php",
+	"linenumber": 201,
+	"code": "$_REQUEST[\"upload\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 41210,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/bulkassign.php",
+	"linenumber": 251,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 41209,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/bulkassign.php",
+	"linenumber": 251,
+	"code": "defval($_REQUEST,\"t\",REVIEW_PRIMARY)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 41169,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/bulkassign.php",
+	"linenumber": 246,
+	"code": "tagg_select(\"t\",,defval($_REQUEST,\"t\",REVIEW_PRIMARY),)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 4,
+	"vulnerability": "XSS",
+	"nodeid": 41163,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/bulkassign.php",
+	"linenumber": 242,
+	"code": "echo \"<h2 style=\\'margin-top:1em\\'>Upload assignments</h2>\\n\\n<form action=\\'\",hoturl_post(\"bulkassign\",\"upload=1\"),\"\\' method=\\'post\\' enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'><div class=\\'inform\\'>\\nAssign &nbsp;\",tagg_select(\"t\",,defval($_REQUEST,\"t\",REVIEW_PRIMARY),),\"&nbsp; from file:&nbsp;\\n<input type=\\'file\\' name=\\'uploadedFile\\' accept=\\'text/plain\\' size=\\'30\\' />\\n\\n<div class=\\'g\\'></div>\\n\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39903,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 983,
+	"code": "$_REQUEST[\"bpcount\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39907,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 983,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39906,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 983,
+	"code": "defval($_REQUEST,\"bp\" . $which . $i)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39901,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 983,
+	"code": "$i <= $_REQUEST[\"bpcount\"] ? defval($_REQUEST,\"bp\" . $which . $i) : \"0\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39900,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 983,
+	"code": "$selected",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39913,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 984,
+	"code": "$selected",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39928,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 986,
+	"code": "$selected",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39924,
+	"methodname": "bpSelector",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 986,
+	"code": "tagg_select(\"bp\" . $which . $i,$badPairSelector,$selected,)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39923,
+	"methodname": "",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 986,
+	"code": "return tagg_select(\"bp\" . $which . $i,$badPairSelector,$selected,)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39856,
+	"methodname": "",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 976,
+	"code": "function bpSelector($i,$which)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39954,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 992,
+	"code": "bpSelector($i,\"b\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39949,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 992,
+	"code": "bpSelector($i,\"a\") . \" &nbsp;and&nbsp; \" . bpSelector($i,\"b\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39948,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 992,
+	"code": "$selector_text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39995,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 1001,
+	"code": "$selector_text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 5,
+	"vulnerability": "XSS",
+	"nodeid": 39993,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 1001,
+	"code": "echo \"</td><td class=\\'lentry\\'>\",$selector_text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 50437,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 544,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 50905,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 624,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 51129,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 675,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 51143,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 680,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 51144,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 680,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 51228,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 693,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 51227,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 693,
+	"code": "CommentView::commentFlowEntry($Me,$xr,$tr_class)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 6,
+	"vulnerability": "XSS",
+	"nodeid": 51226,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 693,
+	"code": "echo CommentView::commentFlowEntry($Me,$xr,$tr_class)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 63927,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 14,
+	"code": "$_REQUEST[\"user\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67658,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 694,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67657,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 694,
+	"code": "defval($_REQUEST,$tiname,\"\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67656,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 694,
+	"code": "cvtint(defval($_REQUEST,$tiname,\"\"))",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67655,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 694,
+	"code": "$interest",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67664,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 695,
+	"code": "$interest",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67701,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 699,
+	"code": "$interest",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67702,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 699,
+	"code": "$j",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67699,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 699,
+	"code": "$j",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67693,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 699,
+	"code": "tagg_radio_h(\"ti\" . $row[0],$j,$interest == $j)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 7,
+	"vulnerability": "XSS",
+	"nodeid": 67691,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 698,
+	"code": "echo \"<td class=\\'ti_interest\\'>\",tagg_radio_h(\"ti\" . $row[0],$j,$interest == $j),\"</td>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 51275,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 715,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 51305,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 719,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 51304,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 719,
+	"code": "$Conf->printableDeadlineSetting(\"sub_reg\",\"span\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 8,
+	"vulnerability": "XSS",
+	"nodeid": 51298,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 719,
+	"code": "echo \"<strong><a href=\\'\",hoturl(\"paper\",\"p=new\"),\"\\'>Start new paper</a></strong> <span class=\\'deadline\\'>(\",$Conf->printableDeadlineSetting(\"sub_reg\",\"span\"),\")</span>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 55809,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 528,
+	"code": "$_REQUEST[\"t\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 55806,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 528,
+	"code": "tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 9,
+	"vulnerability": "XSS",
+	"nodeid": 55794,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 525,
+	"code": "echo \"Search&nbsp; <input id=\\'q\\' class=\\'textlite\",$q == \"(All)\" ? \" temptext\" : \" temptextoff\",\"\\' type=\\'text\\' size=\\'36\\' name=\\'q\\' value=\\\"\",htmlspecialchars($q),\"\\\" title=\\'Enter paper numbers or search terms\\' /> &nbsp;in &nbsp;\",tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],),\"</div>\\n   </td></tr></table>\\n<div class=\\'g fx9\\'></div></div></td>\\n</tr>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 90438,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 167,
+	"code": "$_REQUEST[\"t\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 90435,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 167,
+	"code": "tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 10,
+	"vulnerability": "XSS",
+	"nodeid": 90434,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 167,
+	"code": "echo tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],),\" &nbsp;<input class=\\'b\\' type=\\'submit\\' value=\\'Go\\' /></div></form>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf->parseTextForm($tf)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58567,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req[\"paperId\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 58577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59383,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59410,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 177,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59446,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 186,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59541,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 218,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59548,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf->settingText(\"tag_rank\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59547,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59560,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59574,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 224,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59572,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 224,
+	"code": "\"get=rank&amp;tag=%7E\" . $ranktag . \"&amp;q=&amp;t=s&amp;p=all\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 224,
+	"code": "hoturl(\"search\",\"get=rank&amp;tag=%7E\" . $ranktag . \"&amp;q=&amp;t=s&amp;p=all\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 11,
+	"vulnerability": "XSS",
+	"nodeid": 59568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 224,
+	"code": "echo \"<br />\\n<a href=\\\"\",hoturl(\"search\",\"get=rank&amp;tag=%7E\" . $ranktag . \"&amp;q=&amp;t=s&amp;p=all\"),\"\\\">All submitted papers</a>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 67355,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 609,
+	"code": "$_REQUEST[\"country\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 67350,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 609,
+	"code": "isset($_REQUEST[\"country\"]) ? $_REQUEST[\"country\"] : $Acct->country",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 67348,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 609,
+	"code": "countrySelector(\"country\",isset($_REQUEST[\"country\"]) ? $_REQUEST[\"country\"] : $Acct->country)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 63866,
+	"methodname": "echofield",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 467,
+	"code": "$captiontext",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 63865,
+	"methodname": "echofield",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 472,
+	"code": "$captiontext",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 12,
+	"vulnerability": "XSS",
+	"nodeid": 66660,
+	"methodname": "echofield",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 472,
+	"code": "echo \"<div class=\\'\",fcclass($classname),\"\\'>\",$captiontext,\"</div>\",\"<div class=\\'\",feclass($classname),\"\\'>\",$entrytext,\"</div></div>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf->parseTextForm($tf)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58567,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req[\"paperId\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 58577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59383,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59410,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 177,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59446,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 186,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59541,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 218,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59548,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf->settingText(\"tag_rank\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59547,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59560,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59596,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 229,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 234,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59629,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 234,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59637,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 235,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59635,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 235,
+	"code": "\"q=order:%7E\" . $ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59633,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 235,
+	"code": "hoturl(\"search\",\"q=order:%7E\" . $ranktag)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 13,
+	"vulnerability": "XSS",
+	"nodeid": 59631,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 235,
+	"code": "echo \"<br /><span class=\\'hint\\'><strong>Tip:</strong> “<a href=\\'\",hoturl(\"search\",\"q=order:%7E\" . $ranktag),\"\\'>order:~\" . $ranktag . \"</a>” searches by your ranking.</span>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf->parseTextForm($tf)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58567,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req[\"paperId\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 58577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59383,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59382,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf->timeReviewPaper($Me->isPC,true,true)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59381,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "!$Conf->timeReviewPaper($Me->isPC,true,true)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59380,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$pastDeadline",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59392,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 172,
+	"code": "$pastDeadline",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 204,
+	"code": "$pastDeadline",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59499,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 204,
+	"code": "$pastDeadline && !$Me->privChair",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 204,
+	"code": "$pastDeadline && !$Me->privChair ? \" disabled=\\'disabled\\'\" : \"\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59497,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 204,
+	"code": "$disabled",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59514,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 208,
+	"code": "$disabled",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59512,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 206,
+	"code": "\"\\' method=\\'post\\' enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'><div class=\\'inform\\'>\\n\\t<input type=\\'hidden\\' name=\\'postnonempty\\' value=\\'1\\' />\\n\\t<input type=\\'file\\' name=\\'uploadedFile\\' accept=\\'text/plain\\' size=\\'30\\' \" . $disabled . \"/>&nbsp; <input class=\\'b\\' type=\\'submit\\' value=\\'Go\\' \" . $disabled . \"/>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 14,
+	"vulnerability": "XSS",
+	"nodeid": 59507,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 205,
+	"code": "echo \"<td><h3>Upload filled-out forms</h3>\\n<form action=\\'\",hoturl_post(\"offline\",\"uploadForm=1\"),\"\\' method=\\'post\\' enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'><div class=\\'inform\\'>\\n\\t<input type=\\'hidden\\' name=\\'postnonempty\\' value=\\'1\\' />\\n\\t<input type=\\'file\\' name=\\'uploadedFile\\' accept=\\'text/plain\\' size=\\'30\\' \" . $disabled . \"/>&nbsp; <input class=\\'b\\' type=\\'submit\\' value=\\'Go\\' \" . $disabled . \"/>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 79306,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/search.php",
+	"linenumber": 1329,
+	"code": "$_REQUEST[\"qt\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 79303,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/search.php",
+	"linenumber": 1329,
+	"code": "tagg_select(\"qt\",$qtOpt,$_REQUEST[\"qt\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 15,
+	"vulnerability": "XSS",
+	"nodeid": 79302,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/search.php",
+	"linenumber": 1329,
+	"code": "echo tagg_select(\"qt\",$qtOpt,$_REQUEST[\"qt\"],),\"</td>\\n</tr>\\n<tr><td><div class=\\'g\\'></div></td></tr>\\n<tr>\\n  <td class=\\'lxcaption\\'>With <b>all</b> the words</td>\\n  <td class=\\'lentry\\'><input id=\\'searchform2_d\\' class=\\'textlite\\' type=\\'text\\' size=\\'40\\' style=\\'width:30em\\' name=\\'qa\\' value=\\\"\",htmlspecialchars(defval($_REQUEST,\"qa\",defval($_REQUEST,\"q\",\"\"))),\"\\\" tabindex=\\'1\\' /><span class=\\'sep\\'></span></td>\\n  <td rowspan=\\'3\\'><input class=\\'b\\' type=\\'submit\\' value=\\'Search\\' tabindex=\\'2\\' /></td>\\n</tr><tr>\\n  <td class=\\'lxcaption\\'>With <b>any</b> of the words</td>\\n  <td class=\\'lentry\\'><input class=\\'textlite\\' type=\\'text\\' size=\\'40\\' name=\\'qo\\' style=\\'width:30em\\' value=\\\"\",htmlspecialchars(defval($_REQUEST,\"qo\",\"\")),\"\\\" tabindex=\\'1\\' /></td>\\n</tr><tr>\\n  <td class=\\'lxcaption\\'><b>Without</b> the words</td>\\n  <td class=\\'lentry\\'><input class=\\'textlite\\' type=\\'text\\' size=\\'40\\' name=\\'qx\\' style=\\'width:30em\\' value=\\\"\",htmlspecialchars(defval($_REQUEST,\"qx\",\"\")),\"\\\" tabindex=\\'1\\' /></td>\\n</tr>\\n<tr>\\n  <td class=\\'lxcaption\\'></td>\\n  <td><span style=\\'font-size: x-small\\'><a href=\\'\",hoturl(\"help\",\"t=search\"),\"\\'>Search help</a> <span class=\\'barsep\\'>&nbsp;|&nbsp;</span> <a href=\\'\",hoturl(\"help\",\"t=keywords\"),\"\\'>Search keywords</a></span></td>\\n</tr></table></form>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 34571,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$_REQUEST[\"pcs\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 34570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 34577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 34576,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1->current()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 34575,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 34580,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39727,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 948,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39732,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 948,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39799,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 957,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39807,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 959,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39806,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 959,
+	"code": "review_count_report($nrev,$p,\"\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39767,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 952,
+	"code": "\"<tr\" . $color . \"><td class=\\'pctbl\\'>\" . tagg_checkbox(\"pcs\",$id,isset($pcsel[$id]),) . \"&nbsp;</td><td class=\\'pctbname\\'>\" . tagg_label(Text::name_html($p),\"pcsel\" . $count) . \"</td></tr><tr\" . $color . \"><td class=\\'pctbl\\'></td><td class=\\'pctbnrev\\'>\" . review_count_report($nrev,$p,\"\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39766,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 952,
+	"code": "\"<tr\" . $color . \"><td class=\\'pctbl\\'>\" . tagg_checkbox(\"pcs\",$id,isset($pcsel[$id]),) . \"&nbsp;</td><td class=\\'pctbname\\'>\" . tagg_label(Text::name_html($p),\"pcsel\" . $count) . \"</td></tr><tr\" . $color . \"><td class=\\'pctbl\\'></td><td class=\\'pctbnrev\\'>\" . review_count_report($nrev,$p,\"\") . \"</td></tr>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39765,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 952,
+	"code": "$c",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39812,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 961,
+	"code": "$c",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39811,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 961,
+	"code": "$pcdesc",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39819,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 963,
+	"code": "$pcdesc",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39829,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 964,
+	"code": "$pcdesc",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39846,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 967,
+	"code": "$pcdesc",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39845,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 967,
+	"code": "$pcdesc[$i]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 16,
+	"vulnerability": "XSS",
+	"nodeid": 39844,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 967,
+	"code": "echo $pcdesc[$i]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 56344,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 66,
+	"code": "$_REQUEST[\"reviewer\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 56343,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 66,
+	"code": "rcvtint($_REQUEST[\"reviewer\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 56342,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 66,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 56349,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 67,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 55981,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 148,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 55985,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 166,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 55986,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 173,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 56744,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 173,
+	"code": "tagg_select(\"reviewer\",$rev_opt,$reviewer,)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 17,
+	"vulnerability": "XSS",
+	"nodeid": 56741,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 172,
+	"code": "echo \"<table><tr><td><strong>PC member:</strong> &nbsp;</td>\",\"<td>\",tagg_select(\"reviewer\",$rev_opt,$reviewer,),\"</td></tr>\",\"<tr><td colspan=\\'2\\'><div class=\\'g\\'></div></td></tr>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 57647,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 335,
+	"code": "$_REQUEST[\"t\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 18,
+	"vulnerability": "XSS",
+	"nodeid": 57636,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 333,
+	"code": "echo \"<div class=\\'aahc\\'><form class=\\'assignpc\\' method=\\'post\\' action=\\\"\",hoturl_post(\"manualassign\",\"reviewer=\" . $reviewer . \"&amp;kind=\" . $kind . $a),\"\\\" enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'><div>\\n\",\"<input type=\\'hidden\\' name=\\'t\\' value=\\'\",$_REQUEST[\"t\"],\"\\' />\",\"<input type=\\'hidden\\' name=\\'q\\' value=\\\"\",htmlspecialchars($_REQUEST[\"q\"]),\"\\\" />\",\"<input type=\\'hidden\\' name=\\'papx\\' value=\\'\",join(\" \",$search->paperList()),\"\\' />\",\"<div class=\\'aa\\'><input type=\\'submit\\' class=\\'bb\\' name=\\'update\\' value=\\'Save assignments\\' />\",\"<span style=\\'padding:0 0 0 2em\\'>\",tagg_checkbox(false,false,true,),\"&nbsp;\",tagg_label(\"Automatically save assignments\",\"assrevimmediate\"),\"</span></div>\\n\",$paperList->text($kind == \"c\" ? \"conflict\" : \"reviewAssignment\",$Me,\"pltable_full\"),\"<div class=\\'aa\\'><input type=\\'submit\\' class=\\'bb\\' name=\\'update\\' value=\\'Save assignments\\' /></div>\\n\",\"</div></form></div>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 70365,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 11,
+	"code": "$_REQUEST[\"reviewer\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 70364,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 11,
+	"code": "rcvtint($_REQUEST[\"reviewer\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 70363,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 11,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 70371,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 12,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 70344,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 199,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 70346,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 237,
+	"code": "$reviewer",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 71330,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 237,
+	"code": "tagg_select(\"reviewer\",$revopt,$reviewer,)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 19,
+	"vulnerability": "XSS",
+	"nodeid": 71329,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 237,
+	"code": "echo tagg_select(\"reviewer\",$revopt,$reviewer,),\"<div class=\\'g\\'></div></td></tr>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 34571,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$_REQUEST[\"pcs\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 34570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 34577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 34576,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1->current()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 34575,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 34580,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 38558,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 751,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 38563,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 751,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 38658,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 767,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 38657,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 767,
+	"code": "$p->contactTags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25690,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 174,
+	"code": "$tags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25689,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 178,
+	"code": "$tags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25694,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 180,
+	"code": "$tags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26712,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 180,
+	"code": "strtolower($tags)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26713,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 180,
+	"code": "$m",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26726,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$m",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26725,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$m[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26724,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$iter_tmp14",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26730,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$iter_tmp14",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26729,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$iter_tmp14->current()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25695,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25696,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25697,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 184,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 25698,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 188,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26781,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 188,
+	"code": "$tag . \"tag\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26780,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 188,
+	"code": "$classes",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26786,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 189,
+	"code": "$classes",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26784,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 189,
+	"code": "join(\" \",$classes)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26783,
+	"methodname": "",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 189,
+	"code": "return join(\" \",$classes)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 26689,
+	"methodname": "",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 174,
+	"code": "PUBLIC function color_classes(this,$tags)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 534,
+	"code": "$colorizer->color_classes($p->contactTags)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 534,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33590,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33588,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "\" class=\\'\" . $color . \"\\'\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33586,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "$color ? \" class=\\'\" . $color . \"\\'\" : \"\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33585,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33596,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 536,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33850,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 577,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33848,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 577,
+	"code": "\"      <tr\" . $color . \"><td class=\\'pctbnrev pctbl\\' colspan=\\'2\\'>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 20,
+	"vulnerability": "XSS",
+	"nodeid": 33847,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 577,
+	"code": "echo \"      <tr\" . $color . \"><td class=\\'pctbnrev pctbl\\' colspan=\\'2\\'>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf->parseTextForm($tf)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58567,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req[\"paperId\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 58577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59383,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59410,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 177,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59446,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 186,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59541,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 218,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59548,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf->settingText(\"tag_rank\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59547,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59560,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59558,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "\"get=rank&amp;tag=%7E\" . $ranktag . \"&amp;q=&amp;t=r&amp;p=all\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59556,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "hoturl(\"search\",\"get=rank&amp;tag=%7E\" . $ranktag . \"&amp;q=&amp;t=r&amp;p=all\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 21,
+	"vulnerability": "XSS",
+	"nodeid": 59554,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "echo \"<a href=\\\"\",hoturl(\"search\",\"get=rank&amp;tag=%7E\" . $ranktag . \"&amp;q=&amp;t=r&amp;p=all\"),\"\\\">Your reviews</a>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 50437,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 544,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 50905,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 624,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 51129,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 675,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 51143,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 680,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 51144,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 680,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 51235,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 695,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 51233,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 695,
+	"code": "$rf->reviewFlowEntry($Me,$xr,$tr_class)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 22,
+	"vulnerability": "XSS",
+	"nodeid": 51232,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 695,
+	"code": "echo $rf->reviewFlowEntry($Me,$xr,$tr_class)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 50437,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 544,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 50905,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 624,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51129,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 675,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51143,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 680,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51144,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 680,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51338,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 726,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51360,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 727,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51357,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 727,
+	"code": "$plist->text(\"authorHome\",$Me)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51356,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 727,
+	"code": "$ptext",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51370,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 729,
+	"code": "$ptext",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 23,
+	"vulnerability": "XSS",
+	"nodeid": 51368,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 729,
+	"code": "echo \"<div class=\\'g\\'></div>\\n\",$ptext",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 34571,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$_REQUEST[\"pcs\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 34570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 34577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 34576,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$iter_tmp1->current()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 34575,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 34580,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 19,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 38558,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 751,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 38563,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 751,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 38658,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 767,
+	"code": "$p",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 38657,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 767,
+	"code": "$p->contactTags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25690,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 174,
+	"code": "$tags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25689,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 178,
+	"code": "$tags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25694,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 180,
+	"code": "$tags",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26712,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 180,
+	"code": "strtolower($tags)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26713,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 180,
+	"code": "$m",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26726,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$m",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26725,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$m[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26724,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$iter_tmp14",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26730,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$iter_tmp14",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26729,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$iter_tmp14->current()",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25695,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25696,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 183,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25697,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 184,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 25698,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 188,
+	"code": "$tag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26781,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 188,
+	"code": "$tag . \"tag\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26780,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 188,
+	"code": "$classes",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26786,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 189,
+	"code": "$classes",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26784,
+	"methodname": "color_classes",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 189,
+	"code": "join(\" \",$classes)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26783,
+	"methodname": "",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 189,
+	"code": "return join(\" \",$classes)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 26689,
+	"methodname": "",
+	"filename": "hotcrp-2.60/Code/tagger.php",
+	"linenumber": 174,
+	"code": "PUBLIC function color_classes(this,$tags)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 534,
+	"code": "$colorizer->color_classes($p->contactTags)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 534,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33590,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33588,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "\" class=\\'\" . $color . \"\\'\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33586,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "$color ? \" class=\\'\" . $color . \"\\'\" : \"\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33585,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 535,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33596,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 536,
+	"code": "$color",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33594,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 536,
+	"code": "\"      <tr\" . $color . \">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 24,
+	"vulnerability": "XSS",
+	"nodeid": 33593,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 536,
+	"code": "echo \"      <tr\" . $color . \">\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 53116,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 21,
+	"code": "$_REQUEST[\"fromlog\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 53114,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 21,
+	"code": "\"select * from MailLog where mailId=\" . $_REQUEST[\"fromlog\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 53113,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 21,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 53490,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 79,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 54839,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 353,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 54838,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 353,
+	"code": "$Conf->q(\"select outcome, count(paperId), max(leadContactId), max(shepherdContactId) from Paper group by outcome\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 54837,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 353,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 54854,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 356,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 54853,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 356,
+	"code": "edb_row($result)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 54852,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 356,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 55949,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 563,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 55948,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 563,
+	"code": "$row->mailId",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 55946,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 563,
+	"code": "\"fromlog=\" . $row->mailId",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 55944,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 563,
+	"code": "hoturl(\"mail\",\"fromlog=\" . $row->mailId)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 25,
+	"vulnerability": "XSS",
+	"nodeid": 55941,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 562,
+	"code": "echo \"<div class=\\'mhdd\\'><div style=\\'position:relative;overflow:hidden\\'>\",\"<div style=\\'position:absolute;white-space:nowrap\\'><a class=\\'q\\' href=\\\"\",hoturl(\"mail\",\"fromlog=\" . $row->mailId),\"\\\">\",htmlspecialchars($row->subject),\" &ndash; <span class=\\'dim\\'>\",htmlspecialchars($row->emailBody),\"</span></a></div>\",\"<br /></div></div>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 55718,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 503,
+	"code": "$_REQUEST[\"template\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 55715,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 503,
+	"code": "tagg_select(\"template\",$tmpl,$_REQUEST[\"template\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 26,
+	"vulnerability": "XSS",
+	"nodeid": 55714,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 503,
+	"code": "echo tagg_select(\"template\",$tmpl,$_REQUEST[\"template\"],),\" &nbsp;<input id=\\'loadtmpl\\' class=\\'b\\' type=\\'submit\\' name=\\'loadtmpl\\' value=\\'Load\\' /> &nbsp;\\n <span class=\\'hint\\'>Templates are mail texts tailored for common conference tasks.</span>\\n</div>\\n\\n<div class=\\'mail\\' style=\\'float:left;margin:4px 1em 12px 0\\'><table>\\n <tr><td class=\\'mhnp\\'>To:</td><td class=\\'mhdd\\'>\",tagg_select(\"recipients\",$recip,$_REQUEST[\"recipients\"],),\"<div class=\\'g\\'></div>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50437,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 544,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50788,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 597,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50787,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 597,
+	"code": "$Conf->printableTimeSetting(\"pcrev_soft\",\"span\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50786,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 597,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50793,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 598,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50799,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 599,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50797,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 599,
+	"code": "\"  <span class=\\'deadline\\'>The review deadline is \" . $d . \".</span><br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 27,
+	"vulnerability": "XSS",
+	"nodeid": 50796,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 599,
+	"code": "echo \"  <span class=\\'deadline\\'>The review deadline is \" . $d . \".</span><br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87340,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1209,
+	"code": "$_REQUEST[\"optn\" . $id]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87613,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1266,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87612,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1266,
+	"code": "defval($_REQUEST,\"optvt\" . $id,0)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87607,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1266,
+	"code": "count($Error) > 0 ? defval($_REQUEST,\"optvt\" . $id,0) : $o->type",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87606,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1266,
+	"code": "$optvt",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87764,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1288,
+	"code": "$optvt",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87760,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1288,
+	"code": "tagg_select(\"optvt\" . $id,$otypes,$optvt,)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 28,
+	"vulnerability": "XSS",
+	"nodeid": 87759,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1288,
+	"code": "echo tagg_select(\"optvt\" . $id,$otypes,$optvt,),\"</div></div></td>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56016,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 13,
+	"code": "$_REQUEST[\"q\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56050,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 18,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56049,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 18,
+	"code": "defval($_REQUEST,\"kind\",\"a\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56048,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 18,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56056,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 19,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56617,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 133,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56644,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 140,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56861,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 195,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56878,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 198,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 56893,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 202,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 57489,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 308,
+	"code": "$kind",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 57487,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 308,
+	"code": "\"<input type=\\'hidden\\' name=\\'kind\\' value=\\'\" . $kind . \"\\' />\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 29,
+	"vulnerability": "XSS",
+	"nodeid": 57481,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 307,
+	"code": "echo \"<form id=\\'assrevform\\' method=\\'post\\' action=\\\"\",hoturl_post(\"assign\",\"update=1\"),\"\\\" enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'><div class=\\'clear\\'>\",\"<input type=\\'hidden\\' name=\\'kind\\' value=\\'\" . $kind . \"\\' />\",\"<input type=\\'hidden\\' name=\\'p\\' value=\\'\\' />\",\"<input type=\\'hidden\\' name=\\'pcs\" . $reviewer . \"\\' value=\\'\\' />\",\"<input type=\\'hidden\\' name=\\'reviewer\\' value=\\'\" . $reviewer . \"\\' />\",\"<input type=\\'hidden\\' name=\\'rev_roundtag\\' value=\\\"\",htmlspecialchars($rev_roundtag),\"\\\" />\",\"</div></form>\\n\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "XSS",
+	"nodeid": 56841,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 190,
+	"code": "$_REQUEST[\"t\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "XSS",
+	"nodeid": 56838,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 190,
+	"code": "tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 30,
+	"vulnerability": "XSS",
+	"nodeid": 56832,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/manualassign.php",
+	"linenumber": 188,
+	"code": "echo \"<tr><td>Paper selection: &nbsp;</td>\",\"<td><input id=\\'manualassignq\\' class=\\'textlite temptextoff\\' type=\\'text\\' size=\\'40\\' name=\\'q\\' value=\\\"\",htmlspecialchars($q),\"\\\" onchange=\\'hiliter(this)\\' title=\\'Enter paper numbers or search terms\\' /> &nbsp;in &nbsp;\",tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],),\"</td></tr>\\n\",\"<tr><td colspan=\\'2\\'><div class=\\'g\\'></div>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33317,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 444,
+	"code": "$_REQUEST[\"pctype\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33316,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 444,
+	"code": "rcvtint($_REQUEST[\"pctype\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33315,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 444,
+	"code": "$pctype",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33342,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 446,
+	"code": "$pctype",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33335,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 446,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33434,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 487,
+	"code": "$Me",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33435,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 487,
+	"code": "$prow",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34031,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "$prow",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34030,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "$prow->paperId",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34028,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "\"p=\" . $prow->paperId . \"&amp;name=\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34027,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34026,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name) . \"&amp;email=\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34025,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name) . \"&amp;email=\" . urlencode($row->email)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34024,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name) . \"&amp;email=\" . urlencode($row->email) . \"&amp;deny=1\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 34022,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 623,
+	"code": "hoturl_post(\"assign\",\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name) . \"&amp;email=\" . urlencode($row->email) . \"&amp;deny=1\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 31,
+	"vulnerability": "XSS",
+	"nodeid": 33977,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/assign.php",
+	"linenumber": 616,
+	"code": "echo \"<tr><td>\",htmlspecialchars($row->name),\"</td><td>&lt;\",\"<a href=\\\"mailto:\",urlencode($row->email),\"\\\">\",htmlspecialchars($row->email),\"</a>&gt;</td>\",\"<td><a class=\\'button_small\\' href=\\\"\",hoturl_post(\"assign\",\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name) . \"&amp;email=\" . urlencode($row->email) . $reason . \"&amp;add=1\"),\"\\\">Approve</a>&nbsp; \",\"<a class=\\'button_small\\' href=\\\"\",hoturl_post(\"assign\",\"p=\" . $prow->paperId . \"&amp;name=\" . urlencode($row->name) . \"&amp;email=\" . urlencode($row->email) . \"&amp;deny=1\"),\"\\\">Deny</a></td></tr>\\n\",\"<tr><td colspan=\\'3\\'><small>Requester: \",Text::user_html($row->reqFirstName,$row->reqLastName),\"</small></td></tr>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "XSS",
+	"nodeid": 90391,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 155,
+	"code": "$_REQUEST[\"t\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "XSS",
+	"nodeid": 90389,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 155,
+	"code": "$pl->text($_REQUEST[\"t\"],hoturl(\"users\",\"t=\" . $_REQUEST[\"t\"]),$tOpt[$_REQUEST[\"t\"]])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "XSS",
+	"nodeid": 90388,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 155,
+	"code": "$pl_text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "XSS",
+	"nodeid": 90853,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 247,
+	"code": "$pl_text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 32,
+	"vulnerability": "XSS",
+	"nodeid": 90852,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/users.php",
+	"linenumber": 247,
+	"code": "echo $pl_text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49455,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf->qx(\"show variables like \\'max_allowed_packet\\'\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49454,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49467,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49466,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "edb_row($result)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49465,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49470,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 49469,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50486,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 552,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50485,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 552,
+	"code": "$myrow",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50590,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 569,
+	"code": "$myrow",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50589,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 569,
+	"code": "$myrow[3]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50588,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 569,
+	"code": "$myrow[3]->avg",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50586,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 569,
+	"code": "$f->unparse_average($myrow[3]->avg)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 33,
+	"vulnerability": "XSS",
+	"nodeid": 50579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 569,
+	"code": "echo \" with an average \" . $f->name_html . \" score of \",$f->unparse_average($myrow[3]->avg)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58568,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf->parseTextForm($tf)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58567,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58579,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58578,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$req[\"paperId\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 58577,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 31,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59383,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 170,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59410,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 177,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59446,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 186,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59541,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 218,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59548,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$Conf->settingText(\"tag_rank\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59547,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 219,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59560,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 222,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59596,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 229,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 234,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59629,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 234,
+	"code": "$ranktag",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59627,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 234,
+	"code": "\"\\'>editsort:#~\" . $ranktag . \"</a>” to drag and drop your ranking.</span>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 34,
+	"vulnerability": "XSS",
+	"nodeid": 59617,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 234,
+	"code": "echo \"<br /><span class=\\'hint\\'><strong>Tip:</strong> Use “<a href=\\'\",hoturl(\"search\",\"q=\" . urlencode(\"editsort:#~\" . $ranktag)),\"\\'>editsort:#~\" . $ranktag . \"</a>” to drag and drop your ranking.</span>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50437,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 544,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50676,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 584,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50726,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 590,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50738,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 591,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50737,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 591,
+	"code": "$Conf->printableTimeSetting($rtyp . \"soft\",\"span\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50735,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 591,
+	"code": "\"  <span class=\\'deadline\\'><strong class=\\'overdue\\'>Reviews are overdue.</strong>  They were requested by \" . $Conf->printableTimeSetting($rtyp . \"soft\",\"span\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50734,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 591,
+	"code": "\"  <span class=\\'deadline\\'><strong class=\\'overdue\\'>Reviews are overdue.</strong>  They were requested by \" . $Conf->printableTimeSetting($rtyp . \"soft\",\"span\") . \".</span><br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 35,
+	"vulnerability": "XSS",
+	"nodeid": 50733,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 591,
+	"code": "echo \"  <span class=\\'deadline\\'><strong class=\\'overdue\\'>Reviews are overdue.</strong>  They were requested by \" . $Conf->printableTimeSetting($rtyp . \"soft\",\"span\") . \".</span><br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 36,
+	"vulnerability": "XSS",
+	"nodeid": 39083,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 837,
+	"code": "$_REQUEST[\"t\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 36,
+	"vulnerability": "XSS",
+	"nodeid": 39080,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 837,
+	"code": "tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 36,
+	"vulnerability": "XSS",
+	"nodeid": 39075,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 836,
+	"code": "echo \"<input id=\\'autoassignq\\' class=\\'textlite temptextoff\\' type=\\'text\\' size=\\'40\\' name=\\'q\\' value=\\\"\",htmlspecialchars($q),\"\\\" onfocus=\\\"autosub(\\'requery\\',this)\\\" onchange=\\'highlightUpdate(\\\"requery\\\")\\' title=\\'Enter paper numbers or search terms\\' /> &nbsp;in &nbsp;\",tagg_select(\"t\",$tOpt,$_REQUEST[\"t\"],),\" &nbsp; <input id=\\'requery\\' class=\\'b\\' name=\\'requery\\' type=\\'submit\\' value=\\'List\\' />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 37,
+	"vulnerability": "XSS",
+	"nodeid": 38137,
+	"methodname": "doSelect",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 662,
+	"code": "$_REQUEST[$name]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 37,
+	"vulnerability": "XSS",
+	"nodeid": 38136,
+	"methodname": "doSelect",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 662,
+	"code": "tagg_select($name,$opts,$_REQUEST[$name],$extra)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 37,
+	"vulnerability": "XSS",
+	"nodeid": 38135,
+	"methodname": "doSelect",
+	"filename": "hotcrp-2.60/autoassign.php",
+	"linenumber": 662,
+	"code": "echo tagg_select($name,$opts,$_REQUEST[$name],$extra)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 70365,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 11,
+	"code": "$_REQUEST[\"reviewer\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 71615,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 303,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 71614,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 303,
+	"code": "defval($_REQUEST,\"q\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 71613,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 303,
+	"code": "defval($_REQUEST,\"q\") ? \"&amp;q=\" . urlencode($_REQUEST[\"q\"]) : \"\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 71610,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 303,
+	"code": "\"reviewer=\" . $reviewer . defval($_REQUEST,\"q\") ? \"&amp;q=\" . urlencode($_REQUEST[\"q\"]) : \"\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 71608,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 303,
+	"code": "hoturl_post(\"reviewprefs\",\"reviewer=\" . $reviewer . defval($_REQUEST,\"q\") ? \"&amp;q=\" . urlencode($_REQUEST[\"q\"]) : \"\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 38,
+	"vulnerability": "XSS",
+	"nodeid": 71606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/reviewprefs.php",
+	"linenumber": 303,
+	"code": "echo \"<form class=\\'assignpc\\' method=\\'post\\' action=\\\"\",hoturl_post(\"reviewprefs\",\"reviewer=\" . $reviewer . defval($_REQUEST,\"q\") ? \"&amp;q=\" . urlencode($_REQUEST[\"q\"]) : \"\"),\"\\\" enctype=\\'multipart/form-data\\' accept-charset=\\'UTF-8\\'>\",\"<div class=\\'inform\\'>\",\"<input id=\\'defaultact\\' type=\\'hidden\\' name=\\'defaultact\\' value=\\'\\' />\",\"<input class=\\'hidden\\' type=\\'submit\\' name=\\'default\\' value=\\'1\\' />\",\"<div class=\\'pltable_full_ctr\\'>\\n\",$pl_text,\"</div>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 58555,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$_FILES[\"uploadedFile\",\"tmp_name\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 58553,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$rf->beginTextForm($_FILES[\"uploadedFile\",\"tmp_name\"],$_FILES[\"uploadedFile\",\"name\"])",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 58552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 29,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 58570,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$tf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 58569,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 30,
+	"code": "$rf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 58647,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 41,
+	"code": "$rf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 59652,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 243,
+	"code": "$rf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 59651,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 243,
+	"code": "$rf->webGuidanceRows($Me->viewReviewFieldsScore(null,null),\" initial\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 59650,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 243,
+	"code": "$text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 59661,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 251,
+	"code": "$text",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 39,
+	"vulnerability": "XSS",
+	"nodeid": 59659,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/offline.php",
+	"linenumber": 245,
+	"code": "echo \"<div class=\\'g\\'></div>\\n\\n<table class=\\'review\\'>\\n<tr class=\\'id\\'>\\n  <td class=\\'caption\\'></td>\\n  <td class=\\'entry\\'><h3>Review form information</h3></td>\\n</tr>\\n\",$text,\"<tr class=\\'last\\'>\\n  <td class=\\'caption\\'></td>\\n  <td class=\\'entry\\'></td>\\n</tr></table>\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 53094,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 19,
+	"code": "$_REQUEST[\"fromlog\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 54889,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 366,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 54888,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 366,
+	"code": "defval($_REQUEST,\"template\",\"genericmailtool\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 54887,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 366,
+	"code": "$t",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 55838,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 536,
+	"code": "$t",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 55843,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 536,
+	"code": "$t",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 55873,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 539,
+	"code": "$t",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 55869,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 539,
+	"code": "\"  <tr><td class=\\'mhnp\" . $ec . \"\\'>\" . $t . \":</td><td class=\\'mhdp\" . $ec . \"\\'>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 40,
+	"vulnerability": "XSS",
+	"nodeid": 55868,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 539,
+	"code": "echo \"  <tr><td class=\\'mhnp\" . $ec . \"\\'>\" . $t . \":</td><td class=\\'mhdp\" . $ec . \"\\'>\",\"<input type=\\'text\\' class=\\'textlite-tt\\' name=\\'\" . $n . \"\\' value=\\\"\",htmlspecialchars($_REQUEST[$n]),\"\\\" size=\\'64\\' />\",$n == \"replyto\" ? \"<div class=\\'g\\'></div>\" : \"\",\"</td></tr>\\n\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49455,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf->qx(\"show variables like \\'max_allowed_packet\\'\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49454,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49467,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49466,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "edb_row($result)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49465,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49470,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 49469,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 50486,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 552,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 50485,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 552,
+	"code": "$myrow",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 50552,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 566,
+	"code": "$myrow",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 50551,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 566,
+	"code": "$myrow[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 41,
+	"vulnerability": "XSS",
+	"nodeid": 50549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 566,
+	"code": "echo \"You have submitted \",$myrow[1],\" of <a href=\\'\",hoturl(\"search\",\"q=&amp;t=r\"),\"\\'>\",plural($myrow[2],\"review\"),\"</a>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 42,
+	"vulnerability": "XSS",
+	"nodeid": 54066,
+	"methodname": "checkMailPrologue",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 189,
+	"code": "$recip[$_REQUEST[\"recipients\"]]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 42,
+	"vulnerability": "XSS",
+	"nodeid": 54060,
+	"methodname": "checkMailPrologue",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 185,
+	"code": "echo \"<div id=\\'foldmail\\' class=\\'foldc fold2c\\'>\",\"<div class=\\'fn fx2 merror\\'>In the process of preparing mail.  You will be able to send the prepared mail once this message disappears.<br /><span id=\\'mailcount\\'></span></div>\",\"<div id=\\'mailwarnings\\'></div>\",\"<div class=\\'fx info\\'>Verify that the mails look correct, then select “Send” to send the checked mails.<br />\",\"Mailing to:&nbsp;\",$recip[$_REQUEST[\"recipients\"]],\"<span id=\\'mailinfo\\'></span>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 43,
+	"vulnerability": "XSS",
+	"nodeid": 54363,
+	"methodname": "checkMail",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 248,
+	"code": "$_REQUEST[\"recipients\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 43,
+	"vulnerability": "XSS",
+	"nodeid": 54527,
+	"methodname": "checkMail",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 270,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 43,
+	"vulnerability": "XSS",
+	"nodeid": 54528,
+	"methodname": "checkMail",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 270,
+	"code": "$checker",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 43,
+	"vulnerability": "XSS",
+	"nodeid": 54696,
+	"methodname": "checkMail",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 311,
+	"code": "$checker",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 43,
+	"vulnerability": "XSS",
+	"nodeid": 54694,
+	"methodname": "checkMail",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 311,
+	"code": "\"<td class=\\'mhcb\\'><input type=\\'checkbox\\' class=\\'cb\\' name=\\'\" . $checker . \"\\' value=\\'1\\' checked=\\'checked\\' id=\\'psel\" . $cbcount . \"\\' onclick=\\'pselClick(event,this)\\' /> &nbsp;</td>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 43,
+	"vulnerability": "XSS",
+	"nodeid": 54693,
+	"methodname": "checkMail",
+	"filename": "hotcrp-2.60/mail.php",
+	"linenumber": 311,
+	"code": "echo \"<td class=\\'mhcb\\'><input type=\\'checkbox\\' class=\\'cb\\' name=\\'\" . $checker . \"\\' value=\\'1\\' checked=\\'checked\\' id=\\'psel\" . $cbcount . \"\\' onclick=\\'pselClick(event,this)\\' /> &nbsp;</td>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49455,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf->qx(\"show variables like \\'max_allowed_packet\\'\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49454,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49467,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49466,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "edb_row($result)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49465,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49470,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 49469,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50514,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 559,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50513,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 559,
+	"code": "$row[3]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50512,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 559,
+	"code": "$row[3]->avg",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50511,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 559,
+	"code": "$sumpcScore",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50634,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 576,
+	"code": "$sumpcScore",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50633,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 576,
+	"code": "$sumpcScore / $npcScore",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50631,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 576,
+	"code": "$f->unparse_average($sumpcScore / $npcScore)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 44,
+	"vulnerability": "XSS",
+	"nodeid": 50624,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 576,
+	"code": "echo \" with an average \" . $f->name_html . \" score of \",$f->unparse_average($sumpcScore / $npcScore)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87340,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1209,
+	"code": "$_REQUEST[\"optn\" . $id]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87906,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1313,
+	"code": "$_REQUEST",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87905,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1313,
+	"code": "defval($_REQUEST,\"optdt\" . $id,0)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87900,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1313,
+	"code": "count($Error) > 0 ? defval($_REQUEST,\"optdt\" . $id,0) : $o->displayType",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87899,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1313,
+	"code": "$optdt",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87939,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1316,
+	"code": "$optdt",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87913,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1314,
+	"code": "tagg_select(\"optdt\" . $id,,$optdt,)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 45,
+	"vulnerability": "XSS",
+	"nodeid": 87912,
+	"methodname": "doOptGroupOption",
+	"filename": "hotcrp-2.60/settings.php",
+	"linenumber": 1314,
+	"code": "echo tagg_select(\"optdt\" . $id,,$optdt,),\"</div></div></td>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 51275,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 715,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 51286,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 717,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 51285,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 717,
+	"code": "$Conf->printableDeadlineSetting(\"sub_reg\",\"span\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 46,
+	"vulnerability": "XSS",
+	"nodeid": 51283,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 717,
+	"code": "echo \"<span class=\\'deadline\\'>\",$Conf->printableDeadlineSetting(\"sub_reg\",\"span\"),\"</span><br />\\n<small>You must sign in to register papers.</small>\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49500,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49498,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 297,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49606,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 310,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49622,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49626,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 313,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49900,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 361,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 49956,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 396,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50032,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 405,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50084,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 422,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50270,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 481,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50437,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 544,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50676,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 584,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50686,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 585,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50685,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 585,
+	"code": "$Conf->printableTimeSetting($rtyp . \"soft\",\"span\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50684,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 585,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50693,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 586,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50706,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 588,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50721,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 589,
+	"code": "$d",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50719,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 589,
+	"code": "\" by \" . $d . \".</span><br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 47,
+	"vulnerability": "XSS",
+	"nodeid": 50709,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 589,
+	"code": "echo \"  <span class=\\'deadline\\'>Please submit your \",$myrow[2] == 1 ? \"review\" : \"reviews\",\" by \" . $d . \".</span><br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 48,
+	"vulnerability": "XSS",
+	"nodeid": 67550,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 655,
+	"code": "$_REQUEST[\"pctype\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 48,
+	"vulnerability": "XSS",
+	"nodeid": 67549,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 655,
+	"code": "$k",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 48,
+	"vulnerability": "XSS",
+	"nodeid": 67560,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 656,
+	"code": "$k",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 48,
+	"vulnerability": "XSS",
+	"nodeid": 67547,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 655,
+	"code": "$k",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 48,
+	"vulnerability": "XSS",
+	"nodeid": 67545,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 655,
+	"code": "tagg_radio_h(\"pctype\",$k,$k == $_REQUEST[\"pctype\"],)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 48,
+	"vulnerability": "XSS",
+	"nodeid": 67544,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/profile.php",
+	"linenumber": 655,
+	"code": "echo tagg_radio_h(\"pctype\",$k,$k == $_REQUEST[\"pctype\"],),\"&nbsp;\",tagg_label($v),\"<br />\\n\"",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49376,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$_REQUEST[\"clearnewpcrev\"]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49374,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 278,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49456,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49455,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$Conf->qx(\"show variables like \\'max_allowed_packet\\'\")",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49454,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 290,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49467,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$result",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49466,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "edb_row($result)",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49465,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49470,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 49469,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 292,
+	"code": "$row[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 50054,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 409,
+	"code": "$row",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 50053,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 409,
+	"code": "$row[1]",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 50052,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 409,
+	"code": "$n",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 50074,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 413,
+	"code": "$n",
+	"sanitized": "FALSE"
+},
+{
+	"pathid": 49,
+	"vulnerability": "XSS",
+	"nodeid": 50068,
+	"methodname": "<global>",
+	"filename": "hotcrp-2.60/index.php",
+	"linenumber": 413,
+	"code": "echo \"    <li>\",plural($nyes,\"paper\"),\" were accepted out of \",$n,\" submitted.</li>\\n\"",
+	"sanitized": "FALSE"
+}]
