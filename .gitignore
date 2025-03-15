@@ -1,3 +1,9 @@
 *.xlsx
 workspace/
-paths/paths/zencart-output.json
+paths/zencart-output.json
+paths/zencartv-output.json
+paths/webid-output.json
+php_test_suite/
+.venv/
+*.json
+*.csv

@@ -2,7 +2,7 @@
 
 JOERNDIR="/Users/elirizk/Desktop/navex_project/joern"
 SCRIPTDIR="/Users/elirizk/Desktop/navex_project/navex_utils/code"
-WORKSPACEDIR="/Users/elirizk/Desktop/navex_project/navex_utils/code/tests/java-tests/Safe/SafeSQLInjectionHTTP.java"
+WORKSPACEDIR="/Users/elirizk/Desktop/navex_project/navex_utils/src/tests/java-tests/Safe/SafeSQLInjectionHTTP.java"
 FILEMAIN="SafeSQLInjectionHTTP\$LoginHandler.handle:void(com.sun.net.httpserver.HttpExchange)"
 
 cd $SCRIPTDIR

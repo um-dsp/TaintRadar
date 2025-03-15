@@ -9,5 +9,5 @@ cd $SCRIPTDIR
 for app in "${apps[@]}"; do
 cd $WORKSPACEDIR/code
 joern-parse $SCRIPTDIR/$app
-$JOERNDIR/joern --script $WORKSPACEDIR/code/RunNavex.scala --params path=$WORKSPACEDIR/code/cpg.bin,name=$app --import SanitizationFilter.scala,Constants.scala,NavexMain.scala
+$JOERNDIR/joern --script $WORKSPACEDIR/src/RunNavex.scala --params path=$WORKSPACEDIR/src/cpg.bin,name=$app --import SanitizationFilter.scala,Constants.scala,NavexMain.scala
 done
