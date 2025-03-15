@@ -1,0 +1,1 @@
+SELECT; "SELECT * FROM USERS WHERE ID = $id AND USERNAME = $name AND PASSWORD = $psswd"; NA; ""; "$id, $name, $psswd"; false

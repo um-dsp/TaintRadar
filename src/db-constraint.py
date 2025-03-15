@@ -157,7 +157,11 @@ for sql_file_path in sql_file_paths:
     db['Column'] = columns
     db['Properties'] = properties
     db['SafeType'] = list(map(isSafe, properties))
+<<<<<<< HEAD:src/db-constraint.py
     db.to_csv(f'/home/umd-user/joern/projectcpg/src/db/schemas/{file_name}-database.csv', index=False, header=False)
+=======
+    db.to_csv(f'/home/umd-user/joern/projectcpg/code/db/schemas/{file_name}-database.csv', index=False, header=False)
+>>>>>>> 2c4636e08dc78295460481280018e2b66a4d133f:code/db-constraint.py
 
 
 

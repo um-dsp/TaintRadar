@@ -7,3 +7,4 @@ php_test_suite/
 .venv/
 *.json
 *.csv
+*.bin

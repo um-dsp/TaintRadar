@@ -87,10 +87,22 @@ class SanitizationFilter(val cpg: Cpg) {
          isSanitized(method.ast.isReturn, isArgumentSanitized)(sanitization_functions)
       }
    } 
+<<<<<<< HEAD:src/main/java/SanitizationFilter.scala
 
    // Check whether given CPG Node is sanitized, filter accordingly
    def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit sanitization_functions: List[String]): Boolean = 
       // check the Map to see if node was traversed or not
+=======
+   // println(n.id.toString + ": " + n.code)
+// 
+   // Check whether given CPG Node is sanitized, filter accordingly
+   def isSanitized(node: Any, sanitizedParameters: List[Boolean] = List())(implicit sanitization_functions: List[String]): Boolean = 
+      // check the Map to see if node was traversed or not
+      node match {
+         case n: Expression => if (n.id%100==0) None else None
+         case _ => None
+      }
+>>>>>>> 2c4636e08dc78295460481280018e2b66a4d133f:code/main/java/SanitizationFilter.scala
       isSanitizedMap.get(isSanitizedInput(node, sanitizedParameters, sanitization_functions)) match {
       case Some(result) => result
       case None => {
