@@ -1,11 +1,14 @@
 package org.codeminers
 
 import io.shiftleft.codepropertygraph.generated.{Cpg, NodeTypes}
-import io.shiftleft.codepropertygraph.generated.nodes.{Method, Mynodetype}
+import io.shiftleft.codepropertygraph.generated.nodes.{Method, Mynodetype, AstNode}
 import io.shiftleft.semanticcpg.language.*
 import flatgraph.help.{Doc, DocSearchPackages, Traversal, TraversalSource}
 
 import scala.jdk.CollectionConverters.IteratorHasAsScala
+
+import org.codeminers.standalone.SanitizationFilter
+import org.codeminers.standalone.Constants.ConstantsFactory
 
 package object standalone {
 
@@ -38,8 +41,25 @@ package object standalone {
   /** Example of custom node type starters */
   @TraversalSource
   class StandaloneStarters(cpg: Cpg) {
+    val constants = ConstantsFactory.getConstants(cpg.metaData.head.language)
+    val sanitizationObject = new SanitizationFilter(cpg)
+    val utils = new Utils(cpg)
+    val navexMain = new NavexMain(cpg, true)
+    
     @Doc("custom starter step as an example", "a veeery long description")
-    def customStarterStep: Iterator[String] =
-      cpg.method.parameter.name
+    def filterSanitized: Iterator[AstNode] =
+      cpg.method.ast.filter(sanitizationObject.isSanitized(_)(constants.san_functions_all))
+
+    def isSanitized(node: AstNode): Boolean =
+      sanitizationObject.isSanitized(node)(constants.san_functions_all)
+
+    def toJson(fileName: String = "cpg.json"): String =
+      utils.augmentWithSanTag()
+      utils.augmentWithQueryTag()
+      utils.cpgToJson(fileName)
+      "Successfully created " + fileName
+
+    def getVulnerablePaths(debug: Boolean = true): String =
+      navexMain.outputPaths(debug)
   }
 }

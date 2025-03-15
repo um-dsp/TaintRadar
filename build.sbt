@@ -18,10 +18,12 @@ libraryDependencies ++= Seq(
   "org.apache.logging.log4j" % "log4j-slf4j2-impl" % Versions.log4j     % Optional,
   "io.joern"                %% "x2cpg"             % Versions.joern,
   "io.joern"                %% "javasrc2cpg"       % Versions.joern,
+  "io.joern"                %% "php2cpg"           % Versions.joern,
   "io.joern"                %% "joern-cli"         % Versions.joern,
   "io.joern"                %% "semanticcpg"       % Versions.joern,
   "io.joern"                %% "semanticcpg"       % Versions.joern     % Test classifier "tests",
-  "org.scalatest"           %% "scalatest"         % Versions.scalatest % Test
+  "org.scalatest"           %% "scalatest"         % Versions.scalatest % Test,
+  "com.github.mpkorstanje"   % "simmetrics-core"   % "4.1.1"
 )
 
 // mostly so that `sbt assembly` works, but also to ensure that we don't end up

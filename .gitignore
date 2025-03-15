@@ -4,3 +4,6 @@ target/
 /.bsp
 /joern-inst
 /workspace
+
+.bloop/
+output/
