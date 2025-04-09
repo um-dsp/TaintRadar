@@ -17,7 +17,7 @@ import org.codeminers.standalone.Constants.ConstantsFactory
 object Main {
 
   def main(args: Array[String]): Unit = {
-    println("Welcome to the University of Michigan's Data Security and Privacy Lab's vulnerability detection tool.")
+    println("Welcome to our tool")
     println("This tool is used to detect and analyze data flow vulnerabilities in application code.")
     println("What is the language of the code you want to analyze? The supported languages currently included are: PHP and Java")
     val language = scala.io.StdIn.readLine()
