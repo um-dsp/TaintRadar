@@ -7,7 +7,10 @@ Sample standalone applications on top of joern
 sbt stage
 ./standalone
 ```
-
+## To generate a CPG for a give application:
+```
+./joern-parse path/to/app_directory path/to/cpg_output.bin
+```
 ## A REPL with some custom cpg steps
 
 ```
@@ -52,10 +55,13 @@ ________________________________________________________________________________
 
 cpg.method.cust<TAB> // autocompletes
 ```
+## Before running our approach check if the application has SQL file that builds the database schema and the following python code.
+```
 python extract_schema.py /path/to/sqlfile.sql 
+```
+## To run the approach and generated Vulnreable paths for a given PhP or Java APP. 
 
-chmod +x analyze_cpg.sh
-./analyze_cpg.sh /input/cpgs /joern/path /logs/analysis.log
+./TaintRedar.sh /path/to/generate_Cpg path/to/therepo /logs/analysis.log
 
 
 
