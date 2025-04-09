@@ -52,5 +52,12 @@ ________________________________________________________________________________
 
 cpg.method.cust<TAB> // autocompletes
 ```
+python extract_schema.py /path/to/sqlfile.sql 
+
+chmod +x analyze_cpg.sh
+./analyze_cpg.sh /input/cpgs /joern/path /logs/analysis.log
+
+
+
 
 Hint: `./repl --verbose` is your friend.
