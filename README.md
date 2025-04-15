@@ -59,9 +59,9 @@ cpg.method.cust<TAB> // autocompletes
 ```
 python extract_schema.py /path/to/sqlfile.sql 
 ```
-## To run the approach and generated Vulnreable paths for a given PhP or Java APP. 
+## To run the approach and generated Vulnreable paths for a given PHP or Java APP. 
 ```
-./TaintRedar.sh /path/to/generate_Cpg path/to/therepo /logs/analysis.log
+./TaintRadar.sh /path/to/generate_Cpg path/to/therepo /logs/analysis.log
 ```
 
 
