@@ -63,6 +63,8 @@ python extract_schema.py /path/to/sqlfile.sql
 ```
 ./TaintRadar.sh /path/to/generate_Cpg path/to/therepo /logs/analysis.log
 ```
+## To do the Path validation Part run path-validation.ipynb notebook after modifying the paths and app Name . 
+
 
 
 
