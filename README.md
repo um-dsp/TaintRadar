@@ -1,4 +1,4 @@
-# TaintRadar: Scalable Vulnerability Detection using Semantic-Aware CPGs
+# TaintRadar: Cross-Language Taint-Style Vulnerability Detection via Augmented Code Property Graphs
 
 **TaintRadar** is a static analysis framework for PHP and Java applications that builds on Code Property Graphs (CPGs) to detect taint-style vulnerabilities.  
 It enhances traditional static analysis by integrating object dependency modeling, schema-aware database analysis, and language-agnostic sanitization tracking to improve precision and reduce false positives.
