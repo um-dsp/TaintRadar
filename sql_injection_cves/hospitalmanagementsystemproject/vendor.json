@@ -1,0 +1,11 @@
+[
+  {
+    "key": "hospitalmanagementsystemproject4",
+    "url_contains": "hospitalmanagementsystemproject4/",
+    "vendor_homepage": "https://github.com/kishan0725",
+    "software_link": "https://github.com/kishan0725/Hospital-Management-System",
+    "version": "4.0",
+    "tested_on": "PHP 7.4 on Ubuntu 20.04",
+    "product": "Hospital Management System"
+  }
+]

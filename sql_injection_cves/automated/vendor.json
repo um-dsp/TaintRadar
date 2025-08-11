@@ -1,0 +1,11 @@
+  [
+    {
+      "key": "CASAP-Automated-Enrollment-System",
+      "url_contains": "automated/",
+      "vendor_homepage": "https://www.sourcecodester.com/php/12210/casap-automated-enrollment-system.html",
+      "software_link": " https://www.sourcecodester.com/download-code?nid=12210&title=CASAP+Automated+Enrollment+System+using+PHP%2FMySQLi+with+Source+Code",
+      "version": "1.0",
+      "tested_on": "PHP 7.4 on Ubuntu 20.04",
+      "product": "CASAP-Automated-Enrollment-System"
+    }
+  ]

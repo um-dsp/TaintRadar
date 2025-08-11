@@ -1,0 +1,14 @@
+  [
+    {
+      "key": "loansystem",
+      "url_contains": "loansystem/",
+    "vendor_homepage": "https://www.sourcecodester.com/users/mayurik",
+    "software_link": "https://www.sourcecodester.com/php/14570/modern-loan-management-system-project-phpmysql-full-source-code.html",
+      "version": "1.0",
+      "tested_on": "PHP 7.4 on Ubuntu 20.04",
+      "product": "Modern Loan Management System"
+    }
+  ]
+
+
+  

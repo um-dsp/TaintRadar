@@ -1,0 +1,11 @@
+[
+  {
+    "key": "visitormanagementsystem",
+      "url_contains": "visitormanagementsystem/",
+    "vendor_homepage": "https://projectworlds.in",
+    "software_link": "https://projectworlds.in/wp-content/uploads/2020/07/Visitor-Management-System-in-PHP.zip",
+    "version": "1.0",
+    "tested_on": "PHP 7.4 on Ubuntu 20.04",
+    "product": "Visitor Management System in PHP"
+  }
+]

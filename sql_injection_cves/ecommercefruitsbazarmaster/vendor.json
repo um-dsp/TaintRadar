@@ -1,0 +1,11 @@
+[
+  {
+    "key": "ecommercefruitsbazarmaster",
+    "url_contains": "ecommercefruitsbazarmaster/",
+    "vendor_homepage": "https://github.com/creativesaiful",
+    "software_link": "https://github.com/creativesaiful/Ecommerce-project-with-php-and-mysqli-Fruits-Bazar-",
+    "version": "1.0",
+    "tested_on": "PHP 7.4 on Ubuntu 20.04",
+    "product": "Ecommerce-project-with-php-and-mysqli-Fruits-Bazar-"
+  }
+]

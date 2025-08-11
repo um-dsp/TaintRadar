@@ -1,0 +1,14 @@
+  [
+    {
+      "key": "Tailor",
+      "url_contains": "tailor/",
+      "vendor_homepage": "https://www.sourcecodester.com",
+      "software_link": "//www.sourcecodester.com/sites/default/files/download/Warren%20Daloyan/tailor.zip",
+      "version": "1.0",
+      "tested_on": "PHP 7.4 on Ubuntu 20.04",
+      "product": "Tailor MS"
+    }
+  ]
+
+
+  
