@@ -1,0 +1,11 @@
+  [
+    {
+      "key": "advocate",
+      "url_contains": "advocate/kortex_lite",
+      "vendor_homepage": "https://www.sourcecodester.com",
+      "software_link": "https://www.sourcecodester.com/download-code?nid=17280&title=Advocate+office+management+system+free+download",
+      "version": "1.0",
+      "tested_on": "PHP 7.4 on Ubuntu 20.04",
+      "product": "Advocate office management system"
+    }
+  ]
