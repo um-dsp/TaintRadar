@@ -38,11 +38,11 @@ A SQL Injection vulnerability exists in the `activate_act.php` endpoint of **Adv
 
 ## Proof of Concept (Burp Repeater)
 
-![burp-repeater-poc](poc.png)
+![burp-repeater-poc](1.png)
 
 ## SQLMap Summary
 
-![sqlmap-summary](sqlmap_summary.png)
+![sqlmap-summary](2.png)
 
 
 
@@ -65,7 +65,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Vulnerable Code (Screenshot)
 
-![vulnerable-code](code_snippet.png)
+![vulnerable-code](3.png)
 
 
 References
