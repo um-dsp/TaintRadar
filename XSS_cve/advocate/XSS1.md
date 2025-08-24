@@ -1,11 +1,11 @@
 ## Exploit Title: Advocate Kortex Lite – Reflected XSS in `adds.php` (`http://localhost/advocate/kortex_lite/control/adds.php`)
 
-**Date:** 2025-08-24 \
-**Exploit Author:** Anonymous \
-**Vendor Homepage:** N/A (local project) \
-**Software Link:** N/A (local project) \
-**Version:** N/A \
-**Tested on:** PHP 7.x on Ubuntu 20.04 
+**Date:** 2025-08-11  
+**Exploit Author:** Anonymous  
+**Vendor Homepage:** https://www.sourcecodester.com  
+**Software Link:** https://www.sourcecodester.com/download-code?nid=17280&title=Advocate+office+management+system+free+download  
+**Version:** 1.0  
+**Tested on:** PHP 7.4 on Ubuntu 20.04  
 
 ---
 
@@ -60,6 +60,7 @@ The input `address` is inserted into the page without HTML encoding, causing imm
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
 
