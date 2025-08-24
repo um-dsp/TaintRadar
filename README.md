@@ -11,7 +11,7 @@ Download Joern Repo using the following command:
 git clone https://github.com/joernio/joern
 
 ##  Step 2
-Add and replace the current folders/files in our repo (Add TaintRadar , replace build.sbt , add folder db-schema, replace folder project ) 
+Add and replace the current folders/files in this repo into the joern cloned repo (Add TaintRadar, add extract_schema.py , replace build.sbt , add folder db-schema, replace folder project ) 
 
 
 
