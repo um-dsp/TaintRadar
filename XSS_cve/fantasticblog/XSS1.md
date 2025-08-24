@@ -2,9 +2,9 @@
 
 **Date:** 2025-08-24 \
 **Exploit Author:** Anonymous \
-**Vendor Homepage:** N/A (local project) \
-**Software Link:** N/A (local project) \
-**Version:** N/A \
+**Vendor Homepage:** https://www.sourcecodester.com/php/12258/fantastic-blog-cms-php.html \
+**Software Link:**  https://www.sourcecodester.com/download-code?nid=12258&title=Fantastic+Blog+%28CMS%29+in+PHP+with+Source+Code \
+**Version:** 1.0 \
 **Tested on:** PHP 7.x on Ubuntu 20.04 
 
 ---
@@ -57,6 +57,7 @@ Input is stored unsanitized and rendered without escaping, causing persistent XS
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
 
