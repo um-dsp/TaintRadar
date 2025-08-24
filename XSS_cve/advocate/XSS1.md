@@ -59,7 +59,8 @@ The input `address` is inserted into the page without HTML encoding, causing imm
 
 ## Vulnerable Code (Screenshot)
 
-![vulnerable-code](code_snippet.png)
+![vulnerable-code](code_snipet.png)
+
 
 
 
