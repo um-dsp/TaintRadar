@@ -16,7 +16,8 @@ Add and replace the current folders/files in our repo (Add TaintRadar , replace 
 Sample standalone applications on top of joern
 =============================================
 
-## A program that makes use of Joern to create a CPG and list all method names
+## Step 3
+Install joren and build the whole project with TainTRadar included
 
 ```
 chmod +x ./joern-install.sh
