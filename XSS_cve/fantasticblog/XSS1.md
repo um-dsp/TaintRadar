@@ -36,7 +36,7 @@ A **Stored Cross-Site Scripting (XSS)** vulnerability exists. The **`address`** 
 ```
 
 ## Rendered XSS Evidence
-
+![xss-render](screenfantastic.png)
 ![xss-render](fantastic.png)
 
 ## Technical Description
@@ -56,7 +56,8 @@ Input is stored unsanitized and rendered without escaping, causing persistent XS
 
 ## Vulnerable Code (Screenshot)
 
-![vulnerable-code](code_snippet.png)
+![vulnerable-code](code_snipet.png)
+
 
 
 
