@@ -1,11 +1,11 @@
 ## Exploit Title: FantasticBlog – Stored XSS via `pageEditMember.php` (`http://localhost/fantasticblog/blogadmin/admin/pageEditMember.php` → `ViewpageMember.php`)
 
-**Date:** 2025-08-24
-**Exploit Author:** Anonymous
-**Vendor Homepage:** N/A (local project)
-**Software Link:** N/A (local project)
-**Version:** N/A
-**Tested on:** PHP 7.x on Ubuntu 20.04
+**Date:** 2025-08-24 \
+**Exploit Author:** Anonymous \
+**Vendor Homepage:** N/A (local project) \
+**Software Link:** N/A (local project) \
+**Version:** N/A \
+**Tested on:** PHP 7.x on Ubuntu 20.04 
 
 ---
 
@@ -57,5 +57,6 @@ Input is stored unsanitized and rendered without escaping, causing persistent XS
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
