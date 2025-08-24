@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in orderedit.php (`http://localhost/tailor/orderedit.php`)
+# Exploit Title: Tailor MS – SQL Injection in orderedit.php (`http://localhost:8000/orderedit.php`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,7 +20,7 @@ A SQL Injection vulnerability exists in the `orderedit.php` endpoint of **Tailor
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/orderedit.php`
+- **URL:** `http://localhost:8000/orderedit.php`
 - **HTTP Method:** POST
 - **Vulnerable File:** `orderedit.php`
 - **Parameter:** `customer`
@@ -36,9 +36,9 @@ A SQL Injection vulnerability exists in the `orderedit.php` endpoint of **Tailor
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -58,7 +58,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/orderedit.php`.  
+1. Browse to `http://localhost:8000/orderedit.php`.  
 2. Intercept the request and inject the provided payload(s) into parameter `orderedit.php??<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -68,7 +68,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

