@@ -35,13 +35,9 @@ A **Stored Cross-Site Scripting (XSS)** vulnerability exists. The **`address`** 
 <img src=x onerror=alert('xss')>
 ```
 
-## Proof of Concept (Burp Repeater)
-
-![burp-repeater-poc](poc.png)
-
 ## Rendered XSS Evidence
 
-![xss-render](sqlmap_summary.png)
+![xss-render](fantastic.png)
 
 ## Technical Description
 
@@ -61,4 +57,5 @@ Input is stored unsanitized and rendered without escaping, causing persistent XS
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
