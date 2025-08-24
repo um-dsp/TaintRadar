@@ -38,7 +38,8 @@ A **Reflected Cross-Site Scripting (XSS)** vulnerability exists in `adds.php`. T
 
 ## Rendered XSS Evidence
 
-![xss-render](sqlmap_summary.png)
+![xss-render](advocate1.png)
+![xss-render](advocate2.png)
 
 ## Technical Description
 
@@ -59,6 +60,7 @@ The input `address` is inserted into the page without HTML encoding, causing imm
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
 
