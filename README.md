@@ -13,8 +13,7 @@ git clone https://github.com/joernio/joern
 ##  Step 2
 Add and replace the current folders/files in our repo (Add TaintRadar , replace build.sbt , add folder db-schema, replace folder project ) 
 
-Sample standalone applications on top of joern
-=============================================
+
 
 ## Step 3
 Install joren and build the whole project with TainTRadar included
