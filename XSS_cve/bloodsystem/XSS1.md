@@ -1,11 +1,11 @@
 ## Exploit Title: Blood System – Stored XSS via `don.php` (`http://localhost/bloodsystem/BBfile/don.php` → `profile.php`)
 
-**Date:** 2025-08-24 \
-**Exploit Author:** Anonymous \
-**Vendor Homepage:** N/A (local project) \
-**Software Link:** N/A (local project) \
-**Version:** N/A \
-**Tested on:** PHP 7.x on Ubuntu 20.04 
+**Date:** 2025-08-11  
+**Exploit Author:** Anonymous  
+**Vendor Homepage:** https://code-projects.org/  
+**Software Link:** https://code-projects.org/blood-bank-system-in-php-with-source-code/  
+**Version:** 1.0  
+**Tested on:** PHP 7.4 on Ubuntu 20.04  
 
 ---
 
@@ -59,6 +59,7 @@ The `city` parameter is persisted and rendered unescaped in `profile.php`, causi
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
 
