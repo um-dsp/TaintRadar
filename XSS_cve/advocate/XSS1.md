@@ -36,10 +36,6 @@ A **Reflected Cross-Site Scripting (XSS)** vulnerability exists in `adds.php`. T
 <img src=x onerror=alert(1)>
 ```
 
-## Proof of Concept (Burp Repeater)
-
-![burp-repeater-poc](poc.png)
-
 ## Rendered XSS Evidence
 
 ![xss-render](sqlmap_summary.png)
@@ -63,5 +59,6 @@ The input `address` is inserted into the page without HTML encoding, causing imm
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
