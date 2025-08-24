@@ -1,0 +1,9 @@
+INSERT; "INSERT INTO blog_posts VALUES ( $id , $comment )"; NA; ""; "$id, $comment"; false
+SELECT; "SELECT * FROM USERS WHERE ID = $id AND USERNAME = $name AND PASSWORD = $psswd"; NA; ""; "$id, $name, $psswd"; false
+SELECT; "SELECT * FROM USERS WHERE USERNAME= $name"; NA; ""; "$name"; false
+SELECT; "SELECT * FROM USERS WHERE USERNAME= $name"; NA; ""; "$name"; false
+SELECT; "SELECT * FROM USERS WHERE USERNAME= $name"; NA; ""; "$name"; false
+SELECT; "SELECT * FROM USERS WHERE USERNAME= $name"; NA; ""; "$name"; false
+SELECT; "SELECT * FROM USERS WHERE USERNAME= $name"; NA; ""; "$name"; false
+SELECT; "SELECT * FROM USERS WHERE USERNAME= $name"; NA; ""; "$name"; false
+SELECT; "SELECT * FROM blog_posts"; NA; ""; ""; false

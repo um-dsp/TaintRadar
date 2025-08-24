@@ -1,0 +1,316 @@
+SELECT; "select * from tableName where 1=1 $cond"; NA; ""; "$cond"; false
+SELECT; "select * from tableName where $col = addslashes($value)"; NA; ""; "$col, addslashes($value)"; false
+SELECT; "select * from tableName t where t.user_id= $userId and t.alert_time>= addslashes($fromTime . 00:00:00) r and t.alert_time<= addslashes($toTime . 23:59:59)"; NA; ""; "$userId"; false
+UPDATE; "UPDATE tableName SET visited=1 WHERE visited=0 and user_id= $userId"; NA; ""; ""; false
+SELECT; "SELECT count(*) count FROM tableName WHERE visited=0 and user_id= $userId"; NA; ", count"; "$userId"; false
+SELECT; "select k.id, k.source_name, r.website_id, $analyticsCols from analytic_sources k, website_analytics r where k.id=r.source_id $conditions and r.report_date= $toTime order by addslashes($orderCol) addslashes($orderVal)"; NA; "kid, ksourcename, rwebsiteid, analyticscols"; "$conditions, $toTime, addslashes($orderCol)"; false
+SELECT; "select k.id, k.source_name, r.website_id, $analyticsCols from analytic_sources k, website_analytics r where k.id=r.source_id $conditions and r.report_date= $fromTime"; NA; "kid, ksourcename, rwebsiteid, analyticscols"; "$conditions, $fromTime"; false
+SELECT; "select * from analytic_sources where id in (select distinct source_id from website_analytics where website_id= $websiteId ) order by source_name"; NA; ""; "$websiteId"; false
+SELECT; "select s.* from website_analytics s where report_date>= $fromTimeDate and report_date<= $toTimeDate $conditions order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select s.* from website_analytics s where report_date>= $fromTimeDate and report_date<= $toTimeDate $conditions order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $conditions"; false
+INSERT; "insert into backlinkresults(website_id, google, alexa, msn, result_date)r values( $matchInfo[id] , $matchInfo[google] , $matchInfo[alexa] , $matchInfo[msn] , $resultDate )"; NA; "website_id, google, alexa, msn, result_date"; "$matchInfo["id"], $matchInfo["google"], $matchInfo["alexa"], $matchInfo["msn"], $resultDate"; false
+SELECT; "select website_id from backlinkresults where website_id= $websiteId and result_date= $resultDate"; NA; "websiteid"; "$websiteId, $resultDate"; false
+SELECT; "select s.* , w.name from backlinkresults s, websites w where s.website_id=w.idr and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+SELECT; "select s.* , w.namer from backlinkresults s, websites w r where s.website_id=w.id r and s.website_id= $websiteId r and (result_date= $fromTimeLabel or result_date= $toTimeLabel )r order by result_date DESCr Limit 0, 2"; NA; "s, , wnamer"; "$websiteId, $fromTimeLabel, $toTimeLabel"; false
+SELECT; "select s.* , w.name from backlinkresults s, websites w where s.website_id=w.idr and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+INSERT; "insert into auditorreports( implode(, , $reportKeys) , updated) values( implode(, , $reportValues) , $dateTime )"; NA; "implode, (, , $reportkeys"; "$reportValues, $dateTime"; false
+UPDATE; "update auditorreports set page_url= $effectiveUrl where id= $reportId"; NA; ""; "$effectiveUrl"; false
+SELECT; "SELECT * FROM auditorreports where 1=1 $where"; NA; ""; "$where"; false
+INSERT; "insert into auditorpagelinks( implode(, , $linkKeys) ) values( implode(, , $linkValues) )"; NA; "implode, (, , $linkkeys"; "$linkValues"; false
+UPDATE; "update auditorreports set score= $score where id= $reportId"; NA; ""; "$score"; false
+SELECT; "select sum(score)/count(*) as avgscore from auditorreports where crawled=1 and project_id= $projectId"; NA; "sumscore"; "$projectId"; false
+UPDATE; "update auditorprojects set score= $score where id= $projectId"; NA; ""; "$score"; false
+SELECT; "select * from auditorpagelinks where report_id= $reportId"; NA; ""; "$reportId"; false
+SELECT; "select $col , count(*) as count from auditorreports where project_id= $projectId and $col != $crawled group by $col having count>1"; NA; "col, "; "$projectId, $col, $crawled"; false
+SELECT; "SELECT $cols FROM auditorreports where 1=1 $where"; NA; "cols"; "$where"; false
+SELECT; "select * from country where country_code= $countryCode"; NA; ""; "$countryCode"; false
+INSERT; "INSERT INTO tablName ( implode(, , array_keys($crawlInfo)) , crawl_time)"; NA; "implode, (, , array_keys, $crawlinfo"; ""; false
+UPDATE; "update tablName set"; NA; ""; ""; false
+SELECT; "select t.*, k.name keyword from tablName t left join keywords k on t.ref_id=k.id where 1=1"; NA; "t, kname, keyword"; ""; false
+SELECT; "select distinct crawl_type from tablName"; NA; "distinct, crawltype"; ""; false
+SELECT; "select distinct proxy_id, proxy, port from tablName t, proxylist pl r where pl.id=t.proxy_id and t.proxy_id!=0"; NA; "distinct, proxyid, proxy, port"; ""; false
+SELECT; "select * from crawl_log where id= intval($logId)"; NA; ""; "intval($logId)"; false
+SELECT; "select * from mail_logs where id= intval($logId)"; NA; ""; "intval($logId)"; false
+INSERT; "INSERT INTO mail_logs( implode(, , array_keys($mailInfo)) )"; NA; "implode, (, , array_keys, $mailinfo"; ""; false
+SELECT; "select * from websites where status=1 and user_id= $userInfo[id] and crawled=0 order by name"; NA; ""; ""; false
+UPDATE; "update websites set crawled=1 where id= $websiteInfo[id]"; NA; ""; ""; false
+SELECT; "select distinct(keyword_id) from keywordcrontracker kc, keywords k where k.id=kc.keyword_id and k.website_id= $websiteId and time= $time"; NA; "keywordid"; "$websiteId, $time"; false
+SELECT; "select k.*, w.url from keywords k, websites w where k.website_id=w.id and w.id= $websiteId and k.status=1 and k.crawled=0"; NA; "k, wurl"; "$websiteId"; false
+SELECT; "select * from currency where iso_code= addslashes($currencyCode)"; NA; ""; "addslashes($currencyCode)"; false
+SELECT; "select * from directories where id= $dirId"; NA; ""; "$dirId"; false
+UPDATE; "update websites set url= addslashes($submitInfo[url]) , owner_name= addslashes($submitInfo[owner_name]) , owner_email= addslashes($submitInfo[owner_email]) , category= addslashes($submitInfo[category]) , reciprocal_url= addslashes($submitInfo[reciprocal_url]) , title= addslashes($submitInfo[title]) , description= addslashes($submitInfo[description]) ,"; NA; ""; "addslashes($submitInfo["url"]), "owner_name", addslashes($submitInfo["owner_name"]), "owner_email", addslashes($submitInfo["category"]), "reciprocal_url", addslashes($submitInfo["reciprocal_url"]), "description", addslashes($submitInfo["description"])"; false
+OTHER; "/<select name= $categoryCol .*?</select>/is"; NA; ""; ""; true
+SELECT; "select directory_id from dirsubmitinfo where website_id= $websiteId"; NA; "directoryid"; "$websiteId"; false
+UPDATE; "update directories set rank=rank+1 where id= $submitInfo[dir_id]"; NA; ""; ""; false
+SELECT; "select id from dirsubmitinfo where website_id= $submitInfo[website_id] and directory_id= $submitInfo[dir_id]"; NA; "id"; ""website_id", $submitInfo["website_id"], $submitInfo["dir_id"]"; false
+INSERT; "insert into dirsubmitinfo(website_id, directory_id, status, submit_time) values( $submitInfo[website_id] , $submitInfo[dir_id] , $status , mktime() )"; NA; "website_id, directory_id, status, submit_time"; "$submitInfo["website_id"], $submitInfo["dir_id"], $status, mktime()"; false
+UPDATE; "update dirsubmitinfo set status= $status , submit_time= mktime() where id= $subInfo[0][id]"; NA; ""; "$status, mktime()"; false
+INSERT; "Insert into skipdirectories(website_id, directory_id) values( $info[website_id] , $info[dir_id] )"; NA; "website_id, directory_id"; "$info["website_id"], $info["dir_id"]"; false
+SELECT; "select directory_id from skipdirectories where website_id= $websiteId"; NA; "directoryid"; "$websiteId"; false
+SELECT; "select ds.* , d.domain, d.pagerank, d.submit_urlr from skipdirectories ds, directories d where ds.directory_id=d.id $conditions order by id desc, d.domain"; NA; "ds, , ddomain, dpagerank, dsubmiturlr"; "$conditions"; false
+SELECT; "select ds.* , d.domain, d.pagerank, d.submit_url from dirsubmitinfo ds, directories d r where ds.directory_id=d.id $conditions order by submit_time desc, d.domain"; NA; "ds, , ddomain, dpagerank, dsubmiturl"; "$conditions"; false
+UPDATE; "Update dirsubmitinfo set status= $status where id= $dirInfo[id]"; NA; ""; "$status"; false
+SELECT; "select status from dirsubmitinfo where id= $id"; NA; "status"; "$id"; false
+SELECT; "select ds.* , d.domain, d.search_script, w.urlr from dirsubmitinfo ds, directories d, websites w r where ds.directory_id=d.id and ds.website_id=w.id r and ds.id= $dirInfo[id]"; NA; "ds, , ddomain, dsearchscript, wurlr"; ""; false
+UPDATE; "Update dirsubmitinfo set active= $status where id= $dirId"; NA; ""; "$status"; false
+SELECT; "select active from dirsubmitinfo where id= $id"; NA; "active"; "$id"; false
+SELECT; "select ds.* , d.domainr from dirsubmitinfo ds, directories d r where ds.directory_id=d.id r and ds.website_id= $searchInfo[website_id] and ds.active=0 r order by submit_time"; NA; "ds, , ddomainr"; "$searchInfo["website_id"]"; false
+SELECT; "SELECT * FROM directories where id= $dirId"; NA; ""; "$dirId"; false
+SELECT; "SELECT *, l.lang_name FROM directories d, languages l where d.lang_code=l.lang_code and working= $info[stscheck]"; NA; ", llangname"; "$info["stscheck"]"; false
+UPDATE; "update directories set working= $status where id= $dirId"; NA; ""; "$status"; false
+UPDATE; "update directories set working= $active , is_captcha= $captcha , checked=1 $prUpdate $searchUpdate $extraValUpdate where id= $dirId"; NA; ""; "$active, $captcha, $prUpdate, $searchUpdate, $extraValUpdate"; false
+SELECT; "select count(*) count from dirsubmitinfo where website_id= $websiteId"; NA; ", count"; "$websiteId"; false
+SELECT; "SELECT * FROM di_directory_meta where id= $id"; NA; ""; "$id"; false
+SELECT; "select s.*, se.domain from searchresults s, searchengines se r where s.searchengine_id=se.id and result_date>= $fromTimeDate and result_date<= $toTimeDate r and s.keyword_id= intval($keywordId) $conditions order by s.result_date"; NA; "s, sedomain"; "$fromTimeDate, $toTimeDate, intval($keywordId), $conditions"; false
+INSERT; "insert into information_list(info_type, content, update_date) r values( addslashes($secName) , addslashes($content) , $todayDate )"; NA; "info_type, content, update_date"; "addslashes($secName), addslashes($content), $todayDate"; false
+SELECT; "select info_type, content as page from information_list where info_type= addslashes($secName) r and update_date= date(Y-m-d)"; NA; "infotype, content"; "addslashes($secName)"; false
+UPDATE; "update keywords set status= $status where id= $keywordId"; NA; ""; "$status"; false
+UPDATE; "update keywords set crawled= $status where $whereCond"; NA; ""; "$status"; false
+INSERT; "insert into keywords(name, lang_code, country_code, website_id, searchengines, status)r values( $keyword , addslashes($listInfo[lang_code]) , addslashes($listInfo[country_code]) , r intval($listInfo[website_id]) , addslashes($seStr) , $statusVal )"; NA; "name, lang_code, country_code, website_id, searchengines, status"; "$keyword, addslashes($listInfo["lang_code"]), addslashes($listInfo["country_code"]), intval($listInfo["website_id"]), addslashes($seStr), $statusVal"; false
+INSERT; "insert into keywords(name, lang_code, country_code, website_id, searchengines, status)r values( $keyword , addslashes($listInfo[lang_code]) , addslashes($listInfo[country_code]) , r intval($listInfo[website_id]) , addslashes(implode(:, $listInfo[searchengines])) , 1)"; NA; "name, lang_code, country_code, website_id, searchengines, status"; "$keyword, addslashes($listInfo["lang_code"]), addslashes($listInfo["country_code"]), intval($listInfo["website_id"]), $listInfo["searchengines"]"; false
+SELECT; "select id from keywords where name= $name and website_id= $websiteId"; NA; "id"; "$name, $websiteId"; false
+SELECT; "select * from keywords where id= $keywordId"; NA; ""; "$keywordId"; false
+OTHER; "update keywords setr name = $keyword , r lang_code = addslashes($listInfo[lang_code]) , r country_code = addslashes($listInfo[country_code]) , r website_id = $listInfo[website_id] , r $statusVal r searchengines = addslashes($seStr) r where id= $listInfo[id]"; NA; ""; ""; true
+SELECT; "select * from languages where lang_code= $langCode"; NA; ""; "$langCode"; false
+SELECT; "select distinct srd.url, sr.rank, sr.result_date, sr.keyword_id, k.name as keywordr from searchresults sr, searchresultdetails srd, keywords k r where sr.id=srd.searchresult_id and sr.keyword_id=k.id and k.website_id= $websiteId and sr.searchengine_id= $seId $conditions r order by rank asc, result_date DESC limit 0, 1000"; NA; "distinct, srdurl, srrank, srresultdate, srkeywordid, kname"; "$websiteId, $conditions"; false
+SELECT; "select distinct sr.keyword_id, srd.url, sr.rank, sr.result_date, k.name as keywordr from searchresults sr, searchresultdetails srd, keywords kr where sr.id=srd.searchresult_id and sr.keyword_id=k.id and k.website_id= $websiteId and sr.searchengine_id= $seId $conditions r order by rank asc, result_date DESC limit 0, 1000"; NA; "distinct, srkeywordid, srdurl, srrank, srresultdate, kname"; "$websiteId, $conditions"; false
+SELECT; "select s.* , w.name from pagespeedresults s, websites w where s.website_id=w.idr and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+SELECT; "select s.* , w.name from pagespeedresults s, websites wr where s.website_id=w.id $conditions r and (result_date= $fromTimeLabel or result_date= $toTimeLabel )r order by result_date DESC Limit 0, 2"; NA; "s, , wname"; "$conditions, $fromTimeLabel, $toTimeLabel"; false
+SELECT; "select s.* , w.name from pagespeedresults s, websites w where s.website_id=w.idr and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+INSERT; "insert into pagespeedresults(website_id, desktop_speed_score, mobile_speed_score, mobile_usability_score, result_date)r values( $matchInfo[id] , $matchInfo[desktop][speed_score] , $matchInfo[mobile][speed_score] , $matchInfo[mobile][usability_score] , $resultDate )"; NA; "website_id, desktop_speed_score, mobile_speed_score, mobile_usability_score, result_date"; "$matchInfo["id"], $matchInfo["desktop"]["speed_score"], $matchInfo["mobile"]["speed_score"], $matchInfo["mobile"]["usability_score"], $resultDate"; false
+INSERT; "insert into pagespeeddetails(website_id, desktop_score_details, mobile_score_details, result_date)r values( $matchInfo[id] , addslashes(serialize($matchInfo[desktop][details])) , r addslashes(serialize($matchInfo[mobile][details])) , $resultDate )"; NA; "website_id, desktop_score_details, mobile_score_details, result_date"; "$matchInfo["id"], addslashes(serialize($matchInfo["desktop"]["details"])), addslashes(serialize($matchInfo["mobile"]["details"])), $resultDate"; false
+SELECT; "select website_id from pagespeedresults where website_id= $websiteId and result_date= $resultDate"; NA; "websiteid"; "$websiteId, $resultDate"; false
+SELECT; "select * from proxylist where 1=1 $condition"; NA; ""; "$condition"; false
+SELECT; "select * from proxylist where checked=0 $where order by id"; NA; ""; "$where"; false
+UPDATE; "update proxylist set checked= intval($checkedVal)"; NA; ""; "intval($checkedVal)"; false
+SELECT; "select count(*) as count from proxylist $where"; NA; ""; ""; false
+UPDATE; "update proxylist set status= $status where id= intval($proxyId)"; NA; ""; "$status"; false
+SELECT; "select id from proxylist where proxy= addslashes($name) and port= intval($port)"; NA; "id"; "addslashes($name), intval($port)"; false
+INSERT; "insert into proxylist(proxy, port, proxy_auth, proxy_username, proxy_password, status) values( addslashes($listInfo[proxy]) , intval($listInfo[port]) , $proxyAuth , addslashes($listInfo[proxy_username]) , addslashes($listInfo[proxy_password]) , 0)"; NA; "proxy, port, proxy_auth, proxy_username, proxy_password, status"; "addslashes($listInfo["proxy"]), intval($listInfo["port"]), $proxyAuth, addslashes($listInfo["proxy_username"]), addslashes($listInfo["proxy_password"])"; false
+SELECT; "select * from proxylist where id= intval($proxyId)"; NA; ""; "intval($proxyId)"; false
+UPDATE; "update proxylist set proxy = addslashes($listInfo[proxy]) , port = intval($listInfo[port]) , status = intval($listInfo[status]) , proxy_auth = $proxyAuth , proxy_username = addslashes($listInfo[proxy_username]) , proxy_password = addslashes($listInfo[proxy_password]) where id= $listInfo[id]"; NA; ""; "addslashes($listInfo["proxy"]), intval($listInfo["port"]), intval($listInfo["status"]), $proxyAuth, "proxy_username", addslashes($listInfo["proxy_username"]), "proxy_password", addslashes($listInfo["proxy_password"])"; false
+INSERT; "insert into rankresults(website_id, moz_rank, alexa_rank, domain_authority, page_authority, result_date)r values( $matchInfo[id] , $mozRank , $matchInfo[alexaRank] , $domainAuthority , $pageAuthority , $resultDate )"; NA; "website_id, moz_rank, alexa_rank, domain_authority, page_authority, result_date"; "$matchInfo["id"], $mozRank, $matchInfo["alexaRank"], $domainAuthority, $pageAuthority, $resultDate"; false
+SELECT; "select website_id from rankresults where website_id= $websiteId and result_date= $resultDate"; NA; "websiteid"; "$websiteId, $resultDate"; false
+SELECT; "select s.* , w.name from rankresults s, websites w where s.website_id=w.id r and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+SELECT; "select s.* , w.namer from rankresults s, websites w r where s.website_id=w.id r and s.website_id= $websiteId r and (result_date= $fromTimeLabel or result_date= $toTimeLabel )r order by result_date DESCr Limit 0, 2"; NA; "s, , wnamer"; "$websiteId, $fromTimeLabel, $toTimeLabel"; false
+SELECT; "select s.* , w.name from rankresults s, websites w where s.website_id=w.idr and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+SELECT; "select min(rank) as rank, result_date from searchresults r where keyword_id= $keywordId and searchengine_id= $seInfo[id] r and (result_date= $fromTimeLabel or result_date= $toTimeLabel )r group by result_date order by result_date DESC limit 0, 2"; NA; "rank, resultdate"; "$keywordId, $fromTimeLabel, $toTimeLabel"; false
+SELECT; "select [col] from keywords k, searchresults r, websites w r where k.id=r.keyword_id and k.website_id=w.id $conditions r and r.searchengine_id= intval($orderCol) and r.result_date= addslashes($toTimeTxt) r group by k.id"; NA; "col"; "$conditions, intval($orderCol), addslashes($toTimeTxt)"; false
+SELECT; "select s.*, sd.url, sd.title, sd.description from searchresults s, searchresultdetails sd r where s.id=sd.searchresult_id and result_date>= $fromTimeDate and result_date<= $toTimeDate $conditions r order by s.result_date"; NA; "s, sdurl, sdtitle, sddescription"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select s.*, sd.url, sd.title, sd.description from searchresults s, searchresultdetails sd r where s.id=sd.searchresult_id and result_date>= $fromTimeDate and result_date< $toTimeDate $conditions r order by s.rank"; NA; "s, sdurl, sdtitle, sddescription"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select s.*, se.domain from searchresults s, searchengines se r where s.searchengine_id=se.id and result_date>= $fromTimeDate and result_date<= $toTimeDate r $conditions order by s.result_date"; NA; "s, sedomain"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select id from searchresults where keyword_id= $matchInfo[keyword_id] r and searchengine_id= $matchInfo[se_id] and result_date= $resultDate"; NA; "id"; ""keyword_id", $matchInfo["keyword_id"], $matchInfo["se_id"], $resultDate"; false
+INSERT; "insert into searchresults(keyword_id, searchengine_id, rank, time, result_date)r values( $matchInfo[keyword_id] , $matchInfo[se_id] , $matchInfo[rank] , $time , $resultDate )"; NA; "keyword_id, searchengine_id, rank, time, result_date"; "$matchInfo["keyword_id"], $matchInfo["se_id"], $matchInfo["rank"], $time, $resultDate"; false
+INSERT; "insert into searchresultdetails(searchresult_id, url, title, description)r values( $recordId , $matchInfo[url] , addslashes($matchInfo[title]) , addslashes($matchInfo[description]) )"; NA; "searchresult_id, url, title, description"; "$recordId, $matchInfo["url"], addslashes($matchInfo["title"]), addslashes($matchInfo["description"])"; false
+INSERT; "Insert into keywordcrontracker(keyword_id, searchengine_id, time) values( $keywordId , $seId , $time )"; NA; "keyword_id, searchengine_id, time"; "$keywordId, $seId, $time"; false
+SELECT; "select keyword_id from keywordcrontracker where keyword_id= $keywordId and searchengine_id= $seId and time= $time"; NA; "keywordid"; "$keywordId, $time"; false
+SELECT; "select [col] from keywords k, searchresults r, websites wr where k.id=r.keyword_id and k.website_id=w.id $conditions r and r.searchengine_id= intval($orderCol) and r.result_date= addslashes($toTimeShort) r group by k.id"; NA; "col"; "$conditions, intval($orderCol), addslashes($toTimeShort)"; false
+SELECT; "select * from reports_settings where user_id= $userId"; NA; ""; "$userId"; false
+INSERT; "Insert into reports_settings(user_id, report_interval, email_notification, last_generated) r values( $setInfo[user_id] , $setInfo[report_interval] , $setInfo[email_notification] , $setInfo[last_generated] )"; NA; "user_id, report_interval, email_notification, last_generated"; "$setInfo["user_id"], $setInfo["report_interval"], $setInfo["email_notification"], $setInfo["last_generated"]"; false
+UPDATE; "Update reports_settings set $col = addslashes($val) where user_id= $userId"; NA; ""; "$col, addslashes($val)"; false
+SELECT; "select l.*, w.name as website_name from linkTable l, websites w where l.website_id=w.id"; NA; "l, wname"; ""; false
+SELECT; "select link.*, lr.id result_id from review_links link left join r review_link_results lr on (link.id=lr.review_link_id and lr.report_date= $date ) r where link.status=1 and link.website_id= $websiteId and lr.id is NULL"; NA; "link, lrid, resultid"; "$websiteId"; false
+SELECT; "select [cols] from linkTable sml, linkReportTable r where sml.id=r.review_link_idr and sml.status=1 $conditions and r.report_date= $toTime"; NA; "cols"; "$conditions, $toTime"; false
+SELECT; "select sml.id, sml.url, sml.website_id, sml.type, r.rating, r.reviewsr from linkTable sml, linkReportTable r where sml.id=r.review_link_idr and sml.status=1 $conditions and r.report_date= $fromTime"; NA; "smlid, smlurl, smlwebsiteid, smltype, rrating, rreviewsr"; "$conditions, $fromTime"; false
+SELECT; "select s.* from linkReportTable sr where report_date>= $fromTimeDate and report_date<= $toTimeDate and s.review_link_id= $linkId r order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $linkId"; false
+SELECT; "select s.* from linkReportTable sr where report_date>= $fromTimeDate and report_date<= $toTimeDate and s.review_link_id= $linkId r order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $linkId"; false
+INSERT; "insert into saturationresults(website_id, google, msn, result_date)r values( $matchInfo[id] , $matchInfo[google] , $matchInfo[msn] , $resultDate )"; NA; "website_id, google, msn, result_date"; "$matchInfo["id"], $matchInfo["google"], $matchInfo["msn"], $resultDate"; false
+SELECT; "select website_id from saturationresults where website_id= $websiteId and result_date= $resultDate"; NA; "websiteid"; "$websiteId, $resultDate"; false
+SELECT; "select s.* , w.name from saturationresults s, websites w where s.website_id=w.id r and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+SELECT; "select s.* , w.name from saturationresults s, websites w where s.website_id=w.id and s.website_id= $websiteId r and (result_date= $fromTimeLabel or result_date= $toTimeLabel ) order by result_date DESC Limit 0, 2"; NA; "s, , wname"; "$websiteId, $fromTimeLabel, $toTimeLabel"; false
+SELECT; "select s.* , w.name from saturationresults s, websites w where s.website_id=w.id r and result_date >= $fromTime and result_date <= $toTime $conditions order by result_date"; NA; "s, , wname"; "$fromTime, $toTime, $conditions"; false
+SELECT; "select * from searchengines where id= $seId"; NA; ""; ""; false
+SELECT; "select * from searchengines where status= $info[stscheck]"; NA; ""; "$info["stscheck"]"; false
+UPDATE; "update searchengines set status= $status where id= $seId"; NA; ""; "$status"; false
+SELECT; "select id from searchresults where searchengine_id= $seId"; NA; "id"; ""; false
+SELECT; "select * from seoplugins where $whereCond order by priority, id"; NA; ""; "$whereCond"; false
+UPDATE; "update seoplugins set status= $status where id= $seoPluginId"; NA; ""; "$status"; false
+UPDATE; "update seoplugins set installed= $status where id= $seoPluginId"; NA; ""; "$status"; false
+SELECT; "select * from seoplugins where $col = $val"; NA; ""; "$col, $val"; false
+OTHER; "update seoplugins setr label= addslashes($listInfo[plugin_name]) , r priority= intval($listInfo[priority]) r where id= $listInfo[id]"; NA; ""; ""; true
+OTHER; "update seoplugins setr label= addslashes($pluginInfo[label]) , r author= addslashes($pluginInfo[author]) , r description= addslashes($pluginInfo[description]) , r version= $pluginInfo[version] , r website= $pluginInfo[website] r where id= $pluginId"; NA; ""; ""; true
+INSERT; "insert into seoplugins(label, name, author, description, version, website, status, installed) r values( addslashes($pluginInfo[label]) , $pluginName , addslashes($pluginInfo[author]) , addslashes($pluginInfo[description]) , $pluginInfo[version] , $pluginInfo[website] , 0, 1)"; NA; "label, name, author, description, version, website, status, installed"; "addslashes($pluginInfo["label"]), $pluginName, addslashes($pluginInfo["author"]), addslashes($pluginInfo["description"]), $pluginInfo["version"], $pluginInfo["website"]"; false
+SELECT; "select label, content from $table where category= $category and lang_code= $langCode and content!= order by label"; NA; "label, content"; "$category, $langCode"; false
+SELECT; "select * from seoplugins where $col = addslashes($value) and installed=1 and status=1"; NA; ""; "$col, addslashes($value)"; false
+SELECT; "select * from seotools where $whereCond order by id"; NA; ""; "$whereCond"; false
+SELECT; "select * from seotools where $col = $val"; NA; ""; "$col, $val"; false
+UPDATE; "update seotools set $col = $status where id= $seoToolId"; NA; ""; "$col, $status"; false
+UPDATE; "update seotools set priority= intval($listInfo[priority]) where id= $listInfo[id]"; NA; ""; "intval($listInfo["priority"])"; false
+UPDATE; "Update reports_settings set report_interval= $postInfo[$setInfo[set_name]] where report_interval< $postInfo[$setInfo[set_name]]"; NA; ""; "$postInfo[$setInfo["set_name"]]"; false
+UPDATE; "update settings set set_val= addslashes($postInfo[$setInfo[set_name]]) where set_name= addslashes($setInfo[set_name])"; NA; ""; "addslashes($postInfo[$setInfo["set_name"]])"; false
+SELECT; "select w.name, ap.* from websites w, auditorprojects ap where ap.website_id=w.id and user_id= $userId order by ap.id"; NA; "wname, ap"; "$userId"; false
+INSERT; "insert into auditorprojects(website_id, max_links, exclude_links, check_pr, check_backlinks, check_indexed, store_links_in_page, check_brocken, cron)r values( $listInfo[website_id] , $listInfo[max_links] , addslashes($listInfo[exclude_links]) , r intval($listInfo[check_pr]) , intval($listInfo[check_backlinks]) , intval($listInfo[check_indexed]) , r intval($listInfo[store_links_in_page]) , intval($listInfo[check_brocken]) , intval($listInfo[cron]) )"; NA; "website_id, max_links, exclude_links, check_pr, check_backlinks, check_indexed, store_links_in_page, check_brocken, cron"; "$listInfo["website_id"], $listInfo["max_links"], addslashes($listInfo["exclude_links"]), intval($listInfo["check_pr"]), intval($listInfo["check_backlinks"]), intval($listInfo["check_indexed"]), intval($listInfo["store_links_in_page"]), intval($listInfo["check_brocken"]), intval($listInfo["cron"])"; false
+SELECT; "select id from auditorprojects where website_id= $websiteId"; NA; "id"; "$websiteId"; false
+SELECT; "select p.*, w.url, w.name from auditorprojects p, websites w where p.website_id=w.id and p.id= $projectId"; NA; "p, wurl, wname"; "$projectId"; false
+OTHER; "Update auditorprojects setr website_id= $listInfo[website_id] , r max_links= $listInfo[max_links] , r check_pr= intval($listInfo[check_pr]) , r check_backlinks= intval($listInfo[check_backlinks]) , r check_indexed= intval($listInfo[check_indexed]) , r store_links_in_page= intval($listInfo[store_links_in_page]) , r check_brocken= intval($listInfo[check_brocken]) , r cron= intval($listInfo[cron]) , r exclude_links= addslashes($listInfo[exclude_links]) r where id= $listInfo[id]"; NA; ""; ""; true
+UPDATE; "update auditorprojects set status= $status where id= $projectId"; NA; ""; "$status"; false
+SELECT; "select id from auditorreports where project_id= $projectId"; NA; "id"; "$projectId"; false
+SELECT; "select count(*) count from auditorreports r where r.project_id= $projectId"; NA; ", count"; "$projectId"; false
+SELECT; "select ap.*, w.url, w.name from auditorprojects ap, websites w where w.id=ap.website_id and w.status=1 and ap.status=1 $where"; NA; "ap, wurl, wname"; "$where"; false
+SELECT; "select max(updated) updated from auditorreports r where r.project_id= $projectId"; NA; "updated"; "$projectId"; false
+UPDATE; "update auditorreports set crawled=0 where project_id= $projectId"; NA; ""; ""; false
+SELECT; "select id from auditorreports where project_id= $projectId"; NA; "id"; "$projectId"; false
+SELECT; "SELECT page_url FROM auditorreports where project_id= $projectId and crawled=0 ORDER BY RAND() LIMIT 1"; NA; "pageurl"; "$projectId"; false
+SELECT; "select * from auditorreports where project_id= $projectId"; NA; ""; "$projectId"; false
+SELECT; "select $repType , count(*) as count from auditorreports where project_id= $projectId and $repType !="; NA; "reptype, "; "$projectId, $repType"; false
+SELECT; "select l.*, w.name as website_name from linkTable l, websites w where l.website_id=w.id"; NA; "l, wname"; ""; false
+SELECT; "select link.*, lr.id result_id from social_media_links link left join r social_media_link_results lr on (link.id=lr.sm_link_id and lr.report_date= $date ) r where link.status=1 and link.website_id= $websiteId and lr.id is NULL"; NA; "link, lrid, resultid"; "$websiteId"; false
+SELECT; "select [cols] from linkTable sml, linkReportTable r where sml.id=r.sm_link_idr and sml.status=1 $conditions and r.report_date= $toTime"; NA; "cols"; "$conditions, $toTime"; false
+SELECT; "select sml.id, sml.url, sml.website_id, sml.type, r.followers, r.likesr from linkTable sml, linkReportTable r where sml.id=r.sm_link_idr and sml.status=1 $conditions and r.report_date= $fromTime"; NA; "smlid, smlurl, smlwebsiteid, smltype, rfollowers, rlikesr"; "$conditions, $fromTime"; false
+SELECT; "select s.* from linkReportTable sr where report_date>= $fromTimeDate and report_date<= $toTimeDate and s.sm_link_id= $linkId r order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $linkId"; false
+SELECT; "select s.* from linkReportTable sr where report_date>= $fromTimeDate and report_date<= $toTimeDate and s.sm_link_id= $linkId r order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $linkId"; false
+SELECT; "select * from tableName order by id"; NA; ""; ""; false
+SELECT; "select * from tableName order by id"; NA; ""; ""; false
+UPDATE; "update tableName set status=0"; NA; ""; ""; false
+UPDATE; "update tableName set status=1 where id= $themeId"; NA; ""; ""; false
+UPDATE; "update tableName set installed= $status where id= $themeId"; NA; ""; "$status"; false
+SELECT; "select * from tableName where $col = $val"; NA; ""; "$col, $val"; false
+OTHER; "update tableName setr name= addslashes($themeInfo[name]) , r author= addslashes($themeInfo[author]) , r description= addslashes($themeInfo[description]) , r version= $themeInfo[version] , r website= $themeInfo[website] r where id= $themeId"; NA; ""; ""; true
+INSERT; "insert into tableName (name, folder, author, description, version, website, status, installed) r values( addslashes($themeInfo[name]) , addslashes($themeName) , addslashes($themeInfo[author]) , addslashes($themeInfo[description]) , $themeInfo[version] , $themeInfo[website] , 0, 1)"; NA; "name, folder, author, description, version, website, status, installed"; "addslashes($themeInfo["name"]), addslashes($themeName), addslashes($themeInfo["author"]), addslashes($themeInfo["description"]), $themeInfo["version"], $themeInfo["website"]"; false
+SELECT; "select * from timezone where $timezoneCol = addslashes($timezoneVal)"; NA; ""; "$timezoneCol, addslashes($timezoneVal)"; false
+SELECT; "select * from user_specs where user_type_id= $userType[id]"; NA; ""; ""; false
+SELECT; "select * from usertypes where id= $userTypeId"; NA; ""; "$userTypeId"; false
+SELECT; "select * from user_specs where user_type_id= $listInfo[id]"; NA; ""; ""; false
+UPDATE; "update usertypes set user_type = addslashes($listInfo[user_type]) , description = addslashes($listInfo[description]) , access_type = addslashes($listInfo[access_type]) , status = intval($listInfo[user_type_status]) where id= $listInfo[id]"; NA; ""; ""user_type", addslashes($listInfo["user_type"]), "description", addslashes($listInfo["description"]), "access_type", intval($listInfo["user_type_status"])"; false
+SELECT; "select id from usertypes where user_type= addslashes($userType)"; NA; "id"; "addslashes($userType)"; false
+INSERT; "insert into usertypes(user_type, description, status, access_type) values( addslashes($listInfo[user_type]) , addslashes($listInfo[description]) , $status , addslashes($listInfo[access_type]) )"; NA; "user_type, description, status, access_type"; "addslashes($listInfo["user_type"]), addslashes($listInfo["description"]), $status"; false
+UPDATE; "update usertypes set status= $status where id= $userTypeId"; NA; ""; "$status"; false
+SELECT; "select * from user_specs where spec_category=system and user_type_id= $userType[id]"; NA; ""; ""; false
+SELECT; "select * from user_specs where user_type_id= $userTypeId"; NA; ""; "$userTypeId"; false
+SELECT; "select * from users where id= $userId"; NA; ""; "$userId"; false
+SELECT; "select * from user_specs where user_type_id= $userDetails[0][utype_id]"; NA; ""; "$userDetails[0]["utype_id"]"; false
+INSERT; "Insert into user_specs(user_type_id, spec_column, spec_value, spec_category) values( $userTypeId , $specColumn , $specValue , $specCategory ) ON DUPLICATE KEY UPDATE spec_value= $specValue"; NA; "user_type_id, spec_column, spec_value, spec_category"; "$userTypeId, $specColumn, $specValue, $specCategory"; false
+SELECT; "select ut.access_type from users u, usertypes ut where u.utype_id=ut.id and u.id= intval($userId)"; NA; "utaccesstype"; "intval($userId)"; false
+SELECT; "select u.*, ut.user_type from users u, usertypes ut where u.utype_id=ut.id and u.username= addslashes($_POST[userName])"; NA; "u, utusertype"; ""; false
+UPDATE; "UPDATE settings SET set_val= addslashes($_POST[lang_code]) WHERE set_name=SP_DEFAULTLANG"; NA; ""; "addslashes($_POST["lang_code"])"; false
+UPDATE; "UPDATE users SET lang_code= addslashes($_POST[lang_code]) WHERE id=1"; NA; ""; ""lang_code", addslashes($_POST["lang_code"])"; false
+UPDATE; "UPDATE settings SET set_val= addslashes($_POST[time_zone]) WHERE set_name=SP_TIME_ZONE"; NA; ""; "addslashes($_POST["time_zone"])"; false
+SELECT; "select id from users where confirm_code= $confirmCode"; NA; "id"; "$confirmCode"; false
+UPDATE; "update users set confirm=1, status=1 where id= $userInfo[id]"; NA; ""; ""; false
+INSERT; "insert into usersr (utype_id, username, password, first_name, last_name, email, created, status) r values ( $utypeId , addslashes($userInfo[userName]) , md5($userInfo[password]) , r addslashes($userInfo[firstName]) , addslashes($userInfo[lastName]) , r addslashes($userInfo[email]) , UNIX_TIMESTAMP(), $userStatus )"; NA; "utype_id, username, password, first_name, last_name, email, created, status"; "$utypeId, addslashes($userInfo["userName"]), md5($userInfo["password"]), addslashes($userInfo["email"]), $userStatus"; false
+UPDATE; "update users set confirm_code= $cfm where id= $userId"; NA; ""; "$cfm"; false
+UPDATE; "update users set status= $status where id= $userId"; NA; ""; "$status"; false
+SELECT; "select id from websites where user_id= $userId"; NA; "id"; "$userId"; false
+SELECT; "select id from users where username= $username"; NA; "id"; "$username"; false
+SELECT; "select id from users where email= addslashes($email)"; NA; "id"; "addslashes($email)"; false
+SELECT; "select * from users where id= $userId"; NA; ""; "$userId"; false
+SELECT; "select * from users where status= $active"; NA; ""; "$active"; false
+SELECT; "select u.* from users u, websites w where w.user_id=u.id and u.status= $active and w.status=1"; NA; "u"; "$active"; false
+INSERT; "insert into users(utype_id, username, password, first_name, last_name, email, created, status, expiry_date) r values( $userTypeId , addslashes($userInfo[userName]) , md5($userInfo[password]) r , addslashes($userInfo[firstName]) , addslashes($userInfo[lastName]) r , addslashes($userInfo[email]) , UNIX_TIMESTAMP(), $userStatus , $userInfo[expiry_date] )"; NA; "utype_id, username, password, first_name, last_name, email, created, status, expiry_date"; "$userTypeId, addslashes($userInfo["userName"]), md5($userInfo["password"]), addslashes($userInfo["email"]), $userStatus, $userInfo["expiry_date"]"; false
+OTHER; "update users setr username = addslashes($userInfo[userName]) , r first_name = addslashes($userInfo[firstName]) , r last_name = addslashes($userInfo[lastName]) , r $passStr r $activeStr r $expiryStr r email = addslashes($userInfo[email]) , r utype_id = addslashes($userInfo[userType]) r where id= $userInfo[id]"; NA; ""; ""; true
+OTHER; "update users setr username = addslashes($userInfo[userName]) , r first_name = addslashes($userInfo[firstName]) , r last_name = addslashes($userInfo[lastName]) , r $passStr r email = addslashes($userInfo[email]) r where id= $userId"; NA; ""; ""; true
+UPDATE; "update users set password=md5( $rand ) where id= $userInfo[id]"; NA; ""; "$rand"; false
+SELECT; "select * from users where utype_id= $adminUserTypeId"; NA; ""; "$adminUserTypeId"; false
+UPDATE; "update users set $col = addslashes($value) where id= intval($userId)"; NA; ""; "$col, addslashes($value)"; false
+INSERT; "insert into user_website_access(user_id, website_id) values( $userId , intval($val) )"; NA; "user_id, website_id"; "$userId, intval($val)"; false
+SELECT; "select w.*, uwa.id as uwa_id, uwa.access from websites w left join user_website_access uwa on w.id=uwa.website_id and w.user_id= $loggedinUserId"; NA; "w, uwaid, uwaaccess"; ""; false
+SELECT; "select [cols] from webmaster_keywords k, keyword_analytics r where k.id=r.keyword_id and k.status=1 $conditions and r.source= $source and r.report_date= $toTime"; NA; "cols"; "$conditions, $source, $toTime"; false
+SELECT; "select k.id, k.name, k.website_id, r.clicks, r.impressions, r.ctr, r.average_position from webmaster_keywords k, keyword_analytics r where k.id=r.keyword_id and k.status=1 $conditions and r.source= $source and r.report_date= $fromTime"; NA; "kid, kname, kwebsiteid, rclicks, rimpressions, rctr, raverageposition"; "$conditions, $source, $fromTime"; false
+SELECT; "select [cols] from websites w, website_search_analytics r where w.id=r.website_id and w.status=1 $conditions and r.source= $source and r.report_date= $fromTime"; NA; "cols"; "$conditions, $source, $fromTime"; false
+SELECT; "select w.id, w.name, w.url, r.clicks, r.impressions, r.ctr, r.average_position from websites w, website_search_analytics r where w.id=r.website_id and w.status=1 $conditions and r.source= $source and r.report_date= $toTime"; NA; "wid, wname, wurl, rclicks, rimpressions, rctr, raverageposition"; "$conditions, $source, $toTime"; false
+SELECT; "select s.* , w.name from website_search_analytics s, websites w where s.website_id=w.id and report_date >= $fromTime and report_date <= $toTime and source= $source $conditions order by report_date"; NA; "s, , wname"; "$fromTime, $toTime, $source, $conditions"; false
+SELECT; "select s.* from keyword_analytics s where report_date>= $fromTimeDate and report_date<= $toTimeDate $conditions order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select s.* from keyword_analytics s where report_date>= $fromTimeDate and report_date<= $toTimeDate $conditions order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select s.* from website_search_analytics s where report_date>= $fromTimeDate and report_date<= $toTimeDate $conditions order by s.report_date"; NA; "s"; "$fromTimeDate, $toTimeDate, $conditions"; false
+SELECT; "select * from websites w where user_id= $userId"; NA; ""; "$userId"; false
+UPDATE; "update websites set status= $status where id= $websiteId"; NA; ""; "$status"; false
+UPDATE; "update keywords set status= $status where website_id= $websiteId"; NA; ""; "$status"; false
+SELECT; "select id from keywords where website_id= $websiteId"; NA; "id"; "$websiteId"; false
+SELECT; "select id from auditorprojects where website_id= $websiteId"; NA; "id"; "$websiteId"; false
+SELECT; "select id from websites where name= addslashes($name) and user_id= $userId"; NA; "id"; "addslashes($name), $userId"; false
+SELECT; "select id from websites where url= addslashes($url)"; NA; "id"; "addslashes($url)"; false
+INSERT; "insert into websites(name, url, title, description, analytics_view_id, keywords, user_id, status) values( addslashes($listInfo[name]) , addslashes($listInfo[url]) , addslashes($listInfo[title]) , addslashes($listInfo[description]) , addslashes($listInfo[analytics_view_id]) , addslashes($listInfo[keywords]) , $userId , $statusVal )"; NA; "name, url, title, description, analytics_view_id, keywords, user_id, status"; "addslashes($listInfo["name"]), addslashes($listInfo["url"]), addslashes($listInfo["description"]), addslashes($listInfo["analytics_view_id"]), addslashes($listInfo["keywords"]), $userId, $statusVal"; false
+SELECT; "select * from websites where id= $websiteId"; NA; ""; "$websiteId"; false
+UPDATE; "update websites set name = addslashes($listInfo[name]) , url = addslashes($listInfo[url]) , user_id = $userId , title = addslashes($listInfo[title]) , description = addslashes($listInfo[description]) , analytics_view_id = addslashes($listInfo[analytics_view_id]) , $statusVal keywords = addslashes($listInfo[keywords]) where id= $listInfo[id]"; NA; ""; "addslashes($listInfo["name"]), addslashes($listInfo["url"]), $userId, "description", addslashes($listInfo["description"]), "analytics_view_id", addslashes($listInfo["analytics_view_id"]), $statusVal, addslashes($listInfo["keywords"])"; false
+SELECT; "select * from timezone where timezone_name= SP_TIME_ZONE"; NA; ""; ""; false
+UPDATE; "update users set email= addslashes($info[email]) where id=1"; NA; ""; "addslashes($info["email"])"; false
+INSERT; "Insert into settings(set_label, set_name, set_val, set_type) values(Seo Panel API Key, SP_API_KEY, $apiKey , large)"; NA; "set_label, set_name, set_val, set_type"; "$apiKey"; false
+UPDATE; "update settings set set_val= $apiKey where set_name=SP_API_KEY"; NA; ""; "$apiKey"; false
+SELECT; "select count(*) count from languages where lang_code= $langCode and translated=1"; NA; ", count"; "$langCode"; false
+UPDATE; "update users set lang_code= $langCode where id= $userId"; NA; ""; "$langCode"; false
+SELECT; "select * from settings $condition order by id"; NA; ""; ""; false
+SELECT; "select t.*, lang_show from translators t, languages l where l.lang_code=t.lang_code and t.lang_code= $_SESSION[lang_code]"; NA; "t, langshow"; ""; false
+SELECT; "select label, content from texts where category= $category and lang_code= $langCode and content!= order by label"; NA; "label, content"; "$category, $langCode"; false
+SELECT; "select k.id from keywords k, websites w where k.website_id=w.id and w.user_id= intval($userId) and k.id= intval($objId)"; NA; "kid"; "intval($userId), intval($objId)"; false
+SELECT; "select id from websites where id= intval($objId) and user_id= intval($userId)"; NA; "id"; "intval($objId), intval($userId)"; false
+SELECT; "SELECT $cols FROM $table WHERE $whereCond"; NA; "cols"; "$whereCond"; false
+SELECT; "SELECT $cols FROM $table WHERE $whereCond"; NA; "cols"; "$whereCond"; false
+INSERT; "INSERT into $table ( implode(, , $colList) ) values( implode(, , $valueList) )"; NA; "implode, (, , $collist"; "$valueList"; false
+UPDATE; "Update $table SET"; NA; ""; ""; false
+SELECT; "select max( $col ) maxid from $table"; NA; ", col, maxid"; ""; false
+SELECT; "select max( $col ) maxid from $table"; NA; ", col, maxid"; ""; false
+SELECT; "select id, url from websites where status=1"; NA; "id, url"; ""; false
+UPDATE; "Update auditorreports set"; NA; ""; ""; false
+SELECT; "select * from country order by country_name"; NA; ""; ""; false
+SELECT; "select * from country order by country_name"; NA; ""; ""; false
+SELECT; "select * from mail_logs where 1=1"; NA; ""; ""; false
+SELECT; "select distinct mail_category from mail_logs"; NA; "distinct, mailcategory"; ""; false
+SELECT; "select * from seotools where status=1 and reportgen=1"; NA; ""; ""; false
+SELECT; "select * from seotools where status=1 and cron=1"; NA; ""; ""; false
+UPDATE; "update websites set crawled=0"; NA; ""; ""; false
+SELECT; "select * from currency where 1=1"; NA; ""; ""; false
+SELECT; "select * from directories where working=1"; NA; ""; ""; false
+SELECT; "SELECT * FROM featured_directories where status=1 order by google_pagerank DESC"; NA; ""; ""; false
+SELECT; "SELECT * FROM directories"; NA; ""; ""; false
+SELECT; "select k.*, w.name website, w.status webstatus from keywords k, websites w where k.website_id=w.id and w.status=1"; NA; "k, wname, website, wstatus, webstatus"; ""; false
+SELECT; "select k.*, w.name website, w.url weburl from keywords k, websites w where k.website_id=w.id and k.status=1"; NA; "k, wname, website, wurl, weburl"; ""; false
+SELECT; "select * from languages"; NA; ""; ""; false
+SELECT; "select id, url from websites where status=1"; NA; "id, url"; ""; false
+SELECT; "select * from proxylist where 1=1"; NA; ""; ""; false
+SELECT; "select * from proxylist where 1=1"; NA; ""; ""; false
+SELECT; "SELECT * FROM proxylist where status=1 ORDER BY RAND() LIMIT 1"; NA; ""; ""; false
+SELECT; "select p.id as proxy_id, p.proxy, p.port, count(*) count, sum(crawl_status) success, avg(crawl_status) avg_score, count(*) - sum(crawl_status) fail from crawl_log t join proxylist p on p.id=t.proxy_id where 1=1"; NA; "pid, proxyid, pproxy, pport, , count, crawlstatus, success, avgscore, fail"; ""; false
+SELECT; "select id, url from websites where status=1"; NA; "id, url"; ""; false
+SELECT; "select k.*, w.url from keywords k, websites w where k.website_id=w.id and k.status=1"; NA; "k, wurl"; ""; false
+SELECT; "select * from websites w where w.status=1"; NA; ""; ""; false
+SELECT; "select id, url from websites where status=1"; NA; "id, url"; ""; false
+SELECT; "select * from searchengines where status=1"; NA; ""; ""; false
+SELECT; "select * from searchengines where status=1"; NA; ""; ""; false
+SELECT; "select * from sync_searchengines order by sync_time DESC"; NA; ""; ""; false
+OTHER; "UPDATE"; NA; ""; ""; true
+SELECT; "select * from seoplugins where 1=1"; NA; ""; ""; false
+UPDATE; "update seoplugins set installed=0"; NA; ""; ""; false
+SELECT; "select * from seotools where status=1"; NA; ""; ""; false
+SELECT; "select * from seotools where status=1 and user_access=1"; NA; ""; ""; false
+SELECT; "select t.*, l.lang_name from translators t, languages l where t.lang_code=l.lang_code"; NA; "t, llangname"; ""; false
+SELECT; "select ap.*, w.name, u.username from websites w, users u, auditorprojects ap where ap.website_id=w.id and u.id=w.user_id"; NA; "ap, wname, uusername"; ""; false
+SELECT; "select id from auditorprojects where cron=1 and status=1"; NA; "id"; ""; false
+UPDATE; "update themes set installed=0"; NA; ""; ""; false
+SELECT; "select * from timezone"; NA; ""; ""; false
+SELECT; "SELECT * FROM usertypes where id!=1"; NA; ""; ""; false
+INSERT; "insert into user_specs(user_type_id, spec_column, spec_value) values"; NA; "user_type_id, spec_column, spec_value"; ""; false
+INSERT; "insert into user_specs(user_type_id, spec_column, spec_value) values"; NA; "user_type_id, spec_column, spec_value"; ""; false
+SELECT; "select * from usertypes where status=1"; NA; ""; ""; false
+SELECT; "select id from usertypes where user_type=admin"; NA; "id"; ""; false
+SELECT; "select * from users where utype_id!=1"; NA; ""; ""; false
+SELECT; "select * from users where utype_id=1"; NA; ""; ""; false
+SELECT; "select u.*, ut.user_type from users u, usertypes utr where u.utype_id=ut.id and u.status=1 and u.utype_id!=1 and ut.access_type=readr order by username"; NA; "u, utusertype"; ""; false
+SELECT; "select w.*, u.username from websites w, users u where u.id=w.user_id"; NA; "w, uusername"; ""; false
+SELECT; "select * from websites where status=1"; NA; ""; ""; false
+SELECT; "select count(*) count from websites where 1=1"; NA; ", count"; ""; false
+SELECT; "select w.* from websites w, keywords k where w.id=k.website_id and w.status=1 and k.status=1"; NA; "w"; ""; false
+SELECT; "select * from settings order by id"; NA; ""; ""; false
+SELECT; "select * from themes where status=1 order by id"; NA; ""; ""; false
+SELECT; "select * from languages where translated=1"; NA; ""; ""; false
+SELECT; "select * from timezone order by id"; NA; ""; ""; false
+SELECT; "Select set_val from settings where set_name=SP_VERSION_NUMBER"; NA; "setval"; ""; false
+SELECT; "Select id, set_val from settings where set_name=SP_API_KEY"; NA; "id, setval"; ""; false
+OTHER; "<select name=charset> <option value=></option> <option>GB2312</option> <option>US-ASCII</option> <option>ISO-8859-1</option> <option>ISO-8859-2</option> <option>ISO-8859-3</option> <option>ISO-8859-4</option> <option>ISO-8859-5</option> <option>ISO-8859-6</option> <option>ISO-8859-7</option> <option>ISO-8859-8</option> <option>ISO-8859-9</option> <option>ISO-2022-JP</option> <option>ISO-2022-JP-2</option> <option>ISO-2022-KR</option> <option>SHIFT_JIS</option> <option>EUC-KR</option> <option>BIG5</option> <option>KOI8-R</option> <option>KSC_5601</option> <option>HZ-GB-2312</option> <option>JIS_X0208</option> <option>UTF-8</option> <option>other</option> </select>"; NA; ""; ""; true
+OTHER; "<select name=source_id>"; NA; ""; ""; true
+OTHER; "Select All"; NA; ""; ""; true
+OTHER; "Select All"; NA; ""; ""; true
+OTHER; "<select name=keyword_id id=keyword_id style=width:150px; onchange="; NA; ""; ""; true
+OTHER; "Select All"; NA; ""; ""; true
+OTHER; "<select class=form-control form-control-sm name=lang_code id=lang_code onchange=doLoadUrl(lang_code,"; NA; ""; ""; true
+OTHER; "<select name=link_id id=link_id onchange="; NA; ""; ""; true
+OTHER; "<select name=link_id id=link_id onchange="; NA; ""; ""; true
+OTHER; "<select name=website_id id=website_id style=width:150px; onchange="; NA; ""; ""; true
+OTHER; "<select name=source_id>"; NA; ""; ""; true
+OTHER; "Select All"; NA; ""; ""; true
+OTHER; "Select All"; NA; ""; ""; true
+OTHER; "<select name=keyword_id id=keyword_id style=width:150px; onchange="; NA; ""; ""; true
+OTHER; "Select All"; NA; ""; ""; true
+OTHER; "<select class=form-control form-control-sm name=lang_code id=lang_code onchange=doLoadUrl(lang_code,"; NA; ""; ""; true
+OTHER; "<select name=link_id id=link_id onchange="; NA; ""; ""; true
+OTHER; "<select name=link_id id=link_id onchange="; NA; ""; ""; true
+OTHER; "<select name=website_id id=website_id style=width:150px; onchange="; NA; ""; ""; true
