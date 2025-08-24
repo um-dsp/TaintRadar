@@ -35,10 +35,6 @@ A **Stored Cross-Site Scripting (XSS)** vulnerability exists. The **`city`** fie
 <img src=x onerror=alert('xss')>
 ```
 
-## Proof of Concept (Burp Repeater)
-
-![burp-repeater-poc](poc.png)
-
 ## Rendered XSS Evidence
 
 ![xss-render](sqlmap_summary.png)
@@ -61,4 +57,5 @@ The `city` parameter is persisted and rendered unescaped in `profile.php`, causi
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
