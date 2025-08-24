@@ -192,7 +192,10 @@ def main():
             # We'll use the stem of the input file to keep it stable.
             file_stem = sql_file.stem
             out_csv = out_dir / f"{file_stem}-database.csv"
+            out_dir1="taint-radar/db-schemas"
+            out_csv1=out_dir1 / f"{file_stem}-database.csv"
             df.to_csv(out_csv, index=False, header=not args.no_header)
+            df.to_csv(out_csv1, index=False, header=not args.no_header)
             print(f"[ok] Wrote {out_csv}")
         except Exception as e:
             print(f"[error] Failed to process {sql_file}: {e}", file=sys.stderr)
