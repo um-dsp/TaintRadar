@@ -19,7 +19,7 @@ A **Stored Cross-Site Scripting (XSS)** vulnerability exists. The **`city`** fie
 ## Affected Component & Parameter
 
 * **Source:** `don.php` (POST param `city`)
-* **Sink:** `profile.php`
+* **Sink:** `bbms.php`
 
 ## XSS Type & Example Payloads
 
@@ -59,6 +59,7 @@ The `city` parameter is persisted and rendered unescaped in `profile.php`, causi
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
 
