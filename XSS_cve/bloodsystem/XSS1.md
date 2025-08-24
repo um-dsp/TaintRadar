@@ -53,12 +53,13 @@ The `city` parameter is persisted and rendered unescaped in `profile.php`, causi
 ## Steps to Reproduce
 
 1. Submit payload in `city` field at `don.php`.
-2. View `profile.php`.
+2. View `bbms.php`.
 3. Observe alert execution.
 
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
 
