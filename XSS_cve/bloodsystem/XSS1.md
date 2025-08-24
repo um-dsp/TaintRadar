@@ -37,7 +37,9 @@ A **Stored Cross-Site Scripting (XSS)** vulnerability exists. The **`city`** fie
 
 ## Rendered XSS Evidence
 
-![xss-render](sqlmap_summary.png)
+![xss-render](bloodsystem.png)
+![xss-render](bloodsystem1.png)
+
 
 ## Technical Description
 
@@ -57,5 +59,6 @@ The `city` parameter is persisted and rendered unescaped in `profile.php`, causi
 ## Vulnerable Code (Screenshot)
 
 ![vulnerable-code](code_snippet.png)
+
 
 
