@@ -42,7 +42,7 @@ A SQL Injection vulnerability exists in the `addmeasurement.php` endpoint of **T
 
 ## Proof of Concept (Firefox Screenshot)
 
-![tailor_add_measurement](tailor_add_measurement.png)
+![tailor_add_measurement](exploit.png)
 
 ## SQLMap Summary
 
