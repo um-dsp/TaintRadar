@@ -6,7 +6,7 @@ This page maps each reserved CVE ID to its corresponding public reference URL in
 
 Total mapped CVE IDs: **29**
 
-| CVE ID | Vulnerability Type | Vendor | Affected Product / Version | Affected Component | Short Description | Public Reference URL |
+| CVE ID | Vulnerability Type | Vendor | Affected Product / Version | Affected Component | Short Description | Public Reference URL (POC) |
 |---|---|---|---|---|---|---|
 | CVE-2025-65336 | SQL Injection | https://github.com/creativesaiful | Ecommerce-project-with-php-and-mysqli-Fruits-Bazar- - 1.0 | admin/json/show_price_by_pdtId.php | Ecommerce-project-with-php-and-mysqli-Fruits-Bazar 1.0 is vulnerable to SQL Injection in /show_price_by_pdtId.php. | https://github.com/um-dsp/TaintRadar/blob/main/sql_injection_cves/ecommercefruitsbazarmaster/20250811-ecommerce-project-with-php-and-mysqli-fruits-bazar-show_price_by_pdtid.php-pid-sqli/20250811-ecommerce-project-with-php-and-mysqli-fruits-bazar-show_price_by_pdtid.php-pid-sqli.md |
 | CVE-2025-65337 | Cross Site Scripting (XSS) | https://www.sourcecodester.com/php/12258/fantastic-blog-cms-php.html | FantasticBlog - 1.0 | pageEditMember.php , ViewpageMember.php | Sourcecodester Fantastic Blog CMS 1.0 is vulnerable to Cross Site Scripting (XSS) in pageEditMember.php via the address field. | https://github.com/um-dsp/TaintRadar/blob/main/XSS_cve/fantasticblog/XSS1.md |
