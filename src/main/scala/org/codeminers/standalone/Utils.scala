@@ -2,7 +2,7 @@ package org.codeminers.standalone
 
 import io.shiftleft.passes.CpgPass
 import io.shiftleft.codepropertygraph.generated.{Cpg, NodeTypes, DiffGraphBuilder}
-import io.shiftleft.codepropertygraph.generated.nodes.{AstNode, Identifier, Literal, FieldIdentifier, Method, Call, MethodParameterIn, Return, Block, StoredNode, TypeRef, MethodReturn, Tag}
+import io.shiftleft.codepropertygraph.generated.nodes.{AstNode, Identifier, Literal, FieldIdentifier, Method, Call, MethodParameterIn, Return, Block, StoredNode, TypeRef, MethodReturn, Tag, File}
 import io.shiftleft.semanticcpg.language.*
 import io.joern.dataflowengineoss.language.*
 import java.nio.file.{Files, Paths, StandardOpenOption}
@@ -12,7 +12,7 @@ import org.codeminers.standalone.Constants.ConstantsFactory
 class Utils(cpg: Cpg) {
     val vulnerabilities: List[String] = {
         if (cpg.metaData.head.language == "java") List("SQL Injection", "XSS")
-        else List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS") //, "Stored XSS")
+        else List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS")
     }
     val Constants = ConstantsFactory.getConstants(cpg.metaData.head.language)
     val sanitizationObject = new SanitizationFilter(cpg)
@@ -88,6 +88,16 @@ class Utils(cpg: Cpg) {
         }
     }
 
+    def getFilesFromInclude(call: Call): List[File] = {
+        if (call.isCallTo("include|include_once|require|require_once").isEmpty) {
+            List()
+        }
+        else {
+            val file_names = call.argument.filter(_.isInstanceOf[Literal]).code.map(_.replaceAll("\"", "")).l
+            cpg.file.filter(f => file_names.contains(f.name)).l
+        }
+    }
+
     var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
     // reachibilityArgs maps the first field access call node of backward data flow to a map of definitions and their scope
     // FieldAccess Call (Sink) -> { Definition Node -> Scope: (CallStack, VarStack) }
@@ -131,9 +141,15 @@ class Utils(cpg: Cpg) {
                         }
                         // For an identifier: if it points to a method parameter, traverse this parameter, otherwise follow the data dependency edges
                         case identifier: Identifier => {
-                            if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None)))
-                            identifier.method.parameter.name(identifier.name).l
-                            else identifier.ddgIn.l
+                            if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None))) {
+                                identifier.method.parameter.name(identifier.name).l
+                            } else {
+                                if (identifier.ddgIn.l.isEmpty) {
+                                    val files = identifier.file.head.ast.isCallTo("include|include_once|require|require_once").flatMap(getFilesFromInclude)
+                                    files.method.filter(_.name == "<global>").methodReturn.ddgIn.filter(_.isIdentifier).asInstanceOf[Iterator[Identifier]].filter(_.name == identifier.name).l
+                                }
+                                else identifier.ddgIn.l
+                            }
                         }
                         // For a literal: output the literal
                         case literal: Literal => List(literal)
@@ -221,6 +237,10 @@ class Utils(cpg: Cpg) {
     }
     }
 
+    def reachableBySources(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[AstNode] = {
+        getReachingDefs(List(List(sink)), sources, tagName).reverse
+    }
+
     def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[List[AstNode]] = {
         val paths: List[List[AstNode]] = sources.map(source => getReachingDefs(List(List(sink)), List(source), tagName).reverse).filterNot(_.isEmpty)
         paths
@@ -248,7 +268,8 @@ class Utils(cpg: Cpg) {
         node.isInstanceOf[Identifier] || 
         node.isInstanceOf[Literal] || 
         node.isInstanceOf[MethodParameterIn] ||
-        node.isInstanceOf[FieldIdentifier]
+        node.isInstanceOf[FieldIdentifier] || 
+        node.isInstanceOf[Return]
     }
 
     def augmentWithSanTag() = {
@@ -293,9 +314,27 @@ class Utils(cpg: Cpg) {
     }
 
     def iteratorToJson(it: Iterator[StoredNode]) = {
-        it.map(x => {
+        val objects = it.map(x => {
                 (x.productElementNames.l.zip(x.productIterator.l).toMap ++ x.tag.map(y => (y.name, y.value)).toMap + ("file" -> x.file.name.headOption.getOrElse("None")))
-            }).toJsonPretty
+            }).toList
+        
+        def mapToJsonString(map: Map[String, Any]): String = {
+            val pairs = map.map { case (key, value) =>
+                val valueStr = value match {
+                    case Some(v) => v.toString
+                    case None => "null"
+                    case seq: IndexedSeq[_] => "\"" + seq.mkString("") + "\""
+                    case s: String => "\"" + s.replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r") + "\""
+                    case null => "null"
+                    case other => other.toString
+                }
+                "\"" + key + "\":" + valueStr
+            }
+            "{" + pairs.mkString(",") + "}"
+        }
+        
+        val jsonObjects = objects.map(mapToJsonString)
+        "[" + jsonObjects.mkString(",\n") + "]"
     }
     
     def cpgToJson(fileName: String = "cpg.json") = {

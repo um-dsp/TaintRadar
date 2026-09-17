@@ -1,5 +1,6 @@
 package org.codeminers.standalone
 
+import io.joern.joerncli.console.Joern.importCpg
 import io.joern.javasrc2cpg.{Config => JavaConfig, JavaSrc2Cpg}
 import io.joern.php2cpg.{Config => PhpConfig, Php2Cpg}
 import io.joern.x2cpg.X2Cpg.applyDefaultOverlays
@@ -9,6 +10,7 @@ import io.shiftleft.passes.CpgPass
 import io.shiftleft.semanticcpg.language._
 import flatgraph.DiffGraphBuilder
 
+import java.nio.file.{Files, Paths}
 import scala.util.{Failure, Success}
 
 import org.codeminers.standalone.Constants.ConstantsFactory
@@ -17,37 +19,28 @@ import org.codeminers.standalone.Constants.ConstantsFactory
 object Main {
 
   def main(args: Array[String]): Unit = {
-    println("Welcome to our tool")
-    println("This tool is used to detect and analyze data flow vulnerabilities in application code.")
-    println("What is the language of the code you want to analyze? The supported languages currently included are: PHP and Java")
-    val language = scala.io.StdIn.readLine()
-    println("Please enter the path to the directory containing the code you want to analyze:")
-    val directory = scala.io.StdIn.readLine()
-    print("Creating CPG... ")
-    val config = {
-      if (language.toLowerCase() == "php") {
-        PhpConfig().withInputPath(directory)
-      } else if (language.toLowerCase() == "java") {
-        JavaConfig().withInputPath(directory)
-      } else {
-        println("Invalid language")
-        Failure(new Exception("Invalid language"))
+    println("Welcome to TaintRadar")
+    println("TaintRadar is an augmented-CPG approach for detecting PhP taint-style vulnerabilities.")
+    val cpgPath = {
+      val input = {
+        if (args.size > 0)
+          args(0)
+        else {
+          println("Please enter the path to the parsed CPG binary (cpg.bin):")
+          Option(scala.io.StdIn.readLine()).getOrElse("").trim
+        }
       }
+      // Also accept the directory that contains cpg.bin
+      val path = Paths.get(input)
+      if (Files.isDirectory(path)) path.resolve("cpg.bin").toString else input
     }
+    print("Loading CPG... ")
+    // Name the workspace project after the CPG file, so that re-running on the same file
+    // overwrites its working copy instead of creating cpg.bin1, cpg.bin2, ...
+    val cpgOpt = importCpg(cpgPath, Option(Paths.get(cpgPath).getFileName).map(_.toString).getOrElse(""))
 
-    val cpgOrException = {
-      if (language.toLowerCase() == "php") {
-        Php2Cpg().createCpg(config.asInstanceOf[PhpConfig])
-      } else if (language.toLowerCase() == "java") {
-        JavaSrc2Cpg().createCpg(config.asInstanceOf[JavaConfig])
-      } else {
-        println("Error creating CPG")
-        Failure(new Exception("Error creating CPG"))
-      }
-    }
-
-    cpgOrException match {
-      case Success(cpg) =>
+    cpgOpt match {
+      case Some(cpg) =>
         println("CPG created successfully")
         println("Applying default overlays")
         applyDefaultOverlays(cpg)
@@ -61,12 +54,10 @@ object Main {
         utils.debugDatabaseParsing()
         println("Running Vulnerability path extraction...")
         val navexMain = new NavexMain(cpg, false)
-        navexMain.outputPaths(true)
-        println("Vulnerability path extraction completed check the output directory for the results")
-        // new MyPass(cpg).createAndApply()
-      case Failure(exception) =>
+        val outputLog = navexMain.outputPaths(true)
+        println(outputLog)
+      case None =>
         println("Error creating CPG")
-        println(exception)
     }
   }
 

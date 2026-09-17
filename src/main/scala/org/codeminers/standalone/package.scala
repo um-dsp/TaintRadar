@@ -28,7 +28,6 @@ package object standalone {
 
   @Traversal(elementType = classOf[Method])
   implicit class CustomMethodSteps(val traversal: Iterator[Method]) extends AnyVal {
-    @Doc("custom step on method as an example", "a veeery long description again")
     def customMethodStep: Iterator[String] =
       traversal.flatMap(_.parameter.name)
   }
@@ -46,7 +45,6 @@ package object standalone {
     val utils = new Utils(cpg)
     val navexMain = new NavexMain(cpg, true)
     
-    @Doc("custom starter step as an example", "a veeery long description")
     def filterSanitized: Iterator[AstNode] =
       cpg.method.ast.filter(sanitizationObject.isSanitized(_)(constants.san_functions_all))
 

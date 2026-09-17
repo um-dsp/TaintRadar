@@ -136,11 +136,11 @@ class DatabaseConstraint(val cpg: Cpg) {
     // Get database schema from csv file
     val file_name = cpg.metaData.root.head.split("/").last
     val reader = {
-        try CSVReader.open("db-schemas/" + file_name + "-database.csv")
+        try CSVReader.open("output/db-schemas/" + file_name + "-database.csv")
         catch { 
             case e: Exception => {
                 println("No database schema found for " + file_name + ". Using empty database schema.")
-                CSVReader.open("db-schemas/empty-database.csv") 
+                CSVReader.open("output/db-schemas/empty-database.csv") 
             }
         }
     }
@@ -394,7 +394,7 @@ class DatabaseConstraint(val cpg: Cpg) {
         val typeAndCode = queries.map(query => query.queryType.toString + "; \"" + query.queryCode.mkString(" ") + "\"; " + parseQuery(query)(0) + "; \"" + parseQuery(query)(1).mkString(", ") + "\"; \"" + parseQuery(query)(2).mkString(", ") + "\"" + "; " + (labelQueryInput(query)==QueryLabel.SafeQuery && labelQueryOutput(query)==QueryLabel.SafeQuery).toString)
         val outputPath = Paths.get("output/db-schemas/" + file_name + ".csv")
         Files.createDirectories(outputPath.getParent)
-        Files.write(outputPath, typeAndCode.mkString("\n").getBytes, StandardOpenOption.CREATE)
+        Files.write(outputPath, typeAndCode.mkString("\n").getBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
         val selectUnsafe = queries.filter(_.queryType==QueryType.SelectQuery).map(getUnsafeColumns(_)).flatten.dedup.l
         val insertUnsafe = queries.filter(q => q.queryType==QueryType.InsertQuery || q.queryType == QueryType.UpdateQuery).map(getUnsafeColumns(_)).flatten.dedup.l
         val bothUnsafe: List[(String, String)] = insertUnsafe.filter(selectUnsafe.contains(_))

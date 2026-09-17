@@ -44,10 +44,11 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
     }
 
     // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
-    // val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
-    val sources = cpg.call.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l  ++ cpg.parameter("args").filter(_.method.name=="main").l
+    val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
+    // val sources = cpg.call.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l  ++ cpg.parameter("args").filter(_.method.name=="main").l
     // val sources = cpg.call.filter(f => Constants.attacker_object_types.map(f.typeFullName.contains(_)).contains(true)).l
-
+    println("Sources size: " + sources.size)
+    
     val databaseCalls = getSinkCalls("Stored XSS", CpgUtils.getTagName("XSS"), false)
 
     val insertStatements = CpgUtils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
@@ -192,14 +193,14 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
         val jsonPath = Paths.get("output/paths/" + 
             cpg.metaData.root.head.split("/").last.split('.').head.replaceAll("[^a-zA-Z]", "").toLowerCase + "-output.json")
         Files.createDirectories(jsonPath.getParent)
-        Files.write(jsonPath, output.getBytes, StandardOpenOption.CREATE)
+        Files.write(jsonPath, output.getBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
         
         // Append stats to CSV
         val csvPath = Paths.get("output/stats.csv")
         Files.createDirectories(csvPath.getParent)
         Files.write(csvPath, (logger.mkString(",") + "\n").getBytes, StandardOpenOption.CREATE, StandardOpenOption.APPEND)
 
-        "Successfully created " + jsonPath.getFileName() + " and " + csvPath.getFileName()
+        "Successfully written vulnerability paths to " + jsonPath.toString + " and appended metrics to " + csvPath.toString
     }
 
 }

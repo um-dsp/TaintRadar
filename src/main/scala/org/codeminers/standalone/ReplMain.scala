@@ -14,8 +14,8 @@ object ReplMain extends BridgeBase {
     RunBeforeCode.forInteractiveShell ++ Seq(s"import _root_.${getClass.getPackageName}.*")
   }
 
-  override protected def promptStr  = "joern-navex"
-  override protected def greeting   = "Welcome to the wonderful world of this joern extension!"
-  override protected def onExitCode = """println("goodbye!")"""
-  override def applicationName      = "joern-navex"
+  override protected def promptStr  = "taint-radar"
+  override protected def greeting   = "Initializing TaintRadar - a Joern extension for an improved uncovering of taint-style vulnerabilities"
+  override protected def onExitCode = """println("Exiting")"""
+  override def applicationName      = "taint-radar"
 }

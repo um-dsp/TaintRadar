@@ -1,0 +1,333 @@
+{
+    "Basic sanitization check for sanitized_echo.php": [
+        {
+            "file": "sanitized_echo.php",
+            "lineNumber": 2,
+            "code": "$_GET[\"name\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "sanitized_echo.php",
+            "lineNumber": 3,
+            "code": "echo \"Hello \" . htmlentities($name)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Basic sanitization check for identifier_basic_san.php": [
+        {
+            "file": "identifier_basic_san.php",
+            "lineNumber": 2,
+            "code": "$x = 0",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "identifier_basic_san.php",
+            "lineNumber": 3,
+            "code": "$y = $x + 12",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "identifier_basic_san.php",
+            "lineNumber": 4,
+            "code": "$x = $x + $y",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        }
+    ],
+    "Basic sanitization check for identifier_basic_unsan.php": [
+        {
+            "file": "identifier_basic_unsan.php",
+            "lineNumber": 2,
+            "code": "$x = 0",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "identifier_basic_unsan.php",
+            "lineNumber": 3,
+            "code": "$y = $x + $_GET[\"input\"]",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "identifier_basic_unsan.php",
+            "lineNumber": 4,
+            "code": "$z = $x . $_GET[\"input\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "identifier_basic_unsan.php",
+            "lineNumber": 5,
+            "code": "$x = $x + $y",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "identifier_basic_unsan.php",
+            "lineNumber": 6,
+            "code": "echo $z",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Basic sanitization check for unsanitized_echo.php": [
+        {
+            "file": "unsanitized_echo.php",
+            "lineNumber": 2,
+            "code": "$_GET[\"name\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "unsanitized_echo.php",
+            "lineNumber": 3,
+            "code": "echo \"Hello \" . $name",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Checking sanitization of parameters passed by reference for byreference.php": [
+        {
+            "file": "byreference.php",
+            "lineNumber": 3,
+            "code": "$p1 = filter_input($p1)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 7,
+            "code": "$p1 = $p1 . $_GET[\"input\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 10,
+            "code": "$x = $_GET[\"input\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 11,
+            "code": "$y = \"Input: \"",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 12,
+            "code": "customSanRef($x)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 13,
+            "code": "customUnsanRef($y)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 14,
+            "code": "echo $x . $y",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 14,
+            "code": "$x",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "byreference.php",
+            "lineNumber": 14,
+            "code": "$y",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Checking sanitization of class properties and methods for class.php": [],
+    "Checking sanitization of field identifiers for field_identifiers.php": [
+        {
+            "file": "field_identifiers.php",
+            "lineNumber": 2,
+            "code": "$input = $_GET[\"username\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "field_identifiers.php",
+            "lineNumber": 3,
+            "code": "define(\"SAN\",\"HELLO\")",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "field_identifiers.php",
+            "lineNumber": 4,
+            "code": "define(\"UNSAN\",\"USERNAME: \" . $input)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "field_identifiers.php",
+            "lineNumber": 5,
+            "code": "printf(SAN)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "field_identifiers.php",
+            "lineNumber": 6,
+            "code": "printf(UNSAN)",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Checking sanitization of method definition for method.php": [
+        {
+            "file": "method.php",
+            "lineNumber": 5,
+            "code": "return $x",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "method.php",
+            "lineNumber": 10,
+            "code": "return $x",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Checking sanitization of methods and identifier in neverused.php": [
+        {
+            "file": "neverused.php",
+            "lineNumber": 4,
+            "code": "return $x",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "neverused.php",
+            "lineNumber": 8,
+            "code": "return $y",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "neverused.php",
+            "lineNumber": 11,
+            "code": "$z",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Checking sanitization for paperexample.php": [
+        {
+            "file": "paperexample.php",
+            "lineNumber": 3,
+            "code": "$query",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 4,
+            "code": "return mysql_query($query)",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 7,
+            "code": "$user_id = (int) $_COOKIE[\"uid\"]",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 8,
+            "code": "$username = $_POST[\"username\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 9,
+            "code": "$name = mysql_escape_string($username)",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 10,
+            "code": "$password = $_POST[\"password\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 12,
+            "code": "$data",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "paperexample.php",
+            "lineNumber": 13,
+            "code": "echo $data",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        }
+    ],
+    "Checking sanitization for recursive-fun.php": [
+        {
+            "file": "recursive-fun.php",
+            "lineNumber": 3,
+            "code": "return 1",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "recursive-fun.php",
+            "lineNumber": 4,
+            "code": "return $n * factorial($n-1)",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        }
+    ],
+    "Checking sanitization for settype.php": [
+        {
+            "file": "settype.php",
+            "lineNumber": 2,
+            "code": "$x = $_GET[\"input\"]",
+            "SAN_XSS": "FALSE",
+            "SAN_SQL_Injection": "FALSE"
+        },
+        {
+            "file": "settype.php",
+            "lineNumber": 3,
+            "code": "settype($x,\"int\")",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        },
+        {
+            "file": "settype.php",
+            "lineNumber": 4,
+            "code": "echo $x",
+            "SAN_XSS": "TRUE",
+            "SAN_SQL_Injection": "TRUE"
+        }
+    ]
+}
