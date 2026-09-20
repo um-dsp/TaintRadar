@@ -21,10 +21,23 @@ object Main {
   def main(args: Array[String]): Unit = {
     println("Welcome to TaintRadar")
     println("TaintRadar is an augmented-CPG approach for detecting PhP taint-style vulnerabilities.")
+    // --module/-m <name> selects the TaintRadar module to run; every other argument is positional
+    val moduleIndex = args.indexWhere(arg => arg == "--module" || arg == "-m")
+    val module = {
+      if (moduleIndex < 0) Module.Database
+      else args.lift(moduleIndex + 1).flatMap(Module.fromName) match {
+        case Some(module) => module
+        case None =>
+          println("Please pass one of the following modules to " + args(moduleIndex) + ": " + Module.names.mkString(", "))
+          sys.exit(1)
+      }
+    }
+    val positionalArgs = if (moduleIndex < 0) args else args.patch(moduleIndex, Nil, 2)
+    println("Module: " + module.label)
     val cpgPath = {
       val input = {
-        if (args.size > 0)
-          args(0)
+        if (positionalArgs.size > 0)
+          positionalArgs(0)
         else {
           println("Please enter the path to the parsed CPG binary (cpg.bin):")
           Option(scala.io.StdIn.readLine()).getOrElse("").trim
@@ -44,16 +57,9 @@ object Main {
         println("CPG created successfully")
         println("Applying default overlays")
         applyDefaultOverlays(cpg)
-        val utils = new Utils(cpg)
-        println("Applying sanitization augmentation...")
-        utils.augmentWithSanTag()
-        println("Sanitization augmentation completed")
-        println("Applying database queries augmentation...")
-        utils.augmentWithQueryTag()
-        println("Database queries augmentation completed with the following output:")
-        utils.debugDatabaseParsing()
+        NavexMain.augment(new Utils(cpg), module, verbose = true)
         println("Running Vulnerability path extraction...")
-        val navexMain = new NavexMain(cpg, false)
+        val navexMain = new NavexMain(cpg, false, module)
         val outputLog = navexMain.outputPaths(true)
         println(outputLog)
       case None =>

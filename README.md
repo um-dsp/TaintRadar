@@ -115,13 +115,26 @@ Pass the path to the `cpg.bin` from step 2 (or to the directory that contains it
 
 If you leave out the path, TaintRadar asks for it. It then applies its augmentations and runs vulnerability detection. TaintRadar works on a copy of the CPG in `workspace/`. Running it again on the same CPG file replaces that copy and the previous outputs.
 
+**Choosing a module.** By default, TaintRadar runs all its modules. To run only part of the approach (for an ablation study, for example), pass `--module` (or `-m`) with one of the modules below. Each module builds on the ones above it:
+
+| `--module` | Approach | What runs |
+| --- | --- | --- |
+| `vanilla` | Vanilla Joern | Joern's own data flow engine (`reachableByFlows`), with no TaintRadar augmentation |
+| `dataflow` | +Dataflow | TaintRadar's data flow traversal. Every sink counts as unsanitized. |
+| `sanitization` | +Sanitization | Adds the sanitization tags, so sanitized sinks and paths are filtered out |
+| `database` (default) | +Database | Adds the database schema and query tags, and paths that go through the database |
+
+```bash
+./taint-radar /path/to/cpg.bin --module sanitization
+```
+
 **Outputs:**
 
 | File | Contents |
 | --- | --- |
 | `output/paths/<name>-output.json` | Detected vulnerable paths |
-| `output/stats.csv` | Metrics appended per run (CPG size, execution time, number of vulnerabilities, …) |
-| `output/db-schemas/<app-root-dir>.csv` | Database queries found in the application, with their parsed tables and columns and whether they are safe |
+| `output/stats.csv` | One row appended per run: the approach, language and application, then the CPG size, number of sources, sinks and paths per vulnerability, execution time, … A header row is written when the file is created. |
+| `output/db-schemas/<app-root-dir>.csv` | Database queries found in the application, with their parsed tables and columns and whether they are safe (`database` module only) |
 
 `<name>` is derived from the application's root directory: everything from the first `.` is dropped, only letters are kept, and the result is lowercased. For example, `my_app-2.0` becomes `myapp`, and `tailor` stays `tailor`.
 

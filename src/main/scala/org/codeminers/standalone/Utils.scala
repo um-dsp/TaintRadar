@@ -5,6 +5,7 @@ import io.shiftleft.codepropertygraph.generated.{Cpg, NodeTypes, DiffGraphBuilde
 import io.shiftleft.codepropertygraph.generated.nodes.{AstNode, Identifier, Literal, FieldIdentifier, Method, Call, MethodParameterIn, Return, Block, StoredNode, TypeRef, MethodReturn, Tag, File}
 import io.shiftleft.semanticcpg.language.*
 import io.joern.dataflowengineoss.language.*
+import io.joern.dataflowengineoss.queryengine.EngineContext
 import java.nio.file.{Files, Paths, StandardOpenOption}
 
 import org.codeminers.standalone.Constants.ConstantsFactory
@@ -244,6 +245,14 @@ class Utils(cpg: Cpg) {
     def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[List[AstNode]] = {
         val paths: List[List[AstNode]] = sources.map(source => getReachingDefs(List(List(sink)), List(source), tagName).reverse).filterNot(_.isEmpty)
         paths
+    }
+
+    // paths found by Joern's own data flow engine, from the sinks back to the sources
+    // the engine solves its tasks in parallel, so the paths are sorted to keep runs reproducible
+    def getJoernPaths(sinks: List[Call], sources: List[AstNode] = List()): List[List[AstNode]] = {
+        implicit val engineContext: EngineContext = EngineContext()
+        import scala.math.Ordering.Implicits.seqOrdering
+        sinks.reachableByFlows(sources).map(_.elements).l.sortBy(_.map(_.id))
     }
 
     def getNodesFromID(path: List[Long]): List[AstNode] = {

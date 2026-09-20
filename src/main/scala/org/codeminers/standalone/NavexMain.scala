@@ -4,22 +4,35 @@ import io.shiftleft.codepropertygraph.generated.{Cpg, NodeTypes}
 import io.shiftleft.codepropertygraph.generated.nodes.{AstNode, Call, MethodParameterIn}
 import io.shiftleft.semanticcpg.language.*
 import io.joern.dataflowengineoss.language.*
+import scala.math.Ordering.Implicits.seqOrdering
 
 import org.codeminers.standalone.Constants.ConstantsFactory
 import org.codeminers.standalone.Utils
 
 import java.nio.file.{Files, Paths, StandardOpenOption}
 
-class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
+object NavexMain {
+    def augment(utils: Utils, module: Module, verbose: Boolean = false): Unit = {
+        if (module.includes(Module.Sanitization)) {
+            if (verbose) println("Applying sanitization augmentation...")
+            utils.augmentWithSanTag()
+            if (verbose) println("Sanitization augmentation completed")
+        }
+        if (module.includes(Module.Database)) {
+            if (verbose) println("Applying database queries augmentation...")
+            utils.augmentWithQueryTag()
+            if (verbose) println("Database queries augmentation completed with the following output:")
+            utils.debugDatabaseParsing()
+        }
+    }
+}
+
+class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = Module.Database) {
 
     val CpgUtils = Utils(cpg)
     val Constants = ConstantsFactory.getConstants(cpg.metaData.head.language)
     val cpgSize = cpg.all.size
-    if (shouldAugment){
-        CpgUtils.augmentWithSanTag()
-        CpgUtils.augmentWithQueryTag()
-        CpgUtils.debugDatabaseParsing()
-    }
+    if (shouldAugment) NavexMain.augment(CpgUtils, module)
 
 
     var logger: List[String] = List()
@@ -34,7 +47,10 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
             logger ++= List(totalSinks.size.toString)
         }
         // val unsanSinks: List[Call] = totalSinks.filterNot(_.argument.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE").l
-        val unsanSinks: List[Call] = totalSinks.filter(_.argument.tag.name(tagName).value.contains("FALSE")).l
+        val unsanSinks: List[Call] = {
+            if (module.includes(Module.Sanitization)) totalSinks.filter(_.argument.tag.name(tagName).value.contains("FALSE")).l
+            else totalSinks
+        }
         if (debug) {
             println("Sensitive unsanitized sink functions size: " + unsanSinks.size)
             logger ++= List(unsanSinks.size.toString)
@@ -65,9 +81,33 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
     
     // val vulnerableSelect = selectStatements.filter(CpgUtils.isReachableBy(_, databaseCalls))
         
-    def getPaths(vulnerability: String, debug: Boolean = false) = {
+    def getPaths(vulnerability: String, debug: Boolean = false): Iterable[List[AstNode]] = {
         println(vulnerability)
         val tagName: String = CpgUtils.getTagName(vulnerability)
+        if (module == Module.VanillaJoern) getJoernPaths(vulnerability, tagName, debug)
+        else getTaintRadarPaths(vulnerability, tagName, debug)
+    }
+
+    // Paths found by Joern's data flow engine, from the sink calls back to the sources
+    private def getJoernPaths(vulnerability: String, tagName: String, debug: Boolean): Iterable[List[AstNode]] = {
+        val sinks: List[Call] = getSinkCalls(vulnerability, tagName, debug)
+        val paths: List[List[AstNode]] = CpgUtils.getJoernPaths(sinks, sources)
+        if (debug) println("Number of paths within CPG: " + paths.size)
+        logger ++= List(paths.size.toString)
+
+        val withoutDbCalls = paths.filterNot(p => p.dropRight(1).exists(databaseCalls.contains(_)))
+        // no paths across the database
+        logger ++= List("0")
+        logger ++= List(paths.size.toString)
+
+        val dedupPaths = withoutDbCalls.groupBy(path => List(path.last)).map(_._2.head).toList.sortBy(_.map(_.id))
+        if (debug) println("Total deduplicated unsanitized paths: " + dedupPaths.size)
+        logger ++= List(dedupPaths.size.toString)
+        if (debug) println()
+        dedupPaths
+    }
+
+    private def getTaintRadarPaths(vulnerability: String, tagName: String, debug: Boolean): Iterable[List[AstNode]] = {
         val sinks = getSinkCalls(vulnerability, tagName, debug).argument.l
         // intra and inter-procedural path from source to sink
         // paths considering every source node separately (one or no path per source node)
@@ -84,7 +124,7 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
         if (debug) println("Number of paths not containing database calls within CPG: " + withoutDbCalls.size)
 
         val cpgDatabasePaths: List[List[AstNode]] = {
-            if (vulnerability=="SQL Injection" || sinks.isEmpty) List()
+            if (!module.includes(Module.Database) || vulnerability=="SQL Injection" || sinks.isEmpty) List()
             else {
                 // Get unsafe query statements that are of type INSERT or UPDATE 
                 // val insertStatements = CpgUtils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
@@ -134,7 +174,7 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
             (r,c) => (r.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE") && (c.isInstanceOf[MethodParameterIn])
             ).contains(true)).filterNot(_.map(_.tag.name(tagName).value.headOption.getOrElse("NA") == "TRUE").contains(true))
         if (debug) println("Total unsanitized paths: " + unsanPaths.size)
-        val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head)
+        val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head).toList.sortBy(_.map(_.id))
         if (debug) println("Total deduplicated unsanitized paths: " + dedupPaths.size)
         logger ++= List(dedupPaths.size.toString)
         if (debug) println()
@@ -195,12 +235,20 @@ class NavexMain(val cpg: Cpg,val shouldAugment: Boolean) {
         Files.createDirectories(jsonPath.getParent)
         Files.write(jsonPath, output.getBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
         
-        // Append stats to CSV
+        // Append stats to CSV, starting with a header row when the file is new
         val csvPath = Paths.get("output/stats.csv")
         Files.createDirectories(csvPath.getParent)
-        Files.write(csvPath, (logger.mkString(",") + "\n").getBytes, StandardOpenOption.CREATE, StandardOpenOption.APPEND)
+        if (!Files.exists(csvPath) || Files.size(csvPath) == 0) {
+            val vulnerabilityColumns = List("Sinks", "Unsanitized Sinks", "CPG Paths", "Inter Database paths", "Total Paths", "Total Deduplicated Paths")
+            val header = List("Approach", "Language", "Web Application", "CPG Size", "Sources", "Insert Sinks", "Select Sources") ++
+                CpgUtils.vulnerabilities.flatMap(v => vulnerabilityColumns.map(v + " " + _)) ++
+                List("Time", "Sanitization Exception Rate")
+            Files.write(csvPath, (header.mkString(",") + "\n").getBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
+        }
+        val row = List(module.label, cpg.metaData.head.language.toUpperCase) ++ logger
+        Files.write(csvPath, (row.mkString(",") + "\n").getBytes, StandardOpenOption.CREATE, StandardOpenOption.APPEND)
 
-        "Successfully written vulnerability paths to " + jsonPath.toString + " and appended metrics to " + csvPath.toString
+        "Successfully written vulnerability paths to " + jsonPath.toString + " and appended " + module.label + " metrics to " + csvPath.toString
     }
 
 }
