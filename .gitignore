@@ -9,3 +9,11 @@ target/
 output/
 applications/
 .venv/
+
+# SARD download and generated corpora (see utils/prepare_sard.py)
+sard/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/

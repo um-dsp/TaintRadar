@@ -59,13 +59,49 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
         unsanSinks
     }
 
-    // source of the attack vector: HTTP request parameters, e.g. $_GET[], $_POST[], ...
-    val sources = cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
-    // val sources = cpg.call.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l  ++ cpg.parameter("args").filter(_.method.name=="main").l
+    // Three shapes of attacker input in PHP.
+    //
+    // A superglobal is an identifier, and it is the source whether it is subscripted
+    // ($_GET["x"]) or read whole ($tainted = $_POST), so the identifier is what we anchor
+    // on: matching the index access instead misses every whole-array read.
+    val superglobalSources: List[AstNode] =
+        cpg.identifier.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l
+
+    // An index access is still needed for a superglobal that is not an identifier, as in
+    // $GLOBALS["_GET"]["x"], where the name is a string key. Taking every index access
+    // whose code mentions a superglobal would report the same flow once per enclosing
+    // node -- $_REQUEST["a"]["b"], $_REQUEST["a"] and $_REQUEST are three nodes for one
+    // read -- so only the innermost one is kept, and it is dropped entirely when the
+    // identifier above already covers it.
+    val indexAccessCandidates: List[Call] =
+        cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
+    private val candidateIds: Set[Long] = (superglobalSources.map(_.id) ++ indexAccessCandidates.map(_.id)).toSet
+    val indexAccessSources: List[AstNode] =
+        indexAccessCandidates.filterNot(node => node.ast.exists(child => child.id != node.id && candidateIds.contains(child.id)))
+
+    // filter_input(INPUT_GET, ...) and getallheaders() name the input in the call itself.
+    val callSources: List[AstNode] =
+        cpg.call.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l
+
+    val sources: List[AstNode] = superglobalSources ++ indexAccessSources ++ callSources
     // val sources = cpg.call.filter(f => Constants.attacker_object_types.map(f.typeFullName.contains(_)).contains(true)).l
     println("Sources size: " + sources.size)
     
     val databaseCalls = getSinkCalls("Stored XSS", CpgUtils.getTagName("XSS"), false)
+
+    // The read side of a second-order flow, used only to link a SELECT to the sinks it
+    // feeds. getSinkCalls keeps a call only when one of its arguments is labelled
+    // unsanitized, which is the right question for the write side: an INSERT is dangerous
+    // because of what is passed to it. A SELECT is dangerous because of the rows it hands
+    // back, and its query string is usually a constant, so every argument is labelled
+    // sanitized and the call would be dropped. Whether the output of a SELECT is
+    // attacker-controlled is already decided by DBConstraint, which labels the query
+    // UNSAFE when it reads a column that unsanitized input can reach, so these calls are
+    // taken unfiltered and the selectStatements filter below does the work.
+    val databaseReads: List[Call] = {
+        val readFunctions = CpgUtils.getSinks("Stored XSS")
+        cpg.call.filter(node => readFunctions.contains(node.name)).l
+    }
 
     val insertStatements = CpgUtils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
     val vulnerableInsert = if (insertStatements.filter(CpgUtils.isReachableBy(_, databaseCalls)).size > 0) insertStatements.filter(CpgUtils.isReachableBy(_, databaseCalls)) else insertStatements
@@ -76,8 +112,8 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
 
 
     val selectStatements = CpgUtils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
-    val vulnerableSelect = if (selectStatements.filter(CpgUtils.isReachableBy(_, databaseCalls)).size > 0) selectStatements.filter(CpgUtils.isReachableBy(_, databaseCalls)) else selectStatements
-    val dbCallsPerSelect = vulnerableSelect.map(q => databaseCalls.filter(dbcall => CpgUtils.isReachableBy(q, List(dbcall))))
+    val vulnerableSelect = if (selectStatements.filter(CpgUtils.isReachableBy(_, databaseReads)).size > 0) selectStatements.filter(CpgUtils.isReachableBy(_, databaseReads)) else selectStatements
+    val dbCallsPerSelect = vulnerableSelect.map(q => databaseReads.filter(dbcall => CpgUtils.isReachableBy(q, List(dbcall))))
     
     // val vulnerableSelect = selectStatements.filter(CpgUtils.isReachableBy(_, databaseCalls))
         
@@ -141,7 +177,7 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
                 if (vulnerableInsert.size == 0 || vulnerableSelect.size == 0) List()
                 else {
                     // val m1: Map[AstNode, List[List[AstNode]]] = ( vulnerableInsert zip vulnerableInsert.map(CpgUtils.reachableBySource(_, sources, tagName)) ).toMap
-                    val dbCallsToSink = dbCallsPerSelect.map(dbcall => sinks.flatMap(s => CpgUtils.reachableBySource(s, dbcall, tagName)))
+                    val dbCallsToSink = dbCallsPerSelect.map(dbcall => sinks.flatMap(s => CpgUtils.reachableBySource(s, dbcall, tagName, false)))
 
                     val selectToSink = sinks.flatMap(CpgUtils.reachableBySource(_, dbCallsPerSelect.flatten.dedup.l, tagName))
                     val m2: Map[AstNode, List[List[AstNode]]] = ( vulnerableSelect zip dbCallsToSink ).toMap
@@ -170,9 +206,18 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
         logger ++= List(totalPaths.size.toString)
 
         // if methodParamIn depends on a sanitized node: the path is sanitized
-        val unsanPaths = totalPaths.filterNot(path => path.dropRight(1).zip(path.drop(1)).map(
-            (r,c) => (r.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE") && (c.isInstanceOf[MethodParameterIn])
-            ).contains(true)).filterNot(_.map(_.tag.name(tagName).value.headOption.getOrElse("NA") == "TRUE").contains(true))
+        def isSanitizedPath(path: List[AstNode]): Boolean =
+            path.dropRight(1).zip(path.drop(1)).map(
+                (r,c) => (r.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE") && (c.isInstanceOf[MethodParameterIn])
+                ).contains(true) ||
+            path.map(_.tag.name(tagName).value.headOption.getOrElse("NA") == "TRUE").contains(true)
+
+        // A path that crosses the database is assembled from two legs that were each
+        // checked already: the source-to-INSERT leg stopped at any sanitized node, and the
+        // sink of the SELECT-to-sink leg is unsanitized by construction. Checking it again
+        // node by node would discard it over the query handle of the SELECT, so only the
+        // paths found within the CPG are filtered here.
+        val unsanPaths = withoutDbCalls.filterNot(isSanitizedPath) ++ cpgDatabasePaths
         if (debug) println("Total unsanitized paths: " + unsanPaths.size)
         val dedupPaths = unsanPaths.groupBy(path => List(path.head, path.last)).map(_._2.head).toList.sortBy(_.map(_.id))
         if (debug) println("Total deduplicated unsanitized paths: " + dedupPaths.size)

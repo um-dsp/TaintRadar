@@ -30,6 +30,20 @@ class SanitizationFilter(val cpg: Cpg) {
    val values: List[List[Expression]] = constants.map(constant => cpg.call(Constants.constant_definition_func).filter(_.argument(1).code.replace("\"", "") == constant).argument(2).l) 
    val constantTable = Some((constants zip values).toMap[String, List[Expression]]) 
 
+   // php2cpg's type recovery often leaves a call site as ANY while still resolving the
+   // return type of the callee, so fall back to the declared return type of the method.
+   def fieldIdentifiersOf(call: Call): List[FieldIdentifier] =
+      call.argument.l.collect { case field: FieldIdentifier => field }
+
+   // True when the field access reads a constant that a define() call in this CPG declares.
+   def isConstantAccess(call: Call): Boolean =
+      fieldIdentifiersOf(call).exists(field => constantTable.getOrElse(Map()).contains(field.canonicalName))
+
+   def resolvedType(call: Call): String = {
+      if (call.typeFullName != "ANY") call.typeFullName
+      else call.callee.methodReturn.typeFullName.find(_ != "ANY").getOrElse(call.typeFullName)
+   }
+
    def isMethodSanitized(function: Call, arguments: List[Expression], sanitizedParameters: List[Boolean])(implicit sanitization_functions: List[String]): Boolean = {
       // if the function is dynamically dispatched, search cpg for the first function that matches its name, otherwise go to callee
       val method: Method = {
@@ -55,9 +69,9 @@ class SanitizationFilter(val cpg: Cpg) {
       //    else isObjSan +: isArgumentSanitizedRaw.slice(1, isArgumentSanitizedRaw.size)
       // }
       // known unsanitized function calls are always unsanitized
-      if (Constants.attacker_input.contains(function.code) || Constants.attacker_object_types.map(t => function.typeFullName.contains(t)).contains(true)) false
+      if (Constants.attacker_input.contains(function.name) || Constants.attacker_input.contains(function.code) || Constants.attacker_object_types.map(t => function.typeFullName.contains(t)).contains(true)) false
       // sanitization function returns a sanitized result
-      else if (Constants.san_functions_all.contains(function.name) || sanitization_functions.contains(function.name)) true
+      else if (Constants.san_functions.contains(function.name) || sanitization_functions.contains(function.name)) true
       // dynamic dispatch only supported if the function appears only once in the code
       else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size > 1) false
       // safe return type
@@ -67,6 +81,11 @@ class SanitizationFilter(val cpg: Cpg) {
       // if the function is a constructor (new), check if the object is sanitized (joern doesn't provide built-in DDG edges in that case)
       else if (function.name == "<operator>.alloc" && function.argument.l.isEmpty) {
          isSanitized(cpg.call("<init>").filter(_.id == function.id + 1).l, sanitizedParameters)(sanitization_functions)
+      }
+      // a PHP constant read is a field access whose field identifier names the constant,
+      // so resolve it through the define() table
+      else if (function.name == "<operator>.fieldAccess" && isConstantAccess(function)) {
+         isSanitized(fieldIdentifiersOf(function), sanitizedParameters)(sanitization_functions)
       }
       // for field access, check if the attribute's reaching definitions are sanitized
       else if (function.name == "<operator>.fieldAccess") {
@@ -83,7 +102,7 @@ class SanitizationFilter(val cpg: Cpg) {
             val argumentTypes = function.argument.map(arg => {
                if (arg.isInstanceOf[Literal]) arg.asInstanceOf[Literal].typeFullName
                else if (arg.isInstanceOf[Identifier]) arg.asInstanceOf[Identifier].typeFullName
-               else if (arg.isInstanceOf[Call]) arg.asInstanceOf[Call].typeFullName
+               else if (arg.isInstanceOf[Call]) resolvedType(arg.asInstanceOf[Call])
                else "NA"
             }).l
             Constants.safe_types.exists(argumentTypes.contains(_)) || !isArgumentSanitized.contains(false)

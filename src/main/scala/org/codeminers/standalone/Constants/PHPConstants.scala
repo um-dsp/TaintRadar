@@ -15,7 +15,9 @@ object PHPConstants extends ConstantsTrait {
     "INPUT_POST",
     "INPUT_COOKIE",
     "INPUT_REQUEST",
-    "INPUT_ENV"
+    "INPUT_ENV",
+    "apache_request_headers",
+    "getallheaders"
   )
 
   val safe_types: List[String] =
@@ -32,7 +34,14 @@ object PHPConstants extends ConstantsTrait {
   )
 
   val magic_constants: List[String] = List(
-    "__LINE__, __FILE__, __DIR__, __FUNCTION__, __CLASS__, __TRAIT__, __METHOD__, __NAMESPACE__"
+    "__LINE__",
+    "__FILE__",
+    "__DIR__",
+    "__FUNCTION__",
+    "__CLASS__",
+    "__TRAIT__",
+    "__METHOD__",
+    "__NAMESPACE__"
   )
 
   val input_func: List[String] = List("readline")
@@ -136,7 +145,12 @@ object PHPConstants extends ConstantsTrait {
     "intval",
     "floatval",
     "doubleval",
+    // filter_input and filter_input_array are the same function over a scalar and over an
+    // array of keys, so they have to be modelled the same way. Whether either one actually
+    // neutralises the input depends on the FILTER_* constant passed with it, which is not
+    // modelled here; both are taken as sanitizing, as the paper's configuration did.
     "filter_input",
+    "filter_input_array",
     "urlencode",
     "rawurlencode",
     "round",

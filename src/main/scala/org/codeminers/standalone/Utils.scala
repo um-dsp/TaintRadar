@@ -99,6 +99,21 @@ class Utils(cpg: Cpg) {
         }
     }
 
+    def callsTo(method: Method): List[Call] =
+        cpg.call.nameExact(method.name).filter(c => c.methodFullName == method.fullName || c.methodFullName == method.name).l
+
+    def argumentAt(call: Call, index: Int): Option[AstNode] =
+        call.argument.l.find(_.argumentIndex == index)
+
+    def byReferenceDefinitions(identifier: Identifier): List[AstNode] =
+        List(identifier.astParent).collect { case call: Call => call }.flatMap(call =>
+            call.callee.filter(_.code != "<empty>").l.flatMap(method =>
+                method.parameter.l
+                    .filter(parameter => parameter.index == identifier.argumentIndex && parameter.evaluationStrategy == "BY_REFERENCE")
+                    .flatMap(parameter => method.methodReturn.ddgIn.collectAll[Identifier].nameExact(parameter.name).l)
+            )
+        )
+
     var dataFlowStepMap = collection.mutable.Map[AstNode, List[AstNode]]()
     // reachibilityArgs maps the first field access call node of backward data flow to a map of definitions and their scope
     // FieldAccess Call (Sink) -> { Definition Node -> Scope: (CallStack, VarStack) }
@@ -135,7 +150,8 @@ class Utils(cpg: Cpg) {
                                     .getOrElse((List(), List()))
                                 val defMaps = getReachingDef(call, call.code, 0, scope._1, scope._2, Set(call.id))
                                 reachabilityArgs(startNode) ++= defMaps
-                                defMaps.keys.toList
+                                if (defMaps.keys.nonEmpty) defMaps.keys.toList
+                                else call.argument.l.collect { case field: FieldIdentifier => field }
                             }
                             else method.filterNot(_.code == "<empty>").l ++ arguments
                             // method.filterNot(_.code == "<empty>").l ++ arguments
@@ -144,6 +160,8 @@ class Utils(cpg: Cpg) {
                         case identifier: Identifier => {
                             if (identifier.method.parameter.name.l.contains(identifier.name) && identifier.ddgIn.isIdentifier.name(identifier.name).l.isEmpty && (identifier != identifier.astParent.assignment.argument(1).headOption.getOrElse(None))) {
                                 identifier.method.parameter.name(identifier.name).l
+                            } else if (byReferenceDefinitions(identifier).nonEmpty) {
+                                byReferenceDefinitions(identifier)
                             } else {
                                 if (identifier.ddgIn.l.isEmpty) {
                                     val files = identifier.file.head.ast.isCallTo("include|include_once|require|require_once").flatMap(getFilesFromInclude)
@@ -157,13 +175,12 @@ class Utils(cpg: Cpg) {
                         // For a method parameter: potentially go to all method callers and output their corresponding argument (same index as the parameter)
                         // This is intended to be performed only if the path started within the method node itself, otherwise don't output anything
                         case parameter: MethodParameterIn => {
-                            if (goToCallIn)
-                                cpg.call(parameter.method.name).filter(_.methodFullName == parameter.method.fullName).map(_.argument.l).map(_.lift(parameter.index)).filterNot(_ == None).map(_.get).l
+                            if (goToCallIn) callsTo(parameter.method).flatMap(argumentAt(_, parameter.index))
                             else List()
                         }
                         // For a constant, try resolving it statically by checking the "define" function calls
                         case constant: FieldIdentifier => {
-                            if (Constants.magic_constants.contains(constant) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
+                            if (Constants.magic_constants.contains(constant.canonicalName) || constantTable.get.getOrElse(constant.canonicalName, List()).isEmpty) List()
                             else constantTable.get(constant.canonicalName).dedup.l
                         }
                         // For a method node, traverse its return block (after traversing it make sure not to try resolving the parameters)
@@ -208,13 +225,14 @@ class Utils(cpg: Cpg) {
     }
     
 
-    def getReachingDefs(paths: List[List[AstNode]], source: List[AstNode], tagName: String): List[AstNode] = {
+    // stopAtSanitized drops a reaching definition that is labelled sanitized, which ends the walk there
+    def getReachingDefs(paths: List[List[AstNode]], source: List[AstNode], tagName: String, stopAtSanitized: Boolean = true): List[AstNode] = {
     try {
         var output = List[List[AstNode]]()
         val visitedNodes = paths.flatten.dedup.l
         val result = paths.map( path => {
             // println(path.map(_.code).mkString(", ") + " " + !path.last.isMethod)
-            val reachingDefs = dataFlowStep(path.last, !path.last.isMethod)(path.isCallTo("<operator>.fieldAccess").headOption, path.isCall.assignment.lastOption).filterNot(node => visitedNodes.contains(node) || node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE")
+            val reachingDefs = dataFlowStep(path.last, !path.last.isMethod)(path.isCallTo("<operator>.fieldAccess").headOption, path.isCall.assignment.lastOption).filterNot(node => visitedNodes.contains(node) || (stopAtSanitized && node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE"))
             if (reachingDefs.isEmpty) (output = output :+ path)
             else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
         })
@@ -228,7 +246,7 @@ class Utils(cpg: Cpg) {
             // println("Wooh! that's a lot of paths")
             List()
         }
-        else getReachingDefs(output, source, tagName) 
+        else getReachingDefs(output, source, tagName, stopAtSanitized) 
     }
     catch {
         case _ => {
@@ -242,8 +260,9 @@ class Utils(cpg: Cpg) {
         getReachingDefs(List(List(sink)), sources, tagName).reverse
     }
 
-    def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[List[AstNode]] = {
-        val paths: List[List[AstNode]] = sources.map(source => getReachingDefs(List(List(sink)), List(source), tagName).reverse).filterNot(_.isEmpty)
+
+    def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String, stopAtSanitized: Boolean = true): List[List[AstNode]] = {
+        val paths: List[List[AstNode]] = sources.map(source => getReachingDefs(List(List(sink)), List(source), tagName, stopAtSanitized).reverse).filterNot(_.isEmpty)
         paths
     }
 
@@ -327,18 +346,22 @@ class Utils(cpg: Cpg) {
                 (x.productElementNames.l.zip(x.productIterator.l).toMap ++ x.tag.map(y => (y.name, y.value)).toMap + ("file" -> x.file.name.headOption.getOrElse("None")))
             }).toList
         
+        def quoteJsonString(s: String): String =
+            "\"" + s.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t") + "\""
+
+        def valueToJsonString(value: Any): String = value match {
+            case null => "null"
+            case None => "null"
+            case Some(v) => valueToJsonString(v)
+            case s: String => quoteJsonString(s)
+            case b: Boolean => b.toString
+            case n: (Int | Long | Short | Byte | Float | Double) => n.toString
+            case seq: IndexedSeq[_] => quoteJsonString(seq.mkString(""))
+            case other => quoteJsonString(other.toString)
+        }
+
         def mapToJsonString(map: Map[String, Any]): String = {
-            val pairs = map.map { case (key, value) =>
-                val valueStr = value match {
-                    case Some(v) => v.toString
-                    case None => "null"
-                    case seq: IndexedSeq[_] => "\"" + seq.mkString("") + "\""
-                    case s: String => "\"" + s.replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r") + "\""
-                    case null => "null"
-                    case other => other.toString
-                }
-                "\"" + key + "\":" + valueStr
-            }
+            val pairs = map.map { case (key, value) => quoteJsonString(key) + ":" + valueToJsonString(value) }
             "{" + pairs.mkString(",") + "}"
         }
         

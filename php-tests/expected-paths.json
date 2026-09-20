@@ -1,0 +1,254 @@
+[
+    {
+        "file": "traversal/global.php",
+        "lineNumber": 4,
+        "code": "mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "Source and sink in the same global scope."
+    },
+    {
+        "file": "traversal/globalArray.php",
+        "lineNumber": 5,
+        "code": "mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "Superglobal read whole and subscripted afterwards, so the source is the $_GET identifier rather than an index access."
+    },
+    {
+        "file": "traversal/sameFunction.php",
+        "lineNumber": 5,
+        "code": "return mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "Source and sink inside the same function."
+    },
+    {
+        "file": "traversal/sourceFunction.php",
+        "lineNumber": 13,
+        "code": "mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "Source returned by a called function, sink in global scope."
+    },
+    {
+        "file": "traversal/sanUnsan.php",
+        "lineNumber": 4,
+        "code": "mysql_query($unsanquery)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "First sink receives the unsanitized query."
+    },
+    {
+        "file": "traversal/sanUnsan.php",
+        "lineNumber": 6,
+        "code": "mysql_query($sanquery)",
+        "vulnerability": "SQL Injection",
+        "expected": "safe",
+        "note": "Second sink receives the same value after mysql_escape_string."
+    },
+    {
+        "file": "traversal/diffFunction.php",
+        "lineNumber": 7,
+        "code": "mysql_query($x)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "getName2() produces the source, performSink2() consumes it."
+    },
+    {
+        "file": "traversal/sinkFunction.php",
+        "lineNumber": 4,
+        "code": "mysql_query($x)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "performSink1() is declared inside main()."
+    },
+    {
+        "file": "sanitization/unsanitized_echo.php",
+        "lineNumber": 3,
+        "code": "echo(\"Hello \". $name)",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Paper example: unsanitized echo."
+    },
+    {
+        "file": "sanitization/sanitized_echo.php",
+        "lineNumber": 3,
+        "code": "echo(\"Hello \". htmlentities($name))",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "Paper example: the same echo behind htmlentities."
+    },
+    {
+        "file": "sanitization/identifier_basic_unsan.php",
+        "lineNumber": 6,
+        "code": "echo $z",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "$z concatenates $_GET['input'], so the taint survives."
+    },
+    {
+        "file": "sanitization/identifier_basic_san.php",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "Arithmetic over literals only; the file has no source and no sink."
+    },
+    {
+        "file": "sanitization/settype.php",
+        "lineNumber": 4,
+        "code": "echo $x",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "settype($x, \"int\") sanitizes the value before it is echoed."
+    },
+    {
+        "file": "sanitization/byreference.php",
+        "lineNumber": 14,
+        "code": "echo $x . $y",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "$x is sanitized by reference, $y is tainted by reference."
+    },
+    {
+        "file": "sanitization/field_identifiers.php",
+        "lineNumber": 6,
+        "code": "printf(UNSAN)",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Same limitation as the xfail on this line in expected.json."
+    },
+    {
+        "file": "sanitization/file-inclusion.php",
+        "lineNumber": 5,
+        "code": "echo $x . $y",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "$x comes from getX() in the included neverused.php."
+    },
+    {
+        "file": "sanitization/file-inclusion.php",
+        "lineNumber": 6,
+        "code": "print $y",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "$y comes from getY(), which returns a constant expression."
+    },
+    {
+        "file": "sanitization/neverused.php",
+        "lineNumber": 11,
+        "code": "$z = $_POST['username']",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "A source that never reaches a sink must not produce a path."
+    },
+    {
+        "file": "sanitization/fileaccess.php",
+        "lineNumber": 5,
+        "code": "fopen($y.'php')",
+        "vulnerability": "File Access",
+        "expected": "vulnerable",
+        "note": "$y is $_GET['username']."
+    },
+    {
+        "file": "sanitization/fileaccess.php",
+        "lineNumber": 4,
+        "code": "fopen($x.'.php')",
+        "vulnerability": "File Access",
+        "expected": "safe",
+        "note": "$x is the literal \"admin\"."
+    },
+    {
+        "file": "sanitization/paperexample.php",
+        "lineNumber": 4,
+        "code": "return mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "$password reaches the query unsanitized, while $user_id and $name do not."
+    },
+    {
+        "file": "sanitization/paperexample.php",
+        "lineNumber": 13,
+        "code": "echo $data",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "The query result is echoed without sanitization."
+    },
+    {
+        "file": "sanitization/method.php",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "Only function definitions; neither is ever called, so no sink is reachable."
+    },
+    {
+        "file": "sanitization/class.php",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "get_name() returns a source but the echo of its result is commented out."
+    },
+    {
+        "file": "sanitization/recursive-fun.php",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "Recursion without a source; the traversal must terminate without reporting."
+    },
+    {
+        "file": "paper/insert.php",
+        "lineNumber": 7,
+        "code": "mysqli_query($link, $sql)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "Paper example: $_POST values concatenated into an INSERT."
+    },
+    {
+        "file": "paper/display.php",
+        "lineNumber": 7,
+        "code": "printf(\"User: %s - Comment: %s\\n\", $row[\"id\"], $row[\"Comment\"])",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Paper example: the comment stored by insert.php is displayed here."
+    },
+    {
+        "file": "sample-web-app/input.php",
+        "vulnerability": "XSS",
+        "expected": "safe",
+        "note": "Assignments only; the file contains no sink."
+    },
+    {
+        "file": "sample-web-app/testCases.php",
+        "lineNumber": 103,
+        "code": "eval(\"ls -la \" . $unsan1)",
+        "vulnerability": "Code Injection",
+        "expected": "vulnerable",
+        "note": "The only sink in the propagation corpus; $unsan1 derives from $_GET['input']."
+    },
+    {
+        "file": "web-app-v2/index.php",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Cases #14-#22 of web-app-v2/README.md."
+    },
+    {
+        "file": "web-app-v2/login.php",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Cases #23-#35 of web-app-v2/README.md."
+    },
+    {
+        "file": "web-app-v2/config.php",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Same limitation as traversal/diffFunction.php."
+    },
+    {
+        "file": "web-app-v2/User.php",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Same limitation as traversal/diffFunction.php."
+    },
+    {
+        "file": "web-app-v2/includes/header.php",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "Same limitation as traversal/diffFunction.php."
+    }
+]

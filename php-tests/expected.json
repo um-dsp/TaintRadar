@@ -156,7 +156,6 @@
             "SAN_SQL_Injection": "FALSE"
         }
     ],
-    "Checking sanitization of class properties and methods for class.php": [],
     "Checking sanitization of field identifiers for field_identifiers.php": [
         {
             "file": "field_identifiers.php",
@@ -302,7 +301,7 @@
         {
             "file": "recursive-fun.php",
             "lineNumber": 4,
-            "code": "return $n * factorial($n-1)",
+            "code": "return $n * factorial($n - 1)",
             "SAN_XSS": "TRUE",
             "SAN_SQL_Injection": "TRUE"
         }

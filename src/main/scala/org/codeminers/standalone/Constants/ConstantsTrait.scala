@@ -26,4 +26,10 @@ trait ConstantsTrait {
   val san_functions_file: List[String]
   val san_functions_sql: List[String]
   val san_functions_xss: List[String]
+
+  lazy val all_sinks: List[String] =
+    (codeinj_sink ++ commandexec_sink ++ fileinc_sink ++ sqli_sink ++ xss_sink ++
+      stored_xss_func ++ fileaccess_sink ++ sessionfixation_sink).distinct
+
+  lazy val san_functions: List[String] = san_functions_all.diff(all_sinks)
 } 
