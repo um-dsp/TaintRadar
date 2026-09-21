@@ -16,6 +16,22 @@
         "note": "Superglobal read whole and subscripted afterwards, so the source is the $_GET identifier rather than an index access."
     },
     {
+        "file": "traversal/guardedValidation.php",
+        "lineNumber": 5,
+        "code": "mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "secure",
+        "note": "is_numeric() guards the sink, so the value reaching it cannot hold SQL syntax."
+    },
+    {
+        "file": "traversal/guardedWrongPredicate.php",
+        "lineNumber": 5,
+        "code": "mysql_query($query)",
+        "vulnerability": "SQL Injection",
+        "expected": "vulnerable",
+        "note": "is_string() reports a property without restricting the characters, so it is not a guard."
+    },
+    {
         "file": "traversal/sameFunction.php",
         "lineNumber": 5,
         "code": "return mysql_query($query)",
@@ -250,5 +266,29 @@
         "vulnerability": "XSS",
         "expected": "vulnerable",
         "note": "Same limitation as traversal/diffFunction.php."
+    },
+    {
+        "file": "sanitization/reflectingSinks.php",
+        "lineNumber": 3,
+        "code": "trigger_error(\"Hello \" . $name, E_USER_WARNING)",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "trigger_error reflects its message through the error handler."
+    },
+    {
+        "file": "sanitization/reflectingSinks.php",
+        "lineNumber": 4,
+        "code": "user_error(\"Hello \" . $name)",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "user_error is the alias of trigger_error."
+    },
+    {
+        "file": "sanitization/reflectingSinks.php",
+        "lineNumber": 5,
+        "code": "vprintf(\"Hello %s\", $name)",
+        "vulnerability": "XSS",
+        "expected": "vulnerable",
+        "note": "vprintf writes to the response exactly as printf does."
     }
 ]

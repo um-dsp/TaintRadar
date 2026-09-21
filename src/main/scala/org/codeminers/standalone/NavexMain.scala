@@ -68,18 +68,16 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
         cpg.identifier.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l
 
     // An index access is still needed for a superglobal that is not an identifier, as in
-    // $GLOBALS["_GET"]["x"], where the name is a string key. Taking every index access
-    // whose code mentions a superglobal would report the same flow once per enclosing
-    // node -- $_REQUEST["a"]["b"], $_REQUEST["a"] and $_REQUEST are three nodes for one
-    // read -- so only the innermost one is kept, and it is dropped entirely when the
-    // identifier above already covers it.
+    // $GLOBALS["_GET"]["x"], where the name is a string key.
     val indexAccessCandidates: List[Call] =
         cpg.call("<operator>.indexAccess").filter(node => Constants.attacker_input.map(node.code.contains(_)).contains(true)).l
     private val candidateIds: Set[Long] = (superglobalSources.map(_.id) ++ indexAccessCandidates.map(_.id)).toSet
     val indexAccessSources: List[AstNode] =
         indexAccessCandidates.filterNot(node => node.ast.exists(child => child.id != node.id && candidateIds.contains(child.id)))
 
-    // filter_input(INPUT_GET, ...) and getallheaders() name the input in the call itself.
+    // filter_input(INPUT_GET, ...) and filter_input_array(INPUT_GET, ...) name the input
+    // in the INPUT_* argument, which reaches the CPG as a field access, and
+    // getallheaders() names it in the call itself.
     val callSources: List[AstNode] =
         cpg.call.filter(node => Constants.attacker_input.contains(node.name) || Constants.attacker_input.contains(node.code)).l
 
@@ -90,14 +88,7 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
     val databaseCalls = getSinkCalls("Stored XSS", CpgUtils.getTagName("XSS"), false)
 
     // The read side of a second-order flow, used only to link a SELECT to the sinks it
-    // feeds. getSinkCalls keeps a call only when one of its arguments is labelled
-    // unsanitized, which is the right question for the write side: an INSERT is dangerous
-    // because of what is passed to it. A SELECT is dangerous because of the rows it hands
-    // back, and its query string is usually a constant, so every argument is labelled
-    // sanitized and the call would be dropped. Whether the output of a SELECT is
-    // attacker-controlled is already decided by DBConstraint, which labels the query
-    // UNSAFE when it reads a column that unsanitized input can reach, so these calls are
-    // taken unfiltered and the selectStatements filter below does the work.
+    // feeds. getSinkCalls keeps a call only when one of its arguments is labelled unsanitized
     val databaseReads: List[Call] = {
         val readFunctions = CpgUtils.getSinks("Stored XSS")
         cpg.call.filter(node => readFunctions.contains(node.name)).l
@@ -237,7 +228,14 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
         logger ++= List(vulnerableInsert.size.toString)
         logger ++= List(vulnerableSelect.size.toString)
 
-        val result = (CpgUtils.vulnerabilities zip CpgUtils.vulnerabilities.map(getPaths(_, true))).toMap
+        val result = (CpgUtils.vulnerabilities zip CpgUtils.vulnerabilities.map(vulnerability =>
+            if (CpgUtils.selectedVulnerabilities.contains(vulnerability)) getPaths(vulnerability, true)
+            else {
+                if (debug) println(vulnerability + ": skipped (TAINTRADAR_VULNS)\n")
+                logger ++= List.fill(6)("0")
+                List()
+            }
+        )).toMap
         val t1 = System.nanoTime()
         if (debug) println("Elapsed time: " + (t1 - t0)*1e-9 + " seconds")
         logger ++= List(((t1 - t0)*1e-9).toString)

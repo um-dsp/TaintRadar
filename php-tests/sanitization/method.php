@@ -1,7 +1,7 @@
 <?php
 function customSan($x) {
     $y = "INPUT: " . $x;
-    $x = filter_input($y);
+    $x = md5($y);
     return $x;
 }
 

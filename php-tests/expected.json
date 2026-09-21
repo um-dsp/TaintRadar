@@ -95,7 +95,7 @@
         {
             "file": "byreference.php",
             "lineNumber": 3,
-            "code": "$p1 = filter_input($p1)",
+            "code": "$p1 = md5($p1)",
             "SAN_XSS": "TRUE",
             "SAN_SQL_Injection": "TRUE"
         },

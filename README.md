@@ -328,14 +328,14 @@ application. Two expectation files describe what TaintRadar must produce:
 | File | Asserted against | Expectations |
 | --- | --- | --- |
 | [`php-tests/expected.json`](php-tests/expected.json) | `output/cpg.json`, the augmented node dump | 44 per-node `SAN_XSS` / `SAN_SQL_Injection` labels |
-| [`php-tests/expected-paths.json`](php-tests/expected-paths.json) | `output/paths/phptests-output.json` | 33 per-sink verdicts, 22 vulnerable and 11 secure |
+| [`php-tests/expected-paths.json`](php-tests/expected-paths.json) | `output/paths/phptests-output.json` | 39 per-sink verdicts, 27 vulnerable and 12 secure |
 
 Aggregate detection over the path oracle, recorded in
 [`php-tests/expected-metrics.json`](php-tests/expected-metrics.json):
 
 | TP | TN | FP | FN | Precision | Recall | False positive rate |
 | --- | --- | --- | --- | --- | --- | --- |
-| 22 | 11 | 0 | 0 | 1.00 | 1.00 | 0.00 |
+| 27 | 12 | 0 | 0 | 1.00 | 1.00 | 0.00 |
 
 Every vulnerable case is reported and every secure case is left alone, so the false
 positive rate on this corpus is zero.

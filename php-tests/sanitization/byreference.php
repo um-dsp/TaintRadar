@@ -1,6 +1,6 @@
 <?php
 function customSanRef(&$p1) {
-    $p1 = filter_input($p1);
+    $p1 = md5($p1);
 }
 
 function customUnsanRef(&$p1) {

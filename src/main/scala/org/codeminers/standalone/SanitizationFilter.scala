@@ -1,7 +1,7 @@
 package org.codeminers.standalone
 
 import io.shiftleft.codepropertygraph.generated.{Cpg, NodeTypes}
-import io.shiftleft.codepropertygraph.generated.nodes.{Method, Call, Identifier, Literal, FieldIdentifier, MetaData, Namespace, NamespaceBlock, TypeDecl, Block, File, Local, Member, MethodReturn, MethodParameterOut, MethodParameterIn, Return, Type, TypeRef, Expression}
+import io.shiftleft.codepropertygraph.generated.nodes.{AstNode, Method, Call, ControlStructure, Identifier, Literal, FieldIdentifier, MetaData, Namespace, NamespaceBlock, TypeDecl, Block, File, Local, Member, MethodReturn, MethodParameterOut, MethodParameterIn, Return, Type, TypeRef, Expression}
 import io.shiftleft.semanticcpg.language.*
 import io.joern.dataflowengineoss.language.*
 
@@ -44,6 +44,35 @@ class SanitizationFilter(val cpg: Cpg) {
       else call.callee.methodReturn.typeFullName.find(_ != "ANY").getOrElse(call.typeFullName)
    }
 
+   // filter_input(INPUT_GET, "t", FILTER_SANITIZE_NUMBER_INT) neutralises its input while
+   // filter_input(INPUT_GET, "t", FILTER_UNSAFE_RAW) does not
+   def isSanitizingFilterCall(call: Call): Boolean = {
+      val filterNames = (call.argument.ast.isFieldIdentifier.canonicalName.l ++ call.argument.ast.isIdentifier.name.l)
+         .filter(_.startsWith("FILTER_"))
+      filterNames.nonEmpty && filterNames.forall(Constants.sanitizing_filters.contains)
+   }
+
+   // Covers case when `identifier` is read inside a branch guarded by a validating predicate
+   // applied to the same variable, as in `if (is_numeric($x)) { sink($x); }`.
+   def isGuardedByValidator(identifier: Identifier): Boolean = {
+      if (Constants.validator_functions.isEmpty) return false
+      var node: Option[AstNode] = Iterator(identifier: AstNode).astParent.headOption
+      var depth = 0
+      while (node.isDefined && depth < 32) {
+         node.get match {
+            case controlStructure: ControlStructure =>
+               val guarded = Iterator(controlStructure).condition.ast.isCall
+                  .filter(call => Constants.validator_functions.contains(call.name))
+                  .exists(call => call.argument.ast.isIdentifier.name.l.contains(identifier.name))
+               if (guarded) return true
+            case _ => ()
+         }
+         node = Iterator(node.get).astParent.headOption
+         depth += 1
+      }
+      false
+   }
+
    def isMethodSanitized(function: Call, arguments: List[Expression], sanitizedParameters: List[Boolean])(implicit sanitization_functions: List[String]): Boolean = {
       // if the function is dynamically dispatched, search cpg for the first function that matches its name, otherwise go to callee
       val method: Method = {
@@ -72,6 +101,8 @@ class SanitizationFilter(val cpg: Cpg) {
       if (Constants.attacker_input.contains(function.name) || Constants.attacker_input.contains(function.code) || Constants.attacker_object_types.map(t => function.typeFullName.contains(t)).contains(true)) false
       // sanitization function returns a sanitized result
       else if (Constants.san_functions.contains(function.name) || sanitization_functions.contains(function.name)) true
+      // the filter_* family sanitizes only for the filters that reduce the value to digits
+      else if (Constants.filter_functions.contains(function.name)) isSanitizingFilterCall(function)
       // dynamic dispatch only supported if the function appears only once in the code
       else if (function.dispatchType == "DYNAMIC_DISPATCH" && cpg.method(function.name).filter(_.code!="<empty>").size > 1) false
       // safe return type
@@ -144,6 +175,8 @@ class SanitizationFilter(val cpg: Cpg) {
                // this & <global> identifiers are sanitized
                if (Constants.safe_types.contains(identifier.typeFullName) || Constants.san_identifiers.contains(identifier.name)) mapOut = true
                else if (Constants.attacker_object_types.map(t => identifier.typeFullName.contains(t)).contains(true) || Constants.attacker_input.contains(identifier.name)) mapOut = false
+               // a read that only happens when a validating predicate accepted the same variable cannot carry a payload
+               else if (isGuardedByValidator(identifier)) mapOut = true
                else mapOut = {
                   var isArgumentSanitized = sanitizedParameters
                   // calculate the reaching definition of the identifier

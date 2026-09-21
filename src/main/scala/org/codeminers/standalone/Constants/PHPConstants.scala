@@ -59,19 +59,29 @@ object PHPConstants extends ConstantsTrait {
     "mysqli_query",
     "mysqli_multi_query",
     "mysqli_real_query",
+    "mysqli_prepare",
     // mysql_ Functions (Deprecated)
     "mysql_query",
     // PostgreSQL Functions
     "pg_query",
     "pg_query_params",
+    "pg_send_query",
     // SQLite Functions
     "sqlite_query",
     "sqlite_exec",
     "queryExec",
-    // Miscellaneous
+    // IBM DB2 Functions
+    "db2_exec",
+    "db2_prepare",
+    // Microsoft SQL Server Functions
+    "sqlsrv_query",
+    "sqlsrv_prepare",
+    // Miscellaneous. A prepared statement is only safe when the query carries placeholders
     "sql_query",
     "query",
-    "real_query"
+    "real_query",
+    "prepare",
+    "multi_query"
   )
 
   // Useful for Stored XSS processing, i.e. not vulnerable to SQL Injection but interacts with the database
@@ -97,11 +107,73 @@ object PHPConstants extends ConstantsTrait {
 
   val fileinc_sink = List("include", "require", "include_once", "require_once")
 
-  val xss_sink = List("print", "echo", "printf", "exit")
+  val xss_sink = List(
+    "print",
+    "print_r",
+    "echo",
+    "printf",
+    "vprintf",
+    "fprintf",
+    "vfprintf",
+    "var_dump",
+    "exit",
+    "die",
+    "trigger_error",
+    "user_error"
+  )
 
   val fileaccess_sink = List("fopen")
 
   val sessionfixation_sink = List("setcookie")
+
+  // Predicates that constrain a value to a character set with no SQL or HTML
+  // metacharacter in it, so a value reaching a sink under `if (predicate($x))` cannot
+  // carry a payload. Only the predicate is listed; SanitizationFilter checks that the
+  // guarded variable is the one the predicate was applied to.
+  //
+  // Predicates that merely report a property without restricting the content do not
+  // belong here: is_string, is_array and is_object say nothing about the characters,
+  // gettype() is a comparison rather than a call, and preg_match and fnmatch depend
+  // entirely on a pattern this analysis does not interpret.
+  override val validator_functions: List[String] = List(
+    // type predicates that exclude every string value
+    "is_numeric",
+    "is_int",
+    "is_integer",
+    "is_long",
+    "is_float",
+    "is_double",
+    "is_real",
+    "is_bool",
+    // character-class predicates over alphanumeric subsets
+    "ctype_digit",
+    "ctype_xdigit",
+    "ctype_alnum",
+    "ctype_alpha",
+    "ctype_lower",
+    "ctype_upper",
+    // whitelist membership: the value must equal one of the entries of the haystack.
+    // Only sound when the call passes $strict, since the default loose comparison
+    // juggles types -- before PHP 8, in_array("1 OR 1=1", [1,2,3]) is true. The third
+    // argument is not inspected here, so this entry can mask a flow in that case.
+    "in_array"
+  )
+
+  // filter_input, filter_input_array and filter_var apply the filter named by their
+  // FILTER_* argument, so whether they sanitize depends on that argument rather than on
+  // the function.
+  override val sanitizing_filters: List[String] = List(
+    "FILTER_SANITIZE_NUMBER_INT",
+    "FILTER_SANITIZE_NUMBER_FLOAT"
+  )
+
+  // Left empty, which leaves the argument-aware path in SanitizationFilter inert and the
+  // filter_* family treated as plain sanitizers by way of san_functions_all below. That
+  // is an over-approximation of their safety and a known source of false negatives: a
+  // filter_input call given FILTER_UNSAFE_RAW, or given no filter at all, returns the
+  // input verbatim and is not a sanitizer. Populating this list with the three function
+  // names is what switches the decision over to sanitizing_filters above.
+  override val filter_functions: List[String] = List()
 
   val san_functions_sql = List(
     "dbx_escape_string",
@@ -145,10 +217,7 @@ object PHPConstants extends ConstantsTrait {
     "intval",
     "floatval",
     "doubleval",
-    // filter_input and filter_input_array are the same function over a scalar and over an
-    // array of keys, so they have to be modelled the same way. Whether either one actually
-    // neutralises the input depends on the FILTER_* constant passed with it, which is not
-    // modelled here; both are taken as sanitizing, as the paper's configuration did.
+    // unconditional only because filter_functions above is empty; see the note there
     "filter_input",
     "filter_input_array",
     "urlencode",

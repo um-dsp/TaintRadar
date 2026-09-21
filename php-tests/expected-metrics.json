@@ -1,7 +1,7 @@
 {
     "_comment": "Baseline for test_detection_metrics_have_not_regressed, counted over every entry of expected-paths.json. Regenerate deliberately, never to make a failing run pass.",
-    "tp": 23,
-    "tn": 11,
+    "tp": 27,
+    "tn": 12,
     "fp": 0,
     "fn": 0
 }

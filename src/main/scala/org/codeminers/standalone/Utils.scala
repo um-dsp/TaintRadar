@@ -15,6 +15,22 @@ class Utils(cpg: Cpg) {
         if (cpg.metaData.head.language == "java") List("SQL Injection", "XSS")
         else List("Code Injection", "Command Execution", "File Inclusion", "Session Fixation", "File Access", "SQL Injection", "XSS")
     }
+    // TAINTRADAR_VULNS restricts a run to part of the list above: a comma-separated list of
+    // names, matched on letters only e.g. "XSS", "xss" and "SQL_Injection".
+    val selectedVulnerabilities: List[String] = {
+        def key(name: String) = name.replaceAll("[^a-zA-Z]", "").toLowerCase
+        val requested = sys.env.getOrElse("TAINTRADAR_VULNS", "").split(",").toList.map(key).filter(_.nonEmpty)
+        if (requested.isEmpty) vulnerabilities
+        else {
+            val unknown = requested.filterNot(r => vulnerabilities.map(key).contains(r))
+            if (unknown.nonEmpty)
+                throw new IllegalArgumentException(
+                    "TAINTRADAR_VULNS: unknown vulnerability " + unknown.mkString(", ") +
+                    ". Known for this language: " + vulnerabilities.mkString(", "))
+            vulnerabilities.filter(v => requested.contains(key(v)))
+        }
+    }
+
     val Constants = ConstantsFactory.getConstants(cpg.metaData.head.language)
     val sanitizationObject = new SanitizationFilter(cpg)
     val db = new DatabaseConstraint(cpg)
@@ -302,7 +318,7 @@ class Utils(cpg: Cpg) {
 
     def augmentWithSanTag() = {
         // get all sink functions for the given vulnerability
-        vulnerabilities.map(vulnerability => {
+        selectedVulnerabilities.map(vulnerability => {
             val attack_san_functions = getSanitization(vulnerability)
             val tagName = getTagName(vulnerability)
             

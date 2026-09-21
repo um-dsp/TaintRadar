@@ -156,6 +156,12 @@ def compute_metrics(results):
     def weighted(safe_value, vuln_value):
         return ratio(safe_support * safe_value + vuln_support * vuln_value, total)
 
+    # The macro average weights both classes equally. On a corpus this imbalanced the
+    # weighted figures are carried by the safe class, so the macro ones are what show
+    # whether vulnerabilities are being found. See utils/sard_reproduce.py.
+    def macro(safe_value, vuln_value):
+        return (safe_value + vuln_value) / 2
+
     return {
         "tp": tp,
         "tn": tn,
@@ -171,6 +177,9 @@ def compute_metrics(results):
         "weighted_precision": weighted(safe_precision, precision),
         "weighted_recall": weighted(safe_recall, recall),
         "weighted_f1": weighted(safe_f1, f1),
+        "macro_precision": macro(safe_precision, precision),
+        "macro_recall": macro(safe_recall, recall),
+        "macro_f1": macro(safe_f1, f1),
         "safe_precision": safe_precision,
         "safe_recall": safe_recall,
         "safe_f1": safe_f1,
@@ -200,6 +209,16 @@ def print_report(metrics, results):
         f"{metrics['weighted_f1'] * 100:>8.2f}"
         f"{metrics['weighted_precision'] * 100:>8.2f}"
         f"{metrics['weighted_recall'] * 100:>8.2f}"
+        f"{metrics['false_positive_rate'] * 100:>8.2f}"
+    )
+    print()
+    print("  Macro averages (both classes weighted equally):")
+    print(
+        f"  {'TaintRadar':<12}"
+        f"{metrics['accuracy'] * 100:>8.2f}"
+        f"{metrics['macro_f1'] * 100:>8.2f}"
+        f"{metrics['macro_precision'] * 100:>8.2f}"
+        f"{metrics['macro_recall'] * 100:>8.2f}"
         f"{metrics['false_positive_rate'] * 100:>8.2f}"
     )
     print()

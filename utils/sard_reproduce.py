@@ -211,6 +211,16 @@ def metrics(results):
     def weighted(safe_value, vuln_value):
         return ratio(safe_support * safe_value + vuln_support * vuln_value, total)
 
+    # The macro average weights the two classes equally instead of by support. On a corpus
+    # that is 82% sanitized the weighted figures are dominated by the safe class, which is
+    # why a detector that never fires still scores a weighted F1 in the seventies; the
+    # macro figures fall to the low forties for that detector, so they are the ones that
+    # say whether vulnerabilities are actually being found.
+    def macro(safe_value, vuln_value):
+        return (safe_value + vuln_value) / 2
+
+    null_safe_f1 = ratio(2 * ratio(safe_support, total), ratio(safe_support, total) + 1)
+
     return {
         "tp": tp, "tn": tn, "fp": fp, "fn": fn, "total": total,
         "safe_support": safe_support, "vulnerable_support": vuln_support,
@@ -221,8 +231,13 @@ def metrics(results):
         "weighted_precision": weighted(safe_precision, vuln_precision),
         "weighted_recall": weighted(safe_recall, vuln_recall),
         "weighted_f1": weighted(safe_f1, vuln_f1),
+        "macro_precision": macro(safe_precision, vuln_precision),
+        "macro_recall": macro(safe_recall, vuln_recall),
+        "macro_f1": macro(safe_f1, vuln_f1),
         # A detector that never fires, scored on the same data, for reference.
         "null_detector_accuracy": ratio(safe_support, total),
+        "null_detector_weighted_f1": weighted(null_safe_f1, 0.0),
+        "null_detector_macro_f1": macro(null_safe_f1, 0.0),
     }
 
 
@@ -238,6 +253,8 @@ def report(m):
           f"{pct(m['safe_f1']):>9.2f}{m['safe_support']:>9}")
     print(f"  {'Vulnerable':<24}{pct(m['vuln_precision']):>11.2f}{pct(m['vuln_recall']):>9.2f}"
           f"{pct(m['vuln_f1']):>9.2f}{m['vulnerable_support']:>9}")
+    print(f"  {'macro avg':<24}{pct(m['macro_precision']):>11.2f}{pct(m['macro_recall']):>9.2f}"
+          f"{pct(m['macro_f1']):>9.2f}{m['total']:>9}")
     print(f"  {'weighted avg':<24}{pct(m['weighted_precision']):>11.2f}{pct(m['weighted_recall']):>9.2f}"
           f"{pct(m['weighted_f1']):>9.2f}{m['total']:>9}")
     print()
@@ -249,15 +266,24 @@ def report(m):
           f"{pct(m['weighted_precision']):>8.2f}{pct(m['weighted_recall']):>8.2f}"
           f"{pct(m['false_positive_rate']):>8.2f}")
     print()
+    print("  Same run, macro averages (both classes weighted equally):")
+    print(f"    TaintRadar {pct(m['accuracy']):>8.2f}{pct(m['macro_f1']):>8.2f}"
+          f"{pct(m['macro_precision']):>8.2f}{pct(m['macro_recall']):>8.2f}"
+          f"{pct(m['false_positive_rate']):>8.2f}")
+    print()
     print("  Same run, positive (vulnerable) class only:")
     print(f"    TaintRadar {pct(m['accuracy']):>8.2f}{pct(m['vuln_f1']):>8.2f}"
           f"{pct(m['vuln_precision']):>8.2f}{pct(m['vuln_recall']):>8.2f}"
           f"{pct(m['false_positive_rate']):>8.2f}")
     print()
     print(f"  Reference: a detector that flags nothing scores accuracy "
-          f"{pct(m['null_detector_accuracy']):.2f} with FPR 0.00 on this same data.")
+          f"{pct(m['null_detector_accuracy']):.2f} with FPR 0.00 on this same data,")
+    print(f"  for a weighted F1 of {pct(m['null_detector_weighted_f1']):.2f} "
+          f"and a macro F1 of {pct(m['null_detector_macro_f1']):.2f}.")
     if m["null_detector_accuracy"] >= m["accuracy"]:
-        print("  ^ that is HIGHER than the measured accuracy above.")
+        print("  ^ that accuracy is HIGHER than the measured accuracy above.")
+    if m["null_detector_weighted_f1"] >= m["weighted_f1"]:
+        print("  ^ and its weighted F1 is HIGHER too -- which is what the macro row is for.")
 
 
 def main():

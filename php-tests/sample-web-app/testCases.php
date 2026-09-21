@@ -6,7 +6,7 @@ $san2 = "Hello World";
 
 // Assignment propagation
 $unsan0 = $_GET['input'];
-$san3 = filter_input($unsan0);
+$san3 = md5($unsan0);
 $san4 = $san3 + " .";
 $san4 = $san4 + $san3;
 $unsan1 = $unsan0 + $san4;
@@ -34,7 +34,7 @@ if ($cond > 1.0) {
 // Functions (by ralue)
 function customSan($p1) {
     $unsan3 = $p1;
-    $san8 = filter_input($unsan3);
+    $san8 = md5($unsan3);
     return $san8;
 }
 $san9 = customSan($unsan1);
@@ -58,7 +58,7 @@ $san10 = addTwo($san1, $san2);
 $unsan8 = addTwo($san1, $unsan2);
 
 function customSan2nd($p1, $p2) {
-    return $p1 . filter_input($p2);
+    return $p1 . md5($p2);
 }
 $san11 = customSan2nd($san3, $unsan2);
 $unsan9 = customSan2nd($unsan1, $unsan2);
@@ -66,7 +66,7 @@ $unsan10 = customSan2nd($unsan1, $san2);
 
 // Functions (by reference)
 function customSanRef(&$p1) {
-    $p1 = filter_input($p1);
+    $p1 = md5($p1);
 }
 $san12 = $unsan1;
 customSanRef($san12);
@@ -80,7 +80,7 @@ $unsan11 = $san13;
 customAddRef($unsan11, $unsan1);
 
 function san1stArg(&$p1, &$p2) {
-    $p1 = filter_input($p1);
+    $p1 = md5($p1);
     return $p1 . $p2;
 }
 $san14 = $unsan10;
