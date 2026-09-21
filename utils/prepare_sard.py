@@ -84,6 +84,17 @@ def parse_args():
         ),
     )
     parser.add_argument(
+        "--skip",
+        type=int,
+        default=0,
+        help=(
+            "Discard this many cases in manifest order before --first starts collecting. "
+            "--skip 10000 --first 10000 gives a slice disjoint from the one the paper "
+            "scored, which is how to check that the configuration generalises rather than "
+            "fitting the cases it was profiled on"
+        ),
+    )
+    parser.add_argument(
         "--seed",
         type=int,
         default=42,
@@ -205,8 +216,8 @@ def iter_cases(reader, skipped=None):
             }
 
 
-def collect(reader, sample, seed, first=None):
-    """Collect every case, the first N of them, or a uniform sample, streaming throughout."""
+def collect(reader, sample, seed, first=None, skip=0):
+    """Collect every case, a slice of them in manifest order, or a uniform sample."""
     if first is not None:
         # Manifest order, matching the paper notebook's new_df.head(N). iter_cases drops
         # anything that is neither SQL Injection nor XSS, while the notebook kept those
@@ -214,12 +225,17 @@ def collect(reader, sample, seed, first=None):
         # the tally is zero -- as expected for this SQLi suite -- the two agree exactly.
         skipped = [0]
         cases = []
+        seen = 0
         for case in iter_cases(reader, skipped=skipped):
+            seen += 1
+            if seen <= skip:
+                continue
             cases.append(case)
             if len(cases) >= first:
                 break
         other = skipped[0]
-        print(f"[info] Took the first {len(cases)} test cases in manifest order")
+        position = f"cases {skip + 1}-{skip + len(cases)}" if skip else f"the first {len(cases)}"
+        print(f"[info] Took {position} test cases in manifest order")
         if other:
             print(
                 f"[warn] Skipped {other} case(s) in that prefix that are neither SQL Injection "
@@ -328,7 +344,7 @@ def main():
 
     reader = SuiteReader(source)
     try:
-        cases = collect(reader, args.sample, args.seed, args.first)
+        cases = collect(reader, args.sample, args.seed, args.first, args.skip)
         if not cases:
             print("[error] The manifest yielded no XSS or SQL Injection test cases", file=sys.stderr)
             sys.exit(1)

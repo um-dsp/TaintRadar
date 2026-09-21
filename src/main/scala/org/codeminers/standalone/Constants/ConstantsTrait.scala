@@ -29,6 +29,8 @@ trait ConstantsTrait {
   val validator_functions: List[String] = List()
   val filter_functions: List[String] = List()
   val sanitizing_filters: List[String] = List()
+  val type_reporting_functions: List[String] = List()
+  val pattern_match_functions: List[String] = List()
 
   lazy val all_sinks: List[String] =
     (codeinj_sink ++ commandexec_sink ++ fileinc_sink ++ sqli_sink ++ xss_sink ++

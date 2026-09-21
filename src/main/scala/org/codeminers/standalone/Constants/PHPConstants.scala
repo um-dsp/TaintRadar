@@ -132,9 +132,10 @@ object PHPConstants extends ConstantsTrait {
   // guarded variable is the one the predicate was applied to.
   //
   // Predicates that merely report a property without restricting the content do not
-  // belong here: is_string, is_array and is_object say nothing about the characters,
-  // gettype() is a comparison rather than a call, and preg_match and fnmatch depend
-  // entirely on a pattern this analysis does not interpret.
+  // belong here: is_string, is_array and is_object say nothing about the characters.
+  // gettype and preg_match do restrict it, but only for some of their arguments, so they
+  // are handled by type_reporting_functions and pattern_match_functions below rather than
+  // by this list, which is read as unconditional.
   override val validator_functions: List[String] = List(
     // type predicates that exclude every string value
     "is_numeric",
@@ -152,12 +153,23 @@ object PHPConstants extends ConstantsTrait {
     "ctype_alpha",
     "ctype_lower",
     "ctype_upper",
+    // control characters are disjoint from every printable metacharacter
+    "ctype_cntrl",
     // whitelist membership: the value must equal one of the entries of the haystack.
     // Only sound when the call passes $strict, since the default loose comparison
     // juggles types -- before PHP 8, in_array("1 OR 1=1", [1,2,3]) is true. The third
     // argument is not inspected here, so this entry can mask a flow in that case.
     "in_array"
   )
+
+  // gettype returns the type as a string, so `gettype($x) == "integer"` restricts $x
+  // exactly as is_int($x) does and belongs to the same family of guards.
+  override val type_reporting_functions: List[String] = List("gettype")
+
+  // preg_match and friends constrain their subject only when the pattern says so, which
+  // is why the pattern rather than the function name decides; see isWhitelistPattern.
+  // fnmatch is deliberately absent. Its pattern is a glob, not a regular expression.
+  override val pattern_match_functions: List[String] = List("preg_match", "preg_match_all")
 
   // filter_input, filter_input_array and filter_var apply the filter named by their
   // FILTER_* argument, so whether they sanitize depends on that argument rather than on
@@ -167,13 +179,15 @@ object PHPConstants extends ConstantsTrait {
     "FILTER_SANITIZE_NUMBER_FLOAT"
   )
 
-  // Left empty, which leaves the argument-aware path in SanitizationFilter inert and the
-  // filter_* family treated as plain sanitizers by way of san_functions_all below. That
-  // is an over-approximation of their safety and a known source of false negatives: a
-  // filter_input call given FILTER_UNSAFE_RAW, or given no filter at all, returns the
-  // input verbatim and is not a sanitizer. Populating this list with the three function
-  // names is what switches the decision over to sanitizing_filters above.
-  override val filter_functions: List[String] = List()
+  // Listing them here is what routes the decision through sanitizing_filters above
+  // instead of treating the call as a sanitizer outright, which it is not: filter_input
+  // given FILTER_UNSAFE_RAW, or given no filter at all, returns the input verbatim.
+  // These three are therefore absent from san_functions_all.
+  override val filter_functions: List[String] = List(
+    "filter_input",
+    "filter_input_array",
+    "filter_var"
+  )
 
   val san_functions_sql = List(
     "dbx_escape_string",
@@ -217,9 +231,6 @@ object PHPConstants extends ConstantsTrait {
     "intval",
     "floatval",
     "doubleval",
-    // unconditional only because filter_functions above is empty; see the note there
-    "filter_input",
-    "filter_input_array",
     "urlencode",
     "rawurlencode",
     "round",
@@ -245,6 +256,8 @@ object PHPConstants extends ConstantsTrait {
     "ord",
     "sizeof",
     "count",
+    // returns an array of per-byte frequencies, so the result carries no input character
+    "count_chars",
     "bin2hex",
     "levenshtein",
     "abs",

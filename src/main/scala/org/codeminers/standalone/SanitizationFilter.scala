@@ -52,19 +52,77 @@ class SanitizationFilter(val cpg: Cpg) {
       filterNames.nonEmpty && filterNames.forall(Constants.sanitizing_filters.contains)
    }
 
-   // Covers case when `identifier` is read inside a branch guarded by a validating predicate
-   // applied to the same variable, as in `if (is_numeric($x)) { sink($x); }`.
+   // True when `pattern` is a whitelist: an anchored expression that can only match a
+   // string drawn from an alphanumeric alphabet, as in `/^[0-9]*$/`.
+   def isWhitelistPattern(pattern: String): Boolean = {
+      val unquoted = pattern.trim.replaceAll("^[\"']|[\"']$", "")
+      if (unquoted.length < 3) return false
+      // PCRE patterns carry a delimiter, which is any non-alphanumeric character, plus
+      // trailing modifiers. Glob patterns (fnmatch) carry neither.
+      val delimiter = unquoted.charAt(0)
+      val body = {
+         if (delimiter.isLetterOrDigit || delimiter == '^') unquoted
+         else {
+            val close = unquoted.lastIndexOf(delimiter)
+            if (close <= 0) return false else unquoted.substring(1, close)
+         }
+      }
+      if (!body.startsWith("^") || !body.endsWith("$")) return false
+      val inner = body.substring(1, body.length - 1)
+      // character classes over alphanumeric ranges, bare alphanumerics, and quantifiers
+      val atom = "(\\[[A-Za-z0-9_\\-]+\\]|[A-Za-z0-9_ ])([*+?]|\\{[0-9,]+\\})?"
+      inner.nonEmpty && inner.matches(atom + "(" + atom + ")*")
+   }
+
+   /** True when `identifier` is read inside a branch whose condition constrains that same
+     * variable:
+     *
+     *   `if (is_numeric($x))`              -- a validating predicate
+     *   `if (gettype($x) == "integer")`    -- a type comparison against a safe type
+     *   `if (preg_match("/^[0-9]*$/", $x))` -- a match against an anchored whitelist
+     *
+     * Enclosing control structures are found by walking AST parents rather than through
+     * `controlledBy`, which needs CDG edges that the default overlays do not guarantee.
+     */
    def isGuardedByValidator(identifier: Identifier): Boolean = {
-      if (Constants.validator_functions.isEmpty) return false
+      if (Constants.validator_functions.isEmpty && Constants.type_reporting_functions.isEmpty &&
+          Constants.pattern_match_functions.isEmpty) return false
+
+      def mentions(call: Call): Boolean = call.argument.ast.isIdentifier.name.l.contains(identifier.name)
+
+      def guards(controlStructure: ControlStructure): Boolean = {
+         val calls = Iterator(controlStructure).condition.ast.isCall.l
+
+         val byPredicate = calls
+            .filter(call => Constants.validator_functions.contains(call.name))
+            .exists(mentions)
+
+         // gettype($x) == "integer". Equality only: a negated comparison says the value is
+         // anything but that type, which constrains nothing.
+         val byTypeComparison = calls
+            .filter(call => call.name.toLowerCase.contains("equals") && !call.name.toLowerCase.contains("not"))
+            .exists { comparison =>
+               val arguments = comparison.argument.l
+               arguments.exists(argument => argument.ast.isCall
+                     .exists(inner => Constants.type_reporting_functions.contains(inner.name) && mentions(inner))) &&
+               arguments.exists(argument => argument.ast.isLiteral
+                     .exists(literal => Constants.safe_types.contains(literal.code.replaceAll("[\"']", ""))))
+            }
+
+         // preg_match("/^[0-9]*$/", $x): the first literal argument is the pattern.
+         val byPattern = calls
+            .filter(call => Constants.pattern_match_functions.contains(call.name))
+            .filter(mentions)
+            .exists(call => call.argument.isLiteral.code.l.exists(isWhitelistPattern))
+
+         byPredicate || byTypeComparison || byPattern
+      }
+
       var node: Option[AstNode] = Iterator(identifier: AstNode).astParent.headOption
       var depth = 0
       while (node.isDefined && depth < 32) {
          node.get match {
-            case controlStructure: ControlStructure =>
-               val guarded = Iterator(controlStructure).condition.ast.isCall
-                  .filter(call => Constants.validator_functions.contains(call.name))
-                  .exists(call => call.argument.ast.isIdentifier.name.l.contains(identifier.name))
-               if (guarded) return true
+            case controlStructure: ControlStructure => if (guards(controlStructure)) return true
             case _ => ()
          }
          node = Iterator(node.get).astParent.headOption
