@@ -134,6 +134,38 @@ class Utils(cpg: Cpg) {
     // reachibilityArgs maps the first field access call node of backward data flow to a map of definitions and their scope
     // FieldAccess Call (Sink) -> { Definition Node -> Scope: (CallStack, VarStack) }
     var reachabilityArgs = collection.mutable.Map[Call, collection.mutable.Map[Call, (List[Call], List[String])]]()
+
+    // getReachingDef is pure, so it can be cached on its whole input. dataFlowStepMap cannot
+    // hold it: that map is keyed on the node alone, which is why field accesses are evicted below.
+    private val fieldAccessDefs =
+        collection.mutable.Map[(Call, List[Call], List[String]), Map[Call, (List[Call], List[String])]]()
+
+    // Per-node facts behind the two resolver arguments. `assignment` walks the node's whole AST
+    // subtree and isCallTo compiles a regex, so both are memoized and folded by Frontier below.
+    private val assignmentsUnder = collection.mutable.Map[AstNode, List[Call]]()
+    private def assignmentsIn(node: AstNode): List[Call] =
+        assignmentsUnder.getOrElseUpdate(node, List(node).isCall.assignment.l)
+
+    private val fieldAccessOf = collection.mutable.Map[AstNode, Option[Call]]()
+    private def asFieldAccess(node: AstNode): Option[Call] =
+        fieldAccessOf.getOrElseUpdate(node, List(node).isCallTo("<operator>.fieldAccess").headOption)
+
+    // A partial path, newest node first so extending it and reading its head are O(1). The two
+    // resolver facts are folds over the path in order: first field access wins, last assignment wins.
+    private final case class Frontier(nodes: List[AstNode],
+                                      firstFieldAccess: Option[Call],
+                                      lastAssignment: Option[Call]) {
+        def node: AstNode = nodes.head
+        def sinkFirst: List[AstNode] = nodes.reverse
+        def extend(next: AstNode): Frontier = Frontier(
+            next :: nodes,
+            firstFieldAccess.orElse(asFieldAccess(next)),
+            assignmentsIn(next).lastOption.orElse(lastAssignment))
+    }
+
+    private def frontierOf(path: List[AstNode]): Frontier =
+        path.foldLeft(Frontier(List(), None, None))((frontier, node) => frontier.extend(node))
+
     def dataFlowStep(node: AstNode, goToCallIn: Boolean = true)(implicit resolver: (Option[Call], Option[Call])): List[AstNode] = {
         dataFlowStepMap.get(node) match {
             case Some(queryData: List[AstNode]) => queryData
@@ -164,7 +196,9 @@ class Utils(cpg: Cpg) {
                                         reachabilityArgs(startNode).getOrElse(lastAssignment, (List(), List()))
                                     )
                                     .getOrElse((List(), List()))
-                                val defMaps = getReachingDef(call, call.code, 0, scope._1, scope._2, Set(call.id))
+                                val defMaps = fieldAccessDefs.getOrElseUpdate(
+                                    (call, scope._1, scope._2),
+                                    getReachingDef(call, call.code, 0, scope._1, scope._2, Set(call.id)))
                                 reachabilityArgs(startNode) ++= defMaps
                                 if (defMaps.keys.nonEmpty) defMaps.keys.toList
                                 else call.argument.l.collect { case field: FieldIdentifier => field }
@@ -227,58 +261,118 @@ class Utils(cpg: Cpg) {
         }
     }
 
+    // Everything the backward walk from `sinks` reaches within the round budget. The walk reads
+    // only `sinks`, so it is run once per sink list and shared by every node asked about it.
+    private val reachableFromCache = collection.mutable.Map[List[AstNode], Set[AstNode]]()
+
+    private def reachableFrom(sinks: List[AstNode]): Set[AstNode] =
+        reachableFromCache.getOrElseUpdate(sinks, {
+            var seen = Set[AstNode]()
+            var frontier = sinks
+            var i = 0
+            while (i < 100 && frontier.nonEmpty) {
+                seen = seen ++ frontier
+                frontier = frontier.flatMap(n => dataFlowStep(n)(None, None)).dedup.l.filterNot(seen.contains)
+                i = i + 1
+            }
+            seen
+        })
+
     // Checks whether the node is reachable by any element of sinks
-    def isReachableBy(node: AstNode, sinks: List[AstNode]): Boolean = {
-        var i = 0
-        var dataFlowNodes: List[AstNode] = sinks
-        var found: Boolean = false
-        while (i < 100 && !found) {
-            if (dataFlowNodes.contains(node)) found = true
-            dataFlowNodes = dataFlowNodes.flatMap(n => dataFlowStep(n)(None, None)).dedup.l
-            i = i + 1
-        }
-        found
-    }
+    def isReachableBy(node: AstNode, sinks: List[AstNode]): Boolean = reachableFrom(sinks).contains(node)
     
+    private def expandFrontiers(frontiers: List[Frontier], visited: Set[AstNode], tagName: String,
+                                stopAtSanitized: Boolean): (List[Frontier], Boolean) = {
+        val output = collection.mutable.ListBuffer[Frontier]()
+        var extended = false
+        frontiers.foreach { frontier =>
+            val node = frontier.node
+            val reachingDefs = dataFlowStep(node, !node.isMethod)(frontier.firstFieldAccess, frontier.lastAssignment)
+                .filterNot(d => visited.contains(d) ||
+                    (stopAtSanitized && d.tag.name(tagName).value.headOption.getOrElse("NA") == "TRUE"))
+            if (reachingDefs.isEmpty) output += frontier
+            else {
+                extended = true
+                reachingDefs.foreach(d => output += frontier.extend(d))
+            }
+        }
+        (output.toList, extended)
+    }
 
     // stopAtSanitized drops a reaching definition that is labelled sanitized, which ends the walk there
     def getReachingDefs(paths: List[List[AstNode]], source: List[AstNode], tagName: String, stopAtSanitized: Boolean = true): List[AstNode] = {
-    try {
-        var output = List[List[AstNode]]()
-        val visitedNodes = paths.flatten.dedup.l
-        val result = paths.map( path => {
-            // println(path.map(_.code).mkString(", ") + " " + !path.last.isMethod)
-            val reachingDefs = dataFlowStep(path.last, !path.last.isMethod)(path.isCallTo("<operator>.fieldAccess").headOption, path.isCall.assignment.lastOption).filterNot(node => visitedNodes.contains(node) || (stopAtSanitized && node.tag.name(tagName).value.headOption.getOrElse("NA")=="TRUE"))
-            if (reachingDefs.isEmpty) (output = output :+ path)
-            else reachingDefs.map(reachingDef => output = output :+ (path :+ reachingDef))
-        })
-        val sourceInPaths: Int = output.map(_.exists(source.contains)).indexOf(true) 
-        // if source reached return the path
-        if (sourceInPaths >= 0) output(sourceInPaths)
-        // if the calculated path is the same as the previous one, return the list of paths
-        else if (paths.flatten.size == output.flatten.size) List()
-        // otherwise add the next reaching definitions to the paths
-        else if (paths.flatten.dedup.size > 500) {
-            // println("Wooh! that's a lot of paths")
-            List()
+        val targets = source.toSet
+        var frontiers = paths.map(frontierOf)
+        var result: List[AstNode] = List()
+        var running = true
+        try {
+            while (running) {
+                // doubles as the node budget below, charged against the round's input as before
+                val visited = frontiers.iterator.flatMap(_.nodes).toSet
+                val (output, extended) = expandFrontiers(frontiers, visited, tagName, stopAtSanitized)
+                val found = output.find(_.nodes.exists(targets.contains))
+                if (found.nonEmpty) { result = found.get.sinkFirst; running = false }
+                else if (!extended) running = false
+                else if (visited.size > 500) running = false
+                else frontiers = output
+            }
         }
-        else getReachingDefs(output, source, tagName, stopAtSanitized) 
-    }
-    catch {
-        case _ => {
-            // println(source.toString + paths.map(_.last).dedup.l.mkString(", "))
-            List()
+        catch {
+            case _ => result = List()
         }
-    }
+        result
     }
 
-    def reachableBySources(sink: AstNode, sources: List[AstNode] = List(), tagName: String): List[AstNode] = {
-        getReachingDefs(List(List(sink)), sources, tagName).reverse
+    // One walk that resolves every source, instead of one walk per source.
+    def getReachingDefsMulti(paths: List[List[AstNode]], sources: List[AstNode], tagName: String,
+                             stopAtSanitized: Boolean = true): collection.Map[AstNode, List[AstNode]] = {
+        val resolved = collection.mutable.HashMap[AstNode, List[AstNode]]()
+        // no sources means no walk at all, as mapping over an empty list did
+        if (sources.isEmpty) return resolved
+        var pending = sources.toSet
+        var frontiers = paths.map(frontierOf)
+        var running = true
+        try {
+            while (running) {
+                val visited = frontiers.iterator.flatMap(_.nodes).toSet
+                val (output, extended) = expandFrontiers(frontiers, visited, tagName, stopAtSanitized)
+                if (pending.nonEmpty) {
+                    // first path holding each outstanding source. Sources are answered
+                    // independently, so two of them may share a path.
+                    val firstPath = collection.mutable.HashMap[AstNode, Frontier]()
+                    output.foreach(frontier => frontier.nodes.foreach(node =>
+                        if (pending.contains(node) && !firstPath.contains(node)) firstPath(node) = frontier))
+                    pending.foreach(source => firstPath.get(source).foreach(f => resolved(source) = f.sinkFirst))
+                    pending = pending.filterNot(resolved.contains)
+                }
+                if (!extended) running = false
+                else if (visited.size > 500) running = false
+                else frontiers = output
+            }
+        }
+        catch {
+            // the per-source walk lost only the source it was on; ones answered in earlier
+            // rounds had already returned, so they are kept here too
+            case _ => ()
+        }
+        resolved
     }
 
+    // TAINTRADAR_VERIFY_MULTI=1 runs the per-source walk alongside the batched one and reports
+    // disagreements. A mismatch detector as running both doubles reachabilityArgs writes.
+    private val verifyMulti = sys.env.get("TAINTRADAR_VERIFY_MULTI").contains("1")
 
     def reachableBySource(sink: AstNode, sources: List[AstNode] = List(), tagName: String, stopAtSanitized: Boolean = true): List[List[AstNode]] = {
-        val paths: List[List[AstNode]] = sources.map(source => getReachingDefs(List(List(sink)), List(source), tagName, stopAtSanitized).reverse).filterNot(_.isEmpty)
+        val resolved = getReachingDefsMulti(List(List(sink)), sources, tagName, stopAtSanitized)
+        // the caller's source order, and a source listed twice is answered twice
+        val paths: List[List[AstNode]] = sources.flatMap(source => resolved.get(source).map(_.reverse))
+        if (verifyMulti) {
+            val reference = sources.map(source =>
+                getReachingDefs(List(List(sink)), List(source), tagName, stopAtSanitized).reverse).filterNot(_.isEmpty)
+            if (reference != paths)
+                println("VERIFY_MULTI mismatch at sink " + sink.id +
+                    ": per-source found " + reference.size + " paths, batched found " + paths.size)
+        }
         paths
     }
 

@@ -41,14 +41,14 @@ def getReachingDef(
                 getReachingDef(_, s"this.${varName.split('.').last}", i + 1, callStack, varNames, visitedNodes + node.id)
             )
             .toMap
-    } else if (node.isCall && !node.isCallTo(".*").filter(c => c.dispatchType == "DYNAMIC_DISPATCH").isEmpty) {
-        // Handle dynamic dispatch calls
-        val results = node.isCallTo(".*").callee.methodReturn
+    } else if (node.isInstanceOf[Call] && node.asInstanceOf[Call].dispatchType == "DYNAMIC_DISPATCH") {
+        val call = node.asInstanceOf[Call]
+        call.callee.methodReturn
             .filterNot(n => visitedNodes.contains(n.id))
             .flatMap(
-                getReachingDef(_, varName, i + 1, node.isCallTo(".*").head +: callStack, varName +: varNames, visitedNodes + node.id)
+                getReachingDef(_, varName, i + 1, call +: callStack, varName +: varNames, visitedNodes + node.id)
             )
-        results.toMap
+            .toMap
     } else if (node.cfgPrev.isEmpty) {
         // End of CFG
         if (callStack.nonEmpty) {

@@ -95,15 +95,22 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
     }
 
     val insertStatements = CpgUtils.db.queryStatements.filter(c => List("INSERT", "UPDATE").contains(c.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA"))).filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE")
-    val vulnerableInsert = if (insertStatements.filter(CpgUtils.isReachableBy(_, databaseCalls)).size > 0) insertStatements.filter(CpgUtils.isReachableBy(_, databaseCalls)) else insertStatements
+    // isReachableBy runs a bounded frontier walk per pair, so the filter is bound once and
+    // reused rather than being evaluated again in the branch
+    private val insertsReachingDbCalls = insertStatements.filter(CpgUtils.isReachableBy(_, databaseCalls))
+    val vulnerableInsert = if (insertsReachingDbCalls.nonEmpty) insertsReachingDbCalls else insertStatements
     // val vulnerableInsert = insertStatements.filter(CpgUtils.isReachableBy(_, databaseCalls))
     val dbCallsPerInsert = vulnerableInsert.map(q => databaseCalls.filter(dbcall => CpgUtils.isReachableBy(q, List(dbcall))))
-    val dbCallsToSource = dbCallsPerInsert.map(dbcall => sources.map(s => CpgUtils.getReachingDefs(dbcall.map(List(_)), List(s), "SAN_XSS").reverse).filterNot(_.isEmpty))
+    val dbCallsToSource = dbCallsPerInsert.map { dbcall =>
+        val resolved = CpgUtils.getReachingDefsMulti(dbcall.map(List(_)), sources, "SAN_XSS")
+        sources.flatMap(s => resolved.get(s).map(_.reverse))
+    }
     val m1: Map[AstNode, List[List[AstNode]]] = (vulnerableInsert zip  dbCallsToSource).toMap
 
 
     val selectStatements = CpgUtils.db.queryStatements.filter(_.tag.name("QUERY_TYPE").value.headOption.getOrElse("NA")=="SELECT").filter(_.tag.name("QUERY_LABEL").value.headOption.getOrElse("NA")=="UNSAFE").l
-    val vulnerableSelect = if (selectStatements.filter(CpgUtils.isReachableBy(_, databaseReads)).size > 0) selectStatements.filter(CpgUtils.isReachableBy(_, databaseReads)) else selectStatements
+    private val selectsReachingDbReads = selectStatements.filter(CpgUtils.isReachableBy(_, databaseReads))
+    val vulnerableSelect = if (selectsReachingDbReads.nonEmpty) selectsReachingDbReads else selectStatements
     val dbCallsPerSelect = vulnerableSelect.map(q => databaseReads.filter(dbcall => CpgUtils.isReachableBy(q, List(dbcall))))
     
     // val vulnerableSelect = selectStatements.filter(CpgUtils.isReachableBy(_, databaseCalls))
@@ -170,7 +177,6 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
                     // val m1: Map[AstNode, List[List[AstNode]]] = ( vulnerableInsert zip vulnerableInsert.map(CpgUtils.reachableBySource(_, sources, tagName)) ).toMap
                     val dbCallsToSink = dbCallsPerSelect.map(dbcall => sinks.flatMap(s => CpgUtils.reachableBySource(s, dbcall, tagName, false)))
 
-                    val selectToSink = sinks.flatMap(CpgUtils.reachableBySource(_, dbCallsPerSelect.flatten.dedup.l, tagName))
                     val m2: Map[AstNode, List[List[AstNode]]] = ( vulnerableSelect zip dbCallsToSink ).toMap
                     
                     val insertCols = vulnerableInsert.map(_.tag.name("QUERY_COLUMNS").value.headOption.getOrElse("NA").split(", ").toList)
@@ -255,11 +261,10 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
     def outputPaths(debug: Boolean = true) = {
         val results = getAllPaths(debug)
         val output: String = results.transform{(k,v) => 
-            v.map(path => {
-                val pathID = v.toSeq.indexOf(path) + 1
+            v.zipWithIndex.map { (path, pathIndex) =>
+                val pathID = pathIndex + 1
+                val tagName = CpgUtils.getTagName(k)
                 path.map(x => {
-                    val tagName = CpgUtils.getTagName(k)
-                    val sinkFunctions = CpgUtils.getSinks(k)
                     "{\n\t\"pathid\": " + pathID + ",\n" + 
                     "\t\"vulnerability\": \"" + k + "\",\n" + 
                     "\t\"nodeid\": " + x.id + ",\n" +
@@ -269,7 +274,7 @@ class NavexMain(val cpg: Cpg, val shouldAugment: Boolean, val module: Module = M
                     "\t\"code\": \"" + x.code.replace("\\", "\\\\").replace("\"", "\\\"") + "\",\n" +
                     "\t\"sanitized\": \"" + x.tag.name(tagName).value.headOption.getOrElse("NA") + "\"\n},"
                 }).mkString("\n")
-            }).mkString("[", "\n", "]")
+            }.mkString("[", "\n", "]")
         }.values.filter(!_.isEmpty).mkString("").replace("[]", "").replace("},]", "}]").replace("][", ",")
         
         // Write JSON output

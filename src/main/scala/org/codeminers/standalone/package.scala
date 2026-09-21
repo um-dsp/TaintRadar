@@ -43,7 +43,7 @@ package object standalone {
     val constants = ConstantsFactory.getConstants(cpg.metaData.head.language)
     val sanitizationObject = new SanitizationFilter(cpg)
     val utils = new Utils(cpg)
-    val navexMain = new NavexMain(cpg, true)
+    lazy val navexMain = new NavexMain(cpg, true)
     
     def filterSanitized: Iterator[AstNode] =
       cpg.method.ast.filter(sanitizationObject.isSanitized(_)(constants.san_functions_all))
